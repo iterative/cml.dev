@@ -18,13 +18,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: path.resolve("./content"),
-        name: "content",
-      },
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
     },
     {
