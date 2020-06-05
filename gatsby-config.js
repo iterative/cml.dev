@@ -41,5 +41,6 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     "gatsby-plugin-theme-ui",
+    "gatsby-plugin-netlify"
   ],
 }
