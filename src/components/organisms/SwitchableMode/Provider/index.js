@@ -80,7 +80,7 @@ const ModeProvider = ({
   defaultMode = "gitlab",
   children,
 }) => {
-  const { currentMode, setModeToValue, hasMode } = usePersistentMode(
+  const { currentMode, setModeToValue } = usePersistentMode(
     name,
     defaultMode
   )

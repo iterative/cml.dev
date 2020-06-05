@@ -69,7 +69,7 @@ export const Tab = ({
       checked={checked}
       id={id}
     />
-    <label htmlFor={id} onClick={console.log}>
+    <label htmlFor={id}>
       {name}
     </label>
     <section>{children}</section>

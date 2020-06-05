@@ -2,9 +2,9 @@ const path = require("path")
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `CML`,
+    description: `CML is CI for Machine Learning`,
+    author: `Iterative`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -23,7 +23,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `cml-website`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
