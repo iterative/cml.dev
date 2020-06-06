@@ -21,18 +21,18 @@ const navItems = [
 
 function Header() {
   return (
-    <Box as="header" variant="layout.header">
-      <Container variant="layout.header.inner">
-        <Link to="/" variant="layout.header.logo">
+    <Box as="header" variant="layout.Header">
+      <Container variant="layout.Header.Inner">
+        <Link to="/" variant="layout.Header.Logo">
           <Image src={logo} />
         </Link>
-        <Box as="nav" variant="layout.header.nav" id="site-nav">
+        <Box as="nav" variant="layout.Header.Nav" id="site-nav">
           {navItems.map(({ label, href }, i) => (
             <NavLink
               href={href}
               label={label}
               key={i}
-              variant="layout.header.nav.link"
+              variant="layout.Header.Nav.Link"
             >
               {label}
             </NavLink>

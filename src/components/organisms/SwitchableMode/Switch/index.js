@@ -2,6 +2,7 @@ import React from "react"
 import { Box } from "@theme-ui/components"
 import msx from "../styleHelpers.js"
 import { defaultIdPrefix } from "../common.js"
+import { clickOnKeyPress } from "utils/handlers"
 
 const ModeSwitchLabel = ({
   idPrefix,
@@ -16,6 +17,7 @@ const ModeSwitchLabel = ({
     htmlFor={idPrefix + mode}
     variant={`${variant}.Label`}
     className={className}
+    tabIndex={0}
     sx={msx({
       mode,
       idPrefix,
@@ -28,18 +30,19 @@ const ModeSwitchLabel = ({
 
 const ModeSwitch = ({
   idPrefix = defaultIdPrefix,
+  variant = "switches.primary",
   left = "GitLab",
   leftMode = "gitlab",
   right = "GitHub",
   rightMode = "github",
-  variant = "switches.primary",
-  sx,
   className,
+  sx,
 }) => {
   return (
     <Box
       variant={variant}
       className={className}
+      onKeyPress={clickOnKeyPress}
       sx={msx({
         ...sx,
         idPrefix,

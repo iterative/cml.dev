@@ -3,22 +3,33 @@ import { Box, Input, Button, Flex } from "@theme-ui/components"
 
 function SubscribeSection() {
   return (
-    <Box>
+    <Box
+      variant="styles.invert"
+      sx={{
+        px: 3,
+        py: 5,
+      }}
+    >
       <Box
         sx={{
           color: "white",
           textAlign: "center",
           fontWeight: "700",
           fontSize: 4,
-          my: [4, 5],
+          mb: [4, 5],
         }}
       >
         <div>Subscribe for updates.</div>
         <div>We won't spam you</div>
       </Box>
-      <Flex variant="styles.buttonInput">
-        <Input type="text" placeholder="E-mail" variant="partial" />
-        <Button variant="subscribe">Subscribe</Button>
+      <Flex variant="forms.ButtonInput" as="form" action="#">
+        <Input
+          type="email"
+          placeholder="E-mail"
+          variant="forms.ButtonInput.Input"
+          name="email"
+        />
+        <Button variant="forms.ButtonInput.Button">Subscribe</Button>
       </Flex>
     </Box>
   )

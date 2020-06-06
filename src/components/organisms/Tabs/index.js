@@ -1,5 +1,7 @@
 import React, { useMemo } from "react"
 import { Box } from "@theme-ui/components"
+import { clickOnKeyPress } from "utils/handlers"
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 
 export const HiddenRadioControl = ({
   defaultChecked,
@@ -15,6 +17,7 @@ export const HiddenRadioControl = ({
     defaultChecked={defaultChecked}
     name={inputName}
     id={id}
+    tabindex={-1}
     aria-hidden
     hidden
   />
@@ -69,7 +72,7 @@ export const Tab = ({
       checked={checked}
       id={id}
     />
-    <label htmlFor={id}>
+    <label htmlFor={id} tabIndex={0} onKeyPress={clickOnKeyPress}>
       {name}
     </label>
     <section>{children}</section>

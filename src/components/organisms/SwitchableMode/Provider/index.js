@@ -80,10 +80,7 @@ const ModeProvider = ({
   defaultMode = "gitlab",
   children,
 }) => {
-  const { currentMode, setModeToValue } = usePersistentMode(
-    name,
-    defaultMode
-  )
+  const { currentMode, setModeToValue } = usePersistentMode(name, defaultMode)
   return (
     <ModeContext.Provider value={currentMode}>
       <ModeSwitchRadios

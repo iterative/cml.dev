@@ -6,41 +6,49 @@ import { JSONTabs } from "components/organisms/Tabs"
 import Switchable from "components/organisms/SwitchableMode/Switchable"
 import Switch from "components/organisms/SwitchableMode/Switch"
 
-const Tooltip = ({
-  sx = {},
-  as = "span",
-  className,
-  contents,
-  children
-}) => {
+const Tooltip = ({ sx = {}, as = "span", className, contents, children }) => {
   return (
     <Box
-    as={as}
-    variant="styles.Tooltip"
-    className={className}
-    sx={{
-      "& aside": {
-        display: "hidden"
-      },
-      "&:focus": {
+      as={as}
+      variant="styles.Tooltip"
+      className={className}
+      sx={{
         "& aside": {
-          display: "block"
-        }
-      }
-    }}
+          display: "hidden",
+        },
+        "&:focus": {
+          "& aside": {
+            display: "block",
+          },
+        },
+      }}
     >
-    {children}
-    <aside>{contents}</aside>
-  </Box>
+      {children}
+      <aside>{contents}</aside>
+    </Box>
   )
 }
+
+const FullWidthBox = ({ originalType, children, ...props }) => {
+  return (
+    <Box
+      variant="styles.FullWidthBox"
+      sx={{ backgroundColor: "green" }}
+      {...props}
+    >
+      <Container>{children}</Container>
+    </Box>
+  )
+}
+
+FullWidthBox.isFullWidth = true
 
 const Video = ({
   sx = {},
   mode,
   autoplay,
-  playsinline=true,
-  controls=true,
+  playsinline = true,
+  controls = true,
   ...props
 }) => {
   const contextMode = useContext(ModeContext)
@@ -71,15 +79,17 @@ const Video = ({
 }
 
 export default {
+  JSONTabs,
   Tooltip,
   Video,
-  JSONTabs,
 
   Switchable,
   Switch,
 
-  Button,
-  Box,
   Container,
-  Link
+  Button,
+  Link,
+  Box,
+
+  FullWidthBox,
 }

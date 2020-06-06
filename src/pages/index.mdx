@@ -1,15 +1,11 @@
-import Layout from "templates/Default"
-export default Layout
-
 import gitlabVideo from "media/what-is-gitlab.mp4"
 import githubVideo from "media/what-is-github.mp4"
 
-<Box sx={{
+<FullWidthBox sx={{
   backgroundColor: "text", 
   color: "background", 
   overflow: "hidden",
   textAlign: "center",
-  px: 4,
   py: 5
 }}>
 
@@ -24,7 +20,7 @@ import githubVideo from "media/what-is-github.mp4"
   github={<Video src={githubVideo} mode="github"/>}
 />
 
-</Box>
+</FullWidthBox>
 
 ## GitFlow for data science
 
@@ -42,7 +38,7 @@ Build your own ML platform using just GitHub or GitLab and your favorite cloud s
 
 The simplest case of using CML, and a clear way for any user to get started, is to generate a simple report. Add the following .yaml to your project repository and commit to get started
 
-<Switch />
+<Switch sx={{my: 4}} />
 
 <JSONTabs content={[
   {

@@ -15,38 +15,72 @@ const palette = {
 
 export default {
   ...preset,
+  breakpoints: ["640px", "980px", "1440px"],
   colors: {
     ...palette,
     background: palette.white,
     text: palette.darkPurple[0],
     primary: palette.purple[0],
   },
+  tooltips: {
+    primary: {
+      "&[title]": {
+        position: "relative",
+        "&:after": {
+          textAlign: "center",
+          content: "attr(title)",
+          position: "absolute",
+          bottom: "100%",
+        },
+      },
+    },
+  },
+  radii: [0, "8px"],
+  sizes: [0, "4px", "8px", "12px", "16px", "24px", "32px", "48px", "64px"],
+  fonts: {
+    body: "'DM Sans', sans-serif",
+    heading: "'DM Sans', sans-serif",
+  },
+
   layout: {
-    header: {
+    ...preset.layout,
+    container: {
+      maxWidth: "1280px",
+      mx: "auto",
+      px: 3,
+    },
+    Header: {
       variant: "styles.invert",
-      logo: {
+      pt: [3, 0],
+      Logo: {
         display: "block",
         flex: "0 1 auto",
         p: "1rem",
+        width: ["100%", "auto"],
         img: {
-          width: "115px",
-          height: "30px",
+          display: "block",
+          width: "100%",
+          mx: "auto",
+          maxWidth: ["280px", "115px"],
+          height: [null, "30px"],
         },
       },
-      inner: {
+      Inner: {
+        variant: "layout.container",
         display: "flex",
         flexWrap: "nowrap",
+        alignItems: ["center"],
         flexFlow: ["column", "row"],
       },
-      nav: {
-        px: 2,
+      Nav: {
+        px: 0,
         display: "flex",
-        flexFlow: "row",
+        flexDirection: "row",
         flexWrap: ["wrap", "nowrap"],
-        justifyContent: "center",
+        justifyContent: ["center", "flex-end"],
         flex: "1",
-        link: {
-          px: 3,
+        Link: {
+          px: 2,
           py: "6px",
           fontSize: 2,
           height: "48px",
@@ -58,10 +92,6 @@ export default {
     main: {
       overflow: "auto",
     },
-  },
-  fonts: {
-    body: "'DM Sans', sans-serif",
-    heading: "'DM Sans', sans-serif",
   },
   buttons: {
     primary: {
@@ -80,13 +110,6 @@ export default {
         bg: "purple.2",
       },
     },
-    subscribe: {
-      color: "white",
-      backgroundColor: "purple",
-      borderRadius: "1.5rem",
-      lineHeight: "1.5rem",
-      flex: "0 0 auto",
-    },
   },
   links: {
     ...preset.links,
@@ -95,13 +118,36 @@ export default {
     },
   },
   forms: {
+    input: {
+      color: "text",
+    },
     partial: {
       border: "none",
       backgroundColor: "unset",
     },
+    ButtonInput: {
+      backgroundColor: "white",
+      color: "black",
+      borderRadius: "1.5rem",
+      pr: "2px",
+      Input: {
+        variant: "forms.partial",
+        pl: "1rem",
+        borderTopLeftRadius: "1.5rem",
+        borderBottomLeftRadius: "1.5rem",
+        borderTopRightRadius: 1,
+        borderBottomRightRadius: 1,
+      },
+      Button: {
+        my: "2px",
+        color: "white",
+        backgroundColor: "purple",
+        borderRadius: "1.5rem",
+        lineHeight: "1.5rem",
+        flex: "0 0 auto",
+      },
+    },
   },
-  radii: [0, "8px"],
-  sizes: [0, "4px", "8px", "12px", "16px", "24px", "32px", "48px", "64px"],
   switches: {
     Base: {
       position: "relative",
@@ -164,13 +210,6 @@ export default {
       color: "background",
       backgroundColor: "text",
     },
-    buttonInput: {
-      backgroundColor: "white",
-      borderRadius: "1.5rem",
-      pl: "0.5rem",
-      pr: "2px",
-      py: "2px",
-    },
     Tabs: {
       ...tabsCoreStyles,
 
@@ -178,37 +217,37 @@ export default {
       minWidth: "250px",
 
       display: "flex",
-      flexFlow: ["column nowrap", "row wrap"],
+      flexFlow: ["column nowrap", null, "row wrap"],
       overflow: "hidden",
       width: "100%",
 
-      borderRadius: [1, 0],
+      borderRadius: [1, null, 0],
 
       Content: {
         backgroundColor: "darkPurple.0",
         width: "100%",
         height: "auto",
         padding: "1rem",
-        flex: [null, "1 0 100%"],
-        borderBottomRightRadius: [0, 1],
-        borderBottomLeftRadius: [0, 1],
-        borderTopRightRadius: [0, 1],
+        flex: [null, null, "1 0 100%"],
+        borderBottomRightRadius: [0, null, 1],
+        borderBottomLeftRadius: [0, null, 1],
+        borderTopRightRadius: [0, null, 1],
         borderTopLeftRadius: 0,
       },
 
       Tab: {
         flex: "1 0",
-        margin: [0, "0 0.1rem 0 0"],
-        height: ["48px", "70px"],
-        maxWidth: [null, "315px"],
+        margin: [0, null, "0 0.1rem 0 0"],
+        height: ["48px", null, "70px"],
+        maxWidth: [null, null, "315px"],
         px: 4,
-        py: [0, "11px"],
+        py: [0, null, "11px"],
         color: "white",
         backgroundColor: "darkPurple.0",
         whiteSpace: "nowrap",
         textAlign: "center",
-        borderTopLeftRadius: [0, 1],
-        borderTopRightRadius: [0, 1],
+        borderTopLeftRadius: [0, null, 1],
+        borderTopRightRadius: [0, null, 1],
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
         opacity: 0.5,
@@ -228,7 +267,7 @@ export default {
 
         transition: "opacity 0.2s",
         ":last-of-type": {
-          marginRight: [null, "2rem"],
+          marginRight: [null, null, "2rem"],
         },
 
         "&:hover": {

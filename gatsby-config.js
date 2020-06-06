@@ -19,6 +19,11 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve("./src/templates/Default"),
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -34,6 +39,6 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     "gatsby-plugin-theme-ui",
-    "gatsby-plugin-netlify"
+    "gatsby-plugin-netlify",
   ],
 }
