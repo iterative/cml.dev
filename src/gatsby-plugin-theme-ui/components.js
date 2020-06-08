@@ -284,12 +284,7 @@ const Code = ({ children, lang, filename, github, ...props }) => {
 }
 
 const SolutionList = ({ children, sx, className }) => (
-  <Box
-    as="ul"
-    variant="styles.SolutionList"
-    className={className}
-    sx={sx}
-  >
+  <Box as="ul" variant="styles.SolutionList" className={className} sx={sx}>
     {children.map(([problem, solution], i) => (
       <SolutionLine problem={problem} solution={solution} key={i} />
     ))}
