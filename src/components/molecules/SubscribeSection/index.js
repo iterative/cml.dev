@@ -10,7 +10,6 @@ function SubscribeSection() {
         py: 5,
       }}
     >
-      <Container>
         <Box
           sx={{
             color: "white",
@@ -18,12 +17,16 @@ function SubscribeSection() {
             fontWeight: "700",
             fontSize: 4,
             mb: [4, 5],
+            "&>span": {
+              whiteSpace: "nowrap"
+            }
           }}
         >
-          <div>Subscribe for updates.</div>
-          <div>We won't spam you</div>
+          <span>Subscribe for updates.</span>
+          {' '}
+          <span>We won't spam you</span>
         </Box>
-        <Flex variant="forms.ButtonInput" as="form" action="#">
+        <Flex variant="forms.ButtonInput" as="form" action="#" sx={{maxWidth: "460px", mx: "auto"}}>
           <Input
             type="email"
             placeholder="E-mail"
@@ -32,7 +35,6 @@ function SubscribeSection() {
           />
           <Button variant="forms.ButtonInput.Button">Subscribe</Button>
         </Flex>
-      </Container>
     </Box>
   )
 }
