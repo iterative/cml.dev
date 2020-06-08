@@ -13,16 +13,24 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: path.resolve("./content"),
+        name: "content",
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: path.resolve("./src/images"),
         name: "images",
       },
     },
     {
+      resolve: `gatsby-plugin-react-svg`,
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        defaultLayouts: {
-          default: require.resolve("./src/templates/Default"),
-        },
+        gatsbyRemarkPlugins: [require.resolve("./remarkPlugin.js")],
       },
     },
     {

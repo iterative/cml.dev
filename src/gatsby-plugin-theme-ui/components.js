@@ -1,10 +1,65 @@
 import React, { useContext, useEffect, useRef } from "react"
 import { ModeContext } from "components/organisms/SwitchableMode/Provider"
-import { Button, Box, Container, Link } from "@theme-ui/components"
+import SolutionLineArrow from "./solution-line-arrow.svg"
+import {
+  Button,
+  Flex,
+  Box,
+  Container,
+  Link,
+  Heading,
+} from "@theme-ui/components"
 import { JSONTabs } from "components/organisms/Tabs"
 
 import Switchable from "components/organisms/SwitchableMode/Switchable"
 import Switch from "components/organisms/SwitchableMode/Switch"
+import GitHubIcon from "./github.svg"
+
+export const groupApply = (rawChildren, test, cb) => {
+  if (!rawChildren) return []
+  const currentGroup = []
+  const result = []
+
+  const children = Array.isArray(rawChildren) ? rawChildren : [rawChildren]
+
+  for (const child of children) {
+    if (test(child) === true) {
+      currentGroup.push(child)
+    } else {
+      if (currentGroup.length > 0) {
+        /*
+           If the current child doesn't pass the test and there is currently a
+           group of passing items, add the result of the callback applied on
+           a copy of that group, then clear the group.
+         */
+        result.push(cb(currentGroup.slice(), result.length))
+        currentGroup.length = 0
+      }
+      // Add the non-passing child directly to the result, ungrouped.
+      result.push(child)
+    }
+  }
+
+  // Process the last group if the last child passed.
+  if (currentGroup.length > 0) {
+    result.push(cb(currentGroup, result.length))
+  }
+
+  return result
+}
+
+const ContainExcept = ({
+  container = Container,
+  fullWidthComponents = ["FullWidthBox"],
+  children,
+}) => {
+  const processedChildren = groupApply(
+    children,
+    child => !fullWidthComponents.includes(child.props.mdxType),
+    (group, i) => <Container key={`wrapped-container-${i}`}>{group}</Container>
+  )
+  return <>{processedChildren}</>
+}
 
 const Tooltip = ({ sx = {}, as = "span", className, contents, children }) => {
   return (
@@ -78,6 +133,177 @@ const Video = ({
   )
 }
 
+const Collapser = ({ children, sx = {}, ...props }) => (
+  <Flex
+    sx={{
+      flexDirection: ["column", null, "row"],
+      flexWrap: "nowrap",
+    }}
+  >
+    {children}
+  </Flex>
+)
+
+const Circle = ({ color }) => (
+  <Box
+    sx={{
+      bg: color,
+      width: "50px",
+      height: "50px",
+      mx: "auto",
+      borderRadius: "50%",
+    }}
+  />
+)
+
+const HomeFeature = ({ children }) => (
+  <Box
+    sx={{
+      borderTopStyle: ["solid", null, "none"],
+      borderLeftStyle: ["none", null, "solid"],
+      borderWidth: "1px",
+      borderColor: "rgba(255,255,255,0.3)",
+      mx: "auto",
+      px: [1, 2],
+      maxWidth: "600px",
+      "&:first-of-type": {
+        borderTop: "none",
+        borderLeft: "none",
+      },
+    }}
+  >
+    <Box sx={{ my: "40px" }}>{children}</Box>
+  </Box>
+)
+
+const Code = ({ children, lang, filename, github, ...props }) => {
+  const renderHeader = lang || filename
+  const preRef = useRef()
+  return (
+    <Box
+      sx={{
+        backgroundColor: "darkPurple.0",
+      }}
+    >
+      {renderHeader && (
+        <Flex
+          sx={{
+            alignItems: "center",
+            flexFlow: "row wrap",
+            minHeight: "50px",
+            letterSpacing: "0.03em",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
+            mb: 2,
+            px: "20px",
+            color: "rgba(255, 255, 255, 0.5)",
+            justifyContent: ["center", "space-between"],
+          }}
+        >
+          <Heading
+            as="h3"
+            sx={{
+              flex: "0 1 auto",
+              fontSize: "14px",
+              my: 2,
+              mx: "auto",
+              display: "block",
+            }}
+          >
+            {filename || lang}
+          </Heading>
+          <Box sx={{ flex: "1 1" }} />
+          <Flex sx={{ flex: "0 0 auto", justifyContent: "center" }}>
+            {github && (
+              <Link
+                href={github}
+                sx={{
+                  color: "background",
+                  display: "flex",
+                  lineHeight: "21px",
+                  flexFlow: "row nowrap",
+                  alignItems: "center",
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                  height: "30px",
+                  borderRadius: "30px",
+                  py: "8px",
+                  mx: "4px",
+                  fontSize: "14px",
+                  textDecoration: "none",
+                  "&:hover": { color: "inherit" },
+                  "&>svg, &>img": {
+                    mr: "-0.25em",
+                    ml: "0.5em",
+                  },
+                  ">span": {
+                    height: "12px",
+                    lineHeight: "12px",
+                    mx: ".8em",
+                    display: "inline-block",
+                  },
+                }}
+              >
+                <GitHubIcon width="18" height="18" />
+                <span>GitHub</span>
+              </Link>
+            )}
+            <Button
+              sx={{
+                backgroundColor: "cyan.0",
+                "&:hover": { backgroundColor: "cyan.1" },
+                lineHeight: "21px",
+                height: "30px",
+                borderRadius: "30px",
+                fontSize: "14px",
+                py: 0,
+              }}
+              onClick={e => {
+                e.preventDefault()
+                const pre = preRef.current
+                if (!pre || !navigator.clipboard) return
+                navigator.clipboard.writeText(pre.innerText)
+              }}
+            >
+              Copy
+            </Button>
+          </Flex>
+        </Flex>
+      )}
+      <Box
+        as="pre"
+        ref={preRef}
+        sx={{
+          p: "20px",
+          fontSize: "12px",
+          overflow: "auto",
+        }}
+      >
+        {children}
+      </Box>
+    </Box>
+  )
+}
+
+const SolutionList = ({ children, sx, className }) => (
+  <Box
+    as="ul"
+    variant="styles.SolutionList"
+    className={className}
+    sx={sx}
+  >
+    {children.map(([problem, solution], i) => (
+      <SolutionLine problem={problem} solution={solution} key={i} />
+    ))}
+  </Box>
+)
+
+const SolutionLine = ({ problem, solution }) => (
+  <Box as="li" variant="styles.SolutionList.Item">
+    <h3>{problem}</h3>
+    <SolutionLineArrow />
+    <h3>{solution}</h3>
+  </Box>
+)
+
 export default {
   JSONTabs,
   Tooltip,
@@ -90,6 +316,14 @@ export default {
   Button,
   Link,
   Box,
+  Circle,
 
   FullWidthBox,
+  Collapser,
+  HomeFeature,
+
+  Code,
+  SolutionList,
+
+  wrapper: ContainExcept,
 }

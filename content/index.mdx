@@ -6,49 +6,71 @@ import githubVideo from "media/what-is-github.mp4"
   color: "background", 
   overflow: "hidden",
   textAlign: "center",
-  py: 5
+  py: "40px"
 }}>
 
 # Continuous Machine Learning (CML) is CI/CD for Machine Learning Projects
 
-<Link variant="button" href="#">Get Started</Link>
+<Link variant="button" href="#">
+  Get Started
+</Link>
 
-<Switch sx={{mt: 4}} />
+<Switch sx={{ mt: 4 }} />
 
 <Switchable
   gitlab={<Video src={gitlabVideo} mode="gitlab" />}
-  github={<Video src={githubVideo} mode="github"/>}
+  github={<Video src={githubVideo} mode="github" />}
 />
 
-</FullWidthBox>
+<Collapser>
+  <HomeFeature>
+    <Circle color="cyan.0" />
 
-## GitFlow for data science
+### GitFlow for data science
 
 Use GitLab or GitHub to manage ML experiments, track who trained ML models or modified data and when. Codify data and models with DVC instead of pushing to your Git repo.
 
-## Auto reports for ML experiments
+  </HomeFeature>
+  <HomeFeature>
+    <Circle color="purple" />
+
+### Auto reports for ML experiments
 
 Auto-generate reports with metrics and plots in each Git Pull Request. Rigorous engineering practices help your team make informed, data-driven decisions.
 
-## No additional services
+  </HomeFeature>
+  <HomeFeature>
+    <Circle color="orange.0" />
+
+### No additional services
 
 Build your own ML platform using just GitHub or GitLab and your favorite cloud services: AWS, Azure, GCP. No databases, services or complex setup needed.
+
+  </HomeFeature>
+</Collapser>
+
+</FullWidthBox>
+
+<Box my={5} sx={{textAlign: "center"}}>
 
 # CML User Cases
 
 The simplest case of using CML, and a clear way for any user to get started, is to generate a simple report. Add the following .yaml to your project repository and commit to get started
 
-<Switch sx={{my: 4}} />
+<Switch sx={{ my: 4, maxWidth: "160px", mx: "auto" }} />
+
+</Box>
 
 <JSONTabs content={[
   {
     name: "First CML Report",
+    filename: "cml.yaml",
     content: (
       <Switchable 
         github={(
 <>
 
-```yml
+```yml filename="cml.yaml" github="https://www.github.com"
 name: train-my-model
 
 on: [push]
@@ -63,14 +85,16 @@ jobs:
 
       - name: dvc_cml_run
         env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          <a href="#">repo_token: {'${{ secrets.GITHUB_TOKEN }}'}</a>
         run: |
-          pip3 install -r requirements.txt
+
+          <a href="#">pip3 install -r requirements.txt</a>
+
           python train.py
-          
+
           cat metrics.txt >> report.md
           cml-publish confusion_matrix.png --md --title  'confusion-matrix' >> report.md
-          cml-send-github-check report.md 
+          cml-send-github-check report.md
 ```
 
 </>
@@ -95,14 +119,14 @@ jobs:
 
       - name: dvc_cml_run
         env:
-          repo_token: ${{ secrets.GITLAB_TOKEN }}
+          repo_token: { "${{ secrets.GITLAB_TOKEN }}" }
         run: |
           pip3 install -r requirements.txt
           python train.py
-          
+
           cat metrics.txt >> report.md
           cml-publish confusion_matrix.png --md --title  'confusion-matrix' >> report.md
-          cml-send-gitlab-check report.md 
+          cml-send-gitlab-check report.md
 ```
 
 </>
@@ -144,14 +168,37 @@ line: extra for example
   }
 ]}/>
 
+<FullWidthBox sx={{
+  backgroundColor: "gray",
+  textAlign: "center",
+  py: 1
+}}>
+
+<Box sx={{
+  my: 5, 
+  maxWidth: "460px", 
+  mx: "auto",
+  letterSpacing: "0.02em",
+  fontSize: "18px"
+}}>
+
 # What is CML?
 
 CML is an easy way of combining the codified parts of your MLOps stack into a single solution.
 
-## Codify workflow > using GitHub Actions and GitLab CI
+</Box>
 
-## Codify environment > Docker or Packer
+<SolutionList sx={{
+  my: 5,
+  mx: "auto",
+  maxWidth: "834px",
+}}>
+  {[
+    ["Codify workflow", "GitHub Actions and GitLab CI"],
+    ["Codify environment", "Docker or Packer"],
+    ["Codify ML infrastructure", "Terraform or docker-machine"],
+    ["ML experiment reports", "open source CML library"],
+  ]}
+</SolutionList>
 
-## Codify ML infrastructure > Terraform or docker-machine
-
-## ML experiment reports > open source CML library
+</FullWidthBox>

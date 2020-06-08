@@ -1,7 +1,7 @@
 import React, { useMemo } from "react"
 import { Box } from "@theme-ui/components"
 import { clickOnKeyPress } from "utils/handlers"
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex, jsx-a11y/no-noninteractive-element-interactions */
 
 export const HiddenRadioControl = ({
   defaultChecked,

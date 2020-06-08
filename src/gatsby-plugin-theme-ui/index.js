@@ -1,5 +1,6 @@
 const { system: preset } = require("@theme-ui/presets")
 const tabsCoreStyles = require("../components/organisms/Tabs/core-styles")
+const { alpha } = require("@theme-ui/color")
 
 const palette = {
   ...preset.colors,
@@ -55,14 +56,56 @@ export default {
       Logo: {
         display: "block",
         flex: "0 1 auto",
-        p: "1rem",
+        pt: "1rem",
+        pb: ["0.5rem", "1rem"],
         width: ["100%", "auto"],
         img: {
           display: "block",
           width: "100%",
           mx: "auto",
-          maxWidth: ["280px", "115px"],
-          height: [null, "30px"],
+          maxWidth: ["154px", "115px"],
+          height: ["40px", "30px"],
+        },
+      },
+      Inner: {
+        variant: "layout.container",
+        display: "flex",
+        flexWrap: "nowrap",
+        alignItems: ["center"],
+        flexFlow: ["column", "row"],
+      },
+      Nav: {
+        px: 0,
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: ["wrap", "nowrap"],
+        justifyContent: ["center", "flex-end"],
+        flex: "1",
+        Link: {
+          px: 2,
+          py: "6px",
+          fontSize: 2,
+          height: "48px",
+          textAlign: "center",
+          lineHeight: "36px",
+        },
+      },
+    },
+    Footer: {
+      variant: "styles.invert",
+      pt: [3, 0],
+      Logo: {
+        display: "block",
+        flex: "0 1 auto",
+        pt: "1rem",
+        pb: ["0.5rem", "1rem"],
+        width: ["100%", "auto"],
+        img: {
+          display: "block",
+          width: "100%",
+          mx: "auto",
+          maxWidth: ["154px", "115px"],
+          height: ["40px", "30px"],
         },
       },
       Inner: {
@@ -206,9 +249,38 @@ export default {
   },
   styles: {
     ...preset.styles,
+    Video: {
+      borderRadius: 1,
+    },
     invert: {
       color: "background",
       backgroundColor: "text",
+    },
+    SolutionList: {
+      p: 0,
+      listStyle: "none",
+      color: "text",
+      fontSize: ["12px", "14px", "22px"],
+      Item: {
+        display: "flex",
+        flexFlow: "row nowrap",
+        borderTop: "1px solid",
+        borderColor: alpha("#4A3F63", 0.2),
+        alignItems: "center",
+        ":first-of-type": { borderTop: "none" },
+        "&>h3": {
+          color: "black",
+          flex: 1,
+          ":first-of-type": { textAlign: "left" },
+          ":last-of-type": { textAlign: "right" },
+        },
+        "&>svg": {
+          minWidth: "60px",
+          maxHeight: "24px",
+          height: "100%",
+          flex: "0 0 auto",
+        },
+      },
     },
     Tabs: {
       ...tabsCoreStyles,
@@ -224,10 +296,8 @@ export default {
       borderRadius: [1, null, 0],
 
       Content: {
-        backgroundColor: "darkPurple.0",
         width: "100%",
         height: "auto",
-        padding: "1rem",
         flex: [null, null, "1 0 100%"],
         borderBottomRightRadius: [0, null, 1],
         borderBottomLeftRadius: [0, null, 1],
@@ -280,6 +350,7 @@ export default {
     },
     root: {
       ...preset.styles.root,
+      minWidth: "360px",
       "*": {
         boxSizing: "border-box",
       },
