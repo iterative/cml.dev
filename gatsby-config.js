@@ -36,13 +36,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `cml-website`,
-        short_name: `starter`,
+        name: `CML`,
+        short_name: `CML`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/site-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/site-icon.png`,
       },
     },
     `gatsby-plugin-sass`,
