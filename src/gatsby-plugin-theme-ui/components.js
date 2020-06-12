@@ -173,11 +173,7 @@ const HomeFeature = ({ children, heading, circleColor }) => (
     <Heading as="h3" sx={{ my: 3 }}>
       {heading}
     </Heading>
-    <Box
-      sx={{
-        variant: "text.translucent.light",
-      }}
-    >
+    <Box>
       {children}
     </Box>
   </Box>

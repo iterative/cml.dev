@@ -23,14 +23,6 @@ export default {
       px: "20px",
       py: "10px",
     },
-    translucent: {
-      light: {
-        color: alpha("background", 0.5),
-      },
-      dark: {
-        color: alpha("text", 0.5),
-      },
-    },
   },
   colors: {
     ...palette,
@@ -174,7 +166,6 @@ export default {
         },
       },
       PoweredBy: {
-        variant: "text.translucent.light",
         textAlign: "center",
         my: "40px",
         order: -1,
