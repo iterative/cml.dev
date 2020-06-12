@@ -103,6 +103,7 @@ export default {
           px: 2,
           py: "6px",
           fontSize: 2,
+          fontWeight: "normal",
           height: "48px",
           textAlign: "center",
           lineHeight: "36px",
@@ -184,21 +185,25 @@ export default {
     },
   },
   buttons: {
-    primary: {
+    base: {
+      transition: "0.2s background-color",
       display: "inline-block",
-      lineHeight: "50px",
-      backgroundColor: "primary",
+      textDecoration: "none",
       borderRadius: "30px",
+      px: 1,
+    },
+    primary: {
+      lineHeight: "50px",
       height: "50px",
+      variant: "buttons.base",
+      backgroundColor: "primary",
       color: "white",
       border: "none",
       px: "2em",
-      transition: "0.2s background-color",
       cursor: "pointer",
-      textDecoration: "none",
       "&:hover": {
         bg: "purple.2",
-      },
+      }
     },
   },
   links: {
@@ -211,12 +216,15 @@ export default {
       fontWeight: "normal"
     },
     RepoButton: {
-      minWidth: "95px",
-      color: "background",
+      variant: "buttons.base",
       display: "flex",
       flexFlow: "row nowrap",
       alignItems: "center",
       justifyContent: "center",
+      minWidth: "95px",
+      color: "background",
+      border: "1px solid",
+      borderColor: "background",
       height: "30px",
       py: "8px",
       mx: "4px",
@@ -323,21 +331,25 @@ export default {
   },
   styles: {
     ...preset.styles,
+    CenteredBlock: {
+      display: "block",
+      mx: "auto"
+    },
     CodeBlock: {
       fontFamily: "monospace",
+      fontSize: "12px",
       overflow: "auto",
-      flex: "1",
-      Inner: {
-        whiteSpace: "pre",
-        fontSize: "12px",
-        p: "20px",
+      pre: {
+        display: "inline-block",
+        pt: "20px",
+        px: "20px",
       },
     },
     Video: {
       borderRadius: 1,
     },
     invert: {
-      color: "background",
+      color: alpha("background", 0.5),
       backgroundColor: "text",
     },
     SolutionList: {
@@ -437,6 +449,7 @@ export default {
     },
     root: {
       ...preset.styles.root,
+      color: alpha("text", 0.5),
       minWidth: "350px",
       fontSize: "14px",
       "*": {

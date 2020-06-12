@@ -42,11 +42,11 @@ export function useRadioTabs(inputContent, idPrefix = "tabs") {
   }, [inputContent, idPrefix])
 }
 
-export const JSONTabs = ({ content, name: idPrefix = "tabs" }) => {
+export const JSONTabs = ({ content, name: idPrefix = "tabs", sx }) => {
   // If no child tab is checked, set the first one to be so.
   const tabs = useRadioTabs(content)
   return (
-    <Tabs>
+    <Tabs sx={sx}>
       {tabs.map(({ name, content, checked, id }, i) => (
         <Tab name={name} defaultChecked={checked} id={id} key={i}>
           {content}
@@ -79,9 +79,9 @@ export const Tab = ({
   </>
 )
 
-export const Tabs = ({ children }) => {
+export const Tabs = ({ children, sx }) => {
   return (
-    <Box as="form" variant="styles.Tabs">
+    <Box as="form" variant="styles.Tabs" sx={sx}>
       {children}
     </Box>
   )

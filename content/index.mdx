@@ -19,8 +19,14 @@ import gitlabTensorboardReport from "media/gitlab/tensorboard-report.png"
     justifyContent: "center",
     alignItems: "center"
   }}>
-    <Box sx={{flex: "1", textAlign: ["center", "left"], mr: [0, "60px"]}}>
-      <Heading as="h1" sx={{my: 4, mx: 2}}>
+    <Box sx={{flex: "1", textAlign: ["center", null, "left"]}}>
+      <Heading as="h1" sx={{
+        fontSize: ["32px", null, null, "42px"],
+        my: 4,
+        ml: 2,
+        mr: [2, null, "45px"],
+        maxWidth: "500px"
+      }}>
         Continuous Machine Learning (CML) is CI/CD for Machine Learning Projects
       </Heading>
       <Link variant="button" href="#">
@@ -28,34 +34,34 @@ import gitlabTensorboardReport from "media/gitlab/tensorboard-report.png"
       </Link>
     </Box>
     <Box sx={{flex: "1"}}>
-      <Switch sx={{ mt: 4, mx: "auto", maxWidth: ["100%", "160px"] }} />
+      <Switch sx={{ mt: 4, mx: "auto", maxWidth: ["100%", null, "160px"] }} />
       <Switchable
         gitlab={<Video src={gitlabVideo} mode="gitlab" />}
         github={<Video src={githubVideo} mode="github" />}
       />
     </Box>
   </Collapser>
-  
-  <Collapser>
+
+  <Collapser sx={{my: 4}}>
   <HomeFeature heading="GitFlow for data science" circleColor="cyan.0">
-  
+
 Use GitLab or GitHub to manage ML experiments, track who trained ML models or
 modified data and when. Codify data and models with DVC instead of pushing to
 your Git repo.
-  
+
   </HomeFeature>
   <HomeFeature heading="Auto reports for ML experiments" circleColor="purple">
-  
+
 Auto-generate reports with metrics and plots in each Git Pull Request.
 Rigorous engineering practices help your team make informed, data-driven
 decisions.
-  
+
   </HomeFeature>
   <HomeFeature heading="No additional services" circleColor="orange.0">
-  
+
 Build your own ML platform using just GitHub or GitLab and your favorite cloud
 services: AWS, Azure, GCP. No databases, services or complex setup needed.
-  
+
   </HomeFeature>
   </Collapser>
 
@@ -69,7 +75,7 @@ services: AWS, Azure, GCP. No databases, services or complex setup needed.
   }
 }}>
 
-<Box variant="text.translucent.dark" sx={{mx: 3, maxWidth: "615px"}}>
+<Box variant="styles.CenteredBlock" sx={{px: 3, maxWidth: "615px"}}>
 
 <Heading
   as="h2"
@@ -87,7 +93,13 @@ The simplest case of using CML, and a clear way for any user to get started, is 
 
 <Switch sx={{ my: 4, maxWidth: "160px", mx: "auto" }} />
 
-<JSONTabs content={[
+<JSONTabs 
+  sx={{
+    "& code": {
+      height: "530px",
+    }
+  }} 
+  content={[
   {
     name: "First CML Report",
     filename: "cml.yaml",
@@ -96,7 +108,7 @@ The simplest case of using CML, and a clear way for any user to get started, is 
         github={(
 <Collapser>
 
-```yml filename="cml.yaml" repo="https://github.com/iterative/cml_base_case" sx={{flex: "1"}}
+```yml filename="cml.yaml" repo="https://github.com/iterative/cml_base_case"
 name: train-my-model
 
 on: [push]
@@ -115,7 +127,7 @@ jobs:
         run: |
           pip3 install -r requirements.txt
           python train.py
-          
+
           cat metrics.txt >> report.md
           cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
           cml-send-comment report.md
@@ -128,19 +140,19 @@ jobs:
         gitlab={(
 <Collapser>
 
-```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-base-case" sx={{flex: "1"}}
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-base-case"
 # .gitlab-ci.yml
 stages: 
     - cml_run
-    
+
 cml:
     stage: cml_run
     image: dvcorg/cml-py3:latest
-    
+
     script:
         - pip3 install -r requirements.txt
         - python train.py
-          
+
         - cat metrics.txt >> report.md
         - cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
         - cml-send-comment report.md 
@@ -160,7 +172,7 @@ cml:
         github={(
 <Collapser>
 
-```yml filename="cml.yaml" repo="https://github.com/iterative/cml_dvc_case" sx={{flex: "1"}}
+```yml filename="cml.yaml" repo="https://github.com/iterative/cml_dvc_case"
 name: train-my-model
 
 on: [push]
@@ -182,21 +194,21 @@ jobs:
           # Get DVC 1.0 
           apt-get --purge remove -y dvc
           pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
-          
-          
+
+
           pip install -r requirements.txt
-          
+
           # Pull dataset with DVC 
           dvc pull data
-          
+
           # Reproduce pipeline if any changes detected in dependencies
           dvc repro 
-          
+
           # Use DVC metrics diff to compare metrics to master
           git fetch --prune --unshallow
           dvc metrics diff --show-md master >> report.md
           echo >> report.md
-          
+
           # Add figure to report
           dvc plots diff --target loss.csv --show-vega master > vega.json
           vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
@@ -210,26 +222,26 @@ jobs:
         gitlab={(
 <Collapser>
 
-```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-dvc-case" sx={{flex: "1"}}
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-dvc-case"
 stages: 
     - cml_run
-    
+
 cml:
     stage: cml_run
     image: dvcorg/cml-py3:latest
-    
+
     script:
         - apt-get --purge remove -y dvc
         - pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
-        
+
         - pip install -r requirements.txt
-        
+
         - dvc pull data
         - dvc repro
         - git fetch --prune
         - dvc metrics diff --show-md master >> report.md
         - echo >> report.md
-        
+
         - dvc plots diff --target loss.csv --show-vega master > vega.json
         - vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
         - cml-send-comment report.md
@@ -249,7 +261,7 @@ cml:
         github={(
 <Collapser>
 
-```yml filename="cml.yaml" repo="https://github.com/iterative/cml_tensorboard_case" sx={{flex: "1"}}
+```yml filename="cml.yaml" repo="https://github.com/iterative/cml_tensorboard_case"
 name: train-my-model
 
 on: [push]
@@ -268,7 +280,7 @@ jobs:
           TB_CREDENTIALS: {"${{ secrets.TB_CREDENTIALS }}"}
         run: |
           pip3 install -r requirements.txt
-          
+
           cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
           cml-send-comment report.md
           python train.py
@@ -281,17 +293,17 @@ jobs:
         gitlab={(
 <Collapser>
 
-```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case" sx={{flex: "1"}}
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case"
 stages: 
     - cml_run
-    
+
 cml:
     stage: cml_run
     image: dvcorg/cml-py3:latest
-    
+
     script:
         - pip install -r requirements.txt
-        
+
         # Start tensorboard and train
         - cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
         - cml-send-comment report.md

@@ -161,7 +161,7 @@ const HomeFeature = ({ children, heading, circleColor }) => (
       borderColor: "rgba(255,255,255,0.3)",
       mx: "auto",
       px: [1, null, 2],
-      py: "40px",
+      py: ["40px", "25px"],
       maxWidth: "600px",
       "&:first-of-type": {
         borderTop: "none",
@@ -232,7 +232,6 @@ const Code = ({ children, lang, filename, repo, sx = {}, ...props }) => {
       {renderHeader && (
         <Flex
           sx={{
-            mb: 2,
             px: "20px",
             alignItems: "center",
             flexFlow: "row wrap",
@@ -280,8 +279,8 @@ const Code = ({ children, lang, filename, repo, sx = {}, ...props }) => {
           </Flex>
         </Flex>
       )}
-      <Box variant="styles.CodeBlock">
-        <Box variant="styles.CodeBlock.Inner" ref={codeBlockRef}>
+      <Box as="code" variant="styles.CodeBlock">
+        <Box as="pre" ref={codeBlockRef}>
           {children}
         </Box>
       </Box>
@@ -355,7 +354,7 @@ const ExampleBox = ({ title, children }) => {
 
 const ImageExampleBox = ({ title, image }) => (
   <ExampleBox title={title}>
-    <Image src={image} sx={{ maxHeight: "500px" }} />
+    <Image src={image} />
   </ExampleBox>
 )
 

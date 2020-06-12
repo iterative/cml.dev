@@ -1,5 +1,7 @@
 const visit = require("unist-util-visit")
 
+const escapedReactNewline = "{'\\n'}"
+
 module.exports = ({ markdownAST, markdownNode, ...rest }, { tag = "Code" }) => {
   const newTree = visit(markdownAST, "code", node => {
     if (node.type === "code") {
@@ -7,7 +9,8 @@ module.exports = ({ markdownAST, markdownNode, ...rest }, { tag = "Code" }) => {
       // Make leading spaces and trailing newlines explicit
       const preContent = value
         .replace(/^ +/gm, "{'$&'}")
-        .replace(/$/gm, "{'\\n'}")
+        .replace(/$/gm, escapedReactNewline)
+                       + escapedReactNewline
       // Wrap this new content in a component
       const transformedValue = `<${tag}${
         meta ? " " + meta : ""
