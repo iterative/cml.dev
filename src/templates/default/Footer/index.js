@@ -31,7 +31,7 @@ const socialLinkDefinitions = [
 ]
 
 const SocialLink = ({ url, icon: Icon }) => (
-  <GatsbyLink
+  <Link
     href={url}
     sx={{
       display: "inline-block",
@@ -45,7 +45,7 @@ const SocialLink = ({ url, icon: Icon }) => (
     }}
   >
     <Icon />
-  </GatsbyLink>
+  </Link>
 )
 
 const navItems = [
@@ -83,8 +83,8 @@ function Footer() {
           ))}
         </Box>
         <Box variant="layout.Footer.SocialIcons">
-          {socialLinkDefinitions.map(({ url, icon }) => (
-            <SocialLink url={url} icon={icon} />
+          {socialLinkDefinitions.map(({ url, icon }, i) => (
+            <SocialLink url={url} icon={icon} key={i} />
           ))}
         </Box>
         <Text variant="layout.Footer.PoweredBy">Powered by DVC</Text>

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef } from "react"
 import { ModeContext } from "components/organisms/SwitchableMode/Provider"
 import SolutionLineArrow from "./solution-line-arrow.svg"
+import Collapser from "components/atoms/Collapser"
 import {
   Button,
   Flex,
@@ -139,34 +140,6 @@ const Video = ({
   )
 }
 
-const Collapser = ({
-  children,
-  sx = {},
-  className,
-  bp,
-  breakpoint = bp,
-  ...props
-}) => {
-  const flexDirection = ["row"]
-  for (let i = 1; i < breakpoint; i++) {
-    flexDirection.push(null)
-  }
-  flexDirection.push("column")
-  return (
-    <Flex
-      className={className}
-      sx={{
-        flexDirection: ["column", "row"],
-        flexWrap: "nowrap",
-        ">*": { flex: "1 0" },
-        ...sx,
-      }}
-    >
-      {children}
-    </Flex>
-  )
-}
-
 const Circle = ({ color }) => (
   <Box
     sx={{
@@ -182,8 +155,8 @@ const Circle = ({ color }) => (
 const HomeFeature = ({ children, heading, circleColor }) => (
   <Box
     sx={{
-      borderTopStyle: ["solid", null, null, "none"],
-      borderLeftStyle: ["none", null, null, "solid"],
+      borderTopStyle: ["solid", null, "none"],
+      borderLeftStyle: ["none", null, "solid"],
       borderWidth: "1px",
       borderColor: "rgba(255,255,255,0.3)",
       mx: "auto",
@@ -340,6 +313,7 @@ const ExampleBox = ({ title, children }) => {
         boxShadow: "default",
         textAlign: "left",
         color: "text",
+        maxWidth: [null, null, "50%"]
       }}
     >
       <Box
@@ -347,10 +321,9 @@ const ExampleBox = ({ title, children }) => {
           backgroundColor: [
             alpha("darkPurple.0", 0.1),
             null,
-            null,
             "darkPurple.0",
           ],
-          color: ["text", null, null, alpha("background", 0.5)],
+          color: ["text", null, alpha("background", 0.5)],
           alignItems: "left",
           flexFlow: "row wrap",
           minHeight: "50px",
@@ -382,7 +355,7 @@ const ExampleBox = ({ title, children }) => {
 
 const ImageExampleBox = ({ title, image }) => (
   <ExampleBox title={title}>
-    <Image src={image} />
+    <Image src={image} sx={{ maxHeight: "500px" }} />
   </ExampleBox>
 )
 
@@ -398,7 +371,6 @@ export default {
   Button,
   Link,
   Box,
-  Circle,
   Image,
   Text,
   Heading,

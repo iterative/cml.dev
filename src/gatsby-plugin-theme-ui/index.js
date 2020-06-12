@@ -206,6 +206,10 @@ export default {
     button: {
       variant: "buttons.primary",
     },
+    nav: {
+      ...preset.nav,
+      fontWeight: "normal"
+    },
     RepoButton: {
       minWidth: "95px",
       color: "background",
@@ -434,6 +438,7 @@ export default {
     root: {
       ...preset.styles.root,
       minWidth: "350px",
+      fontSize: "14px",
       "*": {
         boxSizing: "border-box",
       },
