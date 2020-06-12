@@ -8,12 +8,16 @@ import {
   Container,
   Link,
   Heading,
+  Image,
+  Text,
 } from "@theme-ui/components"
+import { alpha } from "@theme-ui/color"
 import { JSONTabs } from "components/organisms/Tabs"
 
 import Switchable from "components/organisms/SwitchableMode/Switchable"
 import Switch from "components/organisms/SwitchableMode/Switch"
-import GitHubIcon from "./github.svg"
+import GitHubIcon from "media/icons/github.svg"
+import GitLabIcon from "media/icons/gitlab.svg"
 
 export const groupApply = (rawChildren, test, cb) => {
   if (!rawChildren) return []
@@ -84,14 +88,16 @@ const Tooltip = ({ sx = {}, as = "span", className, contents, children }) => {
   )
 }
 
-const FullWidthBox = ({ originalType, children, ...props }) => {
+const FullWidthBox = ({
+  originalType,
+  children,
+  className,
+  sx: { inner, ...sx },
+  ...props
+}) => {
   return (
-    <Box
-      variant="styles.FullWidthBox"
-      sx={{ backgroundColor: "green" }}
-      {...props}
-    >
-      <Container>{children}</Container>
+    <Box variant="styles.FullWidthBox" className={className} sx={sx} {...props}>
+      <Container sx={inner}>{children}</Container>
     </Box>
   )
 }
@@ -133,16 +139,33 @@ const Video = ({
   )
 }
 
-const Collapser = ({ children, sx = {}, ...props }) => (
-  <Flex
-    sx={{
-      flexDirection: ["column", null, "row"],
-      flexWrap: "nowrap",
-    }}
-  >
-    {children}
-  </Flex>
-)
+const Collapser = ({
+  children,
+  sx = {},
+  className,
+  bp,
+  breakpoint = bp,
+  ...props
+}) => {
+  const flexDirection = ["row"]
+  for (let i = 1; i < breakpoint; i++) {
+    flexDirection.push(null)
+  }
+  flexDirection.push("column")
+  return (
+    <Flex
+      className={className}
+      sx={{
+        flexDirection: ["column", "row"],
+        flexWrap: "nowrap",
+        ">*": { flex: "1 0" },
+        ...sx,
+      }}
+    >
+      {children}
+    </Flex>
+  )
+}
 
 const Circle = ({ color }) => (
   <Box
@@ -156,15 +179,16 @@ const Circle = ({ color }) => (
   />
 )
 
-const HomeFeature = ({ children }) => (
+const HomeFeature = ({ children, heading, circleColor }) => (
   <Box
     sx={{
-      borderTopStyle: ["solid", null, "none"],
-      borderLeftStyle: ["none", null, "solid"],
+      borderTopStyle: ["solid", null, null, "none"],
+      borderLeftStyle: ["none", null, null, "solid"],
       borderWidth: "1px",
       borderColor: "rgba(255,255,255,0.3)",
       mx: "auto",
-      px: [1, 2],
+      px: [1, null, 2],
+      py: "40px",
       maxWidth: "600px",
       "&:first-of-type": {
         borderTop: "none",
@@ -172,31 +196,78 @@ const HomeFeature = ({ children }) => (
       },
     }}
   >
-    <Box sx={{ my: "40px" }}>{children}</Box>
+    <Circle color={circleColor} sx={{ mb: 2 }} />
+    <Heading as="h3" sx={{ my: 3 }}>
+      {heading}
+    </Heading>
+    <Box
+      sx={{
+        variant: "text.translucent.light",
+      }}
+    >
+      {children}
+    </Box>
   </Box>
 )
 
-const Code = ({ children, lang, filename, github, ...props }) => {
+const getRepoIcon = host => {
+  switch (host) {
+    case "github.com":
+      return GitHubIcon
+    case "gitlab.com":
+      return GitLabIcon
+    default:
+      return null
+  }
+}
+
+const RepoButton = ({ url, host = new URL(url).host }) => {
+  const Icon = getRepoIcon(host)
+  switch (host) {
+    case "github.com":
+      return (
+        <Link href={url} variant="RepoButton">
+          <GitHubIcon width="18" height="18" />
+          <span>GitHub</span>
+        </Link>
+      )
+    case "gitlab.com":
+      return (
+        <Link href={url} variant="RepoButton">
+          <GitLabIcon width="18" height="18" />
+          <span>GitLab</span>
+        </Link>
+      )
+    default:
+      return null
+  }
+}
+
+const Code = ({ children, lang, filename, repo, sx = {}, ...props }) => {
   const renderHeader = lang || filename
-  const preRef = useRef()
+  const parsedURL = repo && new URL(repo)
+  const codeBlockRef = useRef()
   return (
     <Box
       sx={{
         backgroundColor: "darkPurple.0",
+        display: "flex",
+        flexFlow: "column nowrap",
+        ...sx,
       }}
     >
       {renderHeader && (
         <Flex
           sx={{
+            mb: 2,
+            px: "20px",
             alignItems: "center",
             flexFlow: "row wrap",
             minHeight: "50px",
             letterSpacing: "0.03em",
             borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
-            mb: 2,
-            px: "20px",
             color: "rgba(255, 255, 255, 0.5)",
-            justifyContent: ["center", "space-between"],
+            justifyContent: ["center", null, "space-between"],
           }}
         >
           <Heading
@@ -213,39 +284,7 @@ const Code = ({ children, lang, filename, github, ...props }) => {
           </Heading>
           <Box sx={{ flex: "1 1" }} />
           <Flex sx={{ flex: "0 0 auto", justifyContent: "center" }}>
-            {github && (
-              <Link
-                href={github}
-                sx={{
-                  color: "background",
-                  display: "flex",
-                  lineHeight: "21px",
-                  flexFlow: "row nowrap",
-                  alignItems: "center",
-                  border: "1px solid rgba(255, 255, 255, 0.3)",
-                  height: "30px",
-                  borderRadius: "30px",
-                  py: "8px",
-                  mx: "4px",
-                  fontSize: "14px",
-                  textDecoration: "none",
-                  "&:hover": { color: "inherit" },
-                  "&>svg, &>img": {
-                    mr: "-0.25em",
-                    ml: "0.5em",
-                  },
-                  ">span": {
-                    height: "12px",
-                    lineHeight: "12px",
-                    mx: ".8em",
-                    display: "inline-block",
-                  },
-                }}
-              >
-                <GitHubIcon width="18" height="18" />
-                <span>GitHub</span>
-              </Link>
-            )}
+            {repo && <RepoButton url={repo} />}
             <Button
               sx={{
                 backgroundColor: "cyan.0",
@@ -258,7 +297,7 @@ const Code = ({ children, lang, filename, github, ...props }) => {
               }}
               onClick={e => {
                 e.preventDefault()
-                const pre = preRef.current
+                const pre = codeBlockRef.current
                 if (!pre || !navigator.clipboard) return
                 navigator.clipboard.writeText(pre.innerText)
               }}
@@ -268,16 +307,10 @@ const Code = ({ children, lang, filename, github, ...props }) => {
           </Flex>
         </Flex>
       )}
-      <Box
-        as="pre"
-        ref={preRef}
-        sx={{
-          p: "20px",
-          fontSize: "12px",
-          overflow: "auto",
-        }}
-      >
-        {children}
+      <Box variant="styles.CodeBlock">
+        <Box variant="styles.CodeBlock.Inner" ref={codeBlockRef}>
+          {children}
+        </Box>
       </Box>
     </Box>
   )
@@ -299,6 +332,60 @@ const SolutionLine = ({ problem, solution }) => (
   </Box>
 )
 
+const ExampleBox = ({ title, children }) => {
+  return (
+    <Box
+      sx={{
+        backgroundColor: "background",
+        boxShadow: "default",
+        textAlign: "left",
+        color: "text",
+      }}
+    >
+      <Box
+        sx={{
+          backgroundColor: [
+            alpha("darkPurple.0", 0.1),
+            null,
+            null,
+            "darkPurple.0",
+          ],
+          color: ["text", null, null, alpha("background", 0.5)],
+          alignItems: "left",
+          flexFlow: "row wrap",
+          minHeight: "50px",
+          letterSpacing: "0.03em",
+          lineHeight: "30px",
+          py: "10px",
+          px: "20px",
+        }}
+      >
+        <Heading
+          as="h3"
+          sx={{
+            flex: "0 1 auto",
+            fontSize: "14px",
+            my: 0,
+            mx: "auto",
+            display: "block",
+            fontWeight: "bold",
+            lineHeight: "30px",
+          }}
+        >
+          {title}
+        </Heading>
+      </Box>
+      <Box sx={{ flex: "1" }}>{children}</Box>
+    </Box>
+  )
+}
+
+const ImageExampleBox = ({ title, image }) => (
+  <ExampleBox title={title}>
+    <Image src={image} />
+  </ExampleBox>
+)
+
 export default {
   JSONTabs,
   Tooltip,
@@ -312,6 +399,9 @@ export default {
   Link,
   Box,
   Circle,
+  Image,
+  Text,
+  Heading,
 
   FullWidthBox,
   Collapser,
@@ -319,6 +409,7 @@ export default {
 
   Code,
   SolutionList,
+  ImageExampleBox,
 
   wrapper: ContainExcept,
 }

@@ -1,8 +1,52 @@
 import React from "react"
-import Link from "components/atoms/ThemedGatsbyLink"
-import { Box, Image, NavLink, Container } from "@theme-ui/components"
+import GatsbyLink from "components/atoms/ThemedGatsbyLink"
+import {
+  Box,
+  Image,
+  NavLink,
+  Container,
+  Link,
+  Text,
+} from "@theme-ui/components"
 
 import logo from "images/logo.png"
+
+import SlackIcon from "media/icons/slack.svg"
+import TwitterIcon from "media/icons/twitter.svg"
+import GithubIcon from "media/icons/github.svg"
+
+const socialLinkDefinitions = [
+  {
+    url: "#",
+    icon: SlackIcon,
+  },
+  {
+    url: "#",
+    icon: TwitterIcon,
+  },
+  {
+    url: "#",
+    icon: GithubIcon,
+  },
+]
+
+const SocialLink = ({ url, icon: Icon }) => (
+  <GatsbyLink
+    href={url}
+    sx={{
+      display: "inline-block",
+      textAlign: "center",
+      py: 2,
+      px: 1,
+      ">svg": {
+        width: "26px",
+        height: "26px",
+      },
+    }}
+  >
+    <Icon />
+  </GatsbyLink>
+)
 
 const navItems = [
   {
@@ -23,9 +67,9 @@ function Footer() {
   return (
     <Box as="footer" variant="layout.Footer">
       <Container variant="layout.Footer.Inner">
-        <Link to="/" variant="layout.Footer.Logo">
+        <GatsbyLink to="/" variant="layout.Footer.Logo">
           <Image src={logo} />
-        </Link>
+        </GatsbyLink>
         <Box as="nav" variant="layout.Footer.Nav" id="site-nav">
           {navItems.map(({ label, href }, i) => (
             <NavLink
@@ -38,6 +82,12 @@ function Footer() {
             </NavLink>
           ))}
         </Box>
+        <Box variant="layout.Footer.SocialIcons">
+          {socialLinkDefinitions.map(({ url, icon }) => (
+            <SocialLink url={url} icon={icon} />
+          ))}
+        </Box>
+        <Text variant="layout.Footer.PoweredBy">Powered by DVC</Text>
       </Container>
     </Box>
   )

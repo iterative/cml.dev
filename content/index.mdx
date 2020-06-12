@@ -1,65 +1,91 @@
-import gitlabVideo from "media/what-is-gitlab.mp4"
-import githubVideo from "media/what-is-github.mp4"
+import githubVideo from "media/github/landing-video.webm"
+import githubBaseCase from "media/github/base-case-report.png"
+import githubDVCReport from "media/github/dvc-report.png"
+import githubTensorboardReport from "media/github/tensorboard-report.png"
+
+import gitlabVideo from "media/gitlab/landing-video.webm"
+import gitlabBaseCase from "media/gitlab/base-case-report.png"
+import gitlabDVCReport from "media/gitlab/dvc-report.png"
+import gitlabTensorboardReport from "media/gitlab/tensorboard-report.png"
 
 <FullWidthBox sx={{
   backgroundColor: "text", 
   color: "background", 
   overflow: "hidden",
   textAlign: "center",
-  py: "40px"
 }}>
-
-# Continuous Machine Learning (CML) is CI/CD for Machine Learning Projects
-
-<Link variant="button" href="#">
-  Get Started
-</Link>
-
-<Switch sx={{ mt: 4 }} />
-
-<Switchable
-  gitlab={<Video src={gitlabVideo} mode="gitlab" />}
-  github={<Video src={githubVideo} mode="github" />}
-/>
-
-<Collapser>
-  <HomeFeature>
-    <Circle color="cyan.0" />
-
-### GitFlow for data science
-
-Use GitLab or GitHub to manage ML experiments, track who trained ML models or modified data and when. Codify data and models with DVC instead of pushing to your Git repo.
-
+  <Collapser sx={{
+    my: "40px",
+    justifyContent: "center",
+    alignItems: "center"
+  }}>
+    <Box sx={{flex: "1", textAlign: ["center", "left"], mr: [0, "60px"]}}>
+      <Heading as="h1" sx={{my: 4, mx: 2}}>
+        Continuous Machine Learning (CML) is CI/CD for Machine Learning Projects
+      </Heading>
+      <Link variant="button" href="#">
+        Get Started
+      </Link>
+    </Box>
+    <Box sx={{flex: "1"}}>
+      <Switch sx={{ mt: 4, mx: "auto", maxWidth: ["100%", "160px"] }} />
+      <Switchable
+        gitlab={<Video src={gitlabVideo} mode="gitlab" />}
+        github={<Video src={githubVideo} mode="github" />}
+      />
+    </Box>
+  </Collapser>
+  
+  <Collapser>
+  <HomeFeature heading="GitFlow for data science" circleColor="cyan.0">
+  
+Use GitLab or GitHub to manage ML experiments, track who trained ML models or
+modified data and when. Codify data and models with DVC instead of pushing to
+your Git repo.
+  
   </HomeFeature>
-  <HomeFeature>
-    <Circle color="purple" />
-
-### Auto reports for ML experiments
-
-Auto-generate reports with metrics and plots in each Git Pull Request. Rigorous engineering practices help your team make informed, data-driven decisions.
-
+  <HomeFeature heading="Auto reports for ML experiments" circleColor="purple">
+  
+Auto-generate reports with metrics and plots in each Git Pull Request.
+Rigorous engineering practices help your team make informed, data-driven
+decisions.
+  
   </HomeFeature>
-  <HomeFeature>
-    <Circle color="orange.0" />
-
-### No additional services
-
-Build your own ML platform using just GitHub or GitLab and your favorite cloud services: AWS, Azure, GCP. No databases, services or complex setup needed.
-
+  <HomeFeature heading="No additional services" circleColor="orange.0">
+  
+Build your own ML platform using just GitHub or GitLab and your favorite cloud
+services: AWS, Azure, GCP. No databases, services or complex setup needed.
+  
   </HomeFeature>
-</Collapser>
+  </Collapser>
 
 </FullWidthBox>
 
-<Box sx={{textAlign: "center", py: "80px"}}>
+<FullWidthBox sx={{
+  textAlign: "center",
+  inner: {
+    my: "80px", 
+    px: [0, null, null, 3],
+  }
+}}>
 
-# CML User Cases
+<Box variant="text.translucent.dark" sx={{mx: 3}}>
+
+<Heading
+  as="h2"
+  sx={{
+    color: "text",
+    fontSize: ["32px", null, "48px"]
+  }}
+>
+  CML User Cases
+</Heading>
 
 The simplest case of using CML, and a clear way for any user to get started, is to generate a simple report. Add the following .yaml to your project repository and commit to get started
 
-<Switch sx={{ my: 4, maxWidth: "160px", mx: "auto" }} />
-
 </Box>
+
+<Switch sx={{ my: 4, maxWidth: "160px", mx: "auto" }} />
 
 <JSONTabs content={[
   {
@@ -68,9 +94,9 @@ The simplest case of using CML, and a clear way for any user to get started, is 
     content: (
       <Switchable 
         github={(
-<>
+<Collapser>
 
-```yml filename="cml.yaml" github="https://www.github.com"
+```yml filename="cml.yaml" repo="https://github.com/iterative/cml_base_case" sx={{flex: "1"}}
 name: train-my-model
 
 on: [push]
@@ -83,53 +109,46 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: dvc_cml_run
+      - name: cml_run
         env:
-          <a href="#">repo_token: {'${{ secrets.GITHUB_TOKEN }}'}</a>
-        run: |
-
-          <a href="#">pip3 install -r requirements.txt</a>
-
-          python train.py
-
-          cat metrics.txt >> report.md
-          cml-publish confusion_matrix.png --md --title  'confusion-matrix' >> report.md
-          cml-send-github-check report.md
-```
-
-</>
-        )}
-        gitlab={(
-<>
-
-```yml
-name: train-my-model
-
-on: [push]
-
-using: gitlab!
-
-jobs:
-  run:
-    runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: dvc_cml_run
-        env:
-          repo_token: { "${{ secrets.GITLAB_TOKEN }}" }
+          repo_token: {"${{ secrets.GITHUB_TOKEN }}"}
         run: |
           pip3 install -r requirements.txt
           python train.py
-
+          
           cat metrics.txt >> report.md
-          cml-publish confusion_matrix.png --md --title  'confusion-matrix' >> report.md
-          cml-send-gitlab-check report.md
+          cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+          cml-send-comment report.md
 ```
 
-</>
+<ImageExampleBox title="CML Report" image={githubBaseCase} />
+
+</Collapser>
+        )}
+        gitlab={(
+<Collapser>
+
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-base-case" sx={{flex: "1"}}
+# .gitlab-ci.yml
+stages: 
+    - cml_run
+    
+cml:
+    stage: cml_run
+    image: dvcorg/cml-py3:latest
+    
+    script:
+        - pip3 install -r requirements.txt
+        - python train.py
+          
+        - cat metrics.txt >> report.md
+        - cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+        - cml-send-comment report.md 
+```
+
+<ImageExampleBox title="CML Report" image={gitlabBaseCase} />
+
+</Collapser>
         )}
       />
     )
@@ -139,57 +158,190 @@ jobs:
     content: (
       <Switchable 
         github={(
-<>
+<Collapser>
 
-```yml
-host: github
-config: doesn't make sense on gitlab
+```yml filename="cml.yaml" repo="https://github.com/iterative/cml_dvc_case" sx={{flex: "1"}}
+name: train-my-model
+
+on: [push]
+
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-py3:latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: cml_run
+        env:
+          repo_token: {"${{ secrets.GITHUB_TOKEN }}"}
+          AWS_ACCESS_KEY_ID: {"${{ secrets.AWS_ACCESS_KEY_ID }}"}
+          AWS_SECRET_ACCESS_KEY: {"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}
+        run: |
+          # Get DVC 1.0 
+          apt-get --purge remove -y dvc
+          pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
+          
+          
+          pip install -r requirements.txt
+          
+          # Pull dataset with DVC 
+          dvc pull data
+          
+          # Reproduce pipeline if any changes detected in dependencies
+          dvc repro 
+          
+          # Use DVC metrics diff to compare metrics to master
+          git fetch --prune --unshallow
+          dvc metrics diff --show-md master >> report.md
+          echo >> report.md
+          
+          # Add figure to report
+          dvc plots diff --target loss.csv --show-vega master > vega.json
+          vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
+          cml-send-comment report.md
 ```
 
-</>
+<ImageExampleBox title="CML Report" image={githubDVCReport} />
+
+</Collapser>
         )}
         gitlab={(
-<>
+<Collapser>
 
-```yml
-host: gitlab
-config: doesn't make sense on github
-line: extra for example
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-dvc-case" sx={{flex: "1"}}
+stages: 
+    - cml_run
+    
+cml:
+    stage: cml_run
+    image: dvcorg/cml-py3:latest
+    
+    script:
+        - apt-get --purge remove -y dvc
+        - pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
+        
+        - pip install -r requirements.txt
+        
+        - dvc pull data
+        - dvc repro
+        - git fetch --prune
+        - dvc metrics diff --show-md master >> report.md
+        - echo >> report.md
+        
+        - dvc plots diff --target loss.csv --show-vega master > vega.json
+        - vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
+        - cml-send-comment report.md
 ```
 
-</>
+<ImageExampleBox title="CML Report" image={gitlabDVCReport} />
+
+</Collapser>
         )}
       />
     )
   },
   {
     name: "Tensorboard",
-    content: <h3>This is tab three!</h3>
+    content: (
+      <Switchable 
+        github={(
+<Collapser>
+
+```yml filename="cml.yaml" repo="https://github.com/iterative/cml_tensorboard_case" sx={{flex: "1"}}
+name: train-my-model
+
+on: [push]
+
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-py3:latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: cml_run
+        env:
+          repo_token: {"${{ secrets.GITHUB_TOKEN }}"}
+          TB_CREDENTIALS: {"${{ secrets.TB_CREDENTIALS }}"}
+        run: |
+          pip3 install -r requirements.txt
+          
+          cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
+          cml-send-comment report.md
+          python train.py
+```
+
+<ImageExampleBox title="CML Report" image={githubTensorboardReport} />
+
+</Collapser>
+        )}
+        gitlab={(
+<Collapser>
+
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case" sx={{flex: "1"}}
+stages: 
+    - cml_run
+    
+cml:
+    stage: cml_run
+    image: dvcorg/cml-py3:latest
+    
+    script:
+        - pip install -r requirements.txt
+        
+        # Start tensorboard and train
+        - cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
+        - cml-send-comment report.md
+        - python train.py
+```
+
+<ImageExampleBox title="CML Report" image={gitlabTensorboardReport} />
+
+</Collapser>
+        )}
+      />
+    )
   }
 ]}/>
 
+</FullWidthBox>
+
 <FullWidthBox sx={{
+  variant: "text.translucent.dark",
   backgroundColor: "gray",
   textAlign: "center",
-  py: 1
+  py: "5px",
+  inner: {
+    my: "85px",
+  },
 }}>
 
 <Box sx={{
-  my: 5, 
   maxWidth: "460px", 
   mx: "auto",
   letterSpacing: "0.02em",
-  fontSize: "18px"
+  fontSize: "18px",
 }}>
 
-# What is CML?
+<Heading
+  as="h2"
+  sx={{
+    color: "text",
+    fontSize: ["32px", null, "48px"]
+  }}
+>
+  What is CML?
+</Heading>
 
 CML is an easy way of combining the codified parts of your MLOps stack into a single solution.
 
 </Box>
 
 <SolutionList sx={{
-  my: 5,
+  my: "40px",
   mx: "auto",
   maxWidth: "834px",
 }}>

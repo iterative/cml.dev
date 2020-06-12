@@ -1,6 +1,6 @@
 const { system: preset } = require("@theme-ui/presets")
 const tabsCoreStyles = require("../components/organisms/Tabs/core-styles")
-const { alpha } = require("@theme-ui/color")
+const { alpha, darken } = require("@theme-ui/color")
 
 const palette = {
   ...preset.colors,
@@ -16,7 +16,22 @@ const palette = {
 
 export default {
   ...preset,
-  breakpoints: ["640px", "980px", "1440px"],
+  breakpoints: ["480px", "640px", "980px", "1440px"],
+  text: {
+    ...preset.text,
+    accuracy: {
+      px: "20px",
+      py: "10px",
+    },
+    translucent: {
+      light: {
+        color: alpha("background", 0.5),
+      },
+      dark: {
+        color: alpha("text", 0.5),
+      },
+    },
+  },
   colors: {
     ...palette,
     background: palette.white,
@@ -36,6 +51,9 @@ export default {
       },
     },
   },
+  shadows: {
+    wide: "0px 20px 30px rgba(74, 63, 99, 0.1)",
+  },
   radii: [0, "8px"],
   sizes: [0, "4px", "8px", "12px", "16px", "24px", "32px", "48px", "64px"],
   fonts: {
@@ -52,34 +70,34 @@ export default {
     },
     Header: {
       variant: "styles.invert",
-      pt: [3, 0],
+      pt: [3, null, 0],
       Logo: {
         display: "block",
         flex: "0 1 auto",
         pt: "1rem",
-        pb: ["0.5rem", "1rem"],
-        width: ["100%", "auto"],
+        pb: ["0.5rem", null, "1rem"],
+        width: ["100%", null, "auto"],
         img: {
+          maxWidth: ["154px", null, "115px"],
+          height: ["40px", null, "30px"],
           display: "block",
           width: "100%",
           mx: "auto",
-          maxWidth: ["154px", "115px"],
-          height: ["40px", "30px"],
         },
       },
       Inner: {
         variant: "layout.container",
         display: "flex",
         flexWrap: "nowrap",
-        alignItems: ["center"],
-        flexFlow: ["column", "row"],
+        alignItems: "center",
+        flexFlow: ["column", null, "row"],
       },
       Nav: {
         px: 0,
         display: "flex",
         flexDirection: "row",
-        flexWrap: ["wrap", "nowrap"],
-        justifyContent: ["center", "flex-end"],
+        flexWrap: ["wrap", null, "nowrap"],
+        justifyContent: ["center", null, "flex-end"],
         flex: "1",
         Link: {
           px: 2,
@@ -92,37 +110,44 @@ export default {
       },
     },
     Footer: {
+      borderTop: "1px solid rgba(255, 255, 255, 0.3)",
       variant: "styles.invert",
-      pt: [3, 0],
+      py: 1,
+      Inner: {
+        flexFlow: "row",
+        flexWrap: "nowrap",
+        alignItems: "center",
+        variant: "layout.container",
+        my: ["40px", null, null, 0],
+        display: ["block", null, null, "flex"],
+      },
       Logo: {
+        order: -2,
         display: "block",
         flex: "0 1 auto",
-        pt: "1rem",
-        pb: ["0.5rem", "1rem"],
-        width: ["100%", "auto"],
+        p: "10px",
+        my: "40px",
+        mx: "auto",
         img: {
           display: "block",
           width: "100%",
           mx: "auto",
-          maxWidth: ["154px", "115px"],
-          height: ["40px", "30px"],
+          maxWidth: "154px",
+          height: "40px",
         },
-      },
-      Inner: {
-        variant: "layout.container",
-        display: "flex",
-        flexWrap: "nowrap",
-        alignItems: ["center"],
-        flexFlow: ["column", "row"],
       },
       Nav: {
         px: 0,
+        mx: "auto",
         display: "flex",
-        flexDirection: "row",
-        flexWrap: ["wrap", "nowrap"],
-        justifyContent: ["center", "flex-end"],
+        flexDirection: ["column", "row"],
+        flexWrap: "nowrap",
+        justifyContent: "center",
+        alignItems: "center",
         flex: "1",
+        fontSize: "18px",
         Link: {
+          fontWeight: "normal",
           px: 2,
           py: "6px",
           fontSize: 2,
@@ -130,6 +155,28 @@ export default {
           textAlign: "center",
           lineHeight: "36px",
         },
+      },
+      SocialIcons: {
+        justifyContent: ["center", null, null, "flex-end"],
+        alignItems: "center",
+        textAlign: ["center", null, null, "right"],
+        width: "300px",
+        mx: "auto",
+        my: "40px",
+        ">a": {
+          px: "6px",
+          mx: "6px",
+          color: "background",
+          "&:hover": {
+            color: "purple",
+          },
+        },
+      },
+      PoweredBy: {
+        variant: "text.translucent.light",
+        textAlign: "center",
+        my: "40px",
+        order: -1,
       },
     },
     main: {
@@ -158,6 +205,29 @@ export default {
     ...preset.links,
     button: {
       variant: "buttons.primary",
+    },
+    RepoButton: {
+      minWidth: "95px",
+      color: "background",
+      display: "flex",
+      flexFlow: "row nowrap",
+      alignItems: "center",
+      justifyContent: "center",
+      height: "30px",
+      py: "8px",
+      mx: "4px",
+      fontSize: "14px",
+      textDecoration: "none",
+      "&:hover": { color: "inherit" },
+      "&>svg, &>img": {
+        mr: "-0.25em",
+        ml: "0.5em",
+      },
+      ">span": {
+        height: "20px",
+        mx: ".8em",
+        display: "inline-block",
+      },
     },
   },
   forms: {
@@ -249,6 +319,16 @@ export default {
   },
   styles: {
     ...preset.styles,
+    CodeBlock: {
+      fontFamily: "monospace",
+      overflow: "auto",
+      flex: "1",
+      Inner: {
+        whiteSpace: "pre",
+        fontSize: "12px",
+        p: "20px",
+      },
+    },
     Video: {
       borderRadius: 1,
     },
@@ -260,7 +340,8 @@ export default {
       p: 0,
       listStyle: "none",
       color: "text",
-      fontSize: ["12px", "14px", "22px"],
+      fontSize: ["12px", null, "14px", "22px"],
+      maxWidth: [null, "586px", "834px"],
       Item: {
         display: "flex",
         flexFlow: "row nowrap",
@@ -269,7 +350,7 @@ export default {
         alignItems: "center",
         ":first-of-type": { borderTop: "none" },
         "&>h3": {
-          color: "black",
+          color: "text",
           flex: 1,
           ":first-of-type": { textAlign: "left" },
           ":last-of-type": { textAlign: "right" },
@@ -290,10 +371,10 @@ export default {
 
       display: "flex",
       flexFlow: ["column nowrap", null, "row wrap"],
-      overflow: "hidden",
+      overflow: "visible",
       width: "100%",
 
-      borderRadius: [1, null, 0],
+      px: [0, null, 3],
 
       Content: {
         width: "100%",
@@ -303,15 +384,17 @@ export default {
         borderBottomLeftRadius: [0, null, 1],
         borderTopRightRadius: [0, null, 1],
         borderTopLeftRadius: 0,
+        boxShadow: [null, "wide"],
+        textAlign: "left",
       },
 
       Tab: {
         flex: "1 0",
-        margin: [0, null, "0 0.1rem 0 0"],
-        height: ["48px", null, "70px"],
+        marginRight: [0, null, "1px"],
+        height: ["48px", null, null, "70px"],
         maxWidth: [null, null, "315px"],
         px: 4,
-        py: [0, null, "11px"],
+        py: [0, null, null, "11px"],
         color: "white",
         backgroundColor: "darkPurple.0",
         whiteSpace: "nowrap",
@@ -350,7 +433,7 @@ export default {
     },
     root: {
       ...preset.styles.root,
-      minWidth: "360px",
+      minWidth: "350px",
       "*": {
         boxSizing: "border-box",
       },
