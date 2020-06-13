@@ -383,21 +383,36 @@ export default {
 
       px: [0, null, 3],
 
+      "& div": {
+        maxHeight: "100%",
+      },
+
       Content: {
-        width: "100%",
-        height: "auto",
-        flex: [null, null, "1 0 100%"],
+        order: 1,
+        overflow: "hidden",
         borderBottomRightRadius: [0, null, 1],
         borderBottomLeftRadius: [0, null, 1],
         borderTopRightRadius: [0, null, 1],
         borderTopLeftRadius: 0,
-        boxShadow: [null, "wide"],
-        textAlign: "left",
+        Active: {
+          width: "100%",
+          flex: [null, null, "1 1 100%"],
+          boxShadow: [null, "wide"],
+          textAlign: "left",
+        },
+        Inactive: {
+          display: "block",
+          height: 0,
+          width: 0,
+          "& video": {
+            display: "none",
+          },
+        }
       },
 
       Tab: {
         flex: "1 0",
-        marginRight: [0, null, "1px"],
+        marginRight: [0, null, "2px"],
         height: ["48px", null, null, "70px"],
         maxWidth: [null, null, "315px"],
         px: 4,

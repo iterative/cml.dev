@@ -350,7 +350,7 @@ const ExampleBox = ({ title, children }) => {
 
 const ImageExampleBox = ({ title, image }) => (
   <ExampleBox title={title}>
-    <Image src={image} />
+    <Image src={image} variant="styles.CenteredBlock" />
   </ExampleBox>
 )
 

@@ -20,6 +20,9 @@ const Collapser = ({
       sx={{
         flexDirection,
         flexWrap: "nowrap",
+        ">*": {
+          flex: "1"
+        },
         ...sx,
       }}
     >

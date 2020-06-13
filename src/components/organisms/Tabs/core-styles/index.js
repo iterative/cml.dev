@@ -1,28 +1,23 @@
 module.exports = {
   "&>section": {
-    variant: "styles.Tabs.InactiveContent",
+    variant: "styles.Tabs.Content",
   },
   "&>label": {
     variant: "styles.Tabs.Tab",
   },
-  RadioInput: {
+  "&>input": {
+    "&:not(:checked)": {
+      "& + label + section": {
+        variant: "styles.Tabs.Content.Inactive",
+      }
+    },
     "&:checked": {
       "& + label": {
         variant: "styles.Tabs.Tab.Active",
       },
       "& + label + section": {
-        variant: "styles.Tabs.Content",
+        variant: "styles.Tabs.Content.Active",
       },
     },
-  },
-  InactiveContent: {
-    overflow: "hidden",
-    display: "block",
-    height: 0,
-    width: 0,
-    order: 1,
-    "& video": {
-      display: "none",
-    },
-  },
+  }
 }

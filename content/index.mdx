@@ -93,12 +93,8 @@ The simplest case of using CML, and a clear way for any user to get started, is 
 
 <Switch sx={{ my: 4, maxWidth: "160px", mx: "auto" }} />
 
-<JSONTabs 
-  sx={{
-    "& code": {
-      height: "530px",
-    }
-  }} 
+<JSONTabs
+  sx={{ "code, img": {maxHeight: "580px"} }}
   content={[
   {
     name: "First CML Report",
@@ -352,9 +348,9 @@ CML is an easy way of combining the codified parts of your MLOps stack into a si
 </Box>
 
 <SolutionList sx={{
+  maxWidth: "834px",
   my: "40px",
   mx: "auto",
-  maxWidth: "834px",
 }}>
   {[
     ["Codify workflow", "GitHub Actions and GitLab CI"],
