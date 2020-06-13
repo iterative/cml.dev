@@ -194,7 +194,7 @@ export default {
       cursor: "pointer",
       "&:hover": {
         bg: "purple.2",
-      }
+      },
     },
   },
   links: {
@@ -204,7 +204,7 @@ export default {
     },
     nav: {
       ...preset.nav,
-      fontWeight: "normal"
+      fontWeight: "normal",
     },
     RepoButton: {
       variant: "buttons.base",
@@ -324,7 +324,7 @@ export default {
     ...preset.styles,
     CenteredBlock: {
       display: "block",
-      mx: "auto"
+      mx: "auto",
     },
     CodeBlock: {
       fontFamily: "monospace",
@@ -407,7 +407,7 @@ export default {
           "& video": {
             display: "none",
           },
-        }
+        },
       },
 
       Tab: {

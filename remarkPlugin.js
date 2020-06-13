@@ -7,10 +7,9 @@ module.exports = ({ markdownAST, markdownNode, ...rest }, { tag = "Code" }) => {
     if (node.type === "code") {
       const { lang, meta, value } = node
       // Make leading spaces and trailing newlines explicit
-      const preContent = value
-        .replace(/^ +/gm, "{'$&'}")
-        .replace(/$/gm, escapedReactNewline)
-                       + escapedReactNewline
+      const preContent =
+        value.replace(/^ +/gm, "{'$&'}").replace(/$/gm, escapedReactNewline) +
+        escapedReactNewline
       // Wrap this new content in a component
       const transformedValue = `<${tag}${
         meta ? " " + meta : ""

@@ -1,13 +1,7 @@
 import React from "react"
 import { Flex } from "@theme-ui/components"
 
-const Collapser = ({
-  children,
-  sx = {},
-  className,
-  bp=2,
-  ...props
-}) => {
+const Collapser = ({ children, sx = {}, className, bp = 2, ...props }) => {
   const flexDirection = ["column"]
   for (let i = 1; i < bp; i++) {
     flexDirection.push(null)
@@ -21,7 +15,7 @@ const Collapser = ({
         flexDirection,
         flexWrap: "nowrap",
         ">*": {
-          flex: "1"
+          flex: "1",
         },
         ...sx,
       }}

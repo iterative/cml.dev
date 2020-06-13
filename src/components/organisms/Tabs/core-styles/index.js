@@ -9,7 +9,7 @@ module.exports = {
     "&:not(:checked)": {
       "& + label + section": {
         variant: "styles.Tabs.Content.Inactive",
-      }
+      },
     },
     "&:checked": {
       "& + label": {
@@ -19,5 +19,5 @@ module.exports = {
         variant: "styles.Tabs.Content.Active",
       },
     },
-  }
+  },
 }

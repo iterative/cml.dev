@@ -44,14 +44,18 @@ export function useRadioTabs(inputContent, idPrefix = "tabs") {
 
 export const Tabs = ({ children, sx }) => {
   return (
-    <Box as="form" variant="styles.Tabs" sx={{
-      "code": {
-        display: "block",
-        width: "100%",
-        flex: "1 0",
-      },
-      ...sx
-    }}>
+    <Box
+      as="form"
+      variant="styles.Tabs"
+      sx={{
+        code: {
+          display: "block",
+          width: "100%",
+          flex: "1 0",
+        },
+        ...sx,
+      }}
+    >
       {children}
     </Box>
   )

@@ -81,7 +81,7 @@ services: AWS, Azure, GCP. No databases, services or complex setup needed.
   as="h2"
   sx={{
     color: "text",
-    fontSize: ["32px", null, "48px"]
+    fontSize: ["32px", null, "48px"],
   }}
 >
   CML User Cases
@@ -119,7 +119,7 @@ jobs:
 
       - name: cml_run
         env:
-          repo_token: {"${{ secrets.GITHUB_TOKEN }}"}
+          repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
         run: |
           pip3 install -r requirements.txt
           python train.py
@@ -138,20 +138,20 @@ jobs:
 
 ```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-base-case"
 # .gitlab-ci.yml
-stages: 
-    - cml_run
+stages:
+  - cml_run
 
 cml:
-    stage: cml_run
-    image: dvcorg/cml-py3:latest
+  stage: cml_run
+  image: dvcorg/cml-py3:latest
 
-    script:
-        - pip3 install -r requirements.txt
-        - python train.py
+  script:
+    - pip3 install -r requirements.txt
+    - python train.py
 
-        - cat metrics.txt >> report.md
-        - cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
-        - cml-send-comment report.md 
+    - cat metrics.txt >> report.md
+    - cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+    - cml-send-comment report.md
 ```
 
 <ImageExampleBox title="CML Report" image={gitlabBaseCase} />
@@ -183,9 +183,9 @@ jobs:
 
       - name: cml_run
         env:
-          repo_token: {"${{ secrets.GITHUB_TOKEN }}"}
-          AWS_ACCESS_KEY_ID: {"${{ secrets.AWS_ACCESS_KEY_ID }}"}
-          AWS_SECRET_ACCESS_KEY: {"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}
+          repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
+          AWS_ACCESS_KEY_ID: { "${{ secrets.AWS_ACCESS_KEY_ID }}" }
+          AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" }
         run: |
           # Get DVC 1.0 
           apt-get --purge remove -y dvc
@@ -219,28 +219,28 @@ jobs:
 <Collapser>
 
 ```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-dvc-case"
-stages: 
-    - cml_run
+stages:
+  - cml_run
 
 cml:
-    stage: cml_run
-    image: dvcorg/cml-py3:latest
+  stage: cml_run
+  image: dvcorg/cml-py3:latest
 
-    script:
-        - apt-get --purge remove -y dvc
-        - pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
+  script:
+    - apt-get --purge remove -y dvc
+    - pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
 
-        - pip install -r requirements.txt
+    - pip install -r requirements.txt
 
-        - dvc pull data
-        - dvc repro
-        - git fetch --prune
-        - dvc metrics diff --show-md master >> report.md
-        - echo >> report.md
+    - dvc pull data
+    - dvc repro
+    - git fetch --prune
+    - dvc metrics diff --show-md master >> report.md
+    - echo >> report.md
 
-        - dvc plots diff --target loss.csv --show-vega master > vega.json
-        - vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
-        - cml-send-comment report.md
+    - dvc plots diff --target loss.csv --show-vega master > vega.json
+    - vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
+    - cml-send-comment report.md
 ```
 
 <ImageExampleBox title="CML Report" image={gitlabDVCReport} />
@@ -272,8 +272,8 @@ jobs:
 
       - name: cml_run
         env:
-          repo_token: {"${{ secrets.GITHUB_TOKEN }}"}
-          TB_CREDENTIALS: {"${{ secrets.TB_CREDENTIALS }}"}
+          repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
+          TB_CREDENTIALS: { "${{ secrets.TB_CREDENTIALS }}" }
         run: |
           pip3 install -r requirements.txt
 
@@ -290,20 +290,20 @@ jobs:
 <Collapser>
 
 ```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case"
-stages: 
-    - cml_run
+stages:
+  - cml_run
 
 cml:
-    stage: cml_run
-    image: dvcorg/cml-py3:latest
+  stage: cml_run
+  image: dvcorg/cml-py3:latest
 
-    script:
-        - pip install -r requirements.txt
+  script:
+    - pip install -r requirements.txt
 
-        # Start tensorboard and train
-        - cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
-        - cml-send-comment report.md
-        - python train.py
+    # Start tensorboard and train
+    - cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
+    - cml-send-comment report.md
+    - python train.py
 ```
 
 <ImageExampleBox title="CML Report" image={gitlabTensorboardReport} />
@@ -337,7 +337,7 @@ cml:
   as="h2"
   sx={{
     color: "text",
-    fontSize: ["32px", null, "48px"]
+    fontSize: ["32px", null, "48px"],
   }}
 >
   What is CML?
@@ -347,11 +347,13 @@ CML is an easy way of combining the codified parts of your MLOps stack into a si
 
 </Box>
 
-<SolutionList sx={{
-  maxWidth: "834px",
-  my: "40px",
-  mx: "auto",
-}}>
+<SolutionList
+  sx={{
+    maxWidth: "834px",
+    my: "40px",
+    mx: "auto",
+  }}
+>
   {[
     ["Codify workflow", "GitHub Actions and GitLab CI"],
     ["Codify environment", "Docker or Packer"],

@@ -173,9 +173,7 @@ const HomeFeature = ({ children, heading, circleColor }) => (
     <Heading as="h3" sx={{ my: 3 }}>
       {heading}
     </Heading>
-    <Box>
-      {children}
-    </Box>
+    <Box>{children}</Box>
   </Box>
 )
 
@@ -308,16 +306,12 @@ const ExampleBox = ({ title, children }) => {
         boxShadow: "default",
         textAlign: "left",
         color: "text",
-        maxWidth: [null, null, "50%"]
+        maxWidth: [null, null, "50%"],
       }}
     >
       <Box
         sx={{
-          backgroundColor: [
-            alpha("darkPurple.0", 0.1),
-            null,
-            "darkPurple.0",
-          ],
+          backgroundColor: [alpha("darkPurple.0", 0.1), null, "darkPurple.0"],
           color: ["text", null, alpha("background", 0.5)],
           alignItems: "left",
           flexFlow: "row wrap",
