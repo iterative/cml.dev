@@ -152,30 +152,35 @@ const Circle = ({ color }) => (
   />
 )
 
-const HomeFeature = ({ children, heading, circleColor }) => (
-  <Box
-    sx={{
-      borderTopStyle: ["solid", null, "none"],
-      borderLeftStyle: ["none", null, "solid"],
-      borderWidth: "1px",
-      borderColor: "rgba(255,255,255,0.3)",
-      mx: "auto",
-      px: [1, null, 2],
-      py: ["40px", "25px"],
-      maxWidth: "600px",
-      "&:first-of-type": {
-        borderTop: "none",
-        borderLeft: "none",
-      },
-    }}
-  >
-    <Circle color={circleColor} sx={{ mb: 2 }} />
-    <Heading as="h3" sx={{ my: 3 }}>
-      {heading}
-    </Heading>
-    <Box>{children}</Box>
-  </Box>
-)
+const HomeFeature = ({ children, heading, icon: Icon }) => {
+  return (
+    <Box
+      sx={{
+        borderTopStyle: ["solid", null, "none"],
+        borderLeftStyle: ["none", null, "solid"],
+        borderWidth: "1px",
+        borderColor: "rgba(255,255,255,0.3)",
+        mx: "auto",
+        px: [1, null, 2],
+        py: ["40px", "25px"],
+        maxWidth: "600px",
+        "svg": {
+          mb: ["20px", null, "30px"],
+        },
+        "&:first-of-type": {
+          borderTop: "none",
+          borderLeft: "none",
+        },
+      }}
+    >
+      <Icon />
+      <Heading as="h3" sx={{ my: 3 }}>
+        {heading}
+      </Heading>
+      <Box>{children}</Box>
+    </Box>
+  )
+}
 
 const getRepoIcon = host => {
   switch (host) {

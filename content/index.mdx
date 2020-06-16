@@ -1,3 +1,7 @@
+import GitFlowIcon from "media/icons/gitflow.svg"
+import ReportsIcon from "media/icons/reports.svg"
+import BoxIcon from "media/icons/cube.svg"
+
 import githubVideo from "media/github/landing-video.webm"
 import githubBaseCase from "media/github/base-case-report.png"
 import githubDVCReport from "media/github/dvc-report.png"
@@ -43,21 +47,21 @@ import gitlabTensorboardReport from "media/gitlab/tensorboard-report.png"
   </Collapser>
 
   <Collapser sx={{my: 4}}>
-  <HomeFeature heading="GitFlow for data science" circleColor="cyan.0">
+  <HomeFeature heading="GitFlow for data science" icon={GitFlowIcon}>
 
 Use GitLab or GitHub to manage ML experiments, track who trained ML models or
 modified data and when. Codify data and models with DVC instead of pushing to
 your Git repo.
 
   </HomeFeature>
-  <HomeFeature heading="Auto reports for ML experiments" circleColor="purple">
+  <HomeFeature heading="Auto reports for ML experiments" icon={ReportsIcon}>
 
 Auto-generate reports with metrics and plots in each Git Pull Request.
 Rigorous engineering practices help your team make informed, data-driven
 decisions.
 
   </HomeFeature>
-  <HomeFeature heading="No additional services" circleColor="orange.0">
+  <HomeFeature heading="No additional services" icon={BoxIcon}>
 
 Build your own ML platform using just GitHub or GitLab and your favorite cloud
 services: AWS, Azure, GCP. No databases, services or complex setup needed.
