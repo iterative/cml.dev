@@ -33,6 +33,7 @@
     "gatsby-remark-images": "^3.3.9",
     "gatsby-source-filesystem": "^2.3.10",
     "gatsby-transformer-sharp": "^2.5.4",
+    "husky": ">=4",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -42,7 +43,8 @@
     "unist-util-visit": "^2.0.2"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "lint-staged": ">=10",
+    "prettier": "^2.0.5"
   },
   "keywords": [
     "gatsby"
@@ -51,7 +53,7 @@
   "scripts": {
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,json,mdx}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -65,5 +67,13 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,mdx}": "prettier --write"
   }
 }

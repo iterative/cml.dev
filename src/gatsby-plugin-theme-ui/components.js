@@ -164,7 +164,7 @@ const HomeFeature = ({ children, heading, icon: Icon }) => {
         px: [1, null, 2],
         py: ["40px", "25px"],
         maxWidth: "600px",
-        "svg": {
+        svg: {
           mb: ["20px", null, "30px"],
         },
         "&:first-of-type": {
