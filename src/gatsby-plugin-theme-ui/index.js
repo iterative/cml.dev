@@ -1,6 +1,6 @@
 const { system: preset } = require("@theme-ui/presets")
 const tabsCoreStyles = require("../components/organisms/Tabs/core-styles")
-const { alpha, darken } = require("@theme-ui/color")
+const { alpha, mix } = require("@theme-ui/color")
 
 const palette = {
   ...preset.colors,
@@ -157,18 +157,29 @@ export default {
         mx: "auto",
         my: "40px",
         ">a": {
+          variant: "links.light",
           px: "6px",
           mx: "6px",
           color: "background",
-          "&:hover": {
-            color: "purple",
-          },
         },
       },
       PoweredBy: {
-        textAlign: "center",
-        my: "40px",
+        variant: "links.light",
+        textDecoration: "none",
+        display: "block",
         order: -1,
+        textAlign: "center",
+        height: "42px",
+        lineHeight: "42px",
+        mx: "auto",
+        px: "0.1em",
+        color: "inherit",
+        ":hover": {
+          color: "background",
+        },
+        svg: {
+          verticalAlign: "middle",
+        },
       },
     },
     main: {
@@ -199,12 +210,22 @@ export default {
   },
   links: {
     ...preset.links,
+    primary: {
+      transition: "0.5s color",
+    },
     button: {
       variant: "buttons.primary",
     },
     nav: {
       ...preset.nav,
       fontWeight: "normal",
+    },
+    light: {
+      variant: "links.primary",
+      color: "background",
+      "&:hover": {
+        color: mix("background", "primary", 0.5),
+      },
     },
     RepoButton: {
       variant: "buttons.base",

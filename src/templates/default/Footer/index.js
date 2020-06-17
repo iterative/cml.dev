@@ -15,36 +15,35 @@ import SlackIcon from "media/icons/slack.svg"
 import TwitterIcon from "media/icons/twitter.svg"
 import GithubIcon from "media/icons/github.svg"
 
+import DVCLogo from "media/icons/dvc-monochrome.svg"
+
 const socialLinkDefinitions = [
   {
     url: "#",
-    icon: SlackIcon,
+    icon: <SlackIcon width="26" height="26" />,
   },
   {
     url: "#",
-    icon: TwitterIcon,
+    icon: <TwitterIcon width="26" height="26" />,
   },
   {
     url: "#",
-    icon: GithubIcon,
+    icon: <GithubIcon width="26" height="26" />,
   },
 ]
 
-const SocialLink = ({ url, icon: Icon }) => (
+const SocialLink = ({ url, icon }) => (
   <Link
     href={url}
+    variant="light"
     sx={{
       display: "inline-block",
       textAlign: "center",
       py: 2,
       px: 1,
-      ">svg": {
-        width: "26px",
-        height: "26px",
-      },
     }}
   >
-    <Icon />
+    {icon}
   </Link>
 )
 
@@ -87,7 +86,9 @@ function Footer() {
             <SocialLink url={url} icon={icon} key={i} />
           ))}
         </Box>
-        <Text variant="layout.Footer.PoweredBy">Powered by DVC</Text>
+        <Link variant="layout.Footer.PoweredBy" href="https://www.dvc.org">
+          Powered by <DVCLogo height="14" width="24" aria-label="DVC" />
+        </Link>
       </Container>
     </Box>
   )
