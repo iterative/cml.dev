@@ -291,6 +291,9 @@ export default {
           left: "50%",
         },
       },
+      Label: {
+        outline: "none",
+      },
       ">span": {
         variant: "switches.Base.Label",
       },
@@ -305,6 +308,7 @@ export default {
       width: "100%",
       overflow: "hidden",
       Label: {
+        variant: "switches.Base.Label",
         py: 1,
         px: 2,
         zIndex: "3",
@@ -411,6 +415,7 @@ export default {
       },
 
       Tab: {
+        outline: "none",
         flex: "1 0",
         marginRight: [0, null, "2px"],
         height: ["48px", null, null, "70px"],
