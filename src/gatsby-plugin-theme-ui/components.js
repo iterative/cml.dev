@@ -12,7 +12,7 @@ import {
   Image,
   Text,
 } from "@theme-ui/components"
-import { alpha } from "@theme-ui/color"
+import { alpha, mix } from "@theme-ui/color"
 import { JSONTabs } from "components/organisms/Tabs"
 
 import Switchable from "components/organisms/SwitchableMode/Switchable"
@@ -66,26 +66,56 @@ const ContainExcept = ({
   return <>{processedChildren}</>
 }
 
-const Tooltip = ({ sx = {}, as = "span", className, contents, children }) => {
+const tooltipTypes = {
+  dependencies: {
+    color: "#F6936A",
+    href: "#dependencies",
+  },
+  reports: {
+    color: "#BB8DDA",
+    href: "#reports",
+  },
+  dvc: {
+    color: "#E3EE9E",
+    href: "#dvc",
+  },
+  tensorboard: {
+    color: "#B6E8ED",
+    href: "#tensorboard",
+  },
+}
+
+const highlightClass = css({})
+
+const Tooltip = ({ sx = {}, className, type, children }) => {
+  const { color, href } = tooltipTypes[type]
   return (
-    <Box
-      as={as}
-      variant="styles.Tooltip"
+    <Text
+      as={"a"}
+      href={href}
       className={className}
       sx={{
-        "& aside": {
-          display: "hidden",
+        color: mix("background", color, 0.1),
+        transition: "0.2s all",
+        textDecoration: "inherit",
+        display: "block",
+        ">span": {
+          transition: "0.2s all",
+          borderRadius: "2px",
+          backgroundColor: alpha(color, 0.1),
+          py: "0.03em",
+          my: "-0.03em",
+          px: "0.25em",
+          mx: "-0.25em",
         },
-        "&:focus": {
-          "& aside": {
-            display: "block",
-          },
+        "&:hover>span": {
+          color: mix("background", color, 0.2),
+          backgroundColor: alpha(color, 0.2),
         },
       }}
     >
       {children}
-      <aside>{contents}</aside>
-    </Box>
+    </Text>
   )
 }
 

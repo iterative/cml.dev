@@ -17,6 +17,11 @@ const palette = {
 export default {
   ...preset,
   breakpoints: ["480px", "640px", "980px", "1440px"],
+  fonts: {
+    body: '"DM Sans", sans-serif',
+    heading: '"DM Sans", sans-serif',
+    monospace: '"DM Mono", monospace',
+  },
   text: {
     ...preset.text,
     accuracy: {
@@ -48,10 +53,6 @@ export default {
   },
   radii: [0, "8px"],
   sizes: [0, "4px", "8px", "12px", "16px", "24px", "32px", "48px", "64px"],
-  fonts: {
-    body: "'DM Sans', sans-serif",
-    heading: "'DM Sans', sans-serif",
-  },
 
   layout: {
     ...preset.layout,
@@ -170,6 +171,7 @@ export default {
         order: -1,
         textAlign: "center",
         height: "42px",
+        width: "auto",
         lineHeight: "42px",
         mx: "auto",
         px: "0.1em",
@@ -352,10 +354,10 @@ export default {
       mx: "auto",
     },
     CodeBlock: {
-      fontFamily: "monospace",
       fontSize: "12px",
       overflow: "auto",
       pre: {
+        fontFamily: "monospace",
         display: "inline-block",
         pt: "20px",
         px: "20px",
@@ -407,10 +409,6 @@ export default {
       width: "100%",
 
       px: [0, null, 3],
-
-      "& div": {
-        maxHeight: "100%",
-      },
 
       Content: {
         order: 1,

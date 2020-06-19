@@ -125,12 +125,16 @@ jobs:
         env:
           repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
         run: |
+          <Tooltip type="dependencies">
           pip3 install -r requirements.txt
+          </Tooltip>
           python train.py
 
+          <Tooltip type="reports">
           cat metrics.txt >> report.md
           cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
           cml-send-comment report.md
+          </Tooltip>
 ```
 
 <ImageExampleBox title="CML Report" image={githubBaseCase} />
