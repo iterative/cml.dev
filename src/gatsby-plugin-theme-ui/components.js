@@ -85,8 +85,6 @@ const tooltipTypes = {
   },
 }
 
-const highlightClass = css({})
-
 const Tooltip = ({ sx = {}, className, type, children }) => {
   const { color, href } = tooltipTypes[type]
   return (
