@@ -70,50 +70,57 @@ const tooltipTypes = {
   dependencies: {
     color: "#F6936A",
     href: "#dependencies",
+    title: "Dependencies",
   },
   reports: {
     color: "#BB8DDA",
     href: "#reports",
+    title: "Reports",
   },
   dvc: {
     color: "#E3EE9E",
     href: "#dvc",
+    title: "DVC",
   },
   tensorboard: {
     color: "#B6E8ED",
     href: "#tensorboard",
+    title: "Tensorboard",
   },
 }
 
 const Tooltip = ({ sx = {}, className, type, children }) => {
-  const { color, href } = tooltipTypes[type]
+  const { color, href, title = type } = tooltipTypes[type]
   return (
-    <Text
+    <Link
       as={"a"}
+      title={title}
       href={href}
       className={className}
       sx={{
-        color: mix("background", color, 0.1),
-        transition: "0.2s all",
-        textDecoration: "inherit",
-        display: "block",
+        variant: "styles.Highlight",
+        position: "relative",
         ">span": {
-          transition: "0.2s all",
-          borderRadius: "2px",
           backgroundColor: alpha(color, 0.1),
-          py: "0.03em",
-          my: "-0.03em",
-          px: "0.25em",
-          mx: "-0.25em",
         },
         "&:hover>span": {
           color: mix("background", color, 0.2),
           backgroundColor: alpha(color, 0.2),
         },
+        ":before": {
+          variant: "styles.Tooltip.Bubble",
+          content: `"${title}"`,
+        },
+        ":after": {
+          variant: "styles.Tooltip.Arrow",
+        },
+        "&:hover:before, &:hover:after": {
+          variant: "styles.Tooltip.Active",
+        },
       }}
     >
       {children}
-    </Text>
+    </Link>
   )
 }
 

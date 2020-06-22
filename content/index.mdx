@@ -13,8 +13,8 @@ import gitlabDVCReport from "media/gitlab/dvc-report.png"
 import gitlabTensorboardReport from "media/gitlab/tensorboard-report.png"
 
 <FullWidthBox sx={{
-  backgroundColor: "text", 
-  color: "background", 
+  backgroundColor: "text",
+  color: "background",
   overflow: "hidden",
   textAlign: "center",
 }}>
@@ -74,7 +74,7 @@ services: AWS, Azure, GCP. No databases, services or complex setup needed.
 <FullWidthBox sx={{
   textAlign: "center",
   inner: {
-    my: "80px", 
+    my: "80px",
     px: [0, null, null, 3],
   }
 }}>
@@ -104,7 +104,7 @@ The simplest case of using CML, and a clear way for any user to get started, is 
     name: "First CML Report",
     filename: "cml.yaml",
     content: (
-      <Switchable 
+      <Switchable
         github={(
 <Collapser>
 
@@ -172,7 +172,7 @@ cml:
   {
     name: "DVC",
     content: (
-      <Switchable 
+      <Switchable
         github={(
 <Collapser>
 
@@ -195,18 +195,18 @@ jobs:
           AWS_ACCESS_KEY_ID: { "${{ secrets.AWS_ACCESS_KEY_ID }}" }
           AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" }
         run: |
-          # Get DVC 1.0 
+          # Get DVC 1.0
           apt-get --purge remove -y dvc
           pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
 
 
           pip install -r requirements.txt
 
-          # Pull dataset with DVC 
+          # Pull dataset with DVC
           dvc pull data
 
           # Reproduce pipeline if any changes detected in dependencies
-          dvc repro 
+          dvc repro
 
           # Use DVC metrics diff to compare metrics to master
           git fetch --prune --unshallow
@@ -261,7 +261,7 @@ cml:
   {
     name: "Tensorboard",
     content: (
-      <Switchable 
+      <Switchable
         github={(
 <Collapser>
 
@@ -335,7 +335,7 @@ cml:
 }}>
 
 <Box sx={{
-  maxWidth: "460px", 
+  maxWidth: "460px",
   mx: "auto",
   letterSpacing: "0.02em",
   fontSize: "18px",
