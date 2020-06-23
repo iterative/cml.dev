@@ -94,7 +94,7 @@ const Tooltip = ({ sx = {}, className, type, children }) => {
   return (
     <Link
       as={"a"}
-      title={title}
+      aria-describedby={title}
       href={href}
       className={className}
       sx={{
