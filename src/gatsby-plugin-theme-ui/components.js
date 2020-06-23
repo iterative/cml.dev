@@ -101,11 +101,11 @@ const Tooltip = ({ sx = {}, className, type, children }) => {
         variant: "styles.Highlight",
         position: "relative",
         ">span": {
-          backgroundColor: alpha(color, 0.1),
+          backgroundColor: alpha(color, 0.2),
         },
         "&:hover>span": {
-          color: mix("background", color, 0.2),
-          backgroundColor: alpha(color, 0.2),
+          color: mix("background", color, 0.3),
+          backgroundColor: alpha(color, 0.3),
         },
         ":before": {
           variant: "styles.Tooltip.Bubble",
