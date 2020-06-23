@@ -70,7 +70,7 @@ const tooltipTypes = {
   dependencies: {
     color: "#F6936A",
     href: "#dependencies",
-    title: "Install Requirements",
+    title: "Install requirements",
   },
   reports: {
     color: "#BB8DDA",
@@ -80,12 +80,12 @@ const tooltipTypes = {
   dvc: {
     color: "#E3EE9E",
     href: "#dvc",
-    title: "Push & Pull Data with DVC",
+    title: "Push & pull data with DVC",
   },
   tensorboard: {
     color: "#B6E8ED",
     href: "#tensorboard",
-    title: "Set Tensorboard Credentials",
+    title: "Set Tensorboard credentials",
   },
 }
 
