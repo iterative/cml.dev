@@ -386,6 +386,7 @@ export default {
         px: "1em",
         lineHeight: "44px",
         borderRadius: "4px",
+        whiteSpace: "nowrap",
       },
       Arrow: {
         variant: "styles.Tooltip.Base",
