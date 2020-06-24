@@ -17,6 +17,11 @@ const palette = {
 export default {
   ...preset,
   breakpoints: ["480px", "640px", "980px", "1440px"],
+  fonts: {
+    body: '"DM Sans", sans-serif',
+    heading: '"DM Sans", sans-serif',
+    monospace: '"DM Mono", monospace',
+  },
   text: {
     ...preset.text,
     accuracy: {
@@ -48,10 +53,6 @@ export default {
   },
   radii: [0, "8px"],
   sizes: [0, "4px", "8px", "12px", "16px", "24px", "32px", "48px", "64px"],
-  fonts: {
-    body: "'DM Sans', sans-serif",
-    heading: "'DM Sans', sans-serif",
-  },
 
   layout: {
     ...preset.layout,
@@ -170,6 +171,7 @@ export default {
         order: -1,
         textAlign: "center",
         height: "42px",
+        width: "auto",
         lineHeight: "42px",
         mx: "auto",
         px: "0.1em",
@@ -347,15 +349,71 @@ export default {
   },
   styles: {
     ...preset.styles,
+    Highlight: {
+      textDecoration: "inherit",
+      transition: "0.2s all",
+      display: "block",
+      color: "inherit",
+      "&>span": {
+        transition: "0.2s all",
+        borderRadius: "2px",
+        py: "0.03em",
+        my: "-0.03em",
+        px: "0.25em",
+        mx: "-0.25em",
+      },
+    },
+    Tooltip: {
+      Base: {
+        transition: "0.2s all ease-in-out",
+        display: "block",
+        visibility: "hidden",
+        transform: "translateX(-50%)",
+        position: "absolute",
+        left: "50%",
+        opacity: "0",
+      },
+      Bubble: {
+        variant: "styles.Tooltip.Base",
+        backgroundColor: "background",
+        color: "text",
+        width: "auto",
+        height: "auto",
+        fontFamily: "body",
+        fontSize: ["14px", null, "18px"],
+        top: "-54px",
+        height: "44px",
+        px: "1em",
+        lineHeight: "44px",
+        borderRadius: "4px",
+        whiteSpace: "nowrap",
+      },
+      Arrow: {
+        variant: "styles.Tooltip.Base",
+        borderLeft: "6px solid transparent",
+        borderRight: "6px solid transparent",
+        borderTop: "6px solid",
+        borderTopColor: "background",
+        content: '""',
+        top: "-10px",
+        height: "0",
+        width: "0",
+      },
+      Active: {
+        visibility: "visible",
+        opacity: "1",
+      },
+    },
     CenteredBlock: {
       display: "block",
       mx: "auto",
     },
     CodeBlock: {
-      fontFamily: "monospace",
-      fontSize: "12px",
+      fontSize: ["12px", null, "14px"],
       overflow: "auto",
       pre: {
+        whiteSpace: "pre-wrap",
+        fontFamily: "monospace",
         display: "inline-block",
         pt: "20px",
         px: "20px",
@@ -407,10 +465,6 @@ export default {
       width: "100%",
 
       px: [0, null, 3],
-
-      "& div": {
-        maxHeight: "100%",
-      },
 
       Content: {
         order: 1,

@@ -12,7 +12,7 @@ import {
   Image,
   Text,
 } from "@theme-ui/components"
-import { alpha } from "@theme-ui/color"
+import { alpha, mix } from "@theme-ui/color"
 import { JSONTabs } from "components/organisms/Tabs"
 
 import Switchable from "components/organisms/SwitchableMode/Switchable"
@@ -66,26 +66,61 @@ const ContainExcept = ({
   return <>{processedChildren}</>
 }
 
-const Tooltip = ({ sx = {}, as = "span", className, contents, children }) => {
+const tooltipTypes = {
+  dependencies: {
+    color: "#F6936A",
+    href: "#dependencies",
+    title: "Install requirements",
+  },
+  reports: {
+    color: "#BB8DDA",
+    href: "#reports",
+    title: "Write CML Report",
+  },
+  dvc: {
+    color: "#E3EE9E",
+    href: "#dvc",
+    title: "Push & pull data with DVC",
+  },
+  tensorboard: {
+    color: "#B6E8ED",
+    href: "#tensorboard",
+    title: "Set Tensorboard credentials",
+  },
+}
+
+const Tooltip = ({ sx = {}, className, type, children }) => {
+  const { color, href, title = type } = tooltipTypes[type]
   return (
-    <Box
-      as={as}
-      variant="styles.Tooltip"
+    <Link
+      as={"a"}
+      aria-describedby={title}
+      href={href}
       className={className}
       sx={{
-        "& aside": {
-          display: "hidden",
+        variant: "styles.Highlight",
+        position: "relative",
+        ">span": {
+          backgroundColor: alpha(color, 0.2),
         },
-        "&:focus": {
-          "& aside": {
-            display: "block",
-          },
+        "&:hover>span": {
+          color: mix("background", color, 0.3),
+          backgroundColor: alpha(color, 0.3),
+        },
+        ":before": {
+          variant: "styles.Tooltip.Bubble",
+          content: `"${title}"`,
+        },
+        ":after": {
+          variant: "styles.Tooltip.Arrow",
+        },
+        "&:hover:before, &:hover:after": {
+          variant: "styles.Tooltip.Active",
         },
       }}
     >
       {children}
-      <aside>{contents}</aside>
-    </Box>
+    </Link>
   )
 }
 
