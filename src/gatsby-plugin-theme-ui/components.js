@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef } from "react"
 import { ModeContext } from "components/organisms/SwitchableMode/Provider"
 import SolutionLineArrow from "./solution-line-arrow.svg"
 import Collapser from "components/atoms/Collapser"
+import Video from "components/molecules/Video"
 import {
   Button,
   Flex,
@@ -135,43 +136,6 @@ const FullWidthBox = ({
     <Box variant="styles.FullWidthBox" className={className} sx={sx} {...props}>
       <Container sx={inner}>{children}</Container>
     </Box>
-  )
-}
-
-FullWidthBox.isFullWidth = true
-
-const Video = ({
-  sx = {},
-  mode,
-  autoplay,
-  playsinline = true,
-  controls = true,
-  ...props
-}) => {
-  const contextMode = useContext(ModeContext)
-  const videoRef = useRef()
-  const videoElement = videoRef.current
-  useEffect(() => {
-    if (mode) {
-      if (contextMode !== mode && videoElement) {
-        videoElement.pause()
-      }
-    }
-  }, [mode, contextMode, videoElement])
-  return (
-    <Box
-      as="video"
-      ref={videoRef}
-      autoplay={autoplay}
-      playsinline={playsinline}
-      controls={controls}
-      sx={{
-        my: 4,
-        maxWidth: "100%",
-        ...sx,
-      }}
-      {...props}
-    />
   )
 }
 
