@@ -162,7 +162,7 @@ cml:
 
     <Tooltip type="reports">
     - cat metrics.txt >> report.md
-    - cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+    - cml-publish confusion_matrix.png --md >> report.md
     - cml-send-comment report.md
     </Tooltip>
 ```
@@ -200,27 +200,18 @@ jobs:
           AWS_ACCESS_KEY_ID: { "${{ secrets.AWS_ACCESS_KEY_ID }}" }
           AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" }
         run: |
-          # Get DVC 1.0
-          apt-get --purge remove -y dvc
-          pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
-
-
           pip install -r requirements.txt
 
-          # Pull dataset with DVC
           dvc pull data
-
-          # Reproduce pipeline if any changes detected in dependencies
           dvc repro
 
           # Use DVC metrics diff to compare metrics to master
-          git fetch --prune --unshallow
+          git fetch --prune 
           dvc metrics diff --show-md master >> report.md
-          echo >> report.md
 
           # Add figure to report
           dvc plots diff --target loss.csv --show-vega master > vega.json
-          vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
+          vl2png vega.json -s 1.5 | cml-publish --md >> report.md
           cml-send-comment report.md
 ```
 
@@ -240,16 +231,13 @@ cml:
   image: dvcorg/cml-py3:latest
 
   script:
-    - apt-get --purge remove -y dvc
-    - pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
-
     - pip install -r requirements.txt
 
     - dvc pull data
     - dvc repro
+
     - git fetch --prune
     - dvc metrics diff --show-md master >> report.md
-    - echo >> report.md
 
     - dvc plots diff --target loss.csv --show-vega master > vega.json
     - vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
@@ -288,9 +276,9 @@ jobs:
           repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
           TB_CREDENTIALS: { "${{ secrets.TB_CREDENTIALS }}" }
         run: |
-          pip3 install -r requirements.txt
+          pip install -r requirements.txt
 
-          cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
+          cml-tensorboard-dev --logdir logs --md >> report.md
           cml-send-comment report.md
           python train.py
 ```
@@ -314,7 +302,7 @@ cml:
     - pip install -r requirements.txt
 
     # Start tensorboard and train
-    - cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
+    - cml-tensorboard-dev --logdir logs --md >> report.md
     - cml-send-comment report.md
     - python train.py
 ```
