@@ -349,6 +349,15 @@ export default {
   },
   styles: {
     ...preset.styles,
+    LandingVideo: {
+      height: "0",
+      width: "auto",
+      paddingBottom: "66%",
+      borderRadius: "8px",
+      backgroundColor: "black",
+      overflow: "hidden",
+      my: 3,
+    },
     Highlight: {
       textDecoration: "inherit",
       transition: "0.2s all",
@@ -378,11 +387,10 @@ export default {
         backgroundColor: "background",
         color: "text",
         width: "auto",
-        height: "auto",
+        height: "44px",
         fontFamily: "body",
         fontSize: ["14px", null, "18px"],
         top: "-54px",
-        height: "44px",
         px: "1em",
         lineHeight: "44px",
         borderRadius: "4px",

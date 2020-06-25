@@ -12,6 +12,8 @@ import gitlabBaseCase from "media/gitlab/base-case-report.png"
 import gitlabDVCReport from "media/gitlab/dvc-report.png"
 import gitlabTensorboardReport from "media/gitlab/tensorboard-report.png"
 
+import LandingVideo from "components/molecules/Video/LandingVideo"
+
 <FullWidthBox sx={{
   backgroundColor: "text",
   color: "background",
@@ -40,8 +42,8 @@ import gitlabTensorboardReport from "media/gitlab/tensorboard-report.png"
     <Box sx={{flex: "1"}}>
       <Switch sx={{ mt: 4, mx: "auto", maxWidth: ["100%", null, "160px"] }} />
       <Switchable
-        gitlab={<Video src={gitlabVideo} mode="gitlab" />}
-        github={<Video src={githubVideo} mode="github" />}
+        gitlab={<LandingVideo src={gitlabVideo} mode="gitlab" />}
+        github={<LandingVideo src={githubVideo} mode="github" />}
       />
     </Box>
   </Collapser>
