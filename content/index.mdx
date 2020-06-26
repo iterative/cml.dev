@@ -110,7 +110,7 @@ The simplest case of using CML, and a clear way for any user to get started, is 
         github={(
 <Collapser>
 
-```yml filename="cml.yaml" repo="https://github.com/iterative/cml_base_case"
+```yml filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml_base_case"
 name: train-my-model
 
 on: [push]
@@ -134,7 +134,8 @@ jobs:
 
           <Tooltip type="reports">
           cat metrics.txt >> report.md
-          cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+          cml-publish confusion_matrix.png --md \
+            >> report.md
           cml-send-comment report.md
           </Tooltip>
 ```
@@ -162,7 +163,8 @@ cml:
 
     <Tooltip type="reports">
     - cat metrics.txt >> report.md
-    - cml-publish confusion_matrix.png --md >> report.md
+    - cml-publish confusion_matrix.png --md \
+      >> report.md
     - cml-send-comment report.md
     </Tooltip>
 ```
@@ -181,7 +183,7 @@ cml:
         github={(
 <Collapser>
 
-```yml filename="cml.yaml" repo="https://github.com/iterative/cml_dvc_case"
+```yml filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml_dvc_case"
 name: train-my-model
 
 on: [push]
@@ -197,21 +199,26 @@ jobs:
       - name: cml_run
         env:
           repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
-          AWS_ACCESS_KEY_ID: { "${{ secrets.AWS_ACCESS_KEY_ID }}" }
-          AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" }
+          AWS_ACCESS_KEY_ID: { "${{ secrets.KEY_ID }}" }
+          AWS_SECRET_ACCESS_KEY: { "${{ secrets.KEY }}" }
         run: |
           pip install -r requirements.txt
 
           dvc pull data
           dvc repro
 
-          # Use DVC metrics diff to compare metrics to master
+          # Compare metrics to master
           git fetch --prune 
-          dvc metrics diff --show-md master >> report.md
+          dvc metrics diff --show-md master \
+            >> report.md
 
           # Add figure to report
-          dvc plots diff --target loss.csv --show-vega master > vega.json
-          vl2png vega.json -s 1.5 | cml-publish --md >> report.md
+          dvc plots diff \
+            --target loss.csv \
+            --show-vega master \
+            > vega.json
+          vl2png vega.json | cml-publish --md \
+            >> report.md
           cml-send-comment report.md
 ```
 
@@ -236,11 +243,18 @@ cml:
     - dvc pull data
     - dvc repro
 
+    # Compare metrics to master
     - git fetch --prune
-    - dvc metrics diff --show-md master >> report.md
+    - dvc metrics diff --show-md master \
+      >> report.md
 
-    - dvc plots diff --target loss.csv --show-vega master > vega.json
-    - vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
+    # Add figure to report
+    - dvc plots diff \
+      --target loss.csv \
+      --show-vega master \
+      > vega.json
+    - vl2png vega.json | cml-publish --md \
+      >> report.md
     - cml-send-comment report.md
 ```
 
@@ -258,7 +272,7 @@ cml:
         github={(
 <Collapser>
 
-```yml filename="cml.yaml" repo="https://github.com/iterative/cml_tensorboard_case"
+```yml filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml_tensorboard_case"
 name: train-my-model
 
 on: [push]
@@ -274,11 +288,13 @@ jobs:
       - name: cml_run
         env:
           repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
-          TB_CREDENTIALS: { "${{ secrets.TB_CREDENTIALS }}" }
+          TB_CREDENTIALS: { "${{ secrets.TB_CRED }}" }
         run: |
           pip install -r requirements.txt
 
-          cml-tensorboard-dev --logdir logs --md >> report.md
+          cml-tensorboard-dev \
+            --logdir logs--md \
+            >> report.md
           cml-send-comment report.md
           python train.py
 ```
@@ -302,7 +318,9 @@ cml:
     - pip install -r requirements.txt
 
     # Start tensorboard and train
-    - cml-tensorboard-dev --logdir logs --md >> report.md
+    - cml-tensorboard-dev \
+      --logdir logs --md \
+      >> report.md
     - cml-send-comment report.md
     - python train.py
 ```
