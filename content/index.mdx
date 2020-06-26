@@ -6,11 +6,13 @@ import githubVideo from "media/github/landing-video.webm"
 import githubBaseCase from "media/github/base-case-report.png"
 import githubDVCReport from "media/github/dvc-report.png"
 import githubTensorboardReport from "media/github/tensorboard-report.png"
+import githubCloudReport from "media/github/cloud-report.png"
 
 import gitlabVideo from "media/gitlab/landing-video.webm"
 import gitlabBaseCase from "media/gitlab/base-case-report.png"
 import gitlabDVCReport from "media/gitlab/dvc-report.png"
 import gitlabTensorboardReport from "media/gitlab/tensorboard-report.png"
+import gitlabCloudReport from "media/gitlab/cloud-report.png"
 
 import LandingVideo from "components/molecules/Video/LandingVideo"
 
@@ -107,6 +109,34 @@ The simplest case of using CML, and a clear way for any user to get started, is 
     filename: "cml.yaml",
     content: (
       <Switchable
+        gitlab={(
+<Collapser>
+
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-base-case"
+stages:
+  - cml_run
+
+cml:
+  stage: cml_run
+  image: dvcorg/cml-py3:latest
+
+  script:
+    <Tooltip type="dependencies">
+    - pip3 install -r requirements.txt
+    </Tooltip>
+    - python train.py
+
+    <Tooltip type="reports">
+    - cat metrics.txt >> report.md
+    - cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+    - cml-send-comment report.md
+    </Tooltip>
+```
+
+<ImageExampleBox title="CML Report" image={gitlabBaseCase} />
+
+</Collapser>
+        )}
         github={(
 <Collapser>
 
@@ -143,10 +173,17 @@ jobs:
 
 </Collapser>
         )}
+      />
+    )
+  },
+  {
+    name: "DVC",
+    content: (
+      <Switchable
         gitlab={(
 <Collapser>
 
-```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-base-case"
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-dvc-case"
 stages:
   - cml_run
 
@@ -155,29 +192,26 @@ cml:
   image: dvcorg/cml-py3:latest
 
   script:
-    <Tooltip type="dependencies">
-    - pip3 install -r requirements.txt
-    </Tooltip>
-    - python train.py
+    - apt-get --purge remove -y dvc
+    - pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
 
-    <Tooltip type="reports">
-    - cat metrics.txt >> report.md
-    - cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+    - pip install -r requirements.txt
+
+    - dvc pull data
+    - dvc repro
+    - git fetch --prune
+    - dvc metrics diff --show-md master >> report.md
+    - echo >> report.md
+
+    - dvc plots diff --target loss.csv --show-vega master > vega.json
+    - vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
     - cml-send-comment report.md
-    </Tooltip>
 ```
 
-<ImageExampleBox title="CML Report" image={gitlabBaseCase} />
+<ImageExampleBox title="CML Report" image={gitlabDVCReport} />
 
 </Collapser>
         )}
-      />
-    )
-  },
-  {
-    name: "DVC",
-    content: (
-      <Switchable
         github={(
 <Collapser>
 
@@ -228,10 +262,17 @@ jobs:
 
 </Collapser>
         )}
+      />
+    )
+  },
+  {
+    name: "Tensorboard",
+    content: (
+      <Switchable
         gitlab={(
 <Collapser>
 
-```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-dvc-case"
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case"
 stages:
   - cml_run
 
@@ -240,33 +281,18 @@ cml:
   image: dvcorg/cml-py3:latest
 
   script:
-    - apt-get --purge remove -y dvc
-    - pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
-
     - pip install -r requirements.txt
 
-    - dvc pull data
-    - dvc repro
-    - git fetch --prune
-    - dvc metrics diff --show-md master >> report.md
-    - echo >> report.md
-
-    - dvc plots diff --target loss.csv --show-vega master > vega.json
-    - vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
+    # Start tensorboard and train
+    - cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
     - cml-send-comment report.md
+    - python train.py
 ```
 
-<ImageExampleBox title="CML Report" image={gitlabDVCReport} />
+<ImageExampleBox title="CML Report" image={gitlabTensorboardReport} />
 
 </Collapser>
         )}
-      />
-    )
-  },
-  {
-    name: "Tensorboard",
-    content: (
-      <Switchable
         github={(
 <Collapser>
 
@@ -299,27 +325,190 @@ jobs:
 
 </Collapser>
         )}
+      />
+    )
+  },
+  {
+    name: "Cloud Computing",
+    content: (
+      <Switchable
         gitlab={(
 <Collapser>
 
-```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case"
-stages:
-  - cml_run
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-cloud-case"
+# TBD: This placeholder is just a copy of the GitHub one.
 
-cml:
-  stage: cml_run
-  image: dvcorg/cml-py3:latest
+name: style-transfer
 
-  script:
-    - pip install -r requirements.txt
+on: [push]
 
-    # Start tensorboard and train
-    - cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
-    - cml-send-comment report.md
-    - python train.py
+jobs:
+  deploy-cloud-runner:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-gpu-cloud-runner
+
+    steps:
+      - name: deploy
+        env:
+          repo_token: ${'{{ secrets.REPO_TOKEN }}'}
+          AWS_ACCESS_KEY_ID: ${'{{ secrets.AWS_ACCESS_KEY_ID }}'}
+          AWS_SECRET_ACCESS_KEY: ${'{{ secrets.AWS_SECRET_ACCESS_KEY }}'}
+        run: |
+          echo "Deploying..."
+          RUNNER_LABELS="cml,aws"
+          RUNNER_REPO="https://gitlab.com/iterative/cml_cloud_case"
+          MACHINE="cml$(date +%s)"
+          docker-machine create \
+            --driver amazonec2 \
+            --amazonec2-instance-type g3s.xlarge \
+            --amazonec2-vpc-id vpc-76f1f01e \
+            --amazonec2-region us-east-2 \
+            --amazonec2-zone a \
+            --amazonec2-ssh-user ubuntu \
+            --amazonec2-ami ami-07b11e59bc74961b5 \
+            --amazonec2-root-size 64 \
+            $MACHINE
+          eval "$(docker-machine env --shell sh $MACHINE)"
+          (
+          docker-machine ssh $MACHINE "sudo mkdir -p /docker_machine && sudo chmod 777 /docker_machine" && \
+          docker-machine scp -r -q ~/.docker/machine/ $MACHINE:/docker_machine && \
+          docker run --name runner --gpus all -d \
+            -v /docker_machine/machine:/root/.docker/machine \
+            -e DOCKER_MACHINE=$MACHINE \
+            -e repo_token=$repo_token \
+            -e RUNNER_LABELS=$RUNNER_LABELS \
+            -e RUNNER_REPO=$RUNNER_REPO \
+            -e RUNNER_IDLE_TIMEOUT=120 \
+            dvcorg/cml-gpu-py3-cloud-runner:latest && \
+          sleep 20 && echo "Deployed $MACHINE"
+          ) || (docker-machine rm -y -f $MACHINE && exit 1)
+  train:
+    needs: deploy-cloud-runner
+    runs-on: [self-hosted,cml]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: cml_run
+        env:
+          repo_token: ${'{{ secrets.REPO_TOKEN}}'}
+        run: |
+          apt-get update -y
+          apt-get install python3-dev -y
+          apt install imagemagick -y
+          pip install -r requirements.txt
+
+          # DVC stuff
+          git fetch --prune
+          dvc repro
+
+          echo "# Style transfer" >> report.md
+          git show origin/master:final_owl.png > master_owl.png
+          convert +append final_owl.png master_owl.png out.png
+          convert out.png -resize 75%  out_shrink.png
+          echo "### Workspace vs. Master" >> report.md
+          cml-publish out_shrink.png --md --title 'compare' >> report.md
+
+          echo "## Training metrics" >> report.md
+          dvc params diff master --show-md >> report.md
+
+          echo >> report.md
+          echo "## GPU info" >> report.md
+          cat gpu_info.txt >> report.md
+
+          cml-send-comment report.md
 ```
 
-<ImageExampleBox title="CML Report" image={gitlabTensorboardReport} />
+<ImageExampleBox title="CML Report" image={gitlabCloudReport} />
+
+</Collapser>
+        )}
+        github={(
+<Collapser>
+
+```yml filename="cml.yaml" repo="https://github.com/iterative/cml_cloud_case"
+name: style-transfer
+
+on: [push]
+
+jobs:
+  deploy-cloud-runner:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-gpu-cloud-runner
+
+    steps:
+      - name: deploy
+        env:
+          repo_token: ${'{{ secrets.REPO_TOKEN }}'}
+          AWS_ACCESS_KEY_ID: ${'{{ secrets.AWS_ACCESS_KEY_ID }}'}
+          AWS_SECRET_ACCESS_KEY: ${'{{ secrets.AWS_SECRET_ACCESS_KEY }}'}
+        run: |
+          echo "Deploying..."
+          RUNNER_LABELS="cml,aws"
+          RUNNER_REPO="https://github.com/iterative/cml_cloud_case"
+          MACHINE="cml$(date +%s)"
+          docker-machine create \
+            --driver amazonec2 \
+            --amazonec2-instance-type g3s.xlarge \
+            --amazonec2-vpc-id vpc-76f1f01e \
+            --amazonec2-region us-east-2 \
+            --amazonec2-zone a \
+            --amazonec2-ssh-user ubuntu \
+            --amazonec2-ami ami-07b11e59bc74961b5 \
+            --amazonec2-root-size 64 \
+            $MACHINE
+          eval "$(docker-machine env --shell sh $MACHINE)"
+          (
+          docker-machine ssh $MACHINE "sudo mkdir -p /docker_machine && sudo chmod 777 /docker_machine" && \
+          docker-machine scp -r -q ~/.docker/machine/ $MACHINE:/docker_machine && \
+          docker run --name runner --gpus all -d \
+            -v /docker_machine/machine:/root/.docker/machine \
+            -e DOCKER_MACHINE=$MACHINE \
+            -e repo_token=$repo_token \
+            -e RUNNER_LABELS=$RUNNER_LABELS \
+            -e RUNNER_REPO=$RUNNER_REPO \
+            -e RUNNER_IDLE_TIMEOUT=120 \
+            dvcorg/cml-gpu-py3-cloud-runner:latest && \
+          sleep 20 && echo "Deployed $MACHINE"
+          ) || (docker-machine rm -y -f $MACHINE && exit 1)
+  train:
+    needs: deploy-cloud-runner
+    runs-on: [self-hosted,cml]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: cml_run
+        env:
+          repo_token: ${'{{ secrets.REPO_TOKEN}}'}
+        run: |
+          apt-get update -y
+          apt-get install python3-dev -y
+          apt install imagemagick -y
+          pip install -r requirements.txt
+
+          # DVC stuff
+          git fetch --prune
+          dvc repro
+
+          echo "# Style transfer" >> report.md
+          git show origin/master:final_owl.png > master_owl.png
+          convert +append final_owl.png master_owl.png out.png
+          convert out.png -resize 75%  out_shrink.png
+          echo "### Workspace vs. Master" >> report.md
+          cml-publish out_shrink.png --md --title 'compare' >> report.md
+
+          echo "## Training metrics" >> report.md
+          dvc params diff master --show-md >> report.md
+
+          echo >> report.md
+          echo "## GPU info" >> report.md
+          cat gpu_info.txt >> report.md
+
+          cml-send-comment report.md
+```
+
+<ImageExampleBox title="CML Report" image={githubCloudReport} />
 
 </Collapser>
         )}
