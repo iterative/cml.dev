@@ -315,7 +315,7 @@ export default {
         },
       },
       Label: {
-        outline: "none",
+        variant: "styles.NoClickOutline",
       },
       ">span": {
         variant: "switches.Base.Label",
@@ -498,7 +498,7 @@ export default {
       },
 
       Tab: {
-        outline: "none",
+        variant: "styles.NoClickOutline",
         flex: "1 0",
         marginRight: [0, null, "2px"],
         height: ["48px", null, null, "70px"],
@@ -541,6 +541,13 @@ export default {
         },
       },
     },
+
+    NoClickOutline: {
+      "&:active": {
+        outline: "none",
+      },
+    },
+
     root: {
       ...preset.styles.root,
       color: alpha("text", 0.5),
