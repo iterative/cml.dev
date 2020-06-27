@@ -420,6 +420,7 @@ export default {
       fontSize: ["12px", null, "14px"],
       overflow: "auto",
       pre: {
+        minWidth: "100%",
         whiteSpace: "pre-wrap",
         fontFamily: "monospace",
         display: "inline-block",
