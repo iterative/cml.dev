@@ -315,7 +315,7 @@ export default {
         },
       },
       Label: {
-        outline: "none",
+        variant: "styles.NoClickOutline",
       },
       ">span": {
         variant: "switches.Base.Label",
@@ -498,13 +498,12 @@ export default {
       },
 
       Tab: {
-        outline: "none",
+        variant: "styles.NoClickOutline",
         flex: "1 0",
         marginRight: [0, null, "2px"],
         height: ["48px", null, null, "70px"],
-        maxWidth: [null, null, "315px"],
-        px: 4,
-        py: [0, null, null, "11px"],
+        lineHeight: ["48px", null, null, "70px"],
+        px: [4, 2],
         color: "white",
         backgroundColor: "darkPurple.0",
         whiteSpace: "nowrap",
@@ -519,7 +518,6 @@ export default {
         zIndex: "5",
         position: "relative",
         fontSize: "18px",
-        lineHeight: "48px",
         display: "block",
 
         order: "0",
@@ -541,6 +539,13 @@ export default {
         },
       },
     },
+
+    NoClickOutline: {
+      "&:active": {
+        outline: "none",
+      },
+    },
+
     root: {
       ...preset.styles.root,
       color: alpha("text", 0.5),
