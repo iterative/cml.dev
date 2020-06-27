@@ -91,7 +91,12 @@ export const Tab = ({
       checked={checked}
       id={id}
     />
-    <label htmlFor={id} tabIndex={0} onKeyPress={clickOnKeyPress}>
+    <label
+      htmlFor={id}
+      tabIndex={0}
+      onKeyPress={clickOnKeyPress}
+      onMouseDown={e => e.preventDefault()}
+    >
       {name}
     </label>
     <section>{children}</section>

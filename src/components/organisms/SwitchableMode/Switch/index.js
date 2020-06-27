@@ -42,6 +42,7 @@ const ModeSwitch = ({
     <Box
       variant={variant}
       className={className}
+      onMouseDown={e => e.preventDefault}
       onKeyPress={clickOnKeyPress}
       sx={msx({
         ...sx,
