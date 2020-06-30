@@ -9,6 +9,7 @@ const Video = ({
   controls = false,
   playsinline = true,
   autoPlay = !controls,
+  muted = autoPlay,
   variant = "styles.Video",
   ...rest
 }) => {
@@ -47,6 +48,7 @@ const Video = ({
         autoPlay={autoPlay}
         playsinline={playsinline}
         controls={controls}
+        muted={muted}
         src={src}
       />
     </Box>
