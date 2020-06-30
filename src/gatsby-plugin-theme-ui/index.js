@@ -356,7 +356,7 @@ export default {
     LandingVideo: {
       height: "0",
       width: "auto",
-      paddingBottom: "66%",
+      paddingBottom: "56.25%",
       borderRadius: "8px",
       backgroundColor: "black",
       overflow: "hidden",
