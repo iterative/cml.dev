@@ -71,7 +71,7 @@ const tooltipTypes = {
   dependencies: {
     color: "#F6936A",
     href: "#dependencies",
-    title: "Install requirements",
+    title: "Run ML workflow",
   },
   reports: {
     color: "#BB8DDA",
@@ -86,7 +86,7 @@ const tooltipTypes = {
   tensorboard: {
     color: "#B6E8ED",
     href: "#tensorboard",
-    title: "Set Tensorboard credentials",
+    title: "Create tensorboard",
   },
 }
 
