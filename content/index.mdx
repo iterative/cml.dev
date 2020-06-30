@@ -119,16 +119,15 @@ stages:
 cml:
   stage: cml_run
   image: dvcorg/cml-py3:latest
-
   script:
     <Tooltip type="dependencies">
     - pip3 install -r requirements.txt
-    </Tooltip>
     - python train.py
+    </Tooltip>
 
     <Tooltip type="reports">
     - cat metrics.txt >> report.md
-    - cml-publish confusion_matrix.png --md --title 'confusion-matrix' >> report.md
+    - cml-publish confusion_matrix.png --md >> report.md
     - cml-send-comment report.md
     </Tooltip>
 ```
@@ -149,23 +148,20 @@ jobs:
   run:
     runs-on: [ubuntu-latest]
     container: docker://dvcorg/cml-py3:latest
-
     steps:
       - uses: actions/checkout@v2
-
       - name: cml_run
         env:
           repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
         run: |
           <Tooltip type="dependencies">
           pip3 install -r requirements.txt
-          </Tooltip>
           python train.py
+          </Tooltip>
 
           <Tooltip type="reports">
           cat metrics.txt >> report.md
-          cml-publish confusion_matrix.png --md \
-            >> report.md
+          cml-publish confusion_matrix.png --md >> report.md
           cml-send-comment report.md
           </Tooltip>
 ```
@@ -191,22 +187,27 @@ stages:
 cml:
   stage: cml_run
   image: dvcorg/cml-py3:latest
-
   script:
-    - apt-get --purge remove -y dvc
-    - pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
-
-    - pip install -r requirements.txt
-
+    <Tooltip type="dvc">
     - dvc pull data
+    </Tooltip>
+
+    <Tooltip type="dependencies">
+    - pip install -r requirements.txt
     - dvc repro
+    </Tooltip>
+
+    # Compare metrics to master
     - git fetch --prune
     - dvc metrics diff --show-md master >> report.md
-    - echo >> report.md
 
-    - dvc plots diff --target loss.csv --show-vega master > vega.json
-    - vl2png vega.json -s 1.5 | cml-publish --md --title "loss plot" >> report.md
+    # Visualize loss function diff
+    - dvc plots diff 
+      --target loss.csv --show-vega master > vega.json
+    <Tooltip type="reports">
+    - vl2png vega.json | cml-publish --md >> report.md
     - cml-send-comment report.md
+    </Tooltip>
 ```
 
 <ImageExampleBox title="CML Report" image={gitlabDVCReport} />
@@ -225,34 +226,36 @@ jobs:
   run:
     runs-on: [ubuntu-latest]
     container: docker://dvcorg/cml-py3:latest
-
     steps:
       - uses: actions/checkout@v2
-
       - name: cml_run
         env:
           repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
+          <Tooltip type="dvc">
           AWS_ACCESS_KEY_ID: { "${{ secrets.KEY_ID }}" }
           AWS_SECRET_ACCESS_KEY: { "${{ secrets.KEY }}" }
+          </Tooltip>
         run: |
-          pip install -r requirements.txt
-
+          <Tooltip type="dvc">
           dvc pull data
+          </Tooltip>
+          
+          <Tooltip type="dependencies">
+          pip install -r requirements.txt
           dvc repro
+          </Tooltip>
 
           # Compare metrics to master
           git fetch --prune 
-          dvc metrics diff --show-md master \
-            >> report.md
+          dvc metrics diff --show-md master >> report.md
 
-          # Add figure to report
+          # Visualize loss function diff
           dvc plots diff \
-            --target loss.csv \
-            --show-vega master \
-            > vega.json
-          vl2png vega.json | cml-publish --md \
-            >> report.md
+            --target loss.csv --show-vega master > vega.json
+          <Tooltip type="reports">
+          vl2png vega.json | cml-publish --md >> report.md
           cml-send-comment report.md
+          </Tooltip>
 ```
 
 <ImageExampleBox title="CML Report" image={githubDVCReport} />
@@ -270,20 +273,28 @@ jobs:
 <Collapser>
 
 ```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case"
-stages:
-  - cml_run
-
+stages: 
+    - cml_run
+    
 cml:
-  stage: cml_run
-  image: dvcorg/cml-py3:latest
+    stage: cml_run
+    image: dvcorg/cml-py3:latest
+    script:
+        - pip install -r requirements.txt
+        <Tooltip type="tensorboard">
+        - cml-tensorboard-dev 
+            --logdir logs 
+            --name "Go to tensorboard"
+            --md >> report.md
+        </Tooltip>
+        <Tooltip type="reports">
+        - cml-send-comment report.md
+        </Tooltip>
 
-  script:
-    - pip install -r requirements.txt
+        <Tooltip type="dependencies">
+        - python train.py
+        </Tooltip>
 
-    # Start tensorboard and train
-    - cml-tensorboard-dev --logdir logs --md --name "Go to tensorboard" >> report.md
-    - cml-send-comment report.md
-    - python train.py
 ```
 
 <ImageExampleBox title="CML Report" image={gitlabTensorboardReport} />
@@ -302,22 +313,30 @@ jobs:
   run:
     runs-on: [ubuntu-latest]
     container: docker://dvcorg/cml-py3:latest
-
     steps:
       - uses: actions/checkout@v2
-
       - name: cml_run
         env:
           repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
+          <Tooltip type="tensorboard">
           TB_CREDENTIALS: { "${{ secrets.TB_CRED }}" }
+          </Tooltip>
         run: |
           pip install -r requirements.txt
 
+          <Tooltip type="tensorboard">
           cml-tensorboard-dev \
-            --logdir logs--md \
-            >> report.md
+            --logdir logs \
+            --name "Go to tensorboard" \
+            --md >> report.md
+          </Tooltip>
+          <Tooltip type="reports">
           cml-send-comment report.md
+          </Tooltip>
+
+          <Tooltip type="dependencies">
           python train.py
+          </Tooltip>
 ```
 
 <ImageExampleBox title="CML Report" image={githubTensorboardReport} />
