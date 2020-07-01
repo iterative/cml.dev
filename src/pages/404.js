@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Layout } from "templates/default"
+import Layout from "templates/default/layout"
 
 const NotFoundPage = () => (
   <Layout>

@@ -71,7 +71,7 @@ const tooltipTypes = {
   dependencies: {
     color: "#F6936A",
     href: "#dependencies",
-    title: "Install requirements",
+    title: "Run ML workflow",
   },
   reports: {
     color: "#BB8DDA",
@@ -86,7 +86,7 @@ const tooltipTypes = {
   tensorboard: {
     color: "#B6E8ED",
     href: "#tensorboard",
-    title: "Set Tensorboard credentials",
+    title: "Create tensorboard",
   },
 }
 
@@ -129,12 +129,12 @@ const FullWidthBox = ({
   originalType,
   children,
   className,
-  sx: { inner, ...sx },
+  sx: { Inner, ...sx },
   ...props
 }) => {
   return (
     <Box variant="styles.FullWidthBox" className={className} sx={sx} {...props}>
-      <Container sx={inner}>{children}</Container>
+      <Container sx={Inner}>{children}</Container>
     </Box>
   )
 }
