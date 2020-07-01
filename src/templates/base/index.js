@@ -1,36 +1,28 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import PropTypes from "prop-types"
-import SEO from "./SEO"
-import ModesProvider from "components/organisms/SwitchableMode/Provider"
+import theme from "gatsby-plugin-theme-ui"
+import { graphql } from "gatsby"
+import { ThemeProvider } from "theme-ui"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import Layout from "./layout"
 
-import "./styles.css"
+const MDXLayout = ({
+  data: {
+    mdx: { body },
+  },
+}) => (
+  <ThemeProvider theme={theme}>
+    <Layout>
+      <MDXRenderer>{body}</MDXRenderer>
+    </Layout>
+  </ThemeProvider>
+)
 
-const Layout = ({ children }) => {
-  const {
-    site: {
-      siteMetadata: { title },
-    },
-  } = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
+export default MDXLayout
+
+export const query = graphql`
+  query MDXBaseTemplatePageQuery($id: String!) {
+    mdx(id: { eq: $id }) {
+      body
     }
-  `)
-
-  return (
-    <ModesProvider>
-      <SEO title={title} />
-      {children}
-    </ModesProvider>
-  )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout
+  }
+`

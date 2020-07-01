@@ -1,25 +1,9 @@
-import { graphql } from "gatsby"
 import React from "react"
-import PropTypes from "prop-types"
-import SubscribeSection from "components/molecules/SubscribeSection"
-import BaseLayout from "templates/base"
+import theme from "gatsby-plugin-theme-ui"
+import { graphql } from "gatsby"
 import { ThemeProvider } from "theme-ui"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import theme from "gatsby-plugin-theme-ui"
-
-import Header from "./Header"
-import Footer from "./Footer"
-
-export const Layout = ({ children }) => {
-  return (
-    <BaseLayout>
-      <Header />
-      <main id="main">{children}</main>
-      <SubscribeSection />
-      <Footer />
-    </BaseLayout>
-  )
-}
+import Layout from "./layout"
 
 const MDXLayout = ({
   data: {
@@ -40,9 +24,5 @@ export const query = graphql`
     }
   }
 `
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
 
 export default MDXLayout

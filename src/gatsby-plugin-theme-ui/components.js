@@ -129,12 +129,12 @@ const FullWidthBox = ({
   originalType,
   children,
   className,
-  sx: { inner, ...sx },
+  sx: { Inner, ...sx },
   ...props
 }) => {
   return (
     <Box variant="styles.FullWidthBox" className={className} sx={sx} {...props}>
-      <Container sx={inner}>{children}</Container>
+      <Container sx={Inner}>{children}</Container>
     </Box>
   )
 }

@@ -52,8 +52,10 @@ export default {
     wide: "0px 20px 30px rgba(74, 63, 99, 0.1)",
   },
   radii: [0, "8px"],
-  sizes: [0, "4px", "8px", "12px", "16px", "24px", "32px", "48px", "64px"],
-
+  sizes: {
+    container: "1280px",
+    ...[0, "4px", "8px", "12px", "16px", "24px", "32px", "48px", "64px"],
+  },
   layout: {
     ...preset.layout,
     container: {
@@ -62,7 +64,7 @@ export default {
       px: 3,
     },
     Header: {
-      variant: "styles.invert",
+      color: "background",
       pt: [3, null, 0],
       Logo: {
         display: "block",
@@ -80,10 +82,12 @@ export default {
       },
       Inner: {
         variant: "layout.container",
+        maxWidth: "1500px",
         display: "flex",
         flexWrap: "nowrap",
         alignItems: "center",
         flexFlow: ["column", null, "row"],
+        height: "100px",
       },
       Nav: {
         px: 0,
@@ -352,7 +356,7 @@ export default {
     LandingVideo: {
       height: "0",
       width: "auto",
-      paddingBottom: "66%",
+      paddingBottom: "56.25%",
       borderRadius: "8px",
       backgroundColor: "black",
       overflow: "hidden",
@@ -554,6 +558,12 @@ export default {
       fontSize: "14px",
       "*": {
         boxSizing: "border-box",
+      },
+      "&, #___gatsby, #gatsby-focus-wrapper": {
+        height: "100%",
+        width: "100%",
+        padding: "0",
+        margin: "0",
       },
     },
   },

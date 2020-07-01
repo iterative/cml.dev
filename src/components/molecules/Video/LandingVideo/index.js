@@ -4,7 +4,7 @@ import Video from "../"
 const LandingVideo = props => (
   <Video
     variant="styles.LandingVideo"
-    controls={false}
+    controls={true}
     autoPlay={true}
     repeat={true}
     {...props}

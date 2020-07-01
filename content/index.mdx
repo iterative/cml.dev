@@ -1,3 +1,10 @@
+---
+template: "base"
+---
+import Header from "components/organisms/SiteHeader"
+import Footer from "components/organisms/SiteFooter"
+import SubscribeSection from "components/molecules/SubscribeSection"
+
 import GitFlowIcon from "media/icons/gitflow.svg"
 import ReportsIcon from "media/icons/reports.svg"
 import BoxIcon from "media/icons/cube.svg"
@@ -15,15 +22,34 @@ import gitlabTensorboardReport from "media/gitlab/tensorboard-report.png"
 import gitlabCloudReport from "media/gitlab/cloud-report.png"
 
 import LandingVideo from "components/molecules/Video/LandingVideo"
+import backgroundImage from "media/landing-background.png"
+
+export default ({ children, ...props }) => {
+  return (
+    <>
+      <main>{children}</main>
+      <SubscribeSection />
+      <Footer />
+    </>
+  )
+}
 
 <FullWidthBox sx={{
   backgroundColor: "text",
+  backgroundImage: [null, null, null, `url("${backgroundImage}")`],
+  backgroundPosition: "center top",
+  backgroundRepeat: "no-repeat",
   color: "background",
   overflow: "hidden",
   textAlign: "center",
+  Inner: {
+    maxWidth: "100%"
+  }
 }}>
+  <Header />
   <Collapser sx={{
-    my: "40px",
+    variant: "layout.container",
+    height: [null, null, null, "618px"],
     justifyContent: "center",
     alignItems: "center"
   }}>
@@ -50,7 +76,7 @@ import LandingVideo from "components/molecules/Video/LandingVideo"
     </Box>
   </Collapser>
 
-  <Collapser sx={{my: 4}}>
+  <Collapser sx={{variant: "layout.container", my: 4}}>
   <HomeFeature heading="GitFlow for data science" icon={GitFlowIcon}>
 
 Use GitLab or GitHub to manage ML experiments, track who trained ML models or
@@ -77,7 +103,7 @@ services: AWS, Azure, GCP. No databases, services or complex setup needed.
 
 <FullWidthBox sx={{
   textAlign: "center",
-  inner: {
+  Inner: {
     my: "80px",
     px: [0, null, null, 3],
   }
@@ -544,7 +570,7 @@ jobs:
   backgroundColor: "gray",
   textAlign: "center",
   py: "5px",
-  inner: {
+  Inner: {
     my: "85px",
   },
 }}>
