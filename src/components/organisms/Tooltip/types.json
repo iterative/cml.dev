@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "color": "#F6936A",
+    "title": "Run ML workflow"
+  },
+  "reports": {
+    "color": "#BB8DDA",
+    "title": "Write CML Report"
+  },
+  "dvc": {
+    "color": "#E3EE9E",
+    "title": "Push & pull data with DVC"
+  },
+  "tensorboard": {
+    "color": "#B6E8ED",
+    "title": "Create tensorboard"
+  }
+}
