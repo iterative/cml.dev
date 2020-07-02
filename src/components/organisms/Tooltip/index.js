@@ -3,23 +3,35 @@ import { Box } from "@theme-ui/components"
 import { alpha, mix } from "@theme-ui/color"
 const types = require("./types.json")
 
-const Tooltip = ({ sx = {}, className, type, children }) => {
+const getIndent = line => {
+  const firstChild = line.props.children[0]
+  return typeof firstChild === "string" && firstChild.match(/^[ \t]+$/)
+    ? firstChild.length
+    : 0
+}
+
+const Tooltip = ({
+  sx = {},
+  className,
+  type,
+  children,
+  indent = Array.isArray(children)
+    ? Math.min(...children.map(getIndent))
+    : getIndent(children),
+}) => {
   const { color, href, title = type } = types[type]
+  const left = indent ? `calc(50% + ${indent * 5}px)` : "50%"
   return (
     <Box
-      as={href ? "a" : "span"}
-      aria-describedby={title}
+      as={href ? "a" : "div"}
+      aria-label={title}
       href={href}
       className={className}
       sx={{
         variant: "styles.Highlight",
         position: "relative",
-        ">span": {
+        "& span": {
           backgroundColor: alpha(color, 0.2),
-        },
-        "&:hover>span": {
-          color: mix("background", color, 0.3),
-          backgroundColor: alpha(color, 0.3),
         },
         ":before": {
           variant: "styles.Tooltip.Bubble",
@@ -28,8 +40,15 @@ const Tooltip = ({ sx = {}, className, type, children }) => {
         ":after": {
           variant: "styles.Tooltip.Arrow",
         },
+        "&:before, &:after": {
+          left,
+        },
         "&:hover:before, &:hover:after": {
           variant: "styles.Tooltip.Active",
+        },
+        "&:hover span": {
+          color: mix("background", color, 0.3),
+          backgroundColor: alpha(color, 0.3),
         },
       }}
     >

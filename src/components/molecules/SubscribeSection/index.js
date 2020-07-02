@@ -38,6 +38,7 @@ function SubscribeSection() {
         <Input
           type="email"
           placeholder="E-mail"
+          aria-label="E-mail"
           variant="forms.ButtonInput.Input"
           name="EMAIL"
         />

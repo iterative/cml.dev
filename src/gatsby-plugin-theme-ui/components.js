@@ -264,9 +264,9 @@ const ExampleBox = ({ title, children }) => {
   )
 }
 
-const ImageExampleBox = ({ title, image }) => (
+const ImageExampleBox = ({ title, image, alt }) => (
   <ExampleBox title={title}>
-    <Image src={image} variant="styles.CenteredBlock" />
+    <Image src={image} variant="styles.CenteredBlock" alt={alt} />
   </ExampleBox>
 )
 

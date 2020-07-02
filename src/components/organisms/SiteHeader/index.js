@@ -24,9 +24,9 @@ function Header() {
     <Box as="header" variant="layout.Header">
       <Container variant="layout.Header.Inner">
         <Link to="/" variant="layout.Header.Logo">
-          <Image src={logo} />
+          <Image src={logo} alt="CML" />
         </Link>
-        <Box as="nav" variant="layout.Header.Nav" id="site-nav">
+        <Box as="nav" variant="layout.Header.Nav" id="header-nav">
           {navItems.map(({ label, href }, i) => {
             const isRelative = href.startsWith("#")
             return (
