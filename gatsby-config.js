@@ -1,10 +1,12 @@
 const path = require(`path`)
+require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
     title: `CML`,
     description: `CML is CI for Machine Learning`,
     author: `Iterative`,
+    siteUrl: process.env.DEPLOY_URL || process.env.URL,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
