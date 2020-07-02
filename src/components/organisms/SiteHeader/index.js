@@ -11,11 +11,11 @@ const navItems = [
   },
   {
     label: "Docs",
-    href: "#docs",
+    href: "https://github.com/iterative/cml#readme",
   },
   {
     label: "GitHub",
-    href: "https://www.github.com",
+    href: "https://github.com/iterative/cml",
   },
 ]
 
@@ -27,16 +27,21 @@ function Header() {
           <Image src={logo} />
         </Link>
         <Box as="nav" variant="layout.Header.Nav" id="site-nav">
-          {navItems.map(({ label, href }, i) => (
-            <NavLink
-              href={href}
-              label={label}
-              key={i}
-              variant="layout.Header.Nav.Link"
-            >
-              {label}
-            </NavLink>
-          ))}
+          {navItems.map(({ label, href }, i) => {
+            const isRelative = href.startsWith("#")
+            return (
+              <NavLink
+                href={href}
+                label={label}
+                key={i}
+                variant="layout.Footer.Nav.Link"
+                target={isRelative ? undefined : "_blank"}
+                rel="noopener noreferrer"
+              >
+                {label}
+              </NavLink>
+            )
+          })}
         </Box>
       </Container>
     </Box>

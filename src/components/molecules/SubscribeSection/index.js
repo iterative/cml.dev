@@ -27,16 +27,33 @@ function SubscribeSection() {
       <Flex
         variant="forms.ButtonInput"
         as="form"
-        action="#"
         sx={{ maxWidth: "460px", mx: "auto" }}
+        action="https://dvc.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&amp;id=fe11690c19"
+        method="post"
+        id="mc-embedded-subscribe-form"
+        name="mc-embedded-subscribe-form"
+        class="validate"
+        target="_blank"
+        novalidate
       >
         <Input
           type="email"
           placeholder="E-mail"
           variant="forms.ButtonInput.Input"
-          name="email"
+          name="EMAIL"
         />
         <Button variant="forms.ButtonInput.Button">Subscribe</Button>
+        <div
+          style={{ position: "absolute", left: "-5000px" }}
+          aria-hidden="true"
+        >
+          <input
+            type="text"
+            name="b_a08bf93caae4063c4e6a351f6_fe11690c19"
+            tabindex="-1"
+            value=""
+          />
+        </div>
       </Flex>
     </Box>
   )

@@ -546,9 +546,7 @@ export default {
     },
 
     NoClickOutline: {
-      "&:active": {
-        outline: "none",
-      },
+      outline: "none",
     },
 
     root: {

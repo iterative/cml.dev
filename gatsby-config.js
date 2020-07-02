@@ -1,4 +1,4 @@
-const path = require("path")
+const path = require(`path`)
 
 module.exports = {
   siteMetadata: {
@@ -14,22 +14,22 @@ module.exports = {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
         google: {
-          families: ["DM Sans", "DM Mono"],
+          families: [`DM Sans`, `DM Mono`],
         },
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: path.resolve("./content"),
-        name: "content",
+        path: path.resolve(`./content`),
+        name: `content`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: path.resolve("./src/images"),
-        name: "images",
+        path: path.resolve(`./src/images`),
+        name: `images`,
       },
     },
     {
@@ -38,7 +38,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        gatsbyRemarkPlugins: [require.resolve("./remarkPlugin.js")],
+        gatsbyRemarkPlugins: [require.resolve(`./remarkPlugin.js`)],
       },
     },
     {
@@ -54,7 +54,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
-    "gatsby-plugin-theme-ui",
-    "gatsby-plugin-netlify",
+    `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-netlify`,
   ],
 }
