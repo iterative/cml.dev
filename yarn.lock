@@ -7855,6 +7855,54 @@ fuse.js@^3.4.6:
   resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-3.6.1.tgz#7de85fdd6e1b3377c23ce010892656385fd9b10c"
   integrity sha512-hT9yh/tiinkmirKrlv4KWOjztdoZo1mx9Qh4KvWqC7isoXwdUY3PNWUxceF4/qO9R6riA2C29jdTOeQOIROjgw==
 
+gatsby-cli@2.12.54:
+  version "2.12.54"
+  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.12.54.tgz#e67af331a5587fb95ede9c40ad97f265bf49e667"
+  integrity sha512-gL3IWjHApXc0FM2Ia5OpXE4io8MXgrMnquIhDxvfWZ5Uysr53eR4uqetIMeMCOQZE66yPtnhX+AhLG6uGqmFfg==
+  dependencies:
+    "@babel/code-frame" "^7.10.3"
+    "@hapi/joi" "^15.1.1"
+    "@types/common-tags" "^1.8.0"
+    better-opn "^1.0.0"
+    bluebird "^3.7.2"
+    chalk "^2.4.2"
+    clipboardy "^2.3.0"
+    common-tags "^1.8.0"
+    configstore "^5.0.1"
+    convert-hrtime "^3.0.0"
+    core-js "^2.6.11"
+    envinfo "^7.5.1"
+    execa "^3.4.0"
+    fs-exists-cached "^1.0.0"
+    fs-extra "^8.1.0"
+    gatsby-core-utils "^1.3.10"
+    gatsby-recipes "^0.1.46"
+    gatsby-telemetry "^1.3.16"
+    hosted-git-info "^3.0.4"
+    ink "^2.7.1"
+    ink-spinner "^3.1.0"
+    is-valid-path "^0.1.1"
+    lodash "^4.17.15"
+    meant "^1.0.1"
+    node-fetch "^2.6.0"
+    object.entries "^1.1.2"
+    opentracing "^0.14.4"
+    pretty-error "^2.1.1"
+    progress "^2.0.3"
+    prompts "^2.3.2"
+    react "^16.8.0"
+    redux "^4.0.5"
+    resolve-cwd "^3.0.0"
+    semver "^6.3.0"
+    signal-exit "^3.0.3"
+    source-map "0.7.3"
+    stack-trace "^0.0.10"
+    strip-ansi "^5.2.0"
+    update-notifier "^3.0.1"
+    uuid "3.4.0"
+    yargs "^15.3.1"
+    yurnalist "^1.1.2"
+
 gatsby-cli@^2.12.56:
   version "2.12.56"
   resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.12.56.tgz#12c4e41afb4c6c3b8dcd6e8557031dc8752e169b"
@@ -7904,7 +7952,7 @@ gatsby-cli@^2.12.56:
     yargs "^15.3.1"
     yurnalist "^1.1.2"
 
-gatsby-core-utils@^1.3.11:
+gatsby-core-utils@^1.3.10, gatsby-core-utils@^1.3.11:
   version "1.3.11"
   resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.3.11.tgz#1eb8eb6b3efc921758d6f7ad3d07b250bae53212"
   integrity sha512-eaplfOveXLl1RCWja7QIke560jUKLprvCXZ446YgQ8vAYB0fXVz3u6AOf7XUmEV9F9PIkNjmfevd1oUPy9qISw==
@@ -8123,7 +8171,7 @@ gatsby-react-router-scroll@^3.0.10:
   dependencies:
     "@babel/runtime" "^7.10.3"
 
-gatsby-recipes@^0.1.47:
+gatsby-recipes@^0.1.46, gatsby-recipes@^0.1.47:
   version "0.1.47"
   resolved "https://registry.yarnpkg.com/gatsby-recipes/-/gatsby-recipes-0.1.47.tgz#d47f84607fdf214f291877c898a06ebb0d3c1d5b"
   integrity sha512-SyT556SUyb+qO7WdUmOCtn4T3C0ceHFJ+RzI+B0JMLVey0NU2xU401TiKUFuX4mzbLQMVMpdQXuDNgW56xQ4kA==
@@ -8230,7 +8278,7 @@ gatsby-source-filesystem@^2.3.17:
     valid-url "^1.0.9"
     xstate "^4.10.0"
 
-gatsby-telemetry@^1.3.17:
+gatsby-telemetry@^1.3.16, gatsby-telemetry@^1.3.17:
   version "1.3.17"
   resolved "https://registry.yarnpkg.com/gatsby-telemetry/-/gatsby-telemetry-1.3.17.tgz#adc1213fa94cc0298adbd0b38fb4efff4d392ba2"
   integrity sha512-MLGcAgdUvHirVcyS/dAVsOlZW1Dk7YP7ALuKeN1X1BcpApssbHX16mkFsnNoicRf1JaEvHUCAReVw/IVbub5sA==
