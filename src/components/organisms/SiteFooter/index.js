@@ -1,13 +1,6 @@
 import React from "react"
 import GatsbyLink from "components/atoms/ThemedGatsbyLink"
-import {
-  Box,
-  Image,
-  NavLink,
-  Container,
-  Link,
-  Text,
-} from "@theme-ui/components"
+import { Box, Image, NavLink, Container, Link } from "@theme-ui/components"
 
 import logo from "images/logo.png"
 
@@ -39,7 +32,7 @@ const SocialLink = ({ url, icon, title }) => (
   <Link
     href={url}
     variant="light"
-    title="title"
+    title={title}
     sx={{
       display: "inline-block",
       textAlign: "center",

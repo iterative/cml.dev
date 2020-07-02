@@ -56,20 +56,23 @@ export const groupApply = (rawChildren, test, cb) => {
 }
 
 const ContainExcept = ({
-  container = Container,
+  container: ContainerComponent = Container,
   fullWidthComponents = ["FullWidthBox"],
   children,
 }) => {
   const processedChildren = groupApply(
     children,
     child => !fullWidthComponents.includes(child.props.mdxType),
-    (group, i) => <Container key={`wrapped-container-${i}`}>{group}</Container>
+    (group, i) => (
+      <ContainerComponent key={`wrapped-container-${i}`}>
+        {group}
+      </ContainerComponent>
+    )
   )
   return <>{processedChildren}</>
 }
 
 const FullWidthBox = ({
-  originalType,
   children,
   className,
   sx: { Inner, ...sx },
@@ -133,7 +136,7 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
   }
 }
 
-const Code = ({ children, lang, filename, repo, sx = {}, ...props }) => {
+const Code = ({ children, lang, filename, repo, sx = {} }) => {
   const renderHeader = lang || filename
   const codeBlockRef = useRef()
   return (

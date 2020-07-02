@@ -44,15 +44,7 @@ const usePersistentMode = (name, fallbackDefault) => {
   }
 }
 
-const ModeSwitchRadios = ({
-  name,
-  idPrefix,
-  modes,
-  defaultMode,
-  currentMode,
-  onChange,
-  children,
-}) => {
+const ModeSwitchRadios = ({ name, idPrefix, modes, currentMode, onChange }) => {
   return (
     <>
       {modes.map((mode, i) => (

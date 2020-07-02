@@ -11,7 +11,6 @@ const getIndent = line => {
 }
 
 const Tooltip = ({
-  sx = {},
   className,
   type,
   children,

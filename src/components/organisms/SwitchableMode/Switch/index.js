@@ -4,14 +4,7 @@ import msx from "../styleHelpers.js"
 import { defaultIdPrefix } from "../common.js"
 import { clickOnKeyPress } from "utils/handlers"
 
-const ModeSwitchLabel = ({
-  idPrefix,
-  mode,
-  variant,
-  sx,
-  className,
-  children,
-}) => (
+const ModeSwitchLabel = ({ idPrefix, mode, variant, className, children }) => (
   <Box
     as="label"
     htmlFor={idPrefix + mode}

@@ -19,6 +19,7 @@ const Collapser = ({ children, sx = {}, className, bp = 2, ...props }) => {
         },
         ...sx,
       }}
+      {...props}
     >
       {children}
     </Flex>
