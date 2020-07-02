@@ -11,7 +11,7 @@ import {
 
 import logo from "images/logo.png"
 
-import SlackIcon from "media/icons/slack.svg"
+import DiscordIcon from "media/icons/discord.svg"
 import TwitterIcon from "media/icons/twitter.svg"
 import GithubIcon from "media/icons/github.svg"
 
@@ -19,15 +19,15 @@ import DVCLogo from "media/icons/dvc-monochrome.svg"
 
 const socialLinkDefinitions = [
   {
-    url: "#",
-    icon: <SlackIcon width="26" height="26" />,
+    url: "https://www.dvc.org/chat",
+    icon: <DiscordIcon width="26" height="26" />,
   },
   {
-    url: "#",
+    url: "https://twitter.com/DVCorg",
     icon: <TwitterIcon width="26" height="26" />,
   },
   {
-    url: "#",
+    url: "https://github.com/iterative/cml",
     icon: <GithubIcon width="26" height="26" />,
   },
 ]
@@ -53,12 +53,12 @@ const navItems = [
     href: "#use-cases",
   },
   {
-    label: "Docs",
-    href: "#docs",
+    label: "Blog",
+    href: "https://www.dvc.org/blog",
   },
   {
     label: "GitHub",
-    href: "https://www.github.com",
+    href: "https://www.github.com/iterative/cml",
   },
 ]
 
@@ -70,16 +70,21 @@ function Footer() {
           <Image src={logo} />
         </GatsbyLink>
         <Box as="nav" variant="layout.Footer.Nav" id="site-nav">
-          {navItems.map(({ label, href }, i) => (
-            <NavLink
-              href={href}
-              label={label}
-              key={i}
-              variant="layout.Footer.Nav.Link"
-            >
-              {label}
-            </NavLink>
-          ))}
+          {navItems.map(({ label, href }, i) => {
+            const isRelative = href.startsWith("#")
+            return (
+              <NavLink
+                href={href}
+                label={label}
+                key={i}
+                variant="layout.Footer.Nav.Link"
+                target={isRelative ? undefined : "_blank"}
+                rel="noopener noreferrer"
+              >
+                {label}
+              </NavLink>
+            )
+          })}
         </Box>
         <Box variant="layout.Footer.SocialIcons">
           {socialLinkDefinitions.map(({ url, icon }, i) => (
