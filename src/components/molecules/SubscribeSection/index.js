@@ -32,7 +32,6 @@ function SubscribeSection() {
         method="post"
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
-        class="validate"
         target="_blank"
         novalidate
       >
