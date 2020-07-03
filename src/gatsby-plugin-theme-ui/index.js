@@ -366,8 +366,10 @@ export default {
       textDecoration: "inherit",
       transition: "0.2s all",
       display: "block",
+      width: "auto",
+      mr: "auto",
       color: "inherit",
-      "&>span": {
+      "&>div>span": {
         transition: "0.2s all",
         borderRadius: "2px",
         py: "0.03em",
@@ -383,7 +385,6 @@ export default {
         visibility: "hidden",
         transform: "translateX(-50%)",
         position: "absolute",
-        left: "50%",
         opacity: "0",
       },
       Bubble: {
@@ -423,13 +424,26 @@ export default {
     CodeBlock: {
       fontSize: ["12px", null, "14px"],
       overflow: "auto",
+      px: "10px",
+      py: "10px",
       pre: {
+        borderLeft: "1px solid",
+        borderBottom: "1px solid",
+        borderColor: alpha("background", 0.2),
         minWidth: "100%",
-        whiteSpace: "pre-wrap",
+        whiteSpace: "pre",
         fontFamily: "monospace",
         display: "inline-block",
-        pt: "20px",
-        px: "20px",
+        pt: "10px",
+        pl: "10px",
+        mb: "10px",
+        pb: "5px",
+        borderBottomLeftRadius: 1,
+        minHeight: "100%",
+        "&>div": {
+          float: "left",
+          clear: "both",
+        },
       },
     },
     Video: {

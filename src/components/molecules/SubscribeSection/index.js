@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Input, Button, Flex, Container } from "@theme-ui/components"
+import { Box, Input, Button, Flex } from "@theme-ui/components"
 
 function SubscribeSection() {
   return (
@@ -22,7 +22,7 @@ function SubscribeSection() {
           },
         }}
       >
-        <span>Subscribe for updates.</span> <span>We won't spam you</span>
+        <span>Subscribe for updates.</span> <span>We won&apos;t spam you</span>
       </Box>
       <Flex
         variant="forms.ButtonInput"
@@ -38,6 +38,7 @@ function SubscribeSection() {
         <Input
           type="email"
           placeholder="E-mail"
+          aria-label="E-mail"
           variant="forms.ButtonInput.Input"
           name="EMAIL"
         />
@@ -49,7 +50,7 @@ function SubscribeSection() {
           <input
             type="text"
             name="b_a08bf93caae4063c4e6a351f6_fe11690c19"
-            tabindex="-1"
+            tabIndex="-1"
             value=""
           />
         </div>

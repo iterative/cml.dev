@@ -1,13 +1,6 @@
 import React from "react"
 import GatsbyLink from "components/atoms/ThemedGatsbyLink"
-import {
-  Box,
-  Image,
-  NavLink,
-  Container,
-  Link,
-  Text,
-} from "@theme-ui/components"
+import { Box, Image, NavLink, Container, Link } from "@theme-ui/components"
 
 import logo from "images/logo.png"
 
@@ -21,21 +14,25 @@ const socialLinkDefinitions = [
   {
     url: "https://www.dvc.org/chat",
     icon: <DiscordIcon width="26" height="26" />,
+    title: "DVC Discord chat",
   },
   {
     url: "https://twitter.com/DVCorg",
     icon: <TwitterIcon width="26" height="26" />,
+    title: "DVC Twitter",
   },
   {
     url: "https://github.com/iterative/cml",
     icon: <GithubIcon width="26" height="26" />,
+    title: "CML GitHub repo",
   },
 ]
 
-const SocialLink = ({ url, icon }) => (
+const SocialLink = ({ url, icon, title }) => (
   <Link
     href={url}
     variant="light"
+    title={title}
     sx={{
       display: "inline-block",
       textAlign: "center",
@@ -67,9 +64,9 @@ function Footer() {
     <Box as="footer" variant="layout.Footer">
       <Container variant="layout.Footer.Inner">
         <GatsbyLink to="/" variant="layout.Footer.Logo">
-          <Image src={logo} />
+          <Image src={logo} alt="CML" />
         </GatsbyLink>
-        <Box as="nav" variant="layout.Footer.Nav" id="site-nav">
+        <Box as="nav" variant="layout.Footer.Nav" id="footer-nav">
           {navItems.map(({ label, href }, i) => {
             const isRelative = href.startsWith("#")
             return (

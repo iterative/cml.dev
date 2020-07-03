@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useRef } from "react"
-import { ModeContext } from "components/organisms/SwitchableMode/Provider"
+import React, { useRef } from "react"
 import SolutionLineArrow from "./solution-line-arrow.svg"
 import Collapser from "components/atoms/Collapser"
 import Video from "components/molecules/Video"
+import Tooltip from "components/organisms/Tooltip"
+
 import {
   Button,
   Flex,
@@ -13,7 +14,7 @@ import {
   Image,
   Text,
 } from "@theme-ui/components"
-import { alpha, mix } from "@theme-ui/color"
+import { alpha } from "@theme-ui/color"
 import { JSONTabs } from "components/organisms/Tabs"
 
 import Switchable from "components/organisms/SwitchableMode/Switchable"
@@ -55,78 +56,23 @@ export const groupApply = (rawChildren, test, cb) => {
 }
 
 const ContainExcept = ({
-  container = Container,
+  container: ContainerComponent = Container,
   fullWidthComponents = ["FullWidthBox"],
   children,
 }) => {
   const processedChildren = groupApply(
     children,
     child => !fullWidthComponents.includes(child.props.mdxType),
-    (group, i) => <Container key={`wrapped-container-${i}`}>{group}</Container>
+    (group, i) => (
+      <ContainerComponent key={`wrapped-container-${i}`}>
+        {group}
+      </ContainerComponent>
+    )
   )
   return <>{processedChildren}</>
 }
 
-const tooltipTypes = {
-  dependencies: {
-    color: "#F6936A",
-    href: "#dependencies",
-    title: "Run ML workflow",
-  },
-  reports: {
-    color: "#BB8DDA",
-    href: "#reports",
-    title: "Write CML Report",
-  },
-  dvc: {
-    color: "#E3EE9E",
-    href: "#dvc",
-    title: "Push & pull data with DVC",
-  },
-  tensorboard: {
-    color: "#B6E8ED",
-    href: "#tensorboard",
-    title: "Create tensorboard",
-  },
-}
-
-const Tooltip = ({ sx = {}, className, type, children }) => {
-  const { color, href, title = type } = tooltipTypes[type]
-  return (
-    <Link
-      as={"a"}
-      aria-describedby={title}
-      href={href}
-      className={className}
-      sx={{
-        variant: "styles.Highlight",
-        position: "relative",
-        ">span": {
-          backgroundColor: alpha(color, 0.2),
-        },
-        "&:hover>span": {
-          color: mix("background", color, 0.3),
-          backgroundColor: alpha(color, 0.3),
-        },
-        ":before": {
-          variant: "styles.Tooltip.Bubble",
-          content: `"${title}"`,
-        },
-        ":after": {
-          variant: "styles.Tooltip.Arrow",
-        },
-        "&:hover:before, &:hover:after": {
-          variant: "styles.Tooltip.Active",
-        },
-      }}
-    >
-      {children}
-    </Link>
-  )
-}
-
 const FullWidthBox = ({
-  originalType,
   children,
   className,
   sx: { Inner, ...sx },
@@ -138,18 +84,6 @@ const FullWidthBox = ({
     </Box>
   )
 }
-
-const Circle = ({ color }) => (
-  <Box
-    sx={{
-      bg: color,
-      width: "50px",
-      height: "50px",
-      mx: "auto",
-      borderRadius: "50%",
-    }}
-  />
-)
 
 const HomeFeature = ({ children, heading, icon: Icon }) => {
   return (
@@ -181,19 +115,7 @@ const HomeFeature = ({ children, heading, icon: Icon }) => {
   )
 }
 
-const getRepoIcon = host => {
-  switch (host) {
-    case "github.com":
-      return GitHubIcon
-    case "gitlab.com":
-      return GitLabIcon
-    default:
-      return null
-  }
-}
-
 const RepoButton = ({ url, host = new URL(url).host }) => {
-  const Icon = getRepoIcon(host)
   switch (host) {
     case "github.com":
       return (
@@ -214,9 +136,8 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
   }
 }
 
-const Code = ({ children, lang, filename, repo, sx = {}, ...props }) => {
+const Code = ({ children, lang, filename, repo, sx = {} }) => {
   const renderHeader = lang || filename
-  const parsedURL = repo && new URL(repo)
   const codeBlockRef = useRef()
   return (
     <Box
@@ -346,9 +267,9 @@ const ExampleBox = ({ title, children }) => {
   )
 }
 
-const ImageExampleBox = ({ title, image }) => (
+const ImageExampleBox = ({ title, image, alt }) => (
   <ExampleBox title={title}>
-    <Image src={image} variant="styles.CenteredBlock" />
+    <Image src={image} variant="styles.CenteredBlock" alt={alt} />
   </ExampleBox>
 )
 

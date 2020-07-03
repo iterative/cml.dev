@@ -63,7 +63,7 @@ export const Tabs = ({ children, sx }) => {
 
 export const JSONTabs = ({ content, name: idPrefix = "tabs", sx }) => {
   // If no child tab is checked, set the first one to be so.
-  const tabs = useRadioTabs(content)
+  const tabs = useRadioTabs(content, idPrefix)
   return (
     <Tabs sx={sx}>
       {tabs.map(({ name, content, checked, id }, i) => (

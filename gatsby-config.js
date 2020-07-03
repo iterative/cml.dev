@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: process.env.DEPLOY_URL || process.env.URL,
   },
   plugins: [
+    `gatsby-plugin-eslint`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

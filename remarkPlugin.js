@@ -14,7 +14,13 @@ module.exports = ({ markdownAST, markdownNode, ...rest }, { tag = "Code" }) => {
           if (/^<[^<>]*[^\/]>$/.test(content)) return whole
           const wrappedWhitespace = whitespace ? `{'${whitespace}'}` : ""
           const wrappedContent = content ? `<span>${content}</span>` : ""
-          return wrappedWhitespace + wrappedContent + escapedReactNewline
+          return (
+            "<div>" +
+            wrappedWhitespace +
+            wrappedContent +
+            escapedReactNewline +
+            "</div>\n"
+          )
         }) + escapedReactNewline
       // Wrap this new content in a component
       const transformedValue = `<${tag}${

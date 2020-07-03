@@ -21,7 +21,7 @@ const invisible = {
   "& video": { display: "none" },
 }
 
-const Switchable = ({ github, gitlab, display = "block", idPrefix }) => (
+const Switchable = ({ github, gitlab, idPrefix }) => (
   <Box>
     <Box
       sx={msx({
