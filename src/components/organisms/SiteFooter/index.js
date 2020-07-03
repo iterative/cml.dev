@@ -84,8 +84,8 @@ function Footer() {
           })}
         </Box>
         <Box variant="layout.Footer.SocialIcons">
-          {socialLinkDefinitions.map(({ url, icon }, i) => (
-            <SocialLink url={url} icon={icon} key={i} />
+          {socialLinkDefinitions.map(({ url, icon, title }, i) => (
+            <SocialLink url={url} icon={icon} title={title} key={i} />
           ))}
         </Box>
         <Link variant="layout.Footer.PoweredBy" href="https://www.dvc.org">
