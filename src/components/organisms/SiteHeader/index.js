@@ -36,7 +36,7 @@ function Header() {
                 as="a"
                 href={href}
                 key={i}
-                variant="layout.Footer.Nav.Link"
+                variant="layout.Header.Nav.Link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -47,7 +47,7 @@ function Header() {
                 as={GatsbyLink}
                 to={href}
                 key={i}
-                variant="layout.Footer.Nav.Link"
+                variant="layout.Header.Nav.Link"
               >
                 {label}
               </NavLink>
