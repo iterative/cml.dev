@@ -7,6 +7,7 @@ const LandingVideo = props => (
     controls={true}
     autoPlay={true}
     repeat={true}
+    playsInline={true}
     {...props}
   />
 )
