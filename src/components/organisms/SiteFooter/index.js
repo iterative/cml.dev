@@ -76,7 +76,9 @@ function Footer() {
                 key={i}
                 variant="layout.Footer.Nav.Link"
                 target={isRelative ? undefined : "_blank"}
-                rel="noopener noreferrer"
+                rel={
+                  href.startsWith("http") ? undefined : "noopener noreferrer"
+                }
               >
                 {label}
               </NavLink>
