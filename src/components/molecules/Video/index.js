@@ -7,7 +7,7 @@ const Video = ({
   src,
   mode,
   controls = false,
-  playsinline = true,
+  playsInline = true,
   autoPlay = !controls,
   muted = autoPlay,
   variant = "styles.Video",
@@ -46,7 +46,7 @@ const Video = ({
         }}
         ref={videoRef}
         autoPlay={autoPlay}
-        playsinline={playsinline}
+        playsInline={playsInline}
         controls={controls}
         muted={muted}
         src={src}
