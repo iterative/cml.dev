@@ -1,6 +1,7 @@
 import React from "react"
 import Link from "components/atoms/ThemedGatsbyLink"
 import { Box, Image, NavLink, Container } from "@theme-ui/components"
+import { Link as GatsbyLink } from "gatsby"
 
 import logo from "images/logo.png"
 
@@ -28,17 +29,25 @@ function Header() {
         </Link>
         <Box as="nav" variant="layout.Header.Nav" id="header-nav">
           {navItems.map(({ label, href }, i) => {
-            const isRelative = href.startsWith("#")
-            return (
+            const isExternal = href.match(/^(\w*:)?\/\//)
+            console.log({ href, isExternal })
+            return isExternal ? (
               <NavLink
+                as="a"
                 href={href}
-                label={label}
                 key={i}
                 variant="layout.Footer.Nav.Link"
-                target={isRelative ? undefined : "_blank"}
-                rel={
-                  href.startsWith("http") ? "noopener noreferrer" : undefined
-                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {label}
+              </NavLink>
+            ) : (
+              <NavLink
+                as={GatsbyLink}
+                to={href}
+                key={i}
+                variant="layout.Footer.Nav.Link"
               >
                 {label}
               </NavLink>
