@@ -436,6 +436,8 @@ export default {
         display: "inline-block",
         pt: "10px",
         pl: "10px",
+        mb: "5px",
+        pb: "5px",
         borderBottomLeftRadius: 1,
         minHeight: "100%",
         "&>div": {
