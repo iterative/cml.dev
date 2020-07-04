@@ -64,6 +64,7 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
   ],
 }

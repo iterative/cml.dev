@@ -32,6 +32,7 @@
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sass": "^2.3.10",
     "gatsby-plugin-sharp": "^2.6.17",
+    "gatsby-plugin-sitemap": "^2.4.10",
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-images": "^3.3.17",
