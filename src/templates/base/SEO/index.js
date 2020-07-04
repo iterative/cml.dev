@@ -9,17 +9,12 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import socialImage from "media/social-image.png"
+import relativeSocialImage from "media/social-image.png"
 
 function SEO({ description, lang, meta, title: pageTitle }) {
   const {
     site: {
-      siteMetadata: {
-        title: siteTitle,
-        description: siteDescription,
-        author,
-        siteUrl,
-      },
+      siteMetadata: { title: siteTitle, description: siteDescription, siteUrl },
     },
   } = useStaticQuery(
     graphql`
@@ -28,7 +23,6 @@ function SEO({ description, lang, meta, title: pageTitle }) {
           siteMetadata {
             title
             description
-            author
             siteUrl
           }
         }
@@ -39,6 +33,7 @@ function SEO({ description, lang, meta, title: pageTitle }) {
   const twitterHandle = "@DVCorg"
   const metaDescription = description || siteDescription
   const title = pageTitle || siteTitle
+  const socialImage = siteUrl + relativeSocialImage
 
   return (
     <Helmet
