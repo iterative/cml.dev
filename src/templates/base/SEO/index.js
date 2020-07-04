@@ -89,6 +89,14 @@ function SEO({ description, lang, meta, title: pageTitle }) {
           content: socialImage,
         },
         {
+          property: "og:image:width",
+          content: 800,
+        },
+        {
+          property: "og:image:height",
+          content: 600,
+        },
+        {
           property: "og:site_name",
           content: siteTitle,
         },
