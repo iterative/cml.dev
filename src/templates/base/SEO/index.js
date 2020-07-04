@@ -9,64 +9,113 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import relativeSocialImage from "media/social-image.png"
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+function SEO({ description, lang, meta, title: pageTitle }) {
+  const {
+    site: {
+      siteMetadata: { title: siteTitle, description: siteDescription, siteUrl },
+    },
+  } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
             title
             description
-            author
+            siteUrl
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const twitterHandle = "@DVCorg"
+  const metaDescription = description || siteDescription
+  const title = pageTitle || siteTitle
+  const socialImage = siteUrl + relativeSocialImage
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      defaultTitle={site.siteMetadata.title}
+      title={pageTitle}
+      titleTemplate={`%s | ${siteTitle}`}
+      defaultTitle={siteTitle}
       meta={[
+        // Generic metas
         {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
+          itemprop: "name",
           content: title,
         },
         {
-          property: `og:description`,
+          name: "description",
           content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          itemprop: "image",
+          content: socialImage,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          name: "keywords",
+          content: "CI/CD,Continuous Integration,ML,Machine learning,DevOps",
         },
+
+        // FB/OpenGraph
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
+          property: "og:title",
           content: title,
         },
         {
-          name: `twitter:description`,
+          property: "og:description",
           content: metaDescription,
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+        {
+          property: "og:url",
+          content: siteUrl,
+        },
+        {
+          property: "og:image",
+          content: socialImage,
+        },
+        {
+          property: "og:image:width",
+          content: 800,
+        },
+        {
+          property: "og:image:height",
+          content: 600,
+        },
+        {
+          property: "og:site_name",
+          content: siteTitle,
+        },
+
+        // Twitter
+        {
+          name: "twitter:card",
+          content: "summary",
+        },
+        {
+          name: "twitter:site",
+          content: twitterHandle,
+        },
+        {
+          name: "twitter:title",
+          content: title,
+        },
+        {
+          name: "twitter:description",
+          content: metaDescription,
+        },
+        {
+          name: "twitter:image",
+          content: socialImage,
         },
       ].concat(meta)}
     />

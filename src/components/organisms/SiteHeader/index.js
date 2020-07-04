@@ -30,7 +30,6 @@ function Header() {
         <Box as="nav" variant="layout.Header.Nav" id="header-nav">
           {navItems.map(({ label, href }, i) => {
             const isExternal = href.match(/^(\w*:)?\/\//)
-            console.log({ href, isExternal })
             return isExternal ? (
               <NavLink
                 as="a"

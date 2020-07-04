@@ -565,7 +565,7 @@ export default {
 
     root: {
       ...preset.styles.root,
-      color: alpha("text", 0.5),
+      color: mix("text", "background", 0.8),
       minWidth: "350px",
       fontSize: "14px",
       "*": {
