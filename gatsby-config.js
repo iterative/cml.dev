@@ -6,7 +6,7 @@ module.exports = {
     title: `CML - CI for Machine Learning`,
     description: `CML is continuous integration for machine learning. Bring DevOps to data science.`,
     author: `Iterative`,
-    siteUrl: process.env.DEPLOY_URL || process.env.URL || "https://cml.dev",
+    siteUrl: process.env.URL || "https://cml.dev",
   },
   plugins: [
     `gatsby-plugin-eslint`,
