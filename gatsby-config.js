@@ -1,18 +1,24 @@
 const path = require(`path`)
-require("dotenv").config()
+require(`dotenv`).config()
 
 module.exports = {
   siteMetadata: {
     title: `CML`,
     description: `CML is CI for Machine Learning`,
     author: `Iterative`,
-    siteUrl: process.env.DEPLOY_URL || process.env.URL,
+    siteUrl: process.env.DEPLOY_URL || process.env.URL || "https://cml.dev",
   },
   plugins: [
     `gatsby-plugin-eslint`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-120072346-5`,
+      },
+    },
     {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
