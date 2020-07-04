@@ -54,26 +54,30 @@ function SEO({ description, lang, meta, title }) {
           content: title,
         },
         {
-          name: `description`,
+          name: "description",
           content: metaDescription,
         },
         {
           itemprop: "image",
           content: socialImage,
         },
+        {
+          name: "keywords",
+          content: "CI/CD,Continuous Integration,ML,Machine learning,DevOps",
+        },
 
         // FB/OpenGraph
         {
-          property: `og:title`,
+          property: "og:title",
           content: title,
         },
         {
-          property: `og:description`,
+          property: "og:description",
           content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: "og:type",
+          content: "website",
         },
         {
           property: "og:url",
@@ -90,11 +94,11 @@ function SEO({ description, lang, meta, title }) {
 
         // Twitter
         {
-          name: `twitter:card`,
-          content: `summary`,
+          name: "twitter:card",
+          content: "summary",
         },
         {
-          name: `twitter:title`,
+          name: "twitter:title",
           content: title,
         },
         {
@@ -102,11 +106,11 @@ function SEO({ description, lang, meta, title }) {
           content: twitterHandle,
         },
         {
-          name: `twitter:creator`,
+          name: "twitter:creator",
           content: author,
         },
         {
-          name: `twitter:description`,
+          name: "twitter:description",
           content: metaDescription,
         },
         {
@@ -117,8 +121,6 @@ function SEO({ description, lang, meta, title }) {
     />
   )
 }
-
-;[]
 
 SEO.defaultProps = {
   lang: `en`,

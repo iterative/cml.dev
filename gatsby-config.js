@@ -3,8 +3,8 @@ require(`dotenv`).config()
 
 module.exports = {
   siteMetadata: {
-    title: `CML`,
-    description: `CML is CI for Machine Learning`,
+    title: `CML | CI for Machine Learning`,
+    description: `CML is continuous integration for machine learning. Bring DevOps to data science.`,
     author: `Iterative`,
     siteUrl: process.env.DEPLOY_URL || process.env.URL || "https://cml.dev",
   },

@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
 
   return (
     <ModesProvider>
-      <SEO title={title} />
+      <SEO />
       {children}
     </ModesProvider>
   )
