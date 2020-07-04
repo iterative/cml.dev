@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import socialImage from "media/social-image.png"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title: pageTitle }) {
   const {
     site: {
       siteMetadata: {
@@ -38,13 +38,14 @@ function SEO({ description, lang, meta, title }) {
 
   const twitterHandle = "@DVCorg"
   const metaDescription = description || siteDescription
+  const title = pageTitle || siteTitle
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={pageTitle}
       titleTemplate={`%s | ${siteTitle}`}
       defaultTitle={siteTitle}
       meta={[
