@@ -99,23 +99,19 @@ function SEO({ description, lang, meta, title: pageTitle }) {
           content: "summary",
         },
         {
-          name: "twitter:title",
-          content: title,
-        },
-        {
           name: "twitter:site",
           content: twitterHandle,
         },
         {
-          name: "twitter:creator",
-          content: author,
+          name: "twitter:title",
+          content: title,
         },
         {
           name: "twitter:description",
           content: metaDescription,
         },
         {
-          name: "twitter:image:src",
+          name: "twitter:image",
           content: socialImage,
         },
       ].concat(meta)}
