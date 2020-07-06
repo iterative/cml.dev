@@ -85,11 +85,11 @@ function SEO({ description, lang, meta, title: pageTitle }) {
         },
         {
           property: "og:image:width",
-          content: 800,
+          content: 1200,
         },
         {
           property: "og:image:height",
-          content: 600,
+          content: 900,
         },
         {
           property: "og:site_name",
