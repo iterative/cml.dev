@@ -155,12 +155,12 @@ export default {
         alignItems: "center",
         flex: "1",
         fontSize: "18px",
+        verticalAlign: "middle",
         Link: {
           fontWeight: "normal",
           px: 2,
           py: "6px",
           fontSize: "18px",
-          height: "48px",
           textAlign: "center",
           lineHeight: "28px",
           color: alpha("background", 0.7),
