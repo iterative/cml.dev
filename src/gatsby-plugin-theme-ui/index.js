@@ -527,6 +527,11 @@ export default {
       overflow: "auto",
       px: "10px",
       py: "10px",
+      Buttons: {
+        my: ["10px", "15px", "20px"],
+        mr: ["10px", "15px", "20px"],
+        justifyContent: "flex-end",
+      },
       pre: {
         minWidth: "100%",
         whiteSpace: "pre",

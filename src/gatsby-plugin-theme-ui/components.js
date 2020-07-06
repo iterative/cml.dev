@@ -159,20 +159,6 @@ const Code = ({ children, lang, filename, repo, sx = {} }) => {
             {filename || lang}
           </Heading>
           <Box sx={{ flex: "1 1" }} />
-          <Flex sx={{ flex: "0 0 auto", justifyContent: "center" }}>
-            {repo && <RepoButton url={repo} />}
-            <Button
-              variant="copy"
-              onClick={e => {
-                e.preventDefault()
-                const pre = codeBlockRef.current
-                if (!pre || !navigator.clipboard) return
-                navigator.clipboard.writeText(pre.innerText)
-              }}
-            >
-              Copy
-            </Button>
-          </Flex>
         </Flex>
       )}
       <Box as="code" variant="styles.CodeBlock">
@@ -180,6 +166,20 @@ const Code = ({ children, lang, filename, repo, sx = {} }) => {
           {children}
         </Box>
       </Box>
+      <Flex variant="styles.CodeBlock.Buttons">
+        {repo && <RepoButton url={repo} />}
+        <Button
+          variant="copy"
+          onClick={e => {
+            e.preventDefault()
+            const pre = codeBlockRef.current
+            if (!pre || !navigator.clipboard) return
+            navigator.clipboard.writeText(pre.innerText)
+          }}
+        >
+          Copy
+        </Button>
+      </Flex>
     </Box>
   )
 }
