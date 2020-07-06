@@ -6,7 +6,7 @@ const LandingVideo = props => (
     variant="styles.LandingVideo"
     controls={true}
     autoPlay={true}
-    repeat={true}
+    loop={true}
     playsInline={true}
     {...props}
   />

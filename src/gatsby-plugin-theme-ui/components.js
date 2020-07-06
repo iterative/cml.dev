@@ -3,6 +3,7 @@ import SolutionLineArrow from "./solution-line-arrow.svg"
 import Collapser from "components/atoms/Collapser"
 import Video from "components/molecules/Video"
 import Tooltip from "components/organisms/Tooltip"
+import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 import {
   Button,
@@ -131,14 +132,14 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
   switch (host) {
     case "github.com":
       return (
-        <Link href={url} variant="RepoButton">
+        <Link as={OutboundLink} href={url} variant="RepoButton">
           <GitHubIcon width="18" height="18" />
           <span>GitHub</span>
         </Link>
       )
     case "gitlab.com":
       return (
-        <Link href={url} variant="RepoButton">
+        <Link as={OutboundLink} href={url} variant="RepoButton">
           <GitLabIcon width="18" height="18" />
           <span>GitLab</span>
         </Link>
