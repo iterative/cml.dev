@@ -476,7 +476,8 @@ export default {
       mx: "auto",
     },
     CodeBlock: {
-      fontSize: ["12px", null, "14px"],
+      fontSize: ["12px", null, null, "14px"],
+      lineHeight: ["18px", null, null, "22px"],
       overflow: "auto",
       px: "10px",
       py: "10px",

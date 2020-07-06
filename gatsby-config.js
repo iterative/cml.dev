@@ -42,12 +42,29 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: path.resolve(`./src/media`),
+        name: `images`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-react-svg`,
     },
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        gatsbyRemarkPlugins: [require.resolve(`./remarkPlugin.js`)],
+        plugins: ["gatsby-remark-images"],
+        gatsbyRemarkPlugins: [
+          require.resolve(`./remarkPlugin.js`),
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
       },
     },
     {

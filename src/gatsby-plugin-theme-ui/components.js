@@ -231,6 +231,8 @@ const ExampleBox = ({ title, children }) => {
   return (
     <Box
       sx={{
+        display: "flex",
+        flexFlow: "column nowrap",
         backgroundColor: "background",
         boxShadow: "default",
         textAlign: "left",
@@ -266,16 +268,24 @@ const ExampleBox = ({ title, children }) => {
           {title}
         </Heading>
       </Box>
-      <Box sx={{ flex: "1" }}>{children}</Box>
+      <Box
+        sx={{
+          flex: "1",
+          display: "flex",
+          flexFlow: "column nowrap",
+          alignItems: "center",
+          justifyContent: "center",
+          "&>*": {
+            display: "block",
+            width: "100%",
+          },
+        }}
+      >
+        {children}
+      </Box>
     </Box>
   )
 }
-
-const ImageExampleBox = ({ title, image, alt }) => (
-  <ExampleBox title={title}>
-    <Image src={image} variant="styles.CenteredBlock" alt={alt} />
-  </ExampleBox>
-)
 
 export default {
   JSONTabs,
@@ -299,7 +309,7 @@ export default {
 
   Code,
   SolutionList,
-  ImageExampleBox,
+  ExampleBox,
 
   wrapper: ContainExcept,
 }
