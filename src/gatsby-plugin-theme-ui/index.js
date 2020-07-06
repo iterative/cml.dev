@@ -99,6 +99,7 @@ export default {
         justifyContent: ["center", null, "flex-end"],
         flex: "1",
         Link: {
+          variant: "links.light",
           ml: "10px",
           py: "6px",
           px: "10px",
@@ -248,7 +249,6 @@ export default {
     },
   },
   links: {
-    ...preset.links,
     primary: {
       transition: "0.5s color",
     },
@@ -256,12 +256,14 @@ export default {
       variant: "buttons.primary",
     },
     nav: {
-      ...preset.nav,
+      variant: "links.light",
       fontWeight: "normal",
     },
     light: {
-      variant: "links.primary",
       color: alpha("background", 0.7),
+      ":focus": {
+        color: alpha("background", 0.85),
+      },
       "&:hover": {
         color: "background",
       },
@@ -271,6 +273,9 @@ export default {
       color: "background",
       "&:hover": {
         color: alpha("background", 0.5),
+      },
+      ":focus": {
+        color: "background",
       },
     },
     RepoButton: {
