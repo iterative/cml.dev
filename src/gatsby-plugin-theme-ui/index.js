@@ -1,6 +1,6 @@
 const { system: preset } = require("@theme-ui/presets")
 const tabsCoreStyles = require("../components/organisms/Tabs/core-styles")
-const { alpha, mix } = require("@theme-ui/color")
+const { alpha } = require("@theme-ui/color")
 
 const palette = {
   ...preset.colors,
@@ -528,9 +528,6 @@ export default {
       px: "10px",
       py: "10px",
       pre: {
-        borderLeft: "1px solid",
-        borderBottom: "1px solid",
-        borderColor: alpha("background", 0.2),
         minWidth: "100%",
         whiteSpace: "pre",
         fontFamily: "monospace",
@@ -667,7 +664,7 @@ export default {
 
     root: {
       ...preset.styles.root,
-      color: mix("text", "background", 0.8),
+      color: alpha("text", 0.7),
       minWidth: "350px",
       fontSize: "14px",
       "*": {
