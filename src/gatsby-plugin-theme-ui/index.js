@@ -157,17 +157,14 @@ export default {
         fontSize: "18px",
         verticalAlign: "middle",
         Link: {
+          variant: "links.footerLight",
           fontWeight: "normal",
           px: 2,
           py: "6px",
           fontSize: "18px",
           textAlign: "center",
           lineHeight: "28px",
-          color: alpha("background", 0.7),
           transition: "color 0.25s",
-          "&:hover": {
-            color: "background",
-          },
           "&:first-of-type": {
             ml: 0,
           },
@@ -181,10 +178,9 @@ export default {
         mx: "auto",
         my: "40px",
         ">a": {
-          variant: "links.light",
+          variant: "styles.SocialLinkIcon",
           px: "6px",
           mx: "6px",
-          color: "background",
         },
       },
       PoweredBy: {
@@ -198,10 +194,6 @@ export default {
         lineHeight: "42px",
         mx: "auto",
         px: "0.1em",
-        color: "inherit",
-        ":hover": {
-          color: "background",
-        },
         svg: {
           verticalAlign: "middle",
         },
@@ -269,9 +261,16 @@ export default {
     },
     light: {
       variant: "links.primary",
+      color: alpha("background", 0.7),
+      "&:hover": {
+        color: "background",
+      },
+    },
+    footerLight: {
+      variant: "links.light",
       color: "background",
       "&:hover": {
-        color: mix("background", "primary", 0.5),
+        color: alpha("background", 0.5),
       },
     },
     RepoButton: {
@@ -407,6 +406,9 @@ export default {
   },
   styles: {
     ...preset.styles,
+    SocialLinkIcon: {
+      variant: "links.footerLight",
+    },
     LandingVideo: {
       height: "0",
       width: "auto",

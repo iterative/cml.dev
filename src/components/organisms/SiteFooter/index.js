@@ -31,7 +31,7 @@ const socialLinkDefinitions = [
 const SocialLink = ({ url, icon, title }) => (
   <Link
     href={url}
-    variant="light"
+    variant="styles.SocialLinkIcon"
     title={title}
     sx={{
       display: "inline-block",
