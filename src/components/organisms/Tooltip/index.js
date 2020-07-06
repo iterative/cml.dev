@@ -30,6 +30,7 @@ const Tooltip = ({
         variant: "styles.Highlight",
         position: "relative",
         "& span": {
+          color: mix("background", color, 0.2),
           backgroundColor: alpha(color, 0.2),
         },
         ":before": {

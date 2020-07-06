@@ -89,28 +89,40 @@ const HomeFeature = ({ children, heading, icon: Icon }) => {
   return (
     <Box
       sx={{
-        borderTopStyle: ["solid", null, "none"],
-        borderLeftStyle: ["none", null, "solid"],
+        borderTopStyle: ["solid", null, null, "none"],
+        borderLeftStyle: ["none", null, null, "solid"],
         borderWidth: "1px",
         borderColor: "rgba(255,255,255,0.3)",
         mx: "auto",
-        px: [1, null, 2],
-        py: ["40px", "25px"],
+        px: [1, null, "35px"],
+        py: "1px",
         maxWidth: "600px",
         svg: {
-          mb: ["20px", null, "30px"],
+          mb: ["20px", null, null, "30px"],
         },
         "&:first-of-type": {
           borderTop: "none",
           borderLeft: "none",
+          pl: "30px",
+        },
+        "&:last-of-type": {
+          pr: "30px",
         },
       }}
     >
-      <Icon />
-      <Heading as="h3" sx={{ my: 3 }}>
-        {heading}
-      </Heading>
-      <Box>{children}</Box>
+      <Box
+        sx={{
+          maxWidth: "500px",
+          my: ["40px", "25px"],
+          mx: "auto",
+        }}
+      >
+        <Icon />
+        <Heading as="h3" sx={{ my: 3 }}>
+          {heading}
+        </Heading>
+        <Box>{children}</Box>
+      </Box>
     </Box>
   )
 }
@@ -177,15 +189,7 @@ const Code = ({ children, lang, filename, repo, sx = {} }) => {
           <Flex sx={{ flex: "0 0 auto", justifyContent: "center" }}>
             {repo && <RepoButton url={repo} />}
             <Button
-              sx={{
-                backgroundColor: "cyan.0",
-                "&:hover": { backgroundColor: "cyan.1" },
-                lineHeight: "21px",
-                height: "30px",
-                borderRadius: "30px",
-                fontSize: "14px",
-                py: 0,
-              }}
+              variant="copy"
               onClick={e => {
                 e.preventDefault()
                 const pre = codeBlockRef.current

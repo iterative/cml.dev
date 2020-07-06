@@ -15,8 +15,8 @@ function SubscribeSection() {
           color: "white",
           textAlign: "center",
           fontWeight: "700",
-          fontSize: 4,
-          mb: [4, 5],
+          fontSize: "32px",
+          mb: "40px",
           "&>span": {
             whiteSpace: "nowrap",
           },

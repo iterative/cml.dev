@@ -43,7 +43,8 @@ export default ({ children, ...props }) => {
   overflow: "hidden",
   textAlign: "center",
   Inner: {
-    maxWidth: "100%"
+    maxWidth: "100%",
+    px: 0
   }
 }}>
   <Header />
@@ -76,7 +77,7 @@ export default ({ children, ...props }) => {
     </Box>
   </Collapser>
 
-  <Collapser sx={{variant: "layout.container", my: 4}}>
+  <Collapser sx={{variant: "layout.container", my: 4, flexDirection: ["column", null, null, "row"]}}>
   <HomeFeature heading="GitFlow for data science" icon={GitFlowIcon}>
 
 Use GitLab or GitHub to manage ML experiments, track who trained ML models or
@@ -106,24 +107,33 @@ services: AWS, Azure, GCP. No databases, services or complex setup needed.
   sx={{
     textAlign: "center",
     py: "1px",
+    fontSize: "18px",
+    lineHeight: "28px",
+    letterSpacing: "0.02em",
     Inner: {
       my: "80px",
-      px: [0, null, null, 3],
+      px: [0, null, null, 3]
     }
   }}
 >
-
-<Box variant="styles.CenteredBlock" sx={{px: 3, maxWidth: "615px"}}>
 
 <Heading
   as="h2"
   sx={{
     color: "text",
-    fontSize: ["32px", null, "48px"],
+    fontSize: ["32px", null, "42px"],
+    lineHeight: "52px",
+    fontWeight: "bold"
   }}
 >
   CML User Cases
 </Heading>
+
+<Box sx={{
+  mx: "auto",
+  maxWidth: "615px",
+  my: "40px"
+}}>
 
 The simplest case of using CML, and a clear way for any user to get started, is to generate a simple report. Add the following .yaml to your project repository and commit to get started
 
@@ -579,22 +589,25 @@ jobs:
   },
 }}>
 
-<Box sx={{
-  maxWidth: "460px",
-  mx: "auto",
-  letterSpacing: "0.02em",
-  fontSize: "18px",
-}}>
-
 <Heading
   as="h2"
   sx={{
     color: "text",
-    fontSize: ["32px", null, "48px"],
+    lineHeight: "52px",
+    fontWeight: "bold",
+    fontSize: ["32px", null, "42px"],
   }}
 >
   The MLOps Ecosystem 
 </Heading>
+
+<Box sx={{
+  fontSize: "18px",
+  lineHeight: "28px",
+  letterSpacing: "0.02em",
+  mx: "auto",
+  maxWidth: "460px",
+}}>
 
 MLOps isn't a platform- it's an ecosystem of tools. 
 CML helps you bring your favorite DevOps tools to machine learning. 

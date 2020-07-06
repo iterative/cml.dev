@@ -65,12 +65,14 @@ export default {
     },
     Header: {
       color: "background",
-      pt: [3, null, 0],
+      pt: [3, "20px"],
+      px: [2, "40px"],
       Logo: {
         display: "block",
         flex: "0 1 auto",
-        pt: "1rem",
-        pb: ["0.5rem", null, "1rem"],
+        pt: "10px",
+        pb: ["0.5rem", null, "10px"],
+        px: "10px",
         width: ["100%", null, "auto"],
         img: {
           maxWidth: ["154px", null, "115px"],
@@ -87,7 +89,7 @@ export default {
         flexWrap: "nowrap",
         alignItems: "center",
         flexFlow: ["column", null, "row"],
-        height: "100px",
+        px: 0,
       },
       Nav: {
         px: 0,
@@ -97,13 +99,22 @@ export default {
         justifyContent: ["center", null, "flex-end"],
         flex: "1",
         Link: {
-          px: 2,
+          ml: "10px",
           py: "6px",
-          fontSize: 2,
+          px: "10px",
+          fontSize: "18px",
           fontWeight: "normal",
           height: "48px",
           textAlign: "center",
           lineHeight: "36px",
+          color: alpha("background", 0.7),
+          transition: "color 0.25s",
+          "&:hover": {
+            color: "background",
+          },
+          "&:first-of-type": {
+            ml: 0,
+          },
         },
       },
     },
@@ -148,10 +159,18 @@ export default {
           fontWeight: "normal",
           px: 2,
           py: "6px",
-          fontSize: 2,
+          fontSize: "18px",
           height: "48px",
           textAlign: "center",
-          lineHeight: "36px",
+          lineHeight: "28px",
+          color: alpha("background", 0.7),
+          transition: "color 0.25s",
+          "&:hover": {
+            color: "background",
+          },
+          "&:first-of-type": {
+            ml: 0,
+          },
         },
       },
       SocialIcons: {
@@ -201,9 +220,11 @@ export default {
       px: 1,
     },
     primary: {
-      lineHeight: "50px",
-      height: "50px",
       variant: "buttons.base",
+      lineHeight: "50px",
+      fontSize: "18px",
+      letterSpacing: "0.02em",
+      height: "50px",
       backgroundColor: "primary",
       color: "white",
       border: "none",
@@ -212,6 +233,26 @@ export default {
       "&:hover": {
         bg: "purple.2",
       },
+    },
+  },
+  copy: {
+    variant: "buttons.base",
+    cursor: "pointer",
+    py: 0,
+    fontSize: "14px",
+    height: "30px",
+    width: "86px",
+    color: "white",
+    backgroundColor: "#24ADC5",
+    "&:hover": {
+      backgroundColor: "#2698AB",
+    },
+    "&:disabled": {
+      opacity: "0.4",
+    },
+    "&:focus": {
+      border: "1px solid #4A3F63",
+      outline: "none",
     },
   },
   links: {
@@ -235,28 +276,39 @@ export default {
     },
     RepoButton: {
       variant: "buttons.base",
+      textAlign: "center",
+      width: "96px",
       display: "flex",
       flexFlow: "row nowrap",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "space-between",
       minWidth: "95px",
       color: "background",
       border: "1px solid",
-      borderColor: "background",
+      borderColor: alpha("background", 0.3),
       height: "30px",
       py: "8px",
+      px: "6px",
       mx: "4px",
       fontSize: "14px",
       textDecoration: "none",
-      "&:hover": { color: "inherit" },
+      letterSpacing: "0.01em",
+      "&:hover": {
+        backgroundColor: alpha("background", 0.3),
+      },
+      "&:focus": {
+        outline: "none",
+        borderColor: "background",
+      },
+      "&:disabled": {
+        color: alpha("background", 0.5),
+      },
       "&>svg, &>img": {
-        mr: "-0.25em",
-        ml: "0.5em",
+        color: alpha("background", 0.6),
       },
       ">span": {
-        height: "20px",
-        mx: ".8em",
         display: "inline-block",
+        flex: "1 1",
       },
     },
   },
@@ -273,6 +325,7 @@ export default {
       color: "black",
       borderRadius: "1.5rem",
       pr: "2px",
+      fontSize: "18px",
       Input: {
         variant: "forms.partial",
         pl: "1rem",
@@ -288,6 +341,7 @@ export default {
         borderRadius: "1.5rem",
         lineHeight: "1.5rem",
         flex: "0 0 auto",
+        letterSpacing: "0.02em",
       },
     },
   },
@@ -457,7 +511,8 @@ export default {
       p: 0,
       listStyle: "none",
       color: "text",
-      fontSize: ["12px", null, "14px", "22px"],
+      fontSize: ["12px", null, "16px", "22px"],
+      lineHeight: "32px",
       maxWidth: [null, "586px", "834px"],
       Item: {
         display: "flex",
@@ -498,7 +553,7 @@ export default {
         overflow: "hidden",
         borderBottomRightRadius: [0, null, 1],
         borderBottomLeftRadius: [0, null, 1],
-        borderTopRightRadius: [0, null, 1],
+        borderTopRightRadius: 0,
         borderTopLeftRadius: 0,
         Active: {
           width: "100%",
@@ -547,7 +602,7 @@ export default {
 
         transition: "opacity 0.2s",
         ":last-of-type": {
-          marginRight: [null, null, "2rem"],
+          mr: 0,
         },
 
         "&:hover": {
