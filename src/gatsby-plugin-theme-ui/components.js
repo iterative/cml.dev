@@ -88,41 +88,13 @@ const FullWidthBox = ({
 
 const HomeFeature = ({ children, heading, icon: Icon }) => {
   return (
-    <Box
-      sx={{
-        borderTopStyle: ["solid", null, null, "none"],
-        borderLeftStyle: ["none", null, null, "solid"],
-        borderWidth: "1px",
-        borderColor: "rgba(255,255,255,0.3)",
-        mx: "auto",
-        px: [1, null, "35px"],
-        py: "1px",
-        maxWidth: "600px",
-        svg: {
-          mb: ["20px", null, null, "30px"],
-        },
-        "&:first-of-type": {
-          borderTop: "none",
-          borderLeft: "none",
-          pl: "30px",
-        },
-        "&:last-of-type": {
-          pr: "30px",
-        },
-      }}
-    >
-      <Box
-        sx={{
-          maxWidth: "500px",
-          my: ["40px", "25px"],
-          mx: "auto",
-        }}
-      >
+    <Box variant="styles.HomeFeature.Wrapper">
+      <Box variant="styles.HomeFeature.Box">
         <Icon />
-        <Heading as="h3" sx={{ my: 3 }}>
+        <Heading as="h3" variant="styles.HomeFeature.Heading">
           {heading}
         </Heading>
-        <Box>{children}</Box>
+        <Box variant="styles.HomeFeature.Content">{children}</Box>
       </Box>
     </Box>
   )

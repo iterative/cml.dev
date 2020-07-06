@@ -423,6 +423,45 @@ export default {
       overflow: "hidden",
       my: 3,
     },
+    HomeFeature: {
+      Wrapper: {
+        borderTopStyle: ["solid", null, null, "none"],
+        borderLeftStyle: ["none", null, null, "solid"],
+        borderWidth: "1px",
+        borderColor: "rgba(255,255,255,0.3)",
+        mx: "auto",
+        px: [1, null, "35px"],
+        py: "1px",
+        maxWidth: "600px",
+        svg: {
+          mb: ["20px", null, null, "30px"],
+        },
+        "&:first-of-type": {
+          borderTop: "none",
+          borderLeft: "none",
+          pl: "30px",
+        },
+        "&:last-of-type": {
+          pr: "30px",
+        },
+      },
+      Heading: {
+        my: 3,
+        fontSize: "22px",
+        lineHeight: "32px",
+      },
+      Content: {
+        color: alpha("background", 0.5),
+        fontSize: "18px",
+        lineHeight: "28px",
+        letterSpacing: "0.02em",
+      },
+      Box: {
+        maxWidth: "500px",
+        my: ["40px", null, null, "25px"],
+        mx: "auto",
+      },
+    },
     Highlight: {
       textDecoration: "inherit",
       transition: "0.2s all",
