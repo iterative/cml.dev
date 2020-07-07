@@ -332,9 +332,9 @@ cml:
     script:
         - pip install -r requirements.txt
         <Tooltip type="tensorboard">
-        - cml-tensorboard-dev 
-            --logdir logs 
-            --name "Go to tensorboard"
+        - cml-tensorboard-dev \
+            --logdir logs \
+            --name "Go to tensorboard" \
             --md >> report.md
         </Tooltip>
         <Tooltip type="reports">

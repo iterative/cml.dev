@@ -13,9 +13,7 @@ module.exports = ({ markdownAST, markdownNode, ...rest }, { tag = "Code" }) => {
           // Skip lines that only contain a tag that isn't self-closing
           if (/^<[^<>]*[^\/]>$/.test(content)) return whole
           const wrappedWhitespace = whitespace ? `{'${whitespace}'}` : ""
-          const wrappedContent = content
-            ? `<span>${content.replace(/\\$/, `{"\\\\"}`)}</span>`
-            : ""
+          const wrappedContent = content ? `<span>${content}</span>` : ""
           return (
             "<div>" +
             wrappedWhitespace +
