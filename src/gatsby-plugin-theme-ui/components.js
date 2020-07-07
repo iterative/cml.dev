@@ -4,6 +4,7 @@ import Collapser from "components/atoms/Collapser"
 import Video from "components/molecules/Video"
 import Tooltip from "components/organisms/Tooltip"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
+import SmartLink from "components/atoms/SmartLink"
 
 import {
   Button,
@@ -283,6 +284,8 @@ export default {
   Code,
   SolutionList,
   ExampleBox,
+
+  a: SmartLink,
 
   wrapper: ContainExcept,
 }

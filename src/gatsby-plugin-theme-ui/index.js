@@ -99,7 +99,7 @@ export default {
         justifyContent: ["center", null, "flex-end"],
         flex: "1",
         Link: {
-          variant: "links.light",
+          variant: "links.nav",
           ml: "10px",
           py: "6px",
           px: "10px",
@@ -158,7 +158,7 @@ export default {
         fontSize: "18px",
         verticalAlign: "middle",
         Link: {
-          variant: "links.footerLight",
+          variant: "links.footerNav",
           fontWeight: "normal",
           px: 2,
           py: "6px",
@@ -258,8 +258,10 @@ export default {
     nav: {
       variant: "links.light",
       fontWeight: "normal",
+      textDecoration: "none",
     },
     light: {
+      variant: "links.primary",
       color: alpha("background", 0.7),
       ":focus": {
         color: alpha("background", 0.85),
@@ -268,8 +270,8 @@ export default {
         color: "background",
       },
     },
-    footerLight: {
-      variant: "links.light",
+    footerNav: {
+      variant: "links.nav",
       color: "background",
       "&:hover": {
         color: alpha("background", 0.5),
@@ -412,7 +414,7 @@ export default {
   styles: {
     ...preset.styles,
     SocialLinkIcon: {
-      variant: "links.footerLight",
+      variant: "links.footerNav",
     },
     LandingVideo: {
       height: "0",

@@ -1,6 +1,7 @@
 import React from "react"
 import GatsbyLink from "components/atoms/ThemedGatsbyLink"
-import { Box, Image, NavLink, Container, Link } from "@theme-ui/components"
+import { Box, Image, Container, Link } from "@theme-ui/components"
+import SmartLink from "components/atoms/SmartLink"
 
 import logo from "images/logo.png"
 
@@ -67,30 +68,11 @@ function Footer() {
           <Image src={logo} alt="CML" />
         </GatsbyLink>
         <Box as="nav" variant="layout.Footer.Nav" id="footer-nav">
-          {navItems.map(({ label, href }, i) => {
-            const isExternal = href.match(/^(\w*:)?\/\//)
-            return isExternal ? (
-              <NavLink
-                as="a"
-                href={href}
-                key={i}
-                variant="layout.Footer.Nav.Link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {label}
-              </NavLink>
-            ) : (
-              <NavLink
-                as={GatsbyLink}
-                to={href}
-                key={i}
-                variant="layout.Footer.Nav.Link"
-              >
-                {label}
-              </NavLink>
-            )
-          })}
+          {navItems.map(({ label, href }, i) => (
+            <SmartLink href={href} variant="layout.Footer.Nav.Link" key={i}>
+              {label}
+            </SmartLink>
+          ))}
         </Box>
         <Box variant="layout.Footer.SocialIcons">
           {socialLinkDefinitions.map(({ url, icon, title }, i) => (

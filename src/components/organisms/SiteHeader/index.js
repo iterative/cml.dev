@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "components/atoms/ThemedGatsbyLink"
-import { Box, Image, NavLink, Container } from "@theme-ui/components"
-import { Link as GatsbyLink } from "gatsby"
+import { Box, Image, Container } from "@theme-ui/components"
+import SmartLink from "components/atoms/SmartLink"
 
 import logo from "images/logo.png"
 
@@ -28,30 +28,11 @@ function Header() {
           <Image src={logo} alt="CML" />
         </Link>
         <Box as="nav" variant="layout.Header.Nav" id="header-nav">
-          {navItems.map(({ label, href }, i) => {
-            const isExternal = href.match(/^(\w*:)?\/\//)
-            return isExternal ? (
-              <NavLink
-                as="a"
-                href={href}
-                key={i}
-                variant="layout.Header.Nav.Link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {label}
-              </NavLink>
-            ) : (
-              <NavLink
-                as={GatsbyLink}
-                to={href}
-                key={i}
-                variant="layout.Header.Nav.Link"
-              >
-                {label}
-              </NavLink>
-            )
-          })}
+          {navItems.map(({ label, href }, i) => (
+            <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
+              {label}
+            </SmartLink>
+          ))}
         </Box>
       </Container>
     </Box>
