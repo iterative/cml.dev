@@ -9,8 +9,8 @@ import GitFlowIcon from "media/icons/gitflow.svg"
 import ReportsIcon from "media/icons/reports.svg"
 import BoxIcon from "media/icons/cube.svg"
 
-import githubVideo from "media/github/landing-video.webm"
-import gitlabVideo from "media/gitlab/landing-video.webm"
+import githubVideoMp4 from "media/github/landing-video.mp4"
+import gitlabVideoMp4 from "media/gitlab/landing-video.mp4"
 
 import LandingVideo from "components/molecules/Video/LandingVideo"
 import backgroundImage from "media/landing-background.png"
@@ -62,8 +62,8 @@ export default ({ children, ...props }) => {
     <Box sx={{flex: "1", width: "100%"}}>
       <Switch sx={{ mt: 4, mx: "auto", maxWidth: ["100%", null, "160px"] }} />
       <Switchable
-        gitlab={<LandingVideo src={gitlabVideo} mode="gitlab" />}
-        github={<LandingVideo src={githubVideo} mode="github" />}
+        gitlab={<LandingVideo src={gitlabVideoMp4} mode="gitlab" />}
+        github={<LandingVideo src={githubVideoMp4} mode="github" />}
       />
     </Box>
   </Collapser>
