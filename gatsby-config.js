@@ -4,7 +4,7 @@ require(`dotenv`).config()
 module.exports = {
   siteMetadata: {
     title: `CML - Continuous Machine Learning: Bring DevOps to Data Science`,
-    description: `CML is a tool for Continuous Integration and Continuous Deployment to Machine Learning projects, letting you spend less time on busywork and more time solving problems.`,
+    description: `CML is continuous integration for machine learning.  Bring DevOps practices to your projects for automatic, reproducible, and fast machine learning.`,
     author: `Iterative`,
     siteUrl: process.env.URL || "https://cml.dev",
   },
