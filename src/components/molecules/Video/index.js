@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react"
+import useRehydrated from "utils/use-rehydrated"
 import { ModeContext } from "components/organisms/SwitchableMode/Provider"
 import { Box } from "@theme-ui/components"
 
@@ -18,6 +19,8 @@ const Video = ({
   const videoRef = useRef()
   const videoElement = videoRef.current
 
+  const rehydrated = useRehydrated()
+
   useEffect(() => {
     if (mode && videoElement) {
       if (contextMode !== mode) {
@@ -26,7 +29,8 @@ const Video = ({
         videoElement.play()
       }
     }
-  }, [mode, contextMode, videoElement, autoPlay])
+  }, [rehydrated, mode, contextMode, videoElement, autoPlay])
+
   return (
     <Box
       variant={variant}
