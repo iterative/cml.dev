@@ -15,7 +15,7 @@ function SiteLogo({ ...props }) {
       ) {
         childImageSharp {
           fluid(maxWidth: 154) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
