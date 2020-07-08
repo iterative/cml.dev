@@ -1,9 +1,9 @@
 import React from "react"
 import GatsbyLink from "components/atoms/ThemedGatsbyLink"
-import { Box, Image, Container, Link } from "@theme-ui/components"
+import { Box, Container, Link } from "@theme-ui/components"
 import SmartLink from "components/atoms/SmartLink"
 
-import logo from "images/logo.png"
+import SiteLogo from "components/atoms/SiteLogo"
 
 import DiscordIcon from "media/icons/discord.svg"
 import TwitterIcon from "media/icons/twitter.svg"
@@ -65,7 +65,7 @@ function Footer() {
     <Box as="footer" variant="layout.Footer">
       <Container variant="layout.Footer.Inner">
         <GatsbyLink to="/" variant="layout.Footer.Logo">
-          <Image src={logo} alt="CML" />
+          <SiteLogo />
         </GatsbyLink>
         <Box as="nav" variant="layout.Footer.Nav" id="footer-nav">
           {navItems.map(({ label, href }, i) => (

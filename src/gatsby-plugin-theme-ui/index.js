@@ -69,16 +69,15 @@ export default {
       px: [2, "40px"],
       Logo: {
         display: "block",
-        flex: "0 1 auto",
+        flex: "0 0 auto",
         pt: "10px",
         pb: ["0.5rem", null, "10px"],
         px: "10px",
         width: ["100%", null, "auto"],
-        img: {
-          maxWidth: ["154px", null, "115px"],
+        ".gatsby-image-wrapper": {
+          width: ["154px", null, "115px"],
           height: ["40px", null, "30px"],
           display: "block",
-          width: "100%",
           mx: "auto",
         },
       },
@@ -138,11 +137,10 @@ export default {
         p: "10px",
         my: "40px",
         mx: "auto",
-        img: {
+        ".gatsby-image-wrapper": {
           display: "block",
-          width: "100%",
           mx: "auto",
-          maxWidth: "154px",
+          width: "154px",
           height: "40px",
         },
       },
