@@ -1,5 +1,4 @@
 const { system: preset } = require("@theme-ui/presets")
-const tabsCoreStyles = require("../components/organisms/Tabs/core-styles")
 const { alpha } = require("@theme-ui/color")
 
 const palette = {
@@ -584,42 +583,46 @@ export default {
       },
     },
     Tabs: {
-      ...tabsCoreStyles,
+      Wrapper: {
+        color: "white",
+        minWidth: "250px",
 
-      color: "white",
-      minWidth: "250px",
+        display: "flex",
+        flexFlow: "column nowrap",
+        overflow: "visible",
+        width: "100%",
 
-      display: "flex",
-      flexFlow: ["column nowrap", null, "row wrap"],
-      overflow: "visible",
-      width: "100%",
+        px: [0, null, 3],
+      },
 
-      px: [0, null, 3],
+      Tabs: {
+        display: "flex",
+        flexWrap: "nowrap",
+        flexDirection: ["column", null, "row"],
+      },
 
       Content: {
+        variant: "styles.Tabs.Content.Inactive",
         order: 1,
         overflow: "hidden",
         borderBottomRightRadius: [0, null, 1],
         borderBottomLeftRadius: [0, null, 1],
         borderTopRightRadius: 0,
         borderTopLeftRadius: 0,
+        Inactive: {
+          display: "none",
+        },
         Active: {
+          display: "block",
           width: "100%",
+          height: "auto",
           flex: [null, null, "1 1 100%"],
           boxShadow: [null, "wide"],
           textAlign: "left",
         },
-        Inactive: {
-          display: "block",
-          height: 0,
-          width: 0,
-          "& video": {
-            display: "none",
-          },
-        },
       },
 
-      Tab: {
+      Label: {
         variant: "styles.NoClickOutline",
         flex: "1 0",
         marginRight: [0, null, "2px"],

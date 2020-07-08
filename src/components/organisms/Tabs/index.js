@@ -1,27 +1,8 @@
 import React, { useMemo } from "react"
 import { Box } from "@theme-ui/components"
 import { clickOnKeyPress } from "utils/handlers"
+import HiddenRadioControl from "components/atoms/HiddenRadioControl"
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex, jsx-a11y/no-noninteractive-element-interactions */
-
-export const HiddenRadioControl = ({
-  defaultChecked,
-  inputName = "tab",
-  id,
-}) => (
-  <Box
-    as="input"
-    variant="styles.Tabs.RadioInput"
-    aria-label="Hidden tab control"
-    type="radio"
-    role="tab"
-    defaultChecked={defaultChecked}
-    name={inputName}
-    id={id}
-    tabindex={-1}
-    aria-hidden
-    hidden
-  />
-)
 
 export function useRadioTabs(inputContent, idPrefix = "tabs") {
   return useMemo(() => {
@@ -64,41 +45,84 @@ export const Tabs = ({ children, sx }) => {
 export const JSONTabs = ({ content, name: idPrefix = "tabs", sx }) => {
   // If no child tab is checked, set the first one to be so.
   const tabs = useRadioTabs(content, idPrefix)
+
+  const [radioElements, labelElements, contentElements] = useMemo(
+    () =>
+      tabs.reduce(
+        (
+          [radioElements, labelElements, contentElements],
+          { name, content, checked, id },
+          i
+        ) => {
+          return [
+            [
+              ...radioElements,
+              <HiddenRadioControl
+                id={id}
+                inputName={idPrefix}
+                defaultChecked={checked}
+                key={`tab-input-${i}`}
+                sx={{
+                  "& ~ div": {
+                    "&>nav>label": {
+                      variant: "styles.Tabs.Label",
+                    },
+                    "&>article>section": {
+                      variant: "styles.Tabs.Content",
+                    },
+                  },
+                  "&:checked ~ div": {
+                    [`&>nav>label.${id}`]: {
+                      variant: "styles.Tabs.Label.Active",
+                    },
+                    [`&>article>section.${id}`]: {
+                      variant: "styles.Tabs.Content.Active",
+                    },
+                  },
+                }}
+              />,
+            ],
+            [
+              ...labelElements,
+              <label
+                className={id}
+                htmlFor={id}
+                tabIndex={0}
+                onKeyPress={clickOnKeyPress}
+                onMouseDown={e => e.preventDefault()}
+                key={`tab-label-${i}`}
+              >
+                {name}
+              </label>,
+            ],
+            [
+              ...contentElements,
+              <section
+                className={id}
+                variant="styles.Tabs.Content"
+                key={`tab-content-${i}`}
+              >
+                {content}
+              </section>,
+            ],
+          ]
+        },
+        [[], [], []]
+      ),
+    [tabs]
+  )
+
   return (
-    <Tabs sx={sx}>
-      {tabs.map(({ name, content, checked, id }, i) => (
-        <Tab name={name} defaultChecked={checked} id={id} key={i}>
-          {content}
-        </Tab>
-      ))}
-    </Tabs>
+    <div>
+      {radioElements}
+      <Box variant="styles.Tabs.Wrapper" sx={sx}>
+        <Box as="nav" variant="styles.Tabs.Tabs">
+          {labelElements}
+        </Box>
+        <Box as="article" variant="styles.Tabs.ContentContainer">
+          {contentElements}
+        </Box>
+      </Box>
+    </div>
   )
 }
-
-export const Tab = ({
-  children,
-
-  name,
-  defaultChecked,
-  inputName,
-  checked,
-  id,
-}) => (
-  <>
-    <HiddenRadioControl
-      inputName={inputName}
-      defaultChecked={defaultChecked}
-      checked={checked}
-      id={id}
-    />
-    <label
-      htmlFor={id}
-      tabIndex={0}
-      onKeyPress={clickOnKeyPress}
-      onMouseDown={e => e.preventDefault()}
-    >
-      {name}
-    </label>
-    <section>{children}</section>
-  </>
-)
