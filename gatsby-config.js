@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: process.env.URL || "https://cml.dev",
   },
   plugins: [
+    `gatsby-plugin-preact`,
     `gatsby-plugin-eslint`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
@@ -20,11 +21,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-web-font-loader`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        google: {
-          families: [`DM Sans`, `DM Mono`],
-        },
+        fonts: [`DM Sans`, `DM Mono`],
+        display: "swap",
       },
     },
     {
