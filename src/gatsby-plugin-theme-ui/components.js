@@ -105,14 +105,26 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
   switch (host) {
     case "github.com":
       return (
-        <Link as={OutboundLink} href={url} variant="RepoButton">
+        <Link
+          as={OutboundLink}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="RepoButton"
+        >
           <GitHubIcon width="18" height="18" />
           <span>GitHub</span>
         </Link>
       )
     case "gitlab.com":
       return (
-        <Link as={OutboundLink} href={url} variant="RepoButton">
+        <Link
+          as={OutboundLink}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="RepoButton"
+        >
           <GitLabIcon width="18" height="18" />
           <span>GitLab</span>
         </Link>
