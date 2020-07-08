@@ -610,14 +610,10 @@ export default {
         borderTopRightRadius: 0,
         borderTopLeftRadius: 0,
         Inactive: {
-          display: "block",
-          height: 0,
-          width: 0,
-          "& video": {
-            display: "none",
-          },
+          display: "none",
         },
         Active: {
+          display: "block",
           width: "100%",
           height: "auto",
           flex: [null, null, "1 1 100%"],
