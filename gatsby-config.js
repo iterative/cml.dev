@@ -60,6 +60,7 @@ module.exports = {
           require.resolve(`./remarkPlugin.js`),
           {
             resolve: `gatsby-remark-images`,
+            withWebp: true,
             options: {
               maxWidth: 590,
             },
