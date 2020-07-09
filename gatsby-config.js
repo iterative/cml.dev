@@ -21,24 +21,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [`DM Sans`, `DM Mono`],
-        display: "swap",
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: path.resolve(`./content`),
         name: `content`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: path.resolve(`./src/images`),
-        name: `images`,
       },
     },
     {
@@ -60,9 +46,9 @@ module.exports = {
           require.resolve(`./remarkPlugin.js`),
           {
             resolve: `gatsby-remark-images`,
-            withWebp: true,
             options: {
               maxWidth: 590,
+              withWebp: true,
             },
           },
         ],
@@ -77,11 +63,12 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/site-icon.png`,
+        icon: `src/media/site-icon.png`,
       },
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
   ],

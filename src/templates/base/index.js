@@ -4,6 +4,9 @@ import { graphql } from "gatsby"
 import { ThemeProvider } from "theme-ui"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "./layout"
+import { Helmet } from "react-helmet"
+
+import "./fonts.css"
 
 const MDXLayout = ({
   data: {
@@ -11,6 +14,10 @@ const MDXLayout = ({
   },
 }) => (
   <ThemeProvider theme={theme}>
+    <Helmet>
+      <link rel="preload" href="/fonts/DMSans-Regular.woff2" as="font" />
+      <link rel="preload" href="/fonts/DMMono-Regular.woff2" as="font" />
+    </Helmet>
     <Layout>
       <MDXRenderer>{body}</MDXRenderer>
     </Layout>
