@@ -73,7 +73,7 @@ export default {
         pb: ["0.5rem", null, "10px"],
         px: "10px",
         width: ["100%", null, "auto"],
-        ".gatsby-image-wrapper": {
+        svg: {
           width: ["154px", null, "115px"],
           height: ["40px", null, "30px"],
           display: "block",
@@ -136,7 +136,7 @@ export default {
         p: "10px",
         my: "40px",
         mx: "auto",
-        ".gatsby-image-wrapper": {
+        svg: {
           display: "block",
           mx: "auto",
           width: "154px",
