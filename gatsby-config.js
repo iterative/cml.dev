@@ -30,13 +30,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: path.resolve(`./src/images`),
-        name: `images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         path: path.resolve(`./src/media`),
         name: `images`,
       },
@@ -70,7 +63,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/site-icon.png`,
+        icon: `src/media/site-icon.png`,
       },
     },
     `gatsby-plugin-sass`,
