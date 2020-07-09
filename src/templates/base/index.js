@@ -5,6 +5,8 @@ import { ThemeProvider } from "theme-ui"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "./layout"
 
+import "./fonts.css"
+
 const MDXLayout = ({
   data: {
     mdx: { body },

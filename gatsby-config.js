@@ -21,13 +21,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [`DM Sans`, `DM Mono`],
-        display: "swap",
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: path.resolve(`./content`),
