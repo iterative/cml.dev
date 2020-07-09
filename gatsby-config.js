@@ -75,6 +75,7 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
   ],
