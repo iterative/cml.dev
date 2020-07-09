@@ -13,6 +13,7 @@ const Video = ({
   muted = autoPlay,
   variant = "styles.Video",
   loop,
+  loading = "lazy",
   ...rest
 }) => {
   const contextMode = useContext(ModeContext)
@@ -56,6 +57,7 @@ const Video = ({
         muted={muted}
         src={src}
         loop={loop}
+        loading={loading}
       />
     </Box>
   )

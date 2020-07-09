@@ -16,6 +16,7 @@ const MDXLayout = ({
   <ThemeProvider theme={theme}>
     <Helmet>
       <link rel="preload" href="/fonts/DMSans-Regular.woff2" as="font" />
+      <link rel="preload" href="/fonts/DMSans-Bold.woff2" as="font" />
       <link rel="preload" href="/fonts/DMMono-Regular.woff2" as="font" />
     </Helmet>
     <Layout>
