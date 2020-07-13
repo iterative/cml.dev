@@ -520,7 +520,7 @@ jobs:
         run: |
           echo "Deploying..."
           RUNNER_LABELS="cml,aws"
-          RUNNER_REPO="https://github.com/${GITHUB_REPOSITORY}"
+          RUNNER_REPO="https://github.com/{'${GITHUB_REPOSITORY}'}"
           MACHINE="cml$(date +%s)"
           docker-machine create \
             --driver amazonec2 \
