@@ -454,6 +454,10 @@ deploy_aws:
       ) || (docker-machine rm -f $MACHINE && exit 1)
 
 train_aws:
+  tags:
+    - cml
+    - aws
+    
   script:
     <Tooltip type="dependencies">
     - apt-get update -y
