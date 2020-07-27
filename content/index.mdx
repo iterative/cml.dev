@@ -413,7 +413,7 @@ jobs:
 
 ```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-cloud-case"
 deploy_aws:
-  image: dvcorg/cml-cloud-runner:latest
+  image: dvcorg/cml:latest
   script:
     - echo "Deploying..."
 
@@ -448,7 +448,7 @@ deploy_aws:
         -e RUNNER_LABELS=$RUNNER_LABELS
         -e RUNNER_REPO=$CI_PROJECT_URL
         -e RUNNER_IDLE_TIMEOUT=120
-        dvcorg/cml-gpu-py3-cloud-runner:latest &&
+        dvcorg/cml-py3:latest &&
         
       sleep 20 && echo "Deployed $MACHINE"
       ) || (docker-machine rm -f $MACHINE && exit 1)
@@ -513,7 +513,7 @@ on: [push]
 jobs:
   deploy-cloud-runner:
     runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-gpu-cloud-runner
+    container: docker://dvcorg/cml
 
     steps:
       - name: deploy
@@ -551,7 +551,7 @@ jobs:
             -e RUNNER_LABELS=$RUNNER_LABELS \
             -e RUNNER_REPO=$RUNNER_REPO \
             -e RUNNER_IDLE_TIMEOUT=120 \
-            dvcorg/cml-gpu-py3-cloud-runner:latest && \
+            dvcorg/cml-py3:latest && \
           sleep 20 && echo "Deployed $MACHINE"
           ) || (docker-machine rm -y -f $MACHINE && exit 1)
   train:
