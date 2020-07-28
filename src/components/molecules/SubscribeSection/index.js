@@ -22,13 +22,13 @@ function SubscribeSection() {
           },
         }}
       >
-        <span>Subscribe for updates.</span> <span>We won&apos;t spam you</span>
+        <span>Subscribe for updates.</span> <span>We won&apos;t spam you.</span>
       </Box>
       <Flex
         variant="forms.ButtonInput"
         as="form"
         sx={{ maxWidth: "460px", mx: "auto" }}
-        action="https://dvc.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&amp;id=fe11690c19"
+        action="https://dvc.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&amp;id=24c0ecc49a"
         method="post"
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
@@ -49,7 +49,7 @@ function SubscribeSection() {
         >
           <input
             type="text"
-            name="b_a08bf93caae4063c4e6a351f6_fe11690c19"
+            name="b_a08bf93caae4063c4e6a351f6_24c0ecc49a"
             tabIndex="-1"
             value=""
           />
