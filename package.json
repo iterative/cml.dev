@@ -26,7 +26,6 @@
     "gatsby-plugin-google-analytics": "^2.3.10",
     "gatsby-plugin-manifest": "^2.4.17",
     "gatsby-plugin-mdx": "^1.2.22",
-    "gatsby-plugin-netlify": "^2.3.10",
     "gatsby-plugin-offline": "^3.2.16",
     "gatsby-plugin-preact": "^4.0.8",
     "gatsby-plugin-purge-cloudflare-cache": "^0.0.2",
@@ -67,7 +66,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json}\"",
     "start": "npm run develop",
