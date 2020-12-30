@@ -11,7 +11,7 @@ const navItems = [
   },
   {
     label: "Docs",
-    href: "https://github.com/iterative/cml#readme",
+    href: "https://dvc.org/doc/cml",
   },
   {
     label: "GitHub",
