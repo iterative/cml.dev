@@ -465,6 +465,7 @@ train_job:
   script:
     - pip install -r requirements.txt
     - python train.py
+
     - echo "## Report from your EC2 Instance" > report.md
     - cat metrics.txt >> report.md
     - cml-publish "confusion_matrix.png" --md >> report.md
@@ -527,11 +528,12 @@ jobs:
 
     - name: cml
       env:
-        repo_token: { "${{ secrets.REPO_TOKEN }}" }
+        repo_token: { "${{ secrets.PERSONAL_ACCESS_TOKEN }}" }
       run: |
         python --version
         pip install -r requirements.txt
         python train.py
+
         echo "## Report from your EC2 Instance" > report.md
         cat metrics.txt >> report.md
         cml-publish "confusion_matrix.png" --md >> report.md
