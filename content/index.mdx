@@ -648,7 +648,11 @@ jobs:
         run: |
           <Tooltip type="reports">
           cml-runner \
-          q
+          --cloud aws \
+          --cloud-region us-west \
+          --cloud-type=g3.4xlarge \
+          --cloud-hdd-size 64 \
+          --labels=cml-runner
           </Tooltip>
 
   run:
