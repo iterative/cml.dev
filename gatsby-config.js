@@ -70,17 +70,6 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-robots-txt`,
-    {
-      resolve: `gatsby-plugin-purge-cloudflare-cache`,
-      options: {
-        condition:
-          process.env.CONTEXT === "production" &&
-          process.env.CLOUDFLARE_TOKEN &&
-          process.env.CLOUDFLARE_ZONE,
-        token: process.env.CLOUDFLARE_TOKEN,
-        zoneId: process.env.CLOUDFLARE_ZONE,
-      },
-    },
     `gatsby-plugin-sitemap`,
   ],
 }
