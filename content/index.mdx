@@ -185,10 +185,17 @@ on: [push]
 jobs:
   run:
     runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
+
     steps:
       - uses: actions/checkout@v2
-      - name: cml_run
+      
+      - uses: iterative/setup-cml@v1
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: cml
         env:
           repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
         run: |
@@ -271,10 +278,19 @@ on: [push]
 jobs:
   run:
     runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
+  
     steps:
       - uses: actions/checkout@v2
-      - name: cml_run
+
+      - uses: iterative/setup-cml@v1
+
+      - uses: iterative/setup-dvc@v1
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: cml
         env:
           repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
           <Tooltip type="dvc">
@@ -299,8 +315,8 @@ jobs:
           dvc plots diff \
             --target loss.csv --show-vega master > vega.json
           <Tooltip type="reports">
-          vl2png vega.json | cml-publish --md >> report.md
-          cml-send-comment report.md
+          vl2png vega.json -s 1.5 | cml-publish --md  >> report.md
+          cml-send-comment report.md 
           </Tooltip>
 ```
 
@@ -366,10 +382,17 @@ on: [push]
 jobs:
   run:
     runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
+
     steps:
       - uses: actions/checkout@v2
-      - name: cml_run
+
+      - uses: iterative/setup-cml@v1
+      
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+
+      - name: cml
         env:
           repo_token: { "${{ secrets.GITHUB_TOKEN }}" }
           <Tooltip type="tensorboard">
@@ -404,81 +427,180 @@ jobs:
       />
     )
   },
+  ,
   {
-    name: "Cloud Computing",
+    name: "CML Runner Cloud",
+    content: (
+      <Switchable
+        gitlab={(
+<Collapser>
+
+```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-runner-example"
+stages:
+  - deploy
+  - train
+
+deploy_job:
+  stage: deploy
+  when: always
+  image: dvcorg/cml
+  script:
+    <Tooltip type="reports">
+    - cml-runner
+      --cloud aws
+      --cloud-region us-west
+      --cloud-type t2.micro
+      --labels=cml-runner
+    </Tooltip>
+
+train_job:
+ <Tooltip type="reports">
+  stage: train
+  when: on_success
+  image: dvcorg/cml-py3
+  tags:
+    - cml-runner
+  </Tooltip>
+
+  script:
+    - pip install -r requirements.txt
+    - python train.py
+
+    - echo "## Report from your EC2 Instance" > report.md
+    - cat metrics.txt >> report.md
+    - cml-publish "confusion_matrix.png" --md >> report.md
+    - cml-send-comment report.md
+
+```
+
+<ExampleBox title="CML Report">
+
+[![GitLab Cloud report example](../src/media/gitlab/cml-runner-report.png)](https://gitlab.com/iterative.ai/cml-runner-example/-/merge_requests/2)
+
+</ExampleBox>
+
+</Collapser>
+        )}
+        github={(
+<Collapser>
+
+```yml filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml-runner-base-case"
+name: Train-in-the-cloud
+
+on: [push]
+
+jobs:
+  deploy-runner:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: iterative/setup-cml@v1
+
+      - name: deploy
+        shell: bash
+        env:
+          repo_token: { "${{ secrets.PERSONAL_ACCESS_TOKEN }}" }
+          AWS_ACCESS_KEY_ID: { "${{ secrets.AWS_ACCESS_KEY_ID }}" }
+          AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" }
+        run: |
+          <Tooltip type="reports">
+          cml-runner \
+          --cloud aws \
+          --cloud-region us-west \
+          --cloud-type=t2.micro \
+          --labels=cml-runner
+          </Tooltip>
+
+  model-training:
+    <Tooltip type="reports">
+    needs: deploy-runner
+    runs-on: [self-hosted,cml-runner]
+    container: docker://dvcorg/cml-py3
+    </Tooltip>
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: "Train my model"
+      env:
+        repo_token: { "${{ secrets.PERSONAL_ACCESS_TOKEN }}" }
+      run: |
+        python --version
+        pip install -r requirements.txt
+        python train.py
+
+        echo "## Report from your EC2 Instance" > report.md
+        cat metrics.txt >> report.md
+        cml-publish "confusion_matrix.png" --md >> report.md
+        cml-send-comment report.md
+```
+
+<ExampleBox title="CML Report">
+
+[![GitHub Cloud report example](../src/media/github/cml-runner-report.png)](https://github.com/iterative/cml-runner-base-case/pull/4)
+
+</ExampleBox>
+
+</Collapser>
+        )}
+      />
+    )
+  },
+  ,
+  {
+    name: "Advanced GPU Case",
     content: (
       <Switchable
         gitlab={(
 <Collapser>
 
 ```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-cloud-case"
-deploy_aws:
-  image: dvcorg/cml:latest
+stages:
+  - deploy
+  - train
+
+deploy_job:
+  stage: deploy
+  when: always
+  image: dvcorg/cml
   script:
-    - echo "Deploying..."
+    <Tooltip type="reports">
+    - cml-runner \
+      --cloud aws \
+      --cloud-region us-west \
+      --cloud-type=g3.4xlarge \
+      --cloud-hdd-size 64 \
+      --labels=cml-runner-gpu
+    </Tooltip>
 
-    - RUNNER_LABELS="cml,aws"
-    - MACHINE="cml$(date +%s)"
-
-    - docker-machine create 
-            --driver amazonec2 
-            --amazonec2-access-key $AWS_ACCESS_KEY_ID 
-            --amazonec2-secret-key $AWS_SECRET_ACCESS_KEY 
-            --amazonec2-instance-type g3s.xlarge
-            --amazonec2-vpc-id vpc-76f1f01e
-            --amazonec2-region us-east-2 
-            --amazonec2-zone a 
-            --amazonec2-ssh-user ubuntu
-            --amazonec2-ami ami-0b9391ca3ebd62e15
-            --amazonec2-root-size 130
-            $MACHINE
-            
-    - eval "$(docker-machine env --shell sh $MACHINE)"
-
-    - (
-      docker-machine ssh $MACHINE "sudo mkdir -p /docker_machine && 
-      sudo chmod 777 /docker_machine" &&
-      docker-machine scp -r -q ~/.docker/machine/ 
-        $MACHINE:/docker_machine &&
-
-      docker run --name runner --gpus all -d
-        -v /docker_machine/machine:/root/.docker/machine
-        -e DOCKER_MACHINE=$MACHINE
-        -e repo_token=$repo_token
-        -e RUNNER_LABELS=$RUNNER_LABELS
-        -e RUNNER_REPO=$CI_PROJECT_URL
-        -e RUNNER_IDLE_TIMEOUT=120
-        dvcorg/cml-py3:latest &&
-        
-      sleep 20 && echo "Deployed $MACHINE"
-      ) || (docker-machine rm -f $MACHINE && exit 1)
-
-train_aws:
+train_job:
+  <Tooltip type="reports">
+  stage: train
+  when: on_success
+  image: dvcorg/cml-py3
   tags:
-    - cml
-    - aws
-    
+    - cml-runner-gpu
+  </Tooltip>
+
   script:
-    <Tooltip type="dependencies">
     - apt-get update -y
     - apt-get install python3-dev -y
     - apt install imagemagick -y
     - pip install -r requirements.txt
     
     # DVC reproduce neural style transfer training
+    - git fetch --prune
     - dvc repro
-    </Tooltip>
     
     # Compare master and workspace image results
-    - git fetch --prune
+    - echo "# Style transfer" >> report.md
     - git show origin/master:final_owl.png > master_owl.png
     - convert +append final_owl.png master_owl.png out.png
     - convert out.png -resize 75% out_shrink.png
-    <Tooltip type="reports">
-    - echo "# Style transfer" >> report.md
     - echo "### Workspace vs. Master" >> report.md
     - cml-publish out_shrink.png --md >> report.md
-   
+    
     # Report training parameters
     - echo "## Training parameter diffs" >> report.md
     - dvc params diff master --show-md >> report.md
@@ -489,8 +611,7 @@ train_aws:
     - cat gpu_info.txt >> report.md
     
     - cml-send-comment report.md 
-     </Tooltip>
-    
+
 
 ```
 
@@ -506,98 +627,84 @@ train_aws:
 <Collapser>
 
 ```yml filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml_cloud_case"
-name: style-transfer
+name: train-my-model
 
 on: [push]
 
 jobs:
-  deploy-cloud-runner:
+  deploy-runner:
     runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml
-
-    steps:
-      - name: deploy
-        env:
-          repo_token: ${'{{ secrets.REPO_TOKEN }}'}
-          AWS_ACCESS_KEY_ID: ${'{{ secrets.ACCESS_KEY_ID }}'}
-          AWS_SECRET_ACCESS_KEY: ${'{{ secrets.SECRET_ACCESS_KEY }}'}
-        run: |
-          echo "Deploying..."
-          RUNNER_LABELS="cml,aws"
-          RUNNER_REPO="https://github.com/{'${GITHUB_REPOSITORY}'}"
-          MACHINE="cml$(date +%s)"
-          docker-machine create \
-            --driver amazonec2 \
-            --amazonec2-instance-type g3s.xlarge \
-            --amazonec2-vpc-id vpc-76f1f01e \
-            --amazonec2-region us-east-2 \
-            --amazonec2-zone a \
-            --amazonec2-ssh-user ubuntu \
-            --amazonec2-ami ami-07b11e59bc74961b5 \
-            --amazonec2-root-size 64 \
-            $MACHINE
-          eval "$(docker-machine env --shell sh $MACHINE)"
-
-          (
-          docker-machine ssh $MACHINE "sudo mkdir -p \
-            /docker_machine && \
-          sudo chmod 777 /docker_machine" && \
-          docker-machine scp -r -q ~/.docker/machine/ \
-            $MACHINE:/docker_machine && \
-          docker run --name runner --gpus all -d \
-            -v /docker_machine/machine:/root/.docker/machine \
-            -e DOCKER_MACHINE=$MACHINE \
-            -e repo_token=$repo_token \
-            -e RUNNER_LABELS=$RUNNER_LABELS \
-            -e RUNNER_REPO=$RUNNER_REPO \
-            -e RUNNER_IDLE_TIMEOUT=120 \
-            dvcorg/cml-py3:latest && \
-          sleep 20 && echo "Deployed $MACHINE"
-          ) || (docker-machine rm -y -f $MACHINE && exit 1)
-  train:
-    needs: deploy-cloud-runner
-    runs-on: [self-hosted,cml]
     steps:
       - uses: actions/checkout@v2
-      - name: cml_run
+
+      - uses: iterative/setup-cml@v1
+
+      - name: deploy
+        shell: bash
         env:
-          repo_token: ${'{{ secrets.REPO_TOKEN}}'}
+          repo_token: { "${{ secrets.secrets.PERSONAL_ACCESS_TOKEN }}" }
+          AWS_ACCESS_KEY_ID: { "${{ secrets.AWS_ACCESS_KEY_ID }}" }
+          AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" } 
         run: |
-          <Tooltip type="dependencies">
-          apt-get update -y
-          apt-get install python3-dev -y
-          apt install imagemagick -y
-          pip install -r requirements.txt
-          
-          # DVC reproduce neural style transfer training
-          dvc repro
-          </Tooltip>
-          
-          # Compare master and workspace image results
-          git fetch --prune
-          git show origin/master:final_owl.png > master_owl.png
-          convert +append final_owl.png master_owl.png out.png
-          convert out.png -resize 75%  out_shrink.png
           <Tooltip type="reports">
-          echo "# Style transfer" >> report.md
-          echo "### Workspace vs. Master" >> report.md
-          cml-publish out_shrink.png --md >> report.md
-
-          # Report training parameters
-          echo "## Training parameter diffs" >> report.md
-          dvc params diff master --show-md >> report.md
-
-          # Report GPU details
-          echo "## GPU info" >> report.md
-          cat gpu_info.txt >> report.md
-
-          cml-send-comment report.md
+          cml-runner \
+          --cloud aws \
+          --cloud-region us-west \
+          --cloud-type=g3.4xlarge \
+          --cloud-hdd-size 64 \
+          --labels=cml-runner
           </Tooltip>
+
+  run:
+    <Tooltip type="reports">
+    needs: deploy-runner
+    runs-on: [self-hosted,cml-runner]
+    container: 
+      image: docker://dvcorg/cml
+    </Tooltip>
+    <Tooltip type="tensorboard">
+      options: --gpus all
+    </Tooltip>
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.6'
+
+    - name: cml
+      env:
+        repo_token: { "${{ secrets.secrets.PERSONAL_ACCESS_TOKEN }}" }
+      run: |
+        apt-get update -y
+        apt install imagemagick -y
+        pip install -r requirements.txt
+        
+        # DVC stuff
+        git fetch --prune
+        dvc repro
+        
+        echo "# Style transfer" >> report.md
+        git show origin/master:final_owl.png > master_owl.png
+        convert +append final_owl.png master_owl.png out.png
+        convert out.png -resize 75%  out_shrink.png
+        echo "### Workspace vs. Main" >> report.md
+        cml-publish out_shrink.png --md --title 'compare' >> report.md
+        
+        echo "## Training metrics" >> report.md
+        dvc params diff master --show-md >> report.md
+        
+        echo >> report.md
+        echo "## GPU info" >> report.md
+        cat gpu_info.txt >> report.md
+        
+        cml-send-comment report.md 
 ```
 
 <ExampleBox title="CML Report">
 
-[![GitHub Cloud report example](../src/media/github/cloud-report.png)](https://github.com/iterative/cml_cloud_case/pull/1)
+[![GitHub Cloud report example](../src/media/github/cloud-report.png)](https://github.com/iterative/cml_cloud_case/pull/11)
 
 </ExampleBox>
 
