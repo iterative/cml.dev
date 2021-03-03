@@ -485,7 +485,7 @@ train_job:
 <Collapser>
 
 ```yml filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml-runner-base-case"
-name: train-my-model
+name: Train-in-the-cloud
 
 on: [push]
 
@@ -501,7 +501,7 @@ jobs:
         shell: bash
         env:
           repo_token: { "${{ secrets.PERSONAL_ACCESS_TOKEN }}" }
-          AWS_ACCESS_KEY_ID: { "${{ AWS_ACCESS_KEY_ID.PERSONAL_ACCESS_TOKEN }}" }
+          AWS_ACCESS_KEY_ID: { "${{ secrets.AWS_ACCESS_KEY_ID }}" }
           AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" }
         run: |
           <Tooltip type="reports">
@@ -512,21 +512,17 @@ jobs:
           --labels=cml-runner
           </Tooltip>
 
-  run:
+  model-training:
     <Tooltip type="reports">
     needs: deploy-runner
     runs-on: [self-hosted,cml-runner]
-    container: docker://dvcorg/cml
+    container: docker://dvcorg/cml-py3
     </Tooltip>
 
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/setup-python@v2
-        with:
-          python-version: '3.6'
-
-    - name: cml
+    - name: "Train my model"
       env:
         repo_token: { "${{ secrets.PERSONAL_ACCESS_TOKEN }}" }
       run: |
