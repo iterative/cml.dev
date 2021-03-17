@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react"
 import Link from "components/atoms/ThemedGatsbyLink"
 import { Box, Container, Button } from "@theme-ui/components"
+import InstallPopup from "components/molecules/InstallPopup"
 import SmartLink from "components/atoms/SmartLink"
 import SiteLogo from "components/atoms/SiteLogo"
-import InstallPopup from "components/atoms/InstallPopup"
 
 const navItems = [
   {
