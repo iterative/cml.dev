@@ -314,8 +314,8 @@ export default {
         mt: ["24px", null, 0],
         p: 0,
         Title: {
-          fontSize: "12px",
-          lineHeight: "24px",
+          fontSize: "14px",
+          lineHeight: "26px",
           fontWeight: "500",
           color: "rgba(255, 255, 255, 0.3)",
           textTransform: "uppercase",
@@ -323,9 +323,9 @@ export default {
         },
         Link: {
           variant: "links.footerNav",
-          mt: "8px",
-          fontSize: ["12px", null, "16px", "18px"],
-          lineHeight: ["16px", null, "28px", "30px"],
+          py: "6px",
+          fontSize: ["14px", null, "16px", "18px"],
+          lineHeight: ["18px", null, "28px", "30px"],
           letterSpacing: [null, null, "0.02em"],
           display: "flex",
           alignItems: "center",
@@ -334,11 +334,14 @@ export default {
             width: ["16px", null, "18px", "20px"],
             height: ["16px", null, "18px", "20px"],
           },
+          "&:first-of-type": {
+            mt: "2px",
+          },
         },
       },
       CompanyLabel: {
-        fontSize: "18px",
-        lineHeight: "30px",
+        fontSize: "20px",
+        lineHeight: "32px",
         display: "flex",
         flexDirection: ["column", null, "row"],
         alignItems: "center",
@@ -356,8 +359,8 @@ export default {
             },
           },
           "&:nth-of-type(2)": {
-            fontSize: ["12px", null, "18px"],
-            lineHeight: ["18px", null, "30px"],
+            fontSize: ["14px", null, "18px"],
+            lineHeight: ["20px", null, "30px"],
             "& span": {
               display: ["none", null, "inline"],
               ml: "7px",
