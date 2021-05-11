@@ -317,6 +317,7 @@ export default {
           fontSize: "14px",
           lineHeight: "26px",
           fontWeight: "500",
+          whiteSpace: "nowrap",
           color: "rgba(255, 255, 255, 0.3)",
           textTransform: "uppercase",
           letterSpacing: "0.1em",
@@ -349,6 +350,11 @@ export default {
         mt: ["32px", null, "48px", "32px"],
         alignSelf: "center",
         mr: [null, null, null, "auto"],
+        a: {
+          display: "flex",
+          alignItems: "center",
+          textDecoration: "none",
+        },
         Line: {
           "&:first-of-type": {
             display: "flex",

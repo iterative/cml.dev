@@ -157,10 +157,13 @@ function Footer() {
         </Flex>
         <Flex as="p" variant="layout.Footer.CompanyLabel">
           <Box variant="layout.Footer.CompanyLabel.Line" as="span">
-            By {<IterativeIcon width="22" height="22" />}
-            <Box as="span" variant="layout.GradientText">
-              Iterative.ai
-            </Box>
+            By{" "}
+            <SmartLink href="https://iterative.ai/">
+              {<IterativeIcon width="22" height="22" />}
+              <Box as="span" variant="layout.GradientText">
+                Iterative.ai
+              </Box>
+            </SmartLink>
           </Box>
           <Box variant="layout.Footer.CompanyLabel.Line" as="span">
             <Box as="span"> - </Box>An open platform to operationalize AI
