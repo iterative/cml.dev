@@ -294,7 +294,7 @@ export default {
       Logo: {
         display: "inline-block",
         mr: "80px",
-        mb: ["24px", null, "26px"],
+        mb: [null, null, "26px"],
         svg: {
           display: "block",
           mr: "auto",
@@ -311,6 +311,7 @@ export default {
         flexDirection: "column",
         width: ["calc(50% - 12px)", null, "initial"],
         mr: [null, null, "56px", "84px"],
+        mt: ["24px", null, 0],
         p: 0,
         Title: {
           fontSize: "12px",
