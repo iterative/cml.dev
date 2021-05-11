@@ -354,6 +354,11 @@ export default {
           display: "flex",
           alignItems: "center",
           textDecoration: "none",
+          transition: "opacity 0.25s",
+          ":hover": {
+            opacity: "0.8",
+            cursor: "pointer",
+          },
         },
         Line: {
           "&:first-of-type": {
