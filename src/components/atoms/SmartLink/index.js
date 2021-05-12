@@ -4,7 +4,7 @@ import { Link as GatsbyLink } from "gatsby"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 const SmartLink = ({ href, ...props }) => {
-  const isExternal = href.match(/^(\w*:)?\/\//)
+  const isExternal = href.match(/^https?:\/\//)
   return isExternal ? (
     <ThemedLink
       as={OutboundLink}
