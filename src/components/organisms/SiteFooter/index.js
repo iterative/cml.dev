@@ -57,7 +57,6 @@ const footerLists = [
     title: "Company",
     items: [
       { text: "About us", url: "https://iterative.ai/about/" },
-      { text: "Github", url: "https://github.com/iterative" },
       { text: "Join us", url: "https://iterative.ai/about#career" },
     ],
   },
@@ -161,7 +160,7 @@ function Footer() {
             <SmartLink href="https://iterative.ai/">
               {<IterativeIcon width="22" height="22" />}
               <Box as="span" variant="layout.GradientText">
-                Iterative.ai
+                iterative.ai
               </Box>
             </SmartLink>
           </Box>
