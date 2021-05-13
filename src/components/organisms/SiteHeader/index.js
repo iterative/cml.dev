@@ -1,9 +1,16 @@
 import React, { useRef, useState } from "react"
 import Link from "components/atoms/ThemedGatsbyLink"
-import { Box, Container, Button } from "@theme-ui/components"
+import { Flex, Box, Container, Button } from "@theme-ui/components"
 import InstallPopup from "components/molecules/InstallPopup"
 import SmartLink from "components/atoms/SmartLink"
 import SiteLogo from "components/atoms/SiteLogo"
+
+import UpIcon from "media/icons/up.svg"
+import DownIcon from "media/icons/down.svg"
+import CmlIcon from "media/icons/cml.svg"
+import DvcIcon from "media/icons/dvc.svg"
+import StudioIcon from "media/icons/studio.svg"
+import ExternalLinkIcon from "media/icons/external-link.svg"
 
 const navItems = [
   {
@@ -20,19 +27,76 @@ const navItems = [
   },
 ]
 
+const otherToolsItems = [
+  {
+    title: "Studio",
+    icon: <StudioIcon width="24" height="24" />,
+    description: "Track experiments and share insights from ML projects",
+    href: "https://viewer.iterative.ai/",
+  },
+  {
+    title: "DVC",
+    icon: <DvcIcon width="24" height="24" />,
+    description: "Open-source version control system for ML projects",
+    href: "https://github.com/iterative/dvc",
+  },
+  {
+    title: "CML",
+    icon: <CmlIcon width="24" height="24" />,
+    description: "Open-source CI/CD for ML projects",
+    href: "/",
+  },
+]
+
+const OtherToolsPopup = ({ list, isOpen }) => {
+  return (
+    <Flex
+      variant="layout.Header.Nav.OtherToolsPopup"
+      sx={isOpen ? { variant: "layout.Header.Nav.OtherToolsPopup.Open" } : {}}
+    >
+      {list.map(({ title, icon, description, href }, i) => (
+        <SmartLink
+          href={href}
+          key={i}
+          variant="layout.Header.Nav.OtherToolsPopup.Link"
+        >
+          <Box variant="layout.Header.Nav.OtherToolsPopup.Link.Icon">
+            {icon}
+          </Box>
+          <Box as="h2" variant="layout.Header.Nav.OtherToolsPopup.Link.Title">
+            {title}
+            {i === 0 && <ExternalLinkIcon width="16" height="16" />}
+          </Box>
+          <Box
+            as="p"
+            variant="layout.Header.Nav.OtherToolsPopup.Link.Description"
+          >
+            {description}
+          </Box>
+        </SmartLink>
+      ))}
+    </Flex>
+  )
+}
+
 function Header() {
   const [isInstallPopupOpen, setIsInstallPopupOpen] = useState(false)
-  const installBtnPopupContainerEl = useRef(null)
-
-  function handlePageClick(e) {
-    if (!installBtnPopupContainerEl.current.contains(e.target)) {
-      closeInstallPopup()
-    }
-  }
+  const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
+  const installPopupContainerEl = useRef(null)
+  const otherToolsPopupContainerEl = useRef(null)
 
   function handlePageKeyup(e) {
     if (e.key === "Escape") {
-      closeInstallPopup()
+      closeAllPopups()
+    }
+  }
+
+  function handlePageClick(e) {
+    if (
+      !installPopupContainerEl.current.contains(e.target) &&
+      !otherToolsPopupContainerEl.current.contains(e.target)
+    ) {
+      closeAllPopups()
     }
   }
 
@@ -42,49 +106,119 @@ function Header() {
     setIsInstallPopupOpen(true)
   }
 
-  function closeInstallPopup() {
+  function openOtherToolsPopup() {
+    document.addEventListener("click", handlePageClick)
+    document.addEventListener("keyup", handlePageKeyup)
+    setIsOtherToolsPopupOpen(true)
+  }
+
+  function closeAllPopups() {
     setIsInstallPopupOpen(false)
+    setIsOtherToolsPopupOpen(false)
+
     document.removeEventListener("click", handlePageClick)
     document.removeEventListener("keyup", handlePageKeyup)
   }
 
   function toggleInstallPopup() {
+    setIsOtherToolsPopupOpen(false)
     if (isInstallPopupOpen) {
-      closeInstallPopup()
+      closeAllPopups()
     } else {
       openInstallPopup()
+    }
+  }
+
+  function toggleOtherToolsPopup() {
+    setIsInstallPopupOpen(false)
+    if (isOtherToolsPopupOpen) {
+      closeAllPopups()
+    } else {
+      openOtherToolsPopup()
     }
   }
 
   return (
     <Box as="header" variant="layout.Header">
       <Container variant="layout.Header.Inner">
-        <Link to="/" variant="layout.Header.Logo">
-          <SiteLogo />
-        </Link>
         <Box as="nav" variant="layout.Header.Nav" id="header-nav">
-          {navItems.map(({ label, href }, i) => (
-            <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
-              {label}
-            </SmartLink>
-          ))}
-          <Box ref={installBtnPopupContainerEl} sx={{ position: "relative" }}>
+          <Link to="/" variant="layout.Header.Nav.Logo">
+            <SiteLogo />
+          </Link>
+          <SmartLink
+            href="https://iterative.ai/"
+            variant="layout.Header.Nav.CompanyLabel"
+          >
+            {" "}
+            by iterative.ai
+          </SmartLink>
+          <Box
+            variant="layout.Header.Nav.OtherTools"
+            ref={otherToolsPopupContainerEl}
+            sx={{ position: "relative" }}
+          >
             <Button
-              onClick={toggleInstallPopup}
+              onClick={toggleOtherToolsPopup}
               variant="layout.Header.Nav.NavButton"
               sx={
-                isInstallPopupOpen
+                isOtherToolsPopupOpen
                   ? { variant: "layout.Header.Nav.NavButton.Active" }
                   : {}
               }
             >
-              Install
+              Other Tools
+              <Box
+                variant="layout.Header.Nav.NavButton.Icon"
+                sx={
+                  isOtherToolsPopupOpen
+                    ? { display: "none" }
+                    : { display: "flex" }
+                }
+                as="span"
+              >
+                <DownIcon width="14" height="14" />
+              </Box>
+              <Box
+                variant="layout.Header.Nav.NavButton.Icon"
+                sx={
+                  isOtherToolsPopupOpen
+                    ? { display: "flex" }
+                    : { display: "none" }
+                }
+                as="span"
+              >
+                <UpIcon width="14" height="14" />
+              </Box>
             </Button>
-            <InstallPopup
-              onClose={closeInstallPopup}
-              isOpen={isInstallPopupOpen}
+            <OtherToolsPopup
+              isOpen={isOtherToolsPopupOpen}
+              list={otherToolsItems}
             />
           </Box>
+          <Flex variant="layout.Header.Nav.RightWrapper">
+            {navItems.map(({ label, href }, i) => (
+              <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
+                {label}
+              </SmartLink>
+            ))}
+            <Box ref={installPopupContainerEl} sx={{ position: "relative" }}>
+              <Button
+                onClick={toggleInstallPopup}
+                variant="layout.Header.Nav.NavButton"
+                sx={
+                  isInstallPopupOpen
+                    ? { variant: "layout.Header.Nav.NavButton.Active" }
+                    : {}
+                }
+              >
+                Install
+              </Button>
+              <InstallPopup
+                onClose={closeAllPopups}
+                isOpen={isInstallPopupOpen}
+              />
+            </Box>
+          </Flex>
         </Box>
       </Container>
     </Box>
