@@ -185,7 +185,7 @@ export default {
         },
         OtherToolsPopup: {
           variant: "layout.Header.Nav.Popup",
-          backgroundColor: "text",
+          backgroundColor: "#443558",
           flexDirection: "column",
           padding: "8px",
           width: ["244px", null, "296px", "320px"],
