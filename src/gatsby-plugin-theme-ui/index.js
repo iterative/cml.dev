@@ -104,9 +104,11 @@ export default {
         Logo: {
           display: "block",
           flex: "0 0 auto",
+          width: ["80px", null, "102px", "116px"],
+          height: ["28px", null, "36px", "40px"],
           svg: {
-            width: ["80px", null, "102px", "116px"],
-            height: ["28px", null, "36px", "40px"],
+            width: "inherit",
+            height: "inherit",
             display: "block",
             mx: "auto",
           },
@@ -115,7 +117,8 @@ export default {
           variant: "layout.GradientText",
           background: "linear-gradient(270deg, #945DD6 0%, #F46737 100%)",
           transition: "opacity 0.25s",
-          fontSize: ["11px", null, "13px", "15px"],
+          fontSize: ["12px", null, "13px", "15px"],
+          textDecoration: "none",
           flex: "0 0 auto",
           lineHeight: "20px",
           whiteSpace: "nowrap",
@@ -141,7 +144,8 @@ export default {
         },
         Link: {
           variant: "links.nav",
-          fontSize: ["14px", null, null, "20px"],
+          fontFamily: "body",
+          fontSize: ["15px", null, null, "20px"],
           fontWeight: "normal",
           textAlign: "center",
           lineHeight: ["18px", null, null, "24px"],
