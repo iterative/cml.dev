@@ -65,7 +65,7 @@ const OtherToolsPopup = ({ list, isOpen }) => {
           </Box>
           <Box as="h2" variant="layout.Header.Nav.OtherToolsPopup.Link.Title">
             {title}
-            {i === 0 && <ExternalLinkIcon width="16" height="16" />}
+            <ExternalLinkIcon width="16" height="16" />
           </Box>
           <Box
             as="p"

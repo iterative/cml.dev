@@ -218,6 +218,9 @@ export default {
             },
             "&:hover": {
               backgroundColor: "rgba(255, 255, 255, 0.1)",
+              svg: {
+                opacity: 1,
+              },
             },
             Icon: {
               width: ["24px", null, "32px", "36px"],
@@ -237,6 +240,8 @@ export default {
               alignItems: "center",
               svg: {
                 ml: "10px",
+                opacity: 0,
+                transition: "opacity 0.25s",
               },
             },
             Description: {
