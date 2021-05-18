@@ -76,7 +76,7 @@ const footerLists = [
       {
         text: "Studio",
         icon: <StudioIcon height="16" width="16" />,
-        url: "https://viewer.iterative.ai/",
+        url: "https://studio.iterative.ai/",
       },
     ],
   },
