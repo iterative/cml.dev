@@ -32,13 +32,13 @@ const otherToolsItems = [
     title: "Studio",
     icon: <StudioIcon width="24" height="24" />,
     description: "Track experiments and share insights from ML projects",
-    href: "https://viewer.iterative.ai/",
+    href: "https://studio.iterative.ai/",
   },
   {
     title: "DVC",
     icon: <DvcIcon width="24" height="24" />,
     description: "Open-source version control system for ML projects",
-    href: "https://github.com/iterative/dvc",
+    href: "https://dvc.org/",
   },
   {
     title: "CML",
@@ -65,7 +65,7 @@ const OtherToolsPopup = ({ list, isOpen }) => {
           </Box>
           <Box as="h2" variant="layout.Header.Nav.OtherToolsPopup.Link.Title">
             {title}
-            {i === 0 && <ExternalLinkIcon width="16" height="16" />}
+            <ExternalLinkIcon width="16" height="16" />
           </Box>
           <Box
             as="p"

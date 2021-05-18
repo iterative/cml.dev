@@ -1,6 +1,6 @@
 import React from "react"
 import GatsbyLink from "components/atoms/ThemedGatsbyLink"
-import { Box, Container, Link, Flex, Heading } from "@theme-ui/components"
+import { Box, Container, Flex, Heading } from "@theme-ui/components"
 import SmartLink from "components/atoms/SmartLink"
 
 import SiteLogo from "components/atoms/SiteLogo"
@@ -76,7 +76,7 @@ const footerLists = [
       {
         text: "Studio",
         icon: <StudioIcon height="16" width="16" />,
-        url: "https://viewer.iterative.ai/",
+        url: "https://studio.iterative.ai/",
       },
     ],
   },
@@ -127,7 +127,7 @@ const FooterList = ({ title, items }) => (
 )
 
 const SocialLink = ({ url, icon, title }) => (
-  <Link
+  <SmartLink
     href={url}
     variant="styles.SocialLinkIcon"
     title={title}
@@ -139,7 +139,7 @@ const SocialLink = ({ url, icon, title }) => (
     }}
   >
     {icon}
-  </Link>
+  </SmartLink>
 )
 
 function Footer() {
