@@ -74,6 +74,7 @@ export default {
     },
     Header: {
       color: "background",
+      backgroundColor: "text",
       py: ["12px", null, "20px", "36px"],
       pb: ["6px", null, "20px", "36px"],
       px: ["16px", null, "32px", "80px"],
@@ -116,7 +117,7 @@ export default {
         CompanyLabel: {
           variant: "layout.GradientText",
           background: "linear-gradient(270deg, #945DD6 0%, #F46737 100%)",
-          transition: "opacity 0.25s",
+          transition: "opacity 0.2s",
           fontSize: ["12px", null, "13px", "15px"],
           textDecoration: "none",
           flex: "0 0 auto",
@@ -447,7 +448,7 @@ export default {
           display: "flex",
           alignItems: "center",
           textDecoration: "none",
-          transition: "opacity 0.25s",
+          transition: "opacity 0.2s",
           ":hover": {
             opacity: "0.8",
             cursor: "pointer",
@@ -538,7 +539,7 @@ export default {
   },
   links: {
     primary: {
-      transition: "0.5s color",
+      transition: "0.2s color",
     },
     button: {
       variant: "buttons.primary",
