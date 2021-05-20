@@ -74,6 +74,7 @@ export default {
     },
     Header: {
       color: "background",
+      backgroundColor: "text",
       py: ["12px", null, "20px", "36px"],
       pb: ["6px", null, "20px", "36px"],
       px: ["16px", null, "32px", "80px"],
