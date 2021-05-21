@@ -79,7 +79,7 @@ const OtherToolsPopup = ({ list, isOpen }) => {
   )
 }
 
-function Header() {
+function Header({ isMain }) {
   const [isInstallPopupOpen, setIsInstallPopupOpen] = useState(false)
   const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
   const installPopupContainerEl = useRef(null)
@@ -139,7 +139,11 @@ function Header() {
   }
 
   return (
-    <Box as="header" variant="layout.Header">
+    <Box
+      as="header"
+      variant="layout.Header"
+      sx={isMain ? { backgroundColor: "transparent" } : {}}
+    >
       <Container variant="layout.Header.Inner">
         <Box as="nav" variant="layout.Header.Nav" id="header-nav">
           <Link to="/" variant="layout.Header.Nav.Logo">
