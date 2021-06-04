@@ -1,14 +1,9 @@
 import React, { forwardRef } from 'react'
 
 import {
-  Button,
-  Flex,
   Box,
-  Container,
   Link,
   Heading,
-  Image,
-  Text
 } from '@theme-ui/components'
 
 import Header from '../../components/organisms/SiteHeader'

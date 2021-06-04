@@ -1,25 +1,12 @@
 import React, { forwardRef } from 'react'
 
 import {
-  Button,
-  Flex,
   Box,
-  Container,
-  Link,
   Heading,
-  Image,
-  Text
 } from '@theme-ui/components'
-
-import Header from '../../components/organisms/SiteHeader'
-import LandingVideo from '../../components/molecules/Video/LandingVideo'
-import Collapser from '../../components/atoms/Collapser'
-import Switch from '../../components/organisms/SwitchableMode/Switch'
-import Switchable from '../../components/organisms/SwitchableMode/Switchable'
 
 import {
   FullWidthBox,
-  HomeFeature,
   SolutionList
 } from '../../../../gatsby-plugin-theme-ui/components'
 
