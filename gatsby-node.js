@@ -1,117 +1,41 @@
-const path = require("path")
-const fs = require("fs")
+require('dotenv').config()
 
-exports.createSchemaCustomization = async api => {
-  const {
-    schema: { buildObjectType },
-    actions: { createTypes },
-  } = api
+const { setPageContext } = require('./src/gatsby/common')
 
-  createTypes([
-    buildObjectType({
-      name: "Page",
-      interfaces: ["Node"],
-      fields: {
-        slug: "String!",
-        pagePath: "String!",
-        template: "String",
-        file: {
-          type: "File!",
-          extensions: {
-            link: { by: "id" },
-          },
-        },
-      },
-    }),
-  ])
+const models = require('./src/gatsby/models.js')
+const callOnModels = require('./src/gatsby/utils/models')
+
+exports.createSchemaCustomization = api =>
+  callOnModels(models, 'createSchemaCustomization', api)
+exports.sourceNodes = api => callOnModels(models, 'sourceNodes', api)
+exports.onCreateNode = api => callOnModels(models, 'onCreateNode', api)
+exports.createPages = api => callOnModels(models, 'createPages', api)
+exports.createResolvers = api => callOnModels(models, 'createResolvers', api)
+
+exports.onCreatePage = ({ page, actions }) => {
+  setPageContext(page, actions)
 }
 
-exports.onCreateNode = async api => {
-  const {
-    node,
-    getNode,
-    createNodeId,
-    createContentDigest,
-    actions: { createNode, createParentChildLink },
-  } = api
+// Ignore warnings about CSS inclusion order, because we use CSS modules.
+// https://spectrum.chat/gatsby-js/general/having-issue-related-to-chunk-commons-mini-css-extract-plugin~0ee9c456-a37e-472a-a1a0-cc36f8ae6033?m=MTU3MjYyNDQ5OTAyNQ==
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+  if (stage === 'build-javascript') {
+    const config = getConfig()
 
-  const indexName = "index"
+    // Add polyfills
+    config.entry.app = [
+      'promise-polyfill/src/polyfill',
+      'isomorphic-fetch',
+      'raf-polyfill',
+      config.entry.app
+    ]
 
-  if (node.internal.type === "Mdx") {
-    const fileNode = getNode(node.parent)
-    const { relativeDirectory, name: filename } = fileNode
-    switch (fileNode.relativeDirectory) {
-      default: {
-        const {
-          frontmatter: { template },
-        } = node
-        const slug = filename === indexName ? "" : filename
-        const fields = {
-          slug,
-          template,
-          pagePath: path.posix.join("/", relativeDirectory, slug),
-        }
-
-        const pageNode = {
-          ...fields,
-          id: createNodeId(`${node.id} >>> Page`),
-          parent: node.id,
-          file: fileNode.id,
-          children: [],
-          internal: {
-            type: "Page",
-            contentDigest: createContentDigest(fields),
-          },
-        }
-
-        await createNode(pageNode)
-        await createParentChildLink({ parent: node, child: pageNode })
-        return
-      }
-    }
-  }
-}
-
-exports.createPages = async ({ graphql, actions: { createPage } }) => {
-  const { data, errors } = await graphql(`
-    query TemplatedPageQuery {
-      allPage {
-        nodes {
-          pagePath
-          template
-          parent {
-            id
-          }
-        }
-      }
-    }
-  `)
-
-  if (errors) throw new Error(errors)
-
-  const {
-    allPage: { nodes },
-  } = data
-
-  return Promise.all(
-    nodes.map(({ pagePath, template = "default", parent: { id } }) =>
-      createPage({
-        path: pagePath,
-        component: require.resolve(
-          path.resolve("src/templates", template || "default")
-        ),
-        context: {
-          id,
-        },
-      })
+    const miniCssExtractPlugin = config.plugins.find(
+      plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
     )
-  )
-}
-
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"],
-    },
-  })
+    if (miniCssExtractPlugin) {
+      miniCssExtractPlugin.options.ignoreOrder = true
+    }
+    actions.replaceWebpackConfig(config)
+  }
 }

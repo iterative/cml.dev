@@ -1,10 +1,10 @@
 import React, { useRef } from "react"
-import SolutionLineArrow from "./solution-line-arrow.svg"
-import Collapser from "components/atoms/Collapser"
-import Video from "components/molecules/Video"
-import Tooltip from "components/organisms/Tooltip"
+import { ReactComponent as SolutionLineArrow } from "./solution-line-arrow.svg"
+import Collapser from "../components/Home/components/atoms/Collapser"
+import Video from "../components/Home/components/molecules/Video"
+import Tooltip from "../components/Home/components/organisms/Tooltip"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
-import SmartLink from "components/atoms/SmartLink"
+import SmartLink from "../components/Home/components/atoms/SmartLink"
 
 import {
   Button,
@@ -17,12 +17,12 @@ import {
   Text,
 } from "@theme-ui/components"
 import { alpha } from "@theme-ui/color"
-import { JSONTabs } from "components/organisms/Tabs"
+import { JSONTabs } from "../components/Home/components/organisms/Tabs"
 
-import Switchable from "components/organisms/SwitchableMode/Switchable"
-import Switch from "components/organisms/SwitchableMode/Switch"
-import GitHubIcon from "media/icons/github.svg"
-import GitLabIcon from "media/icons/gitlab.svg"
+import Switchable from "../components/Home/components/organisms/SwitchableMode/Switchable"
+import Switch from "../components/Home/components/organisms/SwitchableMode/Switch"
+import { ReactComponent as GitHubIcon } from "../media/icons/github.svg"
+import { ReactComponent as GitLabIcon } from "../media/icons/gitlab.svg"
 
 export const groupApply = (rawChildren, test, cb) => {
   if (!rawChildren) return []
@@ -74,9 +74,9 @@ const ContainExcept = ({
   return <>{processedChildren}</>
 }
 
-const FullWidthBox = ({
+export const FullWidthBox = ({
   children,
-  className,
+  className = "",
   sx: { Inner, ...sx },
   ...props
 }) => {
@@ -87,7 +87,7 @@ const FullWidthBox = ({
   )
 }
 
-const HomeFeature = ({ children, heading, icon: Icon }) => {
+export const HomeFeature = ({ children, heading, icon: Icon }) => {
   return (
     <Box variant="styles.HomeFeature.Wrapper">
       <Box variant="styles.HomeFeature.Box">
@@ -134,7 +134,7 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
   }
 }
 
-const Code = ({ children, lang, filename, repo, sx = {} }) => {
+export const Code = ({ children, lang = "yml", filename, repo, sx = {} }) => {
   const renderHeader = lang || filename
   const codeBlockRef = useRef()
   return (
@@ -197,7 +197,7 @@ const Code = ({ children, lang, filename, repo, sx = {} }) => {
   )
 }
 
-const SolutionList = ({ children, sx, className }) => (
+export const SolutionList = ({ children, sx, className }) => (
   <Box as="ul" variant="styles.SolutionList" className={className} sx={sx}>
     {children.map(([problem, solution], i) => (
       <SolutionLine problem={problem} solution={solution} key={i} />
@@ -213,7 +213,7 @@ const SolutionLine = ({ problem, solution }) => (
   </Box>
 )
 
-const ExampleBox = ({ title, children }) => {
+export const ExampleBox = ({ title, children }) => {
   return (
     <Box
       sx={{

@@ -17,9 +17,6 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
-# nyc test coverage
-.nyc_output
-
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
@@ -29,14 +26,14 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
+# Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directories
 node_modules/
 jspm_packages/
 
-# Typescript v1 declaration files
+# TypeScript v1 declaration files
 typings/
 
 # Optional npm cache directory
@@ -51,21 +48,25 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# dotenv environment variable files
-.env*
-
-# gatsby files
-.cache/
-public
-
-# Mac files
-.DS_Store
-
-# Yarn
-yarn-error.log
-.pnp/
-.pnp.js
 # Yarn Integrity file
 .yarn-integrity
 
-storybook-static
+# dotenv environment variables file
+.env
+
+# Editors & logs
+*.log
+.idea
+.vscode
+.history
+
+# Mac finder artifacts
+.DS_Store
+
+# Gatsby cache
+.cache
+public
+tmp
+
+# Copied 404 for Heroku
+404.html

@@ -1,10 +1,17 @@
 {
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/nodejs"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-static"
     }
-  ]
+  ],
+  "env": {},
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "dvc.org",
+  "scripts": {},
+  "stack": "heroku-18"
 }

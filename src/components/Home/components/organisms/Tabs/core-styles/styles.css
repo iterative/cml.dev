@@ -1,0 +1,16 @@
+.tabs {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.content {
+  flex: 1 0 100%;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.tabs > input:checked + .tab + .content {
+  height: auto;
+  width: 100%;
+}
