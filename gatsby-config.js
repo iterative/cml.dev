@@ -34,13 +34,6 @@ const plugins = [
     }
   },
   {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'images',
-      path: path.join(__dirname, 'static', 'uploads')
-    }
-  },
-  {
     resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
