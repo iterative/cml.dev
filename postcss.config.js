@@ -14,11 +14,11 @@ module.exports = function postcssConfig() {
       mixins(mixinsConfig),
       customMedia({ importFrom: mediaConfig }),
       customProperties({
-        importFrom: ['src/components/Page/base.css']
+        importFrom: ['src/components/organisms/Page/base.css']
       }),
       nested,
       colorMod({
-        importFrom: ['src/components/Page/base.css']
+        importFrom: ['src/components/organisms/Page/base.css']
       }),
       autoprefixer
     ]

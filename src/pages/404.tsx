@@ -1,7 +1,7 @@
 import React from 'react'
 
-import NotFound from '../components/NotFound'
-import SEO from '../components/SEO'
+import NotFound from '../components/pages/NotFound'
+import SEO from '../components/organisms/SEO'
 
 const NotFoundPage: React.FC = () => (
   <>

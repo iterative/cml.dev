@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
-  "homepage": "https://github.com/iterative/dvc.org#readme",
+  "homepage": "https://github.com/iterative/cml-website#readme",
   "engines": {
     "node": "<=15.x"
   },
@@ -55,6 +55,7 @@
     "gatsby": "^2.20.13",
     "gatsby-image": "^2.11.0",
     "gatsby-link": "^2.3.2",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-parent-resolvers": "^1.0.1",
     "gatsby-plugin-theme-ui": "^0.9.1",
     "gatsby-source-github-api": "^0.2.1",

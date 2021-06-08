@@ -21,6 +21,14 @@ const plugins = [
       allExtensions: true
     }
   },
+  {
+    resolve: `gatsby-plugin-alias-imports`,
+    options: {
+      alias: {
+        "@media": "src/media",
+      }
+    }
+  },
   'gatsby-plugin-postcss',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-sitemap',
@@ -104,8 +112,8 @@ const plugins = [
       background_color: '#eff4f8',
       display: 'minimal-ui',
       icon: 'static/favicon-512x512.png',
-      name: 'dvc.org',
-      short_name: 'dvc.org',
+      name: 'cml.dev',
+      short_name: 'cml.dev',
       start_url: '/',
       theme_color: '#eff4f8'
       /* eslint-enable @typescript-eslint/camelcase */

@@ -1,8 +1,8 @@
 /* eslint-env node */
 
-const WEBSITE_HOST = 'dvc.org'
+const WEBSITE_HOST = 'cml.dev'
 
-const FORUM_URL = `https://discuss.${WEBSITE_HOST}`
+const FORUM_URL = `https://discuss.dvc.org`
 
 const PAGE_DOC = '/doc'
 

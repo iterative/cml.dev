@@ -1,10 +1,10 @@
 import React, { useRef } from "react"
 import { ReactComponent as SolutionLineArrow } from "./solution-line-arrow.svg"
-import Collapser from "../components/Home/components/atoms/Collapser"
-import Video from "../components/Home/components/molecules/Video"
-import Tooltip from "../components/Home/components/organisms/Tooltip"
+import Collapser from "../components/atoms/Collapser"
+import Video from "../components/molecules/Video"
+import Tooltip from "../components/organisms/Tooltip"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
-import SmartLink from "../components/Home/components/atoms/SmartLink"
+import SmartLink from "../components/atoms/SmartLink"
 
 import {
   Button,
@@ -17,10 +17,10 @@ import {
   Text,
 } from "@theme-ui/components"
 import { alpha } from "@theme-ui/color"
-import { JSONTabs } from "../components/Home/components/organisms/Tabs"
+import { JSONTabs } from "../components/organisms/Tabs"
 
-import Switchable from "../components/Home/components/organisms/SwitchableMode/Switchable"
-import Switch from "../components/Home/components/organisms/SwitchableMode/Switch"
+import Switchable from "../components/organisms/SwitchableMode/Switchable"
+import Switch from "../components/organisms/SwitchableMode/Switch"
 import { ReactComponent as GitHubIcon } from "../media/icons/github.svg"
 import { ReactComponent as GitLabIcon } from "../media/icons/gitlab.svg"
 
@@ -197,7 +197,7 @@ export const Code = ({ children, lang = "yml", filename, repo, sx = {} }) => {
   )
 }
 
-export const SolutionList = ({ children, sx, className }) => (
+export const SolutionList = ({ children, sx, className = "" }) => (
   <Box as="ul" variant="styles.SolutionList" className={className} sx={sx}>
     {children.map(([problem, solution], i) => (
       <SolutionLine problem={problem} solution={solution} key={i} />
@@ -206,7 +206,7 @@ export const SolutionList = ({ children, sx, className }) => (
 )
 
 const SolutionLine = ({ problem, solution }) => (
-  <Box as="li" variant="styles.SolutionList.Item">
+  <Box as="li" variant="styles.SolutionList.Item" sx={{py: '15px'}}>
     <h3>{problem}</h3>
     <SolutionLineArrow />
     <h3>{solution}</h3>

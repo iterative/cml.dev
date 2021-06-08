@@ -3,9 +3,9 @@ import { graphql } from 'gatsby'
 import { Node } from 'unist'
 import { getItemByPath } from '../utils/shared/sidebar'
 
-import SEO from '../components/SEO'
+import SEO from '../components/organisms/SEO'
 
-import Documentation from '../components/Documentation'
+import Documentation from '../components/pages/Documentation'
 
 interface IDocPageProps {
   data: {

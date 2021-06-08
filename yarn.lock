@@ -813,7 +813,7 @@
     "core-js-pure" "^3.0.0"
     "regenerator-runtime" "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.0", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.0", "@babel/runtime@^7.2.0", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
   "version" "7.14.0"
   dependencies:
     "regenerator-runtime" "^0.13.4"
@@ -7722,6 +7722,13 @@
     "lodash" "^4.17.15"
     "micromatch" "^3.1.10"
 
+"gatsby-plugin-alias-imports@^1.0.5":
+  "integrity" "sha512-q58JrSjuVNh4NApamqElR0zqwm55FOb9vFAVb2i2ftPRu0uYzWJkbOz2IN3vSw7a+5PmGzX7VL8XDFXlNHrMNA=="
+  "resolved" "https://registry.npmjs.org/gatsby-plugin-alias-imports/-/gatsby-plugin-alias-imports-1.0.5.tgz"
+  "version" "1.0.5"
+  dependencies:
+    "@babel/runtime" "^7.2.0"
+
 "gatsby-plugin-catch-links@^2.2.1":
   "integrity" "sha512-gFZSWOOXj9pMUC7gwogkrKjtjj1qqYjAXlWVtQ9FI1Gcngvi5NNYsWQqTbGpsgyTd2ycyTFIl4YhOyP3oHBgFQ=="
   "resolved" "https://registry.npmjs.org/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.3.2.tgz"
@@ -8148,7 +8155,7 @@
     "semver" "^5.7.1"
     "sharp" "^0.23.1"
 
-"gatsby@*", "gatsby@^2.0.0", "gatsby@^2.0.0 || ^3.0.0", "gatsby@^2.0.33", "gatsby@^2.12.0", "gatsby@^2.2.0", "gatsby@^2.20.0", "gatsby@^2.20.13", "gatsby@^2.4.0", "gatsby@>2.0.0-alpha", "gatsby@>2.0.15":
+"gatsby@*", "gatsby@^2.0.0", "gatsby@^2.0.0 || ^3.0.0", "gatsby@^2.0.33", "gatsby@^2.12.0", "gatsby@^2.2.0", "gatsby@^2.20.0", "gatsby@^2.20.13", "gatsby@^2.4.0", "gatsby@>2.0.0", "gatsby@>2.0.0-alpha", "gatsby@>2.0.15":
   "integrity" "sha512-tMuo7cZJQXF3AgtE9lrgHQRFm5Z8VTKLrGns8AKdgYLZQ7SkG8YSsc+ME+AuOX5byCRlGAm+x4rCp/Sa9oTR1Q=="
   "resolved" "https://registry.npmjs.org/gatsby/-/gatsby-2.22.9.tgz"
   "version" "2.22.9"
