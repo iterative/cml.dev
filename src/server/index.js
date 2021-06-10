@@ -17,7 +17,7 @@
 
 const express = require('express')
 const compression = require('compression')
-const { s3Url } = require('./config')
+// const { s3Url } = require('./config') /* TODO: use s3 afterwards */
 const { isProduction } = require('./utils')
 require('dotenv').config()
 
@@ -37,8 +37,6 @@ app.listen(port, () => {
   console.log(`Listening on http://0.0.0.0:${port}/`)
 
   if (isProduction) {
-    console.log(`Proxying to ${s3Url}`)
-  } else {
     console.log('Serving static files from local')
   }
 })
