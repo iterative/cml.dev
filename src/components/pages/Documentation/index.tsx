@@ -1,5 +1,9 @@
 import React from 'react'
 
+import { ThemeProvider } from 'theme-ui'
+import { Theme } from '@theme-ui/css';
+import theme from '../../../gatsby-plugin-theme-ui'
+
 import Markdown from './Markdown'
 import RightPanel from './RightPanel'
 
@@ -25,7 +29,7 @@ const Documentation: React.FC<IDocumentationProps> = ({
   const githubLink = `https://github.com/iterative/dvc.org/blob/master/content${source}`
 
   return (
-    <>
+    <ThemeProvider theme={theme as Theme}>
       <Markdown
         htmlAst={htmlAst}
         prev={prev}
@@ -38,7 +42,7 @@ const Documentation: React.FC<IDocumentationProps> = ({
         githubLink={githubLink}
         tutorials={tutorials}
       />
-    </>
+    </ThemeProvider>
   )
 }
 
