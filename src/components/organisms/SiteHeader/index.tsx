@@ -16,7 +16,7 @@ import { ReactComponent as ExternalLinkIcon } from '@media/icons/external-link.s
 const navItems = [
   {
     label: "Use Cases",
-    href: "#use-cases",
+    href: "/#use-cases",
   },
   {
     label: "Docs",
