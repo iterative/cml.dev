@@ -11,6 +11,10 @@ import SiteHeader from '../../../organisms/SiteHeader'
 import SiteFooter from '../../../organisms/SiteFooter'
 import styles from './styles.module.css'
 
+import { ThemeProvider } from 'theme-ui'
+import { Theme } from '@theme-ui/css';
+import theme from '../../../../gatsby-plugin-theme-ui'
+
 const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const {
@@ -20,7 +24,7 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
 
   return (
-    <>
+    <ThemeProvider theme={theme as Theme}>
       <MainLayout
         {...restProps}
         modifiers={[LayoutModifiers.Wide, LayoutModifiers.Collapsed]}
@@ -58,7 +62,7 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
         </LayoutWidthContainer>
         <SiteFooter />
       </MainLayout>
-    </>
+    </ThemeProvider>
   )
 }
 
