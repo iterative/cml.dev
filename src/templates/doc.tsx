@@ -6,7 +6,9 @@ import { getItemByPath } from '../utils/shared/sidebar'
 import SEO from '../components/organisms/SEO'
 
 import Documentation from '../components/pages/Documentation'
-
+import { ThemeProvider } from 'theme-ui'
+import { Theme } from '@theme-ui/css';
+import theme from '../gatsby-plugin-theme-ui'
 interface IDocPageProps {
   data: {
     page: {
@@ -32,10 +34,10 @@ const DocPage: React.FC<IDocPageProps> = ({
   const { label } = getItemByPath(slug)
 
   return (
-    <>
+    <ThemeProvider theme={theme as Theme}>
       <SEO title={title || label} description={description} />
       <Documentation htmlAst={htmlAst} path={slug} headings={headings} />
-    </>
+    </ThemeProvider>
   )
 }
 
