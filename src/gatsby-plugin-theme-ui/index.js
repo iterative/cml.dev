@@ -33,6 +33,14 @@ export default {
     background: palette.white,
     text: palette.darkPurple[0],
     primary: palette.purple[0],
+    modes: {
+      dark: {
+        ...palette,
+        background: palette.white,
+        text: palette.darkPurple[0],
+        primary: palette.purple[0],
+      },
+    },
   },
   tooltips: {
     primary: {
