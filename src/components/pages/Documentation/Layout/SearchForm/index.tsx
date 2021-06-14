@@ -32,7 +32,15 @@ const SearchForm: React.FC = props => {
           apiKey: '755929839e113a981f481601c4f52082',
           indexName: 'dvc',
           inputSelector: '#doc-search',
-          debug: false // Set to `true` if you want to inspect the dropdown
+          debug: false, // Set to `true` if you want to inspect the dropdown
+          transformData: (hits: Array<any>) => {
+            return hits
+              .filter(hit => hit.hierarchy.lvl0 === 'CML')
+              .map(hit => ({
+                ...hit,
+                url: hit.url.replace('https://dvc.org/doc/cml', '/doc')
+              }))
+          }
         })
     }
   }, [isLoaded])

@@ -50,7 +50,7 @@ function SubscribeSection() {
           <input
             type="text"
             name="b_a08bf93caae4063c4e6a351f6_24c0ecc49a"
-            tabIndex="-1"
+            tabIndex={-1}
           />
         </div>
       </Flex>
