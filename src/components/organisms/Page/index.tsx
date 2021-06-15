@@ -7,7 +7,6 @@ import ModesProvider from '../SwitchableMode/Provider'
 
 import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
 
-import 'reset-css'
 import './base.css'
 import './fonts.css'
 

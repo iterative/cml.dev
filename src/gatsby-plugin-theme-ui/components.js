@@ -1,10 +1,10 @@
-import React, { useRef } from "react"
-import { ReactComponent as SolutionLineArrow } from "./solution-line-arrow.svg"
-import Collapser from "../components/atoms/Collapser"
-import Video from "../components/molecules/Video"
-import Tooltip from "../components/organisms/Tooltip"
-import { OutboundLink } from "gatsby-plugin-google-analytics"
-import SmartLink from "../components/atoms/SmartLink"
+import React, { useRef } from 'react'
+import { ReactComponent as SolutionLineArrow } from './solution-line-arrow.svg'
+import Collapser from '../components/atoms/Collapser'
+import Video from '../components/molecules/Video'
+import Tooltip from '../components/organisms/Tooltip'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import SmartLink from '../components/atoms/SmartLink'
 
 import {
   Button,
@@ -14,15 +14,15 @@ import {
   Link,
   Heading,
   Image,
-  Text,
-} from "@theme-ui/components"
-import { alpha } from "@theme-ui/color"
-import { JSONTabs } from "../components/organisms/Tabs"
+  Text
+} from '@theme-ui/components'
+import { alpha } from '@theme-ui/color'
+import { JSONTabs } from '../components/organisms/Tabs'
 
-import Switchable from "../components/organisms/SwitchableMode/Switchable"
-import Switch from "../components/organisms/SwitchableMode/Switch"
-import { ReactComponent as GitHubIcon } from "../media/icons/github.svg"
-import { ReactComponent as GitLabIcon } from "../media/icons/gitlab.svg"
+import Switchable from '../components/organisms/SwitchableMode/Switchable'
+import Switch from '../components/organisms/SwitchableMode/Switch'
+import { ReactComponent as GitHubIcon } from '../media/icons/github.svg'
+import { ReactComponent as GitLabIcon } from '../media/icons/gitlab.svg'
 
 export const groupApply = (rawChildren, test, cb) => {
   if (!rawChildren) return []
@@ -59,8 +59,8 @@ export const groupApply = (rawChildren, test, cb) => {
 
 const ContainExcept = ({
   container: ContainerComponent = Container,
-  fullWidthComponents = ["FullWidthBox"],
-  children,
+  fullWidthComponents = ['FullWidthBox'],
+  children
 }) => {
   const processedChildren = groupApply(
     children,
@@ -76,7 +76,7 @@ const ContainExcept = ({
 
 export const FullWidthBox = ({
   children,
-  className = "",
+  className = '',
   sx: { Inner, ...sx },
   ...props
 }) => {
@@ -103,7 +103,7 @@ export const HomeFeature = ({ children, heading, icon: Icon }) => {
 
 const RepoButton = ({ url, host = new URL(url).host }) => {
   switch (host) {
-    case "github.com":
+    case 'github.com':
       return (
         <Link
           as={OutboundLink}
@@ -116,7 +116,7 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
           <span>GitHub</span>
         </Link>
       )
-    case "gitlab.com":
+    case 'gitlab.com':
       return (
         <Link
           as={OutboundLink}
@@ -134,44 +134,44 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
   }
 }
 
-export const Code = ({ children, lang = "yml", filename, repo, sx = {} }) => {
+export const Code = ({ children, lang = 'yml', filename, repo, sx = {} }) => {
   const renderHeader = lang || filename
   const codeBlockRef = useRef()
   return (
     <Box
       sx={{
-        backgroundColor: "darkPurple.0",
-        display: "flex",
-        flexFlow: "column nowrap",
-        ...sx,
+        backgroundColor: 'darkPurple.0',
+        display: 'flex',
+        flexFlow: 'column nowrap',
+        ...sx
       }}
     >
       {renderHeader && (
         <Flex
           sx={{
-            px: "20px",
-            alignItems: "center",
-            flexFlow: "row wrap",
-            minHeight: "50px",
-            letterSpacing: "0.03em",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
-            color: "rgba(255, 255, 255, 0.5)",
-            justifyContent: ["center", null, "space-between"],
+            px: '20px',
+            alignItems: 'center',
+            flexFlow: 'row wrap',
+            minHeight: '50px',
+            letterSpacing: '0.03em',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+            color: 'rgba(255, 255, 255, 0.5)',
+            justifyContent: ['center', null, 'space-between']
           }}
         >
           <Heading
             as="h3"
             sx={{
-              flex: "0 1 auto",
-              fontSize: "14px",
+              flex: '0 1 auto',
+              fontSize: '14px',
               my: 2,
-              mx: "auto",
-              display: "block",
+              mx: 'auto',
+              display: 'block'
             }}
           >
             {filename || lang}
           </Heading>
-          <Box sx={{ flex: "1 1" }} />
+          <Box sx={{ flex: '1 1' }} />
         </Flex>
       )}
       <Box as="code" variant="styles.CodeBlock">
@@ -197,7 +197,7 @@ export const Code = ({ children, lang = "yml", filename, repo, sx = {} }) => {
   )
 }
 
-export const SolutionList = ({ children, sx, className = "" }) => (
+export const SolutionList = ({ children, sx, className = '' }) => (
   <Box as="ul" variant="styles.SolutionList" className={className} sx={sx}>
     {children.map(([problem, solution], i) => (
       <SolutionLine problem={problem} solution={solution} key={i} />
@@ -206,7 +206,7 @@ export const SolutionList = ({ children, sx, className = "" }) => (
 )
 
 const SolutionLine = ({ problem, solution }) => (
-  <Box as="li" variant="styles.SolutionList.Item" sx={{py: '15px'}}>
+  <Box as="li" variant="styles.SolutionList.Item">
     <h3>{problem}</h3>
     <SolutionLineArrow />
     <h3>{solution}</h3>
@@ -217,38 +217,38 @@ export const ExampleBox = ({ title, children }) => {
   return (
     <Box
       sx={{
-        display: "flex",
-        flexFlow: "column nowrap",
-        backgroundColor: "background",
-        boxShadow: "default",
-        textAlign: "left",
-        color: "text",
-        maxWidth: [null, null, "50%"],
+        display: 'flex',
+        flexFlow: 'column nowrap',
+        backgroundColor: 'background',
+        boxShadow: 'default',
+        textAlign: 'left',
+        color: 'text',
+        maxWidth: [null, null, '50%']
       }}
     >
       <Box
         sx={{
-          backgroundColor: [alpha("darkPurple.0", 0.1), null, "darkPurple.0"],
-          color: ["text", null, alpha("background", 0.5)],
-          alignItems: "left",
-          flexFlow: "row wrap",
-          minHeight: "50px",
-          letterSpacing: "0.03em",
-          lineHeight: "30px",
-          py: "10px",
-          px: "20px",
+          backgroundColor: [alpha('darkPurple.0', 0.1), null, 'darkPurple.0'],
+          color: ['text', null, alpha('background', 0.5)],
+          alignItems: 'left',
+          flexFlow: 'row wrap',
+          minHeight: '50px',
+          letterSpacing: '0.03em',
+          lineHeight: '30px',
+          py: '10px',
+          px: '20px'
         }}
       >
         <Heading
           as="h3"
           sx={{
-            flex: "0 1 auto",
-            fontSize: "14px",
+            flex: '0 1 auto',
+            fontSize: '14px',
             my: 0,
-            mx: "auto",
-            display: "block",
-            fontWeight: "bold",
-            lineHeight: "30px",
+            mx: 'auto',
+            display: 'block',
+            fontWeight: 'bold',
+            lineHeight: '30px'
           }}
         >
           {title}
@@ -256,15 +256,15 @@ export const ExampleBox = ({ title, children }) => {
       </Box>
       <Box
         sx={{
-          flex: "1",
-          display: "flex",
-          flexFlow: "column nowrap",
-          alignItems: "center",
-          justifyContent: "center",
-          "&>*": {
-            display: "block",
-            width: "100%",
-          },
+          flex: '1',
+          display: 'flex',
+          flexFlow: 'column nowrap',
+          alignItems: 'center',
+          justifyContent: 'center',
+          '&>*': {
+            display: 'block',
+            width: '100%'
+          }
         }}
       >
         {children}
@@ -299,5 +299,5 @@ export default {
 
   a: SmartLink,
 
-  wrapper: ContainExcept,
+  wrapper: ContainExcept
 }
