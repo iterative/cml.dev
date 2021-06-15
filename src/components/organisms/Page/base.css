@@ -16,7 +16,7 @@
   --color-purple-hover: #745cb7;
   --color-orange: #e37046;
   --color-orange-bright: #f46837;
-  --font-brandon: 'DM Sans', 'Tahoma', 'Arial', sans-serif;
+  --font-sans: 'DM Sans', 'Tahoma', 'Arial', sans-serif;
   --font-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo',
     'Courier', monospace;
   --layout-width: 1005px;
@@ -33,10 +33,9 @@ html {
 }
 
 body {
-  font-family: var(--font-brandon);
+  font-family: var(--font-sans);
   font-weight: 400;
   line-height: 1.5;
-  color: var(--color-black);
 }
 
 /* Focus state styles for interactive elements */

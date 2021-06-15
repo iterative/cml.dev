@@ -206,7 +206,7 @@
   }
 
   .Collapsible__trigger {
-    font-family: var(--font-brandon);
+    font-family: var(--font-sans);
     font-weight: 500;
     display: block;
     position: relative;
