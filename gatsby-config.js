@@ -8,10 +8,10 @@ require('./config/prismjs/usage')
 
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
-const makeFeedHtml = require('./plugins/utils/makeFeedHtml')
 
 const title = 'CML - Continuous Machine Learning: Bring DevOps to Data Science'
-const description = 'CML is continuous integration for machine learning.  Bring DevOps practices to your projects for automatic, reproducible, and fast machine learning.'
+const description =
+  'CML is continuous integration for machine learning.  Bring DevOps practices to your projects for automatic, reproducible, and fast machine learning.'
 
 const plugins = [
   {
@@ -25,7 +25,7 @@ const plugins = [
     resolve: `gatsby-plugin-alias-imports`,
     options: {
       alias: {
-        "@media": "src/media",
+        '@media': 'src/media'
       }
     }
   },
@@ -65,6 +65,8 @@ const plugins = [
             quotes: false
           }
         },
+        `gatsby-plugin-sass`,
+        `gatsby-plugin-robots-txt`,
         {
           resolve: 'gatsby-remark-embed-gist',
           options: {
@@ -109,13 +111,13 @@ const plugins = [
     resolve: 'gatsby-plugin-manifest',
     options: {
       /* eslint-disable @typescript-eslint/camelcase */
-      background_color: '#eff4f8',
+      background_color: '#663399',
       display: 'minimal-ui',
       icon: 'static/favicon-512x512.png',
-      name: 'cml.dev',
-      short_name: 'cml.dev',
+      name: 'CML',
+      short_name: 'CML',
       start_url: '/',
-      theme_color: '#eff4f8'
+      theme_color: '#663399'
       /* eslint-enable @typescript-eslint/camelcase */
     }
   },
@@ -191,7 +193,7 @@ module.exports = {
   siteMetadata: {
     description,
     author: `Iterative`,
-    siteUrl: process.env.URL || "https://cml.dev",
+    siteUrl: process.env.URL || 'https://cml.dev',
     title
   },
   developMiddleware: app => {
