@@ -3,7 +3,7 @@ import React from 'react'
 import MainLayout from '../../layouts/MainLayout'
 import DefaultSEO from './DefaultSEO'
 import DocumentationLayout from '../../pages/Documentation/Layout'
-import ModesProvider from "../SwitchableMode/Provider"
+import ModesProvider from '../SwitchableMode/Provider'
 
 import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
 
@@ -18,8 +18,6 @@ export interface IPageProps {
   pageContext: {
     is404: boolean
     isDocs: boolean
-    isBlog: boolean
-    isAlertLanding: boolean
     pageInfo?: {
       currentPage: number
       nextPage?: string
@@ -44,7 +42,7 @@ const Page: React.FC<IPageProps> = props => {
 
   return (
     <ModesProvider>
-      <DefaultSEO pathname={props.location.pathname} />
+      <DefaultSEO />
       <LayoutComponent {...props} />
     </ModesProvider>
   )
