@@ -98,115 +98,7 @@ describe('getRedirects', () => {
 
   describe('fromSubdomains', () => {
     // Remove www (when already HTTPS)
-    itRedirects('https://www.dvc.org/foo', 'https://dvc.org/foo')
-
-    itRedirects(
-      'https://man.dvc.org/',
-      'https://dvc.org/doc/command-reference/',
-      303
-    )
-
-    itRedirects(
-      'https://man.dvc.org/foo',
-      'https://dvc.org/doc/command-reference/foo',
-      303
-    )
-
-    itRedirects(
-      'https://error.dvc.org/',
-      'https://dvc.org/doc/user-guide/troubleshooting#',
-      303
-    )
-
-    itRedirects(
-      'https://error.dvc.org/foo',
-      'https://dvc.org/doc/user-guide/troubleshooting#foo',
-      303
-    )
-
-    itRedirects(
-      'https://www.dataversioncontrol.com/some-random',
-      'https://dvc.org/some-random',
-      301
-    )
-
-    itRedirects('https://www.dataversioncontrol.com', 'https://dvc.org/', 301)
-
-    itRedirects(
-      'https://dataversioncontrol.com/some-random',
-      'https://dvc.org/some-random',
-      301
-    )
-
-    itRedirects(
-      'https://discuss.dataversioncontrol.com/some-random',
-      'https://discuss.dvc.org/some-random',
-      301
-    )
-
-    itRedirects(
-      'https://blog.dataversioncontrol.com/september-19-dvc-heartbeat-0123456789ab',
-      'https://dvc.org/blog/september-19-dvc-heartbeat',
-      301
-    )
-
-    itRedirects(
-      'https://blog.dataversioncontrol.com/some-random',
-      'https://dvc.org/blog/some-random',
-      301
-    )
-
-    itRedirects(
-      'https://blog.dataversioncontrol.com',
-      'https://dvc.org/blog/',
-      301
-    )
-
-    itRedirects(
-      'https://blog.dvc.org/september-19-dvc-heartbeat',
-      'https://dvc.org/blog/september-19-dvc-heartbeat',
-      301
-    )
-
-    itRedirects('https://blog.dvc.org', 'https://dvc.org/blog/', 301)
-  })
-
-  describe('toS3', () => {
-    itRedirects(
-      'https://code.dvc.org/foo/bar',
-      'https://s3-us-east-2.amazonaws.com/dvc-public/code/foo/bar',
-      303
-    )
-
-    itRedirects(
-      'https://data.dvc.org/foo/bar',
-      'https://s3-us-east-2.amazonaws.com/dvc-public/data/foo/bar',
-      303
-    )
-
-    itRedirects(
-      'https://remote.dvc.org/foo/bar',
-      'https://s3-us-east-2.amazonaws.com/dvc-public/remote/foo/bar',
-      303
-    )
-
-    itRedirects(
-      '/exe/foo',
-      'https://s3-us-east-2.amazonaws.com/dvc-public/dvc-pkgs/exe/foo',
-      303
-    )
-
-    itRedirects(
-      '/deb/foo',
-      'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/deb/foo',
-      303
-    )
-
-    itRedirects(
-      '/rpm/foo',
-      'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/rpm/foo',
-      303
-    )
+    itRedirects('https://www.cml.dev/foo', 'https://cml.dev/foo')
   })
 
   describe('toDiscord', () => {
@@ -217,26 +109,12 @@ describe('getRedirects', () => {
 
   describe('fromPaths', () => {
     itRedirects('/docs/x', '/doc/x')
-
     itRedirects('/documentation/x', '/doc/x')
-
-    itRedirects('/doc/commands-reference/foo', '/doc/command-reference/foo')
-
-    itRedirects('/doc/tutorial', '/doc/start')
-    itRedirects('/doc/tutorial/', '/doc/start')
-    itRedirects('/doc/tutorials', '/doc/start')
-    itRedirects('/doc/tutorials/', '/doc/start')
-    itRedirects('/doc/tutorials/deep', '/doc/start')
-    itRedirects(
-      '/doc/tutorials/versioning',
-      '/doc/use-cases/versioning-data-and-model-files/tutorial'
-    )
-
-    itRedirects('/doc/tutorial/bar', '/doc/start')
-
-    itRedirects(
-      '/doc/use-cases/data-and-model-files-versioning',
-      '/doc/use-cases/versioning-data-and-model-files'
-    )
+    itRedirects('/doc/tutorial', '/doc')
+    itRedirects('/doc/tutorial/', '/doc')
+    itRedirects('/doc/tutorials', '/doc')
+    itRedirects('/doc/tutorials/', '/doc')
+    itRedirects('/doc/tutorials/deep', '/doc')
+    itRedirects('/doc/tutorial/bar', '/doc')
   })
 })
