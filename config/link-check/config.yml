@@ -1,4 +1,5 @@
-rootURL: https://cml.dev
+# TODO: https://cml.dev
+rootURL: https://cml-dev-feat-doc-eu2om6fsnjnfr.herokuapp.com
 fileIncludePatterns: '{.github,content,src}/**/*!(.test).{css,js,jsx,md,tsx,ts,json}'
 fileExcludePatternFile: config/link-check/excluded-files.yml
 linkExcludePatternFile: config/link-check/excluded-links.yml
