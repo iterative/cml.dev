@@ -156,7 +156,7 @@ if (process.env.GITHUB_TOKEN) {
       // GraphQLquery: defaults to a search query
       graphQLQuery: `
           {
-            repository(owner: "iterative", name: "dvc") {
+            repository(owner: "iterative", name: "cml") {
               stargazers {
                 totalCount
               }
