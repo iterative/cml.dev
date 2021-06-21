@@ -4,7 +4,6 @@ import { Box, Container, Flex, Heading } from '@theme-ui/components'
 import SmartLink from '../../atoms/SmartLink'
 
 import { ReactComponent as SiteLogo } from '@media/site-logo.svg'
-import { ReactComponent as LogoIcon } from '@media/site-logo.svg'
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as TwitterIcon } from '@media/icons/twitter.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
@@ -110,23 +109,36 @@ const socialLinkDefinitions = [
   }
 ]
 
-const FooterList = ({ title, items }: { title: string, items: Array<any> }) => (
+const FooterList = ({ title, items }: { title: string; items: Array<any> }) => (
   <Flex as="ul" variant="layout.Footer.List">
     <Heading variant="layout.Footer.List.Title" as="h2">
       {title}
     </Heading>
-    {items.map(({ text, icon = '', url }: { text: string, icon: any, url: string }, i: number) => (
-      <Flex key={i} as="li">
-        <SmartLink variant="layout.Footer.List.Link" href={url}>
-          {icon}
-          {text}
-        </SmartLink>
-      </Flex>
-    ))}
+    {items.map(
+      (
+        { text, icon = '', url }: { text: string; icon: any; url: string },
+        i: number
+      ) => (
+        <Flex key={i} as="li">
+          <SmartLink variant="layout.Footer.List.Link" href={url}>
+            {icon}
+            {text}
+          </SmartLink>
+        </Flex>
+      )
+    )}
   </Flex>
 )
 
-const SocialLink = ({ url, icon, title }: { url: string, icon: any, title: string }) => (
+const SocialLink = ({
+  url,
+  icon,
+  title
+}: {
+  url: string
+  icon: any
+  title: string
+}) => (
   <SmartLink
     href={url}
     variant="styles.SocialLinkIcon"

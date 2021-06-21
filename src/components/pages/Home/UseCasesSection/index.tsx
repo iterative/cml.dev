@@ -173,11 +173,11 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                         <div>    <span>- pip install -r requirements.txt</span></div>
                         <div>    <span>- dvc repro</span></div>
                       </Tooltip>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>    <span># Compare metrics to master</span></div>
                       <div>    <span>- git fetch --prune</span></div>
                       <div>    <span>- dvc metrics diff --show-md master >> report.md</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>    <span># Visualize loss function diff</span></div>
                       <div>    <span>- dvc plots diff </span></div>
                       <div>      <span>--target loss.csv --show-vega master > vega.json</span></div>
@@ -199,24 +199,24 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                   <Collapser>
                     <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml_dvc_case">
                       <div><span>name: train-my-model</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div><span>on: [push]</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div><span>jobs:</span></div>
                       <div>  <span>run:</span></div>
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v2</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>      <span>- uses: iterative/setup-cml@v1</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>      <span>- uses: iterative/setup-dvc@v1</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>      <span>- uses: actions/setup-python@v2</span></div>
                       <div>        <span>with:</span></div>
                       <div>          <span>python-version: '3.x'</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>      <span>- name: cml</span></div>
                       <div>        <span>env:</span></div>
                       <div>          <span>repo_token: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
@@ -228,16 +228,16 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <Tooltip type="dvc">
                         <div>          <span>dvc pull data</span></div>
                       </Tooltip>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <Tooltip type="dependencies">
                         <div>          <span>pip install -r requirements.txt</span></div>
                         <div>          <span>dvc repro</span></div>
                       </Tooltip>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>          <span># Compare metrics to master</span></div>
                       <div>          <span>git fetch --prune </span></div>
                       <div>          <span>dvc metrics diff --show-md master >> report.md</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>          <span># Visualize loss function diff</span></div>
                       <div>          <span>dvc plots diff \</span></div>
                       <div>            <span>--target loss.csv --show-vega master > vega.json</span></div>
@@ -268,7 +268,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                     <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case">
                       <div><span>stages:</span></div>
                       <div>    <span>- cml_run</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div><span>cml:</span></div>
                       <div>    <span>stage: cml_run</span></div>
                       <div>    <span>image: dvcorg/cml-py3:latest</span></div>
@@ -283,7 +283,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <Tooltip type="reports">
                         <div>        <span>- cml-send-comment report.md</span></div>
                       </Tooltip>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <Tooltip type="dependencies">
                         <div>        <span>- python train.py</span></div>
                       </Tooltip>
@@ -364,7 +364,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div><span>stages:</span></div>
                       <div>  <span>- deploy</span></div>
                       <div>  <span>- train</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div><span>deploy_job:</span></div>
                       <div>  <span>stage: deploy</span></div>
                       <div>  <span>when: always</span></div>
@@ -377,7 +377,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                         <div>      <span>--cloud-type t2.micro</span></div>
                         <div>      <span>--labels=cml-runner</span></div>
                       </Tooltip>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div><span>train_job:</span></div>
                       <Tooltip type="reports">
                         <div>  <span>stage: train</span></div>
@@ -386,11 +386,11 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                         <div>  <span>tags:</span></div>
                         <div>    <span>- cml-runner</span></div>
                       </Tooltip>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>  <span>script:</span></div>
                       <div>    <span>- pip install -r requirements.txt</span></div>
                       <div>    <span>- python train.py</span></div>
-                      <div><span></span></div>
+                      <div><span> </span></div>
                       <div>    <span>- echo "## Report from your EC2 Instance" > report.md</span></div>
                       <div>    <span>- cat metrics.txt >> report.md</span></div>
                       <div>    <span>- cml-publish "confusion_matrix.png" --md >> report.md</span></div>
