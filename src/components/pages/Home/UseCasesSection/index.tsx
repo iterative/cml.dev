@@ -143,7 +143,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <a target="_blank" href="https://github.com/iterative/cml_base_case/pull/2">
                         <Image src="/img/github/base-case-report.png"  alt="Github Base report example"/>
                       </a>
-                      {/* [![GitHub Base report example](../src/media/github/base-case-report.png)](https://github.com/iterative/cml_base_case/pull/2) */}
                     </ExampleBox>
 
                   </Collapser>
@@ -190,7 +189,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <a target="_blank" href="https://gitlab.com/iterative.ai/cml-dvc-case/-/merge_requests/6">
                         <Image src="/img/gitlab/dvc-report.png" alt="GitLab DVC report example" />
                       </a>
-                      {/* [![GitLab DVC report example](../src/media/gitlab/dvc-report.png)](https://gitlab.com/iterative.ai/cml-dvc-case/-/merge_requests/6) */}
                     </ExampleBox>
 
                   </Collapser>
@@ -251,7 +249,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <a target="_blank" href="https://github.com/iterative/cml_dvc_case/pull/4">
                         <Image src="/img/github/dvc-report.png" alt="GitHub DVC report example" />
                       </a>
-                      {/* [![GitHub DVC report example](../src/media/github/dvc-report.png)](https://github.com/iterative/cml_dvc_case/pull/4) */}
                     </ExampleBox>
 
                   </Collapser>
@@ -293,7 +290,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <a target="_blank" href="https://gitlab.com/iterative.ai/cml-tensorboard-case/-/merge_requests/2">
                         <Image src="/img/gitlab/tensorboard-report.png" alt="GitLab Tensorboard report example" />
                       </a>
-                      {/* [![GitLab Tensorboard report example](../src/media/gitlab/tensorboard-report.png)](https://gitlab.com/iterative.ai/cml-tensorboard-case/-/merge_requests/2) */}
                     </ExampleBox>
 
                   </Collapser>
@@ -345,7 +341,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <a target="_blank" href="https://github.com/iterative/cml_tensorboard_case/pull/1">
                         <Image src="/img/github/tensorboard-report.png" alt="GitHub Tensorboard report example" />
                       </a>
-                      {/* [![GitHub Tensorboard report example](../src/media/github/tensorboard-report.png)](https://github.com/iterative/cml_tensorboard_case/pull/1) */}
                     </ExampleBox>
 
                   </Collapser>
@@ -401,7 +396,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <a target="_blank" href="https://gitlab.com/iterative.ai/cml-runner-example/-/merge_requests/2">
                         <Image src="/img/gitlab/cml-runner-report.png" alt="GitLab Cloud report example" />
                       </a>
-                      {/* [![GitLab Cloud report example](../src/media/gitlab/cml-runner-report.png)](https://gitlab.com/iterative.ai/cml-runner-example/-/merge_requests/2) */}
                     </ExampleBox>
 
                   </Collapser>
@@ -464,7 +458,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <a target="_blank" href="https://github.com/iterative/cml-runner-base-case/pull/4">
                         <Image src="/img/github/cml-runner-report.png" alt="GitHub Cloud report example"/>
                       </a>
-                      {/* [![GitHub Cloud report example](../src/media/github/cml-runner-report.png)](https://github.com/iterative/cml-runner-base-case/pull/4) */}
                     </ExampleBox>
 
                   </Collapser>
@@ -541,8 +534,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <a target="_blank" href="https://gitlab.com/iterative.ai/cml-cloud-case/-/merge_requests/1">
                         <Image src="/img/gitlab/cloud-report.png" alt="GitLab Cloud report example"/>
                       </a>
-                      {/* [![GitLab Cloud report example](../src/media/gitlab/cloud-report.png)](https://gitlab.com/iterative.ai/cml-cloud-case/-/merge_requests/1) */}
-
                     </ExampleBox>
 
                   </Collapser>
@@ -629,8 +620,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <a target="_blank" href="https://github.com/iterative/cml_cloud_case/pull/11">
                         <Image src="/img/github/cloud-report.png" alt="GitHub Cloud report example"/>
                       </a>
-                      {/* [![GitHub Cloud report example](../src/media/github/cloud-report.png)](https://github.com/iterative/cml_cloud_case/pull/11) */}
-
                     </ExampleBox>
 
                   </Collapser>

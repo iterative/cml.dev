@@ -261,6 +261,7 @@ export const ExampleBox = ({ title, children }) => {
           flexFlow: 'column nowrap',
           alignItems: 'center',
           justifyContent: 'center',
+          padding: '1em .5em',
           '&>*': {
             display: 'block',
             width: '100%'
