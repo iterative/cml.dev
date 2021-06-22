@@ -58,7 +58,7 @@
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-parent-resolvers": "^1.0.1",
     "gatsby-plugin-robots-txt": "^1.6.2",
-    "gatsby-plugin-sass": "^4.7.1",
+    "gatsby-plugin-sass": "^2.3.10",
     "gatsby-plugin-theme-ui": "^0.9.1",
     "gatsby-source-github-api": "^0.2.1",
     "github-markdown-css": "^4.0.0",
