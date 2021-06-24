@@ -13,7 +13,6 @@ const Collapser: React.FC<ICollapserProps> = ({
   sx = {},
   className = '',
   bp = 2,
-  ...props
 }) => {
 
   const flexDirection = ['column']
@@ -33,7 +32,6 @@ const Collapser: React.FC<ICollapserProps> = ({
         },
         ...sx
       }}
-      {...props}
     >
       {children}
     </Flex>

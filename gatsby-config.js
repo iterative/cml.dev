@@ -105,7 +105,6 @@ const plugins = [
     }
   },
   'gatsby-plugin-sharp',
-  'gatsby-transformer-sharp',
   'gatsby-plugin-catch-links',
   {
     resolve: 'gatsby-plugin-manifest',

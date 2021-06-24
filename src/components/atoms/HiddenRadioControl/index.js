@@ -1,17 +1,7 @@
 import React from 'react'
 import { Box } from '@theme-ui/components'
 
-type IHiddenRadioControlProps = {
-  className?: string
-  sx?: any
-  children?: React.ReactNode
-  defaultChecked?: boolean,
-  inputName?: string,
-  checked?: boolean,
-  id?: string,
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
-
-const HiddenRadioControl: React.FC<IHiddenRadioControlProps> = ({
+const HiddenRadioControl = ({
   defaultChecked,
   checked,
   inputName = 'tab',
