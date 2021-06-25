@@ -13,6 +13,20 @@ import { ReactComponent as DvcIcon } from '@media/icons/dvc.svg'
 import { ReactComponent as StudioIcon } from '@media/icons/studio.svg'
 import { ReactComponent as ExternalLinkIcon } from '@media/icons/external-link.svg'
 
+interface IHeaderProps {
+  isMain?: boolean
+}
+interface IOtherToolsItems {
+  title: string,
+  icon: JSX.Element,
+  description: string,
+  href: string
+}
+interface IOtherToolsPopupProps {
+  list: Array<IOtherToolsItems>,
+  isOpen: boolean
+}
+
 const navItems = [
   {
     label: "Use Cases",
@@ -28,7 +42,7 @@ const navItems = [
   },
 ]
 
-const otherToolsItems = [
+const otherToolsItems : Array<IOtherToolsItems> = [
   {
     title: "Studio",
     icon: <StudioIcon width="24" height="24" />,
@@ -49,7 +63,11 @@ const otherToolsItems = [
   },
 ]
 
-const OtherToolsPopup = ({ list, isOpen }: { list: Array<any>, isOpen: boolean }) => {
+
+const OtherToolsPopup: React.FC<IOtherToolsPopupProps> = ({
+  list,
+  isOpen
+}) => {
   return (
     <Flex
       variant="layout.Header.Nav.OtherToolsPopup"
@@ -80,7 +98,9 @@ const OtherToolsPopup = ({ list, isOpen }: { list: Array<any>, isOpen: boolean }
   )
 }
 
-function Header({ isMain = false }) {
+const Header: React.FC<IHeaderProps> = ({
+  isMain,
+}) => {
   const [isInstallPopupOpen, setIsInstallPopupOpen] = useState(false)
   const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
   const installPopupContainerEl = useRef<HTMLDivElement>(null)
