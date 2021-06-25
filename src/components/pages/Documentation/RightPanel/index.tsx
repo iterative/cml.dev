@@ -204,7 +204,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
 
           <Link
             className={cn(sharedStyles.button, styles.button)}
-            href="/chat"
+            href="https://dvc.org/chat"
             target="_blank"
           >
             <i className={cn(sharedStyles.buttonIcon, styles.discordIcon)} />

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Flex, Heading, Button, Text } from '@theme-ui/components'
 import SmartLink from '../../atoms/SmartLink'
-// import CopySvg from "@media/icons/copy.svg"
+import { ReactComponent as CopySvg } from "@media/icons/copy.svg"
 
 function InstallPopup({ isOpen, onClose }) {
   const installCodeEl = useRef(null)
@@ -42,8 +42,7 @@ function InstallPopup({ isOpen, onClose }) {
           variant="layout.Header.Nav.InstallPopup.CopyBtn"
           onClick={copyInstallCode}
         >
-          {/* <CopySvg /> */}
-          CopySvG
+          <CopySvg />
           <Text as="p">Copy Code</Text>
         </Button>
       </Flex>

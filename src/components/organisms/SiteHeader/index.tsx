@@ -83,19 +83,20 @@ const OtherToolsPopup = ({ list, isOpen }: { list: Array<any>, isOpen: boolean }
 function Header({ isMain = false }) {
   const [isInstallPopupOpen, setIsInstallPopupOpen] = useState(false)
   const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
-  const installPopupContainerEl = useRef(null)
-  const otherToolsPopupContainerEl = useRef(null)
+  const installPopupContainerEl = useRef<HTMLDivElement>(null)
+  const otherToolsPopupContainerEl = useRef<HTMLDivElement>(null)
 
-  function handlePageKeyup(e: any) {
-    if (e.key === "Escape") {
+  function handlePageKeyup(event: KeyboardEvent) {
+    if (event.key === "Escape") {
       closeAllPopups()
     }
   }
 
-  function handlePageClick(e: any) {
+  function handlePageClick(event: MouseEvent) {
     if (
-      !installPopupContainerEl.current.contains(e.target) &&
-      !otherToolsPopupContainerEl.current.contains(e.target)
+      event.target instanceof Element &&
+      !installPopupContainerEl?.current?.contains(event.target) &&
+      !otherToolsPopupContainerEl?.current?.contains(event.target)
     ) {
       closeAllPopups()
     }
