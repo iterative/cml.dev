@@ -26,10 +26,25 @@ interface IOtherToolsPopupProps {
   isOpen: boolean
 }
 
-const navItems = [
+const primaryNavItems = [
   {
     label: 'Use Cases',
     href: '/#use-cases'
+  },
+  {
+    label: 'Docs',
+    href: '/doc'
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/iterative/cml'
+  }
+]
+
+const secondaryNavItems = [
+  {
+    label: 'Features',
+    href: '/'
   },
   {
     label: 'Docs',
@@ -226,11 +241,13 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
             />
           </Box>
           <Flex variant="layout.Header.Nav.RightWrapper">
-            {navItems.map(({ label, href }, i) => (
-              <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
-                {label}
-              </SmartLink>
-            ))}
+            {(isMain ? primaryNavItems : secondaryNavItems).map(
+              ({ label, href }, i) => (
+                <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
+                  {label}
+                </SmartLink>
+              )
+            )}
             <Box ref={installPopupContainerEl} sx={{ position: 'relative' }}>
               <Button
                 onClick={toggleInstallPopup}
