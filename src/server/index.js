@@ -17,7 +17,6 @@
 
 const express = require('express')
 const compression = require('compression')
-// const { s3Url } = require('./config') /* TODO: use s3 afterwards */
 const { isProduction } = require('./utils')
 require('dotenv').config()
 

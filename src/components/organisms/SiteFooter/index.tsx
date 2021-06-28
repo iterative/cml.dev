@@ -14,7 +14,23 @@ import { ReactComponent as DvcIcon } from '@media/icons/dvc.svg'
 import { ReactComponent as StudioIcon } from '@media/icons/studio.svg'
 import { ReactComponent as IterativeIcon } from '@media/icons/iterative.svg'
 
-const footerLists = [
+interface ISocialLinkPopupProps {
+  url: string
+  icon: JSX.Element
+  title: string
+}
+
+interface IFooterListPopupItem {
+  text: string
+  icon?: JSX.Element
+  url: string
+}
+interface IFooterListPopupProps {
+  title: string
+  items: Array<IFooterListPopupItem>
+}
+
+const footerLists: Array<IFooterListPopupProps> = [
   {
     title: 'About',
     items: [
@@ -81,7 +97,7 @@ const footerLists = [
   }
 ]
 
-const socialLinkDefinitions = [
+const socialLinkDefinitions: Array<ISocialLinkPopupProps> = [
   {
     url: 'https://github.com/iterative/cml',
     icon: <GithubIcon width="24" height="24" />,
@@ -109,36 +125,23 @@ const socialLinkDefinitions = [
   }
 ]
 
-const FooterList = ({ title, items }: { title: string; items: Array<any> }) => (
+const FooterList: React.FC<IFooterListPopupProps> = ({ title, items }) => (
   <Flex as="ul" variant="layout.Footer.List">
     <Heading variant="layout.Footer.List.Title" as="h2">
       {title}
     </Heading>
-    {items.map(
-      (
-        { text, icon = '', url }: { text: string; icon: any; url: string },
-        i: number
-      ) => (
-        <Flex key={i} as="li">
-          <SmartLink variant="layout.Footer.List.Link" href={url}>
-            {icon}
-            {text}
-          </SmartLink>
-        </Flex>
-      )
-    )}
+    {items.map(({ text, icon, url }: IFooterListPopupItem, i: number) => (
+      <Flex key={i} as="li">
+        <SmartLink variant="layout.Footer.List.Link" href={url}>
+          {icon}
+          {text}
+        </SmartLink>
+      </Flex>
+    ))}
   </Flex>
 )
 
-const SocialLink = ({
-  url,
-  icon,
-  title
-}: {
-  url: string
-  icon: any
-  title: string
-}) => (
+const SocialLink: React.FC<ISocialLinkPopupProps> = ({ url, icon, title }) => (
   <SmartLink
     href={url}
     variant="styles.SocialLinkIcon"
@@ -154,7 +157,7 @@ const SocialLink = ({
   </SmartLink>
 )
 
-function Footer() {
+const Footer: React.FC = () => {
   return (
     <Box as="footer" variant="layout.Footer">
       <Container variant="layout.Footer.Inner">

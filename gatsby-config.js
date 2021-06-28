@@ -3,9 +3,6 @@
 require('dotenv').config()
 const path = require('path')
 
-require('./config/prismjs/dvc')
-require('./config/prismjs/usage')
-
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 
@@ -48,18 +45,6 @@ const plugins = [
         'gatsby-remark-embedder',
         'gatsby-remark-dvc-linker',
         {
-          resolve: 'gatsby-remark-prismjs',
-          options: {
-            noInlineHighlight: true,
-            languageExtensions: [
-              {
-                language: 'text',
-                definition: {}
-              }
-            ]
-          }
-        },
-        {
           resolve: 'gatsby-remark-smartypants',
           options: {
             quotes: false
@@ -90,8 +75,7 @@ const plugins = [
           }
         },
         'gatsby-remark-responsive-iframe',
-        'resize-image-plugin',
-        'external-link-plugin'
+        'resize-image-plugin'
       ]
     }
   },

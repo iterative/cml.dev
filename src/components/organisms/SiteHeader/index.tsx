@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react"
-import Link from "../../atoms/ThemedGatsbyLink"
-import { Flex, Box, Container, Button } from "@theme-ui/components"
-import InstallPopup from "../../molecules/InstallPopup"
-import SmartLink from "../../atoms/SmartLink"
-
+import React, { useRef, useState, useEffect } from 'react'
+import Link from '../../atoms/ThemedGatsbyLink'
+import { Flex, Box, Container, Button } from '@theme-ui/components'
+import InstallPopup from '../../molecules/InstallPopup'
+import SmartLink from '../../atoms/SmartLink'
 
 import { ReactComponent as SiteLogo } from '@media/site-logo.svg'
 import { ReactComponent as UpIcon } from '@media/icons/up.svg'
@@ -16,62 +15,58 @@ import { ReactComponent as ExternalLinkIcon } from '@media/icons/external-link.s
 interface IHeaderProps {
   isMain?: boolean
 }
-interface IOtherToolsItems {
-  title: string,
-  icon: JSX.Element,
-  description: string,
+interface IOtherToolsItem {
+  title: string
+  icon: JSX.Element
+  description: string
   href: string
 }
 interface IOtherToolsPopupProps {
-  list: Array<IOtherToolsItems>,
+  list: Array<IOtherToolsItem>
   isOpen: boolean
 }
 
 const navItems = [
   {
-    label: "Use Cases",
-    href: "/#use-cases",
+    label: 'Use Cases',
+    href: '/#use-cases'
   },
   {
-    label: "Docs",
-    href: "/doc",
+    label: 'Docs',
+    href: '/doc'
   },
   {
-    label: "GitHub",
-    href: "https://github.com/iterative/cml",
-  },
+    label: 'GitHub',
+    href: 'https://github.com/iterative/cml'
+  }
 ]
 
-const otherToolsItems : Array<IOtherToolsItems> = [
+const otherToolsItems: Array<IOtherToolsItem> = [
   {
-    title: "Studio",
+    title: 'Studio',
     icon: <StudioIcon width="24" height="24" />,
-    description: "Track experiments and share insights from ML projects",
-    href: "https://studio.iterative.ai/",
+    description: 'Track experiments and share insights from ML projects',
+    href: 'https://studio.iterative.ai/'
   },
   {
-    title: "DVC",
+    title: 'DVC',
     icon: <DvcIcon width="24" height="24" />,
-    description: "Open-source version control system for ML projects",
-    href: "https://dvc.org/",
+    description: 'Open-source version control system for ML projects',
+    href: 'https://dvc.org/'
   },
   {
-    title: "CML",
+    title: 'CML',
     icon: <CmlIcon width="24" height="24" />,
-    description: "Open-source CI/CD for ML projects",
-    href: "/",
-  },
+    description: 'Open-source CI/CD for ML projects',
+    href: '/'
+  }
 ]
 
-
-const OtherToolsPopup: React.FC<IOtherToolsPopupProps> = ({
-  list,
-  isOpen
-}) => {
+const OtherToolsPopup: React.FC<IOtherToolsPopupProps> = ({ list, isOpen }) => {
   return (
     <Flex
       variant="layout.Header.Nav.OtherToolsPopup"
-      sx={isOpen ? { variant: "layout.Header.Nav.OtherToolsPopup.Open" } : {}}
+      sx={isOpen ? { variant: 'layout.Header.Nav.OtherToolsPopup.Open' } : {}}
     >
       {list.map(({ title, icon, description, href }, i) => (
         <SmartLink
@@ -98,21 +93,18 @@ const OtherToolsPopup: React.FC<IOtherToolsPopupProps> = ({
   )
 }
 
-const Header: React.FC<IHeaderProps> = ({
-  isMain,
-}) => {
+const Header: React.FC<IHeaderProps> = ({ isMain }) => {
   const [isInstallPopupOpen, setIsInstallPopupOpen] = useState(false)
   const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
   const installPopupContainerEl = useRef<HTMLDivElement>(null)
   const otherToolsPopupContainerEl = useRef<HTMLDivElement>(null)
 
-  function handlePageKeyup(event: KeyboardEvent) {
-    if (event.key === "Escape") {
-      closeAllPopups()
-    }
+  const closeAllPopups = () => {
+    setIsInstallPopupOpen(false)
+    setIsOtherToolsPopupOpen(false)
   }
 
-  function handlePageClick(event: MouseEvent) {
+  const handlePageClick = (event: MouseEvent) => {
     if (
       event.target instanceof Element &&
       !installPopupContainerEl?.current?.contains(event.target) &&
@@ -122,27 +114,25 @@ const Header: React.FC<IHeaderProps> = ({
     }
   }
 
-  function openInstallPopup() {
-    document.addEventListener("click", handlePageClick)
-    document.addEventListener("keyup", handlePageKeyup)
+  const handlePageKeyup = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      closeAllPopups()
+    }
+  }
+
+  const openInstallPopup = () => {
+    document.addEventListener('click', handlePageClick)
+    document.addEventListener('keyup', handlePageKeyup)
     setIsInstallPopupOpen(true)
   }
 
-  function openOtherToolsPopup() {
-    document.addEventListener("click", handlePageClick)
-    document.addEventListener("keyup", handlePageKeyup)
+  const openOtherToolsPopup = () => {
+    document.addEventListener('click', handlePageClick)
+    document.addEventListener('keyup', handlePageKeyup)
     setIsOtherToolsPopupOpen(true)
   }
 
-  function closeAllPopups() {
-    setIsInstallPopupOpen(false)
-    setIsOtherToolsPopupOpen(false)
-
-    document.removeEventListener("click", handlePageClick)
-    document.removeEventListener("keyup", handlePageKeyup)
-  }
-
-  function toggleInstallPopup() {
+  const toggleInstallPopup = () => {
     setIsOtherToolsPopupOpen(false)
     if (isInstallPopupOpen) {
       closeAllPopups()
@@ -151,7 +141,7 @@ const Header: React.FC<IHeaderProps> = ({
     }
   }
 
-  function toggleOtherToolsPopup() {
+  const toggleOtherToolsPopup = () => {
     setIsInstallPopupOpen(false)
     if (isOtherToolsPopupOpen) {
       closeAllPopups()
@@ -160,13 +150,27 @@ const Header: React.FC<IHeaderProps> = ({
     }
   }
 
+  useEffect(() => {
+    if (!isInstallPopupOpen && !isOtherToolsPopupOpen) {
+      document.removeEventListener('click', handlePageClick)
+      document.removeEventListener('keyup', handlePageKeyup)
+    }
+  }, [isInstallPopupOpen, isOtherToolsPopupOpen])
+
   return (
     <Box
       as="header"
       variant="layout.Header"
-      sx={isMain ? { backgroundColor: "transparent" } : { position: 'sticky', top: 0, zIndex: 1 }}
+      sx={
+        isMain
+          ? { backgroundColor: 'transparent' }
+          : { position: 'sticky', top: 0, zIndex: 1 }
+      }
     >
-      <Container variant="layout.Header.Inner" sx={isMain ? {} : { height: '90px' }}>
+      <Container
+        variant="layout.Header.Inner"
+        sx={isMain ? {} : { height: '90px' }}
+      >
         <Box as="nav" variant="layout.Header.Nav" id="header-nav">
           <Link to="/" variant="layout.Header.Nav.Logo">
             <SiteLogo />
@@ -175,20 +179,20 @@ const Header: React.FC<IHeaderProps> = ({
             href="https://iterative.ai/"
             variant="layout.Header.Nav.CompanyLabel"
           >
-            {" "}
+            {' '}
             by iterative.ai
           </SmartLink>
           <Box
             variant="layout.Header.Nav.OtherTools"
             ref={otherToolsPopupContainerEl}
-            sx={{ position: "relative" }}
+            sx={{ position: 'relative' }}
           >
             <Button
               onClick={toggleOtherToolsPopup}
               variant="layout.Header.Nav.NavButton"
               sx={
                 isOtherToolsPopupOpen
-                  ? { variant: "layout.Header.Nav.NavButton.Active" }
+                  ? { variant: 'layout.Header.Nav.NavButton.Active' }
                   : {}
               }
             >
@@ -197,8 +201,8 @@ const Header: React.FC<IHeaderProps> = ({
                 variant="layout.Header.Nav.NavButton.Icon"
                 sx={
                   isOtherToolsPopupOpen
-                    ? { display: "none" }
-                    : { display: "flex" }
+                    ? { display: 'none' }
+                    : { display: 'flex' }
                 }
                 as="span"
               >
@@ -208,8 +212,8 @@ const Header: React.FC<IHeaderProps> = ({
                 variant="layout.Header.Nav.NavButton.Icon"
                 sx={
                   isOtherToolsPopupOpen
-                    ? { display: "flex" }
-                    : { display: "none" }
+                    ? { display: 'flex' }
+                    : { display: 'none' }
                 }
                 as="span"
               >
@@ -227,13 +231,13 @@ const Header: React.FC<IHeaderProps> = ({
                 {label}
               </SmartLink>
             ))}
-            <Box ref={installPopupContainerEl} sx={{ position: "relative" }}>
+            <Box ref={installPopupContainerEl} sx={{ position: 'relative' }}>
               <Button
                 onClick={toggleInstallPopup}
                 variant="layout.Header.Nav.NavButton"
                 sx={
                   isInstallPopupOpen
-                    ? { variant: "layout.Header.Nav.NavButton.Active" }
+                    ? { variant: 'layout.Header.Nav.NavButton.Active' }
                     : {}
                 }
               >
