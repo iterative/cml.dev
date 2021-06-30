@@ -11,7 +11,6 @@ import rehypeReact from 'rehype-react'
 import Collapsible from 'react-collapsible'
 
 import Link from '../../../atoms/Link'
-import Tooltip from './Tooltip'
 import Tutorials from '../TutorialsLinks'
 import { getPathWithSource } from '../../../../utils/shared/sidebar'
 
@@ -69,10 +68,6 @@ const Details: React.FC<{
   )
 }
 
-const Abbr: React.FC<{ children: [string] }> = ({ children }) => {
-  return <Tooltip text={children[0]} />
-}
-
 const Cards: React.FC = ({ children }) => {
   return <div className={styles.cards}>{children}</div>
 }
@@ -128,7 +123,6 @@ const renderAst = new rehypeReact({
   Fragment: React.Fragment,
   components: {
     details: Details,
-    abbr: Abbr,
     a: Link,
     card: Card,
     cards: Cards

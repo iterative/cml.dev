@@ -1,9 +1,8 @@
 [
   "^https://(?:www\\.)?cml\\.dev(.*)?                                      https://cml.dev$1",
-
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
-
-  "^/doc/get-started(/.*)?$                                                               /doc/start-github",
-
+  "^/doc/start-github(/.*)?$                                                               /doc/start/start-github",
+  "^/doc/start-gitlab(/.*)?$                                                               /doc/start/start-gitlab",
+  "^/doc/install(/.*)?$                                                               /doc/install-with-npm",
   "^/(.+)/$                                                                               /$1"
 ]

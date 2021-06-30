@@ -1,4 +1,4 @@
-# CML is Continuous Machine Learning
+# CML Documentation
 
 [Continuous Machine Learning (CML)](https://cml.dev) is an open-source library
 for implementing continuous integration & delivery (CI/CD) in machine learning
@@ -6,40 +6,32 @@ projects. Use it to automate parts of your development workflow, including model
 training and evaluation, comparing ML experiments across your project history,
 and monitoring changing datasets.
 
-Project website: https://cml.dev
 
-![](/img/cml_neural_transfer.png) _On every pull request, CML helps you
-automatically train and evaluate models, then generates a visual report with
-results and metrics. Above, an example report for a
-[neural style transfer model](https://rb.gy/ub5idx)._
+<cards>
 
-We built CML with these principles in mind:
+  <card href="/doc/start" heading="Get Started">
+    A step-by-step introduction into basic CML features
+  </card>
 
-- **[GitFlow](https://nvie.com/posts/a-successful-git-branching-model/) for data
-  science.** Use GitLab or GitHub to manage ML experiments, track who trained ML
-  models or modified data and when. Codify data and models with
-  [DVC](/doc/cml/cml-with-dvc) instead of pushing to a Git repo.
-- **Auto reports for ML experiments.** Auto-generate reports with metrics and
-  plots in each Git Pull Request. Rigorous engineering practices help your team
-  make informed, data-driven decisions.
-- **No additional services.** Build your own ML platform using just GitHub or
-  GitLab and your favorite cloud services: AWS, Azure, GCP. No databases,
-  services or complex setup needed.
+  <card href="/doc/usage" heading="Usage">
+    Study the detailed inner-workings of CML in its user guide.
+  </card>
 
-_Need help? Just want to chat about continuous integration for ML?
-[Visit our Discord channel!](https://discord.gg/bzA6uY7)_
+  <card href="/doc/use-cases" heading="CML with DVC">
+    Bring data to your CML runner with DVC
+  </card>
 
-🌟 Check out our
-[YouTube video series](https://www.youtube.com/playlist?list=PL7WG7YrwYcnDBDuCkFbcyjnZQrdskFsBz)
-for hands-on MLOps tutorials using CML! 🌟
+  <card href="/doc/self-hosted-runners" heading="Self-hosted Runners">
+    Use your own runners with CML
+  </card>
 
-https://youtu.be/9BgIDqAzfuA
+</cards>
 
-## Case studies
+✅ Please join our [community](https://dvc.org/community) or use the [support](https://dvc.org/support)
+channels if you have any questions or need specific help. We are very responsive
+⚡.
 
-Here are some example projects using CML.
+✅ Check out our [GitHub repository](https://github.com/iterative/cml) and give
+us a ⭐ if you like the project!
 
-- [Basic CML project](https://github.com/iterative/cml_base_case)
-- [CML with DVC to pull data](https://github.com/iterative/cml_dvc_case)
-- [CML with Tensorboard](https://github.com/iterative/cml_tensorboard_case)
-- [CML with EC2 GPU](https://github.com/iterative/cml_cloud_case)
+✅ Contribute to DVC [on GitHub](https://github.com/iterative/cml) 🙏.
