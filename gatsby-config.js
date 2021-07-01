@@ -42,7 +42,6 @@ const plugins = [
     options: {
       plugins: [
         'gatsby-remark-embedder',
-        'gatsby-remark-dvc-linker',
         {
           resolve: 'gatsby-remark-smartypants',
           options: {
@@ -73,8 +72,7 @@ const plugins = [
             withWebp: true
           }
         },
-        'gatsby-remark-responsive-iframe',
-        'resize-image-plugin'
+        'gatsby-remark-responsive-iframe'
       ]
     }
   },

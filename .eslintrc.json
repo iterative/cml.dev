@@ -40,7 +40,6 @@
         "scripts/**/*.js",
         "config/**/*.js",
         "src/server/**/*.js",
-        "plugins/**/*.js",
         "gatsby-*.js",
         "postcss.config.js"
       ],

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { ReactComponent as SolutionLineArrow } from './solution-line-arrow.svg'
+import { ReactComponent as SolutionLineArrow } from '../media/solution-line-arrow.svg'
 import Collapser from '../components/atoms/Collapser'
 import Video from '../components/molecules/Video'
 import Tooltip from '../components/organisms/Tooltip'
