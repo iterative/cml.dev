@@ -38,7 +38,9 @@ const SearchForm: React.FC = props => {
               .filter(hit => hit.hierarchy.lvl0 === 'CML')
               .map(hit => ({
                 ...hit,
-                url: hit.url.replace('https://dvc.org/doc/cml', '/doc')
+                url: hit.url
+                  .replace('https://dvc.org/doc/cml', '/doc')
+                  .replace('/doc/start-git', '/doc/start/start-git')
               }))
           }
         })
