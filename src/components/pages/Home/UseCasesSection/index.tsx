@@ -24,9 +24,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
   _,
   ref
 ) => (
-  <section>
+  <section id="use-cases">
     <FullWidthBox
-      id="use-cases"
       sx={{
         textAlign: "center",
         py: "1px",

@@ -11,7 +11,6 @@ import { ReactComponent as LogoSVG } from '@media/site-logo.svg'
 import { ReactComponent as TwitterIcon } from '@media/icons/twitter.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
 
-
 import styles from './styles.module.css'
 
 const docsPage = getFirstPage()
@@ -84,9 +83,9 @@ export const HamburgerMenu: React.FC<
           <Link
             href="/#use-cases"
             className={styles.sectionHeading}
-            onClick={handleItemClick('features')}
+            onClick={handleItemClick('use-cases')}
           >
-            Features
+            Use Cases
           </Link>
         </li>
         <li className={styles.section}>
@@ -109,10 +108,7 @@ export const HamburgerMenu: React.FC<
         </li>
 
         <li className={styles.section}>
-          <Link
-            href="/support"
-            className={styles.sectionHeading}
-          >
+          <Link href="/support" className={styles.sectionHeading}>
             Support
           </Link>
           <ul className={styles.subSections}>

@@ -49,21 +49,6 @@ const primaryNavItems = [
   }
 ]
 
-const secondaryNavItems = [
-  {
-    label: 'Features',
-    href: '/#use-cases'
-  },
-  {
-    label: 'Docs',
-    href: '/doc'
-  },
-  {
-    label: 'GitHub',
-    href: 'https://github.com/iterative/cml'
-  }
-]
-
 const otherToolsItems: Array<IOtherToolsItem> = [
   {
     title: 'Studio',
@@ -190,18 +175,11 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
         variant="layout.Header"
         className={isMain ? '' : styles.headerForDoc}
         sx={
-          isMain
-            ? { backgroundColor: 'transparent' }
-            : { position: 'sticky' }
+          isMain ? { backgroundColor: 'transparent' } : { position: 'sticky' }
         }
       >
-        <Container
-          variant="layout.Header.Inner"
-        >
-          <Box
-            as="nav"
-            variant="layout.Header.Nav"
-          >
+        <Container variant="layout.Header.Inner">
+          <Box as="nav" variant="layout.Header.Nav">
             <Link to="/" variant="layout.Header.Nav.Logo">
               <SiteLogo />
             </Link>
@@ -256,13 +234,11 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
               />
             </Box>
             <Flex variant="layout.Header.Nav.RightWrapper">
-              {(isMain ? primaryNavItems : secondaryNavItems).map(
-                ({ label, href }, i) => (
-                  <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
-                    {label}
-                  </SmartLink>
-                )
-              )}
+              {primaryNavItems.map(({ label, href }, i) => (
+                <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
+                  {label}
+                </SmartLink>
+              ))}
               <Box ref={installPopupContainerEl} sx={{ position: 'relative' }}>
                 <Button
                   onClick={toggleInstallPopup}
@@ -284,19 +260,21 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
           </Box>
         </Container>
       </Box>
-      { !isMain && <>
-        <HamburgerButton
-          opened={opened}
-          collapsed={collapsed}
-          handleClick={handleToggle}
-        />
-        <HamburgerMenu
-          opened={opened}
-          collapsed={collapsed}
-          handleToggle={handleToggle}
-          handleItemClick={handleItemClick}
-        />
-      </>}
+      {!isMain && (
+        <>
+          <HamburgerButton
+            opened={opened}
+            collapsed={collapsed}
+            handleClick={handleToggle}
+          />
+          <HamburgerMenu
+            opened={opened}
+            collapsed={collapsed}
+            handleToggle={handleToggle}
+            handleItemClick={handleItemClick}
+          />
+        </>
+      )}
     </>
   )
 }
