@@ -3,6 +3,9 @@
 require('dotenv').config()
 const path = require('path')
 
+require('./config/prismjs/usage')
+
+
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 
 const title = 'CML - Continuous Machine Learning: Bring DevOps to Data Science'
@@ -42,6 +45,18 @@ const plugins = [
     options: {
       plugins: [
         'gatsby-remark-embedder',
+        {
+          resolve: 'gatsby-remark-prismjs',
+          options: {
+            noInlineHighlight: true,
+            languageExtensions: [
+              {
+                language: 'text',
+                definition: {}
+              }
+            ]
+          }
+        },
         {
           resolve: 'gatsby-remark-smartypants',
           options: {

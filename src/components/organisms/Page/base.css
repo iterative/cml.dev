@@ -22,7 +22,8 @@
     'Courier', monospace;
   --layout-width: 1005px;
   --layout-width-wide: 1200px;
-  --layout-header-height: 90px;
+  --layout-header-height: 72px;
+  --layout-header-height-mobile: 64px;
   --layout-header-height-collapsed: 78px;
   --layout-alert-height: 35px;
 }

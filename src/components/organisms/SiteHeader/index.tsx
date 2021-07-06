@@ -12,6 +12,14 @@ import { ReactComponent as DvcIcon } from '@media/icons/dvc.svg'
 import { ReactComponent as StudioIcon } from '@media/icons/studio.svg'
 import { ReactComponent as ExternalLinkIcon } from '@media/icons/external-link.svg'
 
+import {
+  HamburgerMenu,
+  HamburgerButton,
+  useHamburgerMenu
+} from '../../molecules/HamburgerMenu'
+
+import styles from './styles.module.css'
+
 interface IHeaderProps {
   isMain?: boolean
 }
@@ -109,6 +117,9 @@ const OtherToolsPopup: React.FC<IOtherToolsPopupProps> = ({ list, isOpen }) => {
 }
 
 const Header: React.FC<IHeaderProps> = ({ isMain }) => {
+  const { opened, handleToggle, handleItemClick } = useHamburgerMenu()
+
+  const collapsed = opened
   const [isInstallPopupOpen, setIsInstallPopupOpen] = useState(false)
   const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
   const installPopupContainerEl = useRef<HTMLDivElement>(null)
@@ -173,102 +184,120 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
   }, [isInstallPopupOpen, isOtherToolsPopupOpen])
 
   return (
-    <Box
-      as="header"
-      variant="layout.Header"
-      sx={
-        isMain
-          ? { backgroundColor: 'transparent' }
-          : { position: 'sticky', top: 0, zIndex: 1 }
-      }
-    >
-      <Container
-        variant="layout.Header.Inner"
-        sx={isMain ? {} : { height: '90px' }}
+    <>
+      <Box
+        as="header"
+        variant="layout.Header"
+        className={isMain ? styles.header : styles.headerForDoc}
+        sx={
+          isMain
+            ? {}
+            : { position: 'sticky' }
+        }
       >
-        <Box as="nav" variant="layout.Header.Nav" id="header-nav">
-          <Link to="/" variant="layout.Header.Nav.Logo">
-            <SiteLogo />
-          </Link>
-          <SmartLink
-            href="https://iterative.ai/"
-            variant="layout.Header.Nav.CompanyLabel"
-          >
-            {' '}
-            by iterative.ai
-          </SmartLink>
+        <Container
+          variant="layout.Header.Inner"
+        >
           <Box
-            variant="layout.Header.Nav.OtherTools"
-            ref={otherToolsPopupContainerEl}
-            sx={{ position: 'relative' }}
+            as="nav"
+            variant="layout.Header.Nav"
           >
-            <Button
-              onClick={toggleOtherToolsPopup}
-              variant="layout.Header.Nav.NavButton"
-              sx={
-                isOtherToolsPopupOpen
-                  ? { variant: 'layout.Header.Nav.NavButton.Active' }
-                  : {}
-              }
+            <Link to="/" variant="layout.Header.Nav.Logo">
+              <SiteLogo />
+            </Link>
+            <SmartLink
+              href="https://iterative.ai/"
+              variant="layout.Header.Nav.CompanyLabel"
             >
-              Other Tools
-              <Box
-                variant="layout.Header.Nav.NavButton.Icon"
-                sx={
-                  isOtherToolsPopupOpen
-                    ? { display: 'none' }
-                    : { display: 'flex' }
-                }
-                as="span"
-              >
-                <DownIcon width="14" height="14" />
-              </Box>
-              <Box
-                variant="layout.Header.Nav.NavButton.Icon"
-                sx={
-                  isOtherToolsPopupOpen
-                    ? { display: 'flex' }
-                    : { display: 'none' }
-                }
-                as="span"
-              >
-                <UpIcon width="14" height="14" />
-              </Box>
-            </Button>
-            <OtherToolsPopup
-              isOpen={isOtherToolsPopupOpen}
-              list={otherToolsItems}
-            />
-          </Box>
-          <Flex variant="layout.Header.Nav.RightWrapper">
-            {(isMain ? primaryNavItems : secondaryNavItems).map(
-              ({ label, href }, i) => (
-                <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
-                  {label}
-                </SmartLink>
-              )
-            )}
-            <Box ref={installPopupContainerEl} sx={{ position: 'relative' }}>
+              {' '}
+              by iterative.ai
+            </SmartLink>
+            <Box
+              variant="layout.Header.Nav.OtherTools"
+              ref={otherToolsPopupContainerEl}
+              sx={{ position: 'relative' }}
+            >
               <Button
-                onClick={toggleInstallPopup}
+                onClick={toggleOtherToolsPopup}
                 variant="layout.Header.Nav.NavButton"
                 sx={
-                  isInstallPopupOpen
+                  isOtherToolsPopupOpen
                     ? { variant: 'layout.Header.Nav.NavButton.Active' }
                     : {}
                 }
               >
-                Install
+                Other Tools
+                <Box
+                  variant="layout.Header.Nav.NavButton.Icon"
+                  sx={
+                    isOtherToolsPopupOpen
+                      ? { display: 'none' }
+                      : { display: 'flex' }
+                  }
+                  as="span"
+                >
+                  <DownIcon width="14" height="14" />
+                </Box>
+                <Box
+                  variant="layout.Header.Nav.NavButton.Icon"
+                  sx={
+                    isOtherToolsPopupOpen
+                      ? { display: 'flex' }
+                      : { display: 'none' }
+                  }
+                  as="span"
+                >
+                  <UpIcon width="14" height="14" />
+                </Box>
               </Button>
-              <InstallPopup
-                onClose={closeAllPopups}
-                isOpen={isInstallPopupOpen}
+              <OtherToolsPopup
+                isOpen={isOtherToolsPopupOpen}
+                list={otherToolsItems}
               />
             </Box>
-          </Flex>
-        </Box>
-      </Container>
-    </Box>
+            <Flex variant="layout.Header.Nav.RightWrapper">
+              {(isMain ? primaryNavItems : secondaryNavItems).map(
+                ({ label, href }, i) => (
+                  <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
+                    {label}
+                  </SmartLink>
+                )
+              )}
+              <Box ref={installPopupContainerEl} sx={{ position: 'relative' }}>
+                <Button
+                  onClick={toggleInstallPopup}
+                  variant="layout.Header.Nav.NavButton"
+                  sx={
+                    isInstallPopupOpen
+                      ? { variant: 'layout.Header.Nav.NavButton.Active' }
+                      : {}
+                  }
+                >
+                  Install
+                </Button>
+                <InstallPopup
+                  onClose={closeAllPopups}
+                  isOpen={isInstallPopupOpen}
+                />
+              </Box>
+            </Flex>
+          </Box>
+        </Container>
+      </Box>
+      { !isMain && <>
+        <HamburgerButton
+          opened={opened}
+          collapsed={collapsed}
+          handleClick={handleToggle}
+        />
+        <HamburgerMenu
+          opened={opened}
+          collapsed={collapsed}
+          handleToggle={handleToggle}
+          handleItemClick={handleItemClick}
+        />
+      </>}
+    </>
   )
 }
 

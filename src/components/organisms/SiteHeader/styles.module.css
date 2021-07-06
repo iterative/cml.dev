@@ -1,0 +1,32 @@
+.header {
+  background-color: transparent;
+}
+.headerForDoc {
+  top: 0;
+  z-index: 1;
+
+  & > div {
+    height: var(--layout-header-height);
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    @media (--sm-scr) {
+      height: var(--layout-header-height-mobile);
+    }
+
+    & > nav { 
+      width: 100%;
+      & > div {
+        @media (--sm-scr) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.hamburger {
+  background-color: red;
+  div {
+    background-color: white;
+  }
+}

@@ -22,7 +22,7 @@ const Documentation: React.FC<IDocumentationProps> = ({
   headings
 }) => {
   const { source, prev, next, tutorials } = getItemByPath(path)
-  const githubLink = `https://github.com/iterative/dvc.org/blob/master/content${source}`
+  const githubLink = `https://github.com/iterative/cml-website/blob/master/content${source}`
 
   return (
     <>
