@@ -188,10 +188,10 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
       <Box
         as="header"
         variant="layout.Header"
-        className={isMain ? styles.header : styles.headerForDoc}
+        className={isMain ? '' : styles.headerForDoc}
         sx={
           isMain
-            ? {}
+            ? { backgroundColor: 'transparent' }
             : { position: 'sticky' }
         }
       >
