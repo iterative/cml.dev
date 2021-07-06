@@ -259,7 +259,7 @@
   flex: 1;
   background-color: #fff;
 
-  @media (--xs-scr) {
+  @media (--sm-scr) {
     margin: 15px 0;
   }
 }

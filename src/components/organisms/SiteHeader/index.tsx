@@ -52,7 +52,7 @@ const primaryNavItems = [
 const secondaryNavItems = [
   {
     label: 'Features',
-    href: '/'
+    href: '/#use-cases'
   },
   {
     label: 'Docs',

@@ -61,6 +61,10 @@
     outline-color: #fff;
   }
 
+  &>div>div {
+    background-color: #fff;
+  }
+
   @media (--sm-scr) {
     display: flex;
     visibility: visible;

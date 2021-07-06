@@ -5,7 +5,7 @@
   font-family: var(--font-brandon);
   -webkit-font-smoothing: antialiased;
 
-  @media (--xs-scr) {
+  @media (--sm-scr) {
     padding: 0 15px;
   }
 
@@ -21,7 +21,7 @@
     pointer-events: none;
     background-color: var(--color-light-blue);
 
-    @media (--xs-scr) {
+    @media (--sm-scr) {
       display: none;
     }
   }
@@ -38,7 +38,7 @@
 .backdrop {
   display: none;
 
-  @media (--xs-scr) {
+  @media (--sm-scr) {
     display: block;
     opacity: 0;
     pointer-events: none;
@@ -64,7 +64,7 @@
   width: 280px;
   background-color: var(--color-light-blue);
 
-  @media (--xs-scr) {
+  @media (--sm-scr) {
     position: fixed;
     display: block;
     z-index: 2;
@@ -79,6 +79,11 @@
     &.opened {
       transform: translateX(0);
     }
+
+    @media (--sm-scr) {
+      top: var(--layout-header-height-mobile);
+    }
+
   }
 }
 
@@ -102,7 +107,7 @@
     transform: translateX(calc(100vw - 60px));
   }
 
-  @media (--xs-scr) {
+  @media (--sm-scr) {
     display: flex;
 
     > * {
@@ -117,7 +122,7 @@
   max-width: calc(100% - 280px);
   background-color: #fff;
 
-  @media (--xs-scr) {
+  @media (--sm-scr) {
     max-width: 100%;
   }
 }
