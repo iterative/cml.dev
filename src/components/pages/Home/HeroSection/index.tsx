@@ -27,7 +27,7 @@ import gitlabVideoMp4 from '@media/gitlab/landing-video.mp4'
 import backgroundImage from '@media/landing-background.png'
 
 const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = (_, ref) => (
-  <section>
+  <section id="hero">
     <FullWidthBox
       className="hero-section"
       sx={{
