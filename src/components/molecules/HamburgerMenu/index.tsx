@@ -10,6 +10,8 @@ import { getFirstPage } from '../../../utils/shared/sidebar'
 import { ReactComponent as LogoSVG } from '@media/site-logo.svg'
 import { ReactComponent as TwitterIcon } from '@media/icons/twitter.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
+import { ReactComponent as MailIcon } from '@media/icons/mail.svg'
+import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 
 import styles from './styles.module.css'
 
@@ -119,11 +121,7 @@ export const HamburgerMenu: React.FC<
                 target="_blank"
                 onClick={handleItemClick('mail')}
               >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-mail.svg"
-                  alt=""
-                />
+                <MailIcon className={styles.subSectionLinkImage} />
                 <span className={styles.subSectionLinkTitle}>E-Mail</span>
               </Link>
             </li>
@@ -145,11 +143,7 @@ export const HamburgerMenu: React.FC<
                 onClick={handleItemClick('chat')}
                 target="_blank"
               >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-discord.svg"
-                  alt=""
-                />
+                <DiscordIcon className={styles.subSectionLinkImage} />
                 <span className={styles.subSectionLinkTitle}>Discord</span>
               </Link>
             </li>
@@ -186,7 +180,7 @@ export const HamburgerMenu: React.FC<
               <Link href="https://dvc.org" className={styles.subSectionLink}>
                 <img
                   className={styles.subSectionLinkImage}
-                  src="/img/logo.svg"
+                  src="/img/dvc-icon.svg"
                   alt="DVC logo"
                 />
                 <span className={styles.subSectionLinkTitle}>DVC</span>
