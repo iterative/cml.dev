@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@theme-ui/components'
 import { alpha, mix } from '@theme-ui/color'
-const types = require('./types.json')
+import types from './types.json'
 
 const getIndent = line => {
   const firstChild = line.props.children[0]

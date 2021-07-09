@@ -1,5 +1,6 @@
 import React from 'react'
 import GatsbyLink from '../../atoms/ThemedGatsbyLink'
+
 import { Box, Container, Flex, Heading } from '@theme-ui/components'
 import SmartLink from '../../atoms/SmartLink'
 

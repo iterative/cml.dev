@@ -2,6 +2,10 @@ const defaultPrefix = `site-mode-`
 
 const makeModeId = (mode, prefix = defaultPrefix) => prefix + mode
 
+export const modeStyle = (mode, styles, prefix = defaultPrefix) => ({
+  [`#${makeModeId(mode, prefix)}:checked ~ * &`]: styles
+})
+
 export const applyModeObjectStyle = (styles, idPrefix = defaultPrefix) =>
   Object.entries(styles).reduce(
     (acc, [mode, styles]) => ({
@@ -10,10 +14,6 @@ export const applyModeObjectStyle = (styles, idPrefix = defaultPrefix) =>
     }),
     {}
   )
-
-export const modeStyle = (mode, styles, prefix = defaultPrefix) => ({
-  [`#${makeModeId(mode, prefix)}:checked ~ * &`]: styles
-})
 
 const msx = ({ mode, modes, idPrefix, ...styles }) => {
   if (modes) {

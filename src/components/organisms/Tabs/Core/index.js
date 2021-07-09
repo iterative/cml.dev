@@ -2,7 +2,7 @@ import React from 'react'
 import Tabs from '../index.js'
 import coreStyles from '../core.module.css'
 
-export default ({ styles = {}, ...props }) => (
+const TabsCore = ({ styles = {}, ...props }) => (
   <Tabs
     styles={{
       ...coreStyles,
@@ -11,3 +11,5 @@ export default ({ styles = {}, ...props }) => (
     {...props}
   />
 )
+
+export default TabsCore

@@ -1,5 +1,5 @@
-const { system: preset } = require('@theme-ui/presets')
-const { alpha } = require('@theme-ui/color')
+import { system as preset } from '@theme-ui/presets'
+import { alpha } from '@theme-ui/color'
 
 const palette = {
   ...preset.colors,

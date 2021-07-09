@@ -15,7 +15,7 @@ export const getScrollNode = (): Element =>
   document.scrollingElement || document.documentElement
 
 export const getHeaderHeightAt = (): number => {
-  let header = getCustomProperty('--layout-header-height')
+  const header = getCustomProperty('--layout-header-height')
   return header as number
 }
 
