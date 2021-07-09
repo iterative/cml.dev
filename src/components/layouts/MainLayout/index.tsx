@@ -23,10 +23,7 @@ export type LayoutComponent = React.FC<
   IMainLayoutProps & IPageProps & ILayoutModifiable
 >
 
-const MainLayout: LayoutComponent = ({
-  className,
-  children,
-}) => {
+const MainLayout: LayoutComponent = ({ className, children }) => {
   useEffect(() => {
     if (className) {
       document.body.classList.add(className)

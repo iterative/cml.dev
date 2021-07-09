@@ -1,5 +1,5 @@
 
-import React, { forwardRef } from 'react'
+import React, { forwardRef } from "react"
 
 import {
   Box,
@@ -20,10 +20,7 @@ import {
   Code,
 } from "../../../../gatsby-plugin-theme-ui/components"
 
-const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
-  _,
-  ref
-) => (
+const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
   <section id="use-cases">
     <FullWidthBox
       sx={{
@@ -96,7 +93,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                     </Code>
 
                     <ExampleBox title="CML Report">
-                      <a target="_blank" href="https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3">
                         <Image src="/img/gitlab/base-case-report.png" alt="GitLab Base report example" />
                       </a>
                     </ExampleBox>
@@ -121,7 +118,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div></div>
                       <div>      <span>- uses: actions/setup-python@v2</span></div>
                       <div>        <span>with:</span></div>
-                      <div>          <span>python-version: '3.x'</span></div>
+                      <div>          <span>python-version: &apos;3.x&apos;</span></div>
                       <div><span> </span></div>
                       <div>      <span>- name: cml</span></div>
                       <div>        <span>env:</span></div>
@@ -133,14 +130,14 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       </Tooltip>
                       <div><span> </span></div>
                       <Tooltip type="reports">
-                        <div>          <span>cat metrics.txt >> report.md</span></div>
-                        <div>          <span>cml-publish confusion_matrix.png --md >> report.md</span></div>
+                        <div>          <span>cat metrics.txt &gt;&gt; report.md</span></div>
+                        <div>          <span>cml-publish confusion_matrix.png --md &gt;&gt; report.md</span></div>
                         <div>          <span>cml-send-comment report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" href="https://github.com/iterative/cml_base_case/pull/2">
-                        <Image src="/img/github/base-case-report.png"  alt="Github Base report example"/>
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml_base_case/pull/2">
+                        <Image src="/img/github/base-case-report.png" alt="Github Base report example" />
                       </a>
                     </ExampleBox>
 
@@ -174,18 +171,18 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div><span> </span></div>
                       <div>    <span># Compare metrics to master</span></div>
                       <div>    <span>- git fetch --prune</span></div>
-                      <div>    <span>- dvc metrics diff --show-md master >> report.md</span></div>
+                      <div>    <span>- dvc metrics diff --show-md master &gt;&gt; report.md</span></div>
                       <div><span> </span></div>
                       <div>    <span># Visualize loss function diff</span></div>
                       <div>    <span>- dvc plots diff </span></div>
-                      <div>      <span>--target loss.csv --show-vega master > vega.json</span></div>
+                      <div>      <span>--target loss.csv --show-vega master &gt; vega.json</span></div>
                       <Tooltip type="reports">
-                        <div>    <span>- vl2png vega.json | cml-publish --md >> report.md</span></div>
+                        <div>    <span>- vl2png vega.json | cml-publish --md &gt;&gt; report.md</span></div>
                         <div>    <span>- cml-send-comment report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" href="https://gitlab.com/iterative.ai/cml-dvc-case/-/merge_requests/6">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative.ai/cml-dvc-case/-/merge_requests/6">
                         <Image src="/img/gitlab/dvc-report.png" alt="GitLab DVC report example" />
                       </a>
                     </ExampleBox>
@@ -212,7 +209,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div><span> </span></div>
                       <div>      <span>- uses: actions/setup-python@v2</span></div>
                       <div>        <span>with:</span></div>
-                      <div>          <span>python-version: '3.x'</span></div>
+                      <div>          <span>python-version: &apos;3.x&apos;</span></div>
                       <div><span> </span></div>
                       <div>      <span>- name: cml</span></div>
                       <div>        <span>env:</span></div>
@@ -233,19 +230,19 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div><span> </span></div>
                       <div>          <span># Compare metrics to master</span></div>
                       <div>          <span>git fetch --prune </span></div>
-                      <div>          <span>dvc metrics diff --show-md master >> report.md</span></div>
+                      <div>          <span>dvc metrics diff --show-md master &gt;&gt; report.md</span></div>
                       <div><span> </span></div>
                       <div>          <span># Visualize loss function diff</span></div>
                       <div>          <span>dvc plots diff \</span></div>
-                      <div>            <span>--target loss.csv --show-vega master > vega.json</span></div>
+                      <div>            <span>--target loss.csv --show-vega master &gt; vega.json</span></div>
                       <Tooltip type="reports">
-                        <div>          <span>vl2png vega.json -s 1.5 | cml-publish --md  >> report.md</span></div>
+                        <div>          <span>vl2png vega.json -s 1.5 | cml-publish --md  &gt;&gt; report.md</span></div>
                         <div>          <span>cml-send-comment report.md </span></div>
                       </Tooltip>
                     </Code>
 
                     <ExampleBox title="CML Report">
-                      <a target="_blank" href="https://github.com/iterative/cml_dvc_case/pull/4">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml_dvc_case/pull/4">
                         <Image src="/img/github/dvc-report.png" alt="GitHub DVC report example" />
                       </a>
                     </ExampleBox>
@@ -273,8 +270,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <Tooltip type="tensorboard">
                         <div>        <span>- cml-tensorboard-dev \</span></div>
                         <div>            <span>--logdir logs \</span></div>
-                        <div>            <span>--name "Go to tensorboard" \</span></div>
-                        <div>            <span>--md >> report.md</span></div>
+                        <div>            <span>--name &quot;Go to tensorboard&quot; \</span></div>
+                        <div>            <span>--md &gt;&gt; report.md</span></div>
                       </Tooltip>
                       <Tooltip type="reports">
                         <div>        <span>- cml-send-comment report.md</span></div>
@@ -286,7 +283,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                     </Code>
 
                     <ExampleBox title="CML Report">
-                      <a target="_blank" href="https://gitlab.com/iterative.ai/cml-tensorboard-case/-/merge_requests/2">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative.ai/cml-tensorboard-case/-/merge_requests/2">
                         <Image src="/img/gitlab/tensorboard-report.png" alt="GitLab Tensorboard report example" />
                       </a>
                     </ExampleBox>
@@ -311,7 +308,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div><span> </span></div>
                       <div>      <span>- uses: actions/setup-python@v2</span></div>
                       <div>        <span>with:</span></div>
-                      <div>          <span>python-version: '3.6'</span></div>
+                      <div>          <span>python-version: &apos;3.6&apos;</span></div>
                       <div><span> </span></div>
                       <div>      <span>- name: cml</span></div>
                       <div>        <span>env:</span></div>
@@ -325,8 +322,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <Tooltip type="tensorboard">
                         <div>          <span>cml-tensorboard-dev \</span></div>
                         <div>            <span>--logdir logs \</span></div>
-                        <div>            <span>--name "Go to tensorboard" \</span></div>
-                        <div>            <span>--md >> report.md</span></div>
+                        <div>            <span>--name &quot;Go to tensorboard&quot; \</span></div>
+                        <div>            <span>--md &gt;&gt; report.md</span></div>
                       </Tooltip>
                       <Tooltip type="reports">
                         <div>          <span>cml-send-comment report.md</span></div>
@@ -337,7 +334,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" href="https://github.com/iterative/cml_tensorboard_case/pull/1">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml_tensorboard_case/pull/1">
                         <Image src="/img/github/tensorboard-report.png" alt="GitHub Tensorboard report example" />
                       </a>
                     </ExampleBox>
@@ -385,14 +382,14 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div>    <span>- pip install -r requirements.txt</span></div>
                       <div>    <span>- python train.py</span></div>
                       <div><span> </span></div>
-                      <div>    <span>- echo "## Report from your EC2 Instance" > report.md</span></div>
-                      <div>    <span>- cat metrics.txt >> report.md</span></div>
-                      <div>    <span>- cml-publish "confusion_matrix.png" --md >> report.md</span></div>
+                      <div>    <span>- echo &quot;## Report from your EC2 Instance&quot; &gt; report.md</span></div>
+                      <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
+                      <div>    <span>- cml-publish &quot;confusion_matrix.png&quot; --md &gt;&gt; report.md</span></div>
                       <div>    <span>- cml-send-comment report.md</span></div>
                     </Code>
 
                     <ExampleBox title="CML Report">
-                      <a target="_blank" href="https://gitlab.com/iterative.ai/cml-runner-example/-/merge_requests/2">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative.ai/cml-runner-example/-/merge_requests/2">
                         <Image src="/img/gitlab/cml-runner-report.png" alt="GitLab Cloud report example" />
                       </a>
                     </ExampleBox>
@@ -439,7 +436,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div>    <span>steps:</span></div>
                       <div>    <span>- uses: actions/checkout@v2</span></div>
                       <div><span> </span></div>
-                      <div>    <span>- name: "Train my model"</span></div>
+                      <div>    <span>- name: &quot;Train my model&quot;</span></div>
                       <div>      <span>env:</span></div>
                       <div>        <span>repo_token: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
                       <div>      <span>run: |</span></div>
@@ -447,15 +444,15 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div>        <span>pip install -r requirements.txt</span></div>
                       <div>        <span>python train.py</span></div>
                       <div><span> </span></div>
-                      <div>        <span>echo "## Report from your EC2 Instance" > report.md</span></div>
-                      <div>        <span>cat metrics.txt >> report.md</span></div>
-                      <div>        <span>cml-publish "confusion_matrix.png" --md >> report.md</span></div>
+                      <div>        <span>echo &quot;## Report from your EC2 Instance&quot; &gt; report.md</span></div>
+                      <div>        <span>cat metrics.txt &gt;&gt; report.md</span></div>
+                      <div>        <span>cml-publish &quot;confusion_matrix.png&quot; --md &gt;&gt; report.md</span></div>
                       <div>        <span>cml-send-comment report.md</span></div>
                     </Code>
 
                     <ExampleBox title="CML Report">
-                      <a target="_blank" href="https://github.com/iterative/cml-runner-base-case/pull/4">
-                        <Image src="/img/github/cml-runner-report.png" alt="GitHub Cloud report example"/>
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml-runner-base-case/pull/4">
+                        <Image src="/img/github/cml-runner-report.png" alt="GitHub Cloud report example" />
                       </a>
                     </ExampleBox>
 
@@ -510,28 +507,28 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div>    <span>- dvc repro</span></div>
                       <div><span> </span></div>
                       <div>    <span># Compare master and workspace image results</span></div>
-                      <div>    <span>- echo "# Style transfer" >> report.md</span></div>
-                      <div>    <span>- git show origin/master:final_owl.png > master_owl.png</span></div>
+                      <div>    <span>- echo &quot;# Style transfer&quot; &gt;&gt; report.md</span></div>
+                      <div>    <span>- git show origin/master:final_owl.png &gt; master_owl.png</span></div>
                       <div>    <span>- convert +append final_owl.png master_owl.png out.png</span></div>
                       <div>    <span>- convert out.png -resize 75% out_shrink.png</span></div>
-                      <div>    <span>- echo "### Workspace vs. Master" >> report.md</span></div>
-                      <div>    <span>- cml-publish out_shrink.png --md >> report.md</span></div>
+                      <div>    <span>- echo &quot;### Workspace vs. Master&quot; &gt;&gt; report.md</span></div>
+                      <div>    <span>- cml-publish out_shrink.png --md &gt;&gt; report.md</span></div>
                       <div><span> </span></div>
                       <div>    <span># Report training parameters</span></div>
-                      <div>    <span>- echo "## Training parameter diffs" >> report.md</span></div>
-                      <div>    <span>- dvc params diff master --show-md >> report.md</span></div>
-                      <div>    <span>- echo >> report.md</span></div>
+                      <div>    <span>- echo &quot;## Training parameter diffs&quot; &gt;&gt; report.md</span></div>
+                      <div>    <span>- dvc params diff master --show-md &gt;&gt; report.md</span></div>
+                      <div>    <span>- echo &gt;&gt; report.md</span></div>
                       <div><span> </span></div>
                       <div>    <span># Report GPU details</span></div>
-                      <div>    <span>- echo "## GPU info" >> report.md</span></div>
-                      <div>    <span>- cat gpu_info.txt >> report.md</span></div>
+                      <div>    <span>- echo &quot;## GPU info&quot; &gt;&gt; report.md</span></div>
+                      <div>    <span>- cat gpu_info.txt &gt;&gt; report.md</span></div>
                       <div><span> </span></div>
                       <div>    <span>- cml-send-comment report.md </span></div>
                     </Code>
 
                     <ExampleBox title="CML Report">
-                      <a target="_blank" href="https://gitlab.com/iterative.ai/cml-cloud-case/-/merge_requests/1">
-                        <Image src="/img/gitlab/cloud-report.png" alt="GitLab Cloud report example"/>
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative.ai/cml-cloud-case/-/merge_requests/1">
+                        <Image src="/img/gitlab/cloud-report.png" alt="GitLab Cloud report example" />
                       </a>
                     </ExampleBox>
 
@@ -585,7 +582,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div><span> </span></div>
                       <div>    <span>- uses: actions/setup-python@v2</span></div>
                       <div>      <span>with:</span></div>
-                      <div>        <span>python-version: '3.6'</span></div>
+                      <div>        <span>python-version: &apos;3.6&apos;</span></div>
                       <div><span> </span></div>
                       <div>    <span>- name: cml</span></div>
                       <div>      <span>env:</span></div>
@@ -599,25 +596,25 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = (
                       <div>        <span>git fetch --prune</span></div>
                       <div>        <span>dvc repro</span></div>
                       <div><span> </span></div>
-                      <div>        <span>echo "# Style transfer" >> report.md</span></div>
-                      <div>        <span>git show origin/master:final_owl.png > master_owl.png</span></div>
+                      <div>        <span>echo &quot;# Style transfer&quot; &gt;&gt; report.md</span></div>
+                      <div>        <span>git show origin/master:final_owl.png &gt; master_owl.png</span></div>
                       <div>        <span>convert +append final_owl.png master_owl.png out.png</span></div>
                       <div>        <span>convert out.png -resize 75%  out_shrink.png</span></div>
-                      <div>        <span>echo "### Workspace vs. Main" >> report.md</span></div>
-                      <div>        <span>cml-publish out_shrink.png --md --title 'compare' >> report.md</span></div>
+                      <div>        <span>echo &quot;### Workspace vs. Main&quot; &gt;&gt; report.md</span></div>
+                      <div>        <span>cml-publish out_shrink.png --md --title &apos;compare&apos; &gt;&gt; report.md</span></div>
                       <div><span> </span></div>
-                      <div>        <span>echo "## Training metrics" >> report.md</span></div>
-                      <div>        <span>dvc params diff master --show-md >> report.md</span></div>
+                      <div>        <span>echo &quot;## Training metrics&quot; &gt;&gt; report.md</span></div>
+                      <div>        <span>dvc params diff master --show-md &gt;&gt; report.md</span></div>
                       <div><span> </span></div>
-                      <div>        <span>echo >> report.md</span></div>
-                      <div>        <span>echo "## GPU info" >> report.md</span></div>
-                      <div>        <span>cat gpu_info.txt >> report.md</span></div>
+                      <div>        <span>echo &gt;&gt; report.md</span></div>
+                      <div>        <span>echo &quot;## GPU info&quot; &gt;&gt; report.md</span></div>
+                      <div>        <span>cat gpu_info.txt &gt;&gt; report.md</span></div>
                       <div><span> </span></div>
                       <div>        <span>cml-send-comment report.md </span></div>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" href="https://github.com/iterative/cml_cloud_case/pull/11">
-                        <Image src="/img/github/cloud-report.png" alt="GitHub Cloud report example"/>
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml_cloud_case/pull/11">
+                        <Image src="/img/github/cloud-report.png" alt="GitHub Cloud report example" />
                       </a>
                     </ExampleBox>
 

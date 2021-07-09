@@ -1,10 +1,6 @@
 import React, { forwardRef } from 'react'
 
-import {
-  Box,
-  Link,
-  Heading,
-} from '@theme-ui/components'
+import { Box, Link, Heading } from '@theme-ui/components'
 
 import Header from '../../../organisms/SiteHeader'
 import LandingVideo from '../../../molecules/Video/LandingVideo'
@@ -17,16 +13,16 @@ import {
   HomeFeature
 } from '../../../../gatsby-plugin-theme-ui/components'
 
+import { ReactComponent as BoxIcon } from '@media/icons/cube.svg'
 import { ReactComponent as GitFlowIcon } from '@media/icons/gitflow.svg'
 import { ReactComponent as ReportsIcon } from '@media/icons/reports.svg'
-import { ReactComponent as BoxIcon } from '@media/icons/cube.svg'
 
 import githubVideoMp4 from '@media/github/landing-video.mp4'
 import gitlabVideoMp4 from '@media/gitlab/landing-video.mp4'
 
 import backgroundImage from '@media/landing-background.png'
 
-const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = (_, ref) => (
+const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
   <section id="hero">
     <FullWidthBox
       className="hero-section"

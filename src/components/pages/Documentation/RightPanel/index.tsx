@@ -3,10 +3,13 @@ import cn from 'classnames'
 import throttle from 'lodash/throttle'
 
 import { IHeading } from '..'
-import Link from '../../../atoms/Link'
 import Tutorials from '../TutorialsLinks'
+import Link from '../../../atoms/Link'
 
-import { getScrollPosition, getHeaderHeight } from '../../../../utils/front/scroll'
+import {
+  getScrollPosition,
+  getHeaderHeight
+} from '../../../../utils/front/scroll'
 import { allImagesLoadedInContainer } from '../../../../utils/front/images'
 
 import sharedStyles from '../styles.module.css'

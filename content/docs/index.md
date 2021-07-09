@@ -6,7 +6,6 @@ projects. Use it to automate parts of your development workflow, including model
 training and evaluation, comparing ML experiments across your project history,
 and monitoring changing datasets.
 
-
 <cards>
 
   <card href="/doc/start" heading="Get Started">
@@ -27,9 +26,9 @@ and monitoring changing datasets.
 
 </cards>
 
-✅ Please join our [community](https://dvc.org/community) or use the [support](https://dvc.org/support)
-channels if you have any questions or need specific help. We are very responsive
-⚡.
+✅ Please join our [community](https://dvc.org/community) or use the
+[support](https://dvc.org/support) channels if you have any questions or need
+specific help. We are very responsive ⚡.
 
 ✅ Check out our [GitHub repository](https://github.com/iterative/cml) and give
 us a ⭐ if you like the project!

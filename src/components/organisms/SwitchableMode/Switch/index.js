@@ -28,7 +28,7 @@ const ModeSwitch = ({
   leftMode = 'gitlab',
   right = 'GitHub',
   rightMode = 'github',
-  className = "",
+  className = '',
   sx
 }) => {
   return (

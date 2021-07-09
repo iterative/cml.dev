@@ -1,17 +1,13 @@
 import React, { forwardRef } from 'react'
 
-import {
-  Box,
-  Heading,
-} from '@theme-ui/components'
+import { Box, Heading } from '@theme-ui/components'
 
 import {
   FullWidthBox,
   SolutionList
 } from '../../../../gatsby-plugin-theme-ui/components'
 
-
-const MLOpsSection: React.ForwardRefRenderFunction<HTMLElement> = (_, ref) => (
+const MLOpsSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
   <section>
     <FullWidthBox
       sx={{
@@ -44,8 +40,8 @@ const MLOpsSection: React.ForwardRefRenderFunction<HTMLElement> = (_, ref) => (
           maxWidth: '460px'
         }}
       >
-        MLOps isn't a platform- it's an ecosystem of tools. CML helps you bring
-        your favorite DevOps tools to machine learning.
+        MLOps isn&apos;t a platform- it&apos;s an ecosystem of tools. CML helps
+        you bring your favorite DevOps tools to machine learning.
       </Box>
 
       <SolutionList

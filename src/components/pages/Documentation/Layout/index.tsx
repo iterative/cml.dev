@@ -1,7 +1,10 @@
 import React, { useCallback, useState } from 'react'
 import cn from 'classnames'
 
-import MainLayout, { LayoutComponent, LayoutModifiers } from '../../../layouts/MainLayout'
+import MainLayout, {
+  LayoutComponent,
+  LayoutModifiers
+} from '../../../layouts/MainLayout'
 import LayoutWidthContainer from '../../../atoms/LayoutWidthContainer'
 import HamburgerIcon from '../../../molecules/HamburgerIcon'
 import SearchForm from './SearchForm'
@@ -9,6 +12,7 @@ import SidebarMenu from './SidebarMenu'
 import { matchMedia } from '../../../../utils/front/breakpoints'
 import SiteHeader from '../../../organisms/SiteHeader'
 import SiteFooter from '../../../organisms/SiteFooter'
+
 import styles from './styles.module.css'
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => {
@@ -25,7 +29,7 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
         {...restProps}
         modifiers={[LayoutModifiers.Wide, LayoutModifiers.Collapsed]}
       >
-        <SiteHeader isMain={false}/>
+        <SiteHeader isMain={false} />
         <LayoutWidthContainer className={styles.container} wide>
           {/* eslint-disable jsx-a11y/no-static-element-interactions */}
           {/* eslint-disable jsx-a11y/click-events-have-key-events */}

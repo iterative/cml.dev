@@ -14,9 +14,9 @@ import Link from '../../../atoms/Link'
 import Tutorials from '../TutorialsLinks'
 import { getPathWithSource } from '../../../../utils/shared/sidebar'
 
-import 'github-markdown-css/github-markdown.css'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
+import 'github-markdown-css/github-markdown.css'
 
 const isInsideCodeBlock = (node: Element): boolean => {
   while (node?.parentNode) {
@@ -60,7 +60,7 @@ const Details: React.FC<{
    */
   return (
     <Collapsible
-      trigger={(triggerChildren as unknown) as ReactElement}
+      trigger={triggerChildren as unknown as ReactElement}
       transitionTime={200}
     >
       {filteredChildren.slice(1)}

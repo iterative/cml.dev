@@ -5,7 +5,6 @@ const path = require('path')
 
 require('./config/prismjs/usage')
 
-
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 
 const title = 'CML - Continuous Machine Learning: Bring DevOps to Data Science'

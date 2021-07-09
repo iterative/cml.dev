@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Flex, Heading, Button, Text } from '@theme-ui/components'
 import SmartLink from '../../atoms/SmartLink'
-import { ReactComponent as CopySvg } from "@media/icons/copy.svg"
+import { ReactComponent as CopySvg } from '@media/icons/copy.svg'
 
 function InstallPopup({ isOpen, onClose }) {
   const installCodeEl = useRef(null)

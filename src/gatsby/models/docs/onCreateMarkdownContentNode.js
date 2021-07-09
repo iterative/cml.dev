@@ -1,7 +1,6 @@
 const path = require('path')
 
 async function createMarkdownDocsNode(api, { parentNode, createChildNode }) {
-
   const splitDir = parentNode.relativeDirectory.split('/')
   if (splitDir[0] !== 'docs') return
 
