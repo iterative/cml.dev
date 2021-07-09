@@ -96,25 +96,8 @@ describe('getRedirects', () => {
     })
   }
 
-  describe('fromSubdomains', () => {
-    // Remove www (when already HTTPS)
-    itRedirects('https://www.cml.dev/foo', 'https://cml.dev/foo')
-  })
-
-  describe('toDiscord', () => {
-    itRedirects('/help', 'https://discordapp.com/invite/dvwXA2N', 303)
-
-    itRedirects('/chat', 'https://discordapp.com/invite/dvwXA2N', 303)
-  })
-
   describe('fromPaths', () => {
     itRedirects('/docs/x', '/doc/x')
     itRedirects('/documentation/x', '/doc/x')
-    itRedirects('/doc/tutorial', '/doc')
-    itRedirects('/doc/tutorial/', '/doc')
-    itRedirects('/doc/tutorials', '/doc')
-    itRedirects('/doc/tutorials/', '/doc')
-    itRedirects('/doc/tutorials/deep', '/doc')
-    itRedirects('/doc/tutorial/bar', '/doc')
   })
 })

@@ -110,9 +110,6 @@ export const HamburgerMenu: React.FC<
         </li>
 
         <li className={styles.section}>
-          <Link href="/support" className={styles.sectionHeading}>
-            Support
-          </Link>
           <ul className={styles.subSections}>
             <li className={styles.subSection}>
               <Link
