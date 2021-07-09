@@ -83,7 +83,6 @@
     @media (--sm-scr) {
       top: var(--layout-header-height-mobile);
     }
-
   }
 }
 

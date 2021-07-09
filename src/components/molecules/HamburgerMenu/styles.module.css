@@ -61,7 +61,7 @@
     outline-color: #fff;
   }
 
-  &>div>div {
+  & > div > div {
     background-color: #fff;
   }
 
@@ -223,4 +223,3 @@ a.sectionHeading {
     color: #fff;
   }
 }
-

@@ -11,8 +11,9 @@
       height: var(--layout-header-height-mobile);
     }
 
-    & > nav { 
+    & > nav {
       width: 100%;
+
       & > div {
         @media (--sm-scr) {
           display: none;
@@ -21,8 +22,10 @@
     }
   }
 }
+
 .hamburger {
   background-color: red;
+
   div {
     background-color: white;
   }

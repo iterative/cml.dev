@@ -11,7 +11,19 @@ import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import relativeSocialImage from '@media/social-image.png'
 
-function SEO({ description, lang, meta, title: pageTitle }) {
+interface ISEOProps {
+  title?: string
+  description?: string
+  lang?: string
+  meta?: HTMLMetaElement[]
+}
+
+const SEO: React.FC<ISEOProps> = ({
+  description,
+  title: pageTitle,
+  lang,
+  meta = []
+}) => {
   const {
     site: {
       siteMetadata: { title: siteTitle, description: siteDescription, siteUrl }
@@ -131,7 +143,7 @@ SEO.defaultProps = {
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
+  meta: PropTypes.array,
   title: PropTypes.string
 }
 

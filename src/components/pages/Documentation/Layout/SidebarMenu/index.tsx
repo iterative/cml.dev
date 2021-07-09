@@ -5,8 +5,6 @@ import { Collapse } from 'react-collapse'
 import PerfectScrollbar from 'perfect-scrollbar'
 import includes from 'lodash/includes'
 
-import ShowOnly from '../../../../atoms/ShowOnly'
-import DownloadButton from '../../../DownloadButton'
 import Link from '../../../../atoms/Link'
 import { ReactComponent as ExternalLinkIcon } from './external-link-icon.svg'
 import { ReactComponent as HouseIcon } from './house.svg'
