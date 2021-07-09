@@ -15,8 +15,8 @@ import Tutorials from '../TutorialsLinks'
 import { getPathWithSource } from '../../../../utils/shared/sidebar'
 
 import sharedStyles from '../styles.module.css'
-import styles from './styles.module.css'
 import 'github-markdown-css/github-markdown.css'
+import styles from './styles.module.css'
 
 const isInsideCodeBlock = (node: Element): boolean => {
   while (node?.parentNode) {

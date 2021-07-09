@@ -61,7 +61,6 @@ const plugins = [
             quotes: false
           }
         },
-        `gatsby-plugin-sass`,
         `gatsby-plugin-robots-txt`,
         {
           resolve: 'gatsby-remark-embed-gist',
