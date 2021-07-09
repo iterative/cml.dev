@@ -8397,13 +8397,6 @@ gatsby-plugin-theme-ui@^0.9.1:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-theme-ui/-/gatsby-plugin-theme-ui-0.9.1.tgz#ff7988ae5bc6c02b0a4a420d4e8286d2b405af79"
   integrity sha512-SNtUzSOz6PnS+V9w3tVO1UVWPN23XWpPtQ3y+bfc9j3rbAs8Ee/Uzs4HFVPfqMr/egI0JpPDfzqXDl3abyKStg==
 
-gatsby-plugin-twitter@^2.2.2:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-twitter/-/gatsby-plugin-twitter-2.10.0.tgz#56e88f4e175efbad7f4967f6dd02bc2fd98d072b"
-  integrity sha512-liPVrUjQIapSmYRhJFpm1AFCBqD9jO696M0ly9HLvjnY/uB1WewN484X07a95cRVYVLoc7kIZrMkJjx8GxVxjw==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-
 gatsby-plugin-typescript@^2.12.1, gatsby-plugin-typescript@^2.3.1:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-2.12.1.tgz#cb2f009d5c015a7703578b86608e90d71b55e9ae"

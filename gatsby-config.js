@@ -30,7 +30,6 @@ const plugins = [
   'gatsby-plugin-postcss',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-sitemap',
-  'gatsby-plugin-twitter',
   `gatsby-plugin-theme-ui`,
   {
     resolve: 'gatsby-source-filesystem',
