@@ -553,7 +553,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>      <span>- name: deploy</span></div>
                       <div>        <span>shell: bash</span></div>
                       <div>        <span>env:</span></div>
-                      <div>          <span>repo_token: {"${{ secrets.secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
+                      <div>          <span>repo_token: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
                       <div>          <span>AWS_ACCESS_KEY_ID: {"${{ secrets.AWS_ACCESS_KEY_ID }}"}</span></div>
                       <div>          <span>AWS_SECRET_ACCESS_KEY: {"${{ secrets.AWS_SECRET_ACCESS_KEY }}"} </span></div>
                       <div>        <span>run: |</span></div>
@@ -586,7 +586,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div>    <span>- name: cml</span></div>
                       <div>      <span>env:</span></div>
-                      <div>        <span>repo_token: {"${{ secrets.secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
+                      <div>        <span>repo_token: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
                       <div>      <span>run: |</span></div>
                       <div>        <span>apt-get update -y</span></div>
                       <div>        <span>apt install imagemagick -y</span></div>
