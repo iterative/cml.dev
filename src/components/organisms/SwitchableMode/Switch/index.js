@@ -1,8 +1,8 @@
-import React from "react"
-import { Box } from "@theme-ui/components"
-import msx from "../styleHelpers.js"
-import { defaultIdPrefix } from "../common.js"
-import { clickOnKeyPress } from "utils/handlers"
+import React from 'react'
+import { Box } from '@theme-ui/components'
+import msx from '../styleHelpers.js'
+import { defaultIdPrefix } from '../common.js'
+import { clickOnKeyPress } from '../../../../utils/handlers'
 
 const ModeSwitchLabel = ({ idPrefix, mode, variant, className, children }) => (
   <Box
@@ -14,7 +14,7 @@ const ModeSwitchLabel = ({ idPrefix, mode, variant, className, children }) => (
     sx={msx({
       mode,
       idPrefix,
-      variant: `${variant}.Label.Active`,
+      variant: `${variant}.Label.Active`
     })}
   >
     {children}
@@ -23,13 +23,13 @@ const ModeSwitchLabel = ({ idPrefix, mode, variant, className, children }) => (
 
 const ModeSwitch = ({
   idPrefix = defaultIdPrefix,
-  variant = "switches.primary",
-  left = "GitLab",
-  leftMode = "gitlab",
-  right = "GitHub",
-  rightMode = "github",
-  className,
-  sx,
+  variant = 'switches.primary',
+  left = 'GitLab',
+  leftMode = 'gitlab',
+  right = 'GitHub',
+  rightMode = 'github',
+  className = '',
+  sx
 }) => {
   return (
     <Box
@@ -42,12 +42,12 @@ const ModeSwitch = ({
         idPrefix,
         modes: {
           gitlab: {
-            variant: `switches.Base.Left`,
+            variant: `switches.Base.Left`
           },
           github: {
-            variant: `switches.Base.Right`,
-          },
-        },
+            variant: `switches.Base.Right`
+          }
+        }
       })}
     >
       <ModeSwitchLabel mode={leftMode} variant={variant} idPrefix={idPrefix}>

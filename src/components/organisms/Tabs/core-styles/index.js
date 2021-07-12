@@ -1,23 +1,23 @@
 module.exports = {
-  "&>section": {
-    variant: "styles.Tabs.Content",
+  '&>section': {
+    variant: 'styles.Tabs.Content'
   },
-  "&>label": {
-    variant: "styles.Tabs.Tab",
+  '&>label': {
+    variant: 'styles.Tabs.Tab'
   },
-  "&>input": {
-    "&:not(:checked)": {
-      "& + label + section": {
-        variant: "styles.Tabs.Content.Inactive",
-      },
+  '&>input': {
+    '&:not(:checked)': {
+      '& + label + section': {
+        variant: 'styles.Tabs.Content.Inactive'
+      }
     },
-    "&:checked": {
-      "& + label": {
-        variant: "styles.Tabs.Tab.Active",
+    '&:checked': {
+      '& + label': {
+        variant: 'styles.Tabs.Tab.Active'
       },
-      "& + label + section": {
-        variant: "styles.Tabs.Content.Active",
-      },
-    },
-  },
+      '& + label + section': {
+        variant: 'styles.Tabs.Content.Active'
+      }
+    }
+  }
 }

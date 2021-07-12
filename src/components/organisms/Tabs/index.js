@@ -1,19 +1,19 @@
-import React, { useMemo } from "react"
-import { Box } from "@theme-ui/components"
-import { clickOnKeyPress } from "utils/handlers"
-import HiddenRadioControl from "components/atoms/HiddenRadioControl"
+import React, { useMemo } from 'react'
+import { Box } from '@theme-ui/components'
+import { clickOnKeyPress } from '../../../utils/handlers'
+import HiddenRadioControl from '../../atoms/HiddenRadioControl'
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex, jsx-a11y/no-noninteractive-element-interactions */
 
-export function useRadioTabs(inputContent, idPrefix = "tabs") {
+export function useRadioTabs(inputContent, idPrefix = 'tabs') {
   return useMemo(() => {
     const [result, hasChecked] = inputContent.reduce(
       ([result, hasChecked], item, i) => {
         return [
           result.concat({
             ...item,
-            id: `${idPrefix}-tab-${i}`,
+            id: `${idPrefix}-tab-${i}`
           }),
-          hasChecked || item.checked,
+          hasChecked || item.checked
         ]
       },
       [[], false]
@@ -30,11 +30,11 @@ export const Tabs = ({ children, sx }) => {
       variant="styles.Tabs"
       sx={{
         code: {
-          display: "block",
-          width: "100%",
-          flex: "1 0",
+          display: 'block',
+          width: '100%',
+          flex: '1 0'
         },
-        ...sx,
+        ...sx
       }}
     >
       {children}
@@ -42,7 +42,7 @@ export const Tabs = ({ children, sx }) => {
   )
 }
 
-export const JSONTabs = ({ content, name: idPrefix = "tabs", sx }) => {
+export const JSONTabs = ({ content, name: idPrefix = 'tabs', sx }) => {
   // If no child tab is checked, set the first one to be so.
   const tabs = useRadioTabs(content, idPrefix)
 
@@ -63,24 +63,24 @@ export const JSONTabs = ({ content, name: idPrefix = "tabs", sx }) => {
                 defaultChecked={checked}
                 key={`tab-input-${i}`}
                 sx={{
-                  "& ~ div": {
-                    "&>nav>label": {
-                      variant: "styles.Tabs.Label",
+                  '& ~ div': {
+                    '&>nav>label': {
+                      variant: 'styles.Tabs.Label'
                     },
-                    "&>article>section": {
-                      variant: "styles.Tabs.Content",
-                    },
+                    '&>article>section': {
+                      variant: 'styles.Tabs.Content'
+                    }
                   },
-                  "&:checked ~ div": {
+                  '&:checked ~ div': {
                     [`&>nav>label.${id}`]: {
-                      variant: "styles.Tabs.Label.Active",
+                      variant: 'styles.Tabs.Label.Active'
                     },
                     [`&>article>section.${id}`]: {
-                      variant: "styles.Tabs.Content.Active",
-                    },
-                  },
+                      variant: 'styles.Tabs.Content.Active'
+                    }
+                  }
                 }}
-              />,
+              />
             ],
             [
               ...labelElements,
@@ -93,7 +93,7 @@ export const JSONTabs = ({ content, name: idPrefix = "tabs", sx }) => {
                 key={`tab-label-${i}`}
               >
                 {name}
-              </label>,
+              </label>
             ],
             [
               ...contentElements,
@@ -103,8 +103,8 @@ export const JSONTabs = ({ content, name: idPrefix = "tabs", sx }) => {
                 key={`tab-content-${i}`}
               >
                 {content}
-              </section>,
-            ],
+              </section>
+            ]
           ]
         },
         [[], [], []]

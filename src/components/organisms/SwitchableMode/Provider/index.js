@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react"
-import { defaultModes } from "../common"
+import React, { useState, useEffect } from 'react'
+import { defaultModes } from '../common'
 
 export const ModeContext = React.createContext(undefined)
 
-const isRuntime = typeof window !== "undefined"
+const isRuntime = typeof window !== 'undefined'
 
 const buildModeItemId = name => `mode-switcher-${name}`
 
@@ -40,7 +40,7 @@ const usePersistentMode = (name, fallbackDefault) => {
   return {
     currentMode,
     setModeState,
-    setModeToValue,
+    setModeToValue
   }
 }
 
@@ -66,11 +66,11 @@ const ModeSwitchRadios = ({ name, idPrefix, modes, currentMode, onChange }) => {
 }
 
 const ModeProvider = ({
-  name = "site-mode-switcher-mode",
-  idPrefix = "site-mode-",
+  name = 'site-mode-switcher-mode',
+  idPrefix = 'site-mode-',
   modes = defaultModes,
-  defaultMode = "gitlab",
-  children,
+  defaultMode = 'gitlab',
+  children
 }) => {
   const { currentMode, setModeToValue } = usePersistentMode(name, defaultMode)
   return (

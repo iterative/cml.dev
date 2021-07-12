@@ -1,5 +1,5 @@
-import React from "react"
-import Video from "../"
+import React from 'react'
+import Video from '..'
 
 const LandingVideo = props => (
   <Video

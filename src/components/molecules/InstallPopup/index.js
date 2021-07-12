@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react"
-import { Flex, Heading, Button, Text } from "@theme-ui/components"
-import SmartLink from "components/atoms/SmartLink"
-import CopySvg from "media/icons/copy.svg"
+import React, { useRef, useState } from 'react'
+import { Flex, Heading, Button, Text } from '@theme-ui/components'
+import SmartLink from '../../atoms/SmartLink'
+import { ReactComponent as CopySvg } from '@media/icons/copy.svg'
 
 function InstallPopup({ isOpen, onClose }) {
   const installCodeEl = useRef(null)
@@ -22,7 +22,7 @@ function InstallPopup({ isOpen, onClose }) {
   return (
     <Flex
       variant="layout.Header.Nav.InstallPopup"
-      sx={isOpen ? { variant: "layout.Header.Nav.InstallPopup.Open" } : {}}
+      sx={isOpen ? { variant: 'layout.Header.Nav.InstallPopup.Open' } : {}}
     >
       <Heading as="h2">Install CML as a package</Heading>
       <Text
@@ -30,7 +30,7 @@ function InstallPopup({ isOpen, onClose }) {
         as="p"
         sx={
           isCopiedTextActive
-            ? { variant: "layout.Header.Nav.InstallPopup.CopiedText.Active" }
+            ? { variant: 'layout.Header.Nav.InstallPopup.CopiedText.Active' }
             : {}
         }
       >

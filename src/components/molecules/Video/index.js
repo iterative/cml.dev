@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useRef } from "react"
-import useRehydrated from "utils/use-rehydrated"
-import { ModeContext } from "components/organisms/SwitchableMode/Provider"
-import { Box } from "@theme-ui/components"
+import React, { useContext, useEffect, useRef } from 'react'
+import useRehydrated from '../../../utils/use-rehydrated'
+import { ModeContext } from '../../organisms/SwitchableMode/Provider'
+import { Box } from '@theme-ui/components'
 
 const Video = ({
   sx = {},
@@ -11,9 +11,9 @@ const Video = ({
   playsInline = true,
   autoPlay = !controls,
   muted = autoPlay,
-  variant = "styles.Video",
+  variant = 'styles.Video',
   loop,
-  loading = "lazy",
+  loading = 'lazy',
   ...rest
 }) => {
   const contextMode = useContext(ModeContext)
@@ -36,19 +36,19 @@ const Video = ({
     <Box
       variant={variant}
       sx={{
-        position: "relative",
-        ...sx,
+        position: 'relative',
+        ...sx
       }}
       {...rest}
     >
       <Box
         as="video"
         sx={{
-          position: "absolute",
+          position: 'absolute',
           top: 0,
           left: 0,
-          width: "100%",
-          height: "100%",
+          width: '100%',
+          height: '100%'
         }}
         ref={videoRef}
         autoPlay={autoPlay}

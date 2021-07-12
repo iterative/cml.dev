@@ -1,0 +1,36 @@
+[
+  {
+    "slug": "",
+    "label": "Home",
+    "source": "index.md",
+    "icon": "house"
+  },
+  {
+    "label": "Get Started",
+    "slug": "start",
+    "source": "start/index.md",
+    "children": [
+      {
+        "label": "GitHub",
+        "slug": "start-github"
+      },
+      {
+        "label": "GitLab",
+        "slug": "start-gitlab"
+      }
+    ]
+  },
+  "usage",
+  {
+    "label": "CML with DVC",
+    "slug": "cml-with-dvc"
+  },
+  {
+    "label": "Self-hosted Runners",
+    "slug": "self-hosted-runners"
+  },
+  {
+    "label": "Install as a Package",
+    "slug": "cml-with-npm"
+  }
+]

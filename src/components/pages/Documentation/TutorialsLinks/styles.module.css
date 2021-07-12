@@ -1,0 +1,11 @@
+.button {
+  &:not(.compact) {
+    & + & {
+      margin-top: 10px;
+    }
+  }
+
+  &.compact {
+    margin-left: 5px;
+  }
+}

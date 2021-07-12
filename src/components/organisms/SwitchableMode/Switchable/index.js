@@ -1,35 +1,35 @@
-import React from "react"
-import { Box } from "@theme-ui/components"
-import msx from "../styleHelpers.js"
+import React from 'react'
+import { Box } from '@theme-ui/components'
+import msx from '../styleHelpers.js'
 
 const visible = {
-  visibility: "visible",
-  position: "static",
-  width: "auto",
-  height: "auto",
-  overflow: "auto",
-  video: { display: "unset" },
+  visibility: 'visible',
+  position: 'static',
+  width: 'auto',
+  height: 'auto',
+  overflow: 'auto',
+  video: { display: 'unset' }
 }
 
 const invisible = {
-  display: "block",
-  overflow: "hidden",
-  visibility: "hidden",
-  position: "absolute",
-  width: "0",
-  height: "0",
-  "& video": { display: "none" },
+  display: 'block',
+  overflow: 'hidden',
+  visibility: 'hidden',
+  position: 'absolute',
+  width: '0',
+  height: '0',
+  '& video': { display: 'none' }
 }
 
-const Switchable = ({ github, gitlab, idPrefix }) => (
+const Switchable = ({ github, gitlab, idPrefix = undefined }) => (
   <Box>
     <Box
       sx={msx({
         idPrefix,
         ...invisible,
         modes: {
-          gitlab: visible,
-        },
+          gitlab: visible
+        }
       })}
       aria-label="GitLab-specific content"
     >
@@ -40,8 +40,8 @@ const Switchable = ({ github, gitlab, idPrefix }) => (
         idPrefix,
         ...invisible,
         modes: {
-          github: visible,
-        },
+          github: visible
+        }
       })}
       aria-label="GitHub-specific content"
     >
