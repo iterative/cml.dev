@@ -1,9 +1,4 @@
-const url = require('url')
-const {
-  buildSidebarRedirects,
-  processRedirectString,
-  getRedirect
-} = require('./redirects')
+const { buildSidebarRedirects, processRedirectString } = require('./redirects')
 
 describe('buildRedirectsList', () => {
   it('builds correct redirects list', () => {
@@ -49,40 +44,4 @@ describe('processRedirectString', () => {
     const { matchPathname } = processRedirectString('^/path /y')
     expect(matchPathname).toEqual(true)
   })
-})
-
-describe('getRedirects', () => {
-
-  const itRedirects = (source, target, code = 301) => {
-    const addHost = pathOrUrl => {
-      if (pathOrUrl.startsWith('/')) {
-        return `https://cml.dev${pathOrUrl}`
-      }
-      return pathOrUrl
-    }
-
-    it(`${source} -> ${target} (${code})`, () => {
-      source = addHost(source)
-      const { hostname, pathname } = url.parse(source)
-      const [rCode, rLocation] = getRedirect(hostname, pathname)
-
-      expect(rLocation).toEqual(target)
-      expect(rCode).toEqual(code)
-
-      // Detect redirect loops.
-      const secondUrl = url.parse(addHost(rLocation))
-      const secondRedirect = getRedirect(secondUrl.hostname, secondUrl.pathname)
-
-      // allow second redirect only if it removes trailing slash
-      if (secondRedirect.length) {
-        const thirdUrl = url.parse(addHost(secondRedirect[1]))
-        expect(secondUrl.host).toEqual(thirdUrl.host)
-        expect(secondUrl.pathname.replace(/\/$/, '')).toEqual(secondRedirect[1])
-
-        const thirdRedirect = getRedirect(thirdUrl.hostname, thirdUrl.pathname)
-        expect(thirdRedirect).toEqual([])
-      }
-    })
-  }
-
 })
