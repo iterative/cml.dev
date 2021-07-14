@@ -39,7 +39,7 @@ const footerLists: Array<IFooterListPopupProps> = [
         text: 'Install',
         url: 'https://github.com/iterative/cml#install-cml-as-a-package'
       },
-      { text: 'Use cases', url: 'https://cml.dev#use-cases' },
+      { text: 'Use cases', url: '/#use-cases' },
       { text: 'Blog', url: 'https://dvc.org/blog' },
       { text: 'Github', url: 'https://github.com/iterative/cml' }
     ]
@@ -87,7 +87,7 @@ const footerLists: Array<IFooterListPopupProps> = [
       {
         text: 'CML',
         icon: <CmlIcon height="16" width="16" />,
-        url: 'https://cml.dev/'
+        url: '/'
       },
       {
         text: 'Studio',

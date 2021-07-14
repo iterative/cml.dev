@@ -52,22 +52,11 @@ describe('processRedirectString', () => {
 })
 
 describe('getRedirects', () => {
-  it('enforces HTTPS and removes www simultaneously', () => {
-    const mockReq = {
-      headers: {
-        'x-forwarded-proto': 'http'
-      },
-      url: '/foo/bar?baz'
-    }
-    expect(
-      getRedirect('www.dvc.org', '/not-used', { req: mockReq, dev: false })
-    ).toEqual([301, 'https://dvc.org/foo/bar?baz'])
-  })
 
   const itRedirects = (source, target, code = 301) => {
     const addHost = pathOrUrl => {
       if (pathOrUrl.startsWith('/')) {
-        return `https://dvc.org${pathOrUrl}`
+        return `https://cml.dev${pathOrUrl}`
       }
       return pathOrUrl
     }
@@ -96,8 +85,4 @@ describe('getRedirects', () => {
     })
   }
 
-  describe('fromPaths', () => {
-    itRedirects('/docs/x', '/doc/x')
-    itRedirects('/documentation/x', '/doc/x')
-  })
 })
