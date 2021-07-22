@@ -1,4 +1,4 @@
 .cache/
 .github
-src/components/pages/Home/UseCasesSection/index.tsx
 public/
+src/components/pages/Home/UseCasesSection/index.tsx
