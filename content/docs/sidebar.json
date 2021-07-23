@@ -12,11 +12,11 @@
     "children": [
       {
         "label": "GitHub",
-        "slug": "start-github"
+        "slug": "github"
       },
       {
         "label": "GitLab",
-        "slug": "start-gitlab"
+        "slug": "gitlab"
       }
     ]
   },
