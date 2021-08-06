@@ -14,11 +14,13 @@ require('dotenv').config()
 const port = process.env.PORT || 3000
 const app = express()
 
+const apiMiddleware = require('./middleware/api')
 const redirectsMiddleware = require('./middleware/redirects')
 const serveMiddleware = require('./middleware/serve')
 
 app.use(compression())
 app.use(redirectsMiddleware)
+app.use('/api', apiMiddleware)
 app.use(serveMiddleware)
 
 app.listen(port, () => {
