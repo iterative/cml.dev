@@ -5,6 +5,7 @@ const path = require('path')
 
 require('./config/prismjs/usage')
 
+const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 
 const title = 'CML - Continuous Machine Learning: Bring DevOps to Data Science'
@@ -190,5 +191,6 @@ module.exports = {
   },
   developMiddleware: app => {
     app.use(redirectsMiddleware)
+    app.use('/api', apiMiddleware)
   }
 }

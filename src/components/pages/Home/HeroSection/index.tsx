@@ -3,6 +3,7 @@ import React, { forwardRef } from 'react'
 import { Box, Link, Heading } from '@theme-ui/components'
 
 import Header from '../../../organisms/SiteHeader'
+import GithubLine from '../../../atoms/GithubLine'
 import LandingVideo from '../../../molecules/Video/LandingVideo'
 import Collapser from '../../../atoms/Collapser'
 import Switch from '../../../organisms/SwitchableMode/Switch'
@@ -99,6 +100,7 @@ const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
           >
             Download
           </Link>
+          <GithubLine />
         </Box>
         <Box sx={{ flex: '1', width: '100%' }}>
           <Switch
