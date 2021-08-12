@@ -1,7 +1,7 @@
 # Contributing to the Documentation
 
 We welcome any contributions to our documentation repository,
-[cml-website](https://github.com/iterative/cml-website). Contributions can be
+[cml.dev](https://github.com/iterative/cml.dev). Contributions can be
 updates to the documentation content, or (rare) changes to the JS engine we use
 to run the website.
 

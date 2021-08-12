@@ -11,7 +11,7 @@ creating a new issue (problem or an improvement request). Feel free to add
 issues related to the project.
 
 For problems with the [cml.dev](https://cml.dev) site, please use this
-[GitHub repository](https://github.com/iterative/cml-website).
+[GitHub repository](https://github.com/iterative/cml.dev).
 
 If you feel that you can fix or implement it yourself, please read a few
 paragraphs below to learn how to submit your changes.

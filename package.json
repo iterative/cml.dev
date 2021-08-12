@@ -1,5 +1,5 @@
 {
-  "name": "cml-website",
+  "name": "cml.dev",
   "version": "1.0.0",
   "description": "cml.dev – website source code",
   "main": "index.js",
@@ -23,14 +23,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/cml-website"
+    "url": "https://github.com/gatsbyjs/cml.dev"
   },
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
-  "homepage": "https://github.com/iterative/cml-website#readme",
+  "homepage": "https://github.com/iterative/cml.dev#readme",
   "engines": {
     "node": "<=15.x"
   },
