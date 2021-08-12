@@ -13,19 +13,19 @@ Start by cloning this repo:
 Get the full history with
 
 ```bash
-git clone https://github.com/iterative/cml-website
+git clone https://github.com/iterative/cml.dev
 ```
 
 Alternatively, you can save some space with a shallow clone:
 
 ```bash
-git clone --depth 1 https://github.com/iterative/cml-website
+git clone --depth 1 https://github.com/iterative/cml.dev
 ```
 
 From here, go into the cloned directory and install packages
 
 ```bash
-cd cml-website
+cd cml.dev
 yarn
 ```
 
