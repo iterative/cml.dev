@@ -1,20 +1,23 @@
 # Contributing to CML
 
-We welcome contributions to [CML](https://github.com/iterative/cml) by the
-community. See the [Contributing to the Documentation](/doc/contributing/docs)
-guide if you want to fix or update the documentation or this website.
+We welcome contributions to [CML][cml-repo] by the community. See the
+[Contributing to the Documentation](/doc/contributing/docs) guide if you want to
+fix or update the documentation or this website.
 
-## How to report a problem
+[cml-repo]: https://github.com/iterative/cml
 
-Please search [issue tracker](https://github.com/iterative/cml/issues) before
-creating a new issue (problem or an improvement request). Feel free to add
-issues related to the project.
+## Reporting a Problem
 
-For problems with the [cml.dev](https://cml.dev) site, please use this
-[GitHub repository](https://github.com/iterative/cml.dev).
+Spotted a bug? Let us know!
 
-If you feel that you can fix or implement it yourself, please read a few
-paragraphs below to learn how to submit your changes.
+- For problems with [CML][cml-repo], search the
+  [issue tracker](https://github.com/iterative/cml/issues) before creating a new
+  issue (problem or an improvement request).
+- If you'd like implement/fix things yourself, please see below for help on how
+  to submit your changes.
+
+> For problems with the [cml.dev](/) site, please see
+> [Contributing to the Documentation](/doc/contributing/docs) instead.
 
 ## Contributions
 
