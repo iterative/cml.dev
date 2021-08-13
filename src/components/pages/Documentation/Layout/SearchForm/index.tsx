@@ -17,10 +17,10 @@ const SearchForm: React.FC = props => {
   useEffect(() => {
     Promise.all([
       loadResource(
-        'https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.css'
+        'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css'
       ),
       loadResource(
-        'https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.js'
+        'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js'
       )
     ]).then(() => setLoaded(true))
   }, [])
@@ -29,20 +29,10 @@ const SearchForm: React.FC = props => {
     if (isLoaded) {
       window.docsearch &&
         window.docsearch({
-          apiKey: '755929839e113a981f481601c4f52082',
-          indexName: 'dvc',
+          apiKey: '0f39a68ab6f073f9c4d5858e4f6e9b5d',
+          indexName: 'cml',
           inputSelector: '#doc-search',
-          debug: false, // Set to `true` if you want to inspect the dropdown
-          transformData: (hits: Array<any>) => {
-            return hits
-              .filter(hit => hit.hierarchy.lvl0 === 'CML')
-              .map(hit => ({
-                ...hit,
-                url: hit.url
-                  .replace('https://dvc.org/doc/cml', '/doc')
-                  .replace('/doc/start-git', '/doc/start/start-git')
-              }))
-          }
+          debug: false // Set to `true` if you want to inspect the dropdown
         })
     }
   }, [isLoaded])
