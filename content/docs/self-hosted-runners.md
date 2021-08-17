@@ -37,7 +37,7 @@ jobs:
       - name: "Deploy runner on EC2"
         shell: bash
         env:
-          repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
@@ -54,7 +54,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: "Train my model"
       env:
-        repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       run: |
         pip install -r requirements.txt
         python train.py
