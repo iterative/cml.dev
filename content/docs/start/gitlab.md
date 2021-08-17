@@ -65,7 +65,7 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
 
    cml:
      stage: cml_run
-     image: dvcorg/cml-py3:latest
+     image: iterativeai/cml:0-dvc2-base1
      script:
        - pip3 install -r requirements.txt
        - python train.py

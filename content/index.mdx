@@ -177,7 +177,7 @@ stages:
 
 cml:
   stage: cml_run
-  image: dvcorg/cml-py3:latest
+  image: iterativeai/cml:0-dvc2-base1
   script:
     <Tooltip type="dependencies">
     - pip3 install -r requirements.txt
@@ -262,7 +262,7 @@ stages:
 
 cml:
   stage: cml_run
-  image: dvcorg/cml-py3:latest
+  image: iterativeai/cml:0-dvc2-base1
   script:
     <Tooltip type="dvc">
     - dvc pull data
@@ -371,7 +371,7 @@ stages:
     
 cml:
     stage: cml_run
-    image: dvcorg/cml-py3:latest
+    image: iterativeai/cml:0-dvc2-base1
     script:
         - pip install -r requirements.txt
         <Tooltip type="tensorboard">
@@ -484,7 +484,7 @@ train_job:
  <Tooltip type="reports">
   stage: train
   when: on_success
-  image: dvcorg/cml-py3
+  image: iterativeai/cml:0-dvc2-base1
   tags:
     - cml-runner
   </Tooltip>
@@ -543,7 +543,7 @@ jobs:
     <Tooltip type="reports">
     needs: deploy-runner
     runs-on: [self-hosted,cml-runner]
-    container: docker://dvcorg/cml-py3
+    container: docker://iterativeai/cml:0-dvc2-base1
     </Tooltip>
 
     steps:
@@ -605,7 +605,7 @@ train_job:
   <Tooltip type="reports">
   stage: train
   when: on_success
-  image: dvcorg/cml-py3
+  image: iterativeai/cml:0-dvc2-base1-gpu
   tags:
     - cml-runner-gpu
   </Tooltip>
