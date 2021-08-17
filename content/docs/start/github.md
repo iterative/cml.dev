@@ -35,7 +35,7 @@ supported CI systems (with exceptions as noted!).
             - uses: actions/checkout@v2
             - name: cml_run
                env:
-                  repo_token: ${{ secrets.GITHUB_TOKEN }}
+                  REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                run: |
                   pip install -r requirements.txt
                   python train.py
