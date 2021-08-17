@@ -7,10 +7,6 @@ supported CI systems (with exceptions as noted!).
 1. Fork our
    [example project repository](https://github.com/iterative/example_cml).
 
-   ⚠️ If you are using GitLab,
-   [you'll need to create a Personal Access Token](https://github.com/iterative/cml/wiki/CML-with-GitLab#variables)
-   for this example to work.
-
    ![](/img/fork_cml_project.png)
 
    The following steps can all be done in the GitHub browser interface. However,
