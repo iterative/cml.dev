@@ -27,7 +27,8 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
    e. Head back to your fork by clicking the Projects tab next to the GitLab
    logo and select it.
 
-   f. On the left hand side Navigate to **Settings** ➡ **CI/CD** ➡ **Varibles**.
+   f. On the left hand side Navigate to **Settings** ➡ **CI/CD** ➡
+   **Variables**.
 
    ![](/img/ci_cd_navigation.png)
 
