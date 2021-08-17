@@ -8,9 +8,19 @@ require('./config/prismjs/usage')
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 
-const title = 'CML - Continuous Machine Learning: Bring DevOps to Data Science'
+const title = 'CML · Continuous Machine Learning'
 const description =
-  'CML is continuous integration for machine learning.  Bring DevOps practices to your projects for automatic, reproducible, and fast machine learning.'
+  'Bring DevOps practices to your projects for automatic, reproducible, and fast machine learning.'
+
+const keywords = [
+  'continuous machine learning',
+  'machine learning',
+  'continuous integration',
+  'continuous delivery',
+  'devops',
+  'deployment',
+  'provisioning'
+]
 
 const plugins = [
   {
@@ -185,8 +195,9 @@ module.exports = {
   plugins,
   siteMetadata: {
     description,
-    author: `Iterative`,
-    siteUrl: process.env.URL || 'https://cml.dev',
+    author: 'Iterative',
+    keywords,
+    siteUrl: 'https://cml.dev',
     title
   },
   developMiddleware: app => {

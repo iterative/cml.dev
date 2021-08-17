@@ -33,4 +33,5 @@ specific help. We are very responsive ⚡.
 ✅ Check out our [GitHub repository](https://github.com/iterative/cml) and give
 us a ⭐ if you like the project!
 
-✅ Contribute to DVC [on GitHub](https://github.com/iterative/cml) 🙏.
+✅ Contribute to DVC [on GitHub](https://github.com/iterative/cml) or help us
+improve this [documentation](https://github.com/iterative/cml.dev) 🙏.
