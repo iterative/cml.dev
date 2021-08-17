@@ -1,8 +1,8 @@
 # Get Started with CML on GitHub
 
 Here, we'll walk through a tutorial to start using CML. For simplicity, we'll
-show the demo in GitHub Actions, but these instructions are valid for all
-supported CI systems (with exceptions as noted!).
+show the demo in GitHub Actions, but instructions are pretty similar for all
+the supported CI systems.
 
 1. Fork our
    [example project repository](https://github.com/iterative/example_cml).
