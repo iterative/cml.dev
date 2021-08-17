@@ -16,7 +16,7 @@ and monitoring changing datasets.
     Study the detailed inner-workings of CML in its user guide.
   </card>
 
-  <card href="/doc/use-cases" heading="CML with DVC">
+  <card href="/doc/cml-with-dvc" heading="CML with DVC">
     Bring data to your CML runner with DVC
   </card>
 
