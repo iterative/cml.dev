@@ -5,7 +5,7 @@
   "^/doc/start/start-github(/.*)?$                                         /doc/start/github",
   "^/doc/start/start-gitlab(/.*)?$                                         /doc/start/gitlab",
 
-  "^/doc/install(/.*)?$                                                    /doc/install-with-npm 303",
+  "^/doc/install(/.*)?$                                                    /doc/start 303",
 
   "^/(.+)/$                                                                /$1"
 ]

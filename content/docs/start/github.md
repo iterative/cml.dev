@@ -1,15 +1,11 @@
 # Get Started with CML on GitHub
 
 Here, we'll walk through a tutorial to start using CML. For simplicity, we'll
-show the demo in GitHub Actions, but these instructions are valid for all
-supported CI systems (with exceptions as noted!).
+show the demo in GitHub Actions, but instructions are pretty similar for all the
+supported CI systems.
 
 1. Fork our
    [example project repository](https://github.com/iterative/example_cml).
-
-   ⚠️ If you are using GitLab,
-   [you'll need to create a Personal Access Token](https://github.com/iterative/cml/wiki/CML-with-GitLab#variables)
-   for this example to work.
 
    ![](/img/fork_cml_project.png)
 
@@ -35,7 +31,7 @@ supported CI systems (with exceptions as noted!).
             - uses: actions/checkout@v2
             - name: cml_run
                env:
-                  repo_token: ${{ secrets.GITHUB_TOKEN }}
+                  REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                run: |
                   pip install -r requirements.txt
                   python train.py
@@ -139,7 +135,9 @@ Assume that we have a machine learning script, `train.py`, that outputs an image
 steps:
   - uses: actions/checkout@v2
   - uses: iterative/setup-cml@v1
-  - run: |
+  - env:
+      REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    run: |
       # train will generate plot.png
       python train.py
 

@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: cml_run
         env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
 
           # Your ML workflow goes here
