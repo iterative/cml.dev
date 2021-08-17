@@ -1,4 +1,4 @@
 .cache/
-.github
 public/
+.github/PULL_REQUEST_TEMPLATE.md
 src/components/pages/Home/UseCasesSection/index.tsx
