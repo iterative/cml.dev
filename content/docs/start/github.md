@@ -139,7 +139,9 @@ Assume that we have a machine learning script, `train.py`, that outputs an image
 steps:
   - uses: actions/checkout@v2
   - uses: iterative/setup-cml@v1
-  - run: |
+  - env:
+      REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    run: |
       # train will generate plot.png
       python train.py
 
