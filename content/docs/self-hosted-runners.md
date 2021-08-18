@@ -105,12 +105,65 @@ The function `cml-runner` accepts the following arguments:
 | `--cloud-startup-script <base64>` | N/A                                                        | Run the provided Base64-encoded Linux shell script during the instance initialization                                                                 |
 | `-h`                              | N/A                                                        | Show this help menu and exit                                                                                                                          |
 
-## Environmental variables
+## Environment variables
 
-You will need to
-[create a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
-with repository read/write access and workflow privileges. In the example
-workflow, this token is stored as `PERSONAL_ACCESS_TOKEN`.
+Sensitive values like cloud and repository credentials can be provided through
+environment variables with the aid of GitHub
+[secrets](https://docs.github.com/es/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
+or GitLab
+[masked variables](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project);
+the latter also supports
+[external secrets](https://docs.gitlab.com/ee/ci/secrets) for added security.
+
+When invoking the `cml-runner` command, you will need use environment variables
+to provide the following secrets:
+
+- A personal access token to register and remove self-hosted runners from your
+  repositories
+- Cloud credentials to create and destroy cloud resources, only when used in
+  conjunction with the `--cloud` option
+
+### Personal access token
+
+<details>
+
+### GitHub
+
+You can either
+[create a personal access token](https://docs.github.com/en/github-ae@latest/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+with the `repo` scope or a
+[GitHub App](https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps)
+with **Repository permissions / Administration** write permissions (for
+repository-level runners), or **Organization permissions / Self-hosted runners**
+write permissions (for organization-level runners).
+
+</details>
+
+<details>
+
+### GitLab
+
+You can either
+[create a personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
+with the `api` scope or a
+[project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html)
+if your GitLab instance supports this feature; the latter will only work for
+project-level
+([specific](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#specific-runners))
+runners, not for instance-level
+([shared](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#shared-runners))
+runners.
+
+</details>
+
+Ideally, you should not use personal access tokens from your own account, as
+they grant access to all your repositories. Instead, it's higly recommended to
+create a separate _bot account_ that only has access to the repositories where
+you plan to deploy runners to. Bot accounts are
+[the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts)
+as normal user accounts, with the only difference being the intended use case.
+
+### Cloud credentials
 
 Note that you will also need to provide access credentials for your cloud
 compute resources as secrets. In the above example, `AWS_ACCESS_KEY_ID` and
@@ -147,7 +200,7 @@ env:
 
 </details>
 
-### Using on-premise machines as self-hosted runners
+## Using on-premise machines as self-hosted runners
 
 You can also use the new `cml-runner` function to set up a local self-hosted
 runner. On your local machine or on-premise GPU cluster, you'll install CML as a
