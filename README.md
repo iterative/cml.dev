@@ -23,8 +23,8 @@ yarn
 ```
 
 With the setup finished, you can now spin up the development server at
-`localhost:8000` with `gatsby develop` or try a full local build at
-`localhost:9000` with `gatsby build && gatsby serve`.
+<http://localhost:8000> with `yarn develop` or try a full local build at
+<http://localhost:9000> with `yarn build && gatsby serve`.
 
 # Getting help
 
