@@ -76,8 +76,8 @@ pulling the Docker container of your choice.
 We like the
 [CML container](https://github.com/iterative/cml/blob/master/Dockerfile)
 (`docker://iterativeai/cml:0-dvc2-base1`) because it comes loaded with Python,
-CUDA, `git`, `node` and other essentials for full-stack data science. But we
-don't mind if you do it your way :)
+Git, Node JS and other essentials for full-stack data science. But we don't mind
+if you do it your way :)
 
 ## Options
 
