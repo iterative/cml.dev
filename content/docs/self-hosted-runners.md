@@ -139,8 +139,10 @@ Note that `AWS_SESSION_TOKEN` is optional.
 
 ```yaml
 env:
-  AZURE_STORAGE_CONNECTION_STRING:
-    ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+  AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
 ```
 
 </details>
