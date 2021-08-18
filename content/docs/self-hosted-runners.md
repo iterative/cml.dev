@@ -49,7 +49,7 @@ jobs:
   model-training:
     needs: deploy-runner
     runs-on: [self-hosted, cml-runner]
-    container: docker://dvcorg/cml-py3:latest
+    container: docker://iterativeai/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
       - name: 'Train my model'
@@ -75,9 +75,9 @@ pulling the Docker container of your choice.
 
 We like the
 [CML container](https://github.com/iterative/cml/blob/master/Dockerfile)
-(`docker://dvcorg/cml-py3`) because it comes loaded with Python, CUDA, `git`,
-`node` and other essentials for full-stack data science. But we don't mind if
-you do it your way :)
+(`docker://iterativeai/cml:0-dvc2-base1`) because it comes loaded with Python,
+Git, Node JS and other essentials for full-stack data science. But we don't mind
+if you do it your way :)
 
 ## Options
 

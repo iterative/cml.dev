@@ -78,7 +78,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div> </div>
                       <div><span>cml:</span></div>
                       <div>  <span>stage: cml_run</span></div>
-                      <div>  <span>image: dvcorg/cml-py3:latest</span></div>
+                      <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="dependencies">
                         <div>    <span>- pip3 install -r requirements.txt</span></div>
@@ -158,7 +158,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div><span>cml:</span></div>
                       <div>  <span>stage: cml_run</span></div>
-                      <div>  <span>image: dvcorg/cml-py3:latest</span></div>
+                      <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="dvc">
                         <div>    <span>- dvc pull data</span></div>
@@ -264,7 +264,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div><span>cml:</span></div>
                       <div>    <span>stage: cml_run</span></div>
-                      <div>    <span>image: dvcorg/cml-py3:latest</span></div>
+                      <div>    <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>    <span>script:</span></div>
                       <div>        <span>- pip install -r requirements.txt</span></div>
                       <Tooltip type="tensorboard">
@@ -373,7 +373,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <Tooltip type="reports">
                         <div>  <span>stage: train</span></div>
                         <div>  <span>when: on_success</span></div>
-                        <div>  <span>image: dvcorg/cml-py3</span></div>
+                        <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                         <div>  <span>tags:</span></div>
                         <div>    <span>- cml-runner</span></div>
                       </Tooltip>
@@ -430,7 +430,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <Tooltip type="reports">
                         <div>    <span>needs: deploy-runner</span></div>
                         <div>    <span>runs-on: [self-hosted,cml-runner]</span></div>
-                        <div>    <span>container: docker://dvcorg/cml-py3</span></div>
+                        <div>    <span>container: docker://iterativeai/cml:0-dvc2-base1</span></div>
                       </Tooltip>
                       <div><span> </span></div>
                       <div>    <span>steps:</span></div>
@@ -491,7 +491,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <Tooltip type="reports">
                         <div>  <span>stage: train</span></div>
                         <div>  <span>when: on_success</span></div>
-                        <div>  <span>image: dvcorg/cml-py3</span></div>
+                        <div>  <span>image: iterativeai/cml:0-dvc2-base1-gpu</span></div>
                         <div>  <span>tags:</span></div>
                         <div>    <span>- cml-runner-gpu</span></div>
                       </Tooltip>
