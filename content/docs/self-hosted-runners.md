@@ -109,8 +109,8 @@ The function `cml-runner` accepts the following arguments:
 
 You will need to
 [create a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
-with repository read/write access and workflow privileges. In the example
-workflow, this token is stored as `PERSONAL_ACCESS_TOKEN`.
+with repository read/write access. In the example workflow, this token is stored
+as `PERSONAL_ACCESS_TOKEN`.
 
 Note that you will also need to provide access credentials for your cloud
 compute resources as secrets. In the above example, `AWS_ACCESS_KEY_ID` and
