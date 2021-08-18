@@ -107,11 +107,21 @@ The function `cml-runner` accepts the following arguments:
 
 ## Environment variables
 
-Sensitive values like cloud and repository credentials can be provided through environment variables with the aid of GitHub [secrets](https://docs.github.com/es/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) or GitLab [masked variables](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project); the latter also supports [external secrets](https://docs.gitlab.com/ee/ci/secrets) for added security.
+Sensitive values like cloud and repository credentials can be provided through
+environment variables with the aid of GitHub
+[secrets](https://docs.github.com/es/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
+or GitLab
+[masked variables](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project);
+the latter also supports
+[external secrets](https://docs.gitlab.com/ee/ci/secrets) for added security.
 
-When invoking the `cml-runner` command, you will need use environment variables to provide the following secrets:
-* A personal access token to register and remove self-hosted runners from your repositories
-* Cloud credentials to create and destroy cloud resources, only when used in conjunction with the `--cloud` option
+When invoking the `cml-runner` command, you will need use environment variables
+to provide the following secrets:
+
+- A personal access token to register and remove self-hosted runners from your
+  repositories
+- Cloud credentials to create and destroy cloud resources, only when used in
+  conjunction with the `--cloud` option
 
 ### Personal access token
 
@@ -119,7 +129,13 @@ When invoking the `cml-runner` command, you will need use environment variables 
 
 ### GitHub
 
-You can either [create a personal access token](https://docs.github.com/en/github-ae@latest/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `repo` scope or a [GitHub App](https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps) with **Repository permissions / Administration** write permissions (for repository-level runners), or **Organization permissions / Self-hosted runners** write permissions (for organization-level runners).
+You can either
+[create a personal access token](https://docs.github.com/en/github-ae@latest/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+with the `repo` scope or a
+[GitHub App](https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps)
+with **Repository permissions / Administration** write permissions (for
+repository-level runners), or **Organization permissions / Self-hosted runners**
+write permissions (for organization-level runners).
 
 </details>
 
@@ -127,11 +143,25 @@ You can either [create a personal access token](https://docs.github.com/en/githu
 
 ### GitLab
 
-You can either [create a personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) with the `api` scope or a [project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) if your GitLab instance supports this feature; the latter will only work for project-level ([specific](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#specific-runners)) runners, not for instance-level ([shared](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#shared-runners)) runners.
+You can either
+[create a personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
+with the `api` scope or a
+[project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html)
+if your GitLab instance supports this feature; the latter will only work for
+project-level
+([specific](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#specific-runners))
+runners, not for instance-level
+([shared](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#shared-runners))
+runners.
 
 </details>
 
-Ideally, you should not use personal access tokens from your own account, as they grant access to all your repositories. Instead, it's higly recommended to create a separate _bot account_ that only has access to the repositories where you plan to deploy runners to. Bot accounts are [the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts) as normal user accounts, with the only difference being the intended use case.
+Ideally, you should not use personal access tokens from your own account, as
+they grant access to all your repositories. Instead, it's higly recommended to
+create a separate _bot account_ that only has access to the repositories where
+you plan to deploy runners to. Bot accounts are
+[the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts)
+as normal user accounts, with the only difference being the intended use case.
 
 ### Cloud credentials
 
