@@ -1,4 +1,4 @@
-![CML](https://static.iterative.ai/img/title_strip_trim.svg)
+![CML](https://static.iterative.ai/img/cml/title_strip_trim.png)
 
 [![CircleCI](https://circleci.com/gh/iterative/cml.dev.svg?style=svg)](https://circleci.com/gh/iterative/cml.dev)
 [![Link Check](https://github.com/iterative/cml.dev/workflows/Check%20all%20links%20in%20the%20repository/badge.svg)](https://github.com/iterative/cml.dev/actions?query=workflow%3A%22Check+all+links+in+the+repository%22)
@@ -37,8 +37,8 @@ very responsive and happy to help.
 Source code of this project is distributed under the Apache license version 2.0
 (see the LICENSE file in the project root).
 
-Except where otherwise noted, documentation, blog content, images are licensed
-under a [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
+Except where otherwise noted, documentation and images are licensed under a
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0) license.
 
 By submitting a pull request for this project, you agree to license your
 contribution under the Apache license 2.0 (source code) or CC BY 4.0
