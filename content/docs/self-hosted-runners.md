@@ -127,7 +127,7 @@ to provide the following secrets:
 
 <details>
 
-### GitHub
+#### GitHub
 
 You can either
 [create a personal access token](https://docs.github.com/en/github-ae@latest/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
@@ -141,7 +141,7 @@ write permissions (for organization-level runners).
 
 <details>
 
-### GitLab
+#### GitLab
 
 You can either
 [create a personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
@@ -173,7 +173,7 @@ Click below to see credentials needed for supported cloud service providers.
 
 <details>
 
-### AWS
+#### AWS
 
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
@@ -183,7 +183,7 @@ Click below to see credentials needed for supported cloud service providers.
 
 <details>
 
-### Azure
+#### Azure
 
 - `AZURE_CLIENT_ID`
 - `AZURE_CLIENT_SECRET`
