@@ -194,16 +194,23 @@ Click below to see credentials needed for supported cloud service providers.
 
 ## Using on-premise machines as self-hosted runners
 
-You can also use the new `cml-runner` function to set up a local self-hosted
-runner. On your local machine or on-premise GPU cluster, you'll install CML as a
-package and then run:
+You can also use `cml-runner` to set up a self-hosted runner on your local
+machine or on-premise GPU cluster.
 
 ```dvc
 cml-runner \
-  --repo $your_project_repository_url \
-  --token=$personal_access_token \
-  --labels tf \
-  --idle-timeout 180
+  --repo="$repository_url" \
+  --token="$personal_access_token" \
+  --labels="local,runner" \
+  --idle-timeout=0
 ```
 
-Now your machine will be listening for workflows from your project repository.
+Now your machine will listen for jobs triggered on your repository and execute
+them locally.
+
+⚠️ **Warning:** people with access to your repository (everybody for public
+ones) could execute arbirary code on your machine; please refer to the
+corresponding
+[GitHub](https://docs.github.com/es/actions/learn-github-actions/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
+and [GitLab](https://docs.gitlab.com/runner/security/) documentation for
+additional guidance.
