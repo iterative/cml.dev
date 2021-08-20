@@ -216,7 +216,7 @@ cml-runner \
 Now your machine will listen for jobs triggered on your repository and execute
 them locally.
 
-:warning: **Warning:** people with access to your repository (everybody for
+⚠️ **Warning:** people with access to your repository (everybody for
 public ones) could execute arbirary code on your machine; please refer to the
 corresponding
 [GitHub](https://docs.github.com/es/actions/learn-github-actions/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
