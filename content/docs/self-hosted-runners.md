@@ -210,7 +210,7 @@ cml-runner \
   --repo="$repository_url" \
   --token="$personal_access_token" \
   --labels="custom,runner" \
-  --idle-timeout=180
+  --idle-timeout=0
 ```
 
 Now your machine will listen for jobs triggered on your repository and execute
