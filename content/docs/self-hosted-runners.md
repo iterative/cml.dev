@@ -208,9 +208,9 @@ package and then run:
 
 ```dvc
 cml-runner \
-  --repo=$your_project_repository_url \
-  --token=$personal_access_token \
-  --labels=tf \
+  --repo="$repository_url" \
+  --token="$personal_access_token" \
+  --labels="custom,runner" \
   --idle-timeout=180
 ```
 
