@@ -202,9 +202,8 @@ env:
 
 ## Using on-premise machines as self-hosted runners
 
-You can also use the new `cml-runner` function to set up a local self-hosted
-runner. On your local machine or on-premise GPU cluster, you'll install CML as a
-package and then run:
+You can also use `cml-runner` to set up a local self-hosted runner on your local
+machine or on-premise GPU cluster.
 
 ```dvc
 cml-runner \
@@ -214,4 +213,5 @@ cml-runner \
   --idle-timeout=180
 ```
 
-Now your machine will be listening for workflows from your project repository.
+Now your machine will listen for jobs triggered on your repository and execute
+them locally.
