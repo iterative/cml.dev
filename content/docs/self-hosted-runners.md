@@ -209,7 +209,7 @@ machine or on-premise GPU cluster.
 cml-runner \
   --repo="$repository_url" \
   --token="$personal_access_token" \
-  --labels="custom,runner" \
+  --labels="local,runner" \
   --idle-timeout=0
 ```
 
