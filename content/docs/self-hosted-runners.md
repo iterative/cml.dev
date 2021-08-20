@@ -208,10 +208,10 @@ package and then run:
 
 ```dvc
 cml-runner \
-  --repo $your_project_repository_url \
+  --repo=$your_project_repository_url \
   --token=$personal_access_token \
-  --labels tf \
-  --idle-timeout 180
+  --labels=tf \
+  --idle-timeout=180
 ```
 
 Now your machine will be listening for workflows from your project repository.
