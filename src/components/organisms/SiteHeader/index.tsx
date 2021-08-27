@@ -4,6 +4,8 @@ import { Flex, Box, Container, Button } from '@theme-ui/components'
 import InstallPopup from '../../molecules/InstallPopup'
 import SmartLink from '../../atoms/SmartLink'
 
+import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
+import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
 import { ReactComponent as SiteLogo } from '@media/site-logo.svg'
 import { ReactComponent as UpIcon } from '@media/icons/up.svg'
 import { ReactComponent as DownIcon } from '@media/icons/down.svg'
@@ -34,6 +36,19 @@ interface IOtherToolsPopupProps {
   isOpen: boolean
 }
 
+const socialLinkDefinitions = [
+  {
+    url: 'https://github.com/iterative/cml',
+    icon: <GithubIcon width="16" height="16" />,
+    title: 'CML GitHub repo'
+  },
+  {
+    url: 'https://www.dvc.org/chat',
+    icon: <DiscordIcon className="small-svg" />,
+    title: 'DVC Discord chat'
+  }
+]
+
 const primaryNavItems = [
   {
     label: 'Use Cases',
@@ -42,10 +57,6 @@ const primaryNavItems = [
   {
     label: 'Docs',
     href: '/doc'
-  },
-  {
-    label: 'GitHub',
-    href: 'https://github.com/iterative/cml'
   }
 ]
 
@@ -190,56 +201,34 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
               {' '}
               by iterative.ai
             </SmartLink>
-            <Box
-              variant="layout.Header.Nav.OtherTools"
-              ref={otherToolsPopupContainerEl}
-              sx={{ position: 'relative' }}
-            >
-              <Button
-                onClick={toggleOtherToolsPopup}
-                variant="layout.Header.Nav.NavButton"
-                sx={
-                  isOtherToolsPopupOpen
-                    ? { variant: 'layout.Header.Nav.NavButton.Active' }
-                    : {}
-                }
-              >
-                Other Tools
-                <Box
-                  variant="layout.Header.Nav.NavButton.Icon"
-                  sx={
-                    isOtherToolsPopupOpen
-                      ? { display: 'none' }
-                      : { display: 'flex' }
-                  }
-                  as="span"
+            <Flex variant="layout.Header.Nav.SocialIcons">
+              {socialLinkDefinitions.map(({ url, icon, title }, i) => (
+                <SmartLink
+                  key={i}
+                  href={url}
+                  variant="layout.Header.Nav.Link"
+                  title={title}
+                  sx={{
+                    display: 'inline-block',
+                    textAlign: 'center',
+                    py: 2,
+                    px: 1
+                  }}
                 >
-                  <DownIcon width="14" height="14" />
-                </Box>
-                <Box
-                  variant="layout.Header.Nav.NavButton.Icon"
-                  sx={
-                    isOtherToolsPopupOpen
-                      ? { display: 'flex' }
-                      : { display: 'none' }
-                  }
-                  as="span"
-                >
-                  <UpIcon width="14" height="14" />
-                </Box>
-              </Button>
-              <OtherToolsPopup
-                isOpen={isOtherToolsPopupOpen}
-                list={otherToolsItems}
-              />
-            </Box>
-            <Flex variant="layout.Header.Nav.RightWrapper">
+                  {icon}
+                </SmartLink>
+              ))}
+            </Flex>
+            <Flex variant="layout.Header.Nav.LinksWrapper">
               {primaryNavItems.map(({ label, href }, i) => (
                 <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
                   {label}
                 </SmartLink>
               ))}
-              <Box ref={installPopupContainerEl} sx={{ position: 'relative' }}>
+              <Box
+                ref={installPopupContainerEl}
+                sx={{ position: ['static', 'relative'] }}
+              >
                 <Button
                   onClick={toggleInstallPopup}
                   variant="layout.Header.Nav.NavButton"
@@ -254,6 +243,49 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
                 <InstallPopup
                   onClose={closeAllPopups}
                   isOpen={isInstallPopupOpen}
+                />
+              </Box>
+              <Box
+                variant="layout.Header.Nav.OtherTools"
+                ref={otherToolsPopupContainerEl}
+                sx={{ position: 'relative' }}
+              >
+                <Button
+                  onClick={toggleOtherToolsPopup}
+                  variant="layout.Header.Nav.NavButton"
+                  sx={
+                    isOtherToolsPopupOpen
+                      ? { variant: 'layout.Header.Nav.NavButton.Active' }
+                      : {}
+                  }
+                >
+                  Other Tools
+                  <Box
+                    variant="layout.Header.Nav.NavButton.Icon"
+                    sx={
+                      isOtherToolsPopupOpen
+                        ? { display: 'none' }
+                        : { display: 'flex' }
+                    }
+                    as="span"
+                  >
+                    <DownIcon width="14" height="14" />
+                  </Box>
+                  <Box
+                    variant="layout.Header.Nav.NavButton.Icon"
+                    sx={
+                      isOtherToolsPopupOpen
+                        ? { display: 'flex' }
+                        : { display: 'none' }
+                    }
+                    as="span"
+                  >
+                    <UpIcon width="14" height="14" />
+                  </Box>
+                </Button>
+                <OtherToolsPopup
+                  isOpen={isOtherToolsPopupOpen}
+                  list={otherToolsItems}
                 />
               </Box>
             </Flex>

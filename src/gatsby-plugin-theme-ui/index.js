@@ -103,10 +103,11 @@ export default {
         justifyContent: ['center', null, 'flex-end'],
         flex: '1',
         alignItems: ['center'],
-        RightWrapper: {
+        LinksWrapper: {
           width: ['100%', null, 'auto'],
           px: ['12px', null, 0],
-          justifyContent: ['space-between', null, 'flex-start']
+          justifyContent: ['space-between', null, 'flex-start'],
+          position: 'relative'
         },
         Logo: {
           display: 'block',
@@ -194,6 +195,30 @@ export default {
             }
           }
         },
+        SocialIcons: {
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          flexShrink: 0,
+          order: [null, null, 1],
+          '>a': {
+            p: ['8px', null, '10px', '12px'],
+            ml: ['4px', null, null, '8px'],
+            display: 'flex',
+            alignItems: 'center',
+            ':first-of-type': {
+              ml: [null, null, '32px']
+            },
+            svg: {
+              width: [null, null, null, '24px'],
+              height: [null, null, null, '24px'],
+
+              '&.small-svg': {
+                width: ['18px', null, null, '26px'],
+                height: ['18px', null, null, '26px']
+              }
+            }
+          }
+        },
         OtherTools: {
           order: [null, null, 1]
         },
@@ -261,6 +286,7 @@ export default {
         },
         InstallPopup: {
           variant: 'layout.Header.Nav.Popup',
+          right: ['calc(50% - 150px)', 'calc(50% - 160px)', 0],
           width: ['300px', '320px', '350px'],
           flexWrap: 'wrap',
           justifyContent: 'space-between',
