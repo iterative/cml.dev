@@ -94,9 +94,7 @@ const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 border: '2px solid #9361D3'
               }
             }}
-            href="https://github.com/iterative/cml#install-cml-as-a-package"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/doc/cml-with-npm"
           >
             Download
           </Link>

@@ -48,7 +48,7 @@ function InstallPopup({ isOpen, onClose }) {
       </Flex>
       <SmartLink
         variant="layout.Header.Nav.InstallPopup.Link"
-        href="https://github.com/iterative/cml#install-cml-as-a-package"
+        href="/doc/cml-with-npm"
       >
         More in documentation
       </SmartLink>
