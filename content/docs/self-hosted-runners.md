@@ -73,11 +73,26 @@ CML and its dependencies setup to use CML functions like `cml-send-comment` from
 your instance, you can create your favorite training environment in the cloud by
 pulling the Docker container of your choice.
 
-We like the
-[CML container](https://github.com/iterative/cml/blob/master/Dockerfile)
+We like the [CML Docker images](#docker-images)
 (`docker://iterativeai/cml:0-dvc2-base1`) because it comes loaded with Python,
 Git, Node JS and other essentials for full-stack data science. But we don't mind
 if you do it your way :)
+
+## Docker Images
+
+The CML Docker images (`docker://iterativeai/cml` or
+`docker://ghcr.io/iterative/cml`) come loaded with Python, CUDA, `git`, `node`
+and other essentials for full-stack data science. Different versions of these
+essentials are available from different `iterativeai/cml` image tags. The tag
+convention is `{CML_VER}-dvc{DVC_VER}-base{BASE_VER}{-gpu}`:
+
+| `{BASE_VER}` | Software included (`-gpu`)                      |
+| ------------ | ----------------------------------------------- |
+| 0            | Ubuntu 18.04, Python 2.7 (CUDA 10.1, CuDNN 7)   |
+| 1            | Ubuntu 20.04, Python 3.8 (CUDA 11.0.3, CuDNN 8) |
+
+For example, `docker://iterativeai/cml:0-dvc2-base1-gpu`, or
+`docker://ghcr.io/iterative/cml:0-dvc2-base1`.
 
 ## Options
 

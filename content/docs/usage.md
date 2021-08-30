@@ -42,10 +42,10 @@ jobs:
 CML provides a number of helper functions to help package outputs from ML
 workflows, such as numeric data and data vizualizations about model performance,
 into a CML report. The library comes pre-installed on our
-[custom Docker images](https://github.com/iterative/cml/blob/master/Dockerfile).
-In the above example, note the field
-`container: docker://iterativeai/cml:0-dvc2-base1` specifies the CML Docker
-image with Python 3 will be pulled by the GitHub Actions runner.
+[custom Docker images](/doc/self-hosted-runners#docker-images). In the above
+example, note the field `container: docker://iterativeai/cml:0-dvc2-base1`
+specifies the CML Docker image with Python 3 will be pulled by the GitHub
+Actions runner.
 
 Below is a list of CML functions for writing markdown reports and delivering
 those reports to your CI system (GitHub Actions or GitLab CI).
