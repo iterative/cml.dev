@@ -19,7 +19,7 @@ instances on your AWS or Azure account (GCP support is forthcoming!).
 For example, the following workflow deploys a `t2.micro` instance on AWS EC2 and
 trains a model on the instance. After the job runs, the instance automatically
 shuts down. You might notice that this workflow is quite similar to the
-[basic use case](#usage) highlighted in the beginning of the docs- that's
+[basic use case](/doc/usage) highlighted in the beginning of the docs- that's
 because it is! What's new is that we've added `cml-runner`, plus a few
 environmental variables for passing your cloud service credentials to the
 workflow.
