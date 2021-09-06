@@ -36,7 +36,9 @@
       "files": [
         "src/utils/shared/*.?(js|ts)",
         "src/gatsby/**/*.js",
-        "src/components/PageWrapper/index.js",
+        "src/components/**/*.js",
+        "src/utils/**/*.js",
+        "src/gatsby-plugin-theme-ui/**/*.js",
         "scripts/**/*.js",
         "config/**/*.js",
         "src/server/**/*.js",
