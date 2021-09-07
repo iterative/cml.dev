@@ -121,12 +121,12 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
   const installPopupContainerEl = useRef<HTMLDivElement>(null)
   const otherToolsPopupContainerEl = useRef<HTMLDivElement>(null)
 
-  const closeAllPopups = () => {
+  const closeAllPopups = (): void => {
     setIsInstallPopupOpen(false)
     setIsOtherToolsPopupOpen(false)
   }
 
-  const handlePageClick = (event: MouseEvent) => {
+  const handlePageClick = (event: MouseEvent): void => {
     if (
       event.target instanceof Element &&
       !installPopupContainerEl?.current?.contains(event.target) &&
@@ -136,25 +136,25 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
     }
   }
 
-  const handlePageKeyup = (event: KeyboardEvent) => {
+  const handlePageKeyup = (event: KeyboardEvent): void => {
     if (event.key === 'Escape') {
       closeAllPopups()
     }
   }
 
-  const openInstallPopup = () => {
+  const openInstallPopup = (): void => {
     document.addEventListener('click', handlePageClick)
     document.addEventListener('keyup', handlePageKeyup)
     setIsInstallPopupOpen(true)
   }
 
-  const openOtherToolsPopup = () => {
+  const openOtherToolsPopup = (): void => {
     document.addEventListener('click', handlePageClick)
     document.addEventListener('keyup', handlePageKeyup)
     setIsOtherToolsPopupOpen(true)
   }
 
-  const toggleInstallPopup = () => {
+  const toggleInstallPopup = (): void => {
     setIsOtherToolsPopupOpen(false)
     if (isInstallPopupOpen) {
       closeAllPopups()
@@ -163,7 +163,7 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
     }
   }
 
-  const toggleOtherToolsPopup = () => {
+  const toggleOtherToolsPopup = (): void => {
     setIsInstallPopupOpen(false)
     if (isOtherToolsPopupOpen) {
       closeAllPopups()
