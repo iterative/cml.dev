@@ -102,7 +102,7 @@ The function `cml-runner` accepts the following arguments:
 | --------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--version`                       | N/A                                                        | Show version number and exit (ignoring all other options)                                                                                             |
 | `--labels <list>`                 | `cml`                                                      | One or more user-defined labels for this runner (delimited with commas)                                                                               |
-| `--idle-timeout <seconds>`        | `300`                                                      | Time in seconds for the runner to be waiting for jobs before shutting down. Setting it to `0` disables automatic shutdown                             |
+| `--idle-timeout <seconds>`        | `300`                                                      | Seconds to wait for jobs before shutting down. Set to `-1` to disable timeout                                                                         |
 | `--name <string>`                 | `cml-{identifier}` where `{identifier}` is a random string | Name displayed in the repository once registered                                                                                                      |
 | `--single`                        | N/A                                                        | Exit after running a single job                                                                                                                       |
 | `--reuse`                         | N/A                                                        | Don't launch a new runner if an existing one has the same name or overlapping labels                                                                  |
@@ -217,7 +217,7 @@ cml-runner \
   --repo="$repository_url" \
   --token="$personal_access_token" \
   --labels="local,runner" \
-  --idle-timeout=0
+  --idle-timeout=-1
 ```
 
 Now your machine will listen for jobs triggered on your repository and execute
