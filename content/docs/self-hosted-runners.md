@@ -201,7 +201,8 @@ machine or on-premise GPU cluster.
 cml-runner \
   --repo="$repository_url" \
   --token="$personal_access_token" \
-  --labels="local,runner"
+  --labels="local,runner" \
+  --idle-timeout=-1
 ```
 
 Now your machine will listen for jobs triggered on your repository and execute
