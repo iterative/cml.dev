@@ -32,19 +32,19 @@ const usePersistentMode = (name, fallbackDefault) => {
   const [currentMode, setModeState] = useState(
     savedMode !== null ? savedMode : fallbackDefault
   )
-  const setModeToValue = e => {
-    setModeState(e.target.value)
+  const updateMode = mode => {
+    setModeState(mode)
   }
   // Save to localStorage whenever state changes
   useEffect(() => saveMode(name, currentMode), [name, currentMode])
   return {
     currentMode,
     setModeState,
-    setModeToValue
+    updateMode
   }
 }
 
-const ModeSwitchRadios = ({ name, idPrefix, modes, currentMode, onChange }) => {
+const ModeSwitchRadios = ({ name, idPrefix, modes, currentMode }) => {
   return (
     <>
       {modes.map((mode, i) => (
@@ -55,7 +55,7 @@ const ModeSwitchRadios = ({ name, idPrefix, modes, currentMode, onChange }) => {
           name={name}
           value={mode}
           checked={currentMode === mode}
-          onChange={onChange}
+          readOnly
           aria-hidden={true}
           aria-label="Hidden mode switch radio"
           hidden
@@ -72,16 +72,15 @@ const ModeProvider = ({
   defaultMode = 'gitlab',
   children
 }) => {
-  const { currentMode, setModeToValue } = usePersistentMode(name, defaultMode)
+  const { currentMode, updateMode } = usePersistentMode(name, defaultMode)
   return (
-    <ModeContext.Provider value={currentMode}>
+    <ModeContext.Provider value={{ currentMode, updateMode }}>
       <ModeSwitchRadios
         name={name}
         modes={modes}
         idPrefix={idPrefix}
         defaultMode={defaultMode}
         currentMode={currentMode}
-        onChange={setModeToValue}
       />
       {children}
     </ModeContext.Provider>

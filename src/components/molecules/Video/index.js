@@ -16,7 +16,7 @@ const Video = ({
   loading = 'lazy',
   ...rest
 }) => {
-  const contextMode = useContext(ModeContext)
+  const { currentMode: contextMode } = useContext(ModeContext)
   const videoRef = useRef()
   const videoElement = videoRef.current
 
