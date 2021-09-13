@@ -1,25 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box } from '@theme-ui/components'
 import msx from '../styleHelpers.js'
 import { defaultIdPrefix } from '../common.js'
 import { clickOnKeyPress } from '../../../../utils/handlers'
+import { ModeContext } from '../Provider/index.js'
 
-const ModeSwitchLabel = ({ idPrefix, mode, variant, className, children }) => (
-  <Box
-    as="label"
-    htmlFor={idPrefix + mode}
-    variant={`${variant}.Label`}
-    className={className}
-    tabIndex={0}
-    sx={msx({
-      mode,
-      idPrefix,
-      variant: `${variant}.Label.Active`
-    })}
-  >
-    {children}
-  </Box>
-)
+const ModeSwitchLabel = ({ idPrefix, mode, variant, className, children }) => {
+  const { updateMode } = useContext(ModeContext)
+  return (
+    <Box
+      as="label"
+      htmlFor={idPrefix + mode}
+      variant={`${variant}.Label`}
+      className={className}
+      tabIndex={0}
+      onClick={() => updateMode(mode)}
+      sx={msx({
+        mode,
+        idPrefix,
+        variant: `${variant}.Label.Active`
+      })}
+    >
+      {children}
+    </Box>
+  )
+}
 
 const ModeSwitch = ({
   idPrefix = defaultIdPrefix,

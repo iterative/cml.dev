@@ -16,7 +16,7 @@ and monitoring changing datasets.
     Study the detailed inner-workings of CML in its user guide.
   </card>
 
-  <card href="/doc/use-cases" heading="CML with DVC">
+  <card href="/doc/cml-with-dvc" heading="CML with DVC">
     Bring data to your CML runner with DVC
   </card>
 
@@ -33,4 +33,5 @@ specific help. We are very responsive ⚡.
 ✅ Check out our [GitHub repository](https://github.com/iterative/cml) and give
 us a ⭐ if you like the project!
 
-✅ Contribute to DVC [on GitHub](https://github.com/iterative/cml) 🙏.
+✅ Contribute to CML [on GitHub](https://github.com/iterative/cml) or help us
+improve this [documentation](https://github.com/iterative/cml.dev) 🙏.

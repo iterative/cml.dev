@@ -3,6 +3,7 @@ import React, { forwardRef } from 'react'
 import { Box, Link, Heading } from '@theme-ui/components'
 
 import Header from '../../../organisms/SiteHeader'
+import GithubLine from '../../../atoms/GithubLine'
 import LandingVideo from '../../../molecules/Video/LandingVideo'
 import Collapser from '../../../atoms/Collapser'
 import Switch from '../../../organisms/SwitchableMode/Switch'
@@ -93,12 +94,11 @@ const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 border: '2px solid #9361D3'
               }
             }}
-            href="https://github.com/iterative/cml#install-cml-as-a-package"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/doc/cml-with-npm"
           >
             Download
           </Link>
+          <GithubLine />
         </Box>
         <Box sx={{ flex: '1', width: '100%' }}>
           <Switch

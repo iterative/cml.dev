@@ -33,16 +33,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "src/utils/shared/*.?(js|ts)",
-        "src/gatsby/**/*.js",
-        "src/components/PageWrapper/index.js",
-        "scripts/**/*.js",
-        "config/**/*.js",
-        "src/server/**/*.js",
-        "gatsby-*.js",
-        "postcss.config.js"
-      ],
+      "files": "**/*.js",
       "rules": {
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/explicit-function-return-type": "off"

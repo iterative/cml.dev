@@ -9,14 +9,14 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
 
    ![](/img/gitlab_fork_cml_project.png)
 
-2. ⚠️ In GitLab, to use CML, you must create a variable called a `repo_token`
+2. ⚠️ In GitLab, to use CML, you must create a variable called a `REPO_TOKEN`
    whose value is a Personal Access Token. To do this:
 
    a. Click on your Avatar in the upper right side and click on "Edit Profile."
 
    b. Along the left side of the screen go to Access Tokens.
 
-   c. In the "Name" field, type `repo_token` and check boxes to select `api`,
+   c. In the "Name" field, type `REPO_TOKEN` and check boxes to select `api`,
    `read_repository` and `write_repository`.
 
    d. Click on the "Create personal access token" button and copy the generated
@@ -27,12 +27,13 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
    e. Head back to your fork by clicking the Projects tab next to the GitLab
    logo and select it.
 
-   f. On the left hand side Navigate to **Settings** ➡ **CI/CD** ➡ **Varibles**.
+   f. On the left hand side Navigate to **Settings** ➡ **CI/CD** ➡
+   **Variables**.
 
    ![](/img/ci_cd_navigation.png)
 
    f. Scroll to Variables and expand the field. Click "Add Variable". In the Key
-   field, type `repo_token`. In the Value field, paste your Personal Access
+   field, type `REPO_TOKEN`. In the Value field, paste your Personal Access
    Token. Check the "Mask variable" box, uncheck "Protect variable", and then
    save the variable by clicking "Add variable" at the bottom of the dialog box.
 
@@ -65,7 +66,7 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
 
    cml:
      stage: cml_run
-     image: dvcorg/cml-py3:latest
+     image: iterativeai/cml:0-dvc2-base1
      script:
        - pip3 install -r requirements.txt
        - python train.py

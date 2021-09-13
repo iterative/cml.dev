@@ -15,13 +15,13 @@ on: [push]
 jobs:
   run:
     runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
+    container: docker://iterativeai/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
       - name: cml_run
         shell: bash
         env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
@@ -52,7 +52,7 @@ jobs:
           dvc plots diff \
             --target estimators.csv \
             -x Regularization \
-            --show-vega master vega.json
+            --show-vega master > vega.json
           vl2png vega.json -s 1.5 | cml-publish --md >> report.md
 
           cml-send-comment report.md

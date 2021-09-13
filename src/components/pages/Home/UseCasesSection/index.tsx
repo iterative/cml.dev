@@ -78,7 +78,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div> </div>
                       <div><span>cml:</span></div>
                       <div>  <span>stage: cml_run</span></div>
-                      <div>  <span>image: dvcorg/cml-py3:latest</span></div>
+                      <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="dependencies">
                         <div>    <span>- pip3 install -r requirements.txt</span></div>
@@ -122,7 +122,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div>      <span>- name: cml</span></div>
                       <div>        <span>env:</span></div>
-                      <div>          <span>repo_token: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
+                      <div>          <span>REPO_TOKEN: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="dependencies">
                         <div>          <span>pip3 install -r requirements.txt</span></div>
@@ -158,7 +158,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div><span>cml:</span></div>
                       <div>  <span>stage: cml_run</span></div>
-                      <div>  <span>image: dvcorg/cml-py3:latest</span></div>
+                      <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="dvc">
                         <div>    <span>- dvc pull data</span></div>
@@ -213,7 +213,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div>      <span>- name: cml</span></div>
                       <div>        <span>env:</span></div>
-                      <div>          <span>repo_token: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
+                      <div>          <span>REPO_TOKEN: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
                       <Tooltip type="dvc">
                         <div>          <span>AWS_ACCESS_KEY_ID: {"${{ secrets.KEY_ID }}"}</span></div>
                         <div>          <span>AWS_SECRET_ACCESS_KEY: {"${{ secrets.KEY }}"}</span></div>
@@ -264,7 +264,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div><span>cml:</span></div>
                       <div>    <span>stage: cml_run</span></div>
-                      <div>    <span>image: dvcorg/cml-py3:latest</span></div>
+                      <div>    <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>    <span>script:</span></div>
                       <div>        <span>- pip install -r requirements.txt</span></div>
                       <Tooltip type="tensorboard">
@@ -312,7 +312,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div>      <span>- name: cml</span></div>
                       <div>        <span>env:</span></div>
-                      <div>          <span>repo_token: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
+                      <div>          <span>REPO_TOKEN: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
                       <Tooltip type="tensorboard">
                         <div>          <span>TB_CREDENTIALS: {"${{ secrets.TB_CRED }}"}</span></div>
                       </Tooltip>
@@ -373,7 +373,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <Tooltip type="reports">
                         <div>  <span>stage: train</span></div>
                         <div>  <span>when: on_success</span></div>
-                        <div>  <span>image: dvcorg/cml-py3</span></div>
+                        <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                         <div>  <span>tags:</span></div>
                         <div>    <span>- cml-runner</span></div>
                       </Tooltip>
@@ -414,7 +414,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>      <span>- name: deploy</span></div>
                       <div>        <span>shell: bash</span></div>
                       <div>        <span>env:</span></div>
-                      <div>          <span>repo_token: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
+                      <div>          <span>REPO_TOKEN: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
                       <div>          <span>AWS_ACCESS_KEY_ID: {"${{ secrets.AWS_ACCESS_KEY_ID }}"}</span></div>
                       <div>          <span>AWS_SECRET_ACCESS_KEY: {"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}</span></div>
                       <div>        <span>run: |</span></div>
@@ -430,7 +430,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <Tooltip type="reports">
                         <div>    <span>needs: deploy-runner</span></div>
                         <div>    <span>runs-on: [self-hosted,cml-runner]</span></div>
-                        <div>    <span>container: docker://dvcorg/cml-py3</span></div>
+                        <div>    <span>container: docker://iterativeai/cml:0-dvc2-base1</span></div>
                       </Tooltip>
                       <div><span> </span></div>
                       <div>    <span>steps:</span></div>
@@ -438,7 +438,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div>    <span>- name: &quot;Train my model&quot;</span></div>
                       <div>      <span>env:</span></div>
-                      <div>        <span>repo_token: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
+                      <div>        <span>REPO_TOKEN: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
                       <div>      <span>run: |</span></div>
                       <div>        <span>python --version</span></div>
                       <div>        <span>pip install -r requirements.txt</span></div>
@@ -491,7 +491,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <Tooltip type="reports">
                         <div>  <span>stage: train</span></div>
                         <div>  <span>when: on_success</span></div>
-                        <div>  <span>image: dvcorg/cml-py3</span></div>
+                        <div>  <span>image: iterativeai/cml:0-dvc2-base1-gpu</span></div>
                         <div>  <span>tags:</span></div>
                         <div>    <span>- cml-runner-gpu</span></div>
                       </Tooltip>
@@ -553,7 +553,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>      <span>- name: deploy</span></div>
                       <div>        <span>shell: bash</span></div>
                       <div>        <span>env:</span></div>
-                      <div>          <span>repo_token: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
+                      <div>          <span>REPO_TOKEN: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
                       <div>          <span>AWS_ACCESS_KEY_ID: {"${{ secrets.AWS_ACCESS_KEY_ID }}"}</span></div>
                       <div>          <span>AWS_SECRET_ACCESS_KEY: {"${{ secrets.AWS_SECRET_ACCESS_KEY }}"} </span></div>
                       <div>        <span>run: |</span></div>
@@ -586,7 +586,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div>    <span>- name: cml</span></div>
                       <div>      <span>env:</span></div>
-                      <div>        <span>repo_token: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
+                      <div>        <span>REPO_TOKEN: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
                       <div>      <span>run: |</span></div>
                       <div>        <span>apt-get update -y</span></div>
                       <div>        <span>apt install imagemagick -y</span></div>

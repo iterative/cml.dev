@@ -19,13 +19,13 @@ instances on your AWS or Azure account (GCP support is forthcoming!).
 For example, the following workflow deploys a `t2.micro` instance on AWS EC2 and
 trains a model on the instance. After the job runs, the instance automatically
 shuts down. You might notice that this workflow is quite similar to the
-[basic use case](#usage) highlighted in the beginning of the docs- that's
+[basic use case](/doc/usage) highlighted in the beginning of the docs- that's
 because it is! What's new is that we've added `cml-runner`, plus a few
 environmental variables for passing your cloud service credentials to the
 workflow.
 
 ```yaml
-name: "Train-in-the-cloud"
+name: 'Train-in-the-cloud'
 on: [push]
 
 jobs:
@@ -34,10 +34,10 @@ jobs:
     steps:
       - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v2
-      - name: "Deploy runner on EC2"
+      - name: 'Deploy runner on EC2'
         shell: bash
         env:
-          repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
@@ -46,22 +46,22 @@ jobs:
           --cloud-region us-west \
           --cloud-type=t2.micro \
           --labels=cml-runner
-  name: model-training
+  model-training:
     needs: deploy-runner
-    runs-on: [self-hosted,cml-runner]
-    container: docker://dvcorg/cml-py3:latest
+    runs-on: [self-hosted, cml-runner]
+    container: docker://iterativeai/cml:0-dvc2-base1
     steps:
-    - uses: actions/checkout@v2
-    - name: "Train my model"
-      env:
-        repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      run: |
-        pip install -r requirements.txt
-        python train.py
+      - uses: actions/checkout@v2
+      - name: 'Train my model'
+        env:
+          repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          pip install -r requirements.txt
+          python train.py
 
-        # Publish report with CML
-        cat metrics.txt > report.md
-        cml-send-comment report.md
+          # Publish report with CML
+          cat metrics.txt > report.md
+          cml-send-comment report.md
 ```
 
 In the above workflow, the step `deploy-runner` launches an EC2 `t2-micro`
@@ -73,11 +73,26 @@ CML and its dependencies setup to use CML functions like `cml-send-comment` from
 your instance, you can create your favorite training environment in the cloud by
 pulling the Docker container of your choice.
 
-We like the
-[CML container](https://github.com/iterative/cml/blob/master/Dockerfile)
-(`docker://dvcorg/cml-py3`) because it comes loaded with Python, CUDA, `git`,
-`node` and other essentials for full-stack data science. But we don't mind if
-you do it your way :)
+We like the [CML Docker images](#docker-images)
+(`docker://iterativeai/cml:0-dvc2-base1`) because it comes loaded with Python,
+Git, Node JS and other essentials for full-stack data science. But we don't mind
+if you do it your way :)
+
+## Docker Images
+
+The CML Docker images (`docker://iterativeai/cml` or
+`docker://ghcr.io/iterative/cml`) come loaded with Python, CUDA, `git`, `node`
+and other essentials for full-stack data science. Different versions of these
+essentials are available from different `iterativeai/cml` image tags. The tag
+convention is `{CML_VER}-dvc{DVC_VER}-base{BASE_VER}{-gpu}`:
+
+| `{BASE_VER}` | Software included (`-gpu`)                      |
+| ------------ | ----------------------------------------------- |
+| 0            | Ubuntu 18.04, Python 2.7 (CUDA 10.1, CuDNN 7)   |
+| 1            | Ubuntu 20.04, Python 3.8 (CUDA 11.0.3, CuDNN 8) |
+
+For example, `docker://iterativeai/cml:0-dvc2-base1-gpu`, or
+`docker://ghcr.io/iterative/cml:0-dvc2-base1`.
 
 ## Options
 
@@ -87,7 +102,7 @@ The function `cml-runner` accepts the following arguments:
 | --------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--version`                       | N/A                                                        | Show version number and exit (ignoring all other options)                                                                                             |
 | `--labels <list>`                 | `cml`                                                      | One or more user-defined labels for this runner (delimited with commas)                                                                               |
-| `--idle-timeout <seconds>`        | `300`                                                      | Time in seconds for the runner to be waiting for jobs before shutting down. Setting it to `0` disables automatic shutdown                             |
+| `--idle-timeout <seconds>`        | `300`                                                      | Seconds to wait for jobs before shutting down. Set to `-1` to disable timeout                                                                         |
 | `--name <string>`                 | `cml-{identifier}` where `{identifier}` is a random string | Name displayed in the repository once registered                                                                                                      |
 | `--single`                        | N/A                                                        | Exit after running a single job                                                                                                                       |
 | `--reuse`                         | N/A                                                        | Don't launch a new runner if an existing one has the same name or overlapping labels                                                                  |
@@ -105,12 +120,65 @@ The function `cml-runner` accepts the following arguments:
 | `--cloud-startup-script <base64>` | N/A                                                        | Run the provided Base64-encoded Linux shell script during the instance initialization                                                                 |
 | `-h`                              | N/A                                                        | Show this help menu and exit                                                                                                                          |
 
-## Environmental variables
+## Environment variables
 
-You will need to
-[create a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
-with repository read/write access and workflow privileges. In the example
-workflow, this token is stored as `PERSONAL_ACCESS_TOKEN`.
+Sensitive values like cloud and repository credentials can be provided through
+environment variables with the aid of GitHub
+[secrets](https://docs.github.com/es/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
+or GitLab
+[masked variables](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project);
+the latter also supports
+[external secrets](https://docs.gitlab.com/ee/ci/secrets) for added security.
+
+When invoking the `cml-runner` command, you will need use environment variables
+to provide the following secrets:
+
+- A personal access token to register and remove self-hosted runners from your
+  repositories
+- Cloud credentials to create and destroy cloud resources, only when used in
+  conjunction with the `--cloud` option
+
+### Personal access token
+
+<details>
+
+#### GitHub
+
+You can either
+[create a personal access token](https://docs.github.com/en/github-ae@latest/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+with the `repo` scope or a
+[GitHub App](https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps)
+with **Repository permissions / Administration** write permissions (for
+repository-level runners), or **Organization permissions / Self-hosted runners**
+write permissions (for organization-level runners).
+
+</details>
+
+<details>
+
+#### GitLab
+
+You can either
+[create a personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
+with the `api` scope or a
+[project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html)
+if your GitLab instance supports this feature; the latter will only work for
+project-level
+([specific](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#specific-runners))
+runners, not for instance-level
+([shared](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#shared-runners))
+runners.
+
+</details>
+
+Ideally, you should not use personal access tokens from your own account, as
+they grant access to all your repositories. Instead, it's higly recommended to
+create a separate _bot account_ that only has access to the repositories where
+you plan to deploy runners to. Bot accounts are
+[the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts)
+as normal user accounts, with the only difference being the intended use case.
+
+### Cloud credentials
 
 Note that you will also need to provide access credentials for your cloud
 compute resources as secrets. In the above example, `AWS_ACCESS_KEY_ID` and
@@ -120,40 +188,44 @@ Click below to see credentials needed for supported cloud service providers.
 
 <details>
 
-### AWS
+#### AWS
 
-```yaml
-env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
-```
-
-Note that `AWS_SESSION_TOKEN` is optional.
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_SESSION_TOKEN` **(optional)**
 
 </details>
 
 <details>
 
-### Azure
+#### Azure
 
-```yaml
-env:
-  AZURE_STORAGE_CONNECTION_STRING:
-    ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-```
+- `AZURE_CLIENT_ID`
+- `AZURE_CLIENT_SECRET`
+- `AZURE_SUBSCRIPTION_ID`
+- `AZURE_TENANT_ID`
 
 </details>
 
-### Using on-premise machines as self-hosted runners
+## Using on-premise machines as self-hosted runners
 
-You can also use the new `cml-runner` function to set up a local self-hosted
-runner. On your local machine or on-premise GPU cluster, you'll install CML as a
-package and then run:
+You can also use `cml-runner` to set up a self-hosted runner on your local
+machine or on-premise GPU cluster.
 
-```yaml
-cml-runner \ --repo $your_project_repository_url \
---token=$personal_access_token \ --labels tf \ --idle-timeout 180
+```dvc
+cml-runner \
+  --repo="$repository_url" \
+  --token="$personal_access_token" \
+  --labels="local,runner" \
+  --idle-timeout=-1
 ```
 
-Now your machine will be listening for workflows from your project repository.
+Now your machine will listen for jobs triggered on your repository and execute
+them locally.
+
+⚠️ **Warning:** people with access to your repository (everybody for public
+ones) could execute arbirary code on your machine; please refer to the
+corresponding
+[GitHub](https://docs.github.com/es/actions/learn-github-actions/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
+and [GitLab](https://docs.gitlab.com/runner/security/) documentation for
+additional guidance.
