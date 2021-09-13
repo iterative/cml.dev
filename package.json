@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/iterative/cml.dev#readme",
   "engines": {
-    "node": "<=15.x"
+    "node": "<=14.x"
   },
   "dependencies": {
     "@hapi/wreck": "^17.0.0",
