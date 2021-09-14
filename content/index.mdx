@@ -1,19 +1,20 @@
 ---
-template: "base"
+template: 'base'
 ---
-import Header from "components/organisms/SiteHeader"
-import Footer from "components/organisms/SiteFooter"
-import SubscribeSection from "components/molecules/SubscribeSection"
 
-import GitFlowIcon from "media/icons/gitflow.svg"
-import ReportsIcon from "media/icons/reports.svg"
-import BoxIcon from "media/icons/cube.svg"
+import Header from 'components/organisms/SiteHeader'
+import Footer from 'components/organisms/SiteFooter'
+import SubscribeSection from 'components/molecules/SubscribeSection'
 
-import githubVideoMp4 from "media/github/landing-video.mp4"
-import gitlabVideoMp4 from "media/gitlab/landing-video.mp4"
+import GitFlowIcon from 'media/icons/gitflow.svg'
+import ReportsIcon from 'media/icons/reports.svg'
+import BoxIcon from 'media/icons/cube.svg'
 
-import LandingVideo from "components/molecules/Video/LandingVideo"
-import backgroundImage from "media/landing-background.png"
+import githubVideoMp4 from 'media/github/landing-video.mp4'
+import gitlabVideoMp4 from 'media/gitlab/landing-video.mp4'
+
+import LandingVideo from 'components/molecules/Video/LandingVideo'
+import backgroundImage from 'media/landing-background.png'
 
 export default ({ children, ...props }) => {
   return (
@@ -105,15 +106,15 @@ your Git repo.
   </HomeFeature>
   <HomeFeature heading="Auto reports for ML experiments" icon={ReportsIcon}>
 
-Auto-generate reports with metrics and plots in each Git Pull Request.
-Rigorous engineering practices help your team make informed, data-driven
-decisions.
+Auto-generate reports with metrics and plots in each Git Pull Request. Rigorous
+engineering practices help your team make informed, data-driven decisions.
 
   </HomeFeature>
   <HomeFeature heading="No additional services" icon={BoxIcon}>
 
 Build your own ML platform using just GitHub or GitLab and your favorite cloud
-services: AWS, Azure, GCP. No databases, services or complex setup needed.
+services: AWS, Azure, GCP, or Kubernetes. No databases, services or complex
+setup needed.
 
   </HomeFeature>
   </Collapser>
@@ -138,10 +139,10 @@ services: AWS, Azure, GCP. No databases, services or complex setup needed.
 <Heading
   as="h2"
   sx={{
-    color: "text",
-    fontSize: ["32px", null, "42px"],
-    lineHeight: "52px",
-    fontWeight: "bold"
+    color: 'text',
+    fontSize: ['32px', null, '42px'],
+    lineHeight: '52px',
+    fontWeight: 'bold'
   }}
 >
   CML Use Cases
@@ -154,11 +155,13 @@ services: AWS, Azure, GCP. No databases, services or complex setup needed.
   my: "40px"
 }}>
 
-The simplest case of using CML, and a clear way for any user to get started, is to generate a simple report. Add the following .yaml to your project repository and commit to get started
+The simplest case of using CML, and a clear way for any user to get started, is
+to generate a simple report. Add the following .yaml to your project repository
+and commit to get started
 
 </Box>
 
-<Switch sx={{ my: 4, maxWidth: "160px", mx: "auto" }} />
+<Switch sx={{ my: 4, maxWidth: '160px', mx: 'auto' }} />
 
 <JSONTabs
   sx={{ "code, img": {maxHeight: "580px"} }}
@@ -178,24 +181,17 @@ stages:
 cml:
   stage: cml_run
   image: iterativeai/cml:0-dvc2-base1
-  script:
-    <Tooltip type="dependencies">
-    - pip3 install -r requirements.txt
-    - python train.py
-    </Tooltip>
+  script: <Tooltip type="dependencies"> - pip3 install -r requirements.txt -
+    python train.py </Tooltip>
 
-    <Tooltip type="reports">
-    - cat metrics.txt >> report.md
-    - cml-publish confusion_matrix.png --md >> report.md
-    - cml-send-comment report.md
+    <Tooltip type="reports"> - cat metrics.txt >> report.md - cml-publish
+    confusion_matrix.png --md >> report.md - cml-send-comment report.md
     </Tooltip>
 ```
 
 <ExampleBox title="CML Report">
 
-
 [![GitLab Base report example](../src/media/gitlab/base-case-report.png)](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
-
 
 </ExampleBox>
 
@@ -215,7 +211,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - uses: iterative/setup-cml@v1
 
       - uses: actions/setup-python@v2
@@ -224,7 +220,7 @@ jobs:
 
       - name: cml
         env:
-          REPO_TOKEN: { "${{ secrets.GITHUB_TOKEN }}" }
+          REPO_TOKEN: { '${{ secrets.GITHUB_TOKEN }}' }
         run: |
           <Tooltip type="dependencies">
           pip3 install -r requirements.txt
@@ -278,7 +274,7 @@ cml:
     - dvc metrics diff --show-md master >> report.md
 
     # Visualize loss function diff
-    - dvc plots diff 
+    - dvc plots diff
       --target loss.csv --show-vega master > vega.json
     <Tooltip type="reports">
     - vl2png vega.json | cml-publish --md >> report.md
@@ -305,7 +301,7 @@ on: [push]
 jobs:
   run:
     runs-on: [ubuntu-latest]
-  
+
     steps:
       - uses: actions/checkout@v2
 
@@ -328,14 +324,14 @@ jobs:
           <Tooltip type="dvc">
           dvc pull data
           </Tooltip>
-          
+
           <Tooltip type="dependencies">
           pip install -r requirements.txt
           dvc repro
           </Tooltip>
 
           # Compare metrics to master
-          git fetch --prune 
+          git fetch --prune
           dvc metrics diff --show-md master >> report.md
 
           # Visualize loss function diff
@@ -343,7 +339,7 @@ jobs:
             --target loss.csv --show-vega master > vega.json
           <Tooltip type="reports">
           vl2png vega.json -s 1.5 | cml-publish --md  >> report.md
-          cml-send-comment report.md 
+          cml-send-comment report.md
           </Tooltip>
 ```
 
@@ -366,9 +362,9 @@ jobs:
 <Collapser>
 
 ```yml filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case"
-stages: 
+stages:
     - cml_run
-    
+
 cml:
     stage: cml_run
     image: iterativeai/cml:0-dvc2-base1
@@ -414,7 +410,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: iterative/setup-cml@v1
-      
+
       - uses: actions/setup-python@v2
         with:
           python-version: '3.6'
@@ -615,11 +611,11 @@ train_job:
     - apt-get install python3-dev -y
     - apt install imagemagick -y
     - pip install -r requirements.txt
-    
+
     # DVC reproduce neural style transfer training
     - git fetch --prune
     - dvc repro
-    
+
     # Compare master and workspace image results
     - echo "# Style transfer" >> report.md
     - git show origin/master:final_owl.png > master_owl.png
@@ -627,17 +623,17 @@ train_job:
     - convert out.png -resize 75% out_shrink.png
     - echo "### Workspace vs. Master" >> report.md
     - cml-publish out_shrink.png --md >> report.md
-    
+
     # Report training parameters
     - echo "## Training parameter diffs" >> report.md
     - dvc params diff master --show-md >> report.md
     - echo >> report.md
-    
+
     # Report GPU details
     - echo "## GPU info" >> report.md
     - cat gpu_info.txt >> report.md
-    
-    - cml-send-comment report.md 
+
+    - cml-send-comment report.md
 
 
 ```
@@ -671,7 +667,7 @@ jobs:
         env:
           REPO_TOKEN: { "${{ secrets.PERSONAL_ACCESS_TOKEN }}" }
           AWS_ACCESS_KEY_ID: { "${{ secrets.AWS_ACCESS_KEY_ID }}" }
-          AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" } 
+          AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" }
         run: |
           <Tooltip type="reports">
           cml-runner \
@@ -686,7 +682,7 @@ jobs:
     <Tooltip type="reports">
     needs: deploy-runner
     runs-on: [self-hosted,cml-runner]
-    container: 
+    container:
       image: docker://dvcorg/cml
     </Tooltip>
     <Tooltip type="tensorboard">
@@ -707,26 +703,26 @@ jobs:
         apt-get update -y
         apt install imagemagick -y
         pip install -r requirements.txt
-        
+
         # DVC stuff
         git fetch --prune
         dvc repro
-        
+
         echo "# Style transfer" >> report.md
         git show origin/master:final_owl.png > master_owl.png
         convert +append final_owl.png master_owl.png out.png
         convert out.png -resize 75%  out_shrink.png
         echo "### Workspace vs. Main" >> report.md
         cml-publish out_shrink.png --md --title 'compare' >> report.md
-        
+
         echo "## Training metrics" >> report.md
         dvc params diff master --show-md >> report.md
-        
+
         echo >> report.md
         echo "## GPU info" >> report.md
         cat gpu_info.txt >> report.md
-        
-        cml-send-comment report.md 
+
+        cml-send-comment report.md
 ```
 
 <ExampleBox title="CML Report">
@@ -756,13 +752,13 @@ jobs:
 <Heading
   as="h2"
   sx={{
-    color: "text",
-    lineHeight: "52px",
-    fontWeight: "bold",
-    fontSize: ["32px", null, "42px"],
+    color: 'text',
+    lineHeight: '52px',
+    fontWeight: 'bold',
+    fontSize: ['32px', null, '42px']
   }}
 >
-  The MLOps Ecosystem 
+  The MLOps Ecosystem
 </Heading>
 
 <Box sx={{
@@ -773,23 +769,23 @@ jobs:
   maxWidth: "460px",
 }}>
 
-MLOps isn't a platform- it's an ecosystem of tools. 
-CML helps you bring your favorite DevOps tools to machine learning. 
+MLOps isn't a platform- it's an ecosystem of tools. CML helps you bring your
+favorite DevOps tools to machine learning.
 
 </Box>
 
 <SolutionList
   sx={{
-    maxWidth: "834px",
-    my: "40px",
-    mx: "auto",
+    maxWidth: '834px',
+    my: '40px',
+    mx: 'auto'
   }}
 >
-  {[ 
-    ["Continuous integration for ML", "CML"],
-    ["Manage environments", "Docker and Packer"],
-    ["Infrastructure as code", "Terraform and Docker-Machine"],
-    ["Data as code", "DVC"]
+  {[
+    ['Continuous integration for ML', 'CML'],
+    ['Manage environments', 'Docker and Packer'],
+    ['Infrastructure as code', 'Terraform and Docker-Machine'],
+    ['Data as code', 'DVC']
   ]}
 </SolutionList>
 

@@ -23,8 +23,9 @@ We built CML with these principles in mind:
   plots in each Git Pull Request. Rigorous engineering practices help your team
   make informed, data-driven decisions.
 - **No additional services.** Build your own ML platform using just GitHub or
-  GitLab and your favorite cloud services: AWS, Azure, GCP. No databases,
-  services or complex setup needed.
+  GitLab and your
+  [favorite cloud services](/doc/self-hosted-runners#runner-credentials): AWS,
+  Azure, GCP, or Kubernetes. No databases, services or complex setup needed.
 
 _Need help? Just want to chat about continuous integration for ML?
 [Visit our Discord channel!](https://discord.gg/bzA6uY7)_
