@@ -14,7 +14,8 @@ self-hosted runner.
 
 When a workflow requires computational resources (such as GPUs), CML can
 automatically allocate cloud instances using `cml-runner`. You can spin up
-instances on your [AWS](#aws), [Azure](#azure), GCP, or Kubernetes accounts.
+instances on your [AWS](#aws), [Azure](#azure), [GCP](#gcp), or
+[Kubernetes](#k8s) accounts.
 
 For example, the following workflow deploys a `t2.micro` instance on AWS EC2 and
 trains a model on the instance. After the job runs, the instance automatically
@@ -241,6 +242,31 @@ Click below to see credentials needed for supported compute providers.
 - `AZURE_TENANT_ID`
 
 </details>
+
+<details>
+
+#### GCP
+
+Either one of:
+
+- `GOOGLE_APPLICATION_CREDENTIALS_DATA`: the **contents** of a service account
+  JSON file, or
+- `GOOGLE_APPLICATION_CREDENTIALS`: the **path** to the JSON file.
+
+The former is more convenient for CI/CD scenarios, where secrets are (usually)
+provisioned through environment variables instead of files.
+
+</details>
+
+<details>
+
+#### K8s
+
+- `KUBERNETES_CONFIGURATION`: the **contents** of a `kubeconfig` file
+
+</details>
+
+<details>
 
 #### On-premise (Local) Runners
 
