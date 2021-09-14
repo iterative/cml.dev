@@ -166,9 +166,6 @@ credentials for your cloud compute resources as secrets. In the above example,
 `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` (with privileges to create &
 destroy EC2 instances) are required.
 
-For AWS, the same credentials can also be used for
-[configuring cloud storage](#configuring-cloud-storage-providers).
-
 ### Personal Access Token
 
 <details>
@@ -229,6 +226,9 @@ Click below to see credentials needed for supported compute providers.
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_SESSION_TOKEN` **(optional)**
+
+Note that the same credentials can also be used for
+[configuring cloud storage](/doc/cml-with-dvc#configuring-cloud-storage-providers).
 
 </details>
 

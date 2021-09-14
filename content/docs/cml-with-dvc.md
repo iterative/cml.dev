@@ -58,8 +58,7 @@ jobs:
           cml-send-comment report.md
 ```
 
-If you're using DVC with cloud storage, take note of environmental variables for
-your storage format.
+## Configuring Cloud Storage Providers
 
 <details>
 
