@@ -15,7 +15,7 @@ self-hosted runner.
 When a workflow requires computational resources (such as GPUs), CML can
 automatically allocate cloud instances using `cml-runner`. You can spin up
 instances on your [AWS](#aws), [Azure](#azure), [GCP](#gcp), or
-[Kubernetes](#k8s) accounts.
+[Kubernetes](#kubernetes) accounts.
 
 For example, the following workflow deploys a `t2.micro` instance on AWS EC2 and
 trains a model on the instance. After the job runs, the instance automatically
@@ -93,7 +93,7 @@ convention is `{CML_VER}-dvc{DVC_VER}-base{BASE_VER}{-gpu}`:
 For example, `docker://iterativeai/cml:0-dvc2-base1-gpu`, or
 `docker://ghcr.io/iterative/cml:0-dvc2-base1`.
 
-## Arguments
+## Options
 
 The `cml-runner` function accepts the following arguments:
 
@@ -260,7 +260,7 @@ provisioned through environment variables instead of files.
 
 <details>
 
-#### K8s
+#### Kubernetes
 
 - `KUBERNETES_CONFIGURATION`: the **contents** of a `kubeconfig` file
 
