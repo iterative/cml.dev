@@ -4,16 +4,16 @@ import GatsbyLink from '../../atoms/ThemedGatsbyLink'
 import { Box, Container, Flex, Heading } from '@theme-ui/components'
 import SmartLink from '../../atoms/SmartLink'
 
-import { ReactComponent as SiteLogo } from '@media/site-logo.svg'
+import { ReactComponent as CmlText } from '@media/cml-text.svg'
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as TwitterIcon } from '@media/icons/twitter.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
 import { ReactComponent as YoutubeIcon } from '@media/icons/youtube.svg'
 import { ReactComponent as LinkedInIcon } from '@media/icons/linkedin.svg'
-import { ReactComponent as CmlIcon } from '@media/icons/cml.svg'
-import { ReactComponent as DvcIcon } from '@media/icons/dvc.svg'
-import { ReactComponent as StudioIcon } from '@media/icons/studio.svg'
 import { ReactComponent as IterativeIcon } from '@media/icons/iterative.svg'
+import dvcIcon from '@media/icons/dvc.svg'
+import cmlIcon from '@media/icons/cml.svg'
+import studioIcon from '@media/icons/studio.svg'
 
 interface ISocialLinkPopupProps {
   url: string
@@ -81,17 +81,26 @@ const footerLists: Array<IFooterListPopupProps> = [
     items: [
       {
         text: 'DVC',
-        icon: <DvcIcon height="16" width="16" />,
+        icon: <Box as="span" sx={{ backgroundImage: `url(${dvcIcon})` }} />,
+
         url: 'https://dvc.org/'
       },
       {
         text: 'CML',
-        icon: <CmlIcon height="16" width="16" />,
+        icon: <Box as="span" sx={{ backgroundImage: `url(${cmlIcon})` }} />,
+
         url: '/'
       },
       {
         text: 'Studio',
-        icon: <StudioIcon height="16" width="16" />,
+        icon: (
+          <Box
+            as="span"
+            sx={{
+              backgroundImage: `url(${studioIcon})`
+            }}
+          />
+        ),
         url: 'https://studio.iterative.ai/'
       }
     ]
@@ -163,7 +172,8 @@ const Footer: React.FC = () => {
     <Box as="footer" variant="layout.Footer">
       <Container variant="layout.Footer.Inner">
         <GatsbyLink to="/" variant="layout.Footer.Logo">
-          <SiteLogo />
+          <Box as="span" sx={{ backgroundImage: `url(${cmlIcon})` }} />
+          <CmlText width="46" height="16" />
         </GatsbyLink>
         <Flex variant="layout.Footer.Lists">
           {footerLists.map((footerList, i) => (

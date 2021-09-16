@@ -6,7 +6,7 @@ import SmartLink from '../../atoms/SmartLink'
 
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
-import { ReactComponent as SiteLogo } from '@media/site-logo.svg'
+import { ReactComponent as CmlText } from '@media/cml-text.svg'
 import { ReactComponent as UpIcon } from '@media/icons/up.svg'
 import { ReactComponent as DownIcon } from '@media/icons/down.svg'
 import { ReactComponent as CmlIcon } from '@media/icons/cml.svg'
@@ -98,7 +98,9 @@ const OtherToolsPopup: React.FC<IOtherToolsPopupProps> = ({ list, isOpen }) => {
           </Box>
           <Box as="h2" variant="layout.Header.Nav.OtherToolsPopup.Link.Title">
             {title}
-            <ExternalLinkIcon width="16" height="16" />
+            {href.match(/^https?:\/\//) && (
+              <ExternalLinkIcon width="16" height="16" />
+            )}
           </Box>
           <Box
             as="p"
@@ -192,7 +194,8 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
         <Container variant="layout.Header.Inner">
           <Box as="nav" variant="layout.Header.Nav">
             <Link to="/" variant="layout.Header.Nav.Logo">
-              <SiteLogo />
+              <CmlIcon width="16" height="16" />
+              <CmlText width="20" height="80" />
             </Link>
             <SmartLink
               href="https://iterative.ai/"
