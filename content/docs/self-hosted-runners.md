@@ -218,7 +218,7 @@ you plan to deploy runners to. Bot accounts are
 [the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts)
 as normal user accounts, with the only difference being the intended use case.
 
-### Could Compute Resource Credentials
+### Cloud Compute Resource Credentials
 
 Note that you will also need to provide access credentials of your compute
 resources. In the above example, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
