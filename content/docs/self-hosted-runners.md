@@ -2,8 +2,8 @@
 
 GitHub Actions and GitLab CI workflows are run on GitHub- and GitLab- hosted
 runners by default. However, there are many great reasons to use your own
-runners: to take advantage of GPUs; to orchestrate your team's shared computing
-resources, or to train in the cloud.
+runners: to take advantage of GPUs, orchestrate your team's shared computing
+resources, or train in the cloud.
 
 ☝️ **Tip!** Check out the official documentation from
 [GitHub](https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
@@ -14,12 +14,12 @@ self-hosted runner.
 
 When a workflow requires computational resources (such as GPUs), CML can
 automatically allocate cloud instances using `cml-runner`. You can spin up
-instances on your [AWS](#aws), [Azure](#azure), [GCP](#gcp), or
-[Kubernetes](#kubernetes) accounts.
+instances on [AWS](#aws), [Azure](#azure), [GCP](#gcp), or
+[Kubernetes](#kubernetes).
 
-For example, the following workflow deploys a `t2.micro` instance on AWS EC2 and
-trains a model on the instance. After the job runs, the instance automatically
-shuts down.
+For example, the following workflow deploys a `p2.xlarge` instance on AWS EC2
+and trains a model on the instance. After the job runs, the instance
+automatically shuts down.
 
 You might notice that this workflow is quite similar to the
 [basic use case](/doc/usage). The only addition is `cml-runner` and a few
@@ -27,7 +27,7 @@ environment variables for passing your cloud service credentials to the
 workflow.
 
 Note that `cml-runner` will also automatically restart your jobs (whether from a
-[GitHub Actions 72-hour timeout](https://docs.github.com/en/actions/reference/usage-limits-billing-and-administration#usage-limits)
+[GitHub Actions 72-hour timeout](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
 or a
 [AWS EC2 spot instance interruption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html)).
 
@@ -47,14 +47,16 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           cml-runner \
-              --cloud aws \
-              --cloud-region us-west \
-              --cloud-type t2.micro \
-              --labels cml-runner
+              --cloud=aws \
+              --cloud-region=us-west \
+              --cloud-type=p2.xlarge \
+              --labels=cml-runner
   train-model:
     needs: deploy-runner
     runs-on: [self-hosted, cml-runner]
+    timeout-minutes: 4320 # 72h
     container: docker://iterativeai/cml:0-dvc2-base1-gpu
+    options: --gpus all
     steps:
       - uses: actions/checkout@v2
       - name: Train model
@@ -68,7 +70,7 @@ jobs:
           cml-send-comment report.md
 ```
 
-In the workflow above, the `deploy-runner` step launches an EC2 `t2-micro`
+In the workflow above, the `deploy-runner` step launches an EC2 `p2.xlarge`
 instance in the `us-west` region. The `train-model` job then runs on the
 newly-launched instance. See [Environment Variables](#environment-variables)
 below for details on the `secrets` required.
@@ -264,7 +266,9 @@ provisioned through environment variables instead of files.
 
 #### Kubernetes
 
-- `KUBERNETES_CONFIGURATION`: the **contents** of a `kubeconfig` file
+- `KUBERNETES_CONFIGURATION`: the **contents** of a
+  [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig)
+  file.
 
 </details>
 

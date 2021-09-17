@@ -470,9 +470,9 @@ deploy_job:
   script:
     <Tooltip type="reports">
     - cml-runner
-      --cloud aws
-      --cloud-region us-west
-      --cloud-type t2.micro
+      --cloud=aws
+      --cloud-region=us-west
+      --cloud-type=t2.micro
       --labels=cml-runner
     </Tooltip>
 
@@ -529,8 +529,8 @@ jobs:
         run: |
           <Tooltip type="reports">
           cml-runner \
-          --cloud aws \
-          --cloud-region us-west \
+          --cloud=aws \
+          --cloud-region=us-west \
           --cloud-type=t2.micro \
           --labels=cml-runner
           </Tooltip>
@@ -590,10 +590,10 @@ deploy_job:
   script:
     <Tooltip type="reports">
     - cml-runner \
-      --cloud aws \
-      --cloud-region us-west \
+      --cloud=aws \
+      --cloud-region=us-west \
       --cloud-type=g3.4xlarge \
-      --cloud-hdd-size 64 \
+      --cloud-hdd-size=64 \
       --labels=cml-runner-gpu
     </Tooltip>
 
@@ -671,10 +671,10 @@ jobs:
         run: |
           <Tooltip type="reports">
           cml-runner \
-          --cloud aws \
-          --cloud-region us-west \
+          --cloud=aws \
+          --cloud-region=us-west \
           --cloud-type=g3.4xlarge \
-          --cloud-hdd-size 64 \
+          --cloud-hdd-size=64 \
           --labels=cml-runner
           </Tooltip>
 
