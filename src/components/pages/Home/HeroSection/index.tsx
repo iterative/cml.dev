@@ -133,8 +133,8 @@ const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
         </HomeFeature>
         <HomeFeature heading="No additional services" icon={BoxIcon}>
           Build your own ML platform using just GitHub or GitLab and your
-          favorite cloud services: AWS, Azure, GCP. No databases, services or
-          complex setup needed.
+          favorite cloud services: AWS, Azure, GCP, or Kubernetes. No databases,
+          services or complex setup needed.
         </HomeFeature>
       </Collapser>
     </FullWidthBox>

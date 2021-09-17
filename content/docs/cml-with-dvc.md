@@ -15,7 +15,7 @@ on: [push]
 jobs:
   run:
     runs-on: [ubuntu-latest]
-    container: docker://iterativeai/cml:0-dvc2-base1
+    container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
       - name: cml_run
@@ -58,8 +58,7 @@ jobs:
           cml-send-comment report.md
 ```
 
-If you're using DVC with cloud storage, take note of environmental variables for
-your storage format.
+## Cloud Storage Provider Credentials
 
 <details>
 
