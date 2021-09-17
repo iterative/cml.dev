@@ -23,7 +23,7 @@ automatically shuts down.
 
 You might notice that this workflow is quite similar to the
 [basic use case](/doc/usage). The only addition is `cml-runner` and a few
-environment variables for passing your cloud service credentials to the
+environment variables for passing your cloud compute credentials to the
 workflow.
 
 Note that `cml-runner` will also automatically restart your jobs (whether from a
@@ -172,6 +172,8 @@ destroy EC2 instances) are required.
 
 ### Personal Access Token
 
+This token serves as a repository access credential.
+
 <details>
 
 #### GitHub
@@ -215,11 +217,11 @@ you plan to deploy runners to. Bot accounts are
 [the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts)
 as normal user accounts, with the only difference being the intended use case.
 
-### Runner Credentials
+### Could Compute Resource Credentials
 
-Note that you will also need to provide access credentials for your compute
-resources as secrets. In the above example, `AWS_ACCESS_KEY_ID` and
-`AWS_SECRET_ACCESS_KEY` are required to deploy EC2 instances.
+Note that you will also need to provide access credentials of your compute
+resources. In the above example, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+are required to deploy EC2 instances.
 
 Click below to see credentials needed for supported compute providers.
 
@@ -232,7 +234,7 @@ Click below to see credentials needed for supported compute providers.
 - `AWS_SESSION_TOKEN` **(optional)**
 
 Note that the same credentials can also be used for
-[configuring cloud storage](/doc/cml-with-dvc#configuring-cloud-storage-providers).
+[configuring cloud storage](/doc/cml-with-dvc#cloud-storage-provider-credentials).
 
 </details>
 

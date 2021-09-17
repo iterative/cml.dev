@@ -58,7 +58,7 @@ jobs:
           cml-send-comment report.md
 ```
 
-## Configuring Cloud Storage Providers
+## Cloud Storage Provider Credentials
 
 <details>
 
