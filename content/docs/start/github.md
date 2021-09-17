@@ -26,7 +26,7 @@ supported CI systems.
    jobs:
       run:
          runs-on: [ubuntu-latest]
-         container: docker://iterativeai/cml:0-dvc2-base1
+         container: docker://ghcr.io/iterative/cml:0-dvc2-base1
          steps:
             - uses: actions/checkout@v2
             - name: cml_run

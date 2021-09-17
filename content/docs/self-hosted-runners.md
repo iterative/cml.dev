@@ -55,8 +55,9 @@ jobs:
     needs: deploy-runner
     runs-on: [self-hosted, cml-runner]
     timeout-minutes: 4320 # 72h
-    container: docker://iterativeai/cml:0-dvc2-base1-gpu
-    options: --gpus all
+    container:
+      image: docker://iterativeai/cml:0-dvc2-base1-gpu
+      options: --gpus all
     steps:
       - uses: actions/checkout@v2
       - name: Train model
