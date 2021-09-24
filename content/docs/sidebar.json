@@ -32,6 +32,7 @@
   {
     "label": "Command Reference",
     "slug": "ref",
+    "source": false,
     "children": [
       {
         "label": "pr",
@@ -39,7 +40,7 @@
       },
       {
         "label": "publish",
-        "slug": "pubish"
+        "slug": "publish"
       },
       {
         "label": "runner",
