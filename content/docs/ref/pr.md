@@ -16,5 +16,4 @@ git add *.py *.json
 git commit -m "CML PR for ${SHA} [skip ci]"
 git push
 gh pr create -B ${BASE}
-git checkout -
 ```
