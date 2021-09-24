@@ -155,7 +155,7 @@ The `cml-runner` function accepts the following arguments:
 
 Sensitive values like cloud and repository credentials can be provided through
 environment variables with the aid of GitHub
-[secrets](https://docs.github.com/es/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
+[secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
 or GitLab
 [masked variables](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project);
 the latter also supports
@@ -296,7 +296,7 @@ The machine will listen for jobs from your repository and execute them locally.
 ⚠️ **Warning:** anyone with access to your repository (everybody for public
 ones) may be able to execute arbitrary code on your machine. Refer to the
 corresponding
-[GitHub](https://docs.github.com/es/actions/learn-github-actions/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
+[GitHub](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
 and [GitLab](https://docs.gitlab.com/runner/security/) documentation for
 additional guidance.
 
