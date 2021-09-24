@@ -61,6 +61,10 @@ jobs:
 
 ## Cloud Storage Provider Credentials
 
+There are many
+[supported could storage providers](https://dvc.org/doc/command-reference/remote/modify#available-parameters-per-storage-type).
+Here are a few examples for some of the most frequently used providers:
+
 <details>
 
 ### S3 and S3-compatible storage (Minio, DigitalOcean Spaces, IBM Cloud Object Storage...)
@@ -125,9 +129,9 @@ env:
 
 (ℹ️) After configuring your
 [Google Drive credentials](https://dvc.org/doc/command-reference/remote/add) you
-will find a json file at
-`your_project_path/.dvc/tmp/gdrive-user-credentials.json`. Copy the text inside
-that `.json` and add it as a secret.
+will find a `json` file at
+`your_project_path/.dvc/tmp/gdrive-user-credentials.json`. Copy its contents to
+a secret variable.
 
 ```yaml
 env:
