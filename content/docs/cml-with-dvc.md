@@ -14,7 +14,7 @@ name: train-test
 on: [push]
 jobs:
   run:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
@@ -83,13 +83,14 @@ Note that `AWS_SESSION_TOKEN` is optional.
 env:
   AZURE_STORAGE_CONNECTION_STRING:
     ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+  AZURE_STORAGE_CONTAINER_NAME: ${{ secrets.AZURE_STORAGE_CONTAINER_NAME }}
 ```
 
 </details>
 
 <details>
 
-### Aliyn
+### Aliyun
 
 ```yaml
 env:

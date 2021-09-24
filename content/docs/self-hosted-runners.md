@@ -50,10 +50,10 @@ jobs:
               --cloud=aws \
               --cloud-region=us-west \
               --cloud-type=p2.xlarge \
-              --labels=cml-runner
+              --labels=cml-gpu
   train-model:
     needs: deploy-runner
-    runs-on: [self-hosted, cml-runner]
+    runs-on: [self-hosted, cml-gpu]
     timeout-minutes: 4320 # 72h
     container:
       image: docker://iterativeai/cml:0-dvc2-base1-gpu
