@@ -2,6 +2,7 @@ import React, {
   useCallback,
   useEffect,
   useRef,
+  useState,
   ReactNode,
   ReactElement
 } from 'react'
@@ -17,6 +18,7 @@ import { getPathWithSource } from '../../../../utils/shared/sidebar'
 import sharedStyles from '../styles.module.css'
 import 'github-markdown-css/github-markdown.css'
 import styles from './styles.module.css'
+import { nanoid } from 'nanoid'
 
 const isInsideCodeBlock = (node: Element): boolean => {
   while (node?.parentNode) {
@@ -117,6 +119,52 @@ const Card: React.FC<{
   )
 }
 
+const Toggle: React.FC<{
+  children: Array<{ props: { title: string } } | string>
+}> = ({ children }) => {
+  const [toggleId, setToggleId] = useState('')
+  const [selectedTabInd, setSelectedTabInd] = useState(0)
+  const tabs: Array<{ props: { title: string } } | string> = children.filter(
+    child => child !== '\n'
+  )
+
+  useEffect(() => {
+    if (toggleId === '') {
+      setToggleId(nanoid())
+    }
+  }, [])
+
+  return (
+    <div className={styles.toggle}>
+      {tabs.map((tab, i) => (
+        <>
+          <input
+            id={`tab-${toggleId}-${i}`}
+            type="radio"
+            name={`toggle-${toggleId}`}
+            onChange={(): void => {
+              setSelectedTabInd(i)
+            }}
+            checked={i === selectedTabInd}
+          />
+          <label
+            className={styles.tabHeading}
+            key={i}
+            htmlFor={`tab-${toggleId}-${i}`}
+          >
+            {typeof tab !== 'string' && tab.props.title}
+          </label>
+          {tab}
+        </>
+      ))}
+    </div>
+  )
+}
+
+const Tab: React.FC<{ title: string }> = ({ children }) => {
+  return <div className={styles.tab}>{children}</div>
+}
+
 const renderAst = new rehypeReact({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   createElement: React.createElement as any,
@@ -125,7 +173,9 @@ const renderAst = new rehypeReact({
     details: Details,
     a: Link,
     card: Card,
-    cards: Cards
+    cards: Cards,
+    toggle: Toggle,
+    tab: Tab
   }
 }).Compiler
 
