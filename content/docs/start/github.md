@@ -66,20 +66,20 @@ This is the gist of the CML workflow: when you push changes to your GitHub
 repository, the workflow in your `.github/workflows/cml.yaml` file gets run and
 a report generated.
 
-CML functions let you display relevant results from the workflow, like model
+CML commands let you display relevant results from the workflow, like model
 performance metrics and vizualizations, in GitHub checks and comments. What kind
 of workflow you want to run, and want to put in your CML report, is up to you.
 
 ## The CML GitHub Action
 
-In the above example, we got the CML functions thanks to our Docker container.
+In the above example, we got the CML commands thanks to our Docker container.
 But there's another way for GitHub Actions users to get CML: the `setup-cml`
 Action!
 
 The [iterative/setup-cml](https://github.com/iterative/setup-cml) action is a
-JavaScript workflow that provides [CML](https://cml.dev/) functions in your
-GitHub Actions workflow. The action allows users to install CML without using
-the CML Docker container.
+JavaScript workflow that provides [CML](https://cml.dev) commands in your GitHub
+Actions workflow. The action allows users to install CML without using the CML
+Docker container.
 
 This action gives you:
 
@@ -119,8 +119,8 @@ steps:
 
 The following inputs are supported.
 
-- `version` - (optional) The version of CML to install. A value of `latest` will
-  install the latest version of CML functions. Defaults to `latest`.
+- `version` - (optional) The version of CML to install. The default value of
+  `latest` will install the latest version of CML.
 
 ## Outputs
 

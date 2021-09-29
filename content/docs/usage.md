@@ -62,14 +62,14 @@ example, uncommenting the
 runner pull the CML Docker image. The image already has NodeJS, Python 3, DVC
 and CML set up on an Ubuntu LTS base for convenience.
 
-## CML Functions
+## CML Commands
 
-CML provides a number of functions to help package the outputs of ML workflows
+CML provides a number of commands to help package the outputs of ML workflows
 (including numeric data and visualizations about model performance) into a CML
 report.
 
-Below is a table of CML functions for writing markdown reports and delivering
-those reports to your CI system.
+Below is a table of CML commands for starting cloud compute runners, writing and
+publishing markdown reports to your CI/CD system.
 
 | Command                                               | Description                                                                                                                    | Example Input                               |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
@@ -99,7 +99,7 @@ cat results.txt >> report.md
 
 🖼️ **Images** Display images using the markdown or HTML. Note that if an image
 is an output of your ML workflow (i.e., it is produced by your workflow), you
-will need to use the `cml publish` function to include it a CML report. For
+will need to use the `cml publish` command to include it a CML report. For
 example, if `graph.png` is output by `python train.py`, run:
 
 ```bash
