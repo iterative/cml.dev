@@ -68,17 +68,32 @@ CML provides a number of commands to help package the outputs of ML workflows
 (including numeric data and visualizations about model performance) into a CML
 report.
 
-Below is a table of CML commands for starting cloud compute runners, writing and
+Below is a list of CML commands for starting cloud compute runners, writing and
 publishing markdown reports to your CI/CD system.
 
-| Command                                               | Description                                                                                                                    | Example Input                               |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
-| [`cml runner`](/doc/ref/runner)                       | Launch a runner hosted by a cloud compute provider or locally on-premise (see [self-hosted runners](/doc/self-hosted-runners)) | `--cloud={aws,azure,gcp,kubernetes} ...`    |
-| [`cml publish`](/doc/ref/publish)                     | Publicly host an image for displaying in a CML report                                                                          | `myimage.png --md >> myreport.md`           |
-| [`cml send-comment`](/doc/ref/send-comment)           | Post a markdown report as a commit comment                                                                                     | `myreport.md`                               |
-| [`cml send-github-check`](/doc/ref/send-github-check) | Post a markdown report as a GitHub check                                                                                       | `myreport.md`                               |
-| [`cml pr`](/doc/ref/pr)                               | Commit specified files to a new branch and create a pull request                                                               | `"**/*.json" "**/*.py" --md >> myreport.md` |
-| [`cml tensorboard-dev`](/doc/ref/tensorboard-dev)     | Return a link to a <https://tensorboard.dev> page                                                                              | `--logdir=./logs --md >> myreport.md`       |
+∞ **[`runner`](/doc/ref/runner)**\
+Launch a runner hosted by a cloud compute provider or locally on-premise (see [self-hosted runners](/doc/self-hosted-runners))\
+e.g. `cml runner --cloud={aws,azure,gcp,kubernetes} ...`
+
+∞ **[`publish`](/doc/ref/publish)**\
+Publicly host an image for displaying in a CML report\
+e.g. `cml publish myimage.png --md >> myreport.md`
+
+∞ **[`pr`](/doc/ref/pr)**\
+Commit specified files to a new branch and create a pull request\
+e.g. `cml pr "**/*.json" "**/*.py" --md >> myreport.md`
+
+∞ **[`send-comment`](/doc/ref/send-comment)**\
+Post a markdown report as a commit comment\
+e.g. `cml send-comment myreport.md`
+
+∞ **[`send-github-check`](/doc/ref/send-github-check)**\
+Post a markdown report as a GitHub check\
+e.g. `cml send-github-check myreport.md`
+
+∞ **[`tensorboard-dev`](/doc/ref/tensorboard-dev)**\
+Return a link to a <https://tensorboard.dev> page\
+e.g. `cml tensorboard-dev --logdir=./logs --md >> myreport.md`
 
 ### CML Reports
 
