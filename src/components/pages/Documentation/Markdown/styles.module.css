@@ -452,7 +452,7 @@ a.card {
     height: initial;
     opacity: initial;
     position: static;
-    width: initial;
+    width: 100%;
     overflow: visible;
   }
 
