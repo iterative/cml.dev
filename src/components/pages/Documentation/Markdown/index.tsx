@@ -128,16 +128,18 @@ const ToggleTab: React.FC<{
   onChange: () => void
   checked: boolean
 }> = ({ children, id, checked, ind, onChange, title }) => {
+  const inputId = `tab-${id}-${ind}`
+
   return (
     <>
       <input
-        id={`tab-${id}-${ind}`}
+        id={inputId}
         type="radio"
         name={`toggle-${id}`}
         onChange={onChange}
         checked={checked}
       />
-      <label className={styles.tabHeading} htmlFor={`tab-${id}-${ind}`}>
+      <label className={styles.tabHeading} htmlFor={inputId}>
         {title}
       </label>
       {children}
