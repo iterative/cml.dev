@@ -37,8 +37,8 @@ supported CI systems.
                   python train.py
 
                   cat metrics.txt >> report.md
-                  cml-publish confusion_matrix.png --md >> report.md
-                  cml-send-comment report.md
+                  cml publish confusion_matrix.png --md >> report.md
+                  cml send-comment report.md
    ```
 
 3. In your text editor of choice, edit line 16 of `train.py` to `depth = 5`.
@@ -57,8 +57,8 @@ supported CI systems.
    ![](/img/make_pr.png)
 
    Shortly, you should see a comment from `github-actions` appear in the Pull
-   Request with your CML report. This is a result of the function
-   `cml-send-comment` in your workflow.
+   Request with your CML report. This is a result of the `cml send-comment`
+   command in your workflow.
 
    ![](/img/cml_first_report.png)
 
@@ -83,9 +83,9 @@ the CML Docker container.
 
 This action gives you:
 
-- Functions like `cml-publish` and `cml-send-comment` for publishing data
+- Commands like `cml publish` and `cml send-comment` for publishing data
   visualization and metrics from your CI workflow as comments in a pull request.
-- `cml-runner`, a function that enables workflows to provision cloud and
+- `cml runner`, a command that enables workflows to provision cloud and
   on-premise computing resources for training models
 - The freedom 🦅 to mix and match CML with your favorite data science tools and
   environments
@@ -142,6 +142,6 @@ steps:
       python train.py
 
       echo 'My first CML report' > report.md
-      cml-publish plot.png --md > report.md
-      cml-send-comment report.md
+      cml publish plot.png --md > report.md
+      cml send-comment report.md
 ```

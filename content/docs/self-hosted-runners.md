@@ -13,7 +13,7 @@ self-hosted runner.
 ## Allocating Cloud Compute Resources with CML
 
 When a workflow requires computational resources (such as GPUs), CML can
-automatically allocate cloud instances using `cml-runner`. You can spin up
+automatically allocate cloud instances using `cml runner`. You can spin up
 instances on [AWS](#aws), [Azure](#azure), [GCP](#gcp), or
 [Kubernetes](#kubernetes).
 
@@ -22,11 +22,11 @@ and trains a model on the instance. After the job runs, the instance
 automatically shuts down.
 
 You might notice that this workflow is quite similar to the
-[basic use case](/doc/usage). The only addition is `cml-runner` and a few
+[basic use case](/doc/usage). The only addition is `cml runner` and a few
 environment variables for passing your cloud compute credentials to the
 workflow.
 
-Note that `cml-runner` will also automatically restart your jobs (whether from a
+Note that `cml runner` will also automatically restart your jobs (whether from a
 [GitHub Actions 72-hour timeout](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
 or a
 [AWS EC2 spot instance interruption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html)).
@@ -46,7 +46,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          cml-runner \
+          cml runner \
               --cloud=aws \
               --cloud-region=us-west \
               --cloud-type=p2.xlarge \
@@ -68,7 +68,7 @@ jobs:
           python train.py
 
           cat metrics.txt > report.md
-          cml-send-comment report.md
+          cml send-comment report.md
 ```
 
 In the workflow above, the `deploy-runner` step launches an EC2 `p2.xlarge`
@@ -76,8 +76,8 @@ instance in the `us-west` region. The `train-model` job then runs on the
 newly-launched instance. See [Environment Variables](#environment-variables)
 below for details on the `secrets` required.
 
-🎉 **Note that jobs can use any Docker container!** To use functions such as
-`cml-send-comment` from a job, the only requirement is to
+🎉 **Note that jobs can use any Docker container!** To use commands such as
+`cml send-comment` from a job, the only requirement is to
 [have CML installed](/doc/cml-with-npm).
 
 ## Docker Images
@@ -98,7 +98,7 @@ For example, `docker://iterativeai/cml:0-dvc2-base1-gpu`, or
 
 ## Options
 
-The `cml-runner` function accepts the following arguments:
+The `cml runner` command accepts the following arguments:
 
 ```
 --help                      Show help                                [boolean]
@@ -279,12 +279,12 @@ provisioned through environment variables instead of files.
 
 #### On-premise (Local) Runners
 
-The `cml-runner` command can also be used to set up a local machine or
+The `cml runner` command can also be used to set up a local machine or
 on-premise GPU cluster as a self-hosted runner. Simply
 [install CML with NPM](/doc/cml-with-npm) and then run:
 
 ```
-cml-runner \
+cml runner \
   --repo="$REPOSITORY_URL" \
   --token="$PERSONAL_ACCESS_TOKEN" \
   --labels="local,runner" \

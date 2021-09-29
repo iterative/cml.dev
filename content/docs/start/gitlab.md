@@ -72,8 +72,8 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
        - python train.py
 
        - cat metrics.txt >> report.md
-       - cml-publish confusion_matrix.png --md >> report.md
-       - cml-send-comment report.md
+       - cml publish confusion_matrix.png --md >> report.md
+       - cml send-comment report.md
    ```
 
 6. In your text editor, open `train.py` and edit line 16 to `depth = 5`.
@@ -104,6 +104,6 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
     comments you would like to put in the description and click the "Submit
     merge request" button. Shortly, you should see a comment from GitLab CI
     appear in the Pull Request with your CML report. This is a result of the
-    function cml-send-comment in your workflow.
+    function `cml send-comment` in your workflow.
 
     ![](/img/cml_start_gitlab_end.png)
