@@ -2,6 +2,6 @@
 
 Return a link to a <https://tensorboard.dev> page.
 
-```dvc
-cml tensorboard-dev
+```bash
+cml tensorboard-dev --logdir=./logs --title=Training --md >> myreport.md
 ```

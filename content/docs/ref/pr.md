@@ -2,13 +2,13 @@
 
 Commit specified files to a new branch and create a pull request.
 
-```dvc
-cml pr '**/*.py' '**/*.json'
+```bash
+cml pr "**/*.py" "**/*.json"
 ```
 
 is roughly equivalent to:
 
-```dvc
+```bash
 SHA="$(git log -n1 --format=%h)"
 BASE="$(git branch)"
 git checkout -b "${BASE}-cml-pr-${SHA}"

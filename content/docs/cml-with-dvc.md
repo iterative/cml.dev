@@ -138,7 +138,7 @@ env:
 ## For GitHub Actions Users: Try the `setup-dvc` Action!
 
 The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action is a
-JavaScript action that sets up [DVC](https://dvc.org/) in your workflow.
+JavaScript action that sets up [DVC](https://dvc.org) in your workflow.
 
 ### Usage
 

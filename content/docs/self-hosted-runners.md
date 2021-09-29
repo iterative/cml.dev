@@ -283,7 +283,7 @@ The `cml runner` command can also be used to set up a local machine or
 on-premise GPU cluster as a self-hosted runner. Simply
 [install CML with NPM](/doc/cml-with-npm) and then run:
 
-```
+```bash
 cml runner \
   --repo="$REPOSITORY_URL" \
   --token="$PERSONAL_ACCESS_TOKEN" \
@@ -297,7 +297,7 @@ The machine will listen for jobs from your repository and execute them locally.
 ones) may be able to execute arbitrary code on your machine. Refer to the
 corresponding
 [GitHub](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
-and [GitLab](https://docs.gitlab.com/runner/security/) documentation for
+and [GitLab](https://docs.gitlab.com/runner/security) documentation for
 additional guidance.
 
 </details>
