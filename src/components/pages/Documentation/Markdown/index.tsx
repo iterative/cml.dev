@@ -2,10 +2,13 @@ import React, {
   useCallback,
   useEffect,
   useRef,
+  useState,
   ReactNode,
-  ReactElement
+  ReactElement,
+  useContext
 } from 'react'
 import cn from 'classnames'
+import { nanoid } from 'nanoid'
 import { navigate } from '@reach/router'
 import rehypeReact from 'rehype-react'
 import Collapsible from 'react-collapsible'
@@ -17,6 +20,7 @@ import { getPathWithSource } from '../../../../utils/shared/sidebar'
 import sharedStyles from '../styles.module.css'
 import 'github-markdown-css/github-markdown.css'
 import styles from './styles.module.css'
+import { TogglesContext, TogglesProvider } from './ToggleProvider'
 
 const isInsideCodeBlock = (node: Element): boolean => {
   while (node?.parentNode) {
@@ -117,6 +121,84 @@ const Card: React.FC<{
   )
 }
 
+const ToggleTab: React.FC<{
+  id: string
+  title: string
+  ind: number
+  onChange: () => void
+  checked: boolean
+}> = ({ children, id, checked, ind, onChange, title }) => {
+  const inputId = `tab-${id}-${ind}`
+
+  return (
+    <>
+      <input
+        id={inputId}
+        type="radio"
+        name={`toggle-${id}`}
+        onChange={onChange}
+        checked={checked}
+      />
+      <label className={styles.tabHeading} htmlFor={inputId}>
+        {title}
+      </label>
+      {children}
+    </>
+  )
+}
+
+const Toggle: React.FC<{
+  children: Array<{ props: { title: string } } | string>
+}> = ({ children }) => {
+  const [toggleId, setToggleId] = useState('')
+  const {
+    addNewToggle = (): null => null,
+    updateToggleInd = (): null => null,
+    togglesData = {}
+  } = useContext(TogglesContext)
+  const tabs: Array<{ props: { title: string } } | string> = children.filter(
+    child => child !== '\n'
+  )
+  const tabsTitles = tabs.map(tab =>
+    typeof tab === 'object' ? tab.props.title : ''
+  )
+
+  useEffect(() => {
+    if (toggleId === '') {
+      const newId = nanoid()
+      addNewToggle(newId, tabsTitles)
+      setToggleId(newId)
+    }
+
+    if (toggleId && !togglesData[toggleId]) {
+      addNewToggle(toggleId, tabsTitles)
+    }
+  }, [togglesData])
+
+  return (
+    <div className={styles.toggle}>
+      {tabs.map((tab, i) => (
+        <ToggleTab
+          ind={i}
+          key={i}
+          title={tabsTitles[i]}
+          id={toggleId}
+          checked={
+            i === (togglesData[toggleId] ? togglesData[toggleId].checkedInd : 0)
+          }
+          onChange={(): void => updateToggleInd(toggleId, i)}
+        >
+          {tab}
+        </ToggleTab>
+      ))}
+    </div>
+  )
+}
+
+const Tab: React.FC = ({ children }) => (
+  <div className={styles.tab}>{children}</div>
+)
+
 const renderAst = new rehypeReact({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   createElement: React.createElement as any,
@@ -125,7 +207,9 @@ const renderAst = new rehypeReact({
     details: Details,
     a: Link,
     card: Card,
-    cards: Cards
+    cards: Cards,
+    toggle: Toggle,
+    tab: Tab
   }
 }).Compiler
 
@@ -192,7 +276,9 @@ const Markdown: React.FC<IMarkdownProps> = ({
         <i className={cn(sharedStyles.buttonIcon, styles.githubIcon)} /> Edit on
         GitHub
       </Link>
-      <div className="markdown-body">{renderAst(htmlAst)}</div>
+      <TogglesProvider>
+        <div className="markdown-body">{renderAst(htmlAst)}</div>
+      </TogglesProvider>
       <div className={styles.navButtons}>
         <Link className={styles.navButton} href={prev || '#'}>
           <i className={cn(styles.navButtonIcon, styles.prev)} />
