@@ -1,7 +1,9 @@
 # Command Reference: `send-comment`
 
-```dvc
-cml send-comment some_content.md
+Post a markdown comment on a commit.
+
+```bash
+cml send-comment ./report.md
 ```
 
 ## Common error messages

@@ -38,24 +38,25 @@ jobs:
           dvc metrics diff master --show-md >> report.md
 
           # Publish confusion matrix diff
-          echo -e "## Plots\n### Class confusions" >> report.md
+          echo "## Plots" >> report.md
+          echo "### Class confusions" >> report.md
           dvc plots diff \
             --target classes.csv \
             --template confusion \
             -x actual \
             -y predicted \
             --show-vega master > vega.json
-          vl2png vega.json -s 1.5 | cml-publish --md >> report.md
+          vl2png vega.json -s 1.5 | cml publish --md >> report.md
 
           # Publish regularization function diff
-          echo "### Effects of regularization\n" >> report.md
+          echo "### Effects of regularization" >> report.md
           dvc plots diff \
             --target estimators.csv \
             -x Regularization \
             --show-vega master > vega.json
-          vl2png vega.json -s 1.5 | cml-publish --md >> report.md
+          vl2png vega.json -s 1.5 | cml publish --md >> report.md
 
-          cml-send-comment report.md
+          cml send-comment report.md
 ```
 
 ## Cloud Storage Provider Credentials
@@ -138,7 +139,7 @@ env:
 ## For GitHub Actions Users: Try the `setup-dvc` Action!
 
 The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action is a
-JavaScript action that sets up [DVC](https://dvc.org/) in your workflow.
+JavaScript action that sets up [DVC](https://dvc.org) in your workflow.
 
 ### Usage
 

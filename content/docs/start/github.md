@@ -37,8 +37,8 @@ supported CI systems.
                   python train.py
 
                   cat metrics.txt >> report.md
-                  cml-publish confusion_matrix.png --md >> report.md
-                  cml-send-comment report.md
+                  cml publish confusion_matrix.png --md >> report.md
+                  cml send-comment report.md
    ```
 
 3. In your text editor of choice, edit line 16 of `train.py` to `depth = 5`.
@@ -57,8 +57,8 @@ supported CI systems.
    ![](/img/make_pr.png)
 
    Shortly, you should see a comment from `github-actions` appear in the Pull
-   Request with your CML report. This is a result of the function
-   `cml-send-comment` in your workflow.
+   Request with your CML report. This is a result of the `cml send-comment`
+   command in your workflow.
 
    ![](/img/cml_first_report.png)
 
@@ -66,26 +66,26 @@ This is the gist of the CML workflow: when you push changes to your GitHub
 repository, the workflow in your `.github/workflows/cml.yaml` file gets run and
 a report generated.
 
-CML functions let you display relevant results from the workflow, like model
+CML commands let you display relevant results from the workflow, like model
 performance metrics and vizualizations, in GitHub checks and comments. What kind
 of workflow you want to run, and want to put in your CML report, is up to you.
 
 ## The CML GitHub Action
 
-In the above example, we got the CML functions thanks to our Docker container.
+In the above example, we got the CML commands thanks to our Docker container.
 But there's another way for GitHub Actions users to get CML: the `setup-cml`
 Action!
 
 The [iterative/setup-cml](https://github.com/iterative/setup-cml) action is a
-JavaScript workflow that provides [CML](https://cml.dev/) functions in your
-GitHub Actions workflow. The action allows users to install CML without using
-the CML Docker container.
+JavaScript workflow that provides [CML](https://cml.dev) commands in your GitHub
+Actions workflow. The action allows users to install CML without using the CML
+Docker container.
 
 This action gives you:
 
-- Functions like `cml-publish` and `cml-send-comment` for publishing data
+- Commands like `cml publish` and `cml send-comment` for publishing data
   visualization and metrics from your CI workflow as comments in a pull request.
-- `cml-runner`, a function that enables workflows to provision cloud and
+- `cml runner`, a command that enables workflows to provision cloud and
   on-premise computing resources for training models
 - The freedom 🦅 to mix and match CML with your favorite data science tools and
   environments
@@ -119,8 +119,8 @@ steps:
 
 The following inputs are supported.
 
-- `version` - (optional) The version of CML to install. A value of `latest` will
-  install the latest version of CML functions. Defaults to `latest`.
+- `version` - (optional) The version of CML to install. The default value of
+  `latest` will install the latest version of CML.
 
 ## Outputs
 
@@ -141,7 +141,7 @@ steps:
       # train will generate plot.png
       python train.py
 
-      echo 'My first CML report' > report.md
-      cml-publish plot.png --md > report.md
-      cml-send-comment report.md
+      echo "# My first CML report" >> report.md
+      cml publish plot.png --md >> report.md
+      cml send-comment report.md
 ```

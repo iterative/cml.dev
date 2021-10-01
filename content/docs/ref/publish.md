@@ -1,9 +1,9 @@
 # Command Reference: `publish`
 
-Publish an image for inclusion in a CML report.
+Publicly host an image for displaying in a CML report.
 
 To render an image in a markdown file:
 
-```dvc
-cml publish --md ./some-image.png >> report.md
+```bash
+cml publish ./plot.png --md >> report.md
 ```

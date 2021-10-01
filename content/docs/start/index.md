@@ -15,7 +15,7 @@ results and metrics. Above, an example report for a
 
 We built CML with these principles in mind:
 
-- **[GitFlow](https://nvie.com/posts/a-successful-git-branching-model/) for data
+- **[GitFlow](https://nvie.com/posts/a-successful-git-branching-model) for data
   science.** Use GitLab or GitHub to manage ML experiments, track who trained ML
   models or modified data and when. Codify data and models with
   [DVC](/doc/cml-with-dvc) instead of pushing to a Git repo.

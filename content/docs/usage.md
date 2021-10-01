@@ -52,7 +52,7 @@ jobs:
         run: |
           # Post reports as comments in GitHub PRs
           cat results.txt >> report.md
-          cml-send-comment report.md
+          cml send-comment report.md
 ```
 
 We helpfully provide CML and other useful libraries pre-installed on our
@@ -62,27 +62,42 @@ example, uncommenting the
 runner pull the CML Docker image. The image already has NodeJS, Python 3, DVC
 and CML set up on an Ubuntu LTS base for convenience.
 
-## CML Functions
+## CML Commands
 
-CML provides a number of functions to help package the outputs of ML workflows
+CML provides a number of commands to help package the outputs of ML workflows
 (including numeric data and visualizations about model performance) into a CML
 report.
 
-Below is a table of CML functions for writing markdown reports and delivering
-those reports to your CI system.
+Below is a list of CML commands for starting cloud compute runners, writing and
+publishing markdown reports to your CI/CD system.
 
-| Function                | Description                                                      | Example Inputs                                              |
-| ----------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
-| `cml-runner`            | Launch a runner locally or hosted by a cloud provider            | See [Arguments](https://github.com/iterative/cml#arguments) |
-| `cml-publish`           | Publicly host an image for displaying in a CML report            | `<path to image> --title <image title> --md`                |
-| `cml-send-comment`      | Return CML report as a comment in your GitLab/GitHub workflow    | `<path to report> --head-sha <sha>`                         |
-| `cml-send-github-check` | Return CML report as a check in GitHub                           | `<path to report> --head-sha <sha>`                         |
-| `cml-pr`                | Commit the given files to a new branch and create a pull request | `<path>...`                                                 |
-| `cml-tensorboard-dev`   | Return a link to a Tensorboard.dev page                          | `--logdir <path to logs> --title <experiment title> --md`   |
+∞ **[`runner`](/doc/ref/runner)**\
+Launch a runner hosted by a cloud compute provider or locally on-premise (see [self-hosted runners](/doc/self-hosted-runners))\
+e.g. `cml runner --cloud={aws,azure,gcp,kubernetes} ...`
+
+∞ **[`publish`](/doc/ref/publish)**\
+Publicly host an image for displaying in a CML report\
+e.g. `cml publish plot.png --md >> report.md`
+
+∞ **[`pr`](/doc/ref/pr)**\
+Commit specified files to a new branch and create a pull request\
+e.g. `cml pr "**/*.json" "**/*.py" --md >> report.md`
+
+∞ **[`send-comment`](/doc/ref/send-comment)**\
+Post a markdown report as a commit comment\
+e.g. `cml send-comment report.md`
+
+∞ **[`send-github-check`](/doc/ref/send-github-check)**\
+Post a markdown report as a GitHub check\
+e.g. `cml send-github-check report.md`
+
+∞ **[`tensorboard-dev`](/doc/ref/tensorboard-dev)**\
+Return a link to a <https://tensorboard.dev> page\
+e.g. `cml tensorboard-dev --logdir=./logs --md >> report.md`
 
 ### CML Reports
 
-The `cml-send-comment` command can be used to post reports. CML reports are
+The `cml send-comment` command can be used to post reports. CML reports are
 written in markdown ([GitHub](https://github.github.com/gfm),
 [GitLab](https://docs.gitlab.com/ee/user/markdown.html), or
 [Bitbucket](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
@@ -99,9 +114,9 @@ cat results.txt >> report.md
 
 🖼️ **Images** Display images using the markdown or HTML. Note that if an image
 is an output of your ML workflow (i.e., it is produced by your workflow), you
-will need to use the `cml-publish` function to include it a CML report. For
-example, if `graph.png` is output by `python train.py`, run:
+will need to use the `cml publish` command to include it a CML report. For
+example, if `plot.png` is output by `python train.py`, run:
 
 ```bash
-cml-publish graph.png --md >> report.md
+cml publish plot.png --md >> report.md
 ```

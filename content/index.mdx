@@ -184,8 +184,8 @@ cml:
   script: <Tooltip type="dependencies"> - pip3 install -r requirements.txt -
     python train.py </Tooltip>
 
-    <Tooltip type="reports"> - cat metrics.txt >> report.md - cml-publish
-    confusion_matrix.png --md >> report.md - cml-send-comment report.md
+    <Tooltip type="reports"> - cat metrics.txt >> report.md - cml publish
+    confusion_matrix.png --md >> report.md - cml send-comment report.md
     </Tooltip>
 ```
 
@@ -229,8 +229,8 @@ jobs:
 
           <Tooltip type="reports">
           cat metrics.txt >> report.md
-          cml-publish confusion_matrix.png --md >> report.md
-          cml-send-comment report.md
+          cml publish confusion_matrix.png --md >> report.md
+          cml send-comment report.md
           </Tooltip>
 ```
 
@@ -277,8 +277,8 @@ cml:
     - dvc plots diff
       --target loss.csv --show-vega master > vega.json
     <Tooltip type="reports">
-    - vl2png vega.json | cml-publish --md >> report.md
-    - cml-send-comment report.md
+    - vl2png vega.json | cml publish --md >> report.md
+    - cml send-comment report.md
     </Tooltip>
 ```
 
@@ -338,8 +338,8 @@ jobs:
           dvc plots diff \
             --target loss.csv --show-vega master > vega.json
           <Tooltip type="reports">
-          vl2png vega.json -s 1.5 | cml-publish --md  >> report.md
-          cml-send-comment report.md
+          vl2png vega.json -s 1.5 | cml publish --md >> report.md
+          cml send-comment report.md
           </Tooltip>
 ```
 
@@ -371,13 +371,13 @@ cml:
     script:
         - pip install -r requirements.txt
         <Tooltip type="tensorboard">
-        - cml-tensorboard-dev \
+        - cml tensorboard-dev \
             --logdir logs \
             --name "Go to tensorboard" \
             --md >> report.md
         </Tooltip>
         <Tooltip type="reports">
-        - cml-send-comment report.md
+        - cml send-comment report.md
         </Tooltip>
 
         <Tooltip type="dependencies">
@@ -425,13 +425,13 @@ jobs:
           pip install -r requirements.txt
 
           <Tooltip type="tensorboard">
-          cml-tensorboard-dev \
+          cml tensorboard-dev \
             --logdir logs \
             --name "Go to tensorboard" \
             --md >> report.md
           </Tooltip>
           <Tooltip type="reports">
-          cml-send-comment report.md
+          cml send-comment report.md
           </Tooltip>
 
           <Tooltip type="dependencies">
@@ -469,7 +469,7 @@ deploy_job:
   image: dvcorg/cml
   script:
     <Tooltip type="reports">
-    - cml-runner
+    - cml runner
       --cloud=aws
       --cloud-region=us-west
       --cloud-type=t2.micro
@@ -491,8 +491,8 @@ train_job:
 
     - echo "## Report from your EC2 Instance" > report.md
     - cat metrics.txt >> report.md
-    - cml-publish "confusion_matrix.png" --md >> report.md
-    - cml-send-comment report.md
+    - cml publish confusion_matrix.png --md >> report.md
+    - cml send-comment report.md
 
 ```
 
@@ -528,7 +528,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" }
         run: |
           <Tooltip type="reports">
-          cml-runner \
+          cml runner \
           --cloud=aws \
           --cloud-region=us-west \
           --cloud-type=t2.micro \
@@ -555,8 +555,8 @@ jobs:
 
         echo "## Report from your EC2 Instance" > report.md
         cat metrics.txt >> report.md
-        cml-publish "confusion_matrix.png" --md >> report.md
-        cml-send-comment report.md
+        cml publish confusion_matrix.png --md >> report.md
+        cml send-comment report.md
 ```
 
 <ExampleBox title="CML Report">
@@ -589,7 +589,7 @@ deploy_job:
   image: dvcorg/cml
   script:
     <Tooltip type="reports">
-    - cml-runner \
+    - cml runner \
       --cloud=aws \
       --cloud-region=us-west \
       --cloud-type=g3.4xlarge \
@@ -622,7 +622,7 @@ train_job:
     - convert +append final_owl.png master_owl.png out.png
     - convert out.png -resize 75% out_shrink.png
     - echo "### Workspace vs. Master" >> report.md
-    - cml-publish out_shrink.png --md >> report.md
+    - cml publish out_shrink.png --md >> report.md
 
     # Report training parameters
     - echo "## Training parameter diffs" >> report.md
@@ -633,7 +633,7 @@ train_job:
     - echo "## GPU info" >> report.md
     - cat gpu_info.txt >> report.md
 
-    - cml-send-comment report.md
+    - cml send-comment report.md
 
 
 ```
@@ -670,7 +670,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: { "${{ secrets.AWS_SECRET_ACCESS_KEY }}" }
         run: |
           <Tooltip type="reports">
-          cml-runner \
+          cml runner \
           --cloud=aws \
           --cloud-region=us-west \
           --cloud-type=g3.4xlarge \
@@ -713,7 +713,7 @@ jobs:
         convert +append final_owl.png master_owl.png out.png
         convert out.png -resize 75%  out_shrink.png
         echo "### Workspace vs. Main" >> report.md
-        cml-publish out_shrink.png --md --title 'compare' >> report.md
+        cml publish out_shrink.png --md --title 'compare' >> report.md
 
         echo "## Training metrics" >> report.md
         dvc params diff master --show-md >> report.md
@@ -722,7 +722,7 @@ jobs:
         echo "## GPU info" >> report.md
         cat gpu_info.txt >> report.md
 
-        cml-send-comment report.md
+        cml send-comment report.md
 ```
 
 <ExampleBox title="CML Report">
