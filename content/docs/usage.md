@@ -51,8 +51,8 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Post reports as comments in GitHub PRs
-          cat results.txt >> myreport.md
-          cml send-comment myreport.md
+          cat results.txt >> report.md
+          cml send-comment report.md
 ```
 
 We helpfully provide CML and other useful libraries pre-installed on our
@@ -77,23 +77,23 @@ e.g. `cml runner --cloud={aws,azure,gcp,kubernetes} ...`
 
 ∞ **[`publish`](/doc/ref/publish)**\
 Publicly host an image for displaying in a CML report\
-e.g. `cml publish myimage.png --md >> myreport.md`
+e.g. `cml publish plot.png --md >> report.md`
 
 ∞ **[`pr`](/doc/ref/pr)**\
 Commit specified files to a new branch and create a pull request\
-e.g. `cml pr "**/*.json" "**/*.py" --md >> myreport.md`
+e.g. `cml pr "**/*.json" "**/*.py" --md >> report.md`
 
 ∞ **[`send-comment`](/doc/ref/send-comment)**\
 Post a markdown report as a commit comment\
-e.g. `cml send-comment myreport.md`
+e.g. `cml send-comment report.md`
 
 ∞ **[`send-github-check`](/doc/ref/send-github-check)**\
 Post a markdown report as a GitHub check\
-e.g. `cml send-github-check myreport.md`
+e.g. `cml send-github-check report.md`
 
 ∞ **[`tensorboard-dev`](/doc/ref/tensorboard-dev)**\
 Return a link to a <https://tensorboard.dev> page\
-e.g. `cml tensorboard-dev --logdir=./logs --md >> myreport.md`
+e.g. `cml tensorboard-dev --logdir=./logs --md >> report.md`
 
 ### CML Reports
 
@@ -109,14 +109,14 @@ you. Some examples:
 copy the contents of a text file containing the results of ML model training:
 
 ```bash
-cat results.txt >> myreport.md
+cat results.txt >> report.md
 ```
 
 🖼️ **Images** Display images using the markdown or HTML. Note that if an image
 is an output of your ML workflow (i.e., it is produced by your workflow), you
 will need to use the `cml publish` command to include it a CML report. For
-example, if `myimage.png` is output by `python train.py`, run:
+example, if `plot.png` is output by `python train.py`, run:
 
 ```bash
-cml publish myimage.png --md >> myreport.md
+cml publish plot.png --md >> report.md
 ```

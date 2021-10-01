@@ -71,9 +71,9 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
        - pip3 install -r requirements.txt
        - python train.py
 
-       - cat metrics.txt >> myreport.md
-       - cml publish confusion_matrix.png --md >> myreport.md
-       - cml send-comment myreport.md
+       - cat metrics.txt >> report.md
+       - cml publish confusion_matrix.png --md >> report.md
+       - cml send-comment report.md
    ```
 
 6. In your text editor, open `train.py` and edit line 16 to `depth = 5`.

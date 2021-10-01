@@ -36,9 +36,9 @@ supported CI systems.
                   pip install -r requirements.txt
                   python train.py
 
-                  cat metrics.txt >> myreport.md
-                  cml publish confusion_matrix.png --md >> myreport.md
-                  cml send-comment myreport.md
+                  cat metrics.txt >> report.md
+                  cml publish confusion_matrix.png --md >> report.md
+                  cml send-comment report.md
    ```
 
 3. In your text editor of choice, edit line 16 of `train.py` to `depth = 5`.
@@ -129,7 +129,7 @@ Setup CML has no outputs.
 ### A complete workflow
 
 Assume that we have a machine learning script, `train.py`, that outputs an image
-`myimage.png`. A potential workflow will look like this:
+`plot.png`. A potential workflow will look like this:
 
 ```yaml
 steps:
@@ -141,7 +141,7 @@ steps:
       # train will generate plot.png
       python train.py
 
-      echo "# My first CML report" >> myreport.md
-      cml publish myimage.png --md >> myreport.md
-      cml send-comment myreport.md
+      echo "# My first CML report" >> report.md
+      cml publish plot.png --md >> report.md
+      cml send-comment report.md
 ```

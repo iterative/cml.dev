@@ -3,7 +3,7 @@
 Post a markdown comment on a commit.
 
 ```bash
-cml send-comment ./myreport.md
+cml send-comment ./report.md
 ```
 
 ## Common error messages
