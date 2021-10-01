@@ -51,8 +51,8 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Post reports as comments in GitHub PRs
-          cat results.txt >> report.md
-          cml send-comment report.md
+          cat results.txt >> myreport.md
+          cml send-comment myreport.md
 ```
 
 We helpfully provide CML and other useful libraries pre-installed on our
@@ -109,14 +109,14 @@ you. Some examples:
 copy the contents of a text file containing the results of ML model training:
 
 ```bash
-cat results.txt >> report.md
+cat results.txt >> myreport.md
 ```
 
 🖼️ **Images** Display images using the markdown or HTML. Note that if an image
 is an output of your ML workflow (i.e., it is produced by your workflow), you
 will need to use the `cml publish` command to include it a CML report. For
-example, if `graph.png` is output by `python train.py`, run:
+example, if `myimage.png` is output by `python train.py`, run:
 
 ```bash
-cml publish graph.png --md >> report.md
+cml publish myimage.png --md >> myreport.md
 ```

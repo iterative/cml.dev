@@ -36,9 +36,9 @@ supported CI systems.
                   pip install -r requirements.txt
                   python train.py
 
-                  cat metrics.txt >> report.md
-                  cml publish confusion_matrix.png --md >> report.md
-                  cml send-comment report.md
+                  cat metrics.txt >> myreport.md
+                  cml publish confusion_matrix.png --md >> myreport.md
+                  cml send-comment myreport.md
    ```
 
 3. In your text editor of choice, edit line 16 of `train.py` to `depth = 5`.
@@ -141,7 +141,7 @@ steps:
       # train will generate plot.png
       python train.py
 
-      echo 'My first CML report' > report.md
-      cml publish plot.png --md > report.md
-      cml send-comment report.md
+      echo "# My first CML report" >> myreport.md
+      cml publish plot.png --md >> myreport.md
+      cml send-comment myreport.md
 ```

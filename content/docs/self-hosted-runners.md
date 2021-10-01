@@ -67,8 +67,8 @@ jobs:
           pip install -r requirements.txt
           python train.py
 
-          cat metrics.txt > report.md
-          cml send-comment report.md
+          cat metrics.txt >> myreport.md
+          cml send-comment myreport.md
 ```
 
 In the workflow above, the `deploy-runner` step launches an EC2 `p2.xlarge`

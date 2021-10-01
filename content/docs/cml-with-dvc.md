@@ -33,29 +33,30 @@ jobs:
           dvc repro
 
           # Report metrics
-          echo "## Metrics" >> report.md
+          echo "## Metrics" >> myreport.md
           git fetch --prune
-          dvc metrics diff master --show-md >> report.md
+          dvc metrics diff master --show-md >> myreport.md
 
           # Publish confusion matrix diff
-          echo -e "## Plots\n### Class confusions" >> report.md
+          echo "## Plots" >> myreport.md
+          echo "### Class confusions" >> myreport.md
           dvc plots diff \
             --target classes.csv \
             --template confusion \
             -x actual \
             -y predicted \
             --show-vega master > vega.json
-          vl2png vega.json -s 1.5 | cml publish --md >> report.md
+          vl2png vega.json -s 1.5 | cml publish --md >> myreport.md
 
           # Publish regularization function diff
-          echo "### Effects of regularization\n" >> report.md
+          echo "### Effects of regularization" >> myreport.md
           dvc plots diff \
             --target estimators.csv \
             -x Regularization \
             --show-vega master > vega.json
-          vl2png vega.json -s 1.5 | cml publish --md >> report.md
+          vl2png vega.json -s 1.5 | cml publish --md >> myreport.md
 
-          cml send-comment report.md
+          cml send-comment myreport.md
 ```
 
 ## Cloud Storage Provider Credentials
