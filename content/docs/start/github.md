@@ -129,7 +129,7 @@ Setup CML has no outputs.
 ### A complete workflow
 
 Assume that we have a machine learning script, `train.py`, that outputs an image
-`plot.png`. A potential workflow will look like this:
+`myimage.png`. A potential workflow will look like this:
 
 ```yaml
 steps:
@@ -142,6 +142,6 @@ steps:
       python train.py
 
       echo "# My first CML report" >> myreport.md
-      cml publish plot.png --md >> myreport.md
+      cml publish myimage.png --md >> myreport.md
       cml send-comment myreport.md
 ```
