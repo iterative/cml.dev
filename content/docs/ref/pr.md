@@ -12,7 +12,7 @@ is roughly equivalent to:
 SHA="$(git log -n1 --format=%h)"
 BASE="$(git branch)"
 git checkout -b "${BASE}-cml-pr-${SHA}"
-find . -name '*.py' -o -name '*.json' | xargs git add
+find . -name "*.py" -o -name "*.json" | xargs git add
 git commit -m "CML PR for ${SHA} [skip ci]"
 git push
 curl \
