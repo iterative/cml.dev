@@ -1,82 +1,84 @@
-# Self-hosted Runners
+# Self-hosted (On-premise or Cloud) Runners
 
-GitHub Actions and GitLab CI are run on GitHub- and GitLab- hosted runners by
-default. However, there are many great reasons to use your own runners: to take
-advantage of GPUs; to orchestrate your team's shared computing resources, or to
-train in the cloud.
+GitHub Actions and GitLab CI workflows are run on GitHub- and GitLab- hosted
+runners by default. However, there are many great reasons to use your own
+runners: to take advantage of GPUs, orchestrate your team's shared computing
+resources, or train in the cloud.
 
 ☝️ **Tip!** Check out the official documentation from
 [GitHub](https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
-and [GitLab](https://docs.gitlab.com/runner/) to get started setting up your
+and [GitLab](https://docs.gitlab.com/runner) to get started setting up your
 self-hosted runner.
 
-## Allocating cloud resources with CML
+## Allocating Cloud Compute Resources with CML
 
-When a workflow requires computational resources (such as GPUs) CML can
+When a workflow requires computational resources (such as GPUs), CML can
 automatically allocate cloud instances using `cml-runner`. You can spin up
-instances on your AWS or Azure account (GCP support is forthcoming!).
+instances on [AWS](#aws), [Azure](#azure), [GCP](#gcp), or
+[Kubernetes](#kubernetes).
 
-For example, the following workflow deploys a `t2.micro` instance on AWS EC2 and
-trains a model on the instance. After the job runs, the instance automatically
-shuts down. You might notice that this workflow is quite similar to the
-[basic use case](/doc/usage) highlighted in the beginning of the docs- that's
-because it is! What's new is that we've added `cml-runner`, plus a few
-environmental variables for passing your cloud service credentials to the
+For example, the following workflow deploys a `p2.xlarge` instance on AWS EC2
+and trains a model on the instance. After the job runs, the instance
+automatically shuts down.
+
+You might notice that this workflow is quite similar to the
+[basic use case](/doc/usage). The only addition is `cml-runner` and a few
+environment variables for passing your cloud compute credentials to the
 workflow.
 
-```yaml
-name: 'Train-in-the-cloud'
-on: [push]
+Note that `cml-runner` will also automatically restart your jobs (whether from a
+[GitHub Actions 72-hour timeout](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
+or a
+[AWS EC2 spot instance interruption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html)).
 
+```yaml
+name: Train-in-the-cloud
+on: [push]
 jobs:
   deploy-runner:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
       - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v2
-      - name: 'Deploy runner on EC2'
-        shell: bash
+      - name: Deploy runner on EC2
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           cml-runner \
-          --cloud aws \
-          --cloud-region us-west \
-          --cloud-type=t2.micro \
-          --labels=cml-runner
-  model-training:
+              --cloud=aws \
+              --cloud-region=us-west \
+              --cloud-type=p2.xlarge \
+              --labels=cml-gpu
+  train-model:
     needs: deploy-runner
-    runs-on: [self-hosted, cml-runner]
-    container: docker://iterativeai/cml:0-dvc2-base1
+    runs-on: [self-hosted, cml-gpu]
+    timeout-minutes: 4320 # 72h
+    container:
+      image: docker://iterativeai/cml:0-dvc2-base1-gpu
+      options: --gpus all
     steps:
       - uses: actions/checkout@v2
-      - name: 'Train my model'
+      - name: Train model
         env:
-          repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           pip install -r requirements.txt
           python train.py
 
-          # Publish report with CML
           cat metrics.txt > report.md
           cml-send-comment report.md
 ```
 
-In the above workflow, the step `deploy-runner` launches an EC2 `t2-micro`
-instance in the `us-west` region. The next step, `model-training`, runs on the
-newly launched instance.
+In the workflow above, the `deploy-runner` step launches an EC2 `p2.xlarge`
+instance in the `us-west` region. The `train-model` job then runs on the
+newly-launched instance. See [Environment Variables](#environment-variables)
+below for details on the `secrets` required.
 
-**Note that you can use any container with this workflow!** While you must have
-CML and its dependencies setup to use CML functions like `cml-send-comment` from
-your instance, you can create your favorite training environment in the cloud by
-pulling the Docker container of your choice.
-
-We like the [CML Docker images](#docker-images)
-(`docker://iterativeai/cml:0-dvc2-base1`) because it comes loaded with Python,
-Git, Node JS and other essentials for full-stack data science. But we don't mind
-if you do it your way :)
+🎉 **Note that jobs can use any Docker container!** To use functions such as
+`cml-send-comment` from a job, the only requirement is to
+[have CML installed](/doc/cml-with-npm).
 
 ## Docker Images
 
@@ -96,61 +98,97 @@ For example, `docker://iterativeai/cml:0-dvc2-base1-gpu`, or
 
 ## Options
 
-The function `cml-runner` accepts the following arguments:
+The `cml-runner` function accepts the following arguments:
 
-| Name                              | Default                                                    | Description                                                                                                                                           |
-| --------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--version`                       | N/A                                                        | Show version number and exit (ignoring all other options)                                                                                             |
-| `--labels <list>`                 | `cml`                                                      | One or more user-defined labels for this runner (delimited with commas)                                                                               |
-| `--idle-timeout <seconds>`        | `300`                                                      | Seconds to wait for jobs before shutting down. Set to `-1` to disable timeout                                                                         |
-| `--name <string>`                 | `cml-{identifier}` where `{identifier}` is a random string | Name displayed in the repository once registered                                                                                                      |
-| `--single`                        | N/A                                                        | Exit after running a single job                                                                                                                       |
-| `--reuse`                         | N/A                                                        | Don't launch a new runner if an existing one has the same name or overlapping labels                                                                  |
-| `--driver <platform>`             | Inferred from environment variables                        | Platform where the repository is hosted. Accepts `github` or `gitlab`                                                                                 |
-| `--repo <URL>`                    | Inferred from environment variables                        | Git repository URL e.g. https://github.com/iterative/cml                                                                                              |
-| `--token <token>`                 | Inferred from environment variables                        | Personal access token with enough permissions to register a self-hosted runner on the repository                                                      |
-| `--cloud <vendor>`                | N/A                                                        | Cloud provider to deploy the runner. Accepts `aws` or `azure`. If not set, the runner will be deployed locally and `--cloud-` options will be ignored |
-| `--cloud-region <region>`         | `us-west`                                                  | Region where the instance is deployed. Accepts `us-east`, `us-west`, `eu-west`, `eu-north` or native regions                                          |
-| `--cloud-type <type>`             | N/A                                                        | Instance type. Accepts `m`, `l`, `xl` or native types like `t2.micro`                                                                                 |
-| `--cloud-gpu <type>`              | `nogpu`                                                    | GPU type. Accepts `nogpu`, `k80` or `tesla`.                                                                                                          |
-| `--cloud-hdd-size <gigabytes>`    | N/A                                                        | Storage size in GB                                                                                                                                    |
-| `--cloud-ssh-private <key>`       | Automatically generated throwaway key                      | Custom private RSA SSH key                                                                                                                            |
-| `--cloud-spot`                    | N/A                                                        | Request a spot instance. If not set, `--cloud-spot-price` won't have any effect                                                                       |
-| `--cloud-spot-price <usd>`        | Current spot bidding price                                 | Maximum spot instance bidding price in USD                                                                                                            |
-| `--cloud-startup-script <base64>` | N/A                                                        | Run the provided Base64-encoded Linux shell script during the instance initialization                                                                 |
-| `-h`                              | N/A                                                        | Show this help menu and exit                                                                                                                          |
+```
+--help                      Show help                                [boolean]
+--version                   Show version number                      [boolean]
+--log                       Maximum log level
+                 [choices: "error", "warn", "info", "debug"] [default: "info"]
+--labels                    One or more user-defined labels for this runner
+                            (delimited with commas)           [default: "cml"]
+--idle-timeout              Seconds to wait for jobs before shutting down. Set
+                            to -1 to disable timeout            [default: 300]
+--name                      Name displayed in the repository once registered
+                            cml-{ID}
+--no-retry                  Do not restart workflow terminated due to instance
+                            disposal or GitHub Actions timeout
+                                                    [boolean] [default: false]
+--single                    Exit after running a single job
+                                                    [boolean] [default: false]
+--reuse                     Don't launch a new runner if an existing one has
+                            the same name or overlapping labels
+                                                    [boolean] [default: false]
+--driver                    Platform where the repository is hosted. If not
+                            specified, it will be inferred from the
+                            environment          [choices: "github", "gitlab"]
+--repo                      Repository to be used for registering the runner.
+                            If not specified, it will be inferred from the
+                            environment
+--token                     Personal access token to register a self-hosted
+                            runner on the repository. If not specified, it
+                            will be inferred from the environment
+                                                            [default: "infer"]
+--cloud                     Cloud to deploy the runner
+                                [choices: "aws", "azure", "gcp", "kubernetes"]
+--cloud-region              Region where the instance is deployed. Choices:
+                            [us-east, us-west, eu-west, eu-north]. Also
+                            accepts native cloud regions  [default: "us-west"]
+--cloud-type                Instance type. Choices: [m, l, xl]. Also supports
+                            native types like i.e. t2.micro
+--cloud-gpu                 GPU type.
+                                    [choices: "nogpu", "k80", "v100", "tesla"]
+--cloud-hdd-size            HDD size in GB
+--cloud-ssh-private         Custom private RSA SSH key. If not provided an
+                            automatically generated throwaway key will be used
+                                                                 [default: ""]
+--cloud-spot                Request a spot instance                  [boolean]
+--cloud-spot-price          Maximum spot instance bidding price in USD.
+                            Defaults to the current spot bidding price
+                                                               [default: "-1"]
+--cloud-startup-script      Run the provided Base64-encoded Linux shell script
+                            during the instance initialization   [default: ""]
+--cloud-aws-security-group  Specifies the security group in AWS  [default: ""]
+```
 
-## Environment variables
+## Environment Variables
 
 Sensitive values like cloud and repository credentials can be provided through
 environment variables with the aid of GitHub
-[secrets](https://docs.github.com/es/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
+[secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
 or GitLab
 [masked variables](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project);
 the latter also supports
 [external secrets](https://docs.gitlab.com/ee/ci/secrets) for added security.
 
-When invoking the `cml-runner` command, you will need use environment variables
-to provide the following secrets:
+⚠️ You will need to create a
+[personal access token (PAT)](#personal-access-token) with repository read/write
+access and workflow privileges. In the example workflow above, this token is
+stored as `PERSONAL_ACCESS_TOKEN`.
 
-- A personal access token to register and remove self-hosted runners from your
-  repositories
-- Cloud credentials to create and destroy cloud resources, only when used in
-  conjunction with the `--cloud` option
+🛈 If using the `--cloud` option, you will also need to provide access
+credentials for your cloud compute resources as secrets. In the above example,
+`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` (with privileges to create &
+destroy EC2 instances) are required.
 
-### Personal access token
+### Personal Access Token
+
+This token serves as a repository access credential.
 
 <details>
 
 #### GitHub
 
-You can either
-[create a personal access token](https://docs.github.com/en/github-ae@latest/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-with the `repo` scope or a
-[GitHub App](https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps)
-with **Repository permissions / Administration** write permissions (for
-repository-level runners), or **Organization permissions / Self-hosted runners**
-write permissions (for organization-level runners).
+Use either:
+
+- a
+  [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+  with the **repo** scope, or
+- a
+  [GitHub App](https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps)
+  with **Repository permissions / Administration** write permissions (for
+  repository-level runners), or **Organization permissions / Self-hosted
+  runners** write permissions (for organization-level runners).
 
 </details>
 
@@ -158,16 +196,18 @@ write permissions (for organization-level runners).
 
 #### GitLab
 
-You can either
-[create a personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
-with the `api` scope or a
-[project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html)
-if your GitLab instance supports this feature; the latter will only work for
-project-level
-([specific](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#specific-runners))
-runners, not for instance-level
-([shared](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#shared-runners))
-runners.
+Use either:
+
+- a
+  [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
+  with the **api** scope, or
+- a
+  [project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html).
+  This only works for project-level
+  ([specific](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#specific-runners)),
+  but not for instance-level
+  ([shared](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#shared-runners))
+  runners.
 
 </details>
 
@@ -178,13 +218,13 @@ you plan to deploy runners to. Bot accounts are
 [the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts)
 as normal user accounts, with the only difference being the intended use case.
 
-### Cloud credentials
+### Cloud Compute Resource Credentials
 
-Note that you will also need to provide access credentials for your cloud
-compute resources as secrets. In the above example, `AWS_ACCESS_KEY_ID` and
-`AWS_SECRET_ACCESS_KEY` are required to deploy EC2 instances.
+Note that you will also need to provide access credentials of your compute
+resources. In the above example, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+are required to deploy EC2 instances.
 
-Click below to see credentials needed for supported cloud service providers.
+Click below to see credentials needed for supported compute providers.
 
 <details>
 
@@ -193,6 +233,9 @@ Click below to see credentials needed for supported cloud service providers.
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_SESSION_TOKEN` **(optional)**
+
+Note that the same credentials can also be used for
+[configuring cloud storage](/doc/cml-with-dvc#cloud-storage-provider-credentials).
 
 </details>
 
@@ -207,25 +250,54 @@ Click below to see credentials needed for supported cloud service providers.
 
 </details>
 
-## Using on-premise machines as self-hosted runners
+<details>
 
-You can also use `cml-runner` to set up a self-hosted runner on your local
-machine or on-premise GPU cluster.
+#### GCP
 
-```dvc
+Either one of:
+
+- `GOOGLE_APPLICATION_CREDENTIALS_DATA`: the **contents** of a service account
+  JSON file, or
+- `GOOGLE_APPLICATION_CREDENTIALS`: the **path** to the JSON file.
+
+The former is more convenient for CI/CD scenarios, where secrets are (usually)
+provisioned through environment variables instead of files.
+
+</details>
+
+<details>
+
+#### Kubernetes
+
+- `KUBERNETES_CONFIGURATION`: the **contents** of a
+  [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig)
+  file.
+
+</details>
+
+<details>
+
+#### On-premise (Local) Runners
+
+The `cml-runner` command can also be used to set up a local machine or
+on-premise GPU cluster as a self-hosted runner. Simply
+[install CML with NPM](/doc/cml-with-npm) and then run:
+
+```
 cml-runner \
-  --repo="$repository_url" \
-  --token="$personal_access_token" \
+  --repo="$REPOSITORY_URL" \
+  --token="$PERSONAL_ACCESS_TOKEN" \
   --labels="local,runner" \
-  --idle-timeout=-1
+  --idle-timeout=180
 ```
 
-Now your machine will listen for jobs triggered on your repository and execute
-them locally.
+The machine will listen for jobs from your repository and execute them locally.
 
-⚠️ **Warning:** people with access to your repository (everybody for public
-ones) could execute arbirary code on your machine; please refer to the
+⚠️ **Warning:** anyone with access to your repository (everybody for public
+ones) may be able to execute arbitrary code on your machine. Refer to the
 corresponding
-[GitHub](https://docs.github.com/es/actions/learn-github-actions/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
+[GitHub](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
 and [GitLab](https://docs.gitlab.com/runner/security/) documentation for
 additional guidance.
+
+</details>

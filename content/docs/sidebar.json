@@ -30,6 +30,37 @@
     "slug": "self-hosted-runners"
   },
   {
+    "label": "Command Reference",
+    "slug": "ref",
+    "source": false,
+    "children": [
+      {
+        "label": "pr",
+        "slug": "pr"
+      },
+      {
+        "label": "publish",
+        "slug": "publish"
+      },
+      {
+        "label": "runner",
+        "slug": "runner"
+      },
+      {
+        "label": "send-comment",
+        "slug": "send-comment"
+      },
+      {
+        "label": "send-github-check",
+        "slug": "send-github-check"
+      },
+      {
+        "label": "tensorboard-dev",
+        "slug": "tensorboard-dev"
+      }
+    ]
+  },
+  {
     "label": "Install as a Package",
     "slug": "cml-with-npm"
   },
