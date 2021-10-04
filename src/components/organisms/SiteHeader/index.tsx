@@ -1,17 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react'
-import Link from '../../atoms/ThemedGatsbyLink'
 import { Flex, Box, Container, Button } from '@theme-ui/components'
 import InstallPopup from '../../molecules/InstallPopup'
 import SmartLink from '../../atoms/SmartLink'
+import SiteLogo from '../../molecules/SiteLogo'
 
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
-import { ReactComponent as CmlText } from '@media/cml-text.svg'
 import { ReactComponent as UpIcon } from '@media/icons/up.svg'
 import { ReactComponent as DownIcon } from '@media/icons/down.svg'
-import { ReactComponent as CmlIcon } from '@media/icons/cml.svg'
-import { ReactComponent as DvcIcon } from '@media/icons/dvc.svg'
-import { ReactComponent as StudioIcon } from '@media/icons/studio.svg'
+import { ReactComponent as CmlIcon } from '@media/icons/cml_icon-color--square_vector.svg'
+import { ReactComponent as DvcIcon } from '@media/icons/dvc_icon-color--square_vector.svg'
+import { ReactComponent as StudioIcon } from '@media/icons/studio_icon-color--square_vector.svg'
 import { ReactComponent as ExternalLinkIcon } from '@media/icons/external-link.svg'
 
 import {
@@ -193,10 +192,7 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
       >
         <Container variant="layout.Header.Inner">
           <Box as="nav" variant="layout.Header.Nav">
-            <Link to="/" variant="layout.Header.Nav.Logo">
-              <CmlIcon width="16" height="16" />
-              <CmlText width="20" height="80" />
-            </Link>
+            <SiteLogo variant="layout.Header.Nav.Logo" />
             <SmartLink
               href="https://iterative.ai/"
               variant="layout.Header.Nav.CompanyLabel"

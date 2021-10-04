@@ -80,6 +80,26 @@ export default {
       WebkitTextFillColor: 'transparent',
       MozTextFillColor: 'transparent'
     },
+    SiteLogo: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: [75, null, 98, 113],
+      height: [28, null, 36, 40],
+      span: {
+        display: 'block',
+        mr: 'auto',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        width: [28, null, 36, 40],
+        height: [28, null, 36, 40]
+      },
+      svg: {
+        width: [41, null, 52, 58],
+        height: [14, null, 18, 26]
+      }
+    },
     Header: {
       color: 'background',
       backgroundColor: 'text',
@@ -110,22 +130,8 @@ export default {
           position: 'relative'
         },
         Logo: {
-          display: 'block',
           flex: '0 0 auto',
-          width: ['80px', null, '102px', '116px'],
-          height: ['28px', null, '36px', '40px'],
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          'svg:first-of-type': {
-            mr: 'auto',
-            width: [28, null, 36, 40],
-            height: [28, null, 36, 40]
-          },
-          'svg:nth-of-type(2)': {
-            width: [41, null, 52, 58],
-            height: [14, null, 18, 26]
-          }
+          variant: 'layout.SiteLogo'
         },
         CompanyLabel: {
           variant: 'layout.GradientText',
@@ -426,13 +432,11 @@ export default {
         display: ['block', null, null, 'flex']
       },
       Logo: {
-        display: 'flex',
-        justifyContent: 'space-between',
+        variant: 'layout.SiteLogo',
         mr: '80px',
-        alignItems: 'center',
         mb: [null, null, '26px'],
-        width: ['92px', null, '102px', '115px'],
-        height: ['32px', null, '36px', '40px'],
+        width: [87, null, 98, 113],
+        height: [32, null, 36, 40],
         span: {
           display: 'block',
           mr: 'auto',

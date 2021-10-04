@@ -5,6 +5,7 @@ import { Link as ThemedLink } from '@theme-ui/components'
 interface IThemedGatsbyLinkProps {
   to: string
   variant: string
+  ariaLabel?: string
 }
 
 const ThemedGatsbyLink: React.FC<IThemedGatsbyLinkProps> = props => {
