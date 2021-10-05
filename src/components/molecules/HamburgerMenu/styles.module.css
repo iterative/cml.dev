@@ -79,15 +79,11 @@
   @mixin hover;
   @mixin active;
 
-  width: 80px;
+  width: 75px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &:focus path {
-    fill: var(--color-orange);
-  }
 }
 
 .company {
@@ -186,6 +182,23 @@ a.sectionHeading {
   color: #fff;
   height: 40px;
   width: 40px;
+  background-repeat: none;
+  background-size: contain;
+  background-position: center;
+}
+
+.bgImg {
+  &Cml {
+    background-image: url(../../../media/icons/cml.svg);
+  }
+
+  &Dvc {
+    background-image: url(../../../media/icons/dvc.svg);
+  }
+
+  &Studio {
+    background-image: url(../../../media/icons/studio.svg);
+  }
 }
 
 .subSectionLinkTitle {

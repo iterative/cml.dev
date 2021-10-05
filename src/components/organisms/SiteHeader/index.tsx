@@ -1,12 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react'
-import Link from '../../atoms/ThemedGatsbyLink'
 import { Flex, Box, Container, Button } from '@theme-ui/components'
 import InstallPopup from '../../molecules/InstallPopup'
 import SmartLink from '../../atoms/SmartLink'
+import SiteLogo from '../../molecules/SiteLogo'
 
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
-import { ReactComponent as SiteLogo } from '@media/site-logo.svg'
 import { ReactComponent as UpIcon } from '@media/icons/up.svg'
 import { ReactComponent as DownIcon } from '@media/icons/down.svg'
 import { ReactComponent as CmlIcon } from '@media/icons/cml.svg'
@@ -98,7 +97,9 @@ const OtherToolsPopup: React.FC<IOtherToolsPopupProps> = ({ list, isOpen }) => {
           </Box>
           <Box as="h2" variant="layout.Header.Nav.OtherToolsPopup.Link.Title">
             {title}
-            <ExternalLinkIcon width="16" height="16" />
+            {href.match(/^https?:\/\//) && (
+              <ExternalLinkIcon width="16" height="16" />
+            )}
           </Box>
           <Box
             as="p"
@@ -191,9 +192,7 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
       >
         <Container variant="layout.Header.Inner">
           <Box as="nav" variant="layout.Header.Nav">
-            <Link to="/" variant="layout.Header.Nav.Logo">
-              <SiteLogo />
-            </Link>
+            <SiteLogo variant="layout.Header.Nav.Logo" />
             <SmartLink
               href="https://iterative.ai/"
               variant="layout.Header.Nav.CompanyLabel"

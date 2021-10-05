@@ -80,6 +80,26 @@ export default {
       WebkitTextFillColor: 'transparent',
       MozTextFillColor: 'transparent'
     },
+    SiteLogo: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: [75, null, 98, 113],
+      height: [28, null, 36, 40],
+      span: {
+        display: 'block',
+        mr: 'auto',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        width: [28, null, 36, 40],
+        height: [28, null, 36, 40]
+      },
+      svg: {
+        width: [41, null, 52, 58],
+        height: [14, null, 18, 26]
+      }
+    },
     Header: {
       color: 'background',
       backgroundColor: 'text',
@@ -110,16 +130,8 @@ export default {
           position: 'relative'
         },
         Logo: {
-          display: 'block',
           flex: '0 0 auto',
-          width: ['80px', null, '102px', '116px'],
-          height: ['28px', null, '36px', '40px'],
-          svg: {
-            width: 'inherit',
-            height: 'inherit',
-            display: 'block',
-            mx: 'auto'
-          }
+          variant: 'layout.SiteLogo'
         },
         CompanyLabel: {
           variant: 'layout.GradientText',
@@ -420,14 +432,23 @@ export default {
         display: ['block', null, null, 'flex']
       },
       Logo: {
-        display: 'inline-block',
+        variant: 'layout.SiteLogo',
         mr: '80px',
         mb: [null, null, '26px'],
-        svg: {
+        width: [87, null, 98, 113],
+        height: [32, null, 36, 40],
+        span: {
           display: 'block',
           mr: 'auto',
-          width: ['92px', null, '102px', '115px'],
-          height: ['32px', null, '36px', '40px']
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          width: [32, null, 36, 40],
+          height: [32, null, 36, 40]
+        },
+        svg: {
+          width: [46, null, 52, 58],
+          height: [16, null, 18, 26]
         }
       },
       Lists: {
@@ -459,10 +480,13 @@ export default {
           display: 'flex',
           alignItems: 'center',
           letterSpacing: '0.02em',
-          svg: {
+          'svg, span': {
             mr: ['8px', null, '10px', '12px'],
             width: ['16px', null, '18px', '20px'],
-            height: ['16px', null, '18px', '20px']
+            height: ['16px', null, '18px', '20px'],
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center'
           }
         }
       },

@@ -1,13 +1,13 @@
-import cn from 'classnames'
 import React, { useEffect, useState, useCallback, MouseEvent } from 'react'
+import cn from 'classnames'
 
 import HamburgerIcon from '../HamburgerIcon'
 import Link from '../../atoms/Link'
+import SiteLogo from '../SiteLogo'
 import { logEvent } from '../../../utils/front/ga'
 
 import { getFirstPage } from '../../../utils/shared/sidebar'
 
-import { ReactComponent as LogoSVG } from '@media/site-logo.svg'
 import { ReactComponent as TwitterIcon } from '@media/icons/twitter.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
 import { ReactComponent as MailIcon } from '@media/icons/mail.svg'
@@ -64,14 +64,9 @@ export const HamburgerMenu: React.FC<
   return (
     <div className={cn(styles.wrapper, opened && styles.opened)}>
       <div className={styles.logoRow}>
-        <Link
-          onClick={handleItemClick()}
-          href="/"
-          className={styles.logo}
-          aria-label="Home"
-        >
-          <LogoSVG />
-        </Link>
+        <span className={styles.logo}>
+          <SiteLogo />
+        </span>
         <Link
           className={styles.company}
           href="https://iterative.ai/"
@@ -166,30 +161,24 @@ export const HamburgerMenu: React.FC<
                 href="https://studio.iterative.ai/"
                 className={styles.subSectionLink}
               >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/studio-icon.svg"
-                  alt="Studio logo"
+                <div
+                  className={cn(styles.subSectionLinkImage, styles.bgImgStudio)}
                 />
                 <span className={styles.subSectionLinkTitle}>Studio</span>
               </Link>
             </li>
             <li className={styles.subSection}>
               <Link href="https://dvc.org" className={styles.subSectionLink}>
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/dvc-icon.svg"
-                  alt="DVC logo"
+                <div
+                  className={cn(styles.subSectionLinkImage, styles.bgImgDvc)}
                 />
                 <span className={styles.subSectionLinkTitle}>DVC</span>
               </Link>
             </li>
             <li className={styles.subSection}>
               <Link href="/" className={styles.subSectionLink}>
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/cml-icon.svg"
-                  alt="CML logo"
+                <div
+                  className={cn(styles.subSectionLinkImage, styles.bgImgCml)}
                 />
                 <span className={styles.subSectionLinkTitle}>CML</span>
               </Link>
