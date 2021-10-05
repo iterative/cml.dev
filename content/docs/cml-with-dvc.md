@@ -64,54 +64,42 @@ There are many
 Authentication credentials can be provided via environment variables. Here are a
 few examples for some of the most frequently used providers:
 
-<details>
-
-### S3 and S3-compatible storage (Minio, DigitalOcean Spaces, IBM Cloud Object Storage...)
+<toggle>
+<tab title="S3 & compatible (Minio, DigitalOcean Spaces, IBM Cloud Object Storage, ...)">
 
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_SESSION_TOKEN` **(optional)**
 
-</details>
-
-<details>
-
-### Azure
+</tab>
+<tab title="Azure">
 
 - `AZURE_STORAGE_CONNECTION_STRING`
 - `AZURE_STORAGE_CONTAINER_NAME`
 
-</details>
-
-<details>
-
-### Aliyun
+</tab>
+<tab title="Aliyun">
 
 - `OSS_BUCKET`
 - `OSS_ACCESS_KEY_ID`
 - `OSS_ACCESS_KEY_SECRET`
 - `OSS_ENDPOINT`
 
-</details>
-
-<details>
-
-### Google Cloud Storage
+</tab>
+<tab title="Google Cloud Storage">
 
 - `GOOGLE_APPLICATION_CREDENTIALS`: the **path** to a service account JSON file
 
-</details>
-
-<details>
-
-### Google Drive
+</tab>
+<tab title="Google Drive">
 
 - `GDRIVE_CREDENTIALS_DATA`: the **contents** of a service account JSON file.
   See how to
   [setup a Google Drive DVC remote](https://dvc.org/doc/user-guide/setup-google-drive-remote#authorization)
   for more information.
 
-</details>
+</tab>
+</toggle>
 
 ## GitHub Actions: `setup-dvc`
 
@@ -123,7 +111,8 @@ installs DVC (similar to `setup-cml` for CML).
 This action works on Ubuntu, MacOS, and Windows runners. When running on
 Windows, Python 3 should be setup first.
 
-Basic usage:
+<toggle>
+<tab title="Ubuntu & MacOS">
 
 ```yaml
 steps:
@@ -131,7 +120,8 @@ steps:
   - uses: iterative/setup-dvc@v1
 ```
 
-Windows:
+</tab>
+<tab title="Windows">
 
 ```yaml
 runs-on: windows-latest
@@ -143,13 +133,14 @@ steps:
   - uses: iterative/setup-dvc@v1
 ```
 
+</tab>
+</toggle>
+
 A specific DVC version can installed using the `version` argument (defaults to
 the [latest release](https://github.com/iterative/dvc/releases)).
 
 ```yaml
-steps:
-  - uses: actions/checkout@v2
-  - uses: iterative/setup-dvc@v1
-    with:
-      version: '1.0.1'
+- uses: iterative/setup-dvc@v1
+  with:
+    version: '1.0.1'
 ```
