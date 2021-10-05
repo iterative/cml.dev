@@ -24,7 +24,7 @@ _Bitbucket Server support estimated to arrive by mid 2021._
 The key file in any CML project is `.github/workflows/cml.yaml`:
 
 ```yaml
-name: your-workflow-name
+name: CML
 on: [push]
 jobs:
   run:
@@ -46,7 +46,7 @@ jobs:
           # Your ML workflow goes here
           pip install -r requirements.txt
           python train.py
-      - name: Write CML report
+      - name: Create CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

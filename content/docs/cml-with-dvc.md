@@ -2,15 +2,15 @@
 
 In many ML projects, data isn't stored in a Git repository and needs to be
 downloaded from external sources. [DVC](https://dvc.org) is a common way to
-bring data to your CML runner. DVC also lets you visualize how metrics differ
-between commits to make reports like this:
+bring data to your CML runner. DVC also lets you run pipelines and plot changes
+in metrics for inclusion in CML reports.
 
 ![](/img/dvc_cml_long_report.png)
 
 The `.github/workflows/cml.yaml` file to create this report is:
 
 ```yaml
-name: train-test
+name: CML & DVC
 on: [push]
 jobs:
   run:
@@ -18,23 +18,21 @@ jobs:
     container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
-      - name: cml_run
-        shell: bash
+        with:
+          fetch-depth: 0
+      - name: Train model
         env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          # Install requirements
-          pip install -r requirements.txt
-
-          # Pull data & run-cache from S3 and reproduce pipeline
-          dvc pull data --run-cache
-          dvc repro
-
-          # Report metrics
+          pip install -r requirements.txt  # Install dependencies
+          dvc pull data --run-cache        # Pull data & run-cache from S3
+          dvc repro                        # Reproduce pipeline
+      - name: Create CML report
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           echo "## Metrics" >> report.md
-          git fetch --prune
           dvc metrics diff master --show-md >> report.md
 
           # Publish confusion matrix diff
@@ -61,133 +59,86 @@ jobs:
 
 ## Cloud Storage Provider Credentials
 
-<details>
+There are many
+[supported could storage providers](https://dvc.org/doc/command-reference/remote/modify#available-parameters-per-storage-type).
+Authentication credentials can be provided via environment variables. Here are a
+few examples for some of the most frequently used providers:
 
-### S3 and S3-compatible storage (Minio, DigitalOcean Spaces, IBM Cloud Object Storage...)
+<toggle>
+<tab title="S3 & compatible (Minio, DigitalOcean Spaces, IBM Cloud Object Storage, ...)">
 
-```yaml
-env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
-```
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_SESSION_TOKEN` **(optional)**
 
-Note that `AWS_SESSION_TOKEN` is optional.
+</tab>
+<tab title="Azure">
 
-</details>
+- `AZURE_STORAGE_CONNECTION_STRING`
+- `AZURE_STORAGE_CONTAINER_NAME`
 
-<details>
+</tab>
+<tab title="Aliyun">
 
-### Azure
+- `OSS_BUCKET`
+- `OSS_ACCESS_KEY_ID`
+- `OSS_ACCESS_KEY_SECRET`
+- `OSS_ENDPOINT`
 
-```yaml
-env:
-  AZURE_STORAGE_CONNECTION_STRING:
-    ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-  AZURE_STORAGE_CONTAINER_NAME: ${{ secrets.AZURE_STORAGE_CONTAINER_NAME }}
-```
+</tab>
+<tab title="Google Cloud Storage">
 
-</details>
+- `GOOGLE_APPLICATION_CREDENTIALS`: the **path** to a service account JSON file
 
-<details>
+</tab>
+<tab title="Google Drive">
 
-### Aliyun
+- `GDRIVE_CREDENTIALS_DATA`: the **contents** of a service account JSON file.
+  See how to
+  [setup a Google Drive DVC remote](https://dvc.org/doc/user-guide/setup-google-drive-remote#authorization)
+  for more information.
 
-```yaml
-env:
-  OSS_BUCKET: ${{ secrets.OSS_BUCKET }}
-  OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
-  OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
-  OSS_ENDPOINT: ${{ secrets.OSS_ENDPOINT }}
-```
+</tab>
+</toggle>
 
-</details>
+## GitHub Actions: `setup-dvc`
 
-<details>
+The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action
+installs DVC (similar to `setup-cml` for CML).
 
-### Google Cloud Storage
+This action works on Ubuntu, MacOS, and Windows runners. When running on
+Windows, Python 3 should be setup first.
 
-(ℹ️) Normally, `GOOGLE_APPLICATION_CREDENTIALS` points to the path of the
-`.json` file that contains the credentials. However, in this context, the
-variable contains the content of the file. Copy the text inside the `.json` and
-add it as a secret.
-
-```yaml
-env:
-  GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-```
-
-</details>
-
-<details>
-
-### Google Drive
-
-(ℹ️) After configuring your
-[Google Drive credentials](https://dvc.org/doc/command-reference/remote/add) you
-will find a json file at
-`your_project_path/.dvc/tmp/gdrive-user-credentials.json`. Copy the text inside
-that `.json` and add it as a secret.
-
-```yaml
-env:
-  GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
-```
-
-</details>
-
-## For GitHub Actions Users: Try the `setup-dvc` Action!
-
-The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action is a
-JavaScript action that sets up [DVC](https://dvc.org) in your workflow.
-
-### Usage
-
-This action can be run on `ubuntu-latest`, `macos-latest`, or `windows-latest`.
-When running on `windows-latest`, Python 3 is a dependency that should be setup
-first (and
-[there's an action for that](https://github.com/actions/setup-python)).
-
-Basic usage:
+<toggle>
+<tab title="Ubuntu & MacOS">
 
 ```yaml
 steps:
   - uses: actions/checkout@v2
-
   - uses: iterative/setup-dvc@v1
 ```
 
-Windows:
+</tab>
+<tab title="Windows">
 
 ```yaml
+runs-on: windows-latest
 steps:
   - uses: actions/checkout@v2
-
   - uses: actions/setup-python@v2
     with:
       python-version: '3.x'
-
   - uses: iterative/setup-dvc@v1
 ```
 
-A specific version can be pinned to your workflow using the `version` argument.
+</tab>
+</toggle>
+
+A specific DVC version can installed using the `version` argument (defaults to
+the [latest release](https://github.com/iterative/dvc/releases)).
 
 ```yaml
-steps:
-  - uses: actions/checkout@v2
-
-  - uses: iterative/setup-dvc@v1
-    with:
-      version: '1.0.1'
+- uses: iterative/setup-dvc@v1
+  with:
+    version: '1.0.1'
 ```
-
-### Inputs
-
-The following inputs are supported.
-
-- `version` - (optional) The version of DVC to install. A value of `latest` will
-  install the latest version of DVC. Defaults to `latest`.
-
-### Outputs
-
-Setup DVC has no outputs.

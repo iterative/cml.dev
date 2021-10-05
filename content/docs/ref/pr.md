@@ -12,7 +12,7 @@ is roughly equivalent to:
 SHA="$(git log -n1 --format=%h)"
 BASE="$(git branch)"
 
-git checkout "${BASE}-cml-pr-${SHA}" &&
+git checkout "${BASE}-cml-pr-${SHA}"
 
 if [[ $(git ls-remote --exit-code origin\
         "${BASE}-cml-pr-${SHA}" &>/dev/null) ]]; then

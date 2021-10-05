@@ -408,11 +408,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v2</span></div>
-                      <div><span> </span></div>
                       <div>      <span>- uses: iterative/setup-cml@v1</span></div>
-                      <div><span> </span></div>
                       <div>      <span>- name: deploy</span></div>
-                      <div>        <span>shell: bash</span></div>
                       <div>        <span>env:</span></div>
                       <div>          <span>REPO_TOKEN: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
                       <div>          <span>AWS_ACCESS_KEY_ID: {"${{ secrets.AWS_ACCESS_KEY_ID }}"}</span></div>
@@ -547,11 +544,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v2</span></div>
-                      <div><span> </span></div>
                       <div>      <span>- uses: iterative/setup-cml@v1</span></div>
-                      <div><span> </span></div>
                       <div>      <span>- name: deploy</span></div>
-                      <div>        <span>shell: bash</span></div>
                       <div>        <span>env:</span></div>
                       <div>          <span>REPO_TOKEN: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
                       <div>          <span>AWS_ACCESS_KEY_ID: {"${{ secrets.AWS_ACCESS_KEY_ID }}"}</span></div>
