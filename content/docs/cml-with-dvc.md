@@ -2,15 +2,15 @@
 
 In many ML projects, data isn't stored in a Git repository and needs to be
 downloaded from external sources. [DVC](https://dvc.org) is a common way to
-bring data to your CML runner. DVC also lets you visualize how metrics differ
-between commits to make reports like this:
+bring data to your CML runner. DVC also lets you run pipelines and plot changes
+in metrics for inclusion in CML reports.
 
 ![](/img/dvc_cml_long_report.png)
 
 The `.github/workflows/cml.yaml` file to create this report is:
 
 ```yaml
-name: train-test
+name: CML & DVC
 on: [push]
 jobs:
   run:
@@ -18,10 +18,8 @@ jobs:
     container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
-      - name: cml_run
-        shell: bash
+      - name: Train model
         env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
@@ -31,7 +29,10 @@ jobs:
           # Pull data & run-cache from S3 and reproduce pipeline
           dvc pull data --run-cache
           dvc repro
-
+      - name: Create CML report
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           # Report metrics
           echo "## Metrics" >> report.md
           git fetch --prune

@@ -32,7 +32,7 @@ or a
 [AWS EC2 spot instance interruption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html)).
 
 ```yaml
-name: Train-in-the-cloud
+name: CML
 on: [push]
 jobs:
   deploy-runner:

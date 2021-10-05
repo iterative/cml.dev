@@ -21,7 +21,7 @@ supported CI systems.
    `.github/workflows/cml.yaml`:
 
    ```yaml
-   name: train-my-model
+   name: CML
    on: [push]
    jobs:
       run:
@@ -29,7 +29,7 @@ supported CI systems.
          container: docker://ghcr.io/iterative/cml:0-dvc2-base1
          steps:
             - uses: actions/checkout@v2
-            - name: cml_run
+            - name: Train model
                env:
                   REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                run: |
