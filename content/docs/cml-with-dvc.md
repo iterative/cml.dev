@@ -106,8 +106,6 @@ few examples for some of the most frequently used providers:
 The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action
 installs DVC (similar to `setup-cml` for CML).
 
-### Usage
-
 This action works on Ubuntu, MacOS, and Windows runners. When running on
 Windows, Python 3 should be setup first.
 
