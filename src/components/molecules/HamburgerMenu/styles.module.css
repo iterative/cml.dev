@@ -189,15 +189,15 @@ a.sectionHeading {
 
 .bgImg {
   &Cml {
-    background-image: url(../../../media/icons/cml_icon-color--square_vector.svg);
+    background-image: url(../../../media/icons/cml.svg);
   }
 
   &Dvc {
-    background-image: url(../../../media/icons/dvc_icon-color--square_vector.svg);
+    background-image: url(../../../media/icons/dvc.svg);
   }
 
   &Studio {
-    background-image: url(../../../media/icons/studio_icon-color--square_vector.svg);
+    background-image: url(../../../media/icons/studio.svg);
   }
 }
 

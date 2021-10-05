@@ -4,7 +4,7 @@ import GatsbyLink from '../../atoms/ThemedGatsbyLink'
 import { Box } from '@theme-ui/components'
 
 import { ReactComponent as CmlText } from '@media/cml-text.svg'
-import cmlIcon from '@media/icons/cml_icon-color--square_vector.svg'
+import cmlIcon from '@media/icons/cml.svg'
 
 interface ISiteLogo {
   variant?: string

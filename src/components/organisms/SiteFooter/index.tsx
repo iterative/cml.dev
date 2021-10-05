@@ -9,10 +9,10 @@ import { ReactComponent as TwitterIcon } from '@media/icons/twitter.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
 import { ReactComponent as YoutubeIcon } from '@media/icons/youtube.svg'
 import { ReactComponent as LinkedInIcon } from '@media/icons/linkedin.svg'
-import { ReactComponent as IterativeIcon } from '@media/icons/iterative_icon-color--square_vector.svg'
-import dvcIcon from '@media/icons/dvc_icon-color--square_vector.svg'
-import cmlIcon from '@media/icons/cml_icon-color--square_vector.svg'
-import studioIcon from '@media/icons/studio_icon-color--square_vector.svg'
+import { ReactComponent as IterativeIcon } from '@media/icons/iterative.svg'
+import dvcIcon from '@media/icons/dvc.svg'
+import cmlIcon from '@media/icons/cml.svg'
+import studioIcon from '@media/icons/studio.svg'
 
 interface ISocialLinkPopupProps {
   url: string
