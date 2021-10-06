@@ -1,27 +1,30 @@
-# Install CML
+# Installing CML as a Package
 
 CML comes pre-installed in our provided
 [Docker Images](/doc/self-hosted-runners#docker-images). Alternatively, GitHub
 users can also use the [`setup-cml` action](/doc/start/github#setup-action).
 
-However, in all other cases, CML can be installed directly as a
-[NodeJS](https://nodejs.org) package (using the package manager `npm`):
+However, in all other cases, CML can be installed directly as a NodeJS package
+using the package manager `npm` ([see below](#installing-nodejs)):
 
 ```bash
 npm i -g @dvcorg/cml
 ```
 
-You may need to install additional dependencies to use
-[DVC plots](https://dvc.org/doc/command-reference/plots) and Vega-Lite CLI
-commands:
+You may also need to install additional dependencies to use
+[DVC plots](https://dvc.org/doc/command-reference/plots) and Vega-Lite:
 
 ```bash
-sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev \
-          libgif-dev librsvg2-dev libfontconfig-dev
+sudo apt-get install -y \
+  libcairo2-dev libfontconfig-dev \
+  libgif-dev libjpeg-dev libpango1.0-dev librsvg2-dev
 npm install -g vega-cli vega-lite
 ```
 
 ## Installing NodeJS
+
+Instructions for installing [NodeJS](https://nodejs.org) and its package manager
+`npm` can be found below.
 
 <toggle>
 <tab title="GitLab">
