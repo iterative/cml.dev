@@ -4,7 +4,7 @@ CML comes pre-installed in our provided
 [Docker Images](/doc/self-hosted-runners#docker-images). Alternatively, GitHub
 users can also use the [`setup-cml` action](/doc/start/github#setup-action).
 
-However, in all other cases, CML can be installed directly as a NodeJS package
+However, in all other cases, CML can be installed directly as a Node.js package
 using the package manager `npm` ([see below](#installing-nodejs)):
 
 ```bash
@@ -21,15 +21,15 @@ sudo apt-get install -y \
 npm install -g vega-cli vega-lite
 ```
 
-## Installing NodeJS
+## Installing Node.js
 
-Instructions for installing [NodeJS](https://nodejs.org) and its package manager
-`npm` can be found below.
+Instructions for installing [Node.js](https://nodejs.org) and its package
+manager `npm` can be found below.
 
 <toggle>
 <tab title="GitLab">
 
-Install NodeJS from source:
+Install Node.js from source:
 
 ```bash
 curl -sL https://deb.nodesource.com/setup_14.x | bash
@@ -40,7 +40,7 @@ apt-get install -y nodejs
 </tab>
 <tab title="GitHub">
 
-NodeJS is likely already available in most GitHub Actions runners. However, to
+Node.js is likely already available in most GitHub Actions runners. However, to
 install a particular version, add the following step to your workflow:
 
 ```bash
