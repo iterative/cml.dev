@@ -78,7 +78,7 @@ below for details on the `secrets` required.
 
 🎉 **Note that jobs can use any Docker container!** To use commands such as
 `cml send-comment` from a job, the only requirement is to
-[have CML installed](/doc/cml-with-npm).
+[have CML installed](/doc/install).
 
 ## Docker Images
 
@@ -281,7 +281,7 @@ provisioned through environment variables instead of files.
 
 The `cml runner` command can also be used to set up a local machine or
 on-premise GPU cluster as a self-hosted runner. Simply
-[install CML with NPM](/doc/cml-with-npm) and then run:
+[install CML](/doc/install) and then run:
 
 ```bash
 cml runner \

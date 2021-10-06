@@ -104,13 +104,14 @@ few examples for some of the most frequently used providers:
 ## GitHub Actions: `setup-dvc`
 
 The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action
-installs DVC (similar to `setup-cml` for CML).
+installs DVC (similar to what [`setup-cml`](/doc/start/github#setup-action) does
+for CML).
 
-This action works on Ubuntu, MacOS, and Windows runners. When running on
+This action works on Ubuntu, macOS, and Windows runners. When running on
 Windows, Python 3 should be setup first.
 
 <toggle>
-<tab title="Ubuntu & MacOS">
+<tab title="Ubuntu & macOS">
 
 ```yaml
 steps:

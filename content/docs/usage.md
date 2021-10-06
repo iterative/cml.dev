@@ -33,7 +33,7 @@ jobs:
     # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
-      # may need to setup NodeJS & Python3 on e.g. self-hosted
+      # may need to setup Node.js & Python3 on e.g. self-hosted
       # - uses: actions/setup-node@v2
       #   with:
       #     node-version: '12'
@@ -59,7 +59,7 @@ We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
 example, uncommenting the
 `container: docker://ghcr.io/iterative/cml:0-dvc2-base1` field will make the
-runner pull the CML Docker image. The image already has NodeJS, Python 3, DVC
+runner pull the CML Docker image. The image already has Node.js, Python 3, DVC
 and CML set up on an Ubuntu LTS base for convenience.
 
 ## CML Commands

@@ -70,7 +70,7 @@ CML commands let you display relevant results from the workflow, like model
 performance metrics and vizualizations, in GitHub checks and comments. What kind
 of workflow you want to run, and want to put in your CML report, is up to you.
 
-## The CML GitHub Action
+## Setup Action
 
 In the above example, we got the CML commands thanks to our Docker container.
 But there's another way for GitHub Actions users to get CML: the `setup-cml`

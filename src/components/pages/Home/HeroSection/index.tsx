@@ -94,7 +94,7 @@ const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 border: '2px solid #9361D3'
               }
             }}
-            href="/doc/cml-with-npm"
+            href="/doc/install"
           >
             Download
           </Link>
