@@ -1,14 +1,19 @@
-# Install CML with NPM
+# Install CML
 
-In the above examples, CML is pre-installed in a custom Docker image, which is
-pulled by a CI runner. You can also install CML as a package:
+CML comes pre-installed in our provided
+[Docker Images](/doc/self-hosted-runners#docker-images). Alternatively, GitHub
+users can also use the [`setup-cml` action](/doc/start/github#setup-action).
+
+However, in all other cases, CML can be installed directly as a
+[NodeJS](https://nodejs.org) package (using the package manager `npm`):
 
 ```bash
 npm i -g @dvcorg/cml
 ```
 
-You may need to install additional dependencies to use DVC plots and Vega-Lite
-CLI commands:
+You may need to install additional dependencies to use
+[DVC plots](https://dvc.org/doc/command-reference/plots) and Vega-Lite CLI
+commands:
 
 ```bash
 sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev \
@@ -16,25 +21,30 @@ sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev \
 npm install -g vega-cli vega-lite
 ```
 
-CML and Vega-Lite package installation require `npm` command from Node package.
-Below you can find how to install Node.
+## Installing NodeJS
 
-### Install Node in GitHub
+<toggle>
+<tab title="GitLab">
 
-In GitHub there is a special action for NPM installation:
+Install NodeJS from source:
+
+```bash
+curl -sL https://deb.nodesource.com/setup_14.x | bash
+apt-get update
+apt-get install -y nodejs
+```
+
+</tab>
+<tab title="GitHub">
+
+NodeJS is likely already available in most GitHub Actions runners. However, to
+install a particular version, add the following step to your workflow:
 
 ```bash
 - uses: actions/setup-node@v1
   with:
-    node-version: '12'
+    node-version: '14'
 ```
 
-### Install Node in GitLab
-
-GitLab requires direct installation of the NMP package:
-
-```bash
-curl -sL https://deb.nodesource.com/setup_12.x | bash
-apt-get update
-apt-get install -y nodejs
-```
+</tab>
+</toggle>
