@@ -48,7 +48,7 @@ function InstallPopup({ isOpen, onClose }) {
       </Flex>
       <SmartLink
         variant="layout.Header.Nav.InstallPopup.Link"
-        href="/doc/cml-with-npm"
+        href="/doc/install"
       >
         More in documentation
       </SmartLink>

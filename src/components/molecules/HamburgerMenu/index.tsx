@@ -96,7 +96,7 @@ export const HamburgerMenu: React.FC<
         </li>
         <li className={styles.section}>
           <Link
-            href="/doc/cml-with-npm"
+            href="/doc/install"
             className={styles.sectionHeading}
             onClick={handleItemClick('install')}
           >
