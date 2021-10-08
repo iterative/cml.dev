@@ -175,9 +175,8 @@ destroy EC2 instances) are required.
 
 This token serves as a repository access credential.
 
-<details>
-
-#### GitHub
+<toggle>
+<tab title="GitHub">
 
 Use either:
 
@@ -190,11 +189,15 @@ Use either:
   repository-level runners), or **Organization permissions / Self-hosted
   runners** write permissions (for organization-level runners).
 
-</details>
+Ideally, you should not use personal access tokens from your own account, as
+they grant access to all your repositories. Instead, it's highly recommended to
+create a separate _bot account_ that only has access to the repositories where
+you plan to deploy runners to. Bot accounts are
+[the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts)
+as normal user accounts, with the only difference being the intended use case.
 
-<details>
-
-#### GitLab
+</tab>
+<tab title="GitLab">
 
 Use either:
 
@@ -209,14 +212,50 @@ Use either:
   ([shared](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#shared-runners))
   runners.
 
-</details>
+For instance, to use a personal access token:
 
-Ideally, you should not use personal access tokens from your own account, as
-they grant access to all your repositories. Instead, it's higly recommended to
-create a separate _bot account_ that only has access to the repositories where
-you plan to deploy runners to. Bot accounts are
-[the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts)
-as normal user accounts, with the only difference being the intended use case.
+1. Navigate to **User Settings** &rightarrow; **Access Tokens**
+2. In the "Name" field, type `repo_token`
+   - select `api`, `read_repository` and `write_repository`
+   - click "Create personal access token" and copy it
+3. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
+   &rightarrow; **Variables** &rightarrow; **Add Variable**
+4. In the "Key" field, type `repo_token`
+   - in the "Value" field, paste your Personal Access Token
+   - select "Mask variable"
+   - deselect "Protect variable"
+   - click "Add variable" at the bottom of the dialog box
+
+Steps 3 & 4 can also be used for adding other secrets such as cloud access
+credentials.
+
+</tab>
+<tab title="Bitbucket">
+
+Bitbucket Cloud does not use access tokens. Instead, create a `repo_token`
+variable with a Base64 encoded username and password.
+
+Use either:
+
+- your user access credentials (consider using
+  [Bitbucket Cloud App Passwords](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/),
+  or
+- create a designated "CI/CD" _bot account_ for CML authentication
+
+In either case, the steps to create a `repo_token` are:
+
+1. Use a Base64 encoder of your choice to encode a Bitbucket username and
+   password:
+   - `echo $USERNAME:$PASSWORD | base64`
+   - copy the resulting Base64 token
+2. In your repository, go to **Repository Settings** &rightarrow; **Repository
+   Variables**
+3. In the "Name" field, enter `repo_token`
+4. In the "Value" field, paste the Base64 token
+5. Select `Secured` to hide credentials in all Bitbucket logs
+
+</tab>
+</toggle>
 
 ### Cloud Compute Resource Credentials
 
