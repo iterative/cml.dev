@@ -163,8 +163,8 @@ the latter also supports
 
 ⚠️ You will need to create a
 [personal access token (PAT)](#personal-access-token) with repository read/write
-access and workflow privileges. In the example workflow above, this token is
-stored as `PERSONAL_ACCESS_TOKEN`.
+access. In the example workflow above, this token is stored as
+`PERSONAL_ACCESS_TOKEN`.
 
 🛈 If using the `--cloud` option, you will also need to provide access
 credentials for your cloud compute resources as secrets. In the above example,
@@ -182,7 +182,7 @@ Use either:
 
 - a
   [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-  with the **repo** scope, or
+  with the `repo` scope, or
 - a
   [GitHub App](https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps)
   with **Repository permissions / Administration** write permissions (for
@@ -219,7 +219,7 @@ Use either:
 
 - a
   [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
-  with the **api** scope, or
+  with the `api`, `read_repository` and `write_repository` scopes, or
 - a
   [project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html).
   This only works for project-level
