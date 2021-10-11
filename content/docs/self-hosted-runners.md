@@ -201,16 +201,16 @@ For instance, to use a personal access token:
 
 1. [Generate a new personal access token](https://github.com/settings/tokens/new)
    under GitHub developer settings
-2. In the "Note" field, type `PERSONAL_ACCESS_TOKEN`
+   - in the "Note" field, type `PERSONAL_ACCESS_TOKEN`
    - select `repo` scope
    - click "Generate token" and copy it
-3. In you GitHub repository and/or organization, navigate to **Settings**
+2. In you GitHub repository and/or organization, navigate to **Settings**
    &rightarrow; **Secrets** &rightarrow; **New repository/organization secret**
-   - in the "Name" field, write `PERSONAL_ACCESS_TOKEN`
+   - in the "Name" field, type `PERSONAL_ACCESS_TOKEN`
    - in the "Value" field, paste the token
    - click "Add secret"
 
-Steps 3 can also be used for adding other secrets such as cloud access
+Step 2 can also be used for adding other secrets such as cloud access
 credentials.
 
 </tab>
@@ -232,18 +232,18 @@ Use either:
 For instance, to use a personal access token:
 
 1. Navigate to **User Settings** &rightarrow; **Access Tokens**
-2. In the "Name" field, type `repo_token`
+   - in the "Name" field, type `repo_token`
    - select `api`, `read_repository` and `write_repository`
    - click "Create personal access token" and copy it
-3. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
+2. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
    &rightarrow; **Variables** &rightarrow; **Add Variable**
-4. In the "Key" field, type `repo_token`
+   - in the "Key" field, type `repo_token`
    - in the "Value" field, paste your Personal Access Token
    - select "Mask variable"
    - deselect "Protect variable"
    - click "Add variable" at the bottom of the dialog box
 
-Steps 3 & 4 can also be used for adding other secrets such as cloud access
+Step 2 can also be used for adding other masked variables such as cloud access
 credentials.
 
 </tab>
@@ -270,9 +270,12 @@ In either case, the steps to create a `repo_token` are:
    - copy the resulting Base64 token
 2. In your repository, go to **Repository Settings** &rightarrow; **Repository
    Variables**
-3. In the "Name" field, enter `repo_token`
-4. In the "Value" field, paste the Base64 token
-5. Select `Secured` to hide credentials in all Bitbucket logs
+   - in the "Name" field, type `repo_token`
+   - in the "Value" field, paste the Base64 token
+   - select `Secured` to hide credentials in all Bitbucket logs
+
+Step 2 can also be used for adding other secured variables such as cloud access
+credentials.
 
 </tab>
 </toggle>
