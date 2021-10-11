@@ -15,7 +15,9 @@ self-hosted runner.
 When a workflow requires computational resources (such as GPUs), CML can
 automatically allocate cloud instances using `cml runner`. You can spin up
 instances on AWS, Azure, GCP, or Kubernetes
-([see below](#cloud-compute-resource-credentials)).
+([see below](#cloud-compute-resource-credentials)). Alternatively, you can
+connect
+[any other compute provider or on-premise (local) machine](#on-premise-local-runners).
 
 For example, the following workflow deploys a `p2.xlarge` instance on AWS EC2
 and trains a model on the instance. After the job runs, the instance
