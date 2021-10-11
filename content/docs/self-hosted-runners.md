@@ -196,6 +196,22 @@ you plan to deploy runners to. Bot accounts are
 [the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts)
 as normal user accounts, with the only difference being the intended use case.
 
+For instance, to use a personal access token:
+
+1. [Generate a new personal access token](https://github.com/settings/tokens/new)
+   under GitHub developer settings
+2. In the "Note" field, type `repo_token`
+   - select `repo` scope
+   - click "Generate token" and copy it
+3. In you GitHub repository and/or organization, navigate to **Settings**
+   &rightarrow; **Secrets** &rightarrow; **New repository/organization secret**
+   - in the "Name" field, write `repo_token`
+   - in the "Value" field, paste the token
+   - click "Add secret"
+
+Steps 3 can also be used for adding other secrets such as cloud access
+credentials.
+
 </tab>
 <tab title="GitLab">
 
@@ -240,7 +256,10 @@ Use either:
 - your user access credentials (consider using
   [Bitbucket Cloud App Passwords](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/),
   or
-- create a designated "CI/CD" _bot account_ for CML authentication
+- create a designated "CI/CD" _bot account_ for CML authentication. Bot accounts
+  are the same as normal user accounts, with the only difference being the
+  intended use case: you limit the account to only access the repositories where
+  you plan to deploy runners to.
 
 In either case, the steps to create a `repo_token` are:
 
