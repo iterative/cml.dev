@@ -173,7 +173,8 @@ destroy EC2 instances) are required.
 
 ### Personal Access Token
 
-This token serves as a repository access credential.
+This token serves as a repository access credential, and is especially required
+for `cml runner` to function.
 
 <toggle>
 <tab title="GitHub">
