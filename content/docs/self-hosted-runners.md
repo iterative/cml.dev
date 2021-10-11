@@ -200,12 +200,12 @@ For instance, to use a personal access token:
 
 1. [Generate a new personal access token](https://github.com/settings/tokens/new)
    under GitHub developer settings
-2. In the "Note" field, type `repo_token`
+2. In the "Note" field, type `PERSONAL_ACCESS_TOKEN`
    - select `repo` scope
    - click "Generate token" and copy it
 3. In you GitHub repository and/or organization, navigate to **Settings**
    &rightarrow; **Secrets** &rightarrow; **New repository/organization secret**
-   - in the "Name" field, write `repo_token`
+   - in the "Name" field, write `PERSONAL_ACCESS_TOKEN`
    - in the "Value" field, paste the token
    - click "Add secret"
 
