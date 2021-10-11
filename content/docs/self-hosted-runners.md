@@ -14,8 +14,8 @@ self-hosted runner.
 
 When a workflow requires computational resources (such as GPUs), CML can
 automatically allocate cloud instances using `cml runner`. You can spin up
-instances on [AWS](#aws), [Azure](#azure), [GCP](#gcp), or
-[Kubernetes](#kubernetes).
+instances on AWS, Azure, GCP, or Kubernetes
+([see below](#cloud-compute-resource-credentials)).
 
 For example, the following workflow deploys a `p2.xlarge` instance on AWS EC2
 and trains a model on the instance. After the job runs, the instance
@@ -288,9 +288,8 @@ are required to deploy EC2 instances.
 
 Click below to see credentials needed for supported compute providers.
 
-<details>
-
-#### AWS
+<toggle>
+<tab title="AWS">
 
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
@@ -299,22 +298,16 @@ Click below to see credentials needed for supported compute providers.
 Note that the same credentials can also be used for
 [configuring cloud storage](/doc/cml-with-dvc#cloud-storage-provider-credentials).
 
-</details>
-
-<details>
-
-#### Azure
+</tab>
+<tab title="Azure">
 
 - `AZURE_CLIENT_ID`
 - `AZURE_CLIENT_SECRET`
 - `AZURE_SUBSCRIPTION_ID`
 - `AZURE_TENANT_ID`
 
-</details>
-
-<details>
-
-#### GCP
+</tab>
+<tab title="GCP">
 
 Either one of:
 
@@ -325,25 +318,21 @@ Either one of:
 The former is more convenient for CI/CD scenarios, where secrets are (usually)
 provisioned through environment variables instead of files.
 
-</details>
-
-<details>
-
-#### Kubernetes
+</tab>
+<tab title="Kubernetes">
 
 - `KUBERNETES_CONFIGURATION`: the **contents** of a
   [`kubeconfig`](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig)
   file.
 
-</details>
-
-<details>
+</tab>
+</toggle>
 
 #### On-premise (Local) Runners
 
-The `cml runner` command can also be used to set up a local machine or
-on-premise GPU cluster as a self-hosted runner. Simply
-[install CML](/doc/install) and then run:
+The `cml runner` command can also be used to manually set up a local machine,
+on-premise GPU cluster, or any other cloud compute resource as a self-hosted
+runner. Simply [install CML](/doc/install) and then run:
 
 ```bash
 cml runner \
@@ -361,5 +350,3 @@ corresponding
 [GitHub](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
 and [GitLab](https://docs.gitlab.com/runner/security) documentation for
 additional guidance.
-
-</details>
