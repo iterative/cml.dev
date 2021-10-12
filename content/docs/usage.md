@@ -59,17 +59,14 @@ and CML set up on an Ubuntu LTS base for convenience.
 The key file in any GitLab CI/CD project is `.gitlab-ci.yml`:
 
 ```yml
-# .gitlab-ci.yml
-stages:
-  - Train model
-cml:
-  stage: Train model
+train-model:
   image: iterativeai/cml:0-dvc2-base1
   script:
     - pip3 install -r requirements.txt
     - python train.py
-
-    # Create CML report
+create-CML-report:
+  needs: train-model
+  script:
     - cat metrics.txt >> report.md
     - cml publish confusion_matrix.png --md >> report.md
     - cml send-comment report.md
