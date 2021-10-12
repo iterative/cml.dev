@@ -6,8 +6,6 @@ projects. Use it to automate parts of your development workflow, including model
 training and evaluation, comparing ML experiments across your project history,
 and monitoring changing datasets.
 
-Project website: https://cml.dev
-
 ![](/img/cml_neural_transfer.png) _On every pull request, CML helps you
 automatically train and evaluate models, then generates a visual report with
 results and metrics. Above, an example report for a
@@ -24,8 +22,9 @@ We built CML with these principles in mind:
   make informed, data-driven decisions.
 - **No additional services.** Build your own ML platform using just GitHub or
   GitLab and your
-  [favorite cloud services](/doc/self-hosted-runners#runner-credentials): AWS,
-  Azure, GCP, or Kubernetes. No databases, services or complex setup needed.
+  [favorite cloud services](/doc/self-hosted-runners#cloud-compute-resource-credentials):
+  AWS, Azure, GCP, or Kubernetes. No databases, services or complex setup
+  needed.
 
 _Need help? Just want to chat about continuous integration for ML?
 [Visit our Discord channel!](https://discord.gg/bzA6uY7)_
