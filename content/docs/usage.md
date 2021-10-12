@@ -25,7 +25,7 @@ jobs:
       # may need to setup Node.js & Python3 on e.g. self-hosted
       # - uses: actions/setup-node@v2
       #   with:
-      #     node-version: '12'
+      #     node-version: '14'
       # - uses: actions/setup-python@v2
       #   with:
       #     python-version: '3.x'
@@ -51,38 +51,48 @@ example, uncommenting the
 runner pull the CML Docker image. The image already has Node.js, Python 3, DVC
 and CML set up on an Ubuntu LTS base for convenience.
 
+### Example projects
+
+- [Basic CML project](https://github.com/iterative/cml_base_case)
+- [CML with DVC to pull data](https://github.com/iterative/cml_dvc_case)
+- [CML with Tensorboard](https://github.com/iterative/cml_tensorboard_case)
+- [CML with EC2 GPU](https://github.com/iterative/cml_cloud_case)
+
 </tab>
 <tab title="GitLab">
 
 ## GitLab
 
-The key file in any GitLab CI/CD project is `.gitlab-ci.yml`:
+The key file in any CML project is `.gitlab-ci.yml`:
 
 ```yml
 train-model:
+  # use a convenient Ubuntu LTS + DVC + CML container
   image: iterativeai/cml:0-dvc2-base1
   script:
-    - pip3 install -r requirements.txt
+    - pip install -r requirements.txt
     - python train.py
 create-CML-report:
   needs: train-model
+  image: iterativeai/cml:0-dvc2-base1
   script:
     - cat metrics.txt >> report.md
     - cml publish confusion_matrix.png --md >> report.md
     - cml send-comment report.md
 ```
 
-The example above generates visual reports in a merge request
-![](/img/GitLab_CML_report.png '=400')
-
-Note that you _must_ create
+⚠️ You _must_ create
 [personal or project access token (PAT)](/doc/self-hosted-runners#personal-access-token)
 and save it in a `repo_token` variable.
 
-### Using self-hosted runners
+The example above generates visual reports in a merge request:
+[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
 
-[Follow GitLab's instructions](https://gitlab.com/andronovhopf/prettypretty/-/settings/ci_cd)
-to set up a runner manually or with a Kubernetes cluster.
+We helpfully provide CML and other useful libraries pre-installed on our
+[custom Docker images](/doc/self-hosted-runners#docker-images). In the above
+example, the `image: iterativeai/cml:0-dvc2-base1` field will make the runner
+pull the CML Docker image. The image already has Node.js, Python 3, DVC and CML
+set up on an Ubuntu LTS base for convenience.
 
 ### Example projects
 
@@ -96,17 +106,7 @@ to set up a runner manually or with a Kubernetes cluster.
 
 ## Bitbucket
 
-CML now works with Bitbucket Cloud! Here, we'll show you how.
-
-_Bitbucket Server support estimated to arrive by mid 2022._
-
-In Bitbucket Cloud, you can use the
-[Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
-system to run workflows automatically on triggering events. When your workflow
-includes a CML report, you'll see it appear as a comment on the corresponding
-commit- like the report below:
-
-The key file in any Bitbucket Pipeline project is `bitbucket-pipelines.yml`:
+The key file in any CML project is `bitbucket-pipelines.yml`:
 
 ```yaml
 image: iterativeai/cml:0-dvc2-base1
@@ -126,40 +126,17 @@ pipelines:
           - cml send-comment report.md
 ```
 
-The example above generates visual reports in a pull request
-![](/img/bitbucket_cloud_pr.png '=600')
+The example above generates visual reports in a pull request:
+[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)
 
-To see this CML report in context,
-[check out our project repo](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2).
+⚠️ You _must_ provide
+[access credentials](/doc/self-hosted-runners#personal-access-token) via a
+`repo_token` variable.
 
-### Repository variables
-
-You'll need to create a variable called `repo_token` so CML can authenticate
-with the Bitbucket Cloud API. Because the API requires a username and password,
-you have two options:
-
-1. Use the access credentials from a user on your team (note that you may also
-   consider using
-   [Bitbucket Cloud App Passwords](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/)
-   to generate a password just for CML, if you would prefer).
-2. Create a designated "CI/CD" account to author CML reports.
-
-Whichever you choose, the steps to create your `repo_token` will be the same:
-
-1. Use a Base64 encoder of your choice to encode your username and password:
-   `printf $USERNAME:$PASSWORD | base64`. Copy the resulting token.
-2. In your repository, go to **Repository Settings** -> **Repository
-   Variables**.
-3. In the field "Name", enter `repo_token`.
-4. In the field "Value", enter your Base64 transformed string.
-5. Check `Secured` to ensure that your credentials are hidden in all Bitbucket
-   Pipelines logs.
-
-### Self-hosted runners
-
-At this time, Bitbucket Pipelines do not support self-hosted runners. Please
-[see their official docs](https://bitbucket.org/product/features/pipelines) to
-learn more about pricing options if you have significant computing needs.
+⚠️ CML works with Bitbucket Cloud, where you can use the
+[Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
+system to run workflows automatically on triggering events. Bitbucket Server is
+not yet supported.
 
 ### Example projects
 

@@ -64,10 +64,11 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
    train-model:
      image: iterativeai/cml:0-dvc2-base1
      script:
-       - pip3 install -r requirements.txt
+       - pip install -r requirements.txt
        - python train.py
    create-cml-report:
      needs: train-model
+     image: iterativeai/cml:0-dvc2-base1
      script:
        - cat metrics.txt >> report.md
        - cml publish confusion_matrix.png --md >> report.md
