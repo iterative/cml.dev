@@ -10,6 +10,10 @@ resources, or train in the cloud.
 and [GitLab](https://docs.gitlab.com/runner) to get started setting up your
 self-hosted runner.
 
+⚠️ Using
+[self-hosted runners for Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/runners)
+is not yet supported.
+
 ## Allocating Cloud Compute Resources with CML
 
 When a workflow requires computational resources (such as GPUs), CML can
@@ -257,7 +261,7 @@ variable with a Base64 encoded username and password.
 Use either:
 
 - your user access credentials (consider using
-  [Bitbucket Cloud App Passwords](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/),
+  [Bitbucket Cloud App Passwords](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords),
   or
 - create a designated "CI/CD" _bot account_ for CML authentication. Bot accounts
   are the same as normal user accounts, with the only difference being the
