@@ -44,6 +44,9 @@ jobs:
           cml send-comment report.md
 ```
 
+The example above generates visual reports in a pull request:
+[![](/img/cml_first_report.png)](https://github.com/iterative/cml_base_case/pull/2)
+
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
 example, uncommenting the
@@ -81,9 +84,9 @@ create-CML-report:
     - cml send-comment report.md
 ```
 
-⚠️ You _must_ create
+⚠️ You _must_ provide a
 [personal or project access token (PAT)](/doc/self-hosted-runners#personal-access-token)
-and save it in a `repo_token` variable.
+via a `repo_token` variable.
 
 The example above generates visual reports in a merge request:
 [![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
@@ -126,12 +129,12 @@ pipelines:
           - cml send-comment report.md
 ```
 
-The example above generates visual reports in a pull request:
-[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)
-
 ⚠️ You _must_ provide
 [access credentials](/doc/self-hosted-runners#personal-access-token) via a
 `repo_token` variable.
+
+The example above generates visual reports in a pull request:
+[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)
 
 ⚠️ CML works with Bitbucket Cloud, where you can use the
 [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
