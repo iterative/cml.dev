@@ -108,7 +108,7 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
 
     ![](/img/cml_start_gitlab_end.png)
 
-## Example
+## Final Solution
 
 An example of what your repository should look like now can be found at
 [iterative.ai/cml-base-case](https://gitlab.com/iterative.ai/cml-base-case).

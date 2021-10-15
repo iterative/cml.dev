@@ -70,7 +70,7 @@ CML commands let you display relevant results from the workflow, like model
 performance metrics and vizualizations, in GitHub checks and comments. What kind
 of workflow you want to run, and want to put in your CML report, is up to you.
 
-## Example
+## Final Solution
 
 An example of what your repository should look like now can be found at
 [iterative/cml_base_case](https://github.com/iterative/cml_base_case).
