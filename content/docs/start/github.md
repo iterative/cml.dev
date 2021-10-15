@@ -5,7 +5,7 @@ show the demo in GitHub Actions, but instructions are pretty similar for all the
 supported CI systems.
 
 1. Fork our
-   [example project repository](https://github.com/iterative/example_cml).
+   [example project repository](https://github.com/iterative/cml_base_case).
 
    ![](/img/fork_cml_project.png)
 
@@ -14,7 +14,7 @@ supported CI systems.
    workstation:
 
    ```bash
-   git clone https://github.com/<your-username>/example_cml
+   git clone https://github.com/<your-username>/cml_base_case
    ```
 
 2. To create a CML workflow, copy the following into a new file,
