@@ -3,7 +3,7 @@
 Here, we'll walk through a tutorial to start using CML on GitLab.
 
 1. Fork our
-   [example project repository](https://gitlab.com/iterative.ai/cml-base-case).
+   [example project repository](https://gitlab.com/iterative.ai/example_cml).
    Click on Fork and select the namespace where you would like to keep the
    project.
 
@@ -41,20 +41,20 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
 > follow along the steps, we recommend cloning your fork to your local
 > workstation.
 
-3. Go back to your forked `cml-base-case` project. Copy the Clone with HTTPS as
+3. Go back to your forked `example_cml` project. Copy the Clone with HTTPS as
    shown in the image below, and then in your terminal, type the following
    command, replacing `<user_name>` with your own from GitLab.
 
    ![](/img/gitlab_cml_clone.png)
 
    ```bash
-   git clone https://gitlab.com/<user_name>/cml-base-case.git
+   git clone https://gitlab.com/<user_name>/example_cml.git
    ```
 
-4. Change directory to `cml-base-case`.
+4. Change directory to `example_cml`.
 
    ```bash
-   cd cml-base-case
+   cd example_cml
    ```
 
 5. To create a CML workflow, use your editor of choice to copy the following
@@ -107,3 +107,8 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
     `cml send-comment` command in your workflow.
 
     ![](/img/cml_start_gitlab_end.png)
+
+## Final Solution
+
+An example of what your repository should look like now can be found at
+[iterative.ai/cml-base-case](https://gitlab.com/iterative.ai/cml-base-case).
