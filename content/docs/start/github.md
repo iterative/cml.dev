@@ -5,7 +5,7 @@ show the demo in GitHub Actions, but instructions are pretty similar for all the
 supported CI systems.
 
 1. Fork our
-   [example project repository](https://github.com/iterative/cml_base_case).
+   [example project repository](https://github.com/iterative/example_cml).
 
    ![](/img/fork_cml_project.png)
 
@@ -14,7 +14,7 @@ supported CI systems.
    workstation:
 
    ```bash
-   git clone https://github.com/<your-username>/cml_base_case
+   git clone https://github.com/<your-username>/example_cml
    ```
 
 2. To create a CML workflow, copy the following into a new file,
@@ -69,6 +69,11 @@ a report generated.
 CML commands let you display relevant results from the workflow, like model
 performance metrics and vizualizations, in GitHub checks and comments. What kind
 of workflow you want to run, and want to put in your CML report, is up to you.
+
+## Example
+
+An example of what your repository should look like now can be found at
+[iterative/cml_base_case](https://github.com/iterative/cml_base_case).
 
 ## Setup Action
 
