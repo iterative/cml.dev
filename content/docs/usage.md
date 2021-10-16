@@ -86,7 +86,7 @@ create-CML-report:
 
 ⚠️ You _must_ provide a
 [personal or project access token (PAT)](/doc/self-hosted-runners#personal-access-token)
-via a `repo_token` variable.
+via a `REPO_TOKEN` variable.
 
 The example above generates visual reports in merge requests:
 [![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
@@ -131,7 +131,7 @@ pipelines:
 
 ⚠️ You _must_ provide
 [access credentials](/doc/self-hosted-runners#personal-access-token) via a
-`repo_token` variable.
+`REPO_TOKEN` variable.
 
 The example above generates visual reports in pull requests:
 [![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)

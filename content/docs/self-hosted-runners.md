@@ -238,12 +238,12 @@ Use either:
 For instance, to use a personal access token:
 
 1. Navigate to **User Settings** &rightarrow; **Access Tokens**
-   - in the "Name" field, type `repo_token`
+   - in the "Name" field, type `REPO_TOKEN`
    - select `api`, `read_repository` and `write_repository`
    - click "Create personal access token" and copy it
 2. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
    &rightarrow; **Variables** &rightarrow; **Add Variable**
-   - in the "Key" field, type `repo_token`
+   - in the "Key" field, type `REPO_TOKEN`
    - in the "Value" field, paste your Personal Access Token
    - select "Mask variable"
    - deselect "Protect variable"
@@ -255,7 +255,7 @@ credentials.
 </tab>
 <tab title="Bitbucket">
 
-Bitbucket Cloud does not use access tokens. Instead, create a `repo_token`
+Bitbucket Cloud does not use access tokens. Instead, create a `REPO_TOKEN`
 variable with a Base64 encoded username and password.
 
 Use either:
@@ -268,7 +268,7 @@ Use either:
   intended use case: you limit the account to only access the repositories where
   you plan to deploy runners to.
 
-In either case, the steps to create a `repo_token` are:
+In either case, the steps to create a `REPO_TOKEN` are:
 
 1. Use a Base64 encoder of your choice to encode a Bitbucket username and
    password:
@@ -276,7 +276,7 @@ In either case, the steps to create a `repo_token` are:
    - copy the resulting Base64 token
 2. In your repository, go to **Repository Settings** &rightarrow; **Repository
    Variables**
-   - in the "Name" field, type `repo_token`
+   - in the "Name" field, type `REPO_TOKEN`
    - in the "Value" field, paste the Base64 token
    - select `Secured` to hide credentials in all Bitbucket logs
 
