@@ -72,7 +72,8 @@ const footerLists: Array<IFooterListPopupProps> = [
     title: 'Company',
     items: [
       { text: 'About us', url: 'https://iterative.ai/about/' },
-      { text: 'Join us', url: 'https://iterative.ai/about#career' }
+      { text: 'Join us', url: 'https://iterative.ai/about#career' },
+      { text: 'Logos', url: 'https://iterative.ai/brand' }
     ]
   },
   {
