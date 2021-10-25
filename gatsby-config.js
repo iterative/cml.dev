@@ -120,24 +120,24 @@ const plugins = [
       name: 'CML',
       short_name: 'CML',
       start_url: '/',
-      theme_color: '#663399',
-      icons: [
-        {
-          src: '/icon-16x16.png',
-          sizes: '16x16',
-          type: 'image/png'
-        },
-        {
-          src: '/icon-32x32.png',
-          sizes: '32x32',
-          type: 'image/png'
-        },
-        {
-          src: '/icon-180x180.png',
-          sizes: '180x180',
-          type: 'image/png'
-        }
-      ]
+      theme_color: '#663399'
+      // icons: [
+      // {
+      //   src: '/icon-16x16.png',
+      //   sizes: '16x16',
+      //   type: 'image/png'
+      // },
+      // {
+      //   src: '/icon-32x32.png',
+      //   sizes: '32x32',
+      //   type: 'image/png'
+      // },
+      // {
+      //   src: '/icon-180x180.png',
+      //   sizes: '180x180',
+      //   type: 'image/png'
+      // }
+      // ]
       /* eslint-enable @typescript-eslint/camelcase */
     }
   },
