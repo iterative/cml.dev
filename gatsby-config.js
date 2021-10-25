@@ -143,12 +143,7 @@ const plugins = [
           type: 'image/png'
         },
         {
-          src: '/apple-touch-icon-160x160.png',
-          sizes: '160x160',
-          type: 'image/png'
-        },
-        {
-          src: '/apple-touch-icon-180x180.png',
+          src: '/apple-touch-icon.png',
           sizes: '180x180',
           type: 'image/png'
         },
