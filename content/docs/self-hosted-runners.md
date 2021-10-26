@@ -37,6 +37,9 @@ Note that `cml runner` will also automatically restart your jobs (whether from a
 or a
 [AWS EC2 spot instance interruption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html)).
 
+<toggle>
+<tab title="GitHub">
+
 ```yaml
 name: CML
 on: [push]
@@ -73,9 +76,47 @@ jobs:
           pip install -r requirements.txt
           python train.py
 
+          # Create CML report
           cat metrics.txt >> report.md
+          cml publish plot.png --md >> report.md
           cml send-comment report.md
 ```
+
+</tab>
+<tab title="GitLab">
+
+```yaml
+deploy-runner:
+  image: iterativeai/cml:0-dvc2-base1
+  script:
+    - |
+      cml runner \
+          --cloud=aws \
+          --cloud-region=us-west \
+          --cloud-type=g2.2xlarge \
+          --cloud-spot \
+          --labels=cml-gpu
+train-model:
+  needs: [deploy-runner]
+  tags:
+    - cml-gpu
+  image: iterativeai/cml:0-dvc2-base1-gpu
+  script:
+    - pip install -r requirements.txt
+    - python train.py
+  image: iterativeai/cml:0-dvc2-base1
+  script:
+    - pip install -r requirements.txt
+    - python train.py
+
+    # Create CML report
+    - cat metrics.txt >> report.md
+    - cml publish plot.png --md >> report.md
+    - cml send-comment report.md
+```
+
+</tab>
+</toggle>
 
 In the workflow above, the `deploy-runner` step launches an EC2 `p2.xlarge`
 instance in the `us-west` region. The `train-model` job then runs on the
