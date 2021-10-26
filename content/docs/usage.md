@@ -5,21 +5,8 @@ A GitLab, GitHub, or Bitbucket account is required. Familiarity with
 [GitLab CI/CD](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration)
 may also be beneficial.
 
-## GitLab
-
-Please see our docs on
-[CML with GitLab CI/CD](https://github.com/iterative/cml/wiki/CML-with-GitLab)
-and in particular the
-[personal access token](https://github.com/iterative/cml/wiki/CML-with-GitLab#variables)
-requirement.
-
-## Bitbucket
-
-Please see our docs on
-[CML with Bitbucket Cloud](https://github.com/iterative/cml/wiki/CML-with-Bitbucket-Cloud).
-_Bitbucket Server support estimated to arrive by mid 2021._
-
-## GitHub
+<toggle>
+<tab title="GitHub">
 
 The key file in any CML project is `.github/workflows/cml.yaml`:
 
@@ -36,7 +23,7 @@ jobs:
       # may need to setup Node.js & Python3 on e.g. self-hosted
       # - uses: actions/setup-node@v2
       #   with:
-      #     node-version: '12'
+      #     node-version: '14'
       # - uses: actions/setup-python@v2
       #   with:
       #     python-version: '3.x'
@@ -55,12 +42,105 @@ jobs:
           cml send-comment report.md
 ```
 
+The example above generates visual reports in pull requests:
+[![](/img/cml_first_report.png)](https://github.com/iterative/cml_base_case/pull/2)
+
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
 example, uncommenting the
 `container: docker://ghcr.io/iterative/cml:0-dvc2-base1` field will make the
 runner pull the CML Docker image. The image already has Node.js, Python 3, DVC
 and CML set up on an Ubuntu LTS base for convenience.
+
+### Example projects
+
+- [Basic CML project](https://github.com/iterative/cml_base_case)
+- [CML with DVC to pull data](https://github.com/iterative/cml_dvc_case)
+- [CML with Tensorboard](https://github.com/iterative/cml_tensorboard_case)
+- [CML with EC2 GPU](https://github.com/iterative/cml_cloud_case)
+
+</tab>
+<tab title="GitLab">
+
+The key file in any CML project is `.gitlab-ci.yml`:
+
+```yml
+train-model:
+  # use a convenient Ubuntu LTS + DVC + CML container
+  image: iterativeai/cml:0-dvc2-base1
+  script:
+    - pip install -r requirements.txt
+    - python train.py
+create-CML-report:
+  needs: train-model
+  image: iterativeai/cml:0-dvc2-base1
+  script:
+    - cat metrics.txt >> report.md
+    - cml publish confusion_matrix.png --md >> report.md
+    - cml send-comment report.md
+```
+
+⚠️ You _must_ provide a
+[personal or project access token (PAT)](/doc/self-hosted-runners#personal-access-token)
+via a `REPO_TOKEN` variable.
+
+The example above generates visual reports in merge requests:
+[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
+
+We helpfully provide CML and other useful libraries pre-installed on our
+[custom Docker images](/doc/self-hosted-runners#docker-images). In the above
+example, the `image: iterativeai/cml:0-dvc2-base1` field will make the runner
+pull the CML Docker image. The image already has Node.js, Python 3, DVC and CML
+set up on an Ubuntu LTS base for convenience.
+
+### Example projects
+
+- [Basic CML project](https://gitlab.com/iterative.ai/cml-base-case)
+- [CML with DVC to pull data](https://gitlab.com/iterative.ai/cml-dvc-case)
+- [CML with Tensorboard](https://gitlab.com/iterative.ai/cml-tensorboard-case)
+- [CML with EC2 GPU](https://gitlab.com/iterative.ai/cml-cloud-case)
+
+</tab>
+<tab title="Bitbucket">
+
+The key file in any CML project is `bitbucket-pipelines.yml`:
+
+```yaml
+image: iterativeai/cml:0-dvc2-base1
+pipelines:
+  default:
+    - step:
+        name: Train model
+        script:
+          - pip install -r requirements.txt
+          - python train.py
+    - step:
+        name: Create CML report
+        script:
+          - cat metrics.txt > report.md
+          - echo >> report.md
+          - cml publish confusion_matrix.png --md >> report.md
+          - cml send-comment report.md
+```
+
+⚠️ You _must_ provide
+[access credentials](/doc/self-hosted-runners#personal-access-token) via a
+`REPO_TOKEN` variable.
+
+The example above generates visual reports in pull requests:
+[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)
+
+⚠️ CML works with Bitbucket Cloud, where you can use the
+[Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
+system to run workflows automatically on triggering events. Bitbucket Server is
+not yet supported.
+
+### Example projects
+
+- [Basic CML project](https://bitbucket.org/iterative-ai/cml-base-case)
+
+</tab>
+</toggle>
 
 ## CML Commands
 

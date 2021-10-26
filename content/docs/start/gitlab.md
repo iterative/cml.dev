@@ -61,16 +61,15 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
    into a new file `.gitlab-ci.yml` and save.
 
    ```yaml
-   stages:
-     - cml_run
-
-   cml:
-     stage: cml_run
+   train-model:
      image: iterativeai/cml:0-dvc2-base1
      script:
-       - pip3 install -r requirements.txt
+       - pip install -r requirements.txt
        - python train.py
-
+   create-cml-report:
+     needs: train-model
+     image: iterativeai/cml:0-dvc2-base1
+     script:
        - cat metrics.txt >> report.md
        - cml publish confusion_matrix.png --md >> report.md
        - cml send-comment report.md
