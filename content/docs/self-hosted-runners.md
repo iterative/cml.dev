@@ -93,7 +93,7 @@ deploy-runner:
       cml runner \
           --cloud=aws \
           --cloud-region=us-west \
-          --cloud-type=g2.2xlarge \
+          --cloud-type=p2.xlarge \
           --cloud-spot \
           --labels=cml-gpu
 train-model:
