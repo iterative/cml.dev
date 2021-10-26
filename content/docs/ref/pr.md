@@ -43,4 +43,5 @@ else
 fi
 ```
 
-Note: pull requests created with `cml pr` **won't** trigger a new CI/CD run under any circumstances.
+Note: pull requests created with `cml pr` **won't** trigger a new CI/CD run
+under any circumstances.
