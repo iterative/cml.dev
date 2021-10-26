@@ -8,8 +8,6 @@ may also be beneficial.
 <toggle>
 <tab title="GitHub">
 
-## GitHub
-
 The key file in any CML project is `.github/workflows/cml.yaml`:
 
 ```yaml
@@ -64,8 +62,6 @@ and CML set up on an Ubuntu LTS base for convenience.
 </tab>
 <tab title="GitLab">
 
-## GitLab
-
 The key file in any CML project is `.gitlab-ci.yml`:
 
 ```yml
@@ -106,8 +102,6 @@ set up on an Ubuntu LTS base for convenience.
 
 </tab>
 <tab title="Bitbucket">
-
-## Bitbucket
 
 The key file in any CML project is `bitbucket-pipelines.yml`:
 
