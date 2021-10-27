@@ -103,7 +103,13 @@ const SEO: React.FC<ISEOProps> = ({
   }
 
   return (
-    <Helmet title={title} meta={[...prebuildMeta, ...meta]}>
+    <Helmet
+      title={title}
+      meta={[...prebuildMeta, ...meta]}
+      link={[
+        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#663399' }
+      ]}
+    >
       {children}
     </Helmet>
   )

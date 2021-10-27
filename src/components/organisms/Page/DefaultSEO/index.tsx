@@ -55,6 +55,9 @@ const SEO: React.FC<ISEOProps> = ({
       title={pageTitle}
       titleTemplate={`%s | ${siteTitle}`}
       defaultTitle={siteTitle}
+      link={[
+        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#663399' }
+      ]}
       meta={[
         // Generic metas
         {
