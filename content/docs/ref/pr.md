@@ -1,6 +1,7 @@
 # Command Reference: `pr`
 
-Commit specified files to a new branch and create a pull request.
+Commit specified files to a new branch and create a pull request. If sending a
+report afterwards, consider using `cml send-comment --pr --update`.
 
 ```bash
 cml pr "**/*.py" "**/*.json"

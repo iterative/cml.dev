@@ -6,6 +6,9 @@ Post a markdown comment on a commit.
 cml send-comment ./report.md
 ```
 
+If there's an associated pull/merge request, consider adding the `--pr` and
+`--update` flags.
+
 ## Common error messages
 
 ### Bitbucket
