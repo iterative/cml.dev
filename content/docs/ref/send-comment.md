@@ -6,8 +6,11 @@ Post a markdown comment on a commit.
 cml send-comment ./report.md
 ```
 
-If there's an associated pull/merge request, consider adding the `--pr` and
+ⓘ If there's an associated pull/merge request, consider adding the `--pr` and
 `--update` flags.
+
+ⓘ If `cml pr` was used earlier in the workflow, use `--commit-sha=HEAD` to post
+comments to the new PR if desired.
 
 ## Common error messages
 
