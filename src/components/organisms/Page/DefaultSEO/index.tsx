@@ -113,8 +113,16 @@ const SEO: React.FC<ISEOProps> = ({
           content: 900
         },
         {
+          property: 'og:image:type',
+          content: 'image/png'
+        },
+        {
           property: 'og:site_name',
           content: siteTitle
+        },
+        {
+          property: 'og:locale',
+          content: 'en_US'
         },
 
         // Twitter
