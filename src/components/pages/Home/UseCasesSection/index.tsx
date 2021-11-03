@@ -479,7 +479,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span>- cml-runner \</span></div>
                         <div>      <span>--cloud aws \</span></div>
                         <div>      <span>--cloud-region us-west \</span></div>
-                        <div>      <span>--cloud-type=g3.4xlarge \</span></div>
+                        <div>      <span>--cloud-type=p2.xlarge \</span></div>
                         <div>      <span>--cloud-hdd-size 64 \</span></div>
                         <div>      <span>--labels=cml-runner-gpu</span></div>
                       </Tooltip>
@@ -555,7 +555,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>cml-runner \</span></div>
                         <div>          <span>--cloud aws \</span></div>
                         <div>          <span>--cloud-region us-west \</span></div>
-                        <div>          <span>--cloud-type=g3.4xlarge \</span></div>
+                        <div>          <span>--cloud-type=p2.xlarge \</span></div>
                         <div>          <span>--cloud-hdd-size 64 \</span></div>
                         <div>          <span>--labels=cml-runner</span></div>
                       </Tooltip>

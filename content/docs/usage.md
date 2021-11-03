@@ -19,7 +19,6 @@ jobs:
     # optionally use a convenient Ubuntu LTS + DVC + CML container
     # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
-      - uses: actions/checkout@v2
       # may need to setup Node.js & Python3 on e.g. self-hosted
       # - uses: actions/setup-node@v2
       #   with:
@@ -28,6 +27,7 @@ jobs:
       #   with:
       #     python-version: '3.x'
       - uses: iterative/setup-cml@v1
+      - uses: actions/checkout@v2
       - name: Train model
         run: |
           # Your ML workflow goes here
@@ -76,7 +76,7 @@ create-CML-report:
   image: iterativeai/cml:0-dvc2-base1
   script:
     - cat metrics.txt >> report.md
-    - cml publish confusion_matrix.png --md >> report.md
+    - cml publish plot.png --md >> report.md
     - cml send-comment report.md
 ```
 
@@ -119,7 +119,7 @@ pipelines:
         script:
           - cat metrics.txt > report.md
           - echo >> report.md
-          - cml publish confusion_matrix.png --md >> report.md
+          - cml publish plot.png --md >> report.md
           - cml send-comment report.md
 ```
 
