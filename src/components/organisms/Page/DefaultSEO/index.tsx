@@ -46,6 +46,8 @@ const SEO: React.FC<ISEOProps> = ({
   const metaDescription = description || siteDescription
   const title = pageTitle || siteTitle
   const socialImage = siteUrl + relativeSocialImage
+  const socialImageAlt =
+    "The CML logo next to the word 'CML' with a purple background."
 
   return (
     <Helmet
@@ -99,6 +101,10 @@ const SEO: React.FC<ISEOProps> = ({
           content: socialImage
         },
         {
+          property: 'og:image:alt',
+          content: socialImageAlt
+        },
+        {
           property: 'og:image:width',
           content: 1200
         },
@@ -107,8 +113,16 @@ const SEO: React.FC<ISEOProps> = ({
           content: 900
         },
         {
+          property: 'og:image:type',
+          content: 'image/png'
+        },
+        {
           property: 'og:site_name',
           content: siteTitle
+        },
+        {
+          property: 'og:locale',
+          content: 'en_US'
         },
 
         // Twitter
@@ -131,6 +145,10 @@ const SEO: React.FC<ISEOProps> = ({
         {
           name: 'twitter:image',
           content: socialImage
+        },
+        {
+          name: 'twitter:image:alt',
+          content: socialImageAlt
         }
       ].concat(meta)}
     />
