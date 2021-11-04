@@ -129,7 +129,7 @@ const SEO: React.FC<ISEOProps> = ({
         // Twitter
         {
           name: 'twitter:card',
-          content: 'summary_large_image'
+          content: 'summary'
         },
         {
           name: 'twitter:site',
