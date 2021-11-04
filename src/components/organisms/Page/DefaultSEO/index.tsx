@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 import relativeSocialImage from '@media/social-image.png'
+import twiiterSocialImage from '@media/social-image-small.png'
 
 interface ISEOProps {
   title?: string
@@ -144,7 +145,7 @@ const SEO: React.FC<ISEOProps> = ({
         },
         {
           name: 'twitter:image',
-          content: socialImage
+          content: twiiterSocialImage
         },
         {
           name: 'twitter:image:alt',
