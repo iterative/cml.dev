@@ -231,11 +231,12 @@ Use either:
 - a
   [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
   with the `repo` scope, or
-- a
-  [GitHub App](https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps)
-  with **Repository permissions / Administration** write permissions (for
-  repository-level runners), or **Organization permissions / Self-hosted
-  runners** write permissions (for organization-level runners).
+- a [GitHub App] with **Repository permissions / Administration** write
+  permissions (for repository-level runners), or **Organization permissions /
+  Self-hosted runners** write permissions (for organization-level runners).
+
+[github app]:
+  https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps
 
 Ideally, you should not use personal access tokens from your own account, as
 they grant access to all your repositories. Instead, it's highly recommended to
@@ -243,6 +244,8 @@ create a separate _bot account_ that only has access to the repositories where
 you plan to deploy runners to. Bot accounts are
 [the same](https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-user-accounts)
 as normal user accounts, with the only difference being the intended use case.
+
+#### PAT
 
 For instance, to use a personal access token:
 
@@ -259,6 +262,30 @@ For instance, to use a personal access token:
 
 Step 2 can also be used for adding other secrets such as cloud access
 credentials.
+
+#### App
+
+Alternatively, a [GitHub App] ID (`CML_GITHUB_APP_ID`) and private key
+(`CML_GITHUB_APP_PEM`) can be used to generate a token on-the-fly, as shown in
+the example below:
+
+```yaml
+steps:
+  - uses: navikt/github-app-token-generator@v1
+    id: get-token
+    with:
+      private-key: ${{ secrets.CML_GITHUB_APP_PEM }}
+      app-id: ${{ secrets.CML_GITHUB_APP_ID }}
+  - uses: actions/checkout@v2
+    with:
+      token: ${{ steps.get-token.outputs.token }}
+  - name: Train model
+    env:
+      REPO_TOKEN: ${{ steps.get-token.outputs.token }}
+    run: |
+      ...
+      cml send-comment report.md
+```
 
 </tab>
 <tab title="GitLab">
