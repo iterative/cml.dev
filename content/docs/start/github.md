@@ -73,7 +73,7 @@ of workflow you want to run, and want to put in your CML report, is up to you.
 ## Final Solution
 
 An example of what your repository should look like now can be found at
-[iterative/cml_base_case](https://github.com/iterative/cml_base_case).
+[`iterative/cml_base_case`](https://github.com/iterative/cml_base_case).
 
 ## Setup Action
 
