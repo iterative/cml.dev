@@ -313,7 +313,8 @@ In either case, the steps to create a `REPO_TOKEN` are:
 
 1. Use a Base64 encoder of your choice to encode a Bitbucket username and
    password:
-   - `echo $USERNAME:$PASSWORD | base64`
+   - `echo -n $USERNAME:$PASSWORD | base64`. The `-n` ensures the base64 does
+     not contain the trailing newline that `echo` adds by default.
    - copy the resulting Base64 token
 2. In your repository, go to **Repository Settings** &rightarrow; **Repository
    Variables**
