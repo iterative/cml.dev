@@ -7,8 +7,8 @@ resources, or train in the cloud.
 
 ☝️ **Tip!** Check out the official documentation from
 [GitHub](https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
-and [GitLab](https://docs.gitlab.com/runner) to get started setting up your
-self-hosted runner.
+and [GitLab](https://docs.gitlab.com/runner) for more information on self-hosted
+runners.
 
 ⚠️ Using
 [self-hosted runners for Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/runners)
@@ -342,7 +342,11 @@ Click below to see credentials needed for supported compute providers.
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_SESSION_TOKEN` **(optional)**
 
-Note that the same credentials can also be used for
+See the
+[AWS credentials docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-creds)
+for obtaining these keys.
+
+☝️ **Note** The same credentials can also be used for
 [configuring cloud storage](/doc/cml-with-dvc#cloud-storage-provider-credentials).
 
 </tab>
