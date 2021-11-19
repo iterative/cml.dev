@@ -12,7 +12,7 @@ cml send-comment ./report.md
 ⓘ If `cml pr` was used earlier in the workflow, use `--commit-sha=HEAD` to post
 comments to the new PR if desired.
 
-## Common error messages
+## FAQs and Known Issues
 
 ### Bitbucket
 
