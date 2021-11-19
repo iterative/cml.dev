@@ -16,12 +16,18 @@ comments to the new PR if desired.
 
 ### Bitbucket
 
-- Can't create a pull request comment: the Pull Request Commit Links application
-  has not been installed.
+- **Can't create a pull request or commit comment** / **Invalid or unknown
+  installation**.
 
-We don't like ClickOps either but here's an actual
-[quote from the Bitbucket docs](https://developer.atlassian.com/bitbucket/api/2/reference/resource/repositories/%7Bworkspace%7D/%7Brepo_slug%7D/commit/%7Bcommit%7D/pullrequests):
+  This happens because the Pull Request Commit Links application has not been
+  installed into your BitBucket workspace. You can install it by following these
+  instructions from the [Bitbucket docs][bb-docs-install-pr-links]:
 
-> Pull Request Commit Links app must be installed first before using this API;
-> installation automatically occurs when 'Go to pull request' is clicked from
-> the web interface for a commit's details.
+  > Pull Request Commit Links app must be installed first before using this API;
+  > installation automatically occurs when 'Go to pull request' is clicked from
+  > the web interface for a commit's details.
+
+  We don't like ClickOps either, but it's the way it is.
+
+[bb-docs-install-pr-links]:
+  https://developer.atlassian.com/bitbucket/api/2/reference/resource/repositories/%7Bworkspace%7D/%7Brepo_slug%7D/commit/%7Bcommit%7D/pullrequests
