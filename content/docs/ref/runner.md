@@ -59,7 +59,7 @@ compute provider or locally on-premise).
                                                         [string] [default: ""]
 ```
 
-### FAQs and Known Issues
+## FAQs and Known Issues
 
 - `--reuse`: if an existing matching (same name or overlapping labels) instance
   is busy, it'll [still be reused](https://github.com/iterative/cml/issues/610).
@@ -71,28 +71,27 @@ compute provider or locally on-premise).
 
 ## Examples
 
-#### Using `--cloud-ssh-private`
+### Using `--cloud-ssh-private`
 
 1. Generate a new RSA PEM private key for debugging purposes:
 
-   ```console
-   $ ssh-keygen -t rsa -m pem -b 4096 -f key.pem
+   ```bash
+   ssh-keygen -t rsa -m pem -b 4096 -f key.pem
    ```
 
-1. Pass the contents of the generated private key file when invoking the
-   `cml-runner` command:
+2. Pass the contents of the generated private key file when invoking the
+   `cml runner` command:
 
-   ```console
-   $ cml-runner --cloud ··· --cloud-ssh-private="$(cat key.pem)"
+   ```bash
+   cml runner --cloud=... --cloud-ssh-private="$(cat key.pem)"
    ```
 
-1. Access the instance from your local system by using the generated key as an
-   indentity file:
+3. Access the instance from your local system by using the generated key as an
+   identity file:
 
-   ```console
-   $ ssh -i key.pem ubuntu@IP_ADDRESS
+   ```bash
+   ssh -i key.pem ubuntu@IP_ADDRESS
    ```
 
-_Note: the `IP_ADDRESS` placeholder should be replaced by the instance address
-returned by `cml-runner` after a succesful execution; search for `instanceIp` on
-the logs to find it._
+   replacing the `IP_ADDRESS` placeholder with the instance address returned by
+   `cml runner` (search the output logs for `instanceIp`).
