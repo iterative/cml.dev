@@ -68,6 +68,13 @@ compute provider or locally on-premise).
 - Bitbucket: Support for
   [self-hosted runners for Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/runners)
   is [coming soon](https://github.com/iterative/cml/pull/798).
+- GitHub Actions by default time out after a few hours. You can request up to
+  [72 hours](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
+  via
+  [`timeout-minutes: 4320`](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idtimeout-minutes).
+  CML will helpfully restart GitHub Actions workflows approaching 72 hours
+  (you'd need to write your code to save intermediate results to take advantage
+  of this).
 
 ## Examples
 
