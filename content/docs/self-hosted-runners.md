@@ -195,9 +195,7 @@ Use either:
 - a
   [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
   with the `repo` scope, or
-- a [GitHub App] with **Repository permissions / Administration** write
-  permissions (for repository-level runners), or **Organization permissions /
-  Self-hosted runners** write permissions (for organization-level runners).
+- a [GitHub App] with the appropriate permissions (see [below](#app))
 
 [github app]:
   https://docs.github.com/en/developers/apps/building-github-apps/authenticating-with-github-apps
@@ -250,6 +248,16 @@ steps:
       ...
       cml send-comment report.md
 ```
+
+Note that the Apps require the following **write**
+[permissions](https://docs.github.com/en/developers/apps/building-github-apps/setting-permissions-for-github-apps):
+
+- Repository permissions (if used on a per-repo basis)
+  - Administration (`cml runner`)
+  - Checks (`cml send-github-check`)
+  - Pull requests (`cml {pr,send-comment}`)
+- Organization permissions (if used on an org)
+  - Self-hosted runners (`cml runner`)
 
 </tab>
 <tab title="GitLab">
