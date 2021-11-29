@@ -3,6 +3,61 @@
 Commit specified files to a new branch and create a pull request. If sending a
 report afterwards, consider using `cml send-comment --pr --update`.
 
+ⓘ Pull requests created with `cml pr` **won't** trigger a new CI/CD run, thereby
+preventing an infinite chain of runs.
+
+ⓘ Files to commit can be specified using any syntax supported by
+[Git pathspec](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec).
+
+## Options
+
+```
+--help                      Show help                                [boolean]
+--version                   Show version number                      [boolean]
+--log                       Maximum log level
+        [string] [choices: "error", "warn", "info", "debug"] [default: "info"]
+--md          Output in markdown format [](url).                    [boolean]
+--remote      Sets git remote.                   [string] [default: "origin"]
+--user-email  Sets git user email.
+                                    [string] [default: "olivaw@iterative.ai"]
+--user-name   Sets git user name.
+                                            [string] [default: "Olivaw[bot]"]
+--repo        Specifies the repo to be used. If not specified is extracted
+              from the CI ENV.                                       [string]
+--token       Personal access token to be used. If not specified in extracted
+              from ENV REPO_TOKEN.                                   [string]
+--driver      If not specify it infers it from the ENV.
+                                       [string] [choices: "github", "gitlab"]
+```
+
+## Examples
+
+### Commit all files in current working directory
+
+```bash
+cml pr "."
+```
+
+### Automatically merge GitHub pull requests
+
+```yaml
+on: pull_request
+jobs:
+  cml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: iterative/setup-cml@v1
+      - name: Generate data
+        run: echo "Hello World" > output.txt
+      - name: Create and merge PR
+        run: gh pr merge --rebase $(cml pr "output.txt")
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### Command internals
+
 ```bash
 cml pr "**/*.py" "**/*.json"
 ```
@@ -43,6 +98,3 @@ else
     | jq -r .url
 fi
 ```
-
-Note: pull requests created with `cml pr` **won't** trigger a new CI/CD run
-under any circumstances.
