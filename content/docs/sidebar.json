@@ -32,7 +32,7 @@
   {
     "label": "Command Reference",
     "slug": "ref",
-    "source": false,
+    "source": "ref/index.md",
     "children": [
       {
         "label": "pr",
