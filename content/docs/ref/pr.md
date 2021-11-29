@@ -37,21 +37,22 @@ under any circumstances.
 cml pr "."
 ```
 
-### Automatically merge P.R. using GitHub API
+### Automatically merge GitHub pull requests
 
 ```yaml
 on: pull_request
 jobs:
-  build:
+  cml:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: iterative/setup-cml@v1
-      - run: |
-          date > file
-          gh pr merge --rebase $(cml pr file)
+      - name: Generate data
+        run: echo "Hello World" > output.txt
+      - name: Create and merge PR
+        run: gh pr merge --rebase $(cml pr "output.txt")
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ### Command internals
