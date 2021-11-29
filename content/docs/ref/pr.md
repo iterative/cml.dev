@@ -6,7 +6,8 @@ report afterwards, consider using `cml send-comment --pr --update`.
 ⓘ Pull requests created with `cml pr` **won't** trigger a new CI/CD run,
 thereby preventing an infinite chain of runs.
 
-ⓘ You can specify the files to track using any syntax supported by [Git pathspec](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec).
+ⓘ Files to commit can be specified using any syntax supported by
+[Git pathspec](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec).
 
 ## Options
 
