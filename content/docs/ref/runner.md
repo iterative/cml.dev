@@ -11,46 +11,38 @@ compute provider or locally on-premise).
 
 Any [generic option](/doc/ref) in addition to:
 
-```
---labels                    One or more user-defined labels for this runner
-                            (delimited with commas)  [string] [default: "cml"]
---idle-timeout              Seconds to wait for jobs before shutting down. Set
-                            to -1 to disable timeout   [number] [default: 300]
---name                      Name displayed in the repository once registered
-                                                  [string] [default: cml-{ID}]
---no-retry                  Do not restart workflow terminated due to instance
-                            disposal or GitHub Actions timeout       [boolean]
---single                    Exit after running a single job          [boolean]
---reuse                     Don't launch a new runner if an existing one has
-                            the same name or overlapping labels      [boolean]
---cloud                     Cloud to deploy the runner
-                       [string] [choices: "aws", "azure", "gcp", "kubernetes"]
---cloud-region              Region where the instance is deployed. Choices:
-                            [us-east, us-west, eu-west, eu-north]. Also
-                            accepts native cloud regions
-                                                 [string] [default: "us-west"]
---cloud-type                Instance type. Choices: [m, l, xl]. Also supports
-                            native types like i.e. t2.micro           [string]
---cloud-permission-set      Specifies the instance profile in AWS or instance
-                            service account in GCP      [string] [default: ""]
---cloud-metadata            Key Value pairs to associate cml-runner instance
-                            on the provider i.e. tags/labels "key=value"
-                                                         [array] [default: []]
---cloud-gpu                 GPU type.
-                           [string] [choices: "nogpu", "k80", "v100", "tesla"]
---cloud-hdd-size            HDD size in GB                            [number]
---cloud-ssh-private         Custom private RSA SSH key. If not provided an
-                            automatically generated throwaway key will be used
-                                                                      [string]
---cloud-spot                Request a spot instance                  [boolean]
---cloud-spot-price          Maximum spot instance bidding price in USD.
-                            Defaults to the current spot bidding price
-                                                        [number] [default: -1]
---cloud-startup-script      Run the provided Base64-encoded Linux shell script
-                            during the instance initialization        [string]
---cloud-aws-security-group  Specifies the security group in AWS
-                                                        [string] [default: ""]
-```
+- `--labels=<...>`: One or more (comma-delimited) labels for this runner
+  [default: `cml`].
+- `--name=<...>`: Runner name displayed in the CI [default: `cml-{ID}`].
+- `--idle-timeout=<...>`: Seconds to wait for jobs before shutting down. Set to
+  `-1` to disable timeout [default: `300`].
+- `--no-retry`: Don't restart the workflow when terminated due to instance
+  disposal or
+  [GitHub Actions timeout](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits).
+- `--single`: Shutdown runner after one workflow run.
+- `--reuse`: Don't launch a new runner if an existing one has the same name or
+  overlapping labels.
+- `--cloud={aws,azure,gcp,kubernetes}`: Cloud compute provider to host the
+  runner.
+- `--cloud-region={us-east,us-west,eu-west,eu-north,...}`: Region where the
+  instance is deployed. Also accepts native cloud regions [default: `us-west`].
+- `--cloud-type={m,l,xl,...}`: Instance type. Also accepts native types such as
+  `t2.micro`.
+- `--cloud-permission-set=<...>`: AWS instance profile or GCP instance service
+  account.
+- `--cloud-metadata=<...>`: `key=value` pair to associate with cloud runner
+  instances. May be [specified multiple times](http://yargs.js.org/docs/#array).
+- `--cloud-gpu={nogpu,k80,v100,tesla}`: GPU type.
+- `--cloud-hdd-size=<...>`: Disk storage size in GB.
+- `--cloud-ssh-private=<...>`: Private SSH RSA key [default: *auto-generate
+  throwaway key*].
+- `--cloud-spot`: Request a preemptible spot instance.
+- `--cloud-spot-price=<...>`: Maximum spot instance USD bidding price, [default:
+  *current price*].
+- `--cloud-startup-script=<...>`: Run the provided
+  [Base64](https://linux.die.net/man/1/base64)-encoded Linux shell script during
+  the instance initialization.
+- `--cloud-aws-security-group=<...>`: AWS security group.
 
 ## FAQs and Known Issues
 

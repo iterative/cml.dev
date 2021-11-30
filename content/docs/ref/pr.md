@@ -17,12 +17,11 @@ preventing an infinite chain of runs.
 
 Any [generic option](/doc/ref) in addition to:
 
-```
---md          Output in markdown format [](url).                     [boolean]
---remote      Sets git remote.                    [string] [default: "origin"]
---user-email  Sets git user email.   [string] [default: "olivaw@iterative.ai"]
---user-name   Sets git user name.            [string] [default: "Olivaw[bot]"]
-```
+- `--md`: Produce output in markdown format (`[Pull/Merge Request](url)`).
+- `--remote=<...>`: Git remote name or URL [default: `origin`].
+- `--user-email=<...>`: Git user email for commits [default:
+  `olivaw@iterative.ai`].
+- `--user-name=<...>`: Git user name for commits [default: `Olivaw[bot]`].
 
 ## Examples
 

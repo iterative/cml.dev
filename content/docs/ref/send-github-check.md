@@ -11,12 +11,9 @@ Similar to [`send-comment`](/doc/ref/send-comment), but using GitHub's
 
 Any [generic option](/doc/ref) in addition to:
 
-```
---commit-sha, --head-sha  Commit SHA linked to this comment. Defaults to HEAD.
-                                                                      [string]
---conclusion              Sets the conclusion status of the check.
-   [string] [choices: "success", "failure", "neutral", "cancelled", "skipped",
-                                             "timed_out"] [default: "success"]
---title                   Sets title of the check.
-                                              [string] [default: "CML Report"]
-```
+- `--commit-sha=<...>`, `--head-sha=<...>`:
+  [Git revision](https://git-scm.com/docs/gitrevisions) linked to this check
+  [default: `HEAD`].
+- `--title=<...>`: The check's title [default: `CML Report`].
+- `--conclusion={success,failure,neutral,cancelled,skipped,timed_out}`: The
+  check's status [default: `success`].

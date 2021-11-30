@@ -10,20 +10,18 @@ Publicly host an image for displaying in a CML report.
 
 Any [generic option](/doc/ref) in addition to:
 
-```
-    --md                        Output in markdown format [title ||
-                                name](url).                          [boolean]
--t, --title                     Markdown title [title](url) or ![](url title).
-                                                                      [string]
-    --native, --gitlab-uploads  Uses driver's native capabilities to upload
-                                assets instead of CML's storage. Currently
-                                only available for GitLab CI.        [boolean]
-    --rm-watermark              Avoid CML watermark.                 [boolean]
-    --mime-type                 Specifies the mime-type. If not set guess it
-                                from the content.                     [string]
--f, --file                      Append the output to the given file. Create it
-                                if does not exist.                    [string]
-```
+- `--md`: Produce output in markdown format.
+- `-t=<...>`, `--title=<...>`: Title for markdown output.
+- `-f=<...>`, `--file=<...>`: Append output to the given file instead of
+  `stdout`.
+- `--mime-type=<...>`: Content
+  [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml)
+  [default: *inferred from content*].
+- `--native`, `--gitlab-uploads`: Uses CI provider's native storage instead of
+  CML's. Currently
+  [only available for GitLab CI](https://github.com/iterative/cml/wiki/Backend-Supported-Features).
+- `--rm-watermark`: Don't inject a watermark into the comment. Will break some
+  CML functionality which needs to distinguish CML reports from other comments.
 
 ## Examples
 
