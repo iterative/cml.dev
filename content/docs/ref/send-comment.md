@@ -1,16 +1,32 @@
 # Command Reference: `send-comment`
 
-Post a markdown comment on a commit.
-
 ```bash
-cml send-comment ./report.md
+cml send-comment [options] <markdown report file>
 ```
+
+Post a markdown report as a comment on a commit or pull/merge request.
 
 ⓘ If there's an associated pull/merge request, consider adding the `--pr` and
 `--update` flags.
 
 ⓘ If `cml pr` was used earlier in the workflow, use `--commit-sha=HEAD` to post
 comments to the new PR if desired.
+
+## Options
+
+Any [generic option](/doc/ref) in addition to:
+
+```
+--pr                      Post to an existing PR/MR associated with the
+                          specified commit                           [boolean]
+--commit-sha, --head-sha  Commit SHA linked to this comment. Defaults to HEAD.
+                                                                      [string]
+--update                  Update the last CML comment (if any) instead of
+                          creating a new one                         [boolean]
+--rm-watermark            Avoid watermark. CML needs a watermark to be able to
+                          distinguish CML reports from other comments in order
+                          to provide extra functionality.            [boolean]
+```
 
 ## FAQs and Known Issues
 
