@@ -1,5 +1,9 @@
 # Command Reference: `pr`
 
+```bash
+cml pr [options] <pathspec>...
+```
+
 Commit specified files to a new branch and create a pull request. If sending a
 report afterwards, consider using `cml send-comment --pr --update`.
 
@@ -12,12 +16,10 @@ preventing an infinite chain of runs.
 ## Options
 
 ```
---md          Output in markdown format [](url).                    [boolean]
---remote      Sets git remote.                   [string] [default: "origin"]
---user-email  Sets git user email.
-                                    [string] [default: "olivaw@iterative.ai"]
---user-name   Sets git user name.
-                                            [string] [default: "Olivaw[bot]"]
+--md          Output in markdown format [](url).                     [boolean]
+--remote      Sets git remote.                    [string] [default: "origin"]
+--user-email  Sets git user email.   [string] [default: "olivaw@iterative.ai"]
+--user-name   Sets git user name.            [string] [default: "Olivaw[bot]"]
 ```
 
 ## Examples
