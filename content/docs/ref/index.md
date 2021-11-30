@@ -4,17 +4,14 @@
 
 All CML commands support the following options:
 
-```
---help                      Show help                                [boolean]
---version                   Show version number                      [boolean]
---log                       Maximum log level
-        [string] [choices: "error", "warn", "info", "debug"] [default: "info"]
---driver                    Platform where the repository is hosted. If not
-                            specified, it will be inferred from the
-                            environment [string] [choices: "github", "gitlab"]
---repo                      Repository (or Organization) to be used.
-                            If not specified, it will be inferred from the
-                            environment                               [string]
---token                     Personal access token to be used. If not specified,
-                            it will be inferred from the environment  [string]
-```
+- `--driver=<ci>`: CI provider where the repository is hosted, choices: {github,
+  gitlab, bitbucket} [default: *inferred from environment*].
+- `--repo=<repo or org>`: Repository (or Organization) to be used [default:
+  *inferred from environment*].
+- `--token=<PAT>`:
+  [Personal/project access token](https://cml.dev/doc/self-hosted-runners#personal-access-token)
+  to be used [default: *inferred from environment*].
+- `--help`: Show help.
+- `--log=<level>`: Maximum log level, choices: {error, warn, info, debug}
+  [default: info].
+- `--version`: Show version number.
