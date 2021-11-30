@@ -9,6 +9,8 @@ Similar to [`send-comment`](/doc/ref/send-comment), but using GitHub's
 
 ## Options
 
+Any [generic option](/doc/ref) in addition to:
+
 ```
 --commit-sha, --head-sha  Commit SHA linked to this comment. Defaults to HEAD.
                                                                       [string]

@@ -15,6 +15,8 @@ preventing an infinite chain of runs.
 
 ## Options
 
+Any [generic option](/doc/ref) in addition to:
+
 ```
 --md          Output in markdown format [](url).                     [boolean]
 --remote      Sets git remote.                    [string] [default: "origin"]

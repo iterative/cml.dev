@@ -8,6 +8,8 @@ Publicly host an image for displaying in a CML report.
 
 ## Options
 
+Any [generic option](/doc/ref) in addition to:
+
 ```
     --md                        Output in markdown format [title ||
                                 name](url).                          [boolean]

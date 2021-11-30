@@ -8,6 +8,8 @@ Return a link to a <https://tensorboard.dev> page.
 
 ## Options
 
+Any [generic option](/doc/ref) in addition to:
+
 ```
 -c, --credentials   TB credentials as json. Usually found at
                     ~/.config/tensorboard/credentials/uploader-creds.json. If

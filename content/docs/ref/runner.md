@@ -9,6 +9,8 @@ compute provider or locally on-premise).
 
 ## Options
 
+Any [generic option](/doc/ref) in addition to:
+
 ```
 --labels                    One or more user-defined labels for this runner
                             (delimited with commas)  [string] [default: "cml"]

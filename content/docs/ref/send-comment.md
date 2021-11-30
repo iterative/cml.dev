@@ -14,6 +14,8 @@ comments to the new PR if desired.
 
 ## Options
 
+Any [generic option](/doc/ref) in addition to:
+
 ```
 --pr                      Post to an existing PR/MR associated with the
                           specified commit                           [boolean]
