@@ -16,7 +16,7 @@ comments to the new PR if desired.
 
 Any [generic option](/doc/ref) in addition to:
 
-- `--commit-sha=<...>`, `--head-sha=<...>`:
+- `--commit-sha=<rev>`, `--head-sha=<rev>`:
   [Git revision](https://git-scm.com/docs/gitrevisions) linked to this comment
   [default: `HEAD`].
 - `--pr`: Post to an existing PR/MR associated with the specified commit.

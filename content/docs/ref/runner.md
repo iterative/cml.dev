@@ -14,14 +14,16 @@ Any [generic option](/doc/ref) in addition to:
 - `--labels=<...>`: One or more (comma-delimited) labels for this runner
   [default: `cml`].
 - `--name=<...>`: Runner name displayed in the CI [default: `cml-{ID}`].
-- `--idle-timeout=<...>`: Seconds to wait for jobs before shutting down. Set to
-  `-1` to disable timeout [default: `300`].
+- `--idle-timeout=<seconds>`: Seconds to wait for jobs before shutting down. Set
+  to `-1` to disable timeout [default: `300`].
 - `--no-retry`: Don't restart the workflow when terminated due to instance
   disposal or
   [GitHub Actions timeout](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits).
 - `--single`: Shutdown runner after one workflow run.
 - `--reuse`: Don't launch a new runner if an existing one has the same name or
-  overlapping labels.
+  overlapping labels. If an existing matching (same name or overlapping labels)
+  instance is busy, it'll
+  [still be reused](https://github.com/iterative/cml/issues/610).
 - `--cloud={aws,azure,gcp,kubernetes}`: Cloud compute provider to host the
   runner.
 - `--cloud-region={us-east,us-west,eu-west,eu-north,...}`: Region where the
@@ -34,8 +36,9 @@ Any [generic option](/doc/ref) in addition to:
   instances. May be [specified multiple times](http://yargs.js.org/docs/#array).
 - `--cloud-gpu={nogpu,k80,v100,tesla}`: GPU type.
 - `--cloud-hdd-size=<...>`: Disk storage size in GB.
-- `--cloud-ssh-private=<...>`: Private SSH RSA key [default: *auto-generate
-  throwaway key*].
+- `--cloud-ssh-private=<key>`: Private SSH RSA key [default: *auto-generate
+  throwaway key*]. Only supported on AWS and Azure; intended for debugging
+  purposes.
 - `--cloud-spot`: Request a preemptible spot instance.
 - `--cloud-spot-price=<...>`: Maximum spot instance USD bidding price, [default:
   *current price*].
@@ -46,14 +49,10 @@ Any [generic option](/doc/ref) in addition to:
 
 ## FAQs and Known Issues
 
-- `--reuse`: if an existing matching (same name or overlapping labels) instance
-  is busy, it'll [still be reused](https://github.com/iterative/cml/issues/610).
-- `--cloud-ssh-private=<key>`: Only supported on AWS and Azure; intended for
-  debugging purposes.
 - Bitbucket: Support for
   [self-hosted runners for Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/runners)
   is [coming soon](https://github.com/iterative/cml/pull/798).
-- GitHub Actions by default time out after a few hours. You can request up to
+- GitHub Actions by default timeout after a few hours. You can request up to
   [72 hours](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
   via
   [`timeout-minutes: 4320`](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idtimeout-minutes).

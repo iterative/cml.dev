@@ -10,10 +10,10 @@ Return a link to a <https://tensorboard.dev> page.
 
 Any [generic option](/doc/ref) in addition to:
 
-- `-c=<...>`, `--credentials=<...>`: TensorBoard JSON credentials (usually found
-  at `~/.config/tensorboard/credentials/uploader-creds.json`) [default:
+- `-c=<file>`, `--credentials=<file>`: TensorBoard JSON credentials (usually
+  found at `~/.config/tensorboard/credentials/uploader-creds.json`) [default:
   *inferred from environment `TB_CREDENTIALS`*].
-- `--logdir=<...>`: Directory containing the logs to process.
+- `--logdir=<path>`: Directory containing the logs to process.
 - `--name=<...>`: TensorBoard experiment title (up to 100 characters).
 - `--description=<...>`: TensorBoard experiment description (markdown format, up
   to 600 characters).

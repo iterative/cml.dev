@@ -18,8 +18,8 @@ preventing an infinite chain of runs.
 Any [generic option](/doc/ref) in addition to:
 
 - `--md`: Produce output in markdown format (`[Pull/Merge Request](url)`).
-- `--remote=<...>`: Git remote name or URL [default: `origin`].
-- `--user-email=<...>`: Git user email for commits [default:
+- `--remote=<name or URL>`: Git remote name or URL [default: `origin`].
+- `--user-email=<address>`: Git user email for commits [default:
   `olivaw@iterative.ai`].
 - `--user-name=<...>`: Git user name for commits [default: `Olivaw[bot]`].
 
