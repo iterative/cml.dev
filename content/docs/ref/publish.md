@@ -12,8 +12,6 @@ Any [generic option](/doc/ref) in addition to:
 
 - `--md`: Produce output in markdown format.
 - `-t=<...>`, `--title=<...>`: Title for markdown output.
-- `-f=<...>`, `--file=<...>`: Append output to the given file instead of
-  `stdout`.
 - `--mime-type=<...>`: Content
   [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml)
   [default: *inferred from content*].
