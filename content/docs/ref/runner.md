@@ -14,12 +14,12 @@ Any [generic option](/doc/ref) in addition to:
 - `--labels=<...>`: One or more (comma-delimited) labels for this runner
   [default: `cml`].
 - `--name=<...>`: Runner name displayed in the CI [default: `cml-{ID}`].
-- `--idle-timeout=<seconds>`: Seconds to wait for jobs before shutting down. Set
+- `--idle-timeout=<seconds>`: Seconds to wait for jobs before terminating. Set
   to `-1` to disable timeout [default: `300`].
 - `--no-retry`: Don't restart the workflow when terminated due to instance
   disposal or
   [GitHub Actions timeout](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits).
-- `--single`: Shutdown runner after one workflow run.
+- `--single`: Terminate runner after one workflow run.
 - `--reuse`: Don't launch a new runner if an existing one has the same name or
   overlapping labels. If an existing matching (same name or overlapping labels)
   instance is busy, it'll

@@ -149,8 +149,8 @@ The `cml runner` command supports many options (see the
 [command reference](/doc/ref/runner)). Notable options are:
 
 - `--labels=<...>`: One or more (comma-delimited) labels (e.g. `cml,gpu`).
-- `--idle-timeout=<seconds>`: Seconds to wait for jobs before shutting down.
-- `--single`: Shutdown runner after one workflow run.
+- `--idle-timeout=<seconds>`: Seconds to wait for jobs before terminating.
+- `--single`: Terminate runner after one workflow run.
 - `--reuse`: Don't launch a new runner if an existing one has the same name or
   overlapping labels.
 - `--cloud={aws,azure,gcp,kubernetes}`: Cloud compute provider to host the
