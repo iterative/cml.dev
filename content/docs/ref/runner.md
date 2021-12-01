@@ -26,25 +26,25 @@ Any [generic option](/doc/ref) in addition to:
   [still be reused](https://github.com/iterative/cml/issues/610).
 - `--cloud={aws,azure,gcp,kubernetes}`: Cloud compute provider to host the
   runner.
-- `--cloud-region={us-east,us-west,eu-west,eu-north,...}`: Region where the
-  instance is deployed. Also accepts native cloud regions [default: `us-west`].
 - `--cloud-type={m,l,xl,...}`: Instance type. Also accepts native types such as
   `t2.micro`.
+- `--cloud-gpu={nogpu,k80,v100,tesla}`: GPU type.
+- `--cloud-hdd-size=<...>`: Disk storage in GB.
+- `--cloud-spot`: Request a preemptible spot instance.
+- `--cloud-spot-price=<...>`: Maximum spot instance USD bidding price, [default:
+  *current price*].
+- `--cloud-region={us-west,us-east,eu-west,eu-north,...}`: Region where the
+  instance is deployed. Also accepts native cloud regions [default: `us-west`].
 - `--cloud-permission-set=<...>`: AWS instance profile or GCP instance service
   account.
 - `--cloud-metadata=<...>`: `key=value` pair to associate with cloud runner
   instances. May be [specified multiple times](http://yargs.js.org/docs/#array).
-- `--cloud-gpu={nogpu,k80,v100,tesla}`: GPU type.
-- `--cloud-hdd-size=<...>`: Disk storage size in GB.
-- `--cloud-ssh-private=<key>`: Private SSH RSA key [default: *auto-generate
-  throwaway key*]. Only supported on AWS and Azure; intended for debugging
-  purposes.
-- `--cloud-spot`: Request a preemptible spot instance.
-- `--cloud-spot-price=<...>`: Maximum spot instance USD bidding price, [default:
-  *current price*].
 - `--cloud-startup-script=<...>`: Run the provided
   [Base64](https://linux.die.net/man/1/base64)-encoded Linux shell script during
   the instance initialization.
+- `--cloud-ssh-private=<key>`: Private SSH RSA key [default: *auto-generate
+  throwaway key*]. Only supported on AWS and Azure; intended for debugging
+  purposes.
 - `--cloud-aws-security-group=<...>`: AWS security group.
 
 ## FAQs and Known Issues
