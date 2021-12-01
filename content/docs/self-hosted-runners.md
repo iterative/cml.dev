@@ -155,14 +155,16 @@ The `cml runner` command supports many options (see the
   overlapping labels.
 - `--cloud={aws,azure,gcp,kubernetes}`: Cloud compute provider to host the
   runner.
-- `--cloud-type={m,l,xl,...}`: Instance type. Also accepts native types such as
-  `t2.micro`.
+- `--cloud-type={m,l,xl,m+k80,m+v100,...}`: Instance
+  [type](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type).
+  Also accepts native types such as `t2.micro`.
 - `--cloud-gpu={nogpu,k80,v100,tesla}`: GPU type.
 - `--cloud-hdd-size=<...>`: Disk storage in GB.
 - `--cloud-spot`: Request a preemptible spot instance.
 - `--cloud-spot-price=<...>`: Maximum spot instance USD bidding price.
-- `--cloud-region={us-west,us-east,eu-west,eu-north,...}`: Region where the
-  instance is deployed. Also accepts native cloud regions.
+- `--cloud-region={us-west,us-east,eu-west,eu-north,...}`:
+  [Region](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#cloud-regions)
+  where the instance is deployed. Also accepts native cloud regions.
 - `--cloud-permission-set=<...>`: AWS instance profile or GCP instance service
   account.
 
