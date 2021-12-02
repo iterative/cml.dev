@@ -148,19 +148,25 @@ For example, `docker://iterativeai/cml:0-dvc2-base1-gpu`, or
 The `cml runner` command supports many options (see the
 [command reference](/doc/ref/runner)). Notable options are:
 
-- `--labels`: One or more comma-delimited labels (e.g. "cml,gpu").
-- `--idle-timeout`: Seconds to wait for jobs before shutting down.
-- `--single`: Terminate after running a single job.
+- `--labels=<...>`: One or more (comma-delimited) labels (e.g. `cml,gpu`).
+- `--idle-timeout=<seconds>`: Seconds to wait for jobs before terminating.
+- `--single`: Terminate runner after one workflow run.
 - `--reuse`: Don't launch a new runner if an existing one has the same name or
   overlapping labels.
-- `--cloud`: Cloud to deploy the runner to ("aws", "azure", "gcp", or
-  "kubernetes").
-- `--cloud-spot`: Whether to use spot instances.
-- `--cloud-spot-price`: Maximum spot instance bidding price in USD.
-- `--cloud-region`: For example, "us-east" or "eu-west".
-- `--cloud-type`: "m", "l", "xl", or native types such as "t2.micro".
-- `--cloud-gpu`: GPU type ("nogpu", "k80", "v100", "tesla").
-- `--cloud-hdd-size`: Disk size in GB.
+- `--cloud={aws,azure,gcp,kubernetes}`: Cloud compute provider to host the
+  runner.
+- `--cloud-type={m,l,xl,m+k80,m+v100,...}`: Instance
+  [type](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type).
+  Also accepts native types such as `t2.micro`.
+- `--cloud-gpu={nogpu,k80,v100,tesla}`: GPU type.
+- `--cloud-hdd-size=<...>`: Disk storage in GB.
+- `--cloud-spot`: Request a preemptible spot instance.
+- `--cloud-spot-price=<...>`: Maximum spot instance USD bidding price.
+- `--cloud-region={us-west,us-east,eu-west,eu-north,...}`:
+  [Region](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#cloud-regions)
+  where the instance is deployed. Also accepts native cloud regions.
+- `--cloud-permission-set=<...>`: AWS instance profile or GCP instance service
+  account.
 
 ## Environment Variables
 

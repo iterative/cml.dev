@@ -25,7 +25,7 @@
     "type": "git",
     "url": "https://github.com/iterative/cml.dev"
   },
-  "author": "",
+  "author": "Iterative",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/iterative/cml.dev/issues"

@@ -16,17 +16,15 @@ comments to the new PR if desired.
 
 Any [generic option](/doc/ref) in addition to:
 
-```
---pr                      Post to an existing PR/MR associated with the
-                          specified commit                           [boolean]
---commit-sha, --head-sha  Commit SHA linked to this comment. Defaults to HEAD.
-                                                                      [string]
---update                  Update the last CML comment (if any) instead of
-                          creating a new one                         [boolean]
---rm-watermark            Avoid watermark. CML needs a watermark to be able to
-                          distinguish CML reports from other comments in order
-                          to provide extra functionality.            [boolean]
-```
+- `--commit-sha=<rev>`, `--head-sha=<rev>`:
+  [Git revision](https://git-scm.com/docs/gitrevisions) linked to this comment
+  [default: `HEAD`].
+- `--pr`: Post to an existing PR/MR associated with the specified commit.
+- `--update`: Update the last CML comment (if any) instead of creating a new
+  one.
+- `--rm-watermark`: Don't inject a watermark into the comment. Will break some
+  CML functionality (such as `--update`) which needs to distinguish CML reports
+  from other comments.
 
 ## FAQs and Known Issues
 
