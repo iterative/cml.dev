@@ -359,7 +359,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span>deploy_job:</span></div>
                       <div>  <span>stage: deploy</span></div>
                       <div>  <span>when: always</span></div>
-                      <div>  <span>image: dvcorg/cml</span></div>
+                      <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="reports">
                         <div>    <span>- cml-runner</span></div>
@@ -473,7 +473,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span>deploy_job:</span></div>
                       <div>  <span>stage: deploy</span></div>
                       <div>  <span>when: always</span></div>
-                      <div>  <span>image: dvcorg/cml</span></div>
+                      <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="reports">
                         <div>    <span>- cml-runner \</span></div>
@@ -565,7 +565,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span>needs: deploy-runner</span></div>
                         <div>    <span>runs-on: [self-hosted,cml-runner]</span></div>
                         <div>    <span>container: </span></div>
-                        <div>      <span>image: docker://dvcorg/cml</span></div>
+                        <div>      <span>image: docker://iterativeai/cml:0-dvc2-base1-gpu</span></div>
                       </Tooltip>
                       <Tooltip type="tensorboard">
                         <div>      <span>options: --gpus all</span></div>

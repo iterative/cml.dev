@@ -466,7 +466,7 @@ stages:
 deploy_job:
   stage: deploy
   when: always
-  image: dvcorg/cml
+  image: iterativeai/cml:0-dvc2-base1
   script:
     <Tooltip type="reports">
     - cml runner
@@ -583,7 +583,7 @@ stages:
 deploy_job:
   stage: deploy
   when: always
-  image: dvcorg/cml
+  image: iterativeai/cml:0-dvc2-base1
   script:
     <Tooltip type="reports">
     - cml runner \
@@ -677,7 +677,7 @@ jobs:
     needs: deploy-runner
     runs-on: [self-hosted,cml-runner]
     container:
-      image: docker://dvcorg/cml
+      image: docker://iterativeai/cml:0-dvc2-base1-gpu
     </Tooltip>
     <Tooltip type="tensorboard">
       options: --gpus all
