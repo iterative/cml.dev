@@ -11,6 +11,7 @@ import { ReactComponent as DownIcon } from '@media/icons/down.svg'
 import { ReactComponent as CmlIcon } from '@media/icons/cml.svg'
 import { ReactComponent as DvcIcon } from '@media/icons/dvc.svg'
 import { ReactComponent as StudioIcon } from '@media/icons/studio.svg'
+import { ReactComponent as MlemIcon } from '@media/icons/mlem.svg'
 import { ReactComponent as ExternalLinkIcon } from '@media/icons/external-link.svg'
 
 import {
@@ -77,6 +78,13 @@ const otherToolsItems: Array<IOtherToolsItem> = [
     icon: <CmlIcon width="24" height="24" />,
     description: 'Open-source CI/CD for ML projects',
     href: '/'
+  },
+  {
+    title: 'MLEM',
+    icon: <MlemIcon width="24" height="24" />,
+    description:
+      'Open-source model registry and deployment tool for ML projects',
+    href: 'https://mlem.ai'
   }
 ]
 
