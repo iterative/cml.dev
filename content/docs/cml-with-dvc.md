@@ -75,25 +75,6 @@ few examples for some of the most frequently used providers:
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_SESSION_TOKEN` **(optional)**
 
-<toggle>
-<tab title="Sub Tab 1">
-
-#### I'm Sub Tab 1!
-
-some text
-
-</tab>
-<tab title="Sub Tab 2">
-
-This is Sub Tab 2
-
-```
-code block here
-```
-
-</tab>
-</toggle>
-
 </tab>
 <tab title="Azure">
 
@@ -121,27 +102,6 @@ code block here
   [setup a Google Drive DVC remote](https://dvc.org/doc/user-guide/setup-google-drive-remote#authorization)
   for more information.
 
-<toggle>
-<tab title="Sub Tab 1">
-
-this is sub tab 1
-
-- this
-- is
-- a
-- list
-
-</tab>
-<tab title="Sub Tab 2">
-
-### this is sub tab 2
-
-</tab>
-</toggle>
-
-</tab>
-</toggle>
-
 </tab>
 </toggle>
 
@@ -163,25 +123,6 @@ steps:
   - uses: iterative/setup-dvc@v1
 ```
 
-<toggle>
-<tab title="Sub Tab 1">
-
-#### I'm Sub Tab 1!
-
-some text
-
-</tab>
-<tab title="Sub Tab 2">
-
-This is Sub Tab 2
-
-```
-code block here
-```
-
-</tab>
-</toggle>
-
 </tab>
 <tab title="Windows">
 
@@ -194,24 +135,6 @@ steps:
       python-version: '3.x'
   - uses: iterative/setup-dvc@v1
 ```
-
-<toggle>
-<tab title="Sub Tab 1">
-
-this is sub tab 1
-
-- this
-- is
-- a
-- list
-
-</tab>
-<tab title="Sub Tab 2">
-
-this is sub tab 2
-
-</tab>
-</toggle>
 
 </tab>
 </toggle>
