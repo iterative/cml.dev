@@ -4,7 +4,7 @@ import cn from 'classnames'
 import HamburgerIcon from '../HamburgerIcon'
 import Link from '../../atoms/Link'
 import SiteLogo from '../SiteLogo'
-import { logEvent } from '../../../utils/front/ga'
+import { logEvent } from '../../../utils/front/plausible'
 
 import { getFirstPage } from '../../../utils/shared/sidebar'
 
@@ -36,7 +36,7 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
     item => (): void => {
       handleClose()
       if (item) {
-        logEvent('hamburger', item)
+        logEvent('Hamburger Menu', { Item: item })
       }
     },
     []

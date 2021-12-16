@@ -151,7 +151,13 @@ const SEO: React.FC<ISEOProps> = ({
           content: socialImageAlt
         }
       ].concat(meta)}
-    />
+    >
+      <script
+        defer
+        data-domain="cml.dev"
+        src="https://plausible.io/js/plausible.js"
+      ></script>
+    </Helmet>
   )
 }
 
