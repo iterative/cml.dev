@@ -3,7 +3,6 @@ import { ReactComponent as SolutionLineArrow } from '../media/solution-line-arro
 import Collapser from '../components/atoms/Collapser'
 import Video from '../components/molecules/Video'
 import Tooltip from '../components/organisms/Tooltip'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 import SmartLink from '../components/atoms/SmartLink'
 
 import {
@@ -106,7 +105,6 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
     case 'github.com':
       return (
         <Link
-          as={OutboundLink}
           href={url}
           target="_blank"
           rel="noopener noreferrer"
@@ -119,7 +117,6 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
     case 'gitlab.com':
       return (
         <Link
-          as={OutboundLink}
           href={url}
           target="_blank"
           rel="noopener noreferrer"
