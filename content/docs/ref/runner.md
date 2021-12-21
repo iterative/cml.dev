@@ -38,8 +38,10 @@ Any [generic option](/doc/ref) in addition to:
   [Region](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#cloud-regions)
   where the instance is deployed. Also accepts native cloud regions [default:
   `us-west`].
-- `--cloud-permission-set=<...>`: AWS instance profile or GCP instance service
-  account.
+- `--cloud-permission-set=<...>`:
+  [AWS instance profile](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#ec2-instance-profile)
+  or
+  [GCP instance service account](https://cloud.google.com/compute/docs/access/service-accounts).
 - `--cloud-metadata=<...>`: `key=value` pair to associate with cloud runner
   instances. May be [specified multiple times](http://yargs.js.org/docs/#array).
 - `--cloud-startup-script=<...>`: Run the provided
@@ -48,8 +50,10 @@ Any [generic option](/doc/ref) in addition to:
 - `--cloud-ssh-private=<key>`: Private SSH RSA key [default: *auto-generate
   throwaway key*]. Only supported on AWS and Azure; intended for debugging
   purposes.
-- `--cloud-aws-security-group=<...>`: AWS security group.
-- `--cloud-aws-subnet-id=<...>`: AWS subnet.
+- `--cloud-aws-security-group=<...>`:
+  [AWS security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html).
+- `--cloud-aws-subnet-id=<...>`:
+  [AWS subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#subnet-basics).
 
 ## FAQs and Known Issues
 
