@@ -71,6 +71,10 @@ you experience any problems, please don't hesitate to ping us in our
   - Large PRs may be merged without squashing (but related commits should be
     squashed)
 - **New releases**
-  - `git checkout master && git pull && npm version vM.m.p && git push && git push --tags`
-  - Draft a new [release](https://github.com/iterative/cml/releases), ensuring
-    all commits since last release are summarised in the release notes
+  - `git checkout master && git pull && git checkout -b M.m.p && npm version M.m.p && git push && gh pr create`
+  - Merge the resulting PR
+  - `git checkout master && git pull && git tag -f vM.m.p && git push --tags` or
+    comment `/tag vM.m.p SHA` in the PR
+  - Wait for a draft to appear under
+    [releases](https://github.com/iterative/cml/releases)
+  - Check & publish the draft
