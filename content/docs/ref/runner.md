@@ -49,6 +49,7 @@ Any [generic option](/doc/ref) in addition to:
   throwaway key*]. Only supported on AWS and Azure; intended for debugging
   purposes.
 - `--cloud-aws-security-group=<...>`: AWS security group.
+- `--cloud-aws-subnet-id=<...>`: AWS subnet.
 
 ## FAQs and Known Issues
 
