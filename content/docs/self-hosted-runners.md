@@ -78,7 +78,7 @@ jobs:
 
           # Create CML report
           cat metrics.txt >> report.md
-          cml publish plot.png --md >> report.md
+          cml publish confusion_matrix.png --md >> report.md
           cml send-comment report.md
 ```
 
