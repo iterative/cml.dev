@@ -24,21 +24,21 @@ supported CI systems.
    name: CML
    on: [push]
    jobs:
-      run:
-         runs-on: ubuntu-latest
-         container: docker://ghcr.io/iterative/cml:0-dvc2-base1
-         steps:
-            - uses: actions/checkout@v2
-            - name: Train model
-              env:
-                  REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              run: |
-                  pip install -r requirements.txt
-                  python train.py
+     run:
+       runs-on: ubuntu-latest
+       container: docker://ghcr.io/iterative/cml:0-dvc2-base1
+       steps:
+         - uses: actions/checkout@v2
+         - name: Train model
+           env:
+             REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           run: |
+             pip install -r requirements.txt
+             python train.py
 
-                  cat metrics.txt >> report.md
-                  cml publish confusion_matrix.png --md >> report.md
-                  cml send-comment report.md
+             cat metrics.txt >> report.md
+             cml publish confusion_matrix.png --md >> report.md
+             cml send-comment report.md
    ```
 
 3. In your text editor of choice, edit line 16 of `train.py` to `depth = 5`.
