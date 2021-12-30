@@ -78,7 +78,7 @@ jobs:
 
           # Create CML report
           cat metrics.txt >> report.md
-          cml publish plot.png --md >> report.md
+          cml publish plot.png --md --title="Confusion Matrix" >> report.md
           cml send-comment report.md
 ```
 
@@ -111,7 +111,7 @@ train-model:
 
     # Create CML report
     - cat metrics.txt >> report.md
-    - cml publish plot.png --md >> report.md
+    - cml publish plot.png --md --title="Confusion Matrix" >> report.md
     - cml send-comment report.md
 ```
 
