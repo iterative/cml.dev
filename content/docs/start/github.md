@@ -30,9 +30,9 @@ supported CI systems.
          steps:
             - uses: actions/checkout@v2
             - name: Train model
-               env:
+              env:
                   REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-               run: |
+              run: |
                   pip install -r requirements.txt
                   python train.py
 
