@@ -145,6 +145,6 @@ steps:
       python train.py
 
       echo "# My first CML report" >> report.md
-      cml publish plot.png --md >> report.md
+      cml publish plot.png --md --title="Confusion Matrix" >> report.md
       cml send-comment report.md
 ```
