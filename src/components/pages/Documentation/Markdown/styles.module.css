@@ -434,6 +434,7 @@ a.card {
 .toggle {
   display: flex;
   flex-wrap: wrap;
+  margin: 0 0 16px;
 
   input {
     height: 0;
