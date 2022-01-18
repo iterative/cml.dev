@@ -7,6 +7,7 @@ module.exports = {
           removeViewBox: false
         }
       }
-    }
+    },
+    'prefixIds'
   ]
 }
