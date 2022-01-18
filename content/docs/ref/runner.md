@@ -52,10 +52,10 @@ Any [generic option](/doc/ref) in addition to:
   purposes.
 - `--cloud-aws-security-group=<...>`:
   [AWS security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
-  name or ID.
+  identifier.
 - `--cloud-aws-subnet=<...>`:
   [AWS subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#subnet-basics)
-  name or ID.
+  identifier.
 
 ## FAQs and Known Issues
 
