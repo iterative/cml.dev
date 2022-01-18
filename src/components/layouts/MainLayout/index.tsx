@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { IPageProps } from '../../organisms/Page'
 import { handleFirstTab } from '../../../utils/front/accessibility'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 export enum LayoutModifiers {
   Wide,
@@ -45,9 +45,7 @@ const MainLayout: LayoutComponent = ({ className, children }) => {
 
   return (
     <>
-      <div id="layoutContent" className={styles.pageContent}>
-        {children}
-      </div>
+      <div id="layoutContent">{children}</div>
     </>
   )
 }

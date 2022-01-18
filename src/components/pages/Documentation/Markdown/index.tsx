@@ -17,9 +17,9 @@ import Link from '../../../atoms/Link'
 import Tutorials from '../TutorialsLinks'
 import { getPathWithSource } from '../../../../utils/shared/sidebar'
 
-import sharedStyles from '../styles.module.css'
-import 'github-markdown-css/github-markdown.css'
-import styles from './styles.module.css'
+import * as sharedStyles from '../styles.module.css'
+import 'github-markdown-css/github-markdown-light.css'
+import * as styles from './styles.module.css'
 import { TogglesContext, TogglesProvider } from './ToggleProvider'
 
 const isInsideCodeBlock = (node: Element): boolean => {

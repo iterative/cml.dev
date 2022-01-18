@@ -7,7 +7,7 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
    Click on Fork and select the namespace where you would like to keep the
    project.
 
-   ![](/img/gitlab_fork_cml_project.png)
+   ![](img/gitlab_fork_cml_project.png)
 
 2. ⚠️ In GitLab, to use CML, you must create a variable called a `REPO_TOKEN`
    whose value is a Personal Access Token. To do this:
@@ -22,7 +22,7 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
    d. Click on the "Create personal access token" button and copy the generated
    access token.
 
-   ![](/img/personal_access_token.png)
+   ![](img/personal_access_token.png)
 
    e. Head back to your fork by clicking the Projects tab next to the GitLab
    logo and select it.
@@ -30,7 +30,7 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
    f. On the left hand side Navigate to **Settings** ➡ **CI/CD** ➡
    **Variables**.
 
-   ![](/img/ci_cd_navigation.png)
+   ![](img/ci_cd_navigation.png)
 
    f. Scroll to Variables and expand the field. Click "Add Variable". In the Key
    field, type `REPO_TOKEN`. In the Value field, paste your Personal Access
@@ -45,7 +45,7 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
    shown in the image below, and then in your terminal, type the following
    command, replacing `<user_name>` with your own from GitLab.
 
-   ![](/img/gitlab_cml_clone.png)
+   ![](img/gitlab_cml_clone.png)
 
    ```bash
    git clone https://gitlab.com/<user_name>/example_cml.git
@@ -87,17 +87,17 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
 
 8. Go back to GitLab in a Browser window and create a merge request.
 
-   ![](/img/create_merge_request.png)
+   ![](img/create_merge_request.png)
 
 9. If you arrive at a New Merge Request screen that says it's merging into
    anything _other_ than your local repository, click on `Change branches` seen
    here.
 
-   ![](/img/new_merge_request.png)
+   ![](img/new_merge_request.png)
 
 10. ⚠️ Change target branch to your local branch with your username.
 
-    ![](/img/change_user_name.png)
+    ![](img/change_user_name.png)
 
 11. Click on the "Compare branches and continue" button. Enter any additional
     comments you would like to put in the description and click the "Submit
@@ -105,7 +105,7 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
     appear in the Pull Request with your CML report. This is a result of the
     `cml send-comment` command in your workflow.
 
-    ![](/img/cml_start_gitlab_end.png)
+    ![](img/cml_start_gitlab_end.png)
 
 ## Final Solution
 

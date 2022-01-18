@@ -6,7 +6,7 @@ projects. Use it to automate parts of your development workflow, including model
 training and evaluation, comparing ML experiments across your project history,
 and monitoring changing datasets.
 
-![](/img/cml_neural_transfer.png) _On every pull request, CML helps you
+![](img/cml_neural_transfer.png) _On every pull request, CML helps you
 automatically train and evaluate models, then generates a visual report with
 results and metrics. Above, an example report for a
 [neural style transfer model](https://rb.gy/ub5idx)._
