@@ -12,7 +12,7 @@ interface ISiteLogo {
 
 const SiteLogo: React.FC<ISiteLogo> = ({ variant = 'layout.SiteLogo' }) => (
   <GatsbyLink to="/" variant={variant} ariaLabel="Home">
-    <Box as="span" sx={{ backgroundImage: `url(${cmlIcon})` }} />
+    <Box as="span" sx={{ backgroundImage: `url("${cmlIcon}")` }} />
     <CmlText width="46" height="16" />
   </GatsbyLink>
 )
