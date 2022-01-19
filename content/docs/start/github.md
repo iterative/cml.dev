@@ -7,7 +7,7 @@ supported CI systems.
 1. Fork our
    [example project repository](https://github.com/iterative/example_cml).
 
-   ![](img/fork_cml_project.png)
+   ![](/img/fork_cml_project.png)
 
    The following steps can all be done in the GitHub browser interface. However,
    to follow along the commands, we recommend cloning your fork to your local
@@ -54,13 +54,13 @@ supported CI systems.
 5. In GitHub, open up a Pull Request to compare the `experiment` branch to
    `master`.
 
-   ![](img/make_pr.png)
+   ![](/img/make_pr.png)
 
    Shortly, you should see a comment from `github-actions` appear in the Pull
    Request with your CML report. This is a result of the `cml send-comment`
    command in your workflow.
 
-   ![](img/cml_first_report.png)
+   ![](/img/cml_first_report.png)
 
 This is the gist of the CML workflow: when you push changes to your GitHub
 repository, the workflow in your `.github/workflows/cml.yaml` file gets run and

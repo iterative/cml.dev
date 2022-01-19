@@ -43,7 +43,7 @@ jobs:
 ```
 
 The example above generates visual reports in pull requests:
-[![](img/cml_first_report.png)](https://github.com/iterative/cml_base_case/pull/2)
+[![](/img/cml_first_report.png)](https://github.com/iterative/cml_base_case/pull/2)
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -85,7 +85,7 @@ create-CML-report:
 via a `REPO_TOKEN` variable.
 
 The example above generates visual reports in merge requests:
-[![](img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
+[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -128,7 +128,7 @@ pipelines:
 `REPO_TOKEN` variable.
 
 The example above generates visual reports in pull requests:
-[![](img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)
+[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)
 
 ⚠️ CML works with Bitbucket Cloud, where you can use the
 [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD

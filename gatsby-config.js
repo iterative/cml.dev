@@ -50,6 +50,13 @@ const plugins = [
     }
   },
   {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'images',
+      path: path.join(__dirname, 'static', 'img')
+    }
+  },
+  {
     resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [

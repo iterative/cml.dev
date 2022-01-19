@@ -5,7 +5,7 @@ downloaded from external sources. [DVC](https://dvc.org) is a common way to
 bring data to your CML runner. DVC also lets you run pipelines and plot changes
 in metrics for inclusion in CML reports.
 
-![](img/dvc_cml_long_report.png)
+![](/img/dvc_cml_long_report.png)
 
 The `.github/workflows/cml.yaml` file to create this report is:
 
