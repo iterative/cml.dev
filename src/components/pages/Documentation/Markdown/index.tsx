@@ -207,9 +207,9 @@ const Tab: React.FC = ({ children }) => (
   <div className={cn('tab', styles.tab)}>{children}</div>
 )
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderAst = new (rehypeReact as any)({
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  createElement: React.createElement as any,
+  createElement: React.createElement,
   Fragment: React.Fragment,
   components: {
     details: Details,

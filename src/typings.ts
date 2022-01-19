@@ -30,7 +30,7 @@ declare module 'scroll' {
   type ScrollTo = (
     node: Element,
     position: number,
-    options: {},
+    options: Record<string, unknown>,
     cb?: (err: Error | null, position: number) => void
   ) => () => void
   type ScrollModule = {
