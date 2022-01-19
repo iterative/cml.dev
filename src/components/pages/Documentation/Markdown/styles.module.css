@@ -41,6 +41,11 @@
     h5,
     h6 {
       font-weight: 500;
+
+      code {
+        font-size: 85%;
+        padding: 0.2em 0.4em;
+      }
     }
 
     img + em,
