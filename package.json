@@ -56,7 +56,6 @@
     "fs-extra": "^10.0.0",
     "gatsby": "^4.5.3",
     "gatsby-cli": "4.5.2",
-    "gatsby-image": "^3.11.0",
     "gatsby-link": "^4.5.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "2.5.2",
