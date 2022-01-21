@@ -56,6 +56,9 @@ Any [generic option](/doc/ref) in addition to:
 - `--cloud-aws-subnet=<...>`:
   [AWS subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#subnet-basics)
   identifier.
+- `--docker-volumes=<...>`: Volume mount to pass to Docker, e.g.
+  `/var/run/docker.sock:/var/run/docker.sock` for Docker-in-Docker support. May
+  be specified multiple times. Only supported by GitLab.
 
 ## FAQs and Known Issues
 
