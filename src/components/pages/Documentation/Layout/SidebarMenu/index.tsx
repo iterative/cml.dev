@@ -18,7 +18,7 @@ import {
 } from '../../../../../utils/shared/sidebar'
 
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 // A map for optional special icons that can be used in menu items
 // Use the key string here as the "icon" field in sidebar.json
@@ -89,10 +89,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     isExpanded && styles.active,
     isRootParent && 'docSearch-lvl0',
     'link-with-focus',
-    style ? styles[style] : styles.sidebarDefault,
-    isLeafItem && styles.leafItem,
-    // Limit the default bullet to items with no special icon
-    icon ? undefined : styles.withDefaultBullet
+    style && styles[style]
   )
 
   const bulletIconClassName = cn(

@@ -50,6 +50,13 @@ const plugins = [
     }
   },
   {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'images',
+      path: path.join(__dirname, 'static', 'img')
+    }
+  },
+  {
     resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
@@ -92,7 +99,9 @@ const plugins = [
         {
           resolve: 'gatsby-remark-images',
           options: {
-            withWebp: true
+            maxWidth: 700,
+            withWebp: true,
+            quality: 90
           }
         },
         'gatsby-remark-responsive-iframe'
@@ -102,10 +111,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-svgr',
     options: {
-      ref: true,
-      svgoConfig: {
-        plugins: [{ removeViewBox: false }]
-      }
+      ref: true
     }
   },
   'gatsby-plugin-sharp',
@@ -113,7 +119,6 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      /* eslint-disable @typescript-eslint/camelcase */
       background_color: '#663399',
       display: 'minimal-ui',
       icon: 'static/favicon-512x512.png',
@@ -168,7 +173,6 @@ const plugins = [
           type: 'image/png'
         }
       ]
-      /* eslint-enable @typescript-eslint/camelcase */
     }
   },
   {

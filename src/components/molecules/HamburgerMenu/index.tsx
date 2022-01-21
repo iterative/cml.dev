@@ -13,7 +13,7 @@ import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
 import { ReactComponent as MailIcon } from '@media/icons/mail.svg'
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 
@@ -209,13 +209,9 @@ export const HamburgerButton: React.FC<{
   opened: boolean
   collapsed: boolean
   handleClick: (e: MouseEvent) => void
-}> = ({ opened, collapsed, handleClick }) => (
+}> = ({ opened, handleClick }) => (
   <button
-    className={cn(
-      styles.toggleButton,
-      collapsed || styles.expanded,
-      opened && styles.opened
-    )}
+    className={cn(styles.toggleButton, opened && styles.opened)}
     onClick={handleClick}
     aria-label="Toggle Mobile Menu"
   >

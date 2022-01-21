@@ -102,8 +102,6 @@
   );
   background-size: 100%;
   background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   margin-right: auto;
@@ -189,19 +187,19 @@ a.sectionHeading {
 
 .bgImg {
   &Cml {
-    background-image: url(../../../media/icons/cml.svg);
+    background-image: url("../../../media/icons/cml.svg");
   }
 
   &Dvc {
-    background-image: url(../../../media/icons/dvc.svg);
+    background-image: url("../../../media/icons/dvc.svg");
   }
 
   &Studio {
-    background-image: url(../../../media/icons/studio.svg);
+    background-image: url("../../../media/icons/studio.svg");
   }
 
   &Mlem {
-    background-image: url(../../../media/icons/mlem.svg);
+    background-image: url("../../../media/icons/mlem.svg");
   }
 }
 
@@ -232,7 +230,7 @@ a.sectionHeading {
 
   &:hover {
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgb(255 255 255 / 70%);
   }
 
   &:focus {

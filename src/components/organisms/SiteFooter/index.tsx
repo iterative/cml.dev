@@ -82,13 +82,13 @@ const footerLists: Array<IFooterListPopupProps> = [
     items: [
       {
         text: 'DVC',
-        icon: <Box as="span" sx={{ backgroundImage: `url(${dvcIcon})` }} />,
+        icon: <Box as="span" sx={{ backgroundImage: `url("${dvcIcon}")` }} />,
 
         url: 'https://dvc.org/'
       },
       {
         text: 'CML',
-        icon: <Box as="span" sx={{ backgroundImage: `url(${cmlIcon})` }} />,
+        icon: <Box as="span" sx={{ backgroundImage: `url("${cmlIcon}")` }} />,
 
         url: '/'
       },
@@ -98,7 +98,7 @@ const footerLists: Array<IFooterListPopupProps> = [
           <Box
             as="span"
             sx={{
-              backgroundImage: `url(${studioIcon})`
+              backgroundImage: `url("${studioIcon}")`
             }}
           />
         ),
@@ -110,7 +110,7 @@ const footerLists: Array<IFooterListPopupProps> = [
           <Box
             as="span"
             sx={{
-              backgroundImage: `url(${mlemIcon})`
+              backgroundImage: `url("${mlemIcon}")`
             }}
           />
         ),

@@ -2,12 +2,12 @@
   box-sizing: border-box;
   height: 60px;
   padding-top: 20px;
-  background: rgb(238, 244, 248);
+  background: rgb(238 244 248);
   background: linear-gradient(
     180deg,
-    rgba(238, 244, 248, 1) 0%,
-    rgba(238, 244, 248, 1) 86%,
-    rgba(238, 244, 248, 0) 100%
+    rgb(238 244 248 / 100%) 0%,
+    rgb(238 244 248 / 100%) 86%,
+    rgb(238 244 248 / 0%) 100%
   );
   z-index: 10;
   position: sticky;
@@ -45,7 +45,7 @@
   border: solid 1px var(--color-lighter-blue);
   border-radius: 200px;
   background-color: #fff;
-  background-image: url('/img/search.svg');
+  background-image: url("/img/search.svg");
   background-repeat: no-repeat;
   background-position: 15px center;
   font-size: 16px;

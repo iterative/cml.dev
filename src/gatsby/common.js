@@ -1,14 +1,7 @@
-const remark = require('remark')
-const remarkHTML = require('remark-html')
 const is404Regexp = /^\/404/
 const trailingSlashRegexp = /\/$/
 
 const alertLandingArray = ['/enterprise']
-
-const markdownProcessor = remark().use(remarkHTML).processSync
-function markdownToHtml(input) {
-  return markdownProcessor(input).contents
-}
 
 const setPageContext = (page, actions) => {
   const pagePath =
@@ -31,4 +24,3 @@ const setPageContext = (page, actions) => {
 }
 
 exports.setPageContext = setPageContext
-exports.markdownToHtml = markdownToHtml

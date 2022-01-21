@@ -13,7 +13,7 @@ import { matchMedia } from '../../../../utils/front/breakpoints'
 import SiteHeader from '../../../organisms/SiteHeader'
 import SiteFooter from '../../../organisms/SiteFooter'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
