@@ -341,7 +341,7 @@ are required to deploy EC2 instances.
 
 Click below to see credentials needed for supported compute providers.
 
-<toggle>
+<toggle height="250px">
 <tab title="AWS">
 
 - `AWS_ACCESS_KEY_ID`
