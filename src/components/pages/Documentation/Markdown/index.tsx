@@ -211,8 +211,6 @@ const Toggle: React.FC<{
   )
 }
 
-const Tab: React.FC = ({ children }) => <>{children}</>
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderAst = new (rehypeReact as any)({
   createElement: React.createElement,
@@ -223,7 +221,7 @@ const renderAst = new (rehypeReact as any)({
     card: Card,
     cards: Cards,
     toggle: Toggle,
-    tab: Tab
+    tab: React.Fragment
   }
 }).Compiler
 
