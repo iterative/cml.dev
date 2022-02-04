@@ -164,9 +164,15 @@ The `cml runner` command supports many options (see the
 - `--cloud-spot-price=<...>`: Maximum spot instance USD bidding price.
 - `--cloud-region={us-west,us-east,eu-west,eu-north,...}`:
   [Region](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#cloud-regions)
-  where the instance is deployed. Also accepts native cloud regions.
-- `--cloud-permission-set=<...>`: AWS instance profile or GCP instance service
-  account.
+  where the instance is deployed. Also accepts native AWS/Azure region or GCP
+  zone.
+- `--cloud-permission-set=<...>`:
+  [AWS instance profile](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#ec2-instance-profile)
+  or
+  [GCP instance service account](https://cloud.google.com/compute/docs/access/service-accounts).
+
+☝️ **Tip!** Check out the full
+[`cml runner` command reference](/doc/ref/runner).
 
 ## Environment Variables
 

@@ -36,8 +36,8 @@ Any [generic option](/doc/ref) in addition to:
   *current price*].
 - `--cloud-region={us-west,us-east,eu-west,eu-north,...}`:
   [Region](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#cloud-regions)
-  where the instance is deployed. Also accepts native cloud regions [default:
-  `us-west`].
+  where the instance is deployed. Also accepts native AWS/Azure region or GCP
+  zone [default: `us-west`].
 - `--cloud-permission-set=<...>`:
   [AWS instance profile](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#ec2-instance-profile)
   or
