@@ -45,7 +45,9 @@ jobs:
       - name: Generate data
         run: echo "Hello World" > output.txt
       - name: Create and merge PR
-        run: gh pr merge --rebase $(cml pr "output.txt")
+        run: |
+          cml ci
+          gh pr merge --rebase $(cml pr "output.txt")
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
