@@ -148,8 +148,9 @@ const ToggleTab: React.FC<{
 }
 
 const Toggle: React.FC<{
+  height?: string
   children: Array<{ props: { title: string } } | string>
-}> = ({ children }) => {
+}> = ({ height, children }) => {
   const [toggleId, setToggleId] = useState('')
   const {
     addNewToggle = (): null => null,
@@ -196,16 +197,19 @@ const Toggle: React.FC<{
           }
           onChange={(): void => updateToggleInd(toggleId, i)}
         >
-          {tab}
+          <div
+            className={cn('tab', styles.tab)}
+            style={{
+              minHeight: height
+            }}
+          >
+            {tab}
+          </div>
         </ToggleTab>
       ))}
     </div>
   )
 }
-
-const Tab: React.FC = ({ children }) => (
-  <div className={cn('tab', styles.tab)}>{children}</div>
-)
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderAst = new (rehypeReact as any)({
@@ -217,7 +221,7 @@ const renderAst = new (rehypeReact as any)({
     card: Card,
     cards: Cards,
     toggle: Toggle,
-    tab: Tab
+    tab: React.Fragment
   }
 }).Compiler
 
