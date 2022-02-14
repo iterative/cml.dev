@@ -127,7 +127,14 @@ export default {
           width: ['100%', null, 'auto'],
           px: ['12px', null, 0],
           justifyContent: ['space-between', null, 'flex-start'],
-          position: 'relative'
+          alignItems: 'center',
+          position: 'relative',
+          '> a:nth-of-type(1)': {
+            display: ['none', 'inline', 'none', 'inline']
+          },
+          '> a:nth-of-type(3)': {
+            display: ['none', null, null, null, 'initial']
+          }
         },
         Logo: {
           flex: '0 0 auto',
@@ -230,9 +237,6 @@ export default {
               }
             }
           }
-        },
-        OtherTools: {
-          order: [null, null, 1]
         },
         OtherToolsPopup: {
           variant: 'layout.Header.Nav.Popup',
@@ -412,6 +416,23 @@ export default {
               outline: 'none',
               backgroundColor: '#13ADC7'
             }
+          }
+        },
+        OtherPopup: {
+          variant: 'layout.Header.Nav.Popup',
+          backgroundColor: '#443558',
+          flexDirection: 'column',
+          borderRadius: 8,
+          p: '8px',
+          a: {
+            p: '8px',
+            m: 0
+          },
+          '> a:nth-of-type(1)': {
+            display: [null, 'none', 'inline', 'none']
+          },
+          'a:nth-of-type(2)': {
+            display: 'none'
           }
         }
       }

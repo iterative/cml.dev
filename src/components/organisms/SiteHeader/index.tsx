@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React from 'react'
 import { Flex, Box, Container, Button } from '@theme-ui/components'
 import InstallPopup from '../../molecules/InstallPopup'
 import SmartLink from '../../atoms/SmartLink'
@@ -21,6 +21,7 @@ import {
 } from '../../molecules/HamburgerMenu'
 
 import * as styles from './styles.module.css'
+import usePopup from '../../../gatsby/hooks/usePopup'
 
 interface IHeaderProps {
   isMain?: boolean
@@ -34,6 +35,10 @@ interface IOtherToolsItem {
 interface IOtherToolsPopupProps {
   list: Array<IOtherToolsItem>
   isOpen: boolean
+}
+interface IPrimaryNavItems {
+  label: string
+  href: string
 }
 
 const socialLinkDefinitions = [
@@ -49,7 +54,7 @@ const socialLinkDefinitions = [
   }
 ]
 
-const primaryNavItems = [
+const primaryNavItems: Array<IPrimaryNavItems> = [
   {
     label: 'Use Cases',
     href: '/#use-cases'
@@ -57,6 +62,10 @@ const primaryNavItems = [
   {
     label: 'Docs',
     href: '/doc'
+  },
+  {
+    label: 'Course',
+    href: 'https://learn.iterative.ai/'
   }
 ]
 
@@ -87,6 +96,24 @@ const otherToolsItems: Array<IOtherToolsItem> = [
     href: 'https://mlem.ai'
   }
 ]
+
+const OtherPopup: React.FC<{
+  isOpen: boolean
+  list: Array<IPrimaryNavItems>
+}> = ({ list, isOpen }) => {
+  return (
+    <Flex
+      variant="layout.Header.Nav.OtherPopup"
+      sx={isOpen ? { variant: 'layout.Header.Nav.OtherToolsPopup.Open' } : {}}
+    >
+      {list.map(({ label, href }, i) => (
+        <SmartLink href={href} variant="layout.Header.Nav.Link" key={i}>
+          {label}
+        </SmartLink>
+      ))}
+    </Flex>
+  )
+}
 
 const OtherToolsPopup: React.FC<IOtherToolsPopupProps> = ({ list, isOpen }) => {
   return (
@@ -123,70 +150,11 @@ const OtherToolsPopup: React.FC<IOtherToolsPopupProps> = ({ list, isOpen }) => {
 
 const Header: React.FC<IHeaderProps> = ({ isMain }) => {
   const { opened, handleToggle, handleItemClick } = useHamburgerMenu()
-
   const collapsed = opened
-  const [isInstallPopupOpen, setIsInstallPopupOpen] = useState(false)
-  const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
-  const installPopupContainerEl = useRef<HTMLDivElement>(null)
-  const otherToolsPopupContainerEl = useRef<HTMLDivElement>(null)
 
-  const closeAllPopups = (): void => {
-    setIsInstallPopupOpen(false)
-    setIsOtherToolsPopupOpen(false)
-  }
-
-  const handlePageClick = (event: MouseEvent): void => {
-    if (
-      event.target instanceof Element &&
-      !installPopupContainerEl?.current?.contains(event.target) &&
-      !otherToolsPopupContainerEl?.current?.contains(event.target)
-    ) {
-      closeAllPopups()
-    }
-  }
-
-  const handlePageKeyup = (event: KeyboardEvent): void => {
-    if (event.key === 'Escape') {
-      closeAllPopups()
-    }
-  }
-
-  const openInstallPopup = (): void => {
-    document.addEventListener('click', handlePageClick)
-    document.addEventListener('keyup', handlePageKeyup)
-    setIsInstallPopupOpen(true)
-  }
-
-  const openOtherToolsPopup = (): void => {
-    document.addEventListener('click', handlePageClick)
-    document.addEventListener('keyup', handlePageKeyup)
-    setIsOtherToolsPopupOpen(true)
-  }
-
-  const toggleInstallPopup = (): void => {
-    setIsOtherToolsPopupOpen(false)
-    if (isInstallPopupOpen) {
-      closeAllPopups()
-    } else {
-      openInstallPopup()
-    }
-  }
-
-  const toggleOtherToolsPopup = (): void => {
-    setIsInstallPopupOpen(false)
-    if (isOtherToolsPopupOpen) {
-      closeAllPopups()
-    } else {
-      openOtherToolsPopup()
-    }
-  }
-
-  useEffect(() => {
-    if (!isInstallPopupOpen && !isOtherToolsPopupOpen) {
-      document.removeEventListener('click', handlePageClick)
-      document.removeEventListener('keyup', handlePageKeyup)
-    }
-  }, [isInstallPopupOpen, isOtherToolsPopupOpen])
+  const installPopup = usePopup()
+  const otherToolsPopup = usePopup()
+  const otherPopup = usePopup()
 
   return (
     <>
@@ -233,14 +201,14 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
                 </SmartLink>
               ))}
               <Box
-                ref={installPopupContainerEl}
+                ref={installPopup.containerEl}
                 sx={{ position: ['static', 'relative'] }}
               >
                 <Button
-                  onClick={toggleInstallPopup}
+                  onClick={installPopup.toggle}
                   variant="layout.Header.Nav.NavButton"
                   sx={
-                    isInstallPopupOpen
+                    installPopup.isOpen
                       ? { variant: 'layout.Header.Nav.NavButton.Active' }
                       : {}
                   }
@@ -248,20 +216,20 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
                   Install
                 </Button>
                 <InstallPopup
-                  onClose={closeAllPopups}
-                  isOpen={isInstallPopupOpen}
+                  onClose={installPopup.close}
+                  isOpen={installPopup.isOpen}
                 />
               </Box>
               <Box
                 variant="layout.Header.Nav.OtherTools"
-                ref={otherToolsPopupContainerEl}
+                ref={otherToolsPopup.containerEl}
                 sx={{ position: 'relative' }}
               >
                 <Button
-                  onClick={toggleOtherToolsPopup}
+                  onClick={otherToolsPopup.toggle}
                   variant="layout.Header.Nav.NavButton"
                   sx={
-                    isOtherToolsPopupOpen
+                    otherToolsPopup.isOpen
                       ? { variant: 'layout.Header.Nav.NavButton.Active' }
                       : {}
                   }
@@ -270,7 +238,7 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
                   <Box
                     variant="layout.Header.Nav.NavButton.Icon"
                     sx={
-                      isOtherToolsPopupOpen
+                      otherToolsPopup.isOpen
                         ? { display: 'none' }
                         : { display: 'flex' }
                     }
@@ -281,7 +249,7 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
                   <Box
                     variant="layout.Header.Nav.NavButton.Icon"
                     sx={
-                      isOtherToolsPopupOpen
+                      otherToolsPopup.isOpen
                         ? { display: 'flex' }
                         : { display: 'none' }
                     }
@@ -291,9 +259,33 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
                   </Box>
                 </Button>
                 <OtherToolsPopup
-                  isOpen={isOtherToolsPopupOpen}
+                  isOpen={otherToolsPopup.isOpen}
                   list={otherToolsItems}
                 />
+              </Box>
+              <Box
+                ref={otherPopup.containerEl}
+                sx={{
+                  position: ['static', 'relative'],
+                  display: [null, null, null, null, 'none']
+                }}
+              >
+                <Button
+                  onClick={otherPopup.toggle}
+                  variant="layout.Header.Nav.NavButton"
+                  sx={{
+                    fontSize: '20px',
+                    fontWeight: 600,
+                    letterSpacing: '2px',
+                    marginBottom: '9px',
+                    ...(otherPopup.isOpen
+                      ? { variant: 'layout.Header.Nav.NavButton.Active' }
+                      : {})
+                  }}
+                >
+                  ...
+                </Button>
+                <OtherPopup list={primaryNavItems} isOpen={otherPopup.isOpen} />
               </Box>
             </Flex>
           </Box>

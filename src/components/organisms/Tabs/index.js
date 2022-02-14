@@ -113,7 +113,7 @@ export const JSONTabs = ({ content, name: idPrefix = 'tabs', sx }) => {
   )
 
   return (
-    <div>
+    <Box sx={{ overflow: 'auto' }}>
       {radioElements}
       <Box variant="styles.Tabs.Wrapper" sx={sx}>
         <Box as="nav" variant="styles.Tabs.Tabs">
@@ -123,6 +123,6 @@ export const JSONTabs = ({ content, name: idPrefix = 'tabs', sx }) => {
           {contentElements}
         </Box>
       </Box>
-    </div>
+    </Box>
   )
 }
