@@ -27,7 +27,7 @@ We built CML with these principles in mind:
   needed.
 
 _Need help? Just want to chat about continuous integration for ML?
-[Visit our Discord channel!](https://discord.gg/bzA6uY7)_
+[Visit our Discord channel!](/chat)_
 
 🌟 Check out our
 [YouTube video series](https://www.youtube.com/playlist?list=PL7WG7YrwYcnDBDuCkFbcyjnZQrdskFsBz)

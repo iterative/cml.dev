@@ -132,7 +132,7 @@ export const HamburgerMenu: React.FC<
             <li className={styles.subSection}>
               <Link
                 className={styles.subSectionLink}
-                href="https://dvc.org/chat"
+                href="https://cml.dev/chat"
                 onClick={handleItemClick('chat')}
                 target="_blank"
               >
