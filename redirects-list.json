@@ -1,6 +1,6 @@
 [
   "^https://www\\.cml\\.dev(.*)?                                           https://cml.dev$1",
-  "^/chat(/.*)?$                                                           https://discord.gg/ucXJVerWee",
+  "^/chat(/.*)?$                                                           https://discord.gg/bzA6uY7",
   "^/(?:docs|documentation)(/.*)?$                                         /doc$1",
 
   "^/doc/start/start-github(/.*)?$                                         /doc/start/github",
