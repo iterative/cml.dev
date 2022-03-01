@@ -43,7 +43,7 @@ const socialLinkDefinitions = [
     title: 'CML GitHub repo'
   },
   {
-    url: 'https://www.dvc.org/chat',
+    url: 'https://cml.dev/chat',
     icon: <DiscordIcon className="small-svg" />,
     title: 'DVC Discord chat'
   }

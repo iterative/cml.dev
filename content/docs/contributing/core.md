@@ -57,7 +57,7 @@ npm install
 
 That's it. You should be ready to make changes, run tests, and make commits! If
 you experience any problems, please don't hesitate to ping us in our
-[chat](https://dvc.org/chat).
+[chat](https://cml.dev/chat).
 
 ### Maintainers
 

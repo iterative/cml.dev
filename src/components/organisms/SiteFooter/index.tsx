@@ -65,7 +65,7 @@ const footerLists: Array<IFooterListPopupProps> = [
       {
         text: 'Discord',
         icon: <DiscordIcon width="16" height="16" />,
-        url: 'https://www.dvc.org/chat'
+        url: 'https://cml.dev/chat'
       }
     ]
   },
@@ -142,7 +142,7 @@ const socialLinkDefinitions: Array<ISocialLinkPopupProps> = [
     title: 'Iterative LinkedIn'
   },
   {
-    url: 'https://www.dvc.org/chat',
+    url: 'https://cml.dev/chat',
     icon: <DiscordIcon width="26" height="26" />,
     title: 'DVC Discord chat'
   }
