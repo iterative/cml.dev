@@ -35,6 +35,10 @@
     "source": "ref/index.md",
     "children": [
       {
+        "label": "ci",
+        "slug": "ci"
+      },
+      {
         "label": "pr",
         "slug": "pr"
       },
