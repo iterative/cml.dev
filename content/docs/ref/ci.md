@@ -4,7 +4,9 @@
 cml ci [options]
 ```
 
-Fixes CI setups.
+Prepares Git repository for CML operations (setting Git `user.name` &
+`user.email`, unshallow clone and undo CI oddities such as origin URL formatting
+and HTTP remote proxies).
 
 ## Options
 
