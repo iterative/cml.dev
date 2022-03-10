@@ -22,6 +22,7 @@ import {
 
 import * as styles from './styles.module.css'
 import usePopup from '../../../utils/hooks/usePopup'
+import onSelectKey from '../../../utils/onSelectKey'
 
 interface IHeaderProps {
   isMain?: boolean
@@ -177,9 +178,12 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
               <Box
                 ref={installPopup?.containerEl}
                 sx={{ position: ['static', 'relative'] }}
+                onMouseEnter={installPopup.open}
+                onMouseLeave={installPopup.close}
               >
                 <Button
-                  onClick={installPopup.toggle}
+                  onPointerUp={installPopup.toggle}
+                  onKeyUp={onSelectKey(installPopup.toggle)}
                   variant="layout.Header.Nav.NavButton"
                   sx={
                     installPopup.isOpen
@@ -203,6 +207,7 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
               >
                 <Button
                   onPointerUp={otherToolsPopup.toggle}
+                  onKeyUp={onSelectKey(otherToolsPopup.toggle)}
                   variant="layout.Header.Nav.NavButton"
                   sx={
                     otherToolsPopup.isOpen
