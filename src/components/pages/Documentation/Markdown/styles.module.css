@@ -80,7 +80,7 @@
     select:focus,
     textarea:focus,
     a:focus {
-      outline-color: var(--color-gray-hover) !important;
+      outline-color: var(--color-gray-hover);
     }
 
     :global(a.gatsby-resp-image-link)::after {
