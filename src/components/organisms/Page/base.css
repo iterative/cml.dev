@@ -46,7 +46,7 @@ input:focus,
 select:focus,
 textarea:focus,
 a:focus {
-  outline: 2px dotted var(--color-gray-hover);
+  outline: 2px dotted var(--color-light-blue-hover);
   outline-offset: 5px;
 }
 

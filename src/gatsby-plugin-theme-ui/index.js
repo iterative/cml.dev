@@ -193,9 +193,6 @@ export default {
             backgroundColor: 'transparent',
             cursor: 'pointer'
           },
-          '&:focus': {
-            outline: 'none'
-          },
           Icon: {
             display: 'flex',
             ml: ['5px', null, null, '7px'],

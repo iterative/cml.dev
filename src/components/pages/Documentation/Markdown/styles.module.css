@@ -75,6 +75,14 @@
       }
     }
 
+    button:focus,
+    input:focus,
+    select:focus,
+    textarea:focus,
+    a:focus {
+      outline-color: var(--color-gray-hover);
+    }
+
     :global(a.gatsby-resp-image-link)::after {
       content: unset;
     }

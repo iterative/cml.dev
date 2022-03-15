@@ -22,7 +22,7 @@
   &:hover,
   &:focus,
   &:active {
-    color: var(--color-purple-hover);
+    color: var(--color-light-blue-hover);
   }
 }
 
