@@ -312,7 +312,8 @@ variable with a Base64 encoded username and password.
 
 Use either:
 
-- your username and a [Bitbucket Cloud App Password](https://bitbucket.org/account/settings/app-passwords/),
+- your username and a 
+  [Bitbucket Cloud App Password](https://bitbucket.org/account/settings/app-passwords/),
   or
 - create a designated "CI/CD" _bot account_ for CML authentication. Bot accounts
   are the same as normal user accounts, with the only difference being the
