@@ -17,6 +17,8 @@ preventing an infinite chain of runs.
 
 Any [generic option](/doc/ref) in addition to:
 
+- `--auto-merge`: Mark the PR/MR for automatic merging after tests pass
+  (unsupported by Bitbucket).
 - `--md`: Produce output in markdown format (`[CML Pull/Merge Request](url)`
   instead of `url`).
 - `--remote=<name or URL>`: Git remote name or URL [default: `origin`].
@@ -32,27 +34,7 @@ Any [generic option](/doc/ref) in addition to:
 cml pr "."
 ```
 
-### Automatically merge GitHub pull requests
-
-```yaml
-on: pull_request
-jobs:
-  cml:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: iterative/setup-cml@v1
-      - name: Generate data
-        run: echo "Hello World" > output.txt
-      - name: Create and merge PR
-        run: |
-          cml ci
-          gh pr merge --rebase $(cml pr "output.txt")
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
-### Command internals
+## Command internals
 
 ```bash
 cml pr "**/*.py" "**/*.json"
