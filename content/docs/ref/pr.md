@@ -41,6 +41,9 @@ date > output.txt
 cml pr --auto-merge output.txt
 ```
 
+The `--auto-merge` option enables [auto–merge](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request) (GitHub) or 
+[merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html) (GitLab) so the pull/merge request gets automatically merged as soon as checks succeed.
+
 ## Command internals
 
 ```bash
