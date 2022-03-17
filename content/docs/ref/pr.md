@@ -31,7 +31,14 @@ Any [generic option](/doc/ref) in addition to:
 ### Commit all files in current working directory
 
 ```bash
-cml pr "."
+cml pr .
+```
+
+### Automatically merge pull requests
+
+```bash
+date > output.txt
+cml pr --auto-merge output.txt
 ```
 
 ## Command internals
