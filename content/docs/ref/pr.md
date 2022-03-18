@@ -17,6 +17,8 @@ preventing an infinite chain of runs.
 
 Any [generic option](/doc/ref) in addition to:
 
+- `--auto-merge`: Mark the PR/MR for automatic merging after tests pass
+  (unsupported by Bitbucket).
 - `--md`: Produce output in markdown format (`[CML Pull/Merge Request](url)`
   instead of `url`).
 - `--remote=<name or URL>`: Git remote name or URL [default: `origin`].
@@ -29,30 +31,23 @@ Any [generic option](/doc/ref) in addition to:
 ### Commit all files in current working directory
 
 ```bash
-cml pr "."
+cml pr .
 ```
 
-### Automatically merge GitHub pull requests
+### Automatically merge pull requests
 
-```yaml
-on: pull_request
-jobs:
-  cml:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: iterative/setup-cml@v1
-      - name: Generate data
-        run: echo "Hello World" > output.txt
-      - name: Create and merge PR
-        run: |
-          cml ci
-          gh pr merge --rebase $(cml pr "output.txt")
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```bash
+date > output.txt
+cml pr --auto-merge output.txt
 ```
 
-### Command internals
+The `--auto-merge` option enables
+[auto–merge](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)
+(GitHub) or
+[merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+(GitLab) to merge the pull/merge request as soon as checks succeed.
+
+## Command internals
 
 ```bash
 cml pr "**/*.py" "**/*.json"
