@@ -132,26 +132,37 @@ below for details on the `secrets` required.
 If you're using an Object Storage remotes like `s3` or `gs` from AWS/GCP it's
 easy to allow DVC programatic access without the use of dedicated credentials.
 Besides reducing overhead in managing additional keys, you can save in network
-costs. Using AWS in this example we can get
-[free network transfers](https://aws.amazon.com/s3/pricing/) from `s3` to `ec2`
-within the same region.
+costs, and have options to increase transfer speeds. Using AWS in this example
+we can get [free network transfers](https://aws.amazon.com/s3/pricing/) from
+`s3` to `ec2` within the same region.
 
-These examples are very similar to the above, for a more detailed breakdown
-checkout [the advanced authentication guide](/cool/link).
+These `cml runner` commands can fit right in with the examples above, for a more
+detailed breakdown checkout [the advanced authentication guide](/cool/link) to
+see what all is possible.
 
 <toggle>
-<tab title="GitHub">
+<tab title="AWS">
 
-```yaml
-
+```bash
+cml runner \
+  --cloud=aws \
+  --cloud-region=us-west \
+  --cloud-type=p2.xlarge \
+  --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
+  --labels=cml-gpu
 ```
 
 </tab>
 
-<tab title="GitLab">
+<tab title="GCP">
 
-```yaml
-
+```bash
+cml runner \
+  --cloud=gcp \
+  --cloud-region=us-west \
+  --cloud-type=someinstance+gpu? \
+  --cloud-permission-set=dvc-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw \
+  --labels=cml-gpu
 ```
 
 </tab>
