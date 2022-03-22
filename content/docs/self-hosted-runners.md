@@ -131,10 +131,11 @@ below for details on the `secrets` required.
 
 If you're using an Object Storage remotes like `s3` or `gs` from AWS/GCP it's
 easy to allow DVC programatic access without the use of dedicated credentials.
+
 Besides reducing overhead in managing additional keys, you can save in network
-costs, and have options to increase transfer speeds. Using AWS in this example
-we can get [free network transfers](https://aws.amazon.com/s3/pricing/) from
-`s3` to `ec2` within the same region.
+costs, and have options to increase transfer speeds. For example, looking at
+AWS, we can get [free network transfers](https://aws.amazon.com/s3/pricing/)
+from `s3` to `ec2` within the same region.
 
 These `cml runner` commands can fit right in with the examples above, for a more
 detailed breakdown checkout [the advanced authentication guide](/cool/link) to
