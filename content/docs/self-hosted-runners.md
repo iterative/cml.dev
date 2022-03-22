@@ -137,9 +137,8 @@ costs, and have options to increase transfer speeds. For example, looking at
 AWS, we can get [free network transfers](https://aws.amazon.com/s3/pricing/)
 from `s3` to `ec2` within the same region.
 
-These `cml runner` commands can fit right in with the examples above, for a more
-detailed breakdown checkout [the advanced authentication guide](/cool/link) to
-see what all is possible.
+These `cml runner` commands fit right in with the above examples. For a more
+detailed breakdown checkout [the advanced guide](/cool/link).
 
 <toggle>
 <tab title="AWS">
