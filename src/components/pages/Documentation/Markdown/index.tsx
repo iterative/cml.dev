@@ -211,6 +211,50 @@ const Toggle: React.FC<{
   )
 }
 
+const icons = {
+  tip: '💡',
+  info: 'ℹ️',
+  warn: '⚠️',
+  fire: '🔥',
+  exclamation: '❗',
+  lady_beetle: '🐞',
+  bug: '🐛'
+}
+const genericTitles = {
+  info: 'Info',
+  tip: 'Tip',
+  warn: 'Warning'
+}
+const defaultType = 'info'
+
+const Admonition: React.FC<{
+  title?: string
+  type?: 'info' | 'tip' | 'warn'
+  icon?:
+    | 'tip'
+    | 'info'
+    | 'warn'
+    | 'fire'
+    | 'exclamation'
+    | 'lady_beetle'
+    | 'bug'
+}> = ({ title, type = defaultType, children, icon = type }) => {
+  const setType = genericTitles[type] ? type : defaultType
+  const iconContent = icons[icon] || ''
+
+  return (
+    <div
+      className={cn(styles.admonition, styles[setType])}
+      style={{ '--icon': `"${iconContent}"` } as React.CSSProperties}
+    >
+      <p className={cn(styles.title, !iconContent && styles.noIcon)}>
+        {title || genericTitles[setType]}
+      </p>
+      <div className={styles.admonitionContent}>{children}</div>
+    </div>
+  )
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderAst = new (rehypeReact as any)({
   createElement: React.createElement,
@@ -221,7 +265,9 @@ const renderAst = new (rehypeReact as any)({
     card: Card,
     cards: Cards,
     toggle: Toggle,
-    tab: React.Fragment
+    tab: React.Fragment,
+    admon: Admonition,
+    admonition: Admonition
   }
 }).Compiler
 
