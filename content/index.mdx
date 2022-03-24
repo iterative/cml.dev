@@ -185,8 +185,7 @@ cml:
     python train.py </Tooltip>
 
     <Tooltip type="reports"> - cat metrics.txt >> report.md - cml publish
-    confusion_matrix.png --md >> report.md - cml send-comment report.md
-    </Tooltip>
+    plot.png --md >> report.md - cml send-comment report.md </Tooltip>
 ```
 
 <ExampleBox title="CML Report">
@@ -229,7 +228,7 @@ jobs:
 
           <Tooltip type="reports">
           cat metrics.txt >> report.md
-          cml publish confusion_matrix.png --md >> report.md
+          cml publish plot.png --md >> report.md
           cml send-comment report.md
           </Tooltip>
 ```
@@ -491,7 +490,7 @@ train_job:
 
     - echo "## Report from your EC2 Instance" > report.md
     - cat metrics.txt >> report.md
-    - cml publish confusion_matrix.png --md >> report.md
+    - cml publish plot.png --md >> report.md
     - cml send-comment report.md
 
 ```
@@ -552,7 +551,7 @@ jobs:
 
         echo "## Report from your EC2 Instance" > report.md
         cat metrics.txt >> report.md
-        cml publish confusion_matrix.png --md >> report.md
+        cml publish plot.png --md >> report.md
         cml send-comment report.md
 ```
 
