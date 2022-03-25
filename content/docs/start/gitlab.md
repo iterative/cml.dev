@@ -71,7 +71,7 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
      image: iterativeai/cml:0-dvc2-base1
      script:
        - cat metrics.txt >> report.md
-       - cml publish confusion_matrix.png --md >> report.md
+       - cml publish plot.png --md >> report.md
        - cml send-comment report.md
    ```
 

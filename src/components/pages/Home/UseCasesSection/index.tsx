@@ -87,7 +87,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div> </div>
                       <Tooltip type="reports">
                         <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
-                        <div>    <span>- cml-publish confusion_matrix.png --md &gt;&gt; report.md</span></div>
+                        <div>    <span>- cml-publish plot.png --md &gt;&gt; report.md</span></div>
                         <div>    <span>- cml-send-comment report.md</span></div>
                       </Tooltip>
                     </Code>
@@ -131,7 +131,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <Tooltip type="reports">
                         <div>          <span>cat metrics.txt &gt;&gt; report.md</span></div>
-                        <div>          <span>cml-publish confusion_matrix.png --md &gt;&gt; report.md</span></div>
+                        <div>          <span>cml-publish plot.png --md &gt;&gt; report.md</span></div>
                         <div>          <span>cml-send-comment report.md</span></div>
                       </Tooltip>
                     </Code>
@@ -384,7 +384,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div>    <span>- echo &quot;## Report from your EC2 Instance&quot; &gt; report.md</span></div>
                       <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
-                      <div>    <span>- cml-publish &quot;confusion_matrix.png&quot; --md &gt;&gt; report.md</span></div>
+                      <div>    <span>- cml-publish &quot;plot.png&quot; --md &gt;&gt; report.md</span></div>
                       <div>    <span>- cml-send-comment report.md</span></div>
                     </Code>
 
@@ -443,7 +443,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div>        <span>echo &quot;## Report from your EC2 Instance&quot; &gt; report.md</span></div>
                       <div>        <span>cat metrics.txt &gt;&gt; report.md</span></div>
-                      <div>        <span>cml-publish &quot;confusion_matrix.png&quot; --md &gt;&gt; report.md</span></div>
+                      <div>        <span>cml-publish &quot;plot.png&quot; --md &gt;&gt; report.md</span></div>
                       <div>        <span>cml-send-comment report.md</span></div>
                     </Code>
 
