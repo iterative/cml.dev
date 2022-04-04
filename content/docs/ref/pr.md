@@ -17,7 +17,8 @@ preventing an infinite chain of runs.
 
 Any [generic option](/doc/ref) in addition to:
 
-- `--merge`, `--rebase`, or `--squash`: Try to merge, rebase, or squash-merge the created PR after CI tests pass.
+- `--merge`, `--rebase`, or `--squash`: Try to merge, rebase, or squash-merge
+  the created PR after CI tests pass.
 - `--md`: Produce output in markdown format (`[CML Pull/Merge Request](url)`
   instead of `url`).
 - `--remote=<name or URL>`: Git remote name or URL [default: `origin`].
@@ -44,8 +45,8 @@ The `--merge`, `--rebase`, and `--squash` options enable
 [auto–merge](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)
 (GitHub) or
 [merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-(GitLab) to merge the pull request as soon as checks succeed. If
-waiting for checks isn't supported, `cml pr` will try to merge the pull request immediately.
+(GitLab) to merge the pull request as soon as checks succeed. If waiting for
+checks isn't supported, `cml pr` will try to merge the pull request immediately.
 
 ## Command internals
 
