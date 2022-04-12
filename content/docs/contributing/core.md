@@ -71,7 +71,7 @@ you experience any problems, please don't hesitate to ping us in our
   - Large PRs may be merged without squashing (but related commits should be
     squashed)
 - **New releases**
-  - `git checkout master && git pull && git checkout -b M.m.p && npm version M.m.p && git push && gh pr create`
+  - `git checkout master && git pull && git checkout -b M.m.p && npm version $_ && git push --set-upstream origin HEAD && gh pr create`
   - Merge the resulting PR
   - `git checkout master && git pull && git tag -f vM.m.p && git push --tags` or
     comment `/tag vM.m.p SHA` in the PR
