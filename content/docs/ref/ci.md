@@ -5,12 +5,15 @@ cml ci [options]
 ```
 
 Prepares Git repository for CML operations (setting Git `user.name` &
-`user.email`, unshallow clone and undo CI oddities such as origin URL formatting
-and HTTP remote proxies).
+`user.email`, fetch all branch tips, undo CI oddities such as origin URL
+formatting and HTTP remote proxies, and optionally unshallow clone).
 
 ## Options
 
-Any [generic option](/doc/ref).
+Any [generic option](/doc/ref) in addition to:
+
+- `--unshallow`: Fetch as much as possible, converting a shallow repository to a
+  complete one.
 
 ## Examples
 
