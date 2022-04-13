@@ -5,8 +5,8 @@ cml ci [options]
 ```
 
 Prepares Git repository for CML operations (setting Git `user.name` &
-`user.email`, fetch all branch tips, undo CI oddities such as origin URL
-formatting and HTTP remote proxies, and optionally unshallow clone).
+`user.email`; fetching all branch tips; undoing CI oddities such as origin URL
+formatting and HTTP remote proxies; and, optionally, unshallowing clone).
 
 ## Options
 
