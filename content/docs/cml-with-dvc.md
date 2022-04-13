@@ -18,13 +18,13 @@ jobs:
     container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: Train model
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          cml ci --unshallow
           pip install -r requirements.txt  # Install dependencies
           dvc pull data --run-cache        # Pull data & run-cache from S3
           dvc repro                        # Reproduce pipeline
