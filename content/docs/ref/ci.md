@@ -14,6 +14,9 @@ Any [generic option](/doc/ref) in addition to:
 
 - `--unshallow`: Fetch as much as possible, converting a shallow repository to a
   complete one.
+- `--user-email=<address>`: Git user email for commits [default:
+  `olivaw@iterative.ai`].
+- `--user-name=<...>`: Git user name for commits [default: `Olivaw[bot]`].
 
 ## Examples
 
