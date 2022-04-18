@@ -184,7 +184,7 @@ export const Code = ({ children, lang = 'yml', filename, repo, sx = {} }) => {
             e.preventDefault()
             const pre = codeBlockRef.current
             if (!pre || !navigator.clipboard) return
-            navigator.clipboard.writeText(pre.textContent || pre.innerText)
+            navigator.clipboard.writeText(pre.innerText || pre.textContent)
           }}
         >
           Copy
