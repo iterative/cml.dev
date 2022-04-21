@@ -32,7 +32,7 @@ manager `npm` can be found below.
 Install Node.js from source:
 
 ```bash
-curl -sL https://deb.nodesource.com/setup_14.x | bash
+curl -sL https://deb.nodesource.com/setup_16.x | bash
 apt-get update
 apt-get install -y nodejs
 ```
@@ -46,7 +46,7 @@ install a particular version, add the following step to your workflow:
 ```bash
 - uses: actions/setup-node@v1
   with:
-    node-version: '14'
+    node-version: '16'
 ```
 
 </tab>

@@ -22,7 +22,7 @@ jobs:
       # may need to setup Node.js & Python3 on e.g. self-hosted
       # - uses: actions/setup-node@v2
       #   with:
-      #     node-version: '14'
+      #     node-version: '16'
       # - uses: actions/setup-python@v2
       #   with:
       #     python-version: '3.x'
