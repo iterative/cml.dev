@@ -23,6 +23,21 @@ import Switch from '../components/organisms/SwitchableMode/Switch'
 import { ReactComponent as GitHubIcon } from '../media/icons/github.svg'
 import { ReactComponent as GitLabIcon } from '../media/icons/gitlab.svg'
 
+const getTextFromPreChildren = preChildren => {
+  return Array.from(preChildren).reduce((acc, child, index) => {
+    if (index != 0) acc += '\n'
+    const text =
+      child.childElementCount > 0 && child.firstElementChild.nodeName === 'DIV'
+        ? Array.from(child.children).reduce((nAcc, nChild, nIndex) => {
+            if (nIndex != 0 && nChild.nodeName === 'DIV') nAcc += '\n'
+            nAcc += nChild.textContent
+            return nAcc
+          }, '')
+        : child.textContent
+    return acc + text
+  }, '')
+}
+
 export const groupApply = (rawChildren, test, cb) => {
   if (!rawChildren) return []
   const currentGroup = []
@@ -184,7 +199,8 @@ export const Code = ({ children, lang = 'yml', filename, repo, sx = {} }) => {
             e.preventDefault()
             const pre = codeBlockRef.current
             if (!pre || !navigator.clipboard) return
-            navigator.clipboard.writeText(pre.innerText || pre.textContent)
+            const text = getTextFromPreChildren(pre.children)
+            navigator.clipboard.writeText(text)
           }}
         >
           Copy
