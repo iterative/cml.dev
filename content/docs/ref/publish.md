@@ -15,9 +15,8 @@ Any [generic option](/doc/ref) in addition to:
 - `--mime-type=<...>`: Content
   [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml)
   [default: *inferred from content*].
-- `--native`, `--gitlab-uploads`: Uses CI provider's native storage instead of
-  CML's. Currently
-  [only available for GitLab CI](https://github.com/iterative/cml/wiki/Backend-Supported-Features).
+- `--native`: Uses CI provider's native storage instead of CML's.
+  [Not available on GitHub](https://github.com/iterative/cml/wiki/Backend-Supported-Features).
 - `--rm-watermark`: Don't inject a watermark into the comment. Will break some
   CML functionality which needs to distinguish CML reports from other comments.
 
