@@ -314,7 +314,7 @@ Use either:
 
 - your username and a
   [Bitbucket Cloud App Password](https://bitbucket.org/account/settings/app-passwords/)
-  with `Write` permission for Pull requests, Pipelines, and Runners, or
+  with `Write` permission for Pull requests, Pipelines and Runners, or
 - create a designated "CI/CD" _bot account_ for CML authentication. Bot accounts
   are the same as normal user accounts, with the only difference being the
   intended use case: you limit the account to only access the repositories where
