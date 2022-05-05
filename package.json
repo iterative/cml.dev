@@ -8,6 +8,7 @@
     "dev": "gatsby develop",
     "author": "LIMIT_BLOG_PAGES=1 SKIP_DOCS=true gatsby develop",
     "build": "gatsby build",
+    "clean": "gatsby clean",
     "start": "node ./src/server/index.js",
     "test": "jest",
     "format-staged": "pretty-quick --staged --no-restage --bail",
@@ -35,6 +36,7 @@
     "node": "<=14.x"
   },
   "dependencies": {
+    "@dvcorg/gatsby-theme-iterative": "^0.0.9",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@hapi/wreck": "^17.0.0",
@@ -145,7 +147,7 @@
     "gatsby-source-filesystem": "^4.5.2",
     "gatsby-transformer-remark": "^5.5.2",
     "hast-util-select": "^5.0.1",
-    "husky": "4",
+    "husky": "^7.0.4",
     "jest": "^27.4.7",
     "lint-staged": "^12.2.0",
     "postcss-color-mod-function": "^3.0.3",
@@ -159,6 +161,7 @@
     "remark-parse": "^10.0.1",
     "stylelint": "^14.2.0",
     "stylelint-config-standard": "^24.0.0",
+    "tailwindcss": "^3.0.24",
     "typescript": "^4.5.4",
     "unist-util-remove-position": "^4.0.1"
   },

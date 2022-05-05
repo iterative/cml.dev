@@ -24,10 +24,10 @@ const keywords = [
 
 const plugins = [
   {
-    resolve: `gatsby-plugin-typescript`,
+    resolve: '@dvcorg/gatsby-theme-iterative',
     options: {
-      isTSX: true,
-      allExtensions: true
+      remark: true,
+      cssBase: path.join('src', 'components', 'organisms', 'Page', 'base.css')
     }
   },
   {
@@ -38,17 +38,7 @@ const plugins = [
       }
     }
   },
-  'gatsby-plugin-postcss',
-  'gatsby-plugin-react-helmet',
-  'gatsby-plugin-sitemap',
   `gatsby-plugin-theme-ui`,
-  {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'content',
-      path: path.join(__dirname, 'content')
-    }
-  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -56,65 +46,6 @@ const plugins = [
       path: path.join(__dirname, 'static', 'img')
     }
   },
-  {
-    resolve: 'gatsby-transformer-remark',
-    options: {
-      plugins: [
-        'gatsby-remark-embedder',
-        {
-          resolve: 'gatsby-remark-prismjs',
-          options: {
-            noInlineHighlight: true,
-            languageExtensions: [
-              {
-                language: 'text',
-                definition: {}
-              }
-            ]
-          }
-        },
-        {
-          resolve: 'gatsby-remark-smartypants',
-          options: {
-            quotes: false
-          }
-        },
-        `gatsby-plugin-robots-txt`,
-        {
-          resolve: 'gatsby-remark-embed-gist',
-          options: {
-            includeDefaultCss: true
-          }
-        },
-        'gatsby-remark-relative-images',
-        'gatsby-remark-copy-linked-files',
-        'gatsby-remark-external-links',
-        {
-          resolve: 'gatsby-remark-autolink-headers',
-          options: {
-            enableCustomId: true,
-            isIconAfterHeader: true
-          }
-        },
-        {
-          resolve: 'gatsby-remark-images',
-          options: {
-            maxWidth: 700,
-            withWebp: true,
-            quality: 90
-          }
-        },
-        'gatsby-remark-responsive-iframe'
-      ]
-    }
-  },
-  {
-    resolve: 'gatsby-plugin-svgr',
-    options: {
-      ref: true
-    }
-  },
-  'gatsby-plugin-sharp',
   'gatsby-plugin-catch-links',
   {
     resolve: 'gatsby-plugin-manifest',
@@ -239,7 +170,12 @@ module.exports = {
     author: 'Iterative',
     keywords,
     siteUrl: 'https://cml.dev',
-    title
+    title,
+    siteUrl: process.env.HEROKU_APP_NAME
+      ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
+      : 'https://cml.dev',
+    twitterUsername: '@DVCorg',
+    titleTemplate: '%s | CML'
   },
   developMiddleware: app => {
     app.use(redirectsMiddleware)
