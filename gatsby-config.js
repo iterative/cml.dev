@@ -169,7 +169,6 @@ module.exports = {
     description,
     author: 'Iterative',
     keywords,
-    siteUrl: 'https://cml.dev',
     title,
     siteUrl: process.env.HEROKU_APP_NAME
       ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
