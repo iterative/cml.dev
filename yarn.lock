@@ -8543,19 +8543,6 @@ gatsby-plugin-typescript@^4.13.0:
     "@babel/runtime" "^7.15.4"
     babel-plugin-remove-graphql-queries "^4.13.0"
 
-gatsby-plugin-typescript@^4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-4.5.2.tgz#1a4663771eda323a5e2a4a094e3626a32e584e92"
-  integrity sha512-Qeb2xpch5GUoeGc/Sx+zckvGFZQw4QnbWIHO4ExzH2VGJx9dy4YjTI0nvervgjew3hJKzq2Db8jSeJ3NXFSZUQ==
-  dependencies:
-    "@babel/core" "^7.15.5"
-    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.14.5"
-    "@babel/plugin-proposal-numeric-separator" "^7.14.5"
-    "@babel/plugin-proposal-optional-chaining" "^7.14.5"
-    "@babel/preset-typescript" "^7.15.0"
-    "@babel/runtime" "^7.15.4"
-    babel-plugin-remove-graphql-queries "^4.5.2"
-
 gatsby-plugin-utils@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-2.5.0.tgz#33c343faa01577df032d4cf53c7c2b04b0b19248"
