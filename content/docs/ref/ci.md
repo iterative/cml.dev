@@ -1,6 +1,6 @@
 # Command Reference: `ci`
 
-```bash
+```usage
 cml ci [options]
 ```
 
@@ -25,6 +25,6 @@ Instead of wrangling with
 `git config user.email` before being able to `git commit` or use
 [`cml pr`](/doc/ref/pr), simply run:
 
-```bash
-cml ci
+```cml
+$ cml ci
 ```
