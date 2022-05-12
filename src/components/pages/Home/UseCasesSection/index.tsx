@@ -177,7 +177,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>- dvc plots diff </span></div>
                       <div>      <span>--target loss.csv --show-vega master &gt; vega.json</span></div>
                       <Tooltip type="reports">
-                        <div>    <span>- vl2png vega.json | cml-publish --md &gt;&gt; report.md</span></div>
+                        <div>    <span>- vl2png vega.json &gt; plot.png</span></div>
+                        <div>    <span>- cml-publish --md plot.png &gt;&gt; report.md</span></div>
                         <div>    <span>- cml-send-comment report.md</span></div>
                       </Tooltip>
                     </Code>
