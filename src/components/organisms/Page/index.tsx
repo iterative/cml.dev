@@ -9,6 +9,7 @@ import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
 
 import './base.css'
 import './fonts.css'
+import WrappedLayout from '../../layouts/WrappedLayout'
 
 export interface IPageProps {
   location: {
@@ -37,6 +38,8 @@ const Page: React.FC<IPageProps> = props => {
     if (props.pageContext.isDocs) {
       LayoutComponent = DocumentationLayout
     }
+  } else {
+    LayoutComponent = WrappedLayout
   }
 
   return (
