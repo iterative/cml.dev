@@ -430,12 +430,9 @@ An example of such a problem can be seen
 The following sections contain lists of all the resources you may need to
 manually cleanup in the case of a failure.
 
-<toggle>
-<tab title="AWS">
-
-- The running EC2 instance (named with pattern `cml-{random-id}`)
-- The volume attached to the running EC2 instance
-  (this should delete itself after terminating the EC2 instance)
+- The running instance (named with pattern `cml-{random-id}`)
+- The volume attached to the running instance
+  (this should delete itself after terminating the instance)
 - The generated key-pair (named with pattern `cml-{random-id}`)
 
 If you keep encountering issues, it is appreciated to attempt pulling the logs
@@ -469,9 +466,6 @@ scp ubuntu@instance_public_ip:~/userspace.log .
 There is a chance that the instance could be severely broken if the SSH command
 hangs -- if that happens reboot it from the web console and try the commands
 again.
-
-</tab>
-</toggle>
 
 #### On-premise (Local) Runners
 
