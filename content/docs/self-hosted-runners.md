@@ -361,6 +361,36 @@ for obtaining these keys.
 ☝️ **Note** The same credentials can also be used for
 [configuring cloud storage](/doc/cml-with-dvc#cloud-storage-provider-credentials).
 
+The following are the minimum IAM permissions needed for the CML runner to
+deploy on EC2:
+
+- `ec2:CreateSecurityGroup` -- _(Firewall and SSH Access Management)_
+- `ec2:AuthorizeSecurityGroupEgress`
+- `ec2:AuthorizeSecurityGroupIngress`
+- `ec2:DescribeSecurityGroups`
+- `ec2:DescribeSubnets`
+- `ec2:DescribeVpcs`
+- `ec2:ImportKeyPair`
+- `ec2:DeleteKeyPair`
+- `ec2:CreateTags` -- _(General Resource Management)_
+- `ec2:RunInstances` -- _(EC2 Instance Management)
+- `ec2:DescribeImages`
+- `ec2:DescribeInstances`
+- `ec2:TerminateInstances`
+- `ec2:DescribeSpotInstanceRequests` -- _(Optionally needed for Spot Access)_
+- `ec2:RequestSpotInstances`
+- `ec2:CancelSpotInstanceRequests`
+
+Outside of this list, you will need to add any extra permissions required
+for your process to complete.
+
+For example, if you need S3 read and write data, you may want to add:
+
+- `s3:ListBucket`
+- `s3:PutObject`
+- `s3:GetObject`
+- `s3:DeleteObject`
+
 </tab>
 <tab title="Azure">
 
