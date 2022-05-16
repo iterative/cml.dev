@@ -441,11 +441,15 @@ manually cleanup in the case of a failure.
 If you keep encountering issues, it is appreciated to attempt pulling the logs
 from the running instance before terminating and opening a GitHub Issue.
 
-To do so add a startup command to the runner:
+For easy access and debugging on the `cml runner` instance add:
 
 > `--cloud-startup-script=$(echo 'echo "$(curl https://github.com/'"$GITHUB_ACTOR"'.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0)`
 
-Once the instance fails you can attempt to connect to it and dump logs with:
+If you encounter an error with the `cml runner` instance retrieving logs
+with the following is helpful for diagnosing the issue:
+
+☝️ **Note** Please give your cml.log a visual scan, entries like IP addresses
+and git repository names may be present and sensitive in some cases.
 
 ```bash
 ssh ubuntu@instance_public_ip
@@ -465,6 +469,9 @@ scp ubuntu@instance_public_ip:~/userspace.log .
 There is a chance that the instance could be severely broken if the SSH command
 hangs -- if that happens reboot it from the web console and try the commands
 again.
+
+</tab>
+</toggle>
 
 #### On-premise (Local) Runners
 
