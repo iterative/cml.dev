@@ -382,7 +382,10 @@ deploy on EC2:
 - `ec2:CancelSpotInstanceRequests`
 
 Outside of this list, you will need to add any extra permissions required
-for your process to complete.
+for your process to complete. These extra permissions can either be added
+directly to the account used by the `cml runner` or can be specified during
+the `cml runnner` command with:
+[`--cloud-permission-set`](https://cml.dev/doc/ref/runner#--cloud-permission-set)
 
 For example, if you need S3 read and write data, you may want to add:
 
