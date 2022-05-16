@@ -12,7 +12,7 @@ export default function siteMeta(): ISiteMeta {
     site: { siteMetadata }
   } = useStaticQuery(
     graphql`
-      query SiteMetadata {
+      query SEOSiteMetadata {
         site {
           siteMetadata {
             title
