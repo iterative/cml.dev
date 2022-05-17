@@ -455,7 +455,6 @@ and git repository names may be present and sensitive in some cases.
 ssh ubuntu@instance_public_ip
 sudo journalctl -n all -u cml.service --no-pager > cml.log
 sudo dmesg --ctime > system.log
-sudo dmesg --ctime --userspace > userspace.log
 ```
 
 You can then copy those logs to your local machine with:
@@ -463,7 +462,6 @@ You can then copy those logs to your local machine with:
 ```bash
 scp ubuntu@instance_public_ip:~/cml.log .
 scp ubuntu@instance_public_ip:~/system.log .
-scp ubuntu@instance_public_ip:~/userspace.log .
 ```
 
 There is a chance that the instance could be severely broken if the SSH command
