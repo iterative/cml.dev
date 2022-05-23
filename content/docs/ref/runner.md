@@ -88,38 +88,63 @@ Additionally, you can use this access other resources from that cloud provider
 like AWS' Elastic Container Registry or GCP's Artifact Registry, so that you can
 push and pull custom docker images.
 
-Other examples, using AWS, could include accessing data in:
+Using AWS, other examples could include accessing data in:
 
 - Secrets Manager
 - DynamoDB
 - Redshfit
+- ECR (your private containers)
 
 #### Example "Permission Sets"
 
 <toggle>
 <tab title="AWS">
-stuff
+Policy example:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DVCAccess",
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::mydvcbucket/*"
+    }
+  ]
+}
+```
+
+Trust relationships:
 
 ```json
 {
   "stuff": "here"
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CMLRunnerInstance",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
 }
 ```
 
 </tab>
 <tab title="GCP">
 
-stuff
-
-- list of roles
-
-</tab>
-</toggle>
-
 > Caveat for `--cloud-permission-set` on GCP: using this feature will likely
 > require and additional role be added to your `cml runner` credentials
 > `roles/ServiceAccountUser` or ensure the invoker has the permission
 > `iam.serviceAccount.actAs` on the targeted Service Account.
+
+</tab>
+</toggle>
+
 
 ### Using `--cloud-ssh-private`
 
