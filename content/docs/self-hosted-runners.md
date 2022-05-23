@@ -361,6 +361,39 @@ for obtaining these keys.
 ☝️ **Note** The same credentials can also be used for
 [configuring cloud storage](/doc/cml-with-dvc#cloud-storage-provider-credentials).
 
+The following are the minimum IAM permissions needed for the CML runner to
+deploy on EC2:
+
+- `ec2:CreateSecurityGroup` -- _(Firewall and SSH Access Management)_
+- `ec2:AuthorizeSecurityGroupEgress`
+- `ec2:AuthorizeSecurityGroupIngress`
+- `ec2:DescribeSecurityGroups`
+- `ec2:DescribeSubnets`
+- `ec2:DescribeVpcs`
+- `ec2:ImportKeyPair`
+- `ec2:DeleteKeyPair`
+- `ec2:CreateTags` -- _(General Resource Management)_
+- `ec2:RunInstances` -- _(EC2 Instance Management)
+- `ec2:DescribeImages`
+- `ec2:DescribeInstances`
+- `ec2:TerminateInstances`
+- `ec2:DescribeSpotInstanceRequests` -- _(Optionally needed for Spot Access)_
+- `ec2:RequestSpotInstances`
+- `ec2:CancelSpotInstanceRequests`
+
+Outside of this list, you will need to add any extra permissions required
+for your process to complete. These extra permissions can either be added
+directly to the account used by the `cml runner` or can be specified during
+the `cml runnner` command with:
+[`--cloud-permission-set`](https://cml.dev/doc/ref/runner#--cloud-permission-set)
+
+For example, if you need S3 read and write data, you may want to add:
+
+- `s3:ListBucket`
+- `s3:PutObject`
+- `s3:GetObject`
+- `s3:DeleteObject`
+
 </tab>
 <tab title="Azure">
 
@@ -390,6 +423,50 @@ provisioned through environment variables instead of files.
 
 </tab>
 </toggle>
+
+#### Cloud Compute Resource Manual Cleanup
+
+In very rare cases, you may need to cleanup CML cloud resources manually.
+An example of such a problem can be seen
+[when an EC2 instance ran out of storage space](https://github.com/iterative/cml/issues/1006).
+
+The following is a list of all the resources you may need to
+manually cleanup in the case of a failure:
+
+- The running instance (named with pattern `cml-{random-id}`)
+- The volume attached to the running instance
+  (this should delete itself after terminating the instance)
+- The generated key-pair (named with pattern `cml-{random-id}`)
+
+If you keep encountering issues, it is appreciated to attempt pulling the logs
+from the running instance before terminating and opening a GitHub Issue.
+
+For easy access and debugging on the `cml runner` instance add:
+
+> `--cloud-startup-script=$(echo 'echo "$(curl https://github.com/'"$GITHUB_ACTOR"'.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0)`
+
+If you encounter an error with the `cml runner` instance retrieving logs
+with the following is helpful for diagnosing the issue:
+
+☝️ **Note** Please give your cml.log a visual scan, entries like IP addresses
+and git repository names may be present and sensitive in some cases.
+
+```bash
+ssh ubuntu@instance_public_ip
+sudo journalctl -n all -u cml.service --no-pager > cml.log
+sudo dmesg --ctime > system.log
+```
+
+You can then copy those logs to your local machine with:
+
+```bash
+scp ubuntu@instance_public_ip:~/cml.log .
+scp ubuntu@instance_public_ip:~/system.log .
+```
+
+There is a chance that the instance could be severely broken if the SSH command
+hangs -- if that happens reboot it from the web console and try the commands
+again.
 
 #### On-premise (Local) Runners
 
