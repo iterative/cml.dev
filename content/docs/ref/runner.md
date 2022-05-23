@@ -75,6 +75,52 @@ Any [generic option](/doc/ref) in addition to:
 
 ## Examples
 
+### Using `--cloud-permission-set`
+
+> Currently this feature is only implemented when using GCP or AWS.
+
+You can predefine a set of permissions via an [AWS role]() or a
+[GCP service account]() that is assosiated with the created `cml runner`
+instance.
+
+This can enable credentialless access to your `s3` or `gs` dvc remote.
+Additionally, you can use this access other resources from that cloud provider
+like AWS' Elastic Container Registry or GCP's Artifact Registry, so that you can
+push and pull custom docker images.
+
+Other examples, using AWS, could include accessing data in:
+
+- Secrets Manager
+- DynamoDB
+- Redshfit
+
+#### Example "Permission Sets"
+
+<toggle>
+<tab title="AWS">
+stuff
+
+```json
+{
+  "stuff": "here"
+}
+```
+
+</tab>
+<tab title="GCP">
+
+stuff
+
+- list of roles
+
+</tab>
+</toggle>
+
+> Caveat for `--cloud-permission-set` on GCP: using this feature will likely
+> require and additional role be added to your `cml runner` credentials
+> `roles/ServiceAccountUser` or ensure the invoker has the permission
+> `iam.serviceAccount.actAs` on the targeted Service Account.
+
 ### Using `--cloud-ssh-private`
 
 1. Generate a new RSA PEM private key for debugging purposes:
