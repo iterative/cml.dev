@@ -384,7 +384,7 @@ credentials.
 </tab>
 </toggle>
 
-### Cloud Compute Resource Credentials
+## Cloud Compute Resource Credentials
 
 Note that you will also need to provide access credentials of your compute
 resources. In the above example, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
@@ -406,25 +406,25 @@ for obtaining these keys.
 ☝️ **Note** The same credentials can also be used for
 [configuring cloud storage](/doc/cml-with-dvc#cloud-storage-provider-credentials).
 
-The following are the minimum IAM permissions needed for the CML runner to
-deploy on EC2:
-
-- `ec2:CreateSecurityGroup` -- _(Firewall and SSH Access Management)_
-- `ec2:AuthorizeSecurityGroupEgress`
-- `ec2:AuthorizeSecurityGroupIngress`
-- `ec2:DescribeSecurityGroups`
-- `ec2:DescribeSubnets`
-- `ec2:DescribeVpcs`
-- `ec2:ImportKeyPair`
-- `ec2:DeleteKeyPair`
-- `ec2:CreateTags` -- _(General Resource Management)_
-- `ec2:RunInstances` -- _(EC2 Instance Management)
-- `ec2:DescribeImages`
-- `ec2:DescribeInstances`
-- `ec2:TerminateInstances`
-- `ec2:DescribeSpotInstanceRequests` -- _(Optionally needed for Spot Access)_
-- `ec2:RequestSpotInstances`
-- `ec2:CancelSpotInstanceRequests`
+**Example:** IAM permissions needed for `cml runner`:
+```
+ec2:CreateSecurityGroup -- (Firewall and SSH Access Management)
+ec2:AuthorizeSecurityGroupEgress
+ec2:AuthorizeSecurityGroupIngress
+ec2:DescribeSecurityGroups
+ec2:DescribeSubnets
+ec2:DescribeVpcs
+ec2:ImportKeyPair
+ec2:DeleteKeyPair
+ec2:CreateTags -- (General Resource Management)
+ec2:RunInstances -- (EC2 Instance Management)
+ec2:DescribeImages
+ec2:DescribeInstances
+ec2:TerminateInstances
+ec2:DescribeSpotInstanceRequests -- (Optionally needed for Spot Access)
+ec2:RequestSpotInstances
+ec2:CancelSpotInstanceRequests
+```
 
 Outside of this list, you will need to add any extra permissions required
 for your process to complete. These extra permissions can either be added
@@ -434,10 +434,12 @@ the `cml runnner` command with:
 
 For example, if you need S3 read and write data, you may want to add:
 
-- `s3:ListBucket`
-- `s3:PutObject`
-- `s3:GetObject`
-- `s3:DeleteObject`
+```
+s3:ListBucket
+s3:PutObject
+s3:GetObject
+s3:DeleteObject
+```
 
 </tab>
 <tab title="Azure">
@@ -469,51 +471,7 @@ provisioned through environment variables instead of files.
 </tab>
 </toggle>
 
-#### Cloud Compute Resource Manual Cleanup
-
-In very rare cases, you may need to cleanup CML cloud resources manually.
-An example of such a problem can be seen
-[when an EC2 instance ran out of storage space](https://github.com/iterative/cml/issues/1006).
-
-The following is a list of all the resources you may need to
-manually cleanup in the case of a failure:
-
-- The running instance (named with pattern `cml-{random-id}`)
-- The volume attached to the running instance
-  (this should delete itself after terminating the instance)
-- The generated key-pair (named with pattern `cml-{random-id}`)
-
-If you keep encountering issues, it is appreciated to attempt pulling the logs
-from the running instance before terminating and opening a GitHub Issue.
-
-For easy access and debugging on the `cml runner` instance add:
-
-> `--cloud-startup-script=$(echo 'echo "$(curl https://github.com/'"$GITHUB_ACTOR"'.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0)`
-
-If you encounter an error with the `cml runner` instance retrieving logs
-with the following is helpful for diagnosing the issue:
-
-☝️ **Note** Please give your cml.log a visual scan, entries like IP addresses
-and git repository names may be present and sensitive in some cases.
-
-```bash
-ssh ubuntu@instance_public_ip
-sudo journalctl -n all -u cml.service --no-pager > cml.log
-sudo dmesg --ctime > system.log
-```
-
-You can then copy those logs to your local machine with:
-
-```bash
-scp ubuntu@instance_public_ip:~/cml.log .
-scp ubuntu@instance_public_ip:~/system.log .
-```
-
-There is a chance that the instance could be severely broken if the SSH command
-hangs -- if that happens reboot it from the web console and try the commands
-again.
-
-#### On-premise (Local) Runners
+## On-premise (Local) Runners
 
 The `cml runner` command can also be used to manually set up a local machine,
 on-premise GPU cluster, or any other cloud compute resource as a self-hosted
@@ -535,3 +493,46 @@ corresponding
 [GitHub](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
 and [GitLab](https://docs.gitlab.com/runner/security) documentation for
 additional guidance.
+
+## Help - Manual Cleanup
+
+In very rare cases, you may need to cleanup CML cloud resources manually.
+An example of such a problem can be seen
+[when an EC2 instance ran out of storage space](https://github.com/iterative/cml/issues/1006).
+
+The following is a list of all the resources you may need to
+manually cleanup in the case of a failure:
+
+- The running instance (named with pattern `cml-{random-id}`)
+- The volume attached to the running instance
+  (this should delete itself after terminating the instance)
+- The generated key-pair (named with pattern `cml-{random-id}`)
+
+If you encounter these edge cases create a [GitHub Issue with as much detail as possible](https://github.com/iterative/cml/issues/new). If possible link your workflow in the issue or provide an example of your worflow's YAML. 
+
+Additionally, try to capture and include logs from the instance:
+
+For easy access and debugging on the `cml runner` instance add:
+> `--cloud-startup-script=$(echo 'echo "$(curl https://github.com/'"$GITHUB_ACTOR"'.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0)`
+to your `cml runner` command.
+
+Then you can run the following:
+```bash
+ssh ubuntu@instance_public_ip
+sudo journalctl -n all -u cml.service --no-pager > cml.log
+sudo dmesg --ctime > system.log
+```
+
+☝️ **Note** Please give your `cml.log` a visual scan, entries like IP addresses
+and git repository names may be present and considered sensitive in some cases.
+
+You can then copy those logs to your local machine with:
+
+```bash
+scp ubuntu@instance_public_ip:~/cml.log .
+scp ubuntu@instance_public_ip:~/system.log .
+```
+
+There is a chance that the instance could be severely broken if the SSH command
+hangs -- if that happens reboot it from the web console and try the commands
+again.
