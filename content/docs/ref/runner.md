@@ -88,7 +88,7 @@ You can predefine a set of permissions via an [AWS role]() or a
 instance.
 
 This can enable credential-free access to your `s3` or `gs` dvc remote.
-Additionally, you can use this access other resources from that cloud provider
+Additionally, you can use this to access other resources
 like AWS' Elastic Container Registry or GCP's Artifact Registry, so that you can
 push and pull custom docker images.
 
