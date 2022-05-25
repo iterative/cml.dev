@@ -84,7 +84,7 @@ Currently this feature is only available on AWS & GCP clouds.
 </admon>
 
 You can predefine a set of permissions via an [AWS role]() or a
-[GCP service account]() that is assosiated with the created `cml runner`
+[GCP service account]() that is associated with the created `cml runner`
 instance.
 
 This can enable credentialless access to your `s3` or `gs` dvc remote.
