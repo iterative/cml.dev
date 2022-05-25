@@ -2,9 +2,9 @@
 
 GitHub Actions, GitLab CI/CD, and Bitbucket Pipelines workflows are executed on
 "native" runners (hosted by GitHub/GitLab/Bitbucket respectively) by default.
-However, there are
-many great reasons to use your own runners: to take advantage of GPUs,
-orchestrate your team's shared computing resources, or train in the cloud.
+However, there are many great reasons to use your own runners: to take advantage
+of GPUs, orchestrate your team's shared computing resources, or train in the
+cloud.
 
 <admon type="tip">
 
@@ -129,6 +129,7 @@ pipelines:
     - step:
         runs-on: [self.hosted]
         image: iterativeai/cml:0-dvc2-base1
+        # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
         script:
           - pip install -r requirements.txt
           - python train.py
