@@ -89,8 +89,8 @@ instance.
 
 This can enable credential-free access to your `s3` or `gs` dvc remote.
 Additionally, you can use this to access other resources
-like AWS' Elastic Container Registry or GCP's Artifact Registry, so that you can
-push and pull custom docker images.
+like AWS' Elastic Container Registry or GCP's Artifact Registry (to
+push and pull custom docker images).
 
 Using AWS, other examples could include accessing data in:
 
