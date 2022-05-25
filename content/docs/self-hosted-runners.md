@@ -1,15 +1,20 @@
 # Self-hosted (On-premise or Cloud) Runners
 
-GitHub Actions, GitLab CI/CD and Bitbucket Pipelines workflows are run on
-GitHub-, GitLab- and Bitbucket- hosted runners by default. However, there are
+GitHub Actions, GitLab CI/CD, and Bitbucket Pipelines workflows are executed on
+"native" runners (hosted by GitHub/GitLab/Bitbucket respectively) by default.
+However, there are
 many great reasons to use your own runners: to take advantage of GPUs,
 orchestrate your team's shared computing resources, or train in the cloud.
 
-☝️ **Tip!** Check out the official documentation from
+<admon type="tip">
+
+Check out the official documentation from
 [GitHub](https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners),
 [GitLab](https://docs.gitlab.com/runner) and
 [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/runners) for more
 information on self-hosted runners.
+
+</admon>
 
 ## Allocating Cloud Compute Resources with CML
 
@@ -122,9 +127,9 @@ pipelines:
                 --cloud-region=us-west \
                 --cloud-type=p2.xlarge \
                 --cloud-spot \
-                --labels=cml-gpu
+                --labels=cml.gpu
     - step:
-        runs-on: [self.hosted, cml-gpu]
+        runs-on: [self.hosted, cml.gpu]
         image: iterativeai/cml:0-dvc2-base1-gpu
         script:
           - pip install -r requirements.txt
@@ -205,9 +210,13 @@ GitLab
 security), or Bitbucket
 [secured user-defined variables](https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/#User-defined-variables).
 
-⚠️ You will need to create a [personal access token](#personal-access-token)
+<admon type="warn">
+
+You will need to create a [personal access token (PAT)](#personal-access-token)
 with enough permissions to register self-hosted runners. In the example workflow
 above, this token is stored as `REPO_TOKEN`.
+
+</admon>
 
 🛈 If using the `--cloud` option, you will also need to provide access
 credentials for your cloud compute resources as secrets. In the above example,
