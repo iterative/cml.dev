@@ -77,7 +77,11 @@ Any [generic option](/doc/ref) in addition to:
 
 ### Using `--cloud-permission-set`
 
-> Currently this feature is only implemented when using GCP or AWS.
+<admon type="info">
+
+Currently this feature is only available on AWS & GCP clouds.
+
+</admon>
 
 You can predefine a set of permissions via an [AWS role]() or a
 [GCP service account]() that is assosiated with the created `cml runner`
