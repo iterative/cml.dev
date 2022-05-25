@@ -76,6 +76,77 @@ Any [generic option](/doc/ref) in addition to:
 
 ## Cloud Permissions
 
+The credentials you use will need to access the resources required to create/manage Virtual Machinces for your chosen Cloud provider.
+
+In general it is best to use the provider manage premade policies, but to explicitly limit the credentials further is possible.
+
+<toggle>
+
+<tab title="AWS">
+
+- AWS Managed Policy: [`arn:aws:iam::aws:policy/AmazonEC2FullAccess`](https://us-east-1.console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonEC2FullAccess$serviceLevelSummary)
+
+**As an Example** this could be further limited to:
+```
+ec2:CreateSecurityGroup -- (Firewall and SSH Access Management)
+ec2:AuthorizeSecurityGroupEgress
+ec2:AuthorizeSecurityGroupIngress
+ec2:DescribeSecurityGroups
+ec2:DescribeSubnets
+ec2:DescribeVpcs
+ec2:ImportKeyPair
+ec2:DeleteKeyPair
+ec2:CreateTags -- (General Resource Management)
+ec2:RunInstances -- (EC2 Instance Management)
+ec2:DescribeImages
+ec2:DescribeInstances
+ec2:TerminateInstances
+ec2:DescribeSpotInstanceRequests -- (Optionally needed for Spot Access)
+ec2:RequestSpotInstances
+ec2:CancelSpotInstanceRequests
+```
+
+
+</tab>
+<tab title="GCP">
+
+[GCP Managed Roles](https://cloud.google.com/iam/docs/understanding-roles#compute-engine-roles):
+- `roles/compute.admin`
+- `roles/iam.serviceAccountUse`
+
+**As an Example** this could be further limited to:
+```
+compute.diskTypes.get
+compute.disks.create
+compute.firewalls.create
+compute.firewalls.delete
+compute.globalOperations.get
+compute.instances.create
+compute.instances.delete
+compute.instances.get
+compute.instances.list
+compute.instances.setMetadata
+compute.instances.setServiceAccount
+compute.instances.setTags
+compute.machineTypes.get
+compute.networks.create
+compute.networks.get
+compute.networks.updatePolicy
+compute.subnetworks.use
+compute.subnetworks.useExternalIp
+compute.zoneOperations.get
+compute.zones.get
+compute.zones.list
+iam.serviceAccounts.actAs
+```
+
+</tab>
+</toggle>
+
+Outside of this, you will likely need to permissions for your application.
+These other permissions should be managed serperately and exposed as independent
+credentials or specified during the `cml runnner` command with:
+[`--cloud-permission-set`](https://cml.dev/doc/ref/runner#--cloud-permission-set)
 
 ## Examples
 
@@ -101,6 +172,37 @@ Using AWS, other examples could include accessing data in:
 - Secrets Manager
 - DynamoDB
 - Redshfit
+
+#### Format
+
+<toggle>
+<tab title="AWS">
+
+The cloud permission set should be a AWS ARN to an instance-profile
+
+- `arn:aws:iam::1234567890:instance-profile/dvc-s3-access`
+```
+cml runner ...
+  --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
+  ...
+```
+
+</tab>
+
+<tab title="GCP">
+
+The cloud permission set should be a GCP service account email and a [list of scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes)
+
+- `my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw,datastore`
+- `my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw`
+```
+cml runner ...
+  --cloud-permission-set=my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw,datastore \
+  ...
+```
+
+</tab>
+</toggle>
 
 #### Example "Permission Sets"
 

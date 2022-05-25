@@ -127,51 +127,6 @@ below for details on the `secrets` required.
 `cml send-comment` from a job, the only requirement is to
 [have CML installed](/doc/install).
 
-## Accessing DVC remotes on your CML cloud runner
-
-If you're using an Object Storage remotes like `s3` or `gs` from AWS/GCP it's
-easy to allow DVC programatic access without the use of dedicated credentials.
-
-Besides reducing overhead in managing additional keys, you can save in
-networking costs, and have options to increase transfer speeds. For example,
-looking at AWS, we can get
-[free network transfers](https://aws.amazon.com/s3/pricing/) from `s3` to `ec2`
-within the same region. So be sure to use `--cloud-region` that is in the same
-region as your DVC remote
-
-
-These `cml runner` commands fit right in with the above examples. For a more
-detailed breakdown checkout
-[the `--cloud-permission-set` option](/doc/ref/runner#using---cloud-permission-set).
-
-<toggle>
-<tab title="AWS">
-
-```bash
-cml runner \
-  --cloud=aws \
-  --cloud-region=us-west \
-  --cloud-type=p2.xlarge \
-  --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
-  --labels=cml-gpu
-```
-
-</tab>
-
-<tab title="GCP">
-
-```bash
-cml runner \
-  --cloud=gcp \
-  --cloud-region=us-west \
-  --cloud-type=m+v100 \
-  --cloud-permission-set=dvc-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw \
-  --labels=cml-gpu
-```
-
-</tab>
-</toggle>
-
 ## Docker Images
 
 The CML Docker images (`docker://iterativeai/cml` or
@@ -406,41 +361,6 @@ for obtaining these keys.
 ☝️ **Note** The same credentials can also be used for
 [configuring cloud storage](/doc/cml-with-dvc#cloud-storage-provider-credentials).
 
-**Example:** IAM permissions needed for `cml runner`:
-```
-ec2:CreateSecurityGroup -- (Firewall and SSH Access Management)
-ec2:AuthorizeSecurityGroupEgress
-ec2:AuthorizeSecurityGroupIngress
-ec2:DescribeSecurityGroups
-ec2:DescribeSubnets
-ec2:DescribeVpcs
-ec2:ImportKeyPair
-ec2:DeleteKeyPair
-ec2:CreateTags -- (General Resource Management)
-ec2:RunInstances -- (EC2 Instance Management)
-ec2:DescribeImages
-ec2:DescribeInstances
-ec2:TerminateInstances
-ec2:DescribeSpotInstanceRequests -- (Optionally needed for Spot Access)
-ec2:RequestSpotInstances
-ec2:CancelSpotInstanceRequests
-```
-
-Outside of this list, you will need to add any extra permissions required
-for your process to complete. These extra permissions can either be added
-directly to the account used by the `cml runner` or can be specified during
-the `cml runnner` command with:
-[`--cloud-permission-set`](https://cml.dev/doc/ref/runner#--cloud-permission-set)
-
-For example, if you need S3 read and write data, you may want to add:
-
-```
-s3:ListBucket
-s3:PutObject
-s3:GetObject
-s3:DeleteObject
-```
-
 </tab>
 <tab title="Azure">
 
@@ -494,7 +414,7 @@ corresponding
 and [GitLab](https://docs.gitlab.com/runner/security) documentation for
 additional guidance.
 
-## Help - Manual Cleanup
+## Debugging 
 
 In very rare cases, you may need to cleanup CML cloud resources manually.
 An example of such a problem can be seen

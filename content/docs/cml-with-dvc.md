@@ -107,6 +107,51 @@ few examples for some of the most frequently used providers:
 </tab>
 </toggle>
 
+## Accessing DVC remotes on your CML cloud runner
+
+If you're using an Object Storage remotes like `s3` or `gs` from AWS/GCP it's
+easy to allow DVC programatic access without the use of dedicated credentials.
+
+Besides reducing overhead in managing additional keys, you can save in
+networking costs, and have options to increase transfer speeds. For example,
+looking at AWS, we can get
+[free network transfers](https://aws.amazon.com/s3/pricing/) from `s3` to `ec2`
+within the same region. So be sure to use `--cloud-region` that is in the same
+region as your DVC remote
+
+
+These `cml runner` commands fit right in with the above examples. For a more
+detailed breakdown checkout
+[the `--cloud-permission-set` option](/doc/ref/runner#using---cloud-permission-set).
+
+<toggle>
+<tab title="AWS">
+
+```bash
+cml runner \
+  --cloud=aws \
+  --cloud-region=us-west \
+  --cloud-type=p2.xlarge \
+  --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
+  --labels=cml-gpu
+```
+
+</tab>
+
+<tab title="GCP">
+
+```bash
+cml runner \
+  --cloud=gcp \
+  --cloud-region=us-west \
+  --cloud-type=m+v100 \
+  --cloud-permission-set=dvc-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw \
+  --labels=cml-gpu
+```
+
+</tab>
+</toggle>
+
 ## GitHub Actions: `setup-dvc`
 
 The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action
