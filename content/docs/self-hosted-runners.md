@@ -125,12 +125,10 @@ pipelines:
             cml runner \
                 --cloud=aws \
                 --cloud-region=us-west \
-                --cloud-type=p2.xlarge \
-                --cloud-spot \
-                --labels=cml.gpu
+                --cloud-spot
     - step:
-        runs-on: [self.hosted, cml.gpu]
-        image: iterativeai/cml:0-dvc2-base1-gpu
+        runs-on: [self.hosted]
+        image: iterativeai/cml:0-dvc2-base1
         script:
           - pip install -r requirements.txt
           - python train.py
