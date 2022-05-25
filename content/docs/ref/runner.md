@@ -87,7 +87,7 @@ You can predefine a set of permissions via an [AWS role]() or a
 [GCP service account]() that is associated with the created `cml runner`
 instance.
 
-This can enable credentialless access to your `s3` or `gs` dvc remote.
+This can enable credential-free access to your `s3` or `gs` dvc remote.
 Additionally, you can use this access other resources from that cloud provider
 like AWS' Elastic Container Registry or GCP's Artifact Registry, so that you can
 push and pull custom docker images.
