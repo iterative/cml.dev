@@ -123,7 +123,6 @@ Trust relationships:
 
 ```json
 {
-  "stuff": "here"
   "Version": "2012-10-17",
   "Statement": [
     {
