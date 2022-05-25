@@ -141,10 +141,16 @@ Trust relationships:
 </tab>
 <tab title="GCP">
 
-> Caveat for `--cloud-permission-set` on GCP: using this feature will likely
-> require and additional role be added to your `cml runner` credentials
-> `roles/ServiceAccountUser` or ensure the invoker has the permission
-> `iam.serviceAccount.actAs` on the targeted Service Account.
+<admon type="info">
+
+Using `--cloud-permission-set` will likely require:
+
+- an additional role be added to your `cml runner` credentials
+`roles/ServiceAccountUser`,
+- ensuring the invoker has the permission
+`iam.serviceAccount.actAs` on the targeted Service Account.
+
+</admon>
 
 </tab>
 </toggle>
