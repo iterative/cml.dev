@@ -89,7 +89,7 @@ instance.
 
 This can enable credential-free access to your `s3` or `gs` dvc remote.
 Additionally, you can use this to access other resources
-like AWS' Elastic Container Registry or GCP's Artifact Registry (to
+like AWS' [Elastic Container Registry](https://aws.amazon.com/ecr/) or GCP's [Artifact Registry](https://cloud.google.com/artifact-registry/) (to
 push and pull custom docker images).
 
 Using AWS, other examples could include accessing data in:
@@ -97,7 +97,6 @@ Using AWS, other examples could include accessing data in:
 - Secrets Manager
 - DynamoDB
 - Redshfit
-- ECR (your private containers)
 
 #### Example "Permission Sets"
 
