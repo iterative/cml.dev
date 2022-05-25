@@ -73,6 +73,10 @@ Any [generic option](/doc/ref) in addition to:
   (you'd need to write your code to save intermediate results to take advantage
   of this).
 
+
+## Cloud Permissions
+
+
 ## Examples
 
 ### Using `--cloud-permission-set`
@@ -83,8 +87,8 @@ Currently this feature is only available on AWS & GCP clouds.
 
 </admon>
 
-You can predefine a set of permissions via an [AWS role]() or a
-[GCP service account]() that is associated with the created `cml runner`
+You can predefine a set of permissions via an [AWS role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) or a
+[GCP service account](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances) that is associated with the created `cml runner`
 instance.
 
 This can enable credential-free access to your `s3` or `gs` dvc remote.
