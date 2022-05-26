@@ -62,9 +62,6 @@ Any [generic option](/doc/ref) in addition to:
 
 ## FAQs and Known Issues
 
-- Bitbucket: Support for
-  [self-hosted runners for Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/runners)
-  is [coming soon](https://github.com/iterative/cml/pull/798).
 - GitHub Actions by default timeout after a few hours. You can request up to
   [72 hours](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
   via
