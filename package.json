@@ -36,7 +36,7 @@
     "node": "<=14.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.1.0",
+    "@dvcorg/gatsby-theme-iterative": "^0.1.5",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@hapi/wreck": "^17.0.0",
@@ -74,7 +74,6 @@
     "node-cache": "^5.1.0",
     "perfect-scrollbar": "^1.5.5",
     "pretty-quick": "^3.1.3",
-    "prismjs": "^1.27.0",
     "promise-polyfill": "^8.2.1",
     "prop-types": "^15.8.1",
     "raf-polyfill": "^1.0.0",
@@ -129,7 +128,6 @@
     "gatsby-plugin-postcss": "^5.5.0",
     "gatsby-plugin-react-helmet": "^5.5.0",
     "gatsby-plugin-sentry": "^1.0.1",
-    "gatsby-plugin-sharp": "^4.13.0",
     "gatsby-plugin-sitemap": "^5.5.0",
     "gatsby-plugin-svgr": "^3.0.0-beta.0",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
