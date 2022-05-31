@@ -285,3 +285,7 @@ Using `--cloud-permission-set` will likely require:
 
    replacing the `IP_ADDRESS` placeholder with the instance address returned by
    `cml runner` (search the output logs for `instanceIp`).
+
+## Debugging
+
+[See the section self-hosted runners](/doc/self-hosted-runners#Debugging)
