@@ -288,7 +288,7 @@ Using `--cloud-permission-set` will likely require:
 
 ### Using `--cloud-startup-script`
 
-Provide a Base64 encoded bash script that we be executed as part of the instance provisioning for the `cml runner`. Your script will be run after `cml runner` does it's initial setup but before your runner becomes available to the CI/CD provider (GitLab-CI/GitHub Actions, or Bitbucket Pipelines)
+Provide a Base64 encoded bash script that will be executed as part of the instance provisioning for `cml runner`. Your script will be run after `cml runner` does it's initial setup but before your runner becomes available to the CI/CD provider.
 
 <admon type="info">
 
@@ -296,6 +296,7 @@ The execution of this script counts towards the "provisioning time" of the `cml 
 
 </admon>
 
+### Basic Usage
 The simplest example can be seen as this:
 ```
 cml runner ...
@@ -309,14 +310,31 @@ where `IyEvYmluL2Jhc2ggCgplY2hvICJoZWxsbyB3b3JsZCK` is:
 echo "hello world"
 ```
 
+### Debugging example
 For a more useful example to help you debug your job or `cml runner` see below, which will add you ssh keys the cml instance.
 ```
 cml runner ...
   --cloud-startup-script=$(echo 'echo "$(curl https://github.com/'"$GITHUB_ACTOR"'.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0) \
   ...
 ```
-This example is in the context of GitHub Actions, hence the `$GITHUB_ACTOR` which is the GitHub username for the [person who triggered the workflow](). Now GitHub lists users Public SSH and GPG keys which they add for convenience/verifcation for example you can see https://github.com/casperdcl.keys or https://github.com/dacbd.gpg as examples. So this line essentially results in `curl https://github.com/YOURUSERNAME.keys >> ~/.ssh/authorized_keys` running during instance creation so you can ssh into the job to capture logs or to poke around. The double `echo` is to handle base64'ing the script properly: `echo "$string" | base64 -w 0`
+This example is in the context of GitHub Actions, hence the `$GITHUB_ACTOR` i.e. the GitHub username for the [person who triggered the workflow](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables).
 
+Now GitHub lists user's Public SSH and GPG keys for convenience/verifcation as an example you can see: [SSH example](https://github.com/casperdcl.keys) or [GPG example](https://github.com/dacbd.gpg).
+
+So this line essentially results in: 
+```
+curl https://github.com/YOURUSERNAME.keys >> ~/.ssh/authorized_keys
+``` 
+Running during instance creation enabling you to ssh into the job to capture logs or to poke around.
+
+> The double `echo` is to handle base64'ing the script properly: `echo "$string" | base64 -w 0`
+#### This vs `--cloud-ssh-private`
+Understand that `cml runner` uses ssh to check the readiness of the provisioned runner as well as assign a ssh key-pair to the created instance. Normally it will generate its own key to be used. 
+`--cloud-ssh-private` allows you to use a pre-exisiting key for this (not generating a whole new key-pair).
+Which `cml runner` will use this key to connect to the instance to preform the readiness check.
+
+This example doesn't require a copy of a private key and is inter changeable for users with no changes to the command.
+Additionally, if you are running a job from your CI/CD system, this method doesn't require storing your private key as a secert in order to gain access to the created instance.
 
 ## Debugging
 
