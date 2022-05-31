@@ -22,9 +22,9 @@ Any [generic option](/doc/ref) in addition to:
 
 Instead of wrangling with
 [unshallowing clones](https://stackoverflow.com/q/6802145) and
-`git config user.email` before being able to `git commit` or use
-[`cml pr`](/doc/ref/pr), simply run:
+`git config user.email` before being able to `git commit` or use `cml pr`,
+simply run:
 
-```cml
+```cli
 $ cml ci
 ```
