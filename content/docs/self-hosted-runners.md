@@ -434,9 +434,7 @@ If you encounter these edge cases create a [GitHub Issue with as much detail as 
 
 Additionally, try to capture and include logs from the instance:
 
-For easy access and debugging on the `cml runner` instance add:
-> `--cloud-startup-script=$(echo 'echo "$(curl https://github.com/'"$GITHUB_ACTOR"'.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0)`
-to your `cml runner` command.
+For easy local access and debugging on the `cml runner` instance [check our example on using the --cloud-startup-script option](/doc/ref/runner#Using--cloud-startup-script).
 
 Then you can run the following:
 ```bash

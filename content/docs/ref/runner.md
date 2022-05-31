@@ -286,6 +286,38 @@ Using `--cloud-permission-set` will likely require:
    replacing the `IP_ADDRESS` placeholder with the instance address returned by
    `cml runner` (search the output logs for `instanceIp`).
 
+### Using `--cloud-startup-script`
+
+Provide a Base64 encoded bash script that we be executed as part of the instance provisioning for the `cml runner`. Your script will be run after `cml runner` does it's initial setup but before your runner becomes available to the CI/CD provider (GitLab-CI/GitHub Actions, or Bitbucket Pipelines)
+
+<admon type="info">
+
+The execution of this script counts towards the "provisioning time" of the `cml runner` command, as such if it(total time) takes longer that 10 minutes, then provisioning is considered failled, the instance will be deleted, and the CI/CD job will exit with a failed state.
+
+</admon>
+
+The simplest example can be seen as this:
+```
+cml runner ...
+  --cloud-startup-script=IyEvYmluL2Jhc2ggCgplY2hvICJoZWxsbyB3b3JsZCIK \
+  ...
+```
+where `IyEvYmluL2Jhc2ggCgplY2hvICJoZWxsbyB3b3JsZCK` is:
+```bash
+#!/bin/bash
+
+echo "hello world"
+```
+
+For a more useful example to help you debug your job or `cml runner` see below, which will add you ssh keys the cml instance.
+```
+cml runner ...
+  --cloud-startup-script=$(echo 'echo "$(curl https://github.com/'"$GITHUB_ACTOR"'.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0) \
+  ...
+```
+This example is in the context of GitHub Actions, hence the `$GITHUB_ACTOR` which is the GitHub username for the [person who triggered the workflow](). Now GitHub lists users Public SSH and GPG keys which they add for convenience/verifcation for example you can see https://github.com/casperdcl.keys or https://github.com/dacbd.gpg as examples. So this line essentially results in `curl https://github.com/YOURUSERNAME.keys >> ~/.ssh/authorized_keys` running during instance creation so you can ssh into the job to capture logs or to poke around. The double `echo` is to handle base64'ing the script properly: `echo "$string" | base64 -w 0`
+
+
 ## Debugging
 
 [See the section self-hosted runners](/doc/self-hosted-runners#Debugging)
