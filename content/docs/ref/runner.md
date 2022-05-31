@@ -74,7 +74,7 @@ Any [generic option](/doc/ref) in addition to:
   of this).
 
 
-## Cloud Permissions
+### Using `--cloud-permission-set`
 
 The credentials you use will need to access the resources required to create/manage Virtual Machinces for your chosen Cloud provider.
 
@@ -147,6 +147,7 @@ Outside of this, you will likely need to permissions for your application.
 These other permissions should be managed serperately and exposed as independent
 credentials or specified during the `cml runnner` command with:
 [`--cloud-permission-set`](https://cml.dev/doc/ref/runner#--cloud-permission-set)
+
 
 ## Examples
 
