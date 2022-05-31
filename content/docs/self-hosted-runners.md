@@ -416,6 +416,8 @@ additional guidance.
 
 ## Debugging 
 
+For issuses creating the `cml runner` instance you can provide an environment variable `TF_LOG_PROVIDER=DEBUG` as terraform is used internally to create the instance.
+
 In very rare cases, you may need to cleanup CML cloud resources manually.
 An example of such a problem can be seen
 [when an EC2 instance ran out of storage space](https://github.com/iterative/cml/issues/1006).
