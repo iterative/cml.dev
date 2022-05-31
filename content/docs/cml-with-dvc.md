@@ -127,7 +127,7 @@ to a CML runner `ec2` instance within the same region.
 cml runner \
   --cloud=aws \
   --cloud-region=us-west \
-  --cloud-type=p2.xlarge \
+  --cloud-type=m+t4 \
   --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
   --labels=cml-gpu
 ```
@@ -140,7 +140,7 @@ cml runner \
 cml runner \
   --cloud=gcp \
   --cloud-region=us-west \
-  --cloud-type=m+v100 \
+  --cloud-type=m+t4 \
   --cloud-permission-set=dvc-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw \
   --labels=cml-gpu
 ```
