@@ -107,7 +107,7 @@ few examples for some of the most frequently used providers:
 </tab>
 </toggle>
 
-## Accessing DVC remotes on your CML cloud runner
+## Access Permissions
 
 If you're using an Object Storage remotes like `s3` or `gs` from AWS/GCP it's
 easy to allow DVC programatic access without the use of dedicated credentials.
