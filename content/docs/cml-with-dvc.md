@@ -109,20 +109,16 @@ few examples for some of the most frequently used providers:
 
 ## Accessing DVC remotes on your CML cloud runner
 
-If you're using an Object Storage remotes like `s3` or `gs` from AWS/GCP it's
-easy to allow DVC programatic access without the use of dedicated credentials.
+When using object storage remotes like AWS `s3` or GCP `gs`, DVC can be granted
+fine-grained access. Instead of resorting to dedicated credentials & managing
+additional keys,
+[the `--cloud-permission-set` option](/doc/ref/runner#using---cloud-permission-set)
+provides granular control.
 
-Besides reducing overhead in managing additional keys, you can save in
-networking costs, and have options to increase transfer speeds. For example,
-looking at AWS, we can get
-[free network transfers](https://aws.amazon.com/s3/pricing/) from `s3` to `ec2`
-within the same region. So be sure to use `--cloud-region` that is in the same
-region as your DVC remote
-
-
-These `cml runner` commands fit right in with the above examples. For a more
-detailed breakdown checkout
-[the `--cloud-permission-set` option](/doc/ref/runner#using---cloud-permission-set).
+Networking cost and transfer time can also be reduced using an appropriate
+[`--cloud-region`](/doc/ref/runner#--cloud-region). For example, AWS has
+[free network transfers](https://aws.amazon.com/s3/pricing/) from a DVC remote `s3`
+to a CML runner `ec2` instance within the same region.
 
 <toggle>
 <tab title="AWS">
