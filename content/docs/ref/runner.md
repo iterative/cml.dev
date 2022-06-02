@@ -141,7 +141,7 @@ iam.serviceAccounts.actAs
 </tab>
 </toggle>
 
-You may also require additional permissions specific to your application (for example, ...).
+You may also require additional permissions specific to your application (for example: object storage, private docker registries, and other cloud services).
 These additional permissions should be managed separately, and exposed either as
 independent credentials or via
 [`--cloud-permission-set`](https://cml.dev/doc/ref/runner#--cloud-permission-set)
