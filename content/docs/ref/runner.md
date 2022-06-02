@@ -329,13 +329,11 @@ in the cloud instance.
 
 This enables easy SSH access into the runner for debugging as well as experimentation.
 
-#### This vs `--cloud-ssh-private`
-Understand that `cml runner` uses ssh to check the readiness of the provisioned runner as well as assign a ssh key-pair to the created instance. Normally it will generate its own key to be used. 
-`--cloud-ssh-private` allows you to use a pre-exisiting key for this (not generating a whole new key-pair).
-Which `cml runner` will use this key to connect to the instance to preform the readiness check.
+<admon type="info">
 
-This example doesn't require a copy of a private key and is inter changeable for users with no changes to the command.
-Additionally, if you are running a job from your CI/CD system, this method doesn't require storing your private key as a secert in order to gain access to the created instance.
+By comparison, [`--cloud-ssh-private`](https://cml.dev/doc/ref/runner#--cloud-ssh-private) relies on a local user-generated *private* key and is only supported on AWS and Azure.
+
+</admon>
 
 ## Debugging
 
