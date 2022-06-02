@@ -76,17 +76,16 @@ Any [generic option](/doc/ref) in addition to:
 
 ### Using `--cloud-permission-set`
 
-The credentials you use will need to access the resources required to create/manage Virtual Machinces for your chosen Cloud provider.
+The credentials must grant access to resources needed for managing compute instances.
 
 In general it is best to use the provider manage premade policies, but to explicitly limit the credentials further is possible.
 
 <toggle>
-
 <tab title="AWS">
 
 - AWS Managed Policy: [`arn:aws:iam::aws:policy/AmazonEC2FullAccess`](https://us-east-1.console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonEC2FullAccess$serviceLevelSummary)
 
-**As an Example** this could be further limited to:
+**For example** this could potentially be further limited to:
 ```
 ec2:CreateSecurityGroup -- (Firewall and SSH Access Management)
 ec2:AuthorizeSecurityGroupEgress
@@ -106,7 +105,6 @@ ec2:RequestSpotInstances
 ec2:CancelSpotInstanceRequests
 ```
 
-
 </tab>
 <tab title="GCP">
 
@@ -114,7 +112,7 @@ ec2:CancelSpotInstanceRequests
 - `roles/compute.admin`
 - `roles/iam.serviceAccountUse`
 
-**As an Example** this could be further limited to:
+**For example** this could potentially be further limited to:
 ```
 compute.diskTypes.get
 compute.disks.create
@@ -159,16 +157,16 @@ Currently this feature is only available on AWS & GCP clouds.
 
 </admon>
 
-You can predefine a set of permissions via an [AWS role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) or a
-[GCP service account](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances) that is associated with the created `cml runner`
-instance.
+A set of permissions for a `cml runner` instance can be predefined a via an
+[AWS role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) or a
+[GCP service account](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances).
 
-This can enable credential-free access to your `s3` or `gs` dvc remote.
-Additionally, you can use this to access other resources
-like AWS' [Elastic Container Registry](https://aws.amazon.com/ecr/) or GCP's [Artifact Registry](https://cloud.google.com/artifact-registry/) (to
-push and pull custom docker images).
+This could, for example, enable credential-free access to AWS `s3` & GCP `gs` [DVC](https://dvc.org) remotes, or grant access to AWS'
+[Elastic Container Registry](https://aws.amazon.com/ecr/) & GCP's
+[Artifact Registry](https://cloud.google.com/artifact-registry/)
+(to push and pull custom docker images).
 
-Using AWS, other examples could include accessing data in:
+Other AWS examples include accessing data in:
 
 - Secrets Manager
 - DynamoDB
@@ -179,24 +177,23 @@ Using AWS, other examples could include accessing data in:
 <toggle>
 <tab title="AWS">
 
-The cloud permission set should be a AWS ARN to an instance-profile
+An AWS ARN to an instance-profile:
 
 - `arn:aws:iam::1234567890:instance-profile/dvc-s3-access`
-```
+```bash
 cml runner ...
   --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
   ...
 ```
 
 </tab>
-
 <tab title="GCP">
 
-The cloud permission set should be a GCP service account email and a [list of scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes)
+A GCP service account email & [list of scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes):
 
 - `my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw,datastore`
 - `my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw`
-```
+```bash
 cml runner ...
   --cloud-permission-set=my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw,datastore \
   ...
@@ -288,17 +285,17 @@ Using `--cloud-permission-set` will likely require:
 
 ### Using `--cloud-startup-script`
 
-Provide a Base64 encoded bash script that will be executed as part of the instance provisioning for `cml runner`. Your script will be run after `cml runner` does it's initial setup but before your runner becomes available to the CI/CD provider.
+A [base64-encoded](https://en.wikipedia.org/wiki/Base64) script to execute during cloud instance provisioning (after `cml runner` does its initial setup but before the runner becomes available to the CI/CD provider).
 
-<admon type="info">
+<admon type="warn">
 
-The execution of this script counts towards the "provisioning time" of the `cml runner` command, as such if it(total time) takes longer that 10 minutes, then provisioning is considered failled, the instance will be deleted, and the CI/CD job will exit with a failed state.
+This script counts towards the total provisioning time. The total exceeding 10 minutes is considered a failure, resulting in `cml runner` terminating the instance and exiting with an error.
 
 </admon>
 
-### Basic Usage
-The simplest example can be seen as this:
-```
+For example:
+
+```bash
 cml runner ...
   --cloud-startup-script=IyEvYmluL2Jhc2ggCgplY2hvICJoZWxsbyB3b3JsZCIK \
   ...
@@ -310,24 +307,28 @@ where `IyEvYmluL2Jhc2ggCgplY2hvICJoZWxsbyB3b3JsZCK` is:
 echo "hello world"
 ```
 
-### Debugging example
-For a more useful example to help you debug your job or `cml runner` see below, which will add you ssh keys the cml instance.
-```
+This can be used for debugging, for example allowing SSH access for a GitHub user:
+
+```bash
 cml runner ...
-  --cloud-startup-script=$(echo 'echo "$(curl https://github.com/'"$GITHUB_ACTOR"'.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0) \
+  --cloud-startup-script=$(echo 'echo "$(curl https://github.com/${{ github.actor }}.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0) \
   ...
 ```
-This example is in the context of GitHub Actions, hence the `$GITHUB_ACTOR` i.e. the GitHub username for the [person who triggered the workflow](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables).
 
-Now GitHub lists user's Public SSH and GPG keys for convenience/verifcation as an example you can see: [SSH example](https://github.com/casperdcl.keys) or [GPG example](https://github.com/dacbd.gpg).
+<admon type="info">
 
-So this line essentially results in: 
+GitHub Actions will [replace `${{ github.actor }}` with the username of the person who triggered the workflow](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context). Conveniently, GitHub (and GitLab) provide a URL to access a user's public SSH keys. In effect the above command runs:
+
+```bash
+curl https://github.com/YOUR_USERNAME.keys >> ~/.ssh/authorized_keys
 ```
-curl https://github.com/YOURUSERNAME.keys >> ~/.ssh/authorized_keys
-``` 
-Running during instance creation enabling you to ssh into the job to capture logs or to poke around.
 
-> The double `echo` is to handle base64'ing the script properly: `echo "$string" | base64 -w 0`
+in the cloud instance.
+
+</admon>
+
+This enables easy SSH access into the runner for debugging as well as experimentation.
+
 #### This vs `--cloud-ssh-private`
 Understand that `cml runner` uses ssh to check the readiness of the provisioned runner as well as assign a ssh key-pair to the created instance. Normally it will generate its own key to be used. 
 `--cloud-ssh-private` allows you to use a pre-exisiting key for this (not generating a whole new key-pair).
