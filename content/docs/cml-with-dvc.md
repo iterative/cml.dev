@@ -182,7 +182,7 @@ steps:
 </tab>
 </toggle>
 
-A specific DVC version can installed using the `version` argument (defaults to
+A specific DVC version can be installed using the `version` argument (defaults to
 the [latest release](https://github.com/iterative/dvc/releases)).
 
 ```yaml

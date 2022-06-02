@@ -228,7 +228,7 @@ For instance, to use a personal access token:
    - in the "Note" field, type `PERSONAL_ACCESS_TOKEN`
    - select `repo` scope
    - click "Generate token" and copy it
-2. In you GitHub repository and/or organization, navigate to **Settings**
+2. In your GitHub repository and/or organization, navigate to **Settings**
    &rightarrow; **Secrets** &rightarrow; **New repository/organization secret**
    - in the "Name" field, type `PERSONAL_ACCESS_TOKEN`
    - in the "Value" field, paste the token
@@ -341,7 +341,7 @@ credentials.
 
 ## Cloud Compute Resource Credentials
 
-Note that you will also need to provide access credentials of your compute
+Note that you will also need to provide access credentials to your compute
 resources. In the above example, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 are required to deploy EC2 instances.
 
@@ -416,9 +416,9 @@ additional guidance.
 
 ## Debugging 
 
-For issuses creating the `cml runner` instance you can provide an environment variable `TF_LOG_PROVIDER=DEBUG` as terraform is used internally to create the instance.
+For issues creating the `cml runner` instance you can provide an environment variable `TF_LOG_PROVIDER=DEBUG` as terraform is used internally to create the instance.
 
-In very rare cases, you may need to cleanup CML cloud resources manually.
+In very rare cases, you may need to clean up CML cloud resources manually.
 An example of such a problem can be seen
 [when an EC2 instance ran out of storage space](https://github.com/iterative/cml/issues/1006).
 
@@ -430,7 +430,7 @@ manually cleanup in the case of a failure:
   (this should delete itself after terminating the instance)
 - The generated key-pair (named with pattern `cml-{random-id}`)
 
-If you encounter these edge cases create a [GitHub Issue with as much detail as possible](https://github.com/iterative/cml/issues/new). If possible link your workflow in the issue or provide an example of your worflow's YAML. 
+If you encounter these edge cases create a [GitHub Issue with as much detail as possible](https://github.com/iterative/cml/issues/new). If possible link your workflow in the issue or provide an example of your workflow's YAML. 
 
 Additionally, try to capture and include logs from the instance:
 
