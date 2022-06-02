@@ -141,9 +141,9 @@ iam.serviceAccounts.actAs
 </tab>
 </toggle>
 
-Outside of this, you will likely need to permissions for your application.
-These other permissions should be managed serperately and exposed as independent
-credentials or specified during the `cml runnner` command with:
+You may also require additional permissions specific to your application (for example, ...).
+These additional permissions should be managed separately, and exposed either as
+independent credentials or via
 [`--cloud-permission-set`](https://cml.dev/doc/ref/runner#--cloud-permission-set)
 
 
@@ -297,10 +297,12 @@ For example:
 
 ```bash
 cml runner ...
-  --cloud-startup-script=IyEvYmluL2Jhc2ggCgplY2hvICJoZWxsbyB3b3JsZCIK \
+  --cloud-startup-script=IyEvYmluL2Jhc2gKCmVjaG8gImhlbGxvIHdvcmxkIgo= \
   ...
 ```
-where `IyEvYmluL2Jhc2ggCgplY2hvICJoZWxsbyB3b3JsZCK` is:
+
+where `echo IyEvYmluL2Jhc2gKCmVjaG8gImhlbGxvIHdvcmxkIgo= | base64 -d` is:
+
 ```bash
 #!/bin/bash
 
