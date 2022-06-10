@@ -258,31 +258,6 @@ Using `--cloud-permission-set` will likely require:
 </toggle>
 
 
-### Using `--cloud-ssh-private`
-
-1. Generate a new RSA PEM private key for debugging purposes:
-
-   ```bash
-   ssh-keygen -t rsa -m pem -b 4096 -f key.pem
-   ```
-
-2. Pass the contents of the generated private key file when invoking the
-   `cml runner` command:
-
-   ```bash
-   cml runner --cloud=... --cloud-ssh-private="$(cat key.pem)"
-   ```
-
-3. Access the instance from your local system by using the generated key as an
-   identity file:
-
-   ```bash
-   ssh -i key.pem ubuntu@IP_ADDRESS
-   ```
-
-   replacing the `IP_ADDRESS` placeholder with the instance address returned by
-   `cml runner` (search the output logs for `instanceIp`).
-
 ### Using `--cloud-startup-script`
 
 A [base64-encoded](https://en.wikipedia.org/wiki/Base64) script to execute during cloud instance provisioning (after `cml runner` does its initial setup but before the runner becomes available to the CI/CD provider).
@@ -336,6 +311,31 @@ This enables easy SSH access into the runner for debugging as well as experiment
 By comparison, [`--cloud-ssh-private`](https://cml.dev/doc/ref/runner#--cloud-ssh-private) relies on a local user-generated *private* key and is only supported on AWS and Azure.
 
 </admon>
+
+### Using `--cloud-ssh-private`
+
+1. Generate a new RSA PEM private key for debugging purposes:
+
+   ```bash
+   ssh-keygen -t rsa -m pem -b 4096 -f key.pem
+   ```
+
+2. Pass the contents of the generated private key file when invoking the
+   `cml runner` command:
+
+   ```bash
+   cml runner --cloud=... --cloud-ssh-private="$(cat key.pem)"
+   ```
+
+3. Access the instance from your local system by using the generated key as an
+   identity file:
+
+   ```bash
+   ssh -i key.pem ubuntu@IP_ADDRESS
+   ```
+
+   replacing the `IP_ADDRESS` placeholder with the instance address returned by
+   `cml runner` (search the output logs for `instanceIp`).
 
 ## Debugging
 
