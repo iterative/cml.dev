@@ -78,7 +78,7 @@ Any [generic option](/doc/ref) in addition to:
 
 The credentials must grant access to resources needed for managing compute instances.
 
-In general it is best to use the provider managed policies/roles, but to explicitly limit the credentials further is possible.
+It's recommended to use provider-managed policies/roles and then explicitly limit the permissions further if possible.
 
 <toggle>
 <tab title="AWS">

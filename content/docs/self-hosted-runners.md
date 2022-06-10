@@ -341,7 +341,7 @@ credentials.
 
 ## Cloud Compute Resource Credentials
 
-Note that you will also need to provide access credentials to your compute
+Note that you will also need to provide access credentials of your compute
 resources. In the above example, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 are required to deploy EC2 instances.
 
