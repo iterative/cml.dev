@@ -416,7 +416,7 @@ additional guidance.
 
 ## Debugging 
 
-For issues creating the `cml runner` instance you can provide an environment variable `TF_LOG_PROVIDER=DEBUG` as terraform is used internally to create the instance.
+If `cml runner` fails with a terraform error message, setting the environment variable `TF_LOG_PROVIDER=DEBUG` may yield more information.
 
 In very rare cases, you may need to clean up CML cloud resources manually.
 An example of such a problem can be seen
