@@ -257,6 +257,13 @@ export default {
             '&:first-of-type': {
               mt: 0
             },
+            'svg.title-icon': {
+              marginLeft: '4px',
+              marginBottom: '2px',
+              width: '14px',
+              height: '14px',
+              opacity: 1
+            },
             '&:hover': {
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
               svg: {

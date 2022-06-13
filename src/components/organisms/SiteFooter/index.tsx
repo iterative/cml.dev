@@ -83,13 +83,11 @@ const footerLists: Array<IFooterListPopupProps> = [
       {
         text: 'DVC',
         icon: <Box as="span" sx={{ backgroundImage: `url("${dvcIcon}")` }} />,
-
         url: 'https://dvc.org/'
       },
       {
         text: 'CML',
         icon: <Box as="span" sx={{ backgroundImage: `url("${cmlIcon}")` }} />,
-
         url: '/'
       },
       {
@@ -115,6 +113,11 @@ const footerLists: Array<IFooterListPopupProps> = [
           />
         ),
         url: 'https://mlem.ai/'
+      },
+      {
+        text: 'VS Code Extension',
+        icon: <Box as="span" sx={{ backgroundImage: `url("${dvcIcon}")` }} />,
+        url: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc'
       }
     ]
   }
