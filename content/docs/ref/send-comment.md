@@ -28,6 +28,17 @@ Any [generic option](/doc/ref) in addition to:
 
 ## FAQs and Known Issues
 
+### GitHub
+
+- **`commit_id` has been locked**.
+
+  This
+  [error](https://github.community/t/comment-api-does-not-describe-commit-id-has-been-locked/159853/2)
+  is caused by using the default GitHub token with `cml send-comment --update`.
+  Use a
+  [personal access token (PAT)](/doc/self-hosted-runners?tab=GitHub#personal-access-token)
+  instead.
+
 ### Bitbucket
 
 - **Can't create a pull request or commit comment** / **Invalid or unknown
