@@ -28,7 +28,9 @@ supported CI systems.
        runs-on: ubuntu-latest
        container: docker://ghcr.io/iterative/cml:0-dvc2-base1
        steps:
-         - uses: actions/checkout@v2
+         - uses: actions/checkout@v3
+           with:
+             ref: ${{ github.event.pull_request.head.sha }}
          - name: Train model
            env:
              REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -137,7 +139,9 @@ Assume that we have a machine learning script, `train.py`, that outputs an image
 ```yaml
 steps:
   - uses: iterative/setup-cml@v1
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
+    with:
+      ref: ${{ github.event.pull_request.head.sha }}
   - env:
       REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     run: |
