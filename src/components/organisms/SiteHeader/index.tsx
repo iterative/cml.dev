@@ -81,7 +81,7 @@ const otherToolsItems: Array<IOtherToolsItem> = [
     title: 'VS Code Extension',
     titleIcon: <VsCodeIcon className="title-icon" width="14" height="14" />,
     icon: <div></div>,
-    description: 'Open-source version control system for ML projects',
+    description: 'Local ML model development and experiment tracking',
     href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc'
   },
   {
