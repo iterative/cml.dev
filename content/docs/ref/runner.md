@@ -149,7 +149,6 @@ independent credentials or via
 
 ## Examples
 
-### Using `--cloud-permission-set`
 
 <admon type="info">
 
