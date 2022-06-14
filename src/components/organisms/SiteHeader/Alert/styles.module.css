@@ -4,7 +4,7 @@
   font-size: 18px;
   text-align: center;
   background-color: #fff;
-  color: rgba(58, 45, 76, 0.7);
+  color: rgba(58, 45, 76, 70%);
   width: 100%;
   transition: 0.5s all, 0s width;
   overflow: hidden;
@@ -37,10 +37,10 @@
   }
 
   a {
-    color: rgba(58, 45, 76, 0.7);
+    color: rgba(58, 45, 76, 70%);
     text-decoration: underline;
     &:hover {
-      color: rgba(58, 45, 76, 0.7);
+      color: rgba(58, 45, 76, 70%);
       opacity: 0.7;
     }
   }
