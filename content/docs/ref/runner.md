@@ -42,14 +42,16 @@ Any [generic option](/doc/ref) in addition to:
   [AWS instance profile](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#ec2-instance-profile)
   or
   [GCP instance service account](https://cloud.google.com/compute/docs/access/service-accounts).
+  More [details below](#using---cloud-permission-set).
 - `--cloud-metadata=<...>`: `key=value` pair to associate with cloud runner
   instances. May be [specified multiple times](http://yargs.js.org/docs/#array).
 - `--cloud-startup-script=<...>`: Run the provided
   [Base64](https://linux.die.net/man/1/base64)-encoded Linux shell script during
-  the instance initialization.
+  the instance initialization. More
+  [details below](#using---cloud-startup-script).
 - `--cloud-ssh-private=<key>`: Private SSH RSA key [default: *auto-generate
   throwaway key*]. Only supported on AWS and Azure; intended for debugging
-  purposes.
+  purposes. More [details below](#using---cloud-ssh-private).
 - `--cloud-aws-security-group=<...>`:
   [AWS security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
   identifier.
