@@ -3,6 +3,7 @@ import { Flex, Box, Container, Button } from '@theme-ui/components'
 import InstallPopup from '../../molecules/InstallPopup'
 import SmartLink from '../../atoms/SmartLink'
 import SiteLogo from '../../molecules/SiteLogo'
+import Alert from './Alert'
 
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
@@ -153,6 +154,7 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
           isMain ? { backgroundColor: 'transparent' } : { position: 'sticky' }
         }
       >
+        {isMain && <Alert />}
         <Container variant="layout.Header.Inner">
           <Box as="nav" variant="layout.Header.Nav">
             <SiteLogo variant="layout.Header.Nav.Logo" />
