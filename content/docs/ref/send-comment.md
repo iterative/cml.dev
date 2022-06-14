@@ -6,11 +6,19 @@ cml send-comment [options] <markdown report file>
 
 Post a markdown report as a comment on a commit or pull/merge request.
 
-ⓘ If there's an associated pull/merge request, consider adding the `--pr` and
+<admon type="tip">
+
+If there's an associated pull/merge request, consider adding the `--pr` and
 `--update` flags.
 
-ⓘ If `cml pr` was used earlier in the workflow, use `--commit-sha=HEAD` to post
+</admon>
+
+<admon type="tip">
+
+If `cml pr` was used earlier in the workflow, use `--commit-sha=HEAD` to post
 comments to the new PR if desired.
+
+</admon>
 
 ## Options
 

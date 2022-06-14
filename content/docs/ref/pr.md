@@ -7,11 +7,20 @@ cml pr [options] <pathspec>...
 Commit specified files to a new branch and create a pull request. If sending a
 report afterwards, consider using `cml send-comment --pr --update`.
 
-ⓘ Pull requests created with `cml pr` **won't** trigger a new CI/CD run, thereby
-preventing an infinite chain of runs.
+<admon type="info">
 
-ⓘ Files to commit can be specified using any syntax supported by
+Pull requests created with `cml pr` **won't** trigger a new CI/CD run, thereby
+preventing an infinite chain of runs. In some cases, the `--skip-ci` flag may be
+required (e.g. to stop GitLab CI running after `--merge`).
+
+</admon>
+
+<admon type="tip">
+
+Files to commit can be specified using any syntax supported by
 [Git pathspec](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec).
+
+</admon>
 
 ## Options
 
