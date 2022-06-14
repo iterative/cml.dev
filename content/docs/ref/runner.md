@@ -1,6 +1,6 @@
 # Command Reference: `runner`
 
-```bash
+```usage
 cml runner [options]
 ```
 
@@ -76,22 +76,22 @@ Any [generic option](/doc/ref) in addition to:
 
 1. Generate a new RSA PEM private key for debugging purposes:
 
-   ```bash
-   ssh-keygen -t rsa -m pem -b 4096 -f key.pem
+   ```cli
+   $ ssh-keygen -t rsa -m pem -b 4096 -f key.pem
    ```
 
 2. Pass the contents of the generated private key file when invoking the
    `cml runner` command:
 
-   ```bash
-   cml runner --cloud=... --cloud-ssh-private="$(cat key.pem)"
+   ```cli
+   $ cml runner --cloud=... --cloud-ssh-private="$(cat key.pem)"
    ```
 
 3. Access the instance from your local system by using the generated key as an
    identity file:
 
-   ```bash
-   ssh -i key.pem ubuntu@IP_ADDRESS
+   ```cli
+   $ ssh -i key.pem ubuntu@IP_ADDRESS
    ```
 
    replacing the `IP_ADDRESS` placeholder with the instance address returned by

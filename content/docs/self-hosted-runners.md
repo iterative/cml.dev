@@ -433,8 +433,8 @@ The `cml runner` command can also be used to manually set up a local machine,
 on-premise GPU cluster, or any other cloud compute resource as a self-hosted
 runner. Simply [install CML](/doc/install) and then run:
 
-```bash
-cml runner \
+```cli
+$ cml runner \
   --repo="$REPOSITORY_URL" \
   --token="$PERSONAL_ACCESS_TOKEN" \
   --labels="local,runner" \

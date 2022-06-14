@@ -66,7 +66,7 @@ and CML set up on an Ubuntu LTS base for convenience.
 
 The key file in any CML project is `.gitlab-ci.yml`:
 
-```yml
+```yaml
 train-model:
   # use a convenient Ubuntu LTS + DVC + CML container
   image: iterativeai/cml:0-dvc2-base1
@@ -190,8 +190,8 @@ you. Some examples:
 📝 **Text** Write to your report using whatever method you prefer. For example,
 copy the contents of a text file containing the results of ML model training:
 
-```bash
-cat results.txt >> report.md
+```cli
+$ cat results.txt >> report.md
 ```
 
 🖼️ **Images** Display images using the markdown or HTML. Note that if an image
@@ -199,6 +199,6 @@ is an output of your ML workflow (i.e., it is produced by your workflow), you
 will need to use the `cml publish` command to include it a CML report. For
 example, if `plot.png` is output by `python train.py`, run:
 
-```bash
-cml publish plot.png --md >> report.md
+```cli
+$ cml publish plot.png --md >> report.md
 ```

@@ -13,8 +13,8 @@ supported CI systems.
    to follow along the commands, we recommend cloning your fork to your local
    workstation:
 
-   ```bash
-   git clone https://github.com/<your-username>/example_cml
+   ```cli
+   $ git clone https://github.com/<your-username>/example_cml
    ```
 
 2. To create a CML workflow, copy the following into a new file,
@@ -47,10 +47,10 @@ supported CI systems.
 
 4. Commit and push the changes:
 
-   ```bash
-   git checkout -b experiment
-   git add . && git commit -m "modify forest depth"
-   git push origin experiment
+   ```cli
+   $ git checkout -b experiment
+   $ git add . && git commit -m "modify forest depth"
+   $ git push origin experiment
    ```
 
 5. In GitHub, open up a Pull Request to compare the `experiment` branch to
