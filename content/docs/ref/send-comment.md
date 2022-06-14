@@ -1,16 +1,24 @@
 # Command Reference: `send-comment`
 
-```bash
+```usage
 cml send-comment [options] <markdown report file>
 ```
 
 Post a markdown report as a comment on a commit or pull/merge request.
 
-ⓘ If there's an associated pull/merge request, consider adding the `--pr` and
+<admon type="tip">
+
+If there's an associated pull/merge request, consider adding the `--pr` and
 `--update` flags.
 
-ⓘ If `cml pr` was used earlier in the workflow, use `--commit-sha=HEAD` to post
+</admon>
+
+<admon type="tip">
+
+If `cml pr` was used earlier in the workflow, use `--commit-sha=HEAD` to post
 comments to the new PR if desired.
+
+</admon>
 
 ## Options
 
@@ -27,6 +35,17 @@ Any [generic option](/doc/ref) in addition to:
   from other comments.
 
 ## FAQs and Known Issues
+
+### GitHub
+
+- **`commit_id` has been locked**.
+
+  This
+  [error](https://github.community/t/comment-api-does-not-describe-commit-id-has-been-locked/159853/2)
+  is caused by using the default GitHub token with `cml send-comment --update`.
+  Use a
+  [personal access token (PAT)](/doc/self-hosted-runners?tab=GitHub#personal-access-token)
+  instead.
 
 ### Bitbucket
 

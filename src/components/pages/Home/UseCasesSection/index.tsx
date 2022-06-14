@@ -112,7 +112,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div><span> </span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v2</span></div>
+                      <div>      <span>- uses: actions/checkout@v3</span></div>
+                      <div>        <span>with:</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div><span> </span></div>
                       <div>      <span>- uses: iterative/setup-cml@v1</span></div>
                       <div></div>
@@ -202,7 +204,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div><span> </span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v2</span></div>
+                      <div>      <span>- uses: actions/checkout@v3</span></div>
+                      <div>        <span>with:</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div><span> </span></div>
                       <div>      <span>- uses: iterative/setup-cml@v1</span></div>
                       <div><span> </span></div>
@@ -304,7 +308,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div><span> </span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v2</span></div>
+                      <div>      <span>- uses: actions/checkout@v3</span></div>
+                      <div>        <span>with:</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div></div>
                       <div>      <span>- uses: iterative/setup-cml@v1</span></div>
                       <div><span> </span></div>
@@ -409,7 +415,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>deploy-runner:</span></div>
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v2</span></div>
+                      <div>      <span>- uses: actions/checkout@v3</span></div>
+                      <div>        <span>with:</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- uses: iterative/setup-cml@v1</span></div>
                       <div>      <span>- name: deploy</span></div>
                       <div>        <span>env:</span></div>
@@ -433,7 +441,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                       <div><span> </span></div>
                       <div>    <span>steps:</span></div>
-                      <div>    <span>- uses: actions/checkout@v2</span></div>
+                      <div>    <span>- uses: actions/checkout@v3</span></div>
+                      <div>        <span>with:</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div><span> </span></div>
                       <div>    <span>- name: &quot;Train my model&quot;</span></div>
                       <div>      <span>env:</span></div>
@@ -545,7 +555,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>deploy-runner:</span></div>
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v2</span></div>
+                      <div>      <span>- uses: actions/checkout@v3</span></div>
+                      <div>        <span>with:</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- uses: iterative/setup-cml@v1</span></div>
                       <div>      <span>- name: deploy</span></div>
                       <div>        <span>env:</span></div>
@@ -574,7 +586,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                       <div><span> </span></div>
                       <div>    <span>steps:</span></div>
-                      <div>    <span>- uses: actions/checkout@v2</span></div>
+                      <div>    <span>- uses: actions/checkout@v3</span></div>
+                      <div>        <span>with:</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div><span> </span></div>
                       <div>    <span>- uses: actions/setup-python@v2</span></div>
                       <div>      <span>with:</span></div>

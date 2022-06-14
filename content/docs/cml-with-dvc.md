@@ -17,7 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Train model
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -161,7 +163,9 @@ Windows, Python 3 should be setup first.
 
 ```yaml
 steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
+    with:
+      ref: ${{ github.event.pull_request.head.sha }}
   - uses: iterative/setup-dvc@v1
 ```
 
@@ -171,7 +175,9 @@ steps:
 ```yaml
 runs-on: windows-latest
 steps:
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
+    with:
+      ref: ${{ github.event.pull_request.head.sha }}
   - uses: actions/setup-python@v2
     with:
       python-version: '3.x'

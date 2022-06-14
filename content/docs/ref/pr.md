@@ -1,17 +1,26 @@
 # Command Reference: `pr`
 
-```bash
+```usage
 cml pr [options] <pathspec>...
 ```
 
 Commit specified files to a new branch and create a pull request. If sending a
 report afterwards, consider using `cml send-comment --pr --update`.
 
-ⓘ Pull requests created with `cml pr` **won't** trigger a new CI/CD run, thereby
-preventing an infinite chain of runs.
+<admon type="info">
 
-ⓘ Files to commit can be specified using any syntax supported by
+Pull requests created with `cml pr` **won't** trigger a new CI/CD run, thereby
+preventing an infinite chain of runs. In some cases, the `--skip-ci` flag may be
+required (e.g. to stop GitLab CI running after `--merge`).
+
+</admon>
+
+<admon type="tip">
+
+Files to commit can be specified using any syntax supported by
 [Git pathspec](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec).
+
+</admon>
 
 ## Options
 
@@ -21,6 +30,7 @@ Any [generic option](/doc/ref) in addition to:
   the created PR after CI tests pass.
 - `--md`: Produce output in markdown format (`[CML Pull/Merge Request](url)`
   instead of `url`).
+- `--skip-ci`: Prevent the PR/MR from triggering another CI run post-merge.
 - `--remote=<name or URL>`: Git remote name or URL [default: `origin`].
 - `--user-email=<address>`: Git user email for commits [default:
   `olivaw@iterative.ai`].
@@ -30,15 +40,15 @@ Any [generic option](/doc/ref) in addition to:
 
 ### Commit all files in current working directory
 
-```bash
-cml pr .
+```cli
+$ cml pr .
 ```
 
 ### Automatically merge pull requests
 
-```bash
-date > output.txt
-cml pr --auto-merge output.txt
+```cli
+$ date > output.txt
+$ cml pr --auto-merge output.txt
 ```
 
 The `--merge`, `--rebase`, and `--squash` options enable
@@ -50,8 +60,8 @@ checks isn't supported, `cml pr` will try to merge the pull request immediately.
 
 ## Command internals
 
-```bash
-cml pr "**/*.py" "**/*.json"
+```cli
+$ cml pr "**/*.py" "**/*.json"
 ```
 
 is roughly equivalent to:

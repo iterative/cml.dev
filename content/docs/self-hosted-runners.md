@@ -1,18 +1,20 @@
 # Self-hosted (On-premise or Cloud) Runners
 
-GitHub Actions and GitLab CI workflows are run on GitHub- and GitLab- hosted
-runners by default. However, there are many great reasons to use your own
-runners: to take advantage of GPUs, orchestrate your team's shared computing
-resources, or train in the cloud.
+GitHub Actions, GitLab CI/CD, and Bitbucket Pipelines workflows are executed on
+"native" runners (hosted by GitHub/GitLab/Bitbucket respectively) by default.
+However, there are many great reasons to use your own runners: to take advantage
+of GPUs, orchestrate your team's shared computing resources, or train in the
+cloud.
 
-☝️ **Tip!** Check out the official documentation from
-[GitHub](https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
-and [GitLab](https://docs.gitlab.com/runner) for more information on self-hosted
-runners.
+<admon type="tip">
 
-⚠️ Using
-[self-hosted runners for Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/runners)
-is not yet supported.
+Check out the official documentation from
+[GitHub](https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners),
+[GitLab](https://docs.gitlab.com/runner) and
+[Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/runners) for more
+information on self-hosted runners.
+
+</admon>
 
 ## Allocating Cloud Compute Resources with CML
 
@@ -48,7 +50,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: iterative/setup-cml@v1
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Deploy runner on EC2
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -68,10 +72,12 @@ jobs:
       image: docker://iterativeai/cml:0-dvc2-base1-gpu
       options: --gpus all
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Train model
         env:
-          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
         run: |
           pip install -r requirements.txt
           python train.py
@@ -104,15 +110,39 @@ train-model:
   script:
     - pip install -r requirements.txt
     - python train.py
-  image: iterativeai/cml:0-dvc2-base1
-  script:
-    - pip install -r requirements.txt
-    - python train.py
-
     # Create CML report
     - cat metrics.txt >> report.md
     - cml publish plot.png --md --title="Confusion Matrix" >> report.md
     - cml send-comment report.md
+```
+
+</tab>
+<tab title="Bitbucket">
+
+```yaml
+pipelines:
+  default:
+    - step:
+        image: iterativeai/cml:0-dvc2-base1
+        script:
+          - |
+            cml runner \
+                --cloud=aws \
+                --cloud-region=us-west \
+                --cloud-type=m5.2xlarge \
+                --cloud-spot \
+                --labels=cml
+    - step:
+        runs-on: [self.hosted, cml]
+        image: iterativeai/cml:0-dvc2-base1
+        # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
+        script:
+          - pip install -r requirements.txt
+          - python train.py
+          # Create CML report
+          - cat metrics.txt >> report.md
+          - cml publish plot.png --md --title="Confusion Matrix" >> report.md
+          - cml send-comment report.md
 ```
 
 </tab>
@@ -178,16 +208,20 @@ The `cml runner` command supports many options (see the
 
 Sensitive values like cloud and repository credentials can be provided through
 environment variables with the aid of GitHub
-[secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
-or GitLab
-[masked variables](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project);
-the latter also supports
-[external secrets](https://docs.gitlab.com/ee/ci/secrets) for added security.
+[secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository),
+GitLab
+[masked variables](https://docs.gitlab.com/ee/ci/variables/#add-a-cicd-variable-to-a-project)
+(or [external secrets](https://docs.gitlab.com/ee/ci/secrets) for added
+security), or Bitbucket
+[secured user-defined variables](https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/#User-defined-variables).
 
-⚠️ You will need to create a
-[personal access token (PAT)](#personal-access-token) with repository read/write
-access. In the example workflow above, this token is stored as
-`PERSONAL_ACCESS_TOKEN`.
+<admon type="warn">
+
+You will need to create a [personal access token (PAT)](#personal-access-token)
+with enough permissions to register self-hosted runners. In the example workflow
+above, this token is stored as `REPO_TOKEN`.
+
+</admon>
 
 🛈 If using the `--cloud` option, you will also need to provide access
 credentials for your cloud compute resources as secrets. In the above example,
@@ -250,8 +284,9 @@ steps:
     with:
       private-key: ${{ secrets.CML_GITHUB_APP_PEM }}
       app-id: ${{ secrets.CML_GITHUB_APP_ID }}
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v3
     with:
+      ref: ${{ github.event.pull_request.head.sha }}
       token: ${{ steps.get-token.outputs.token }}
   - name: Train model
     env:
@@ -314,7 +349,8 @@ Use either:
 
 - your username and a
   [Bitbucket Cloud App Password](https://bitbucket.org/account/settings/app-passwords/)
-  with `Write` permission for Pull requests, Pipelines, and Runners, or
+  with `Read` permission for Account and `Write` permission for Pull requests,
+  Pipelines, and Runners, or
 - create a designated "CI/CD" _bot account_ for CML authentication. Bot accounts
   are the same as normal user accounts, with the only difference being the
   intended use case: you limit the account to only access the repositories where
@@ -397,8 +433,8 @@ The `cml runner` command can also be used to manually set up a local machine,
 on-premise GPU cluster, or any other cloud compute resource as a self-hosted
 runner. Simply [install CML](/doc/install) and then run:
 
-```bash
-cml runner \
+```cli
+$ cml runner \
   --repo="$REPOSITORY_URL" \
   --token="$PERSONAL_ACCESS_TOKEN" \
   --labels="local,runner" \
