@@ -119,14 +119,14 @@ provides granular control.
 
 Networking cost and transfer time can also be reduced using an appropriate
 [`--cloud-region`](/doc/ref/runner#--cloud-region). For example, AWS has
-[free network transfers](https://aws.amazon.com/s3/pricing/) from a DVC remote `s3`
-to a CML runner `ec2` instance within the same region.
+[free network transfers](https://aws.amazon.com/s3/pricing/) from a DVC remote
+`s3` to a CML runner `ec2` instance within the same region.
 
 <toggle>
 <tab title="AWS">
 
-```bash
-cml runner \
+```cli
+$ cml runner \
   --cloud=aws \
   --cloud-region=us-west \
   --cloud-type=m+t4 \
@@ -137,8 +137,8 @@ cml runner \
 </tab>
 <tab title="GCP">
 
-```bash
-cml runner \
+```cli
+$ cml runner \
   --cloud=gcp \
   --cloud-region=us-west \
   --cloud-type=m+t4 \
@@ -187,8 +187,8 @@ steps:
 </tab>
 </toggle>
 
-A specific DVC version can be installed using the `version` argument (defaults to
-the [latest release](https://github.com/iterative/dvc/releases)).
+A specific DVC version can be installed using the `version` argument (defaults
+to the [latest release](https://github.com/iterative/dvc/releases)).
 
 ```yaml
 - uses: iterative/setup-dvc@v1
