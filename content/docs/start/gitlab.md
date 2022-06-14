@@ -48,13 +48,13 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
    ![](/img/gitlab_cml_clone.png)
 
    ```cli
-   git clone https://gitlab.com/<user_name>/example_cml.git
+   $ git clone https://gitlab.com/<user_name>/example_cml.git
    ```
 
 4. Change directory to `example_cml`.
 
    ```cli
-   cd example_cml
+   $ cd example_cml
    ```
 
 5. To create a CML workflow, use your editor of choice to copy the following
@@ -76,9 +76,9 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
 7. Commit and push the changes using:
 
    ```cli
-   git checkout -b experiment
-   git add . && git commit -m "modify forest depth"
-   git push origin experiment
+   $ git checkout -b experiment
+   $ git add . && git commit -m "modify forest depth"
+   $ git push origin experiment
    ```
 
 8. Go back to GitLab in a Browser window and create a merge request.

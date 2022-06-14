@@ -44,15 +44,15 @@ contributing!
 Get the latest development version. [Fork] and clone the repo:
 
 ```cli
-git clone git@github.com:<your-username>/cml.git
+$ git clone git@github.com:<your-username>/cml.git
 ```
 
 Ensure that you have Node.js 16.x installed. Install coding style pre-commit
 hooks with:
 
 ```cli
-cd cml
-npm install
+$ cd cml
+$ npm install
 ```
 
 That's it. You should be ready to make changes, run tests, and make commits! If

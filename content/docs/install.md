@@ -8,17 +8,17 @@ However, in all other cases, CML can be installed directly as a Node.js package
 using the package manager `npm` ([see below](#installing-nodejs)):
 
 ```cli
-npm i -g @dvcorg/cml
+$ npm i -g @dvcorg/cml
 ```
 
 You may also need to install additional dependencies to use
 [DVC plots](https://dvc.org/doc/command-reference/plots) and Vega-Lite:
 
 ```cli
-sudo apt-get install -y \
+$ sudo apt-get install -y \
   libcairo2-dev libfontconfig-dev \
   libgif-dev libjpeg-dev libpango1.0-dev librsvg2-dev
-npm install -g vega-cli vega-lite
+$ npm install -g vega-cli vega-lite
 ```
 
 ## Installing Node.js
@@ -32,9 +32,9 @@ manager `npm` can be found below.
 Install Node.js from source:
 
 ```cli
-curl -sL https://deb.nodesource.com/setup_16.x | bash
-apt-get update
-apt-get install -y nodejs
+$ curl -sL https://deb.nodesource.com/setup_16.x | bash
+$ apt-get update
+$ apt-get install -y nodejs
 ```
 
 </tab>

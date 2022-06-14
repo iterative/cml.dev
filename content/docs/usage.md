@@ -191,7 +191,7 @@ you. Some examples:
 copy the contents of a text file containing the results of ML model training:
 
 ```cli
-cat results.txt >> report.md
+$ cat results.txt >> report.md
 ```
 
 🖼️ **Images** Display images using the markdown or HTML. Note that if an image
@@ -200,5 +200,5 @@ will need to use the `cml publish` command to include it a CML report. For
 example, if `plot.png` is output by `python train.py`, run:
 
 ```cli
-cml publish plot.png --md >> report.md
+$ cml publish plot.png --md >> report.md
 ```

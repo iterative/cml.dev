@@ -25,5 +25,5 @@ Any [generic option](/doc/ref) in addition to:
 To render an image in a markdown file:
 
 ```cli
-cml publish ./plot.png --md >> report.md
+$ cml publish ./plot.png --md >> report.md
 ```

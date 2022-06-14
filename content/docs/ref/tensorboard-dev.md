@@ -26,5 +26,5 @@ Any [generic option](/doc/ref) in addition to:
 ## Examples
 
 ```cli
-cml tensorboard-dev --logdir=./logs --title=Training --md >> report.md
+$ cml tensorboard-dev --logdir=./logs --title=Training --md >> report.md
 ```
