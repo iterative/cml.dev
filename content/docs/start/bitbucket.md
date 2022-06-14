@@ -35,7 +35,7 @@ all the supported CI systems.
              - cml-send-comment report.md
    ```
 
-3. In your text editor of choice, edit line 16 of `train.py` to `depth = 12`.
+3. In your text editor of choice, edit line 15 of `train.py` to `depth = 12`.
 
 4. Commit and push the changes:
 
