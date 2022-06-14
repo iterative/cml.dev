@@ -62,7 +62,11 @@ Any [generic option](/doc/ref) in addition to:
 
 ## FAQs and Known Issues
 
-- GitHub Actions by default timeout after a few hours. You can request up to
+### GitHub
+
+- **GitHub Actions timeout after a few hours**.
+
+  You can request up to
   [72 hours](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
   via
   [`timeout-minutes: 4320`](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idtimeout-minutes).
@@ -70,13 +74,58 @@ Any [generic option](/doc/ref) in addition to:
   (you'd need to write your code to save intermediate results to take advantage
   of this).
 
+## Examples
+
 ### Using `--cloud-permission-set`
 
-The credentials must grant access to resources needed for managing compute
-instances.
+#### Format
+
+<admon type="info">
+
+The associated cloud credentials must grant access to resources needed for
+managing compute instances.
+
+</admon>
+
+<toggle>
+<tab title="AWS">
+
+An AWS ARN to an instance-profile:
+
+- `arn:aws:iam::1234567890:instance-profile/dvc-s3-access`
+
+```cli
+$ cml runner \
+  --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
+  ...
+```
+
+</tab>
+<tab title="GCP">
+
+A GCP service account email &
+[list of scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes):
+
+- `my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw,datastore`
+- `my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw`
+
+```cli
+$ cml runner \
+  --cloud-permission-set=my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw,datastore \
+  ...
+```
+
+</tab>
+</toggle>
+
+#### Common Permissions
+
+<admon type="tip">
 
 It's recommended to use provider-managed policies/roles and then explicitly
 limit the permissions further if possible.
+
+</admon>
 
 <toggle>
 <tab title="AWS">
@@ -149,8 +198,6 @@ These additional permissions should be managed separately, and exposed either as
 independent credentials or via
 [`--cloud-permission-set`](https://cml.dev/doc/ref/runner#--cloud-permission-set)
 
-## Examples
-
 <admon type="info">
 
 Currently this feature is only available on AWS & GCP clouds.
@@ -173,39 +220,6 @@ Other AWS examples include accessing data in:
 - Secrets Manager
 - DynamoDB
 - Redshfit
-
-#### Format
-
-<toggle>
-<tab title="AWS">
-
-An AWS ARN to an instance-profile:
-
-- `arn:aws:iam::1234567890:instance-profile/dvc-s3-access`
-
-```cli
-$ cml runner \
-  --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
-  ...
-```
-
-</tab>
-<tab title="GCP">
-
-A GCP service account email &
-[list of scopes](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes):
-
-- `my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw,datastore`
-- `my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw`
-
-```cli
-$ cml runner \
-  --cloud-permission-set=my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw,datastore \
-  ...
-```
-
-</tab>
-</toggle>
 
 #### Example "Permission Sets"
 
