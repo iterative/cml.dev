@@ -15,8 +15,10 @@ Any [generic option](/doc/ref) in addition to:
   [Git revision](https://git-scm.com/docs/gitrevisions) linked to this check
   [default: `HEAD`].
 - `--title=<...>`: The check's title [default: `CML Report`].
+- `--status={queued,in_progress,completed}`: The check's current status
+  [default: `completed`].
 - `--conclusion={success,failure,neutral,cancelled,skipped,timed_out}`: The
-  check's status [default: `success`].
+  check's final status [default: `success`].
 
 ## FAQs and Known Issues
 
