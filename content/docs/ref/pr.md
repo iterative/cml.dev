@@ -30,7 +30,7 @@ Any [generic option](/doc/ref) in addition to:
   the created PR after CI tests pass.
 - `--md`: Produce output in markdown format (`[CML Pull/Merge Request](url)`
   instead of `url`).
-- `--skip-ci`: Forcefully stop the PR triggering another CI run post-merge.
+- `--skip-ci`: Prevent the PR/MR from triggering another CI run post-merge.
 - `--remote=<name or URL>`: Git remote name or URL [default: `origin`].
 - `--user-email=<address>`: Git user email for commits [default:
   `olivaw@iterative.ai`].
