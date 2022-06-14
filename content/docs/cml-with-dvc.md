@@ -109,9 +109,10 @@ few examples for some of the most frequently used providers:
 </tab>
 </toggle>
 
-## Access Permissions
+## Runner Access Permissions
 
-When using object storage remotes like AWS `s3` or GCP `gs`, DVC can be granted
+When using object storage remotes (like AWS `s3` or GCP `gs`) with
+[`cml runner`](/doc/self-hosted-runners), DVC can be granted
 fine-grained access. Instead of resorting to dedicated credentials & managing
 additional keys,
 [the `--cloud-permission-set` option](/doc/ref/runner#using---cloud-permission-set)
