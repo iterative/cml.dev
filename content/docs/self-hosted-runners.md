@@ -375,7 +375,7 @@ credentials.
 </tab>
 </toggle>
 
-## Cloud Compute Resource Credentials
+### Cloud Compute Resource Credentials
 
 Note that you will also need to provide access credentials of your compute
 resources. In the above example, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
@@ -427,7 +427,7 @@ provisioned through environment variables instead of files.
 </tab>
 </toggle>
 
-## On-premise (Local) Runners
+### On-premise (Local) Runners
 
 The `cml runner` command can also be used to manually set up a local machine,
 on-premise GPU cluster, or any other cloud compute resource as a self-hosted
