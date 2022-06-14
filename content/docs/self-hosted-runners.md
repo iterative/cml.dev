@@ -262,7 +262,7 @@ For instance, to use a personal access token:
    - in the "Note" field, type `PERSONAL_ACCESS_TOKEN`
    - select `repo` scope
    - click "Generate token" and copy it
-2. In you GitHub repository and/or organization, navigate to **Settings**
+2. In your GitHub repository and/or organization, navigate to **Settings**
    &rightarrow; **Secrets** &rightarrow; **New repository/organization secret**
    - in the "Name" field, type `PERSONAL_ACCESS_TOKEN`
    - in the "Value" field, paste the token
@@ -427,7 +427,7 @@ provisioned through environment variables instead of files.
 </tab>
 </toggle>
 
-#### On-premise (Local) Runners
+### On-premise (Local) Runners
 
 The `cml runner` command can also be used to manually set up a local machine,
 on-premise GPU cluster, or any other cloud compute resource as a self-hosted
@@ -449,3 +449,52 @@ corresponding
 [GitHub](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
 and [GitLab](https://docs.gitlab.com/runner/security) documentation for
 additional guidance.
+
+## Debugging
+
+If `cml runner` fails with a terraform error message, setting the environment
+variable `TF_LOG_PROVIDER=DEBUG` may yield more information.
+
+In very rare cases, you may need to clean up CML cloud resources manually. An
+example of such a problem can be seen
+[when an EC2 instance ran out of storage space](https://github.com/iterative/cml/issues/1006).
+
+The following is a list of all the resources you may need to manually cleanup in
+the case of a failure:
+
+- The running instance (named with pattern `cml-{random-id}`)
+- The volume attached to the running instance (this should delete itself after
+  terminating the instance)
+- The generated key-pair (named with pattern `cml-{random-id}`)
+
+If you encounter these edge cases create a
+[GitHub Issue with as much detail as possible](https://github.com/iterative/cml/issues/new).
+If possible link your workflow in the issue or provide an example of your
+workflow's YAML.
+
+Additionally, try to capture and include logs from the instance:
+
+For easy local access and debugging on the `cml runner` instance
+[check our example on using the --cloud-startup-script option](/doc/ref/runner#Using--cloud-startup-script).
+
+Then you can run the following:
+
+```cli
+$ ssh ubuntu@instance_public_ip
+$ sudo journalctl -n all -u cml.service --no-pager > cml.log
+$ sudo dmesg --ctime > system.log
+```
+
+☝️ **Note** Please give your `cml.log` a visual scan, entries like IP addresses
+and git repository names may be present and considered sensitive in some cases.
+
+You can then copy those logs to your local machine with:
+
+```cli
+$ scp ubuntu@instance_public_ip:~/cml.log .
+$ scp ubuntu@instance_public_ip:~/system.log .
+```
+
+There is a chance that the instance could be severely broken if the SSH command
+hangs -- if that happens reboot it from the web console and try the commands
+again.

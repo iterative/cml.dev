@@ -109,6 +109,47 @@ few examples for some of the most frequently used providers:
 </tab>
 </toggle>
 
+## Runner Access Permissions
+
+When using object storage remotes (like AWS `s3` or GCP `gs`) with
+[`cml runner`](/doc/self-hosted-runners), DVC can be granted fine-grained
+access. Instead of resorting to dedicated credentials & managing additional
+keys,
+[the `--cloud-permission-set` option](/doc/ref/runner#using---cloud-permission-set)
+provides granular control.
+
+Networking cost and transfer time can also be reduced using an appropriate
+[`--cloud-region`](/doc/ref/runner#--cloud-region). For example, AWS has
+[free network transfers](https://aws.amazon.com/s3/pricing/) from a DVC remote
+`s3` to a CML runner `ec2` instance within the same region.
+
+<toggle>
+<tab title="AWS">
+
+```cli
+$ cml runner \
+  --cloud=aws \
+  --cloud-region=us-west \
+  --cloud-type=m+t4 \
+  --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
+  --labels=cml-gpu
+```
+
+</tab>
+<tab title="GCP">
+
+```cli
+$ cml runner \
+  --cloud=gcp \
+  --cloud-region=us-west \
+  --cloud-type=m+t4 \
+  --cloud-permission-set=dvc-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw \
+  --labels=cml-gpu
+```
+
+</tab>
+</toggle>
+
 ## GitHub Actions: `setup-dvc`
 
 The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action
@@ -147,8 +188,8 @@ steps:
 </tab>
 </toggle>
 
-A specific DVC version can installed using the `version` argument (defaults to
-the [latest release](https://github.com/iterative/dvc/releases)).
+A specific DVC version can be installed using the `version` argument (defaults
+to the [latest release](https://github.com/iterative/dvc/releases)).
 
 ```yaml
 - uses: iterative/setup-dvc@v1
