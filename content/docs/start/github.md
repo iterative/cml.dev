@@ -13,7 +13,7 @@ supported CI systems.
    to follow along the commands, we recommend cloning your fork to your local
    workstation:
 
-   ```bash
+   ```cli
    git clone https://github.com/<your-username>/example_cml
    ```
 
@@ -47,7 +47,7 @@ supported CI systems.
 
 4. Commit and push the changes:
 
-   ```bash
+   ```cli
    git checkout -b experiment
    git add . && git commit -m "modify forest depth"
    git push origin experiment

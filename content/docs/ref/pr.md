@@ -1,6 +1,6 @@
 # Command Reference: `pr`
 
-```bash
+```usage
 cml pr [options] <pathspec>...
 ```
 
@@ -39,13 +39,13 @@ Any [generic option](/doc/ref) in addition to:
 
 ### Commit all files in current working directory
 
-```bash
+```cli
 cml pr .
 ```
 
 ### Automatically merge pull requests
 
-```bash
+```cli
 date > output.txt
 cml pr --auto-merge output.txt
 ```
@@ -59,13 +59,13 @@ checks isn't supported, `cml pr` will try to merge the pull request immediately.
 
 ## Command internals
 
-```bash
+```cli
 cml pr "**/*.py" "**/*.json"
 ```
 
 is roughly equivalent to:
 
-```bash
+```cli
 SHA="$(git log -n1 --format=%h)"
 BASE="$(git branch)"
 

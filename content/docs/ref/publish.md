@@ -1,6 +1,6 @@
 # Command Reference: `publish`
 
-```bash
+```usage
 cml publish [options] <image file>
 ```
 
@@ -24,6 +24,6 @@ Any [generic option](/doc/ref) in addition to:
 
 To render an image in a markdown file:
 
-```bash
+```cli
 cml publish ./plot.png --md >> report.md
 ```

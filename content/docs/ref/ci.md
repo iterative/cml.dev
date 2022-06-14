@@ -26,5 +26,5 @@ Instead of wrangling with
 simply run:
 
 ```cli
-$ cml ci
+cml ci
 ```

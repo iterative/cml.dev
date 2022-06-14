@@ -47,13 +47,13 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
 
    ![](/img/gitlab_cml_clone.png)
 
-   ```bash
+   ```cli
    git clone https://gitlab.com/<user_name>/example_cml.git
    ```
 
 4. Change directory to `example_cml`.
 
-   ```bash
+   ```cli
    cd example_cml
    ```
 
@@ -75,7 +75,7 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
 
 7. Commit and push the changes using:
 
-   ```bash
+   ```cli
    git checkout -b experiment
    git add . && git commit -m "modify forest depth"
    git push origin experiment

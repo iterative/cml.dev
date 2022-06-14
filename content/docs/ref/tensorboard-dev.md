@@ -1,6 +1,6 @@
 # Command Reference: `tensorboard-dev`
 
-```bash
+```usage
 cml tensorboard-dev [options]
 ```
 
@@ -25,6 +25,6 @@ Any [generic option](/doc/ref) in addition to:
 
 ## Examples
 
-```bash
+```cli
 cml tensorboard-dev --logdir=./logs --title=Training --md >> report.md
 ```

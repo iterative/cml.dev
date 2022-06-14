@@ -1,6 +1,6 @@
 # Command Reference: `send-github-check`
 
-```bash
+```usage
 cml send-github-check [options] <markdown report file>
 ```
 

@@ -1,6 +1,6 @@
 # Command Reference: `send-comment`
 
-```bash
+```usage
 cml send-comment [options] <markdown report file>
 ```
 
