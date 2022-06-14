@@ -191,6 +191,19 @@ export const HamburgerMenu: React.FC<
                 <span className={styles.subSectionLinkTitle}>MLEM</span>
               </Link>
             </li>
+            <li className={styles.subSection}>
+              <Link
+                href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc"
+                className={styles.subSectionLink}
+              >
+                <div
+                  className={cn(styles.subSectionLinkImage, styles.bgImgDvc)}
+                />
+                <span className={styles.subSectionLinkTitle}>
+                  VS Code Extension
+                </span>
+              </Link>
+            </li>
           </ul>
         </li>
       </ul>

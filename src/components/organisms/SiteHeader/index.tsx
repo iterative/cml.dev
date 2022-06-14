@@ -3,6 +3,7 @@ import { Flex, Box, Container, Button } from '@theme-ui/components'
 import InstallPopup from '../../molecules/InstallPopup'
 import SmartLink from '../../atoms/SmartLink'
 import SiteLogo from '../../molecules/SiteLogo'
+import Alert from './Alert'
 
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
@@ -13,6 +14,7 @@ import { ReactComponent as DvcIcon } from '@media/icons/dvc.svg'
 import { ReactComponent as StudioIcon } from '@media/icons/studio.svg'
 import { ReactComponent as MlemIcon } from '@media/icons/mlem.svg'
 import { ReactComponent as ExternalLinkIcon } from '@media/icons/external-link.svg'
+import { ReactComponent as VsCodeIcon } from '@media/icons/vscode.svg'
 
 import {
   HamburgerMenu,
@@ -29,6 +31,7 @@ interface IHeaderProps {
 }
 interface IOtherToolsItem {
   title: string
+  titleIcon?: JSX.Element
   icon: JSX.Element
   description: string
   href: string
@@ -76,6 +79,13 @@ const otherToolsItems: Array<IOtherToolsItem> = [
     href: 'https://dvc.org/'
   },
   {
+    title: 'VS Code Extension',
+    titleIcon: <VsCodeIcon className="title-icon" width="14" height="14" />,
+    icon: <div></div>,
+    description: 'Local ML model development and experiment tracking',
+    href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc'
+  },
+  {
     title: 'CML',
     icon: <CmlIcon width="24" height="24" />,
     description: 'Open-source CI/CD for ML projects',
@@ -96,29 +106,32 @@ const OtherToolsPopup: React.FC<IOtherToolsPopupProps> = ({ list, isOpen }) => {
       variant="layout.Header.Nav.OtherToolsPopup"
       sx={isOpen ? { variant: 'layout.Header.Nav.OtherToolsPopup.Open' } : {}}
     >
-      {list.map(({ title, icon, description, href }, i) => (
-        <SmartLink
-          href={href}
-          key={i}
-          variant="layout.Header.Nav.OtherToolsPopup.Link"
-        >
-          <Box variant="layout.Header.Nav.OtherToolsPopup.Link.Icon">
-            {icon}
-          </Box>
-          <Box as="h2" variant="layout.Header.Nav.OtherToolsPopup.Link.Title">
-            {title}
-            {href.match(/^https?:\/\//) && (
-              <ExternalLinkIcon width="16" height="16" />
-            )}
-          </Box>
-          <Box
-            as="p"
-            variant="layout.Header.Nav.OtherToolsPopup.Link.Description"
+      {list.map(
+        ({ title, icon, description, href, titleIcon: TitleIcon }, i) => (
+          <SmartLink
+            href={href}
+            key={i}
+            variant="layout.Header.Nav.OtherToolsPopup.Link"
           >
-            {description}
-          </Box>
-        </SmartLink>
-      ))}
+            <Box variant="layout.Header.Nav.OtherToolsPopup.Link.Icon">
+              {icon}
+            </Box>
+            <Box as="h2" variant="layout.Header.Nav.OtherToolsPopup.Link.Title">
+              {title}
+              {TitleIcon && TitleIcon}
+              {href.match(/^https?:\/\//) && (
+                <ExternalLinkIcon width="16" height="16" />
+              )}
+            </Box>
+            <Box
+              as="p"
+              variant="layout.Header.Nav.OtherToolsPopup.Link.Description"
+            >
+              {description}
+            </Box>
+          </SmartLink>
+        )
+      )}
     </Flex>
   )
 }
@@ -141,6 +154,7 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
           isMain ? { backgroundColor: 'transparent' } : { position: 'sticky' }
         }
       >
+        {isMain && <Alert />}
         <Container variant="layout.Header.Inner">
           <Box as="nav" variant="layout.Header.Nav">
             <SiteLogo variant="layout.Header.Nav.Logo" />
