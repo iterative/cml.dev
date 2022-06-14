@@ -17,6 +17,10 @@
       {
         "label": "GitLab",
         "slug": "gitlab"
+      },
+      {
+        "label": "Bitbucket",
+        "slug": "bitbucket"
       }
     ]
   },
