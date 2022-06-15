@@ -16,8 +16,12 @@ all the supported CI systems.
    ```bash
    git clone https://bitbucket.org/<your-username>/example-cml
    ```
+   
+2. ⚠️ Follow
+   [these instructions](https://cml.dev/doc/self-hosted-runners?tab=Bitbucket#personal-access-token)
+   to configure a Bitbucket token for CML.
 
-2. To create a CML workflow, copy the following into a new file on your main branch,
+3. To create a CML workflow, copy the following into a new file on your main branch,
    `bitbucket-pipelines.yml`:
 
    ```yaml
@@ -35,9 +39,9 @@ all the supported CI systems.
              - cml-send-comment report.md
    ```
 
-3. In your text editor of choice, edit line 15 of `train.py` to `depth = 12`.
+4. In your text editor of choice, edit line 15 of `train.py` to `depth = 12`.
 
-4. Commit and push the changes:
+5. Commit and push the changes:
 
    ```bash
    git checkout -b experiment
@@ -45,7 +49,7 @@ all the supported CI systems.
    git push origin experiment
    ```
 
-5. In Bitbucket, create a Pull Request to compare the `experiment` branch to
+6. In Bitbucket, create a Pull Request to compare the `experiment` branch to
    `master`.
 
    ![](/img/bitbucket_make_pr.png)
