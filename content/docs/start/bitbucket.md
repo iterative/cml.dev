@@ -17,7 +17,7 @@ all the supported CI systems.
    git clone https://bitbucket.org/<your-username>/example-cml
    ```
 
-2. To create a CML workflow, copy the following into a new file,
+2. To create a CML workflow, copy the following into a new file on your main branch,
    `bitbucket-pipelines.yml`:
 
    ```yaml
