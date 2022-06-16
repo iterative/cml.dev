@@ -475,7 +475,7 @@ workflow's YAML.
 Additionally, try to capture and include logs from the instance:
 
 For easy local access and debugging on the `cml runner` instance
-[check our example on using the --cloud-startup-script option](/doc/ref/runner#Using--cloud-startup-script).
+[check our example on using the --cloud-startup-script option](/doc/ref/runner#using---cloud-startup-script).
 
 Then you can run the following:
 
