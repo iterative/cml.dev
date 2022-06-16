@@ -371,4 +371,4 @@ Azure.
 
 ## Debugging
 
-[See the section self-hosted runners](/doc/self-hosted-runners#Debugging)
+[See the section self-hosted runners](/doc/self-hosted-runners#debugging)
