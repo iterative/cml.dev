@@ -63,4 +63,4 @@ Any [generic option](/doc/ref) in addition to:
   We don't like ClickOps either, but it's the way it is.
 
 [bb-docs-install-pr-links]:
-  https://developer.atlassian.com/bitbucket/api/2/reference/resource/repositories/%7Bworkspace%7D/%7Brepo_slug%7D/commit/%7Bcommit%7D/pullrequests
+  https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pullrequests#api-repositories-workspace-repo-slug-commit-commit-pullrequests-get
