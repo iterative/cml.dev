@@ -67,7 +67,7 @@ jobs:
   train-model:
     needs: deploy-runner
     runs-on: [self-hosted, cml-gpu]
-    timeout-minutes: 4320 # 72h - up to 50400 (35d) supported
+    timeout-minutes: 50400 # 35 days
     container:
       image: docker://iterativeai/cml:0-dvc2-base1-gpu
       options: --gpus all
