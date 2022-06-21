@@ -35,6 +35,10 @@ Any [generic option](/doc/ref) in addition to:
 - `--user-email=<address>`: Git user email for commits [default:
   `olivaw@iterative.ai`].
 - `--user-name=<...>`: Git user name for commits [default: `Olivaw[bot]`].
+- `--branch`: Custom git branch [default is auto-generated].
+- `--title`: Custom PR title [default is auto-generated].
+- `--body`: Custom PR description [default is auto-generated].
+- `--message`: Git commit message [default is auto-generated].
 
 ## Examples
 
@@ -57,6 +61,13 @@ The `--merge`, `--rebase`, and `--squash` options enable
 [merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
 (GitLab) to merge the pull request as soon as checks succeed. If waiting for
 checks isn't supported, `cml pr` will try to merge the pull request immediately.
+
+
+### Custom options example
+
+```cli
+$ cml pr --title="Periodic Retaining" --body="$(cat ./report.md)" --branch="$(date +%Y-%M)" .
+```
 
 ## Command internals
 
