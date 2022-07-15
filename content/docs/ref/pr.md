@@ -63,11 +63,6 @@ The `--merge`, `--rebase`, and `--squash` options enable
 checks isn't supported, `cml pr` will try to merge the pull request immediately.
 
 
-### Custom options example
-
-```cli
-$ cml pr --title="Periodic Retaining" --body="$(cat ./report.md)" --branch="$(date +%Y-%M)" .
-```
 
 ## Command internals
 
