@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     if:
-      github.event.deployment.ref != 'main' &&
+      github.event.deployment.ref != 'master' &&
       github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
 
           $(
             npx repo-link-check \
-            -d -c config/link-check/config.yml \
+            -d master -c config/link-check/config.yml \
             -r ${{ github.event.deployment.payload.web_url }}
           )"
           body="${body//'%'/'%25'}"
