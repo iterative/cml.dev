@@ -72,9 +72,9 @@ Any [generic option](/doc/ref) in addition to:
   [35 days](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
   via
   [`timeout-minutes: 50400`](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idtimeout-minutes).
-  CML will helpfully restart GitHub Actions workflows approaching 35 days
-  (you'd need to write your code to save intermediate results to take advantage
-  of this).
+  CML will helpfully restart GitHub Actions workflows approaching 35 days (you'd
+  need to write your code to save intermediate results to take advantage of
+  this).
 
 ## Examples
 
