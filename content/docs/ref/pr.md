@@ -62,8 +62,6 @@ The `--merge`, `--rebase`, and `--squash` options enable
 (GitLab) to merge the pull request as soon as checks succeed. If waiting for
 checks isn't supported, `cml pr` will try to merge the pull request immediately.
 
-
-
 ## Command internals
 
 ```cli
