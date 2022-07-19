@@ -35,6 +35,10 @@ Any [generic option](/doc/ref) in addition to:
 - `--user-email=<address>`: Git user email for commits [default:
   `olivaw@iterative.ai`].
 - `--user-name=<...>`: Git user name for commits [default: `Olivaw[bot]`].
+- `--branch`: Pull request branch name [default: auto-generated].
+- `--title`: Pull request title [default: auto-generated].
+- `--body`: Pull request description [default: auto-generated].
+- `--message`: Commit message [default: auto-generated].
 
 ## Examples
 
