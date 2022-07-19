@@ -24,7 +24,8 @@ Any [generic option](/doc/ref) in addition to:
   overlapping labels. If an existing matching (same name or overlapping labels)
   instance is busy, it'll
   [still be reused](https://github.com/iterative/cml/issues/610).
-- `--reuse-idle`: Creates a new runner only if the matching labels don't exist or are already busy.
+- `--reuse-idle`: Creates a new runner only if the matching labels don't exist
+  or are already busy.
 - `--cloud={aws,azure,gcp,kubernetes}`: Cloud compute provider to host the
   runner.
 - `--cloud-type={m,l,xl,m+k80,m+v100,...}`: Instance
