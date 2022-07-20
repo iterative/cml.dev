@@ -19,9 +19,9 @@ all the supported CI systems.
 
 <admon type="tip">
 
-The following steps can all be done in the Bitbucket browser interface.
-However, to follow along the commands, we recommend cloning your fork to your
-local workstation:
+The following steps can all be done in the Bitbucket browser interface. However,
+to follow along the commands, we recommend cloning your fork to your local
+workstation:
 
 ```cli
 $ git clone https://bitbucket.org/<your-username>/example-cml
