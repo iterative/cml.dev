@@ -53,14 +53,13 @@ supported CI systems.
    $ git push origin experiment
    ```
 
-5. In GitHub, open up a Pull Request to compare the `experiment` branch to
+5. In GitHub, create a Pull Request to compare the `experiment` branch to
    `master`.
 
    ![](/img/make_pr.png)
 
-   Shortly, you should see a comment from `github-actions` appear in the Pull
-   Request with your CML report. This is a result of the `cml send-comment`
-   command in your workflow.
+   Shortly, you should see a comment appear in the Pull Request with your CML
+   report. This is a result of the `cml send-comment` command in your workflow.
 
    ![](/img/cml_first_report.png)
 

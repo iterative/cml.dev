@@ -9,23 +9,28 @@ all the supported CI systems.
 
    ![](/img/bitbucket_fork_cml_project.png)
 
-   The following steps can all be done in the Bitbucket browser interface.
-   However, to follow along the commands, we recommend cloning your fork to your
-   local workstation:
-
-   ```bash
-   git clone https://bitbucket.org/<your-username>/example-cml
-   ```
-
 2. ⚠️ Follow
    [these instructions](https://cml.dev/doc/self-hosted-runners?tab=Bitbucket#personal-access-token)
    to configure a Bitbucket token for CML.
+
 3. ⚠️ Follow
    [these instructions](https://cml.dev/doc/ref/send-comment#bitbucket) to
    enable the Pull Request Commit Links application.
 
-4. To create a CML workflow, copy the following into a new file on your main
-   branch, `bitbucket-pipelines.yml`:
+<admon type="tip">
+
+The following steps can all be done in the Bitbucket browser interface. However,
+to follow along the commands, we recommend cloning your fork to your local
+workstation:
+
+```cli
+$ git clone https://bitbucket.org/<your-username>/example-cml
+```
+
+</admon>
+
+4. To create a CML workflow, copy the following into a new file named
+   `bitbucket-pipelines.yml` on your `master` branch:
 
    ```yaml
    image: iterativeai/cml:0-dvc2-base1
@@ -37,19 +42,19 @@ all the supported CI systems.
              - pip install -r requirements.txt
              - python train.py
 
-             - cat metrics.txt > report.md
-             - cml-publish plot.png --md >> report.md
-             - cml-send-comment report.md
+             - cat metrics.txt >> report.md
+             - cml publish plot.png --md >> report.md
+             - cml send-comment report.md
    ```
 
-5. In your text editor of choice, edit line 15 of `train.py` to `depth = 12`.
+5. In your text editor, open `train.py` and modify line 15 to `depth = 5`.
 
 6. Commit and push the changes:
 
-   ```bash
-   git checkout -b experiment
-   git add . && git commit -m "modify forest depth"
-   git push origin experiment
+   ```cli
+   $ git checkout -b experiment
+   $ git add . && git commit -m "modify forest depth"
+   $ git push origin experiment
    ```
 
 7. In Bitbucket, create a Pull Request to compare the `experiment` branch to
@@ -57,9 +62,14 @@ all the supported CI systems.
 
    ![](/img/bitbucket_make_pr.png)
 
-   Shortly, you should see a comment from your user appear in the Pull Request
-   with your CML report. This is a result of the `cml send-comment` command in
-   your workflow.
+   <admon type="warn">
+
+   Ensure the target is your fork (under your username).
+
+   </admon>
+
+   Shortly, you should see a comment appear in the Pull Request with your CML
+   report. This is a result of the `cml send-comment` command in your workflow.
 
    ![](/img/bitbucket_cml_first_report.png)
 
