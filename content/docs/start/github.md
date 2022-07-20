@@ -11,8 +11,8 @@ supported CI systems.
 
 <admon type="tip">
 
-The following steps can all be done in the GitHub browser interface. However,
-to follow along the commands, we recommend cloning your fork to your local
+The following steps can all be done in the GitHub browser interface. However, to
+follow along the commands, we recommend cloning your fork to your local
 workstation:
 
 ```cli
