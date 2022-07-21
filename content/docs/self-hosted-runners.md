@@ -325,11 +325,18 @@ Use either:
 For instance, to use a personal access token:
 
 1. Navigate to **User Settings** &rightarrow; **Access Tokens**
+
    - in the "Name" field, type `REPO_TOKEN`
    - select `api`, `read_repository` and `write_repository`
    - click "Create personal access token" and copy it
-2. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
+
+   ![](/img/personal_access_token.png)
+
+1. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
    &rightarrow; **Variables** &rightarrow; **Add Variable**
+
+   ![](/img/ci_cd_navigation.png)
+
    - in the "Key" field, type `REPO_TOKEN`
    - in the "Value" field, paste your Personal Access Token
    - select "Mask variable"
