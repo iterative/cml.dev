@@ -21,7 +21,8 @@
     "link-check": "repo-link-check -c config/link-check/config.yml",
     "link-check-diff": "repo-link-check -c config/link-check/config.yml -d",
     "link-check-dev-server": "repo-link-check -c config/link-check/config.yml -r http://localhost:3000",
-    "link-check-exclude": "repo-link-check -c config/link-check/config.yml --unused-patterns-only"
+    "link-check-exclude": "repo-link-check -c config/link-check/config.yml --unused-patterns-only",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -146,7 +147,7 @@
     "gatsby-transformer-remark": "^5.5.2",
     "gatsby-transformer-sharp": "^4.13.0",
     "hast-util-select": "^5.0.1",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "jest": "^27.4.7",
     "lint-staged": "^12.2.0",
     "postcss-color-mod-function": "^3.0.3",
