@@ -60,7 +60,6 @@
     "fs-extra": "^10.1.0",
     "gatsby": "^4.19.2",
     "gatsby-cli": "4.19.0",
-    "gatsby-link": "^4.19.1",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "2.19.0",
     "gatsby-plugin-parent-resolvers": "^1.0.1",

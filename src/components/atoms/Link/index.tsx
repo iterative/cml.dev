@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
+import { Link as GatsbyLink } from 'gatsby'
 import { URL } from 'iso-url'
 import { useLocation } from '@reach/router'
-import GatsbyLink from 'gatsby-link'
 import { getRedirect } from '../../../utils/shared/redirects'
 import { scrollIntoLayout, getScrollNode } from '../../../utils/front/scroll'
 import safeQuerySelector from '../../../utils/front/safeQuerySelector'
