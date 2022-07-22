@@ -30,7 +30,7 @@
 html {
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizelegibility;
+  text-rendering: optimizeLegibility;
 }
 
 body {
