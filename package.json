@@ -89,7 +89,7 @@
     "react-use": "^17.3.2",
     "rehype-react": "^7.0.4",
     "remark-preset-lint-recommended": "^6.1.2",
-    "repo-link-check": "^0.8.0",
+    "repo-link-check": "^0.12.0",
     "s3-client": "^4.4.2",
     "scroll": "^3.0.1",
     "serve-handler": "^6.1.2",
