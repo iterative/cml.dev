@@ -129,7 +129,7 @@ pipelines:
             cml runner \
                 --cloud=aws \
                 --cloud-region=us-west \
-                --cloud-type=m5.2xlarge \
+                --cloud-type=p2.xlarge \
                 --cloud-spot \
                 --labels=cml
     - step:
