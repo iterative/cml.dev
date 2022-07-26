@@ -21,6 +21,10 @@
     justify-content: center;
   }
 
+  .icon {
+    margin-right: 4px;
+  }
+
   p {
     overflow: hidden;
     text-overflow: ellipsis;
