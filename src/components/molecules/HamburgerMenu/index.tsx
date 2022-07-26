@@ -32,7 +32,7 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
 
   const handleClose = useCallback(() => setOpened(false), [opened])
 
-  const handleItemClick = useCallback(
+  const handleItemClick = useCallback<HamburgerHelpers['handleItemClick']>(
     item => (): void => {
       handleClose()
       if (item) {
