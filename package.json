@@ -38,7 +38,7 @@
     "node": "<=14.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.1.11",
+    "@dvcorg/gatsby-theme-iterative": "^0.1.12",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@hapi/wreck": "^18.0.0",
