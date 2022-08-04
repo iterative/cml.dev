@@ -493,7 +493,7 @@ $ sudo dmesg --ctime > system.log
 ```
 
 ☝️ **Note** Please give your `cml.log` a visual scan, entries like IP addresses
-and git repository names may be present and considered sensitive in some cases.
+and Git repository names may be present and considered sensitive in some cases.
 
 You can then copy those logs to your local machine with:
 
