@@ -459,7 +459,7 @@ additional guidance.
 
 ## Debugging
 
-If `cml runner` fails with a terraform error message, setting the environment
+If `cml runner` fails with a Terraform error message, setting the environment
 variable `TF_LOG_PROVIDER=DEBUG` may yield more information.
 
 In very rare cases, you may need to clean up CML cloud resources manually. An
