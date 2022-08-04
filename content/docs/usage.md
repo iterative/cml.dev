@@ -1,7 +1,7 @@
 # Using CML
 
 A GitLab, GitHub, or Bitbucket account is required. Familiarity with
-[Github Actions](https://help.github.com/en/actions) or
+[GitHub Actions](https://help.github.com/en/actions) or
 [GitLab CI/CD](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration)
 may also be beneficial.
 
