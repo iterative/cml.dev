@@ -19,7 +19,7 @@ const HiddenRadioControl = ({
       checked={checked}
       name={inputName}
       id={id}
-      tabindex={-1}
+      tabIndex={-1}
       hidden
       {...props}
     />

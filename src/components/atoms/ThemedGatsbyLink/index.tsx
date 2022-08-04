@@ -6,7 +6,7 @@ interface IThemedGatsbyLinkProps {
   children: ReactNode
   to: string
   variant: string
-  ariaLabel?: string
+  ['aria-label']?: string
 }
 
 const ThemedGatsbyLink: React.FC<IThemedGatsbyLinkProps> = props => {
