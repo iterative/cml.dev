@@ -151,7 +151,7 @@ CML provides a number of commands to help package the outputs of ML workflows
 report.
 
 Below is a list of CML commands for starting cloud compute runners, writing and
-publishing markdown reports to your CI/CD system.
+publishing Markdown reports to your CI/CD system.
 
 ∞ **[`runner`](/doc/ref/runner)**\
 Launch a runner hosted by a cloud compute provider or locally on-premise (see [self-hosted runners](/doc/self-hosted-runners))\
@@ -166,11 +166,11 @@ Commit specified files to a new branch and create a pull request\
 e.g. `cml pr "**/*.json" "**/*.py" --md >> report.md`
 
 ∞ **[`send-comment`](/doc/ref/send-comment)**\
-Post a markdown report as a commit comment\
+Post a Markdown report as a commit comment\
 e.g. `cml send-comment report.md`
 
 ∞ **[`send-github-check`](/doc/ref/send-github-check)**\
-Post a markdown report as a GitHub check\
+Post a Markdown report as a GitHub check\
 e.g. `cml send-github-check report.md`
 
 ∞ **[`tensorboard-dev`](/doc/ref/tensorboard-dev)**\
@@ -180,7 +180,7 @@ e.g. `cml tensorboard-dev --logdir=./logs --md >> report.md`
 ### CML Reports
 
 The `cml send-comment` command can be used to post reports. CML reports are
-written in markdown ([GitHub](https://github.github.com/gfm),
+written in Markdown ([GitHub](https://github.github.com/gfm),
 [GitLab](https://docs.gitlab.com/ee/user/markdown.html), or
 [Bitbucket](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
 flavors). That means they can contain images, tables, formatted text, HTML

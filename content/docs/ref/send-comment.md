@@ -4,7 +4,7 @@
 cml send-comment [options] <markdown report file>
 ```
 
-Post a markdown report as a comment on a commit or pull/merge request.
+Post a Markdown report as a comment on a commit or pull/merge request.
 
 <admon type="tip">
 
