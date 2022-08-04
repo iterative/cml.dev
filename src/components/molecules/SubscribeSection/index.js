@@ -33,7 +33,7 @@ function SubscribeSection() {
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
         target="_blank"
-        novalidate
+        noValidate
       >
         <Input
           type="email"
