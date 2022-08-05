@@ -466,8 +466,8 @@ In very rare cases, you may need to clean up CML cloud resources manually. An
 example of such a problem can be seen
 [when an EC2 instance ran out of storage space](https://github.com/iterative/cml/issues/1006).
 
-The following is a list of all the resources you may need to manually clean up in
-the case of a failure:
+The following is a list of all the resources you may need to manually clean up
+in the case of a failure:
 
 - The running instance (named with pattern `cml-{random-id}`)
 - The volume attached to the running instance (this should delete itself after

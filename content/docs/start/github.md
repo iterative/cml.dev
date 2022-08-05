@@ -107,8 +107,8 @@ This action gives you:
 - The freedom 🦅 to mix and match CML with your favorite data science tools and
   environments
 
-Note that CML does not include DVC and its dependencies -- for that, you want the
-[Setup DVC Action](https://github.com/iterative/setup-dvc).
+Note that CML does not include DVC and its dependencies -- for that, you want
+the [Setup DVC Action](https://github.com/iterative/setup-dvc).
 
 ### Usage
 
