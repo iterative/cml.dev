@@ -15,10 +15,10 @@ Any [generic option](/doc/ref) in addition to:
   *inferred from environment `TB_CREDENTIALS`*].
 - `--logdir=<path>`: Directory containing the logs to process.
 - `--name=<...>`: TensorBoard experiment title (up to 100 characters).
-- `--description=<...>`: TensorBoard experiment description (markdown format, up
+- `--description=<...>`: TensorBoard experiment description (Markdown format, up
   to 600 characters).
-- `--md`: Produce output in markdown format (`[title](url)`).
-- `-t=<...>`, `--title=<...>`: Title for markdown output [default: *value of
+- `--md`: Produce output in Markdown format (`[title](url)`).
+- `-t=<...>`, `--title=<...>`: Title for Markdown output [default: *value of
   `--name`*].
 - `--rm-watermark`: Don't inject a watermark into the comment. Will break some
   CML functionality which needs to distinguish CML reports from other comments.

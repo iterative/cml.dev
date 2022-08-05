@@ -28,7 +28,7 @@ Any [generic option](/doc/ref) in addition to:
 
 - `--merge`, `--rebase`, or `--squash`: Try to merge, rebase, or squash-merge
   the created PR after CI tests pass.
-- `--md`: Produce output in markdown format (`[CML Pull/Merge Request](url)`
+- `--md`: Produce output in Markdown format (`[CML Pull/Merge Request](url)`
   instead of `url`).
 - `--skip-ci`: Prevent the PR/MR from triggering another CI run post-merge.
 - `--remote=<name or URL>`: Git remote name or URL [default: `origin`].
