@@ -459,14 +459,14 @@ additional guidance.
 
 ## Debugging
 
-If `cml runner` fails with a terraform error message, setting the environment
+If `cml runner` fails with a Terraform error message, setting the environment
 variable `TF_LOG_PROVIDER=DEBUG` may yield more information.
 
 In very rare cases, you may need to clean up CML cloud resources manually. An
 example of such a problem can be seen
 [when an EC2 instance ran out of storage space](https://github.com/iterative/cml/issues/1006).
 
-The following is a list of all the resources you may need to manually cleanup in
+The following is a list of all the resources you may need to manually clean up in
 the case of a failure:
 
 - The running instance (named with pattern `cml-{random-id}`)
@@ -482,7 +482,7 @@ workflow's YAML.
 Additionally, try to capture and include logs from the instance:
 
 For easy local access and debugging on the `cml runner` instance
-[check our example on using the --cloud-startup-script option](/doc/ref/runner#using---cloud-startup-script).
+[check our example on using the `--cloud-startup-script` option](/doc/ref/runner#using---cloud-startup-script).
 
 Then you can run the following:
 
@@ -493,7 +493,7 @@ $ sudo dmesg --ctime > system.log
 ```
 
 ☝️ **Note** Please give your `cml.log` a visual scan, entries like IP addresses
-and git repository names may be present and considered sensitive in some cases.
+and Git repository names may be present and considered sensitive in some cases.
 
 You can then copy those logs to your local machine with:
 
