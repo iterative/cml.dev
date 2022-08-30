@@ -1,64 +1,35 @@
-# Using CML on GitLab
+# Get Started with CML on GitLab
 
-Here, we'll walk through a tutorial to start using CML on GitLab.
+Here, we'll walk through a tutorial to start using CML. For simplicity, we'll
+show the demo in GitLab CI/CD, but instructions are pretty similar for all the
+supported CI systems.
 
 1. Fork our
    [example project repository](https://gitlab.com/iterative.ai/example_cml).
-   Click on Fork and select the namespace where you would like to keep the
-   project.
 
    ![](/img/gitlab_fork_cml_project.png)
 
-2. ⚠️ In GitLab, to use CML, you must create a variable called a `REPO_TOKEN`
-   whose value is a Personal Access Token. To do this:
+2. ⚠️ Follow
+   [these instructions](https://cml.dev/doc/self-hosted-runners?tab=GitLab#personal-access-token)
+   to configure a GitLab access token for CML.
 
-   a. Click on your Avatar in the upper right side and click on "Edit Profile."
+<admon type="tip">
 
-   b. Along the left side of the screen go to Access Tokens.
+The following steps can all be done in the GitLab browser interface. However, to
+follow along the commands, we recommend cloning your fork to your local
+workstation:
 
-   c. In the "Name" field, type `REPO_TOKEN` and check boxes to select `api`,
-   `read_repository` and `write_repository`.
+```cli
+$ git clone https://gitlab.com/<your-username>/example_cml
+$ cd example_cml
+```
 
-   d. Click on the "Create personal access token" button and copy the generated
-   access token.
+![](/img/gitlab_cml_clone.png)
 
-   ![](/img/personal_access_token.png)
+</admon>
 
-   e. Head back to your fork by clicking the Projects tab next to the GitLab
-   logo and select it.
-
-   f. On the left hand side Navigate to **Settings** ➡ **CI/CD** ➡
-   **Variables**.
-
-   ![](/img/ci_cd_navigation.png)
-
-   f. Scroll to Variables and expand the field. Click "Add Variable". In the Key
-   field, type `REPO_TOKEN`. In the Value field, paste your Personal Access
-   Token. Check the "Mask variable" box, uncheck "Protect variable", and then
-   save the variable by clicking "Add variable" at the bottom of the dialog box.
-
-> 💡 The following steps can all be done in the GitLab website. However, to
-> follow along the steps, we recommend cloning your fork to your local
-> workstation.
-
-3. Go back to your forked `example_cml` project. Copy the Clone with HTTPS as
-   shown in the image below, and then in your terminal, type the following
-   command, replacing `<user_name>` with your own from GitLab.
-
-   ![](/img/gitlab_cml_clone.png)
-
-   ```cli
-   $ git clone https://gitlab.com/<user_name>/example_cml.git
-   ```
-
-4. Change directory to `example_cml`.
-
-   ```cli
-   $ cd example_cml
-   ```
-
-5. To create a CML workflow, use your editor of choice to copy the following
-   into a new file `.gitlab-ci.yml` and save.
+3. To create a CML workflow, copy the following into a new file named
+   `.gitlab-ci.yml`:
 
    ```yaml
    train-and-report:
@@ -66,14 +37,15 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
      script:
        - pip install -r requirements.txt
        - python train.py
+
        - cat metrics.txt >> report.md
        - cml publish plot.png --md >> report.md
        - cml send-comment report.md
    ```
 
-6. In your text editor, open `train.py` and edit line 16 to `depth = 5`.
+4. In your text editor, open `train.py` and modify line 15 to `depth = 5`.
 
-7. Commit and push the changes using:
+5. Commit and push the changes:
 
    ```cli
    $ git checkout -b experiment
@@ -81,27 +53,36 @@ Here, we'll walk through a tutorial to start using CML on GitLab.
    $ git push origin experiment
    ```
 
-8. Go back to GitLab in a Browser window and create a merge request.
+6. In GitLab, create a Merge Request to compare the `experiment` branch to
+   `master`.
 
    ![](/img/create_merge_request.png)
 
-9. If you arrive at a New Merge Request screen that says it's merging into
-   anything _other_ than your local repository, click on `Change branches` seen
-   here.
+   The "New Merge Request" page will let you **Change branches**:
 
    ![](/img/new_merge_request.png)
 
-10. ⚠️ Change target branch to your local branch with your username.
+   <admon type="warn">
 
-    ![](/img/change_user_name.png)
+   Ensure the target is your fork (under your username):
 
-11. Click on the "Compare branches and continue" button. Enter any additional
-    comments you would like to put in the description and click the "Submit
-    merge request" button. Shortly, you should see a comment from GitLab CI
-    appear in the Pull Request with your CML report. This is a result of the
-    `cml send-comment` command in your workflow.
+   ![](/img/change_user_name.png)
 
-    ![](/img/cml_start_gitlab_end.png)
+   </admon>
+
+   Continue and submit the Merge Request. Shortly, you should see a comment
+   appear in the Merge Request with your CML report. This is a result of the
+   `cml send-comment` command in your workflow.
+
+   ![](/img/cml_start_gitlab_end.png)
+
+This is the gist of the CML workflow: when you push changes to your GitLab
+repository, the workflow in your `.gitlab-ci.yml` file gets run and a report
+generated.
+
+CML commands let you display relevant results from the workflow, like model
+performance metrics and vizualizations, in GitLab comments. What kind of
+workflow you want to run, and want to put in your CML report, is up to you.
 
 ## Final Solution
 

@@ -9,15 +9,20 @@ supported CI systems.
 
    ![](/img/fork_cml_project.png)
 
-   The following steps can all be done in the GitHub browser interface. However,
-   to follow along the commands, we recommend cloning your fork to your local
-   workstation:
+<admon type="tip">
 
-   ```cli
-   $ git clone https://github.com/<your-username>/example_cml
-   ```
+The following steps can all be done in the GitHub browser interface. However, to
+follow along the commands, we recommend cloning your fork to your local
+workstation:
 
-2. To create a CML workflow, copy the following into a new file,
+```cli
+$ git clone https://github.com/<your-username>/example_cml
+$ cd example_cml
+```
+
+</admon>
+
+2. To create a CML workflow, copy the following into a new file at
    `.github/workflows/cml.yaml`:
 
    ```yaml
@@ -43,7 +48,7 @@ supported CI systems.
              cml send-comment report.md
    ```
 
-3. In your text editor of choice, edit line 16 of `train.py` to `depth = 5`.
+3. In your text editor, open `train.py` and modify line 15 to `depth = 5`.
 
 4. Commit and push the changes:
 
@@ -53,14 +58,19 @@ supported CI systems.
    $ git push origin experiment
    ```
 
-5. In GitHub, open up a Pull Request to compare the `experiment` branch to
+5. In GitHub, create a Pull Request to compare the `experiment` branch to
    `master`.
+
+   <admon type="warn">
+
+   Ensure the target is your fork (under your username).
+
+   </admon>
 
    ![](/img/make_pr.png)
 
-   Shortly, you should see a comment from `github-actions` appear in the Pull
-   Request with your CML report. This is a result of the `cml send-comment`
-   command in your workflow.
+   Shortly, you should see a comment appear in the Pull Request with your CML
+   report. This is a result of the `cml send-comment` command in your workflow.
 
    ![](/img/cml_first_report.png)
 
@@ -97,8 +107,8 @@ This action gives you:
 - The freedom 🦅 to mix and match CML with your favorite data science tools and
   environments
 
-Note that CML does not include DVC and its dependencies- for that, you want the
-[Setup DVC Action](https://github.com/iterative/setup-dvc).
+Note that CML does not include DVC and its dependencies -- for that, you want
+the [Setup DVC Action](https://github.com/iterative/setup-dvc).
 
 ### Usage
 

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { EventHandler, SyntheticEvent, useCallback, useRef } from 'react'
 import { nanoid } from 'nanoid'
 
 import { logEvent } from '../../../../utils/front/plausible'
@@ -8,7 +8,7 @@ import * as styles from './styles.module.css'
 const Form: React.FC = () => {
   const hiddenInputRef = useRef<HTMLInputElement>(null)
   const honeypotNameRef = useRef(nanoid())
-  const sendGAEvent = useCallback(
+  const sendGAEvent = useCallback<EventHandler<SyntheticEvent>>(
     e => {
       if (hiddenInputRef.current?.value) {
         // It's a bot.

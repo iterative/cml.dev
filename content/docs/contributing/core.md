@@ -13,8 +13,8 @@ Spotted a bug? Let us know!
 - For problems with [CML][cml-repo], search the
   [issue tracker](https://github.com/iterative/cml/issues) before creating a new
   issue (bug or feature request).
-- If you'd like implement/fix things yourself, please see below for help on how
-  to submit your changes.
+- If you'd like to implement/fix things yourself, please see below for help on
+  how to submit your changes.
 
 [issue tracker]: https://github.com/iterative/cml/issues
 

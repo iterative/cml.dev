@@ -35,7 +35,7 @@ environment variables for passing your cloud compute credentials to the
 workflow.
 
 Note that `cml runner` will also automatically restart your jobs (whether from a
-[GitHub Actions 72-hour timeout](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
+[GitHub Actions 35 day workflow timeout](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
 or a
 [AWS EC2 spot instance interruption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html)).
 
@@ -67,7 +67,7 @@ jobs:
   train-model:
     needs: deploy-runner
     runs-on: [self-hosted, cml-gpu]
-    timeout-minutes: 4320 # 72h
+    timeout-minutes: 50400 # 35 days
     container:
       image: docker://iterativeai/cml:0-dvc2-base1-gpu
       options: --gpus all
@@ -325,11 +325,18 @@ Use either:
 For instance, to use a personal access token:
 
 1. Navigate to **User Settings** &rightarrow; **Access Tokens**
+
    - in the "Name" field, type `REPO_TOKEN`
    - select `api`, `read_repository` and `write_repository`
    - click "Create personal access token" and copy it
-2. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
+
+   ![](/img/personal_access_token.png)
+
+1. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
    &rightarrow; **Variables** &rightarrow; **Add Variable**
+
+   ![](/img/ci_cd_navigation.png)
+
    - in the "Key" field, type `REPO_TOKEN`
    - in the "Value" field, paste your Personal Access Token
    - select "Mask variable"
@@ -452,15 +459,15 @@ additional guidance.
 
 ## Debugging
 
-If `cml runner` fails with a terraform error message, setting the environment
+If `cml runner` fails with a Terraform error message, setting the environment
 variable `TF_LOG_PROVIDER=DEBUG` may yield more information.
 
 In very rare cases, you may need to clean up CML cloud resources manually. An
 example of such a problem can be seen
 [when an EC2 instance ran out of storage space](https://github.com/iterative/cml/issues/1006).
 
-The following is a list of all the resources you may need to manually cleanup in
-the case of a failure:
+The following is a list of all the resources you may need to manually clean up
+in the case of a failure:
 
 - The running instance (named with pattern `cml-{random-id}`)
 - The volume attached to the running instance (this should delete itself after
@@ -475,7 +482,7 @@ workflow's YAML.
 Additionally, try to capture and include logs from the instance:
 
 For easy local access and debugging on the `cml runner` instance
-[check our example on using the --cloud-startup-script option](/doc/ref/runner#using---cloud-startup-script).
+[check our example on using the `--cloud-startup-script` option](/doc/ref/runner#using---cloud-startup-script).
 
 Then you can run the following:
 
@@ -486,7 +493,7 @@ $ sudo dmesg --ctime > system.log
 ```
 
 ☝️ **Note** Please give your `cml.log` a visual scan, entries like IP addresses
-and git repository names may be present and considered sensitive in some cases.
+and Git repository names may be present and considered sensitive in some cases.
 
 You can then copy those logs to your local machine with:
 

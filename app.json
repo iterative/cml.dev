@@ -13,5 +13,5 @@
   },
   "name": "cml.dev",
   "scripts": {},
-  "stack": "heroku-18"
+  "stack": "heroku-22"
 }

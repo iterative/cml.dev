@@ -28,13 +28,17 @@ Any [generic option](/doc/ref) in addition to:
 
 - `--merge`, `--rebase`, or `--squash`: Try to merge, rebase, or squash-merge
   the created PR after CI tests pass.
-- `--md`: Produce output in markdown format (`[CML Pull/Merge Request](url)`
+- `--md`: Produce output in Markdown format (`[CML Pull/Merge Request](url)`
   instead of `url`).
 - `--skip-ci`: Prevent the PR/MR from triggering another CI run post-merge.
 - `--remote=<name or URL>`: Git remote name or URL [default: `origin`].
 - `--user-email=<address>`: Git user email for commits [default:
   `olivaw@iterative.ai`].
 - `--user-name=<...>`: Git user name for commits [default: `Olivaw[bot]`].
+- `--branch`: Pull request branch name [default: auto-generated].
+- `--title`: Pull request title [default: auto-generated].
+- `--body`: Pull request description [default: auto-generated].
+- `--message`: Commit message [default: auto-generated].
 
 ## Examples
 
