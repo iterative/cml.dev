@@ -62,6 +62,10 @@ const primaryNavItems = [
   {
     label: 'Docs',
     href: '/doc'
+  },
+  {
+    label: 'Blog',
+    href: 'https://iterative.ai/blog'
   }
 ]
 
