@@ -42,6 +42,9 @@ function SubscribeSection() {
           variant="forms.ButtonInput.Input"
           name="EMAIL"
         />
+        <div hidden>
+          <input type="hidden" name="tags" value="13467553" />
+        </div>
         <Button variant="forms.ButtonInput.Button">Subscribe</Button>
         <div
           style={{ position: 'absolute', left: '-5000px' }}
