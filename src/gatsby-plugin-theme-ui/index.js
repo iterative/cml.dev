@@ -109,7 +109,7 @@ export default {
         maxWidth: '1280px',
         py: ['12px', null, '20px', '36px'],
         pb: ['6px', null, '20px', '36px'],
-        px: ['16px', null, '32px', '80px'],
+        px: ['16px', null, '24px', '80px'],
         display: 'flex',
         flexWrap: 'nowrap',
         alignItems: 'center',
@@ -125,7 +125,7 @@ export default {
         alignItems: ['center'],
         LinksWrapper: {
           width: ['100%', null, 'auto'],
-          px: ['12px', null, 0],
+          px: ['8px', null, 0],
           justifyContent: ['space-between', null, 'flex-start'],
           position: 'relative'
         },
@@ -210,7 +210,7 @@ export default {
           flexShrink: 0,
           order: [null, null, 1],
           '>a': {
-            p: ['8px', null, '10px', '12px'],
+            p: ['8px', null, '8px', '12px'],
             ml: ['4px', null, null, '8px'],
             display: 'flex',
             alignItems: 'center',
