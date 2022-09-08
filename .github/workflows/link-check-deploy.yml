@@ -5,4 +5,4 @@ jobs:
   run:
     uses: iterative/link-check/.github/workflows/link-check-deployment-status.yml@v0.13.1
     with:
-      main: master
+      branch: master
