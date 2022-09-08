@@ -18,12 +18,9 @@ declare module '*.css' {
 }
 
 declare module '*.svg' {
-  interface IReactSVGR {
-    default: string
-    ReactComponent: React.FC<React.SVGAttributes<SVGElement>>
-  }
-  const svg: IReactSVGR
-  export = svg
+  const src: string
+  export default src
+  export const ReactComponent: React.FC<React.SVGAttributes<SVGElement>>
 }
 
 declare module 'scroll' {
