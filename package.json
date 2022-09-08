@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/iterative/cml.dev#readme",
   "engines": {
-    "node": "<=14.x"
+    "node": "<=16.17"
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "^0.1.12",
