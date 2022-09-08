@@ -19,6 +19,9 @@ Any [generic option](/doc/ref) in addition to:
   [Not available on GitHub](https://github.com/iterative/cml/wiki/Backend-Supported-Features).
 - `--rm-watermark`: Don't inject a watermark into the comment. Will break some
   CML functionality which needs to distinguish CML reports from other comments.
+- `--url=<...>`: Use a custom storage URL instead of asset.cml.dev. See
+  [`minroud-s3`](https://github.com/iterative/minroud-s3) for a reference
+  implementation.
 
 ## Examples
 
