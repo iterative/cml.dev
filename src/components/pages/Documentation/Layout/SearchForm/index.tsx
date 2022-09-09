@@ -29,7 +29,8 @@ const SearchForm: React.FC = props => {
     if (isLoaded) {
       window.docsearch &&
         window.docsearch({
-          apiKey: '0f39a68ab6f073f9c4d5858e4f6e9b5d',
+          appId: '1O03WAGL0D',
+          apiKey: '3e17d424c7a90fede27b848fb01c0dc2',
           indexName: 'cml',
           inputSelector: '#doc-search',
           debug: false // Set to `true` if you want to inspect the dropdown
