@@ -97,13 +97,14 @@ export const JSONTabs = ({ content, name: idPrefix = 'tabs', sx }) => {
             ],
             [
               ...contentElements,
-              <section
+              <Box
+                as="section"
                 className={id}
                 variant="styles.Tabs.Content"
                 key={`tab-content-${i}`}
               >
                 {content}
-              </section>
+              </Box>
             ]
           ]
         },
