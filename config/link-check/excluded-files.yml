@@ -2,3 +2,4 @@
 - '**/*.test.js'
 - 'src/server/**/*'
 - '.github/workflows/**/*'
+- 'src/utils/shared/sidebar.*'
