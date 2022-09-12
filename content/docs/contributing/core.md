@@ -71,10 +71,9 @@ you experience any problems, please don't hesitate to ping us in our
   - Large PRs may be merged without squashing (but related commits should be
     squashed)
 - **New releases**
-  - `git checkout master && git pull && git checkout -b M.m.p && npm version M.m.p && gh pr create`
-  - Merge the resulting PR
-  - `git checkout master && git pull && git tag -f vM.m.p && git push --tags` or
-    comment `/tag vM.m.p SHA` in the PR
-  - Wait for a draft to appear under
-    [releases](https://github.com/iterative/cml/releases)
-  - Check & publish the draft
+  - Run `gh workflow run release.yml --field bump=<increment>` where
+    `<increment>` is either `patch`, `minor` or `major`
+  - Wait for an automatically created pull request to appear and approve it; it
+    will be merged as soon as checks succeed
+  - Wait for the new release to appear, and customize the release notes if
+    required
