@@ -71,9 +71,8 @@ you experience any problems, please don't hesitate to ping us in our
   - Large PRs may be merged without squashing (but related commits should be
     squashed)
 - **New releases**
-  - Run `gh workflow run release.yml --field bump=<increment>` where
-    `<increment>` is either `patch`, `minor` or `major`
-  - Wait for an automatically created pull request to appear and approve it; it
-    will be merged as soon as checks succeed
+  - `gh workflow run release.yml --field bump={patch,minor,major}`
+  - Wait for a PR to appear
+  - Check & approve the PR
   - Wait for the new release to appear, and customize the release notes if
     required
