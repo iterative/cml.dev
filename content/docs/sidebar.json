@@ -55,8 +55,8 @@
         "slug": "runner"
       },
       {
-        "label": "send-comment",
-        "slug": "send-comment"
+        "label": "comment",
+        "slug": "comment"
       },
       {
         "label": "check",

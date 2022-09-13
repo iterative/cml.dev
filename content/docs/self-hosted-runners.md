@@ -85,7 +85,7 @@ jobs:
           # Create CML report
           cat metrics.txt >> report.md
           cml publish plot.png --md --title="Confusion Matrix" >> report.md
-          cml send-comment report.md
+          cml comment create report.md
 ```
 
 </tab>
@@ -113,7 +113,7 @@ train-model:
     # Create CML report
     - cat metrics.txt >> report.md
     - cml publish plot.png --md --title="Confusion Matrix" >> report.md
-    - cml send-comment report.md
+    - cml comment create report.md
 ```
 
 </tab>
@@ -142,7 +142,7 @@ pipelines:
           # Create CML report
           - cat metrics.txt >> report.md
           - cml publish plot.png --md --title="Confusion Matrix" >> report.md
-          - cml send-comment report.md
+          - cml comment create report.md
 ```
 
 </tab>
@@ -154,7 +154,7 @@ newly-launched instance. See [Environment Variables](#environment-variables)
 below for details on the `secrets` required.
 
 🎉 **Note that jobs can use any Docker container!** To use commands such as
-`cml send-comment` from a job, the only requirement is to
+`cml comment create` from a job, the only requirement is to
 [have CML installed](/doc/install).
 
 ## Docker Images
@@ -293,7 +293,7 @@ steps:
       REPO_TOKEN: ${{ steps.get-token.outputs.token }}
     run: |
       ...
-      cml send-comment report.md
+      cml comment create report.md
 ```
 
 Note that the Apps require the following **write**
@@ -302,7 +302,7 @@ Note that the Apps require the following **write**
 - Repository permissions (if used on a per-repo basis)
   - Administration (`cml runner`)
   - Checks (`cml check`)
-  - Pull requests (`cml {pr,send-comment}`)
+  - Pull requests (`cml {pr,comment}`)
 - Organization permissions (if used on an org)
   - Self-hosted runners (`cml runner`)
 

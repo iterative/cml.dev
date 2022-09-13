@@ -41,7 +41,7 @@ jobs:
         run: |
           # Post reports as comments in GitHub PRs
           cat results.txt >> report.md
-          cml send-comment report.md
+          cml comment create report.md
 ```
 
 The example above generates visual reports in pull requests:
@@ -79,7 +79,7 @@ create-CML-report:
   script:
     - cat metrics.txt >> report.md
     - cml publish plot.png --md >> report.md
-    - cml send-comment report.md
+    - cml comment create report.md
 ```
 
 ⚠️ You _must_ provide a
@@ -122,7 +122,7 @@ pipelines:
           - cat metrics.txt > report.md
           - echo >> report.md
           - cml publish plot.png --md >> report.md
-          - cml send-comment report.md
+          - cml comment create report.md
 ```
 
 ⚠️ You _must_ provide
@@ -165,9 +165,9 @@ e.g. `cml publish plot.png --md >> report.md`
 Commit specified files to a new branch and create a pull request\
 e.g. `cml pr "**/*.json" "**/*.py" --md >> report.md`
 
-∞ **[`send-comment`](/doc/ref/send-comment)**\
+∞ **[`comment`](/doc/ref/comment)**\
 Post a Markdown report as a commit comment\
-e.g. `cml send-comment report.md`
+e.g. `cml comment create report.md`
 
 ∞ **[`check`](/doc/ref/check)**\
 Post a Markdown report as a GitHub check\
@@ -179,7 +179,7 @@ e.g. `cml tensorboard-dev --logdir=./logs --md >> report.md`
 
 ### CML Reports
 
-The `cml send-comment` command can be used to post reports. CML reports are
+The `cml comment create` command can be used to post reports. CML reports are
 written in Markdown ([GitHub](https://github.github.com/gfm),
 [GitLab](https://docs.gitlab.com/ee/user/markdown.html), or
 [Bitbucket](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)

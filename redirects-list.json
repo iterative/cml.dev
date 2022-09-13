@@ -7,6 +7,7 @@
   "^/doc/start/start-gitlab(/.*)?$                                         /doc/start/gitlab",
 
   "^/doc/ref/send-github-check(/.*)?$                                      /doc/ref/check$1 301",
+  "^/doc/ref/send-comment(/.*)?$                                           /doc/ref/comment$1 301",
 
   "^/doc/cml-with-npm(/.*)?$                                               /doc/install$1 301",
 

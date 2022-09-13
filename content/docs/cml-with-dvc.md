@@ -58,7 +58,7 @@ jobs:
           vl2png vega.json -s 1.5 > plot.png
           cml publish --md plot.png >> report.md
 
-          cml send-comment report.md
+          cml comment create report.md
 ```
 
 See the [example repository](https://github.com/iterative/cml_dvc_case) for

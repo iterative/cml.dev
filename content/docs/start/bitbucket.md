@@ -13,8 +13,7 @@ all the supported CI systems.
    [these instructions](https://cml.dev/doc/self-hosted-runners?tab=Bitbucket#personal-access-token)
    to configure a Bitbucket token for CML.
 
-3. ⚠️ Follow
-   [these instructions](https://cml.dev/doc/ref/send-comment#bitbucket) to
+3. ⚠️ Follow [these instructions](https://cml.dev/doc/ref/comment#bitbucket) to
    enable the Pull Request Commit Links application.
 
 <admon type="tip">
@@ -44,7 +43,7 @@ $ git clone https://bitbucket.org/<your-username>/example-cml
 
              - cat metrics.txt >> report.md
              - cml publish plot.png --md >> report.md
-             - cml send-comment report.md
+             - cml comment create report.md
    ```
 
 5. In your text editor, open `train.py` and modify line 15 to `depth = 5`.
@@ -69,7 +68,8 @@ $ git clone https://bitbucket.org/<your-username>/example-cml
    </admon>
 
    Shortly, you should see a comment appear in the Pull Request with your CML
-   report. This is a result of the `cml send-comment` command in your workflow.
+   report. This is a result of the `cml comment create` command in your
+   workflow.
 
    ![](/img/bitbucket_cml_first_report.png)
 

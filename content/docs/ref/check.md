@@ -4,7 +4,7 @@
 cml check create [options] <markdown report file>
 ```
 
-Similar to [`send-comment`](/doc/ref/send-comment), but using GitHub's
+Similar to [`comment create`](/doc/ref/comment#create), but using GitHub's
 [checks interface](https://docs.github.com/en/rest/reference/checks).
 
 ## Options

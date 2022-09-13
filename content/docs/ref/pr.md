@@ -5,7 +5,8 @@ cml pr [options] <pathspec>...
 ```
 
 Commit specified files to a new branch and create a pull request. If sending a
-report afterwards, consider using `cml send-comment --pr --update`.
+report afterwards, consider using
+[`cml comment update --pr`](/doc/ref/comment#update).
 
 <admon type="info">
 
