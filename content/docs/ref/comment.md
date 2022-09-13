@@ -39,9 +39,6 @@ Any [generic option](/doc/ref) in addition to:
   [Git revision](https://git-scm.com/docs/gitrevisions) linked to this comment
   [default: `HEAD`].
 - `--pr`: Post to an existing PR/MR associated with the specified commit.
-- `--rm-watermark`: Don't inject a watermark into the comment. Will break some
-  CML functionality (such as `--update`) which needs to distinguish CML reports
-  from other comments.
 
 ## FAQs and Known Issues
 

@@ -20,8 +20,6 @@ Any [generic option](/doc/ref) in addition to:
 - `--md`: Produce output in Markdown format (`[title](url)`).
 - `-t=<...>`, `--title=<...>`: Title for Markdown output [default: *value of
   `--name`*].
-- `--rm-watermark`: Don't inject a watermark into the comment. Will break some
-  CML functionality which needs to distinguish CML reports from other comments.
 
 ## Examples
 
