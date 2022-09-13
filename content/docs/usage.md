@@ -169,9 +169,9 @@ e.g. `cml pr "**/*.json" "**/*.py" --md >> report.md`
 Post a Markdown report as a commit comment\
 e.g. `cml send-comment report.md`
 
-∞ **[`send-github-check`](/doc/ref/send-github-check)**\
+∞ **[`check`](/doc/ref/check)**\
 Post a Markdown report as a GitHub check\
-e.g. `cml send-github-check report.md`
+e.g. `cml check create report.md`
 
 ∞ **[`tensorboard-dev`](/doc/ref/tensorboard-dev)**\
 Return a link to a <https://tensorboard.dev> page\

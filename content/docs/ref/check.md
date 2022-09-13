@@ -1,7 +1,7 @@
-# Command Reference: `send-github-check`
+# Command Reference: `check`
 
 ```usage
-cml send-github-check [options] <markdown report file>
+cml check create [options] <markdown report file>
 ```
 
 Similar to [`send-comment`](/doc/ref/send-comment), but using GitHub's

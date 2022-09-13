@@ -59,8 +59,8 @@
         "slug": "send-comment"
       },
       {
-        "label": "send-github-check",
-        "slug": "send-github-check"
+        "label": "check",
+        "slug": "check"
       },
       {
         "label": "tensorboard-dev",

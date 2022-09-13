@@ -301,7 +301,7 @@ Note that the Apps require the following **write**
 
 - Repository permissions (if used on a per-repo basis)
   - Administration (`cml runner`)
-  - Checks (`cml send-github-check`)
+  - Checks (`cml check`)
   - Pull requests (`cml {pr,send-comment}`)
 - Organization permissions (if used on an org)
   - Self-hosted runners (`cml runner`)
@@ -332,7 +332,7 @@ For instance, to use a personal access token:
 
    ![](/img/personal_access_token.png)
 
-1. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
+2. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
    &rightarrow; **Variables** &rightarrow; **Add Variable**
 
    ![](/img/ci_cd_navigation.png)
