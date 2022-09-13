@@ -63,6 +63,10 @@
         "slug": "check"
       },
       {
+        "label": "workflow",
+        "slug": "workflow"
+      },
+      {
         "label": "tensorboard",
         "slug": "tensorboard"
       }
