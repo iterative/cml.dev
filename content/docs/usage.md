@@ -173,9 +173,9 @@ e.g. `cml comment create report.md`
 Post a Markdown report as a GitHub check\
 e.g. `cml check create report.md`
 
-∞ **[`tensorboard-dev`](/doc/ref/tensorboard-dev)**\
+∞ **[`tensorboard`](/doc/ref/tensorboard)**\
 Return a link to a <https://tensorboard.dev> page\
-e.g. `cml tensorboard-dev --logdir=./logs --md >> report.md`
+e.g. `cml tensorboard connect --logdir=./logs --md >> report.md`
 
 ### CML Reports
 

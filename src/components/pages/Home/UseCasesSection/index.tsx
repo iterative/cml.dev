@@ -274,7 +274,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>script:</span></div>
                       <div>        <span>- pip install -r requirements.txt</span></div>
                       <Tooltip type="tensorboard">
-                        <div>        <span>- cml tensorboard-dev \</span></div>
+                        <div>        <span>- cml tensorboard connect \</span></div>
                         <div>            <span>--logdir logs \</span></div>
                         <div>            <span>--name &quot;Go to tensorboard&quot; \</span></div>
                         <div>            <span>--md &gt;&gt; report.md</span></div>
@@ -328,7 +328,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>          <span>pip install -r requirements.txt</span></div>
                       <div><span> </span></div>
                       <Tooltip type="tensorboard">
-                        <div>          <span>cml tensorboard-dev \</span></div>
+                        <div>          <span>cml tensorboard connect \</span></div>
                         <div>            <span>--logdir logs \</span></div>
                         <div>            <span>--name &quot;Go to tensorboard&quot; \</span></div>
                         <div>            <span>--md &gt;&gt; report.md</span></div>

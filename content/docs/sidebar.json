@@ -63,8 +63,8 @@
         "slug": "check"
       },
       {
-        "label": "tensorboard-dev",
-        "slug": "tensorboard-dev"
+        "label": "tensorboard",
+        "slug": "tensorboard"
       }
     ]
   },

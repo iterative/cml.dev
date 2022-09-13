@@ -1,7 +1,7 @@
-# Command Reference: `tensorboard-dev`
+# Command Reference: `tensorboard`
 
 ```usage
-cml tensorboard-dev [options]
+cml tensorboard connect [options]
 ```
 
 Return a link to a <https://tensorboard.dev> page.
@@ -24,5 +24,5 @@ Any [generic option](/doc/ref) in addition to:
 ## Examples
 
 ```cli
-$ cml tensorboard-dev --logdir=./logs --title=Training --md >> report.md
+$ cml tensorboard connect --logdir=./logs --title=Training --md >> report.md
 ```
