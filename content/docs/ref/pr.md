@@ -1,7 +1,7 @@
 # Command Reference: `pr`
 
 ```usage
-cml pr [options] <pathspec>...
+cml pr create [options] <pathspec>...
 ```
 
 Commit specified files to a new branch and create a pull request. If sending a
@@ -46,14 +46,14 @@ Any [generic option](/doc/ref) in addition to:
 ### Commit all files in current working directory
 
 ```cli
-$ cml pr .
+$ cml pr create .
 ```
 
 ### Automatically merge pull requests
 
 ```cli
 $ date > output.txt
-$ cml pr --auto-merge output.txt
+$ cml pr create --auto-merge output.txt
 ```
 
 The `--merge`, `--rebase`, and `--squash` options enable
@@ -66,7 +66,7 @@ checks isn't supported, `cml pr` will try to merge the pull request immediately.
 ## Command internals
 
 ```cli
-$ cml pr "**/*.py" "**/*.json"
+$ cml pr create "**/*.py" "**/*.json"
 ```
 
 is roughly equivalent to:

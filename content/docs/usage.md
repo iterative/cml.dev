@@ -163,7 +163,7 @@ e.g. `cml publish plot.png --md >> report.md`
 
 ∞ **[`pr`](/doc/ref/pr)**\
 Commit specified files to a new branch and create a pull request\
-e.g. `cml pr "**/*.json" "**/*.py" --md >> report.md`
+e.g. `cml pr create "**/*.json" "**/*.py" --md >> report.md`
 
 ∞ **[`comment`](/doc/ref/comment)**\
 Post a Markdown report as a commit comment\
