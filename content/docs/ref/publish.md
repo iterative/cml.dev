@@ -4,7 +4,8 @@
 cml publish [options] <image file>
 ```
 
-Publicly host an image for displaying in a CML report.
+Publicly host an image for displaying in a CML report. Used internally by
+[`cml comment {create,update} --publish`](/doc/ref/comment).
 
 ## Options
 

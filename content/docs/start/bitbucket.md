@@ -42,8 +42,8 @@ $ git clone https://bitbucket.org/<your-username>/example-cml
              - python train.py
 
              - cat metrics.txt >> report.md
-             - cml publish plot.png --md >> report.md
-             - cml comment create report.md
+             - echo '![](./plot.png)' >> report.md
+             - cml comment create --publish report.md
    ```
 
 5. In your text editor, open `train.py` and modify line 15 to `depth = 5`.

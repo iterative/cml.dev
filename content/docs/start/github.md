@@ -44,8 +44,8 @@ $ cd example_cml
              python train.py
 
              cat metrics.txt >> report.md
-             cml publish plot.png --md >> report.md
-             cml comment create report.md
+             echo '![](./plot.png)' >> report.md
+             cml comment create --publish report.md
    ```
 
 3. In your text editor, open `train.py` and modify line 15 to `depth = 5`.
@@ -160,6 +160,6 @@ steps:
       python train.py
 
       echo "# My first CML report" >> report.md
-      cml publish plot.png --md --title="Confusion Matrix" >> report.md
-      cml comment create report.md
+      echo '![](./plot.png "Confusion Matrix")' >> report.md
+      cml comment create --publish report.md
 ```

@@ -46,8 +46,8 @@ jobs:
             -x actual \
             -y predicted \
             --show-vega master > vega.json
-          vl2png vega.json -s 1.5 > plot.png
-          cml publish --md plot.png >> report.md
+          vl2png vega.json -s 1.5 > plot-confusion.png
+          echo '![](./plot-confusion.png)' >> report.md
 
           # Publish regularization function diff
           echo "### Effects of regularization" >> report.md
@@ -55,10 +55,10 @@ jobs:
             --target estimators.csv \
             -x Regularization \
             --show-vega master > vega.json
-          vl2png vega.json -s 1.5 > plot.png
-          cml publish --md plot.png >> report.md
+          vl2png vega.json -s 1.5 > plot-diff.png
+          echo '![](./plot-diff.png)' >> report.md
 
-          cml comment create report.md
+          cml comment create --publish report.md
 ```
 
 See the [example repository](https://github.com/iterative/cml_dvc_case) for

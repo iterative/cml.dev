@@ -84,8 +84,8 @@ jobs:
 
           # Create CML report
           cat metrics.txt >> report.md
-          cml publish plot.png --md --title="Confusion Matrix" >> report.md
-          cml comment create report.md
+          echo '![](./plot.png "Confusion Matrix")' >> report.md
+          cml comment create --publish report.md
 ```
 
 </tab>
@@ -112,8 +112,8 @@ train-model:
     - python train.py
     # Create CML report
     - cat metrics.txt >> report.md
-    - cml publish plot.png --md --title="Confusion Matrix" >> report.md
-    - cml comment create report.md
+    - echo '![](./plot.png "Confusion Matrix")' >> report.md
+    - cml comment create --publish report.md
 ```
 
 </tab>
@@ -141,8 +141,8 @@ pipelines:
           - python train.py
           # Create CML report
           - cat metrics.txt >> report.md
-          - cml publish plot.png --md --title="Confusion Matrix" >> report.md
-          - cml comment create report.md
+          - echo '![](./plot.png "Confusion Matrix")' >> report.md
+          - cml comment create --publish report.md
 ```
 
 </tab>
