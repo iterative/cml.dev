@@ -155,7 +155,7 @@ publishing Markdown reports to your CI/CD system.
 
 ∞ **[`runner`](/doc/ref/runner)**\
 Launch a runner hosted by a cloud compute provider or locally on-premise (see [self-hosted runners](/doc/self-hosted-runners))\
-e.g. `cml runner --cloud={aws,azure,gcp,kubernetes} ...`
+e.g. `cml runner launch --cloud={aws,azure,gcp,kubernetes} ...`
 
 ∞ **[`publish`](/doc/ref/publish)**\
 Publicly host an image for displaying in a CML report\

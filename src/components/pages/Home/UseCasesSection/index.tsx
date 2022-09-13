@@ -370,7 +370,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="reports">
-                        <div>    <span>- cml runner</span></div>
+                        <div>    <span>- cml runner launch</span></div>
                         <div>      <span>--cloud aws</span></div>
                         <div>      <span>--cloud-region us-west</span></div>
                         <div>      <span>--cloud-type t2.micro</span></div>
@@ -426,7 +426,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>          <span>AWS_SECRET_ACCESS_KEY: {"${{ secrets.AWS_SECRET_ACCESS_KEY }}"}</span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="reports">
-                        <div>          <span>cml runner \</span></div>
+                        <div>          <span>cml runner launch \</span></div>
                         <div>          <span>--cloud aws \</span></div>
                         <div>          <span>--cloud-region us-west \</span></div>
                         <div>          <span>--cloud-type=t2.micro \</span></div>
@@ -488,7 +488,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="reports">
-                        <div>    <span>- cml runner \</span></div>
+                        <div>    <span>- cml runner launch \</span></div>
                         <div>      <span>--cloud aws \</span></div>
                         <div>      <span>--cloud-region us-west \</span></div>
                         <div>      <span>--cloud-type=p2.xlarge \</span></div>
@@ -566,7 +566,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>          <span>AWS_SECRET_ACCESS_KEY: {"${{ secrets.AWS_SECRET_ACCESS_KEY }}"} </span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="reports">
-                        <div>          <span>cml runner \</span></div>
+                        <div>          <span>cml runner launch \</span></div>
                         <div>          <span>--cloud aws \</span></div>
                         <div>          <span>--cloud-region us-west \</span></div>
                         <div>          <span>--cloud-type=p2.xlarge \</span></div>

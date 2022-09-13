@@ -127,7 +127,7 @@ Networking cost and transfer time can also be reduced using an appropriate
 <tab title="AWS">
 
 ```cli
-$ cml runner \
+$ cml runner launch \
   --cloud=aws \
   --cloud-region=us-west \
   --cloud-type=m+t4 \
@@ -139,7 +139,7 @@ $ cml runner \
 <tab title="GCP">
 
 ```cli
-$ cml runner \
+$ cml runner launch \
   --cloud=gcp \
   --cloud-region=us-west \
   --cloud-type=m+t4 \

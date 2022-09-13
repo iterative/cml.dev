@@ -59,7 +59,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          cml runner \
+          cml runner launch \
               --cloud=aws \
               --cloud-region=us-west \
               --cloud-type=p2.xlarge \
@@ -96,7 +96,7 @@ deploy-runner:
   image: iterativeai/cml:0-dvc2-base1
   script:
     - |
-      cml runner \
+      cml runner launch \
           --cloud=aws \
           --cloud-region=us-west \
           --cloud-type=p2.xlarge \
@@ -126,7 +126,7 @@ pipelines:
         image: iterativeai/cml:0-dvc2-base1
         script:
           - |
-            cml runner \
+            cml runner launch \
                 --cloud=aws \
                 --cloud-region=us-west \
                 --cloud-type=m5.2xlarge \
@@ -441,7 +441,7 @@ on-premise GPU cluster, or any other cloud compute resource as a self-hosted
 runner. Simply [install CML](/doc/install) and then run:
 
 ```cli
-$ cml runner \
+$ cml runner launch \
   --repo="$REPOSITORY_URL" \
   --token="$PERSONAL_ACCESS_TOKEN" \
   --labels="local,runner" \
