@@ -43,16 +43,12 @@
         "slug": "ci"
       },
       {
-        "label": "pr",
-        "slug": "pr"
-      },
-      {
-        "label": "publish",
-        "slug": "publish"
-      },
-      {
         "label": "runner",
         "slug": "runner"
+      },
+      {
+        "label": "pr",
+        "slug": "pr"
       },
       {
         "label": "comment",

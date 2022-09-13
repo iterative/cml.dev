@@ -157,10 +157,6 @@ publishing Markdown reports to your CI/CD system.
 Launch a runner hosted by a cloud compute provider or locally on-premise (see [self-hosted runners](/doc/self-hosted-runners))\
 e.g. `cml runner launch --cloud={aws,azure,gcp,kubernetes} ...`
 
-∞ **[`publish`](/doc/ref/publish)**\
-Publicly host an image for displaying in a CML report\
-e.g. `cml publish plot.png --md >> report.md`
-
 ∞ **[`pr`](/doc/ref/pr)**\
 Commit specified files to a new branch and create a pull request\
 e.g. `cml pr create "**/*.json" "**/*.py" --md >> report.md`
