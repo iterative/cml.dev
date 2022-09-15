@@ -39,6 +39,15 @@ Any [generic option](/doc/ref) in addition to:
   [Git revision](https://git-scm.com/docs/gitrevisions) linked to this comment
   [default: `HEAD`].
 - `--pr`: Post to an existing PR/MR associated with the specified commit.
+- `--watch`: Watch for changes and automatically update the comment (doesn't
+  exit, consider
+  [appending `&` to run in the background](<https://en.wikipedia.org/wiki/Job_control_(Unix)#Implementation>)).
+- `--publish`: Upload any local images found in the Markdown report.
+- `--publish-url=<url>`: Self-hosted image server URL [default:
+  `https://asset.cml.dev`], see
+  [minroud-s3](https://github.com/iterative/minroud-s3).
+- `--native`: Uses `--driver`'s native capabilities to `--publish` assets
+  instead of `--publish-url` (not available on `--driver=github`).
 
 ## FAQs and Known Issues
 
