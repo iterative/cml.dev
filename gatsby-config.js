@@ -5,8 +5,8 @@ const path = require('path')
 
 require('./config/prismjs/usage')
 
-const apiMiddleware = require('./src/server/middleware/api')
-const redirectsMiddleware = require('./src/server/middleware/redirects')
+const apiMiddleware = require('@dvcorg/websites-server/src/middleware/api')
+const redirectsMiddleware = require('@dvcorg/websites-server/src/middleware/redirects')
 
 const title = 'CML · Continuous Machine Learning'
 const description =
