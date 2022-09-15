@@ -14,7 +14,7 @@ Update the last CML comment instead of creating a new one. If no previous
 comment is found, create a new one.
 
 ```usage
-cml comment create [options] <markdown report file>
+cml comment update [options] <markdown report file>
 ```
 
 <admon type="tip">
