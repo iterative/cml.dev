@@ -59,7 +59,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          cml runner \
+          cml runner launch \
               --cloud=aws \
               --cloud-region=us-west \
               --cloud-type=p2.xlarge \
@@ -84,8 +84,8 @@ jobs:
 
           # Create CML report
           cat metrics.txt >> report.md
-          cml publish plot.png --md --title="Confusion Matrix" >> report.md
-          cml send-comment report.md
+          echo '![](./plot.png "Confusion Matrix")' >> report.md
+          cml comment create --publish report.md
 ```
 
 </tab>
@@ -96,7 +96,7 @@ deploy-runner:
   image: iterativeai/cml:0-dvc2-base1
   script:
     - |
-      cml runner \
+      cml runner launch \
           --cloud=aws \
           --cloud-region=us-west \
           --cloud-type=p2.xlarge \
@@ -112,8 +112,8 @@ train-model:
     - python train.py
     # Create CML report
     - cat metrics.txt >> report.md
-    - cml publish plot.png --md --title="Confusion Matrix" >> report.md
-    - cml send-comment report.md
+    - echo '![](./plot.png "Confusion Matrix")' >> report.md
+    - cml comment create --publish report.md
 ```
 
 </tab>
@@ -126,7 +126,7 @@ pipelines:
         image: iterativeai/cml:0-dvc2-base1
         script:
           - |
-            cml runner \
+            cml runner launch \
                 --cloud=aws \
                 --cloud-region=us-west \
                 --cloud-type=m5.2xlarge \
@@ -141,8 +141,8 @@ pipelines:
           - python train.py
           # Create CML report
           - cat metrics.txt >> report.md
-          - cml publish plot.png --md --title="Confusion Matrix" >> report.md
-          - cml send-comment report.md
+          - echo '![](./plot.png "Confusion Matrix")' >> report.md
+          - cml comment create --publish report.md
 ```
 
 </tab>
@@ -154,7 +154,7 @@ newly-launched instance. See [Environment Variables](#environment-variables)
 below for details on the `secrets` required.
 
 🎉 **Note that jobs can use any Docker container!** To use commands such as
-`cml send-comment` from a job, the only requirement is to
+`cml comment create` from a job, the only requirement is to
 [have CML installed](/doc/install).
 
 ## Docker Images
@@ -293,7 +293,7 @@ steps:
       REPO_TOKEN: ${{ steps.get-token.outputs.token }}
     run: |
       ...
-      cml send-comment report.md
+      cml comment create report.md
 ```
 
 Note that the Apps require the following **write**
@@ -301,8 +301,8 @@ Note that the Apps require the following **write**
 
 - Repository permissions (if used on a per-repo basis)
   - Administration (`cml runner`)
-  - Checks (`cml send-github-check`)
-  - Pull requests (`cml {pr,send-comment}`)
+  - Checks (`cml check`)
+  - Pull requests (`cml {pr,comment}`)
 - Organization permissions (if used on an org)
   - Self-hosted runners (`cml runner`)
 
@@ -332,7 +332,7 @@ For instance, to use a personal access token:
 
    ![](/img/personal_access_token.png)
 
-1. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
+2. In your GitLab project, navigate to **Settings** &rightarrow; **CI/CD**
    &rightarrow; **Variables** &rightarrow; **Add Variable**
 
    ![](/img/ci_cd_navigation.png)
@@ -441,7 +441,7 @@ on-premise GPU cluster, or any other cloud compute resource as a self-hosted
 runner. Simply [install CML](/doc/install) and then run:
 
 ```cli
-$ cml runner \
+$ cml runner launch \
   --repo="$REPOSITORY_URL" \
   --token="$PERSONAL_ACCESS_TOKEN" \
   --labels="local,runner" \

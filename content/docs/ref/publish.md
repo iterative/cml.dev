@@ -4,7 +4,8 @@
 cml publish [options] <image file>
 ```
 
-Publicly host an image for displaying in a CML report.
+Publicly host an image for displaying in a CML report. Used internally by
+[`cml comment {create,update} --publish`](/doc/ref/comment).
 
 ## Options
 
@@ -17,8 +18,6 @@ Any [generic option](/doc/ref) in addition to:
   [default: *inferred from content*].
 - `--native`: Uses CI provider's native storage instead of CML's.
   [Not available on GitHub](https://github.com/iterative/cml/wiki/Backend-Supported-Features).
-- `--rm-watermark`: Don't inject a watermark into the comment. Will break some
-  CML functionality which needs to distinguish CML reports from other comments.
 - `--url=<...>`: Use a custom storage URL instead of asset.cml.dev. See
   [`minroud-s3`](https://github.com/iterative/minroud-s3) for a reference
   implementation.

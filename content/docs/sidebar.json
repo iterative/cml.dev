@@ -43,28 +43,28 @@
         "slug": "ci"
       },
       {
-        "label": "pr",
-        "slug": "pr"
-      },
-      {
-        "label": "publish",
-        "slug": "publish"
-      },
-      {
         "label": "runner",
         "slug": "runner"
       },
       {
-        "label": "send-comment",
-        "slug": "send-comment"
+        "label": "pr",
+        "slug": "pr"
       },
       {
-        "label": "send-github-check",
-        "slug": "send-github-check"
+        "label": "comment",
+        "slug": "comment"
       },
       {
-        "label": "tensorboard-dev",
-        "slug": "tensorboard-dev"
+        "label": "check",
+        "slug": "check"
+      },
+      {
+        "label": "workflow",
+        "slug": "workflow"
+      },
+      {
+        "label": "tensorboard",
+        "slug": "tensorboard"
       }
     ]
   },
