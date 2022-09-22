@@ -53,7 +53,7 @@ $ cml pr create .
 
 ```cli
 $ date > output.txt
-$ cml pr create --auto-merge output.txt
+$ cml pr create --merge output.txt  # or --squash/--rebase
 ```
 
 The `--merge`, `--rebase`, and `--squash` options enable
