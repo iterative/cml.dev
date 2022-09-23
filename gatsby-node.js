@@ -27,7 +27,7 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
       'promise-polyfill/src/polyfill',
       'isomorphic-fetch',
       'raf-polyfill',
-      config.entry.app
+      ...config.entry.app
     ]
 
     const miniCssExtractPlugin = config.plugins.find(
