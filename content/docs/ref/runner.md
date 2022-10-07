@@ -146,6 +146,7 @@ ec2:AuthorizeSecurityGroupIngress
 ec2:DescribeSecurityGroups
 ec2:DescribeSubnets
 ec2:DescribeVpcs
+ec2:DescribeInstanceTypeOfferings
 ec2:ImportKeyPair
 ec2:DeleteKeyPair
 ec2:CreateTags -- (General Resource Management)
