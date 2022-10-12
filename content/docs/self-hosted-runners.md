@@ -77,7 +77,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Train model
         env:
-          REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           pip install -r requirements.txt
           python train.py
