@@ -74,5 +74,6 @@ you experience any problems, please don't hesitate to ping us in our
   - `gh workflow run release.yml --field bump={patch,minor,major}`
   - Wait for a PR to appear
   - Check & approve the PR
-  - Wait for the new release to appear, and customize the release notes if
-    required
+  - Wait for a draft to appear under
+    [releases](https://github.com/iterative/cml/releases)
+  - Check & publish the draft
