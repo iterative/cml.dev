@@ -119,9 +119,9 @@ const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
         }}
       >
         <HomeFeature heading="GitFlow for data science" icon={GitFlowIcon}>
-          Use GitLab or GitHub to manage ML experiments, track who trained ML
-          models or modified data and when. Codify data and models with DVC
-          instead of pushing to your Git repo.
+          Use GitLab, GitHub, or Bitbucket to manage ML experiments, track who
+          trained ML models or modified data and when. Codify data and models
+          with DVC instead of pushing to your Git repo.
         </HomeFeature>
         <HomeFeature
           heading="Auto reports for ML experiments"
