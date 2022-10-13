@@ -74,7 +74,7 @@ train-model:
     - pip install -r requirements.txt
     - python train.py
 create-CML-report:
-  needs: train-model
+  needs: [train-model]
   image: iterativeai/cml:0-dvc2-base1
   script:
     - cat metrics.txt >> report.md
