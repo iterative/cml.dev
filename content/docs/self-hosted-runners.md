@@ -218,8 +218,8 @@ security), or Bitbucket
 <admon type="warn">
 
 You will need to create a [personal access token (PAT)](#personal-access-token)
-with enough permissions to register self-hosted runners. In the example workflow
-above, this token is stored as `REPO_TOKEN`.
+with enough permissions to register self-hosted runners. In the GitHub example
+workflow above, this token is stored as `PERSONAL_ACCESS_TOKEN`.
 
 </admon>
 
