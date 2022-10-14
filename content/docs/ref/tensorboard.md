@@ -1,7 +1,7 @@
-# Command Reference: `tensorboard-dev`
+# Command Reference: `tensorboard`
 
 ```usage
-cml tensorboard-dev [options]
+cml tensorboard connect [options]
 ```
 
 Return a link to a <https://tensorboard.dev> page.
@@ -20,11 +20,9 @@ Any [generic option](/doc/ref) in addition to:
 - `--md`: Produce output in Markdown format (`[title](url)`).
 - `-t=<...>`, `--title=<...>`: Title for Markdown output [default: *value of
   `--name`*].
-- `--rm-watermark`: Don't inject a watermark into the comment. Will break some
-  CML functionality which needs to distinguish CML reports from other comments.
 
 ## Examples
 
 ```cli
-$ cml tensorboard-dev --logdir=./logs --title=Training --md >> report.md
+$ cml tensorboard connect --logdir=./logs --title=Training --md >> report.md
 ```

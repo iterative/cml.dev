@@ -1,22 +1,33 @@
-# Command Reference: `send-comment`
+# Command Reference: `comment`
 
-```usage
-cml send-comment [options] <markdown report file>
-```
+## create
 
 Post a Markdown report as a comment on a commit or pull/merge request.
 
+```usage
+cml comment create [options] <markdown report file>
+```
+
+## update
+
+Update the last CML comment instead of creating a new one. If no previous
+comment is found, create a new one.
+
+```usage
+cml comment update [options] <markdown report file>
+```
+
 <admon type="tip">
 
-If there's an associated pull/merge request, consider adding the `--pr` and
-`--update` flags.
+If there's an associated pull/merge request, consider using `update` with the
+`--pr` flag.
 
 </admon>
 
 <admon type="tip">
 
-If `cml pr` was used earlier in the workflow, use `--commit-sha=HEAD` to post
-comments to the new PR if desired.
+If [`cml pr`](/doc/ref/pr) was used earlier in the workflow, use
+`--commit-sha=HEAD` to post comments to the new PR if desired.
 
 </admon>
 
@@ -28,11 +39,15 @@ Any [generic option](/doc/ref) in addition to:
   [Git revision](https://git-scm.com/docs/gitrevisions) linked to this comment
   [default: `HEAD`].
 - `--pr`: Post to an existing PR/MR associated with the specified commit.
-- `--update`: Update the last CML comment (if any) instead of creating a new
-  one.
-- `--rm-watermark`: Don't inject a watermark into the comment. Will break some
-  CML functionality (such as `--update`) which needs to distinguish CML reports
-  from other comments.
+- `--watch`: Watch for changes and automatically update the comment (doesn't
+  exit, consider
+  [appending `&` to run in the background](<https://en.wikipedia.org/wiki/Job_control_(Unix)#Implementation>)).
+- `--publish`: Upload any local images found in the Markdown report.
+- `--publish-url=<url>`: Self-hosted image server URL [default:
+  `https://asset.cml.dev`], see
+  [minroud-s3](https://github.com/iterative/minroud-s3).
+- `--native`: Uses `--driver`'s native capabilities to `--publish` assets
+  instead of `--publish-url` (not available on `--driver=github`).
 
 ## FAQs and Known Issues
 
@@ -42,8 +57,8 @@ Any [generic option](/doc/ref) in addition to:
 
   This
   [error](https://github.community/t/comment-api-does-not-describe-commit-id-has-been-locked/159853/2)
-  is caused by using the default GitHub token with `cml send-comment --update`.
-  Use a
+  is caused by using the default GitHub token with
+  [`cml comment update`](#update). Use a
   [personal access token (PAT)](/doc/self-hosted-runners?tab=GitHub#personal-access-token)
   instead.
 

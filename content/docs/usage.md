@@ -41,7 +41,7 @@ jobs:
         run: |
           # Post reports as comments in GitHub PRs
           cat results.txt >> report.md
-          cml send-comment report.md
+          cml comment create report.md
 ```
 
 The example above generates visual reports in pull requests:
@@ -78,8 +78,8 @@ create-CML-report:
   image: iterativeai/cml:0-dvc2-base1
   script:
     - cat metrics.txt >> report.md
-    - cml publish plot.png --md >> report.md
-    - cml send-comment report.md
+    - echo '![](./plot.png)' >> report.md
+    - cml comment create --publish report.md
 ```
 
 ⚠️ You _must_ provide a
@@ -121,8 +121,8 @@ pipelines:
         script:
           - cat metrics.txt > report.md
           - echo >> report.md
-          - cml publish plot.png --md >> report.md
-          - cml send-comment report.md
+          - echo '![](./plot.png)' >> report.md
+          - cml comment create --publish report.md
 ```
 
 ⚠️ You _must_ provide
@@ -155,31 +155,27 @@ publishing Markdown reports to your CI/CD system.
 
 ∞ **[`runner`](/doc/ref/runner)**\
 Launch a runner hosted by a cloud compute provider or locally on-premise (see [self-hosted runners](/doc/self-hosted-runners))\
-e.g. `cml runner --cloud={aws,azure,gcp,kubernetes} ...`
-
-∞ **[`publish`](/doc/ref/publish)**\
-Publicly host an image for displaying in a CML report\
-e.g. `cml publish plot.png --md >> report.md`
+e.g. `cml runner launch --cloud={aws,azure,gcp,kubernetes} ...`
 
 ∞ **[`pr`](/doc/ref/pr)**\
 Commit specified files to a new branch and create a pull request\
-e.g. `cml pr "**/*.json" "**/*.py" --md >> report.md`
+e.g. `cml pr create "**/*.json" "**/*.py" --md >> report.md`
 
-∞ **[`send-comment`](/doc/ref/send-comment)**\
+∞ **[`comment`](/doc/ref/comment)**\
 Post a Markdown report as a commit comment\
-e.g. `cml send-comment report.md`
+e.g. `cml comment create report.md`
 
-∞ **[`send-github-check`](/doc/ref/send-github-check)**\
+∞ **[`check`](/doc/ref/check)**\
 Post a Markdown report as a GitHub check\
-e.g. `cml send-github-check report.md`
+e.g. `cml check create report.md`
 
-∞ **[`tensorboard-dev`](/doc/ref/tensorboard-dev)**\
+∞ **[`tensorboard`](/doc/ref/tensorboard)**\
 Return a link to a <https://tensorboard.dev> page\
-e.g. `cml tensorboard-dev --logdir=./logs --md >> report.md`
+e.g. `cml tensorboard connect --logdir=./logs --md >> report.md`
 
 ### CML Reports
 
-The `cml send-comment` command can be used to post reports. CML reports are
+The `cml comment create` command can be used to post reports. CML reports are
 written in Markdown ([GitHub](https://github.github.com/gfm),
 [GitLab](https://docs.gitlab.com/ee/user/markdown.html), or
 [Bitbucket](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
@@ -195,10 +191,11 @@ $ cat results.txt >> report.md
 ```
 
 🖼️ **Images** Display images using the markdown or HTML. Note that if an image
-is an output of your ML workflow (i.e., it is produced by your workflow), you
-will need to use the `cml publish` command to include it a CML report. For
-example, if `plot.png` is output by `python train.py`, run:
+is an output of your ML workflow (i.e. it is produced by your workflow), you
+will need to use the `--publish` option to include it a CML report. For example,
+if `plot.png` is output by `python train.py`, run:
 
 ```cli
-$ cml publish plot.png --md >> report.md
+$ echo '![](./plot.png)' >> report.md
+$ cml comment create --publish report.md
 ```

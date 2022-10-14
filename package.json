@@ -39,7 +39,7 @@
     "node": "<=16.17"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.1.14",
+    "@dvcorg/gatsby-theme-iterative": "^0.1.16",
     "@dvcorg/websites-server": "^0.0.10",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -49,6 +49,7 @@
     "@reach/portal": "^0.17.0",
     "@reach/router": "^1.3.3",
     "@reach/tooltip": "^0.17.0",
+    "@sentry/gatsby": "^7.13.0",
     "@theme-ui/color": "^0.14.7",
     "@theme-ui/components": "^0.14.7",
     "@theme-ui/presets": "^0.14.7",
@@ -130,7 +131,6 @@
     "gatsby-plugin-manifest": "4.22.0",
     "gatsby-plugin-postcss": "5.22.0",
     "gatsby-plugin-react-helmet": "5.22.0",
-    "gatsby-plugin-sentry": "1.0.1",
     "gatsby-plugin-sitemap": "5.22.0",
     "gatsby-plugin-svgr": "3.0.0-beta.0",
     "gatsby-plugin-webpack-bundle-analyzer": "1.0.5",

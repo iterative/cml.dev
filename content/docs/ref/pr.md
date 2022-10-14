@@ -1,11 +1,12 @@
 # Command Reference: `pr`
 
 ```usage
-cml pr [options] <pathspec>...
+cml pr create [options] <pathspec>...
 ```
 
 Commit specified files to a new branch and create a pull request. If sending a
-report afterwards, consider using `cml send-comment --pr --update`.
+report afterwards, consider using
+[`cml comment update --pr`](/doc/ref/comment#update).
 
 <admon type="info">
 
@@ -45,14 +46,14 @@ Any [generic option](/doc/ref) in addition to:
 ### Commit all files in current working directory
 
 ```cli
-$ cml pr .
+$ cml pr create .
 ```
 
 ### Automatically merge pull requests
 
 ```cli
 $ date > output.txt
-$ cml pr --auto-merge output.txt
+$ cml pr create --merge output.txt  # or --squash/--rebase
 ```
 
 The `--merge`, `--rebase`, and `--squash` options enable
@@ -65,7 +66,7 @@ checks isn't supported, `cml pr` will try to merge the pull request immediately.
 ## Command internals
 
 ```cli
-$ cml pr "**/*.py" "**/*.json"
+$ cml pr create "**/*.py" "**/*.json"
 ```
 
 is roughly equivalent to:

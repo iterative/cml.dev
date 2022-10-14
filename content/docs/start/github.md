@@ -44,8 +44,8 @@ $ cd example_cml
              python train.py
 
              cat metrics.txt >> report.md
-             cml publish plot.png --md >> report.md
-             cml send-comment report.md
+             echo '![](./plot.png)' >> report.md
+             cml comment create --publish report.md
    ```
 
 3. In your text editor, open `train.py` and modify line 15 to `depth = 5`.
@@ -70,7 +70,8 @@ $ cd example_cml
    ![](/img/make_pr.png)
 
    Shortly, you should see a comment appear in the Pull Request with your CML
-   report. This is a result of the `cml send-comment` command in your workflow.
+   report. This is a result of the `cml comment create` command in your
+   workflow.
 
    ![](/img/cml_first_report.png)
 
@@ -100,8 +101,8 @@ Docker container.
 
 This action gives you:
 
-- Commands like `cml publish` and `cml send-comment` for publishing data
-  visualization and metrics from your CI workflow as comments in a pull request.
+- Commands like `cml comment create` for publishing data visualization and
+  metrics from your CI workflow as comments in a pull request.
 - `cml runner`, a command that enables workflows to provision cloud and
   on-premise computing resources for training models
 - The freedom 🦅 to mix and match CML with your favorite data science tools and
@@ -159,6 +160,6 @@ steps:
       python train.py
 
       echo "# My first CML report" >> report.md
-      cml publish plot.png --md --title="Confusion Matrix" >> report.md
-      cml send-comment report.md
+      echo '![](./plot.png "Confusion Matrix")' >> report.md
+      cml comment create --publish report.md
 ```

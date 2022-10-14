@@ -1,7 +1,7 @@
 # Command Reference: `runner`
 
 ```usage
-cml runner [options]
+cml runner launch [options]
 ```
 
 Starts a [runner](/doc/self-hosted-runners) (either via any supported cloud
@@ -99,7 +99,7 @@ An AWS ARN to an instance-profile:
 - `arn:aws:iam::1234567890:instance-profile/dvc-s3-access`
 
 ```cli
-$ cml runner \
+$ cml runner launch \
   --cloud-permission-set=arn:aws:iam::1234567890:instance-profile/dvc-s3-access \
   ...
 ```
@@ -114,7 +114,7 @@ A GCP service account email &
 - `my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw`
 
 ```cli
-$ cml runner \
+$ cml runner launch \
   --cloud-permission-set=my-sa@myproject.iam.gserviceaccount.com,scopes=storage-rw,datastore \
   ...
 ```
@@ -146,6 +146,7 @@ ec2:AuthorizeSecurityGroupIngress
 ec2:DescribeSecurityGroups
 ec2:DescribeSubnets
 ec2:DescribeVpcs
+ec2:DescribeInstanceTypeOfferings
 ec2:ImportKeyPair
 ec2:DeleteKeyPair
 ec2:CreateTags -- (General Resource Management)
@@ -297,7 +298,7 @@ instance and exiting with an error.
 For example:
 
 ```cli
-$ cml runner \
+$ cml runner launch \
   --cloud-startup-script=IyEvYmluL2Jhc2gKCmVjaG8gImhlbGxvIHdvcmxkIgo= \
   ...
 ```
@@ -314,7 +315,7 @@ This can be used for debugging, for example allowing SSH access for a GitHub
 user:
 
 ```cli
-$ cml runner \
+$ cml runner launch \
   --cloud-startup-script=$(echo 'echo "$(curl https://github.com/${{ github.actor }}.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0) \
   ...
 ```
@@ -358,7 +359,7 @@ Azure.
    `cml runner` command:
 
    ```cli
-   $ cml runner --cloud=... --cloud-ssh-private="$(cat key.pem)"
+   $ cml runner launch --cloud=... --cloud-ssh-private="$(cat key.pem)"
    ```
 
 3. Access the instance from your local system by using the generated key as an

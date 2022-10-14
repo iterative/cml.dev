@@ -39,8 +39,8 @@ $ cd example_cml
        - python train.py
 
        - cat metrics.txt >> report.md
-       - cml publish plot.png --md >> report.md
-       - cml send-comment report.md
+       - echo '![](./plot.png)' >> report.md
+       - cml comment create --publish report.md
    ```
 
 4. In your text editor, open `train.py` and modify line 15 to `depth = 5`.
@@ -72,7 +72,7 @@ $ cd example_cml
 
    Continue and submit the Merge Request. Shortly, you should see a comment
    appear in the Merge Request with your CML report. This is a result of the
-   `cml send-comment` command in your workflow.
+   `cml comment create` command in your workflow.
 
    ![](/img/cml_start_gitlab_end.png)
 
