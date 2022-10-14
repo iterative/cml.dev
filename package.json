@@ -11,7 +11,7 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "start": "node ./src/server.js",
-    "heroku-postbuild": "./scripts/heroku-deploy.sh",
+    "heroku-postbuild": "heroku-deploy",
     "test": "jest",
     "format-staged": "pretty-quick --staged --no-restage --bail",
     "format-check": "prettier --check '**/*.{js,jsx,md,tsx,ts,json}'",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "^0.1.14",
-    "@dvcorg/websites-server": "^0.0.3",
+    "@dvcorg/websites-server": "^0.0.10",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@hapi/wreck": "^18.0.0",
