@@ -42,7 +42,8 @@ Any [generic option](/doc/ref) in addition to:
 - `--watch`: Watch for changes and automatically update the comment (doesn't
   exit, consider
   [appending `&` to run in the background](<https://en.wikipedia.org/wiki/Job_control_(Unix)#Implementation>)).
-- `--publish=false`: Don't upload any local images found in the Markdown report.
+- `--publish=<true|false>`: Upload any local images found in the Markdown
+  report.
 - `--publish-native`: Uses `--driver`'s native capabilities to `--publish`
   assets instead of `--publish-url` (not available on `--driver=github`).
 - `--publish-url=<url>`: Self-hosted image server URL [default:
