@@ -1,8 +1,8 @@
 # Using CML
 
-A GitLab, GitHub, or Bitbucket account is required. Familiarity with [GitHub
-Actions](https://help.github.com/en/actions), [GitLab
-CI/CD](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration),
+A GitLab, GitHub, or Bitbucket account is required. Familiarity with
+[GitHub Actions](https://help.github.com/en/actions),
+[GitLab CI/CD](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration),
 or [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) may
 also be beneficial.
 
@@ -47,11 +47,12 @@ jobs:
 The example above generates visual reports in pull requests:
 [![](/img/cml_first_report.png)](https://github.com/iterative/cml_base_case/pull/2)
 
-We helpfully provide CML and other useful libraries pre-installed on our [custom
-Docker images](/doc/self-hosted-runners#docker-images). In the above example,
-uncommenting the `container: docker://ghcr.io/iterative/cml:0-dvc2-base1` field
-will make the runner pull the CML Docker image. The image already has Node.js,
-Python 3, DVC and CML set up on an Ubuntu LTS base for convenience.
+We helpfully provide CML and other useful libraries pre-installed on our
+[custom Docker images](/doc/self-hosted-runners#docker-images). In the above
+example, uncommenting the
+`container: docker://ghcr.io/iterative/cml:0-dvc2-base1` field will make the
+runner pull the CML Docker image. The image already has Node.js, Python 3, DVC
+and CML set up on an Ubuntu LTS base for convenience.
 
 ### Example projects
 
@@ -80,19 +81,18 @@ create-CML-report:
     - cml comment create --publish report.md
 ```
 
-⚠️ You _must_ provide a [personal or project access token
-(PAT)](/doc/self-hosted-runners#personal-access-token) via a `REPO_TOKEN`
-variable.
+⚠️ You _must_ provide a
+[personal or project access token (PAT)](/doc/self-hosted-runners#personal-access-token)
+via a `REPO_TOKEN` variable.
 
 The example above generates visual reports in merge requests:
-[![](/img/GitLab_CML_report.png
-'=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
+[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
 
-We helpfully provide CML and other useful libraries pre-installed on our [custom
-Docker images](/doc/self-hosted-runners#docker-images). In the above example,
-the `image: iterativeai/cml:0-dvc2-base1` field will make the runner pull the
-CML Docker image. The image already has Node.js, Python 3, DVC and CML set up on
-an Ubuntu LTS base for convenience.
+We helpfully provide CML and other useful libraries pre-installed on our
+[custom Docker images](/doc/self-hosted-runners#docker-images). In the above
+example, the `image: iterativeai/cml:0-dvc2-base1` field will make the runner
+pull the CML Docker image. The image already has Node.js, Python 3, DVC and CML
+set up on an Ubuntu LTS base for convenience.
 
 ### Example projects
 
@@ -123,18 +123,17 @@ pipelines:
           - cml comment create --publish report.md
 ```
 
-⚠️ You _must_ provide [access
-credentials](/doc/self-hosted-runners#personal-access-token) via a `REPO_TOKEN`
-variable.
+⚠️ You _must_ provide
+[access credentials](/doc/self-hosted-runners#personal-access-token) via a
+`REPO_TOKEN` variable.
 
 The example above generates visual reports in pull requests:
-[![](/img/bitbucket_cloud_pr.png
-'=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)
+[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)
 
-⚠️ CML works with Bitbucket Cloud, where you can use the [Bitbucket
-Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD system to run
-workflows automatically on triggering events. Bitbucket Server is not yet
-supported.
+⚠️ CML works with Bitbucket Cloud, where you can use the
+[Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
+system to run workflows automatically on triggering events. Bitbucket Server is
+not yet supported.
 
 ### Example projects
 
@@ -152,8 +151,7 @@ Below is a list of CML commands for starting cloud compute runners, writing and
 publishing Markdown reports to your CI/CD system.
 
 ∞ **[`runner`](/doc/ref/runner)**\
-Launch a runner hosted by a cloud compute provider or locally on-premise (see
-[self-hosted runners](/doc/self-hosted-runners))\
+Launch a runner hosted by a cloud compute provider or locally on-premise (see [self-hosted runners](/doc/self-hosted-runners))\
 e.g. `cml runner launch --cloud={aws,azure,gcp,kubernetes} ...`
 
 ∞ **[`pr`](/doc/ref/pr)**\

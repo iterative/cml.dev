@@ -2,13 +2,13 @@
 
 Here, we'll walk through a tutorial to start using CML with GitLab CI/CD.
 
-1. Fork our [example project
-   repository](https://gitlab.com/iterative.ai/example_cml).
+1. Fork our
+   [example project repository](https://gitlab.com/iterative.ai/example_cml).
 
    ![](/img/gitlab_fork_cml_project.png)
 
-2. ⚠️ Follow [these
-   instructions](https://cml.dev/doc/self-hosted-runners?tab=GitLab#personal-access-token)
+2. ⚠️ Follow
+   [these instructions](https://cml.dev/doc/self-hosted-runners?tab=GitLab#personal-access-token)
    to configure a GitLab access token for CML.
 
 <admon type="tip">

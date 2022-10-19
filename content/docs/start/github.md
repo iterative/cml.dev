@@ -2,8 +2,8 @@
 
 Here, we'll walk through a tutorial to start using CML with GitHub Actions.
 
-1. Fork our [example project
-   repository](https://github.com/iterative/example_cml).
+1. Fork our
+   [example project repository](https://github.com/iterative/example_cml).
 
    ![](/img/fork_cml_project.png)
 
