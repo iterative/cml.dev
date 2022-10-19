@@ -1,8 +1,6 @@
 # Get Started with CML on GitHub
 
-Here, we'll walk through a tutorial to start using CML. For simplicity, we'll
-show the demo in GitHub Actions, but instructions are pretty similar for all the
-supported CI systems.
+Here, we'll walk through a tutorial to start using CML with GitHub Actions.
 
 1. Fork our
    [example project repository](https://github.com/iterative/example_cml).
@@ -80,7 +78,7 @@ repository, the workflow in your `.github/workflows/cml.yaml` file gets run and
 a report generated.
 
 CML commands let you display relevant results from the workflow, like model
-performance metrics and vizualizations, in GitHub checks and comments. What kind
+performance metrics and visualizations, in GitHub checks and comments. What kind
 of workflow you want to run, and want to put in your CML report, is up to you.
 
 ## Final Solution

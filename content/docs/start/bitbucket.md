@@ -1,8 +1,6 @@
 # Get Started with CML on Bitbucket
 
-Here, we'll walk through a tutorial to start using CML. For simplicity, we'll
-show the demo in Bitbucket Pipelines, but instructions are pretty similar for
-all the supported CI systems.
+Here, we'll walk through a tutorial to start using CML with Bitbucket Pipelines.
 
 1. Fork our
    [example project repository](https://bitbucket.org/iterative-ai/example-cml).
@@ -78,7 +76,7 @@ repository, the workflow in your `bitbucket-pipelines.yml` file gets run and a
 report generated.
 
 CML commands let you display relevant results from the workflow, like model
-performance metrics and vizualizations, in Bitbucket checks and comments. What
+performance metrics and visualizations, in Bitbucket checks and comments. What
 kind of workflow you want to run, and want to put in your CML report, is up to
 you.
 

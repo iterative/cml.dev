@@ -1,12 +1,12 @@
 # Using CML
 
 A GitLab, GitHub, or Bitbucket account is required. Familiarity with
-[GitHub Actions](https://help.github.com/en/actions) or
-[GitLab CI/CD](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration)
-may also be beneficial.
+[GitHub Actions](https://help.github.com/en/actions),
+[GitLab CI/CD](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration),
+or [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) may
+also be beneficial.
 
-<toggle>
-<tab title="GitHub">
+<toggle> <tab title="GitHub">
 
 The key file in any CML project is `.github/workflows/cml.yaml`:
 
@@ -61,8 +61,7 @@ and CML set up on an Ubuntu LTS base for convenience.
 - [CML with Tensorboard](https://github.com/iterative/cml_tensorboard_case)
 - [CML with EC2 GPU](https://github.com/iterative/cml_cloud_case)
 
-</tab>
-<tab title="GitLab">
+</tab> <tab title="GitLab">
 
 The key file in any CML project is `.gitlab-ci.yml`:
 
@@ -102,8 +101,7 @@ set up on an Ubuntu LTS base for convenience.
 - [CML with Tensorboard](https://gitlab.com/iterative.ai/cml-tensorboard-case)
 - [CML with EC2 GPU](https://gitlab.com/iterative.ai/cml-cloud-case)
 
-</tab>
-<tab title="Bitbucket">
+</tab> <tab title="Bitbucket">
 
 The key file in any CML project is `bitbucket-pipelines.yml`:
 
@@ -141,8 +139,7 @@ not yet supported.
 
 - [Basic CML project](https://bitbucket.org/iterative-ai/cml-base-case)
 
-</tab>
-</toggle>
+</tab> </toggle>
 
 ## CML Commands
 
