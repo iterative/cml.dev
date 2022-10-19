@@ -1,16 +1,14 @@
 # Get Started with CML on GitLab
 
-Here, we'll walk through a tutorial to start using CML. For simplicity, we'll
-show the demo in GitLab CI/CD, but instructions are pretty similar for all the
-supported CI systems.
+Here, we'll walk through a tutorial to start using CML with GitLab CI/CD.
 
-1. Fork our
-   [example project repository](https://gitlab.com/iterative.ai/example_cml).
+1. Fork our [example project
+   repository](https://gitlab.com/iterative.ai/example_cml).
 
    ![](/img/gitlab_fork_cml_project.png)
 
-2. ⚠️ Follow
-   [these instructions](https://cml.dev/doc/self-hosted-runners?tab=GitLab#personal-access-token)
+2. ⚠️ Follow [these
+   instructions](https://cml.dev/doc/self-hosted-runners?tab=GitLab#personal-access-token)
    to configure a GitLab access token for CML.
 
 <admon type="tip">
@@ -81,7 +79,7 @@ repository, the workflow in your `.gitlab-ci.yml` file gets run and a report
 generated.
 
 CML commands let you display relevant results from the workflow, like model
-performance metrics and vizualizations, in GitLab comments. What kind of
+performance metrics and visualizations, in GitLab comments. What kind of
 workflow you want to run, and want to put in your CML report, is up to you.
 
 ## Final Solution
