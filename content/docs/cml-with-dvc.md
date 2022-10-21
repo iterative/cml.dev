@@ -58,7 +58,7 @@ jobs:
           vl2png vega.json -s 1.5 > plot-diff.png
           echo '![](./plot-diff.png)' >> report.md
 
-          cml comment create --publish report.md
+          cml comment create report.md
 ```
 
 See the [example repository](https://github.com/iterative/cml_dvc_case) for

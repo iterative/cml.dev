@@ -85,7 +85,7 @@ jobs:
           # Create CML report
           cat metrics.txt >> report.md
           echo '![](./plot.png "Confusion Matrix")' >> report.md
-          cml comment create --publish report.md
+          cml comment create report.md
 ```
 
 </tab>
@@ -113,7 +113,7 @@ train-and-report:
     # Create CML report
     - cat metrics.txt >> report.md
     - echo '![](./plot.png "Confusion Matrix")' >> report.md
-    - cml comment create --publish report.md
+    - cml comment create report.md
 ```
 
 </tab>
@@ -142,7 +142,7 @@ pipelines:
           # Create CML report
           - cat metrics.txt >> report.md
           - echo '![](./plot.png "Confusion Matrix")' >> report.md
-          - cml comment create --publish report.md
+          - cml comment create report.md
 ```
 
 </tab>

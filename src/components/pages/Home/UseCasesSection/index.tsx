@@ -85,7 +85,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span># Create CML report</span></div>
                         <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
                         <div>    <span>- echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
-                        <div>    <span>- cml comment create --publish report.md</span></div>
+                        <div>    <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
 
@@ -131,7 +131,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <Tooltip type="reports">
                         <div>          <span>cat metrics.txt &gt;&gt; report.md</span></div>
                         <div>          <span>echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
-                        <div>          <span>cml comment create --publish report.md</span></div>
+                        <div>          <span>cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -175,7 +175,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span># Create CML report</span></div>
                         <div>    <span>- vl2png vega.json &gt; plot.png</span></div>
                         <div>    <span>- echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
-                        <div>    <span>- cml comment create --publish report.md</span></div>
+                        <div>    <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -237,7 +237,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <Tooltip type="reports">
                         <div>          <span>vl2png vega.json -s 1.5 &gt; plot.png</span></div>
                         <div>          <span>echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
-                        <div>          <span>cml comment create --publish report.md</span></div>
+                        <div>          <span>cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
 
@@ -375,7 +375,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>- echo &quot;## Report from your EC2 Instance&quot; &gt; report.md</span></div>
                       <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
                       <div>    <span>- echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
-                      <div>    <span>- cml comment create --publish report.md</span></div>
+                      <div>    <span>- cml comment create report.md</span></div>
                     </Code>
 
                     <ExampleBox title="CML Report">
@@ -438,7 +438,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>        <span>echo &quot;## Report from your EC2 Instance&quot; &gt; report.md</span></div>
                       <div>        <span>cat metrics.txt &gt;&gt; report.md</span></div>
                       <div>        <span>echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
-                      <div>        <span>cml comment create --publish report.md</span></div>
+                      <div>        <span>cml comment create report.md</span></div>
                     </Code>
 
                     <ExampleBox title="CML Report">
@@ -506,7 +506,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>- echo &quot;## GPU info&quot; &gt;&gt; report.md</span></div>
                       <div>    <span>- cat gpu_info.txt &gt;&gt; report.md</span></div>
                       <div><span> </span></div>
-                      <div>    <span>- cml comment create --publish report.md</span></div>
+                      <div>    <span>- cml comment create report.md</span></div>
                     </Code>
 
                     <ExampleBox title="CML Report">
@@ -594,7 +594,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>        <span>echo &quot;## GPU info&quot; &gt;&gt; report.md</span></div>
                       <div>        <span>cat gpu_info.txt &gt;&gt; report.md</span></div>
                       <div><span> </span></div>
-                      <div>        <span>cml comment create --publish report.md</span></div>
+                      <div>        <span>cml comment create report.md</span></div>
                     </Code>
                     <ExampleBox title="CML Report">
                       <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml_cloud_case/pull/11">
