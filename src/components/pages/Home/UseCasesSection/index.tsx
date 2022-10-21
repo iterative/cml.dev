@@ -109,7 +109,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
                       <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha || github.sha }}"}</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- run: |</span></div>
                       <Tooltip type="dependencies">
                         <div>          <span>pip install -r requirements.txt</span></div>
@@ -186,7 +186,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
                       <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha || github.sha }}"}</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- uses: actions/setup-python@v4</span></div>
                       <div>        <span>with:</span></div>
                       <div>          <span>python-version: &apos;3.x&apos;</span></div>
@@ -385,7 +385,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
                       <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha || github.sha }}"}</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- name: Train model</span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="dependencies">
@@ -506,7 +506,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
                       <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha || github.sha }}"}</span></div>
+                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- name: Train model</span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="dvc">
