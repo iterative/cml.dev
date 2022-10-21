@@ -37,7 +37,7 @@ $ git clone https://bitbucket.org/<your-username>/example-cml
            name: Train model
            script:
              - pip install -r requirements.txt
-             - python train.py
+             - python train.py # generate plot.png
              # Create CML report
              - cat metrics.txt >> report.md
              - echo '![](./plot.png)' >> report.md
