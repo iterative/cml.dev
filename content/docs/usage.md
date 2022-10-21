@@ -24,7 +24,7 @@ jobs:
       # - uses: actions/setup-node@v2
       #   with:
       #     node-version: '16'
-      # - uses: actions/setup-python@v2
+      # - uses: actions/setup-python@v4
       #   with:
       #     python-version: '3.x'
       - uses: iterative/setup-cml@v1
@@ -35,13 +35,14 @@ jobs:
         run: |
           # Your ML workflow goes here
           pip install -r requirements.txt
-          python train.py
+          python train.py  # generate plot.png
       - name: Create CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Post reports as comments in GitHub PRs
-          cat results.txt >> report.md
+          # Post reports as comments in GitHub
+          cat metrics.txt >> report.md
+          echo '![](./plot.png "Confusion Matrix")' >> report.md
           cml comment create report.md
 ```
 

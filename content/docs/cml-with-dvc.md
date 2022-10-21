@@ -46,8 +46,8 @@ jobs:
             -x actual \
             -y predicted \
             --show-vega master > vega.json
-          vl2png vega.json -s 1.5 > plot-confusion.png
-          echo '![](./plot-confusion.png)' >> report.md
+          vl2png vega.json -s 1.5 > plot.png
+          echo '![](./plot.png "Confusion Matrix")' >> report.md
 
           # Publish regularization function diff
           echo "### Effects of regularization" >> report.md
