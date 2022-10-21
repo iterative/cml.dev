@@ -33,7 +33,7 @@ $ cd example_cml
        steps:
          - uses: actions/checkout@v3
            with:
-             ref: ${{ github.event.pull_request.head.sha }}
+             ref: ${{ github.head_ref || github.ref_name }}
          - name: Train model
            env:
              REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -151,7 +151,7 @@ steps:
   - uses: iterative/setup-cml@v1
   - uses: actions/checkout@v3
     with:
-      ref: ${{ github.event.pull_request.head.sha }}
+      ref: ${{ github.head_ref || github.ref_name }}
   - env:
       REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     run: |

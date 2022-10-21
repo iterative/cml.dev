@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.head_ref || github.ref_name }}
       - name: Train model
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -166,7 +166,7 @@ Windows, Python 3 should be setup first.
 steps:
   - uses: actions/checkout@v3
     with:
-      ref: ${{ github.event.pull_request.head.sha }}
+      ref: ${{ github.head_ref || github.ref_name }}
   - uses: iterative/setup-dvc@v1
 ```
 
@@ -178,8 +178,8 @@ runs-on: windows-latest
 steps:
   - uses: actions/checkout@v3
     with:
-      ref: ${{ github.event.pull_request.head.sha }}
-  - uses: actions/setup-python@v2
+      ref: ${{ github.head_ref || github.ref_name }}
+  - uses: actions/setup-python@v4
     with:
       python-version: '3.x'
   - uses: iterative/setup-dvc@v1
