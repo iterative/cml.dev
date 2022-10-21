@@ -34,10 +34,10 @@ $ cd example_cml
      image: iterativeai/cml:0-dvc2-base1
      script:
        - pip install -r requirements.txt
-       - python train.py
+       - python train.py # generate plot.png
        # Create CML report
        - cat metrics.txt >> report.md
-       - echo '![](./plot.png)' >> report.md
+       - echo '![](./plot.png "Confusion Matrix")' >> report.md
        - cml comment create report.md
    ```
 

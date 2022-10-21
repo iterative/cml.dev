@@ -78,13 +78,13 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>script:</span></div>
                       <Tooltip type="dependencies">
                         <div>    <span>- pip install -r requirements.txt</span></div>
-                        <div>    <span>- python train.py</span></div>
+                        <div>    <span>- python train.py  # generate plot.png</span></div>
                       </Tooltip>
                       <div><span> </span></div>
                       <Tooltip type="reports">
                         <div>    <span># Create CML report</span></div>
                         <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
-                        <div>    <span>- echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
+                        <div>    <span>- echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
                         <div>    <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
@@ -165,15 +165,15 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                       <div><span> </span></div>
                       <Tooltip type="reports">
-                        <div>    <span># Compare metrics to master</span></div>
-                        <div>    <span>- git fetch --prune</span></div>
-                        <div>    <span>- dvc metrics diff --show-md master &gt;&gt; report.md</span></div>
+                        <div>    <span># Compare metrics to main</span></div>
+                        <div>    <span>- git fetch --depth=1 origin main:main</span></div>
+                        <div>    <span>- dvc metrics diff --show-md main &gt;&gt; report.md</span></div>
                         <div>    <span># Visualize loss function diff</span></div>
                         <div>    <span>- dvc plots diff </span></div>
-                        <div>      <span>--target loss.csv --show-vega master &gt; vega.json</span></div>
+                        <div>      <span>--target loss.csv --show-vega main &gt; vega.json</span></div>
                         <div>    <span># Create CML report</span></div>
                         <div>    <span>- vl2png vega.json &gt; plot.png</span></div>
-                        <div>    <span>- echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
+                        <div>    <span>- echo &#x27;![](./plot.png &quot;Training Loss&quot;)&#x27; &gt;&gt; report.md</span></div>
                         <div>    <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
@@ -264,8 +264,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>- pip install -r requirements.txt</span></div>
                       <Tooltip type="tensorboard">
                         <div>    <span>- cml tensorboard connect</span></div>
-                        <div>      <span>--logdir logs</span></div>
-                        <div>      <span>--name &quot;Go to tensorboard&quot;</span></div>
+                        <div>      <span>--logdir=./logs</span></div>
+                        <div>      <span>--name=&quot;Go to tensorboard&quot;</span></div>
                         <div>      <span>--md &gt;&gt; report.md</span></div>
                       </Tooltip>
                       <Tooltip type="reports">
@@ -273,7 +273,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                       <div><span> </span></div>
                       <Tooltip type="dependencies">
-                        <div>    <span>- python train.py</span></div>
+                        <div>    <span>- python train.py  # generate ./logs</span></div>
                       </Tooltip>
                     </Code>
 
@@ -353,6 +353,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="runner">
+                        <div>    <span># Supports AWS, Azure, GCP, K8s</span></div>
                         <div>    <span>- cml runner launch</span></div>
                         <div>      <span>--cloud=aws</span></div>
                         <div>      <span>--cloud-region=us-west</span></div>
@@ -367,10 +368,10 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>script:</span></div>
                       <Tooltip type="dependencies">
                         <div>    <span>- pip install -r requirements.txt</span></div>
-                        <div>    <span>- python train.py</span></div>
+                        <div>    <span>- python train.py  # generate plot.png</span></div>
                       </Tooltip>
                       <Tooltip type="reports">
-                        <div>    <span>- echo Report from your EC2 instance &gt;&gt; report.md</span></div>
+                        <div>    <span>- echo &quot;## Report from your EC2 instance&quot; &gt;&gt; report.md</span></div>
                         <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
                         <div>    <span>- echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
                         <div>    <span>- cml comment create report.md</span></div>
@@ -463,6 +464,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="runner">
+                        <div>    <span># Supports AWS, Azure, GCP, K8s</span></div>
                         <div>    <span>- cml runner launch</span></div>
                         <div>      <span>--cloud=aws</span></div>
                         <div>      <span>--cloud-region=us-west</span></div>
@@ -488,9 +490,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span>- |</span></div>
                         <div>    <span>  cat &lt;&lt;EOF &gt; report.md</span></div>
                         <div>    <span>  # Style transfer</span></div>
-                        <div>    <span>  Workspace        | Main</span></div>
-                        <div>    <span>  ---------------- | -------------------- </span></div>
-                        <div>    <span>  ![](./image.png) | ![](./image-main.png)</span></div>
+                        <div>    <span>  ## Workspace vs. Main</span></div>
+                        <div>    <span>  ![](./image.png &quot;Workspace&quot;) ![](./image-main.png &quot;Main&quot;)</span></div>
                         <div>    <span>  ## Training metrics</span></div>
                         <div>    <span>  $(dvc params diff main --show-md)</span></div>
                         <div>    <span>  ## GPU info</span></div>
