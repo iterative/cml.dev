@@ -9,11 +9,11 @@ and monitoring changing datasets.
 <cards>
 
   <card href="/doc/start" heading="Get Started">
-    A step-by-step introduction into basic CML features
+    Step-by-step introduction to basic CML features using our repository templates
   </card>
 
   <card href="/doc/usage" heading="Usage">
-    Study the detailed inner-workings of CML in its user guide.
+    Learn more about CML and setup your own repositories
   </card>
 
   <card href="/doc/cml-with-dvc" heading="CML with DVC">
@@ -21,7 +21,7 @@ and monitoring changing datasets.
   </card>
 
   <card href="/doc/self-hosted-runners" heading="Self-hosted Runners">
-    Use your own runners with CML
+    Use your own (cloud or on-premise) runners with CML
   </card>
 
 </cards>
