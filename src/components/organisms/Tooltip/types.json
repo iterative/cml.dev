@@ -1,11 +1,15 @@
 {
+  "runner": {
+    "color": "#B6E8ED",
+    "title": "Launch & connect cloud runner"
+  },
   "dependencies": {
     "color": "#F6936A",
     "title": "Run ML workflow"
   },
   "reports": {
     "color": "#BB8DDA",
-    "title": "Write CML Report"
+    "title": "Make CML Report"
   },
   "dvc": {
     "color": "#E3EE9E",
@@ -13,6 +17,6 @@
   },
   "tensorboard": {
     "color": "#B6E8ED",
-    "title": "Create tensorboard"
+    "title": "Connect tensorboard"
   }
 }

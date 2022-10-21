@@ -77,14 +77,14 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="dependencies">
-                        <div>    <span>- pip3 install -r requirements.txt</span></div>
-                        <div>    <span>- python train.py</span></div>
+                        <div>    <span>- pip install -r requirements.txt</span></div>
+                        <div>    <span>- python train.py  # generate plot.png</span></div>
                       </Tooltip>
-                      <div> </div>
+                      <div><span> </span></div>
                       <Tooltip type="reports">
                         <div>    <span># Create CML report</span></div>
                         <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
-                        <div>    <span>- echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
+                        <div>    <span>- echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
                         <div>    <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
@@ -164,17 +164,16 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span>- dvc repro</span></div>
                       </Tooltip>
                       <div><span> </span></div>
-                      <div>    <span># Compare metrics to master</span></div>
-                      <div>    <span>- git fetch --prune</span></div>
-                      <div>    <span>- dvc metrics diff --show-md master &gt;&gt; report.md</span></div>
-                      <div><span> </span></div>
-                      <div>    <span># Visualize loss function diff</span></div>
-                      <div>    <span>- dvc plots diff </span></div>
-                      <div>      <span>--target loss.csv --show-vega master &gt; vega.json</span></div>
                       <Tooltip type="reports">
+                        <div>    <span># Compare metrics to main</span></div>
+                        <div>    <span>- git fetch --depth=1 origin main:main</span></div>
+                        <div>    <span>- dvc metrics diff --show-md main &gt;&gt; report.md</span></div>
+                        <div>    <span># Visualize loss function diff</span></div>
+                        <div>    <span>- dvc plots diff </span></div>
+                        <div>      <span>--target loss.csv --show-vega main &gt; vega.json</span></div>
                         <div>    <span># Create CML report</span></div>
                         <div>    <span>- vl2png vega.json &gt; plot.png</span></div>
-                        <div>    <span>- echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
+                        <div>    <span>- echo &#x27;![](./plot.png &quot;Training Loss&quot;)&#x27; &gt;&gt; report.md</span></div>
                         <div>    <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
@@ -260,21 +259,21 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                   <Collapser>
                     <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case">
                       <div><span>train-and-report:</span></div>
-                      <div>    <span>image: iterativeai/cml:0-dvc2-base1</span></div>
-                      <div>    <span>script:</span></div>
-                      <div>        <span>- pip install -r requirements.txt</span></div>
+                      <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
+                      <div>  <span>script:</span></div>
+                      <div>    <span>- pip install -r requirements.txt</span></div>
                       <Tooltip type="tensorboard">
-                        <div>        <span>- cml tensorboard connect \</span></div>
-                        <div>            <span>--logdir logs \</span></div>
-                        <div>            <span>--name &quot;Go to tensorboard&quot; \</span></div>
-                        <div>            <span>--md &gt;&gt; report.md</span></div>
+                        <div>    <span>- cml tensorboard connect</span></div>
+                        <div>      <span>--logdir=./logs</span></div>
+                        <div>      <span>--name=&quot;Go to tensorboard&quot;</span></div>
+                        <div>      <span>--md &gt;&gt; report.md</span></div>
                       </Tooltip>
                       <Tooltip type="reports">
-                        <div>        <span>- cml comment create report.md</span></div>
+                        <div>    <span>- cml comment create report.md</span></div>
                       </Tooltip>
                       <div><span> </span></div>
                       <Tooltip type="dependencies">
-                        <div>        <span>- python train.py</span></div>
+                        <div>    <span>- python train.py  # generate ./logs</span></div>
                       </Tooltip>
                     </Code>
 
@@ -353,29 +352,30 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span>launch-runner:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
-                      <Tooltip type="reports">
+                      <Tooltip type="runner">
+                        <div>    <span># Supports AWS, Azure, GCP, K8s</span></div>
                         <div>    <span>- cml runner launch</span></div>
-                        <div>      <span>--cloud aws</span></div>
-                        <div>      <span>--cloud-region us-west</span></div>
-                        <div>      <span>--cloud-type t2.micro</span></div>
+                        <div>      <span>--cloud=aws</span></div>
+                        <div>      <span>--cloud-region=us-west</span></div>
+                        <div>      <span>--cloud-type=m5.2xlarge</span></div>
+                        <div>      <span>--cloud-spot</span></div>
                         <div>      <span>--labels=cml-runner</span></div>
+                        <div><span>train-and-report:</span></div>
+                        <div>  <span>tags: [cml-runner]</span></div>
                       </Tooltip>
-                      <div><span>train-and-report:</span></div>
-                      <Tooltip type="reports">
-                        <div>  <span>needs: [launch-runner]</span></div>
-                        <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
-                        <div>  <span>tags:</span></div>
-                        <div>    <span>- cml-runner</span></div>
-                      </Tooltip>
-                      <div><span> </span></div>
+                      <div>  <span>needs: [launch-runner]</span></div>
+                      <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
-                      <div>    <span>- pip install -r requirements.txt</span></div>
-                      <div>    <span>- python train.py</span></div>
-                      <div><span> </span></div>
-                      <div>    <span>- echo &quot;## Report from your EC2 Instance&quot; &gt; report.md</span></div>
-                      <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
-                      <div>    <span>- echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
-                      <div>    <span>- cml comment create report.md</span></div>
+                      <Tooltip type="dependencies">
+                        <div>    <span>- pip install -r requirements.txt</span></div>
+                        <div>    <span>- python train.py  # generate plot.png</span></div>
+                      </Tooltip>
+                      <Tooltip type="reports">
+                        <div>    <span>- echo &quot;## Report from your EC2 instance&quot; &gt;&gt; report.md</span></div>
+                        <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
+                        <div>    <span>- echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
+                        <div>    <span>- cml comment create report.md</span></div>
+                      </Tooltip>
                     </Code>
 
                     <ExampleBox title="CML Report">
@@ -463,50 +463,42 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span>launch-runner:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
-                      <Tooltip type="reports">
-                        <div>    <span>- cml runner launch \</span></div>
-                        <div>      <span>--cloud aws \</span></div>
-                        <div>      <span>--cloud-region us-west \</span></div>
-                        <div>      <span>--cloud-type=p2.xlarge \</span></div>
-                        <div>      <span>--cloud-hdd-size 64 \</span></div>
+                      <Tooltip type="runner">
+                        <div>    <span># Supports AWS, Azure, GCP, K8s</span></div>
+                        <div>    <span>- cml runner launch</span></div>
+                        <div>      <span>--cloud=aws</span></div>
+                        <div>      <span>--cloud-region=us-west</span></div>
+                        <div>      <span>--cloud-type=p2.xlarge</span></div>
+                        <div>      <span>--cloud-hdd-size=64</span></div>
+                        <div>      <span>--cloud-spot</span></div>
                         <div>      <span>--labels=cml-gpu</span></div>
+                        <div><span>train-and-report:</span></div>
+                        <div>  <span>tags: [cml-gpu]</span></div>
                       </Tooltip>
-                      <div><span>train-and-report:</span></div>
                       <div>  <span>needs: [launch-runner]</span></div>
-                      <Tooltip type="reports">
-                        <div>  <span>image: iterativeai/cml:0-dvc2-base1-gpu</span></div>
-                        <div>  <span>tags:</span></div>
-                        <div>    <span>- cml-gpu</span></div>
-                      </Tooltip>
-                      <div><span> </span></div>
+                      <div>  <span>image: iterativeai/cml:0-dvc2-base1-gpu</span></div>
                       <div>  <span>script:</span></div>
-                      <div>    <span>- apt-get update -y</span></div>
-                      <div>    <span>- apt-get install python3-dev -y</span></div>
-                      <div>    <span>- apt install imagemagick -y</span></div>
-                      <div>    <span>- pip install -r requirements.txt</span></div>
-                      <div><span> </span></div>
-                      <div>    <span># DVC reproduce neural style transfer training</span></div>
-                      <div>    <span>- git fetch --prune</span></div>
-                      <div>    <span>- dvc repro</span></div>
-                      <div><span> </span></div>
-                      <div>    <span># Compare master and workspace image results</span></div>
-                      <div>    <span>- echo &quot;# Style transfer&quot; &gt;&gt; report.md</span></div>
-                      <div>    <span>- git show origin/master:final_owl.png &gt; master_owl.png</span></div>
-                      <div>    <span>- convert +append final_owl.png master_owl.png out.png</span></div>
-                      <div>    <span>- convert out.png -resize 75% out_shrink.png</span></div>
-                      <div>    <span>- echo &quot;### Workspace vs. Master&quot; &gt;&gt; report.md</span></div>
-                      <div>    <span>- echo &#x27;![](./out_shrink.png)&#x27; &gt;&gt; report.md</span></div>
-                      <div><span> </span></div>
-                      <div>    <span># Report training parameters</span></div>
-                      <div>    <span>- echo &quot;## Training parameter diffs&quot; &gt;&gt; report.md</span></div>
-                      <div>    <span>- dvc params diff master --show-md &gt;&gt; report.md</span></div>
-                      <div>    <span>- echo &gt;&gt; report.md</span></div>
-                      <div><span> </span></div>
-                      <div>    <span># Report GPU details</span></div>
-                      <div>    <span>- echo &quot;## GPU info&quot; &gt;&gt; report.md</span></div>
-                      <div>    <span>- cat gpu_info.txt &gt;&gt; report.md</span></div>
-                      <div><span> </span></div>
-                      <div>    <span>- cml comment create report.md</span></div>
+                      <Tooltip type="dvc">
+                        <div>    <span>- dvc pull data</span></div>
+                      </Tooltip>
+                      <Tooltip type="dependencies">
+                        <div>    <span>- pip install -r requirements.txt</span></div>
+                        <div>    <span>- dvc repro</span></div>
+                      </Tooltip>
+                      <Tooltip type="reports">
+                        <div>    <span>- git show origin/main:image.png &gt; image-main.png</span></div>
+                        <div>    <span>- |</span></div>
+                        <div>    <span>  cat &lt;&lt;EOF &gt; report.md</span></div>
+                        <div>    <span>  # Style transfer</span></div>
+                        <div>    <span>  ## Workspace vs. Main</span></div>
+                        <div>    <span>  ![](./image.png &quot;Workspace&quot;) ![](./image-main.png &quot;Main&quot;)</span></div>
+                        <div>    <span>  ## Training metrics</span></div>
+                        <div>    <span>  $(dvc params diff main --show-md)</span></div>
+                        <div>    <span>  ## GPU info</span></div>
+                        <div>    <span>  $(cat gpu_info.txt)</span></div>
+                        <div>    <span>  EOF</span></div>
+                        <div>    <span>- cml comment create report.md</span></div>
+                      </Tooltip>
                     </Code>
 
                     <ExampleBox title="CML Report">
