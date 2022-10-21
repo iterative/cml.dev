@@ -46,7 +46,7 @@ or a
 name: CML
 on: [push]
 jobs:
-  deploy-runner:
+  launch-runner:
     runs-on: ubuntu-latest
     steps:
       - uses: iterative/setup-cml@v1
@@ -64,8 +64,8 @@ jobs:
               --cloud-region=us-west \
               --cloud-type=p2.xlarge \
               --labels=cml-gpu
-  train-model:
-    needs: deploy-runner
+  train-and-report:
+    needs: launch-runner
     runs-on: [self-hosted, cml-gpu]
     timeout-minutes: 50400 # 35 days
     container:
@@ -92,7 +92,7 @@ jobs:
 <tab title="GitLab">
 
 ```yaml
-deploy-runner:
+launch-runner:
   image: iterativeai/cml:0-dvc2-base1
   script:
     - |
@@ -102,8 +102,8 @@ deploy-runner:
           --cloud-type=p2.xlarge \
           --cloud-spot \
           --labels=cml-gpu
-train-model:
-  needs: [deploy-runner]
+train-and-report:
+  needs: [launch-runner]
   tags:
     - cml-gpu
   image: iterativeai/cml:0-dvc2-base1-gpu
@@ -148,8 +148,8 @@ pipelines:
 </tab>
 </toggle>
 
-In the workflow above, the `deploy-runner` step launches an EC2 `p2.xlarge`
-instance in the `us-west` region. The `train-model` job then runs on the
+In the workflow above, the `launch-runner` step launches an EC2 `p2.xlarge`
+instance in the `us-west` region. The `train-and-report` job then runs on the
 newly-launched instance. See [Environment Variables](#environment-variables)
 below for details on the `secrets` required.
 
