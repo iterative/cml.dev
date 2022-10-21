@@ -104,8 +104,7 @@ launch-runner:
           --labels=cml-gpu
 train-and-report:
   needs: [launch-runner]
-  tags:
-    - cml-gpu
+  tags: [cml-gpu]
   image: iterativeai/cml:0-dvc2-base1-gpu
   script:
     - pip install -r requirements.txt
