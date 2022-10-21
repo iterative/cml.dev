@@ -80,7 +80,7 @@ create-CML-report:
   script:
     - cat metrics.txt >> report.md
     - echo '![](./plot.png)' >> report.md
-    - cml comment create --publish report.md
+    - cml comment create report.md
 ```
 
 ⚠️ You _must_ provide a
@@ -123,7 +123,7 @@ pipelines:
           - cat metrics.txt > report.md
           - echo >> report.md
           - echo '![](./plot.png)' >> report.md
-          - cml comment create --publish report.md
+          - cml comment create report.md
 ```
 
 ⚠️ You _must_ provide
@@ -192,11 +192,11 @@ $ cat results.txt >> report.md
 ```
 
 🖼️ **Images** Display images using the markdown or HTML. Note that if an image
-is an output of your ML workflow (i.e. it is produced by your workflow), you
-will need to use the `--publish` option to include it a CML report. For example,
-if `plot.png` is output by `python train.py`, run:
+is an output of your ML workflow (i.e. it is produced by your workflow), you can
+use markdown to embed it in a CML report. For example, if `plot.png` is output
+by `python train.py`, run:
 
 ```cli
 $ echo '![](./plot.png)' >> report.md
-$ cml comment create --publish report.md
+$ cml comment create report.md
 ```
