@@ -472,7 +472,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
           },
           ,
           {
-            name: "Advanced GPU Case",
+            name: "Runner Cloud GPU",
             content: (
               <Switchable
                 gitlab={(
