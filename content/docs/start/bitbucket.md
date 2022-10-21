@@ -38,7 +38,7 @@ $ git clone https://bitbucket.org/<your-username>/example-cml
            script:
              - pip install -r requirements.txt
              - python train.py
-
+             # Create CML report
              - cat metrics.txt >> report.md
              - echo '![](./plot.png)' >> report.md
              - cml comment create --publish report.md

@@ -15,7 +15,7 @@ The key file in any CML project is `.github/workflows/cml.yaml`:
 name: CML
 on: [push]
 jobs:
-  run:
+  train-and-report:
     runs-on: ubuntu-latest
     # optionally use a convenient Ubuntu LTS + DVC + CML container
     # container: docker://ghcr.io/iterative/cml:0-dvc2-base1

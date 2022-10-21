@@ -13,7 +13,7 @@ The `.github/workflows/cml.yaml` file to create this report is:
 name: CML & DVC
 on: [push]
 jobs:
-  run:
+  train-and-report:
     runs-on: ubuntu-latest
     container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:

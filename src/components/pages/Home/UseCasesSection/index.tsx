@@ -73,11 +73,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                   <Collapser>
 
                     <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-base-case">
-                      <div><span>stages:</span></div>
-                      <div>  <span>- cml_run</span></div>
-                      <div> </div>
-                      <div><span>cml:</span></div>
-                      <div>  <span>stage: cml_run</span></div>
+                      <div><span>train-and-report:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="dependencies">
@@ -86,6 +82,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                       <div> </div>
                       <Tooltip type="reports">
+                        <div>    <span># Create CML report</span></div>
                         <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
                         <div>    <span>- echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
                         <div>    <span>- cml comment create --publish report.md</span></div>
@@ -108,7 +105,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>on: [push]</div>
                       <div><span> </span></div>
                       <div><span>jobs:</span></div>
-                      <div>  <span>run:</span></div>
+                      <div>  <span>train-and-report:</span></div>
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div><span> </span></div>
                       <div>    <span>steps:</span></div>
@@ -155,11 +152,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 gitlab={(
                   <Collapser>
                     <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-dvc-case">
-                      <div><span>stages:</span></div>
-                      <div>  <span>- cml_run</span></div>
-                      <div><span> </span></div>
-                      <div><span>cml:</span></div>
-                      <div>  <span>stage: cml_run</span></div>
+                      <div><span>train-and-report:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="dvc">
@@ -179,6 +172,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>- dvc plots diff </span></div>
                       <div>      <span>--target loss.csv --show-vega master &gt; vega.json</span></div>
                       <Tooltip type="reports">
+                        <div>    <span># Create CML report</span></div>
                         <div>    <span>- vl2png vega.json &gt; plot.png</span></div>
                         <div>    <span>- echo &#x27;![](./plot.png)&#x27; &gt;&gt; report.md</span></div>
                         <div>    <span>- cml comment create --publish report.md</span></div>
@@ -200,7 +194,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span>on: [push]</span></div>
                       <div><span> </span></div>
                       <div><span>jobs:</span></div>
-                      <div>  <span>run:</span></div>
+                      <div>  <span>train-and-report:</span></div>
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div><span> </span></div>
                       <div>    <span>steps:</span></div>
@@ -265,11 +259,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 gitlab={(
                   <Collapser>
                     <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case">
-                      <div><span>stages:</span></div>
-                      <div>    <span>- cml_run</span></div>
-                      <div><span> </span></div>
-                      <div><span>cml:</span></div>
-                      <div>    <span>stage: cml_run</span></div>
+                      <div><span>train-and-report:</span></div>
                       <div>    <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>    <span>script:</span></div>
                       <div>        <span>- pip install -r requirements.txt</span></div>
@@ -304,7 +294,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span>on: [push]</span></div>
                       <div></div>
                       <div><span>jobs:</span></div>
-                      <div>  <span>run:</span></div>
+                      <div>  <span>train-and-report:</span></div>
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div><span> </span></div>
                       <div>    <span>steps:</span></div>
@@ -360,13 +350,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 gitlab={(
                   <Collapser>
                     <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-runner-example">
-                      <div><span>stages:</span></div>
-                      <div>  <span>- deploy</span></div>
-                      <div>  <span>- train</span></div>
-                      <div><span> </span></div>
-                      <div><span>deploy_job:</span></div>
-                      <div>  <span>stage: deploy</span></div>
-                      <div>  <span>when: always</span></div>
+                      <div><span>launch-runner:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="reports">
@@ -376,11 +360,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>      <span>--cloud-type t2.micro</span></div>
                         <div>      <span>--labels=cml-runner</span></div>
                       </Tooltip>
-                      <div><span> </span></div>
-                      <div><span>train_job:</span></div>
+                      <div><span>train-and-report:</span></div>
                       <Tooltip type="reports">
-                        <div>  <span>stage: train</span></div>
-                        <div>  <span>when: on_success</span></div>
+                        <div>  <span>needs: [launch-runner]</span></div>
                         <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                         <div>  <span>tags:</span></div>
                         <div>    <span>- cml-runner</span></div>
@@ -412,7 +394,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span>on: [push]</span></div>
                       <div><span> </span></div>
                       <div><span>jobs:</span></div>
-                      <div>  <span>deploy-runner:</span></div>
+                      <div>  <span>launch-runner:</span></div>
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
@@ -435,7 +417,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span> </span></div>
                       <div>  <span>model-training:</span></div>
                       <Tooltip type="reports">
-                        <div>    <span>needs: deploy-runner</span></div>
+                        <div>    <span>needs: launch-runner</span></div>
                         <div>    <span>runs-on: [self-hosted,cml-runner]</span></div>
                         <div>    <span>container: docker://iterativeai/cml:0-dvc2-base1</span></div>
                       </Tooltip>
@@ -478,13 +460,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 gitlab={(
                   <Collapser>
                     <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-cloud-case">
-                      <div><span>stages:</span></div>
-                      <div>  <span>- deploy</span></div>
-                      <div>  <span>- train</span></div>
-                      <div><span> </span></div>
-                      <div><span>deploy_job:</span></div>
-                      <div>  <span>stage: deploy</span></div>
-                      <div>  <span>when: always</span></div>
+                      <div><span>launch-runner:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
                       <Tooltip type="reports">
@@ -493,16 +469,14 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>      <span>--cloud-region us-west \</span></div>
                         <div>      <span>--cloud-type=p2.xlarge \</span></div>
                         <div>      <span>--cloud-hdd-size 64 \</span></div>
-                        <div>      <span>--labels=cml-runner-gpu</span></div>
+                        <div>      <span>--labels=cml-gpu</span></div>
                       </Tooltip>
-                      <div><span> </span></div>
-                      <div><span>train_job:</span></div>
+                      <div><span>train-and-report:</span></div>
+                      <div>  <span>needs: [launch-runner]</span></div>
                       <Tooltip type="reports">
-                        <div>  <span>stage: train</span></div>
-                        <div>  <span>when: on_success</span></div>
                         <div>  <span>image: iterativeai/cml:0-dvc2-base1-gpu</span></div>
                         <div>  <span>tags:</span></div>
-                        <div>    <span>- cml-runner-gpu</span></div>
+                        <div>    <span>- cml-gpu</span></div>
                       </Tooltip>
                       <div><span> </span></div>
                       <div>  <span>script:</span></div>
@@ -552,7 +526,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div><span>on: [push]</span></div>
                       <div><span> </span></div>
                       <div><span>jobs:</span></div>
-                      <div>  <span>deploy-runner:</span></div>
+                      <div>  <span>launch-runner:</span></div>
                       <div>    <span>runs-on: [ubuntu-latest]</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
@@ -574,9 +548,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>--labels=cml-runner</span></div>
                       </Tooltip>
                       <div><span> </span></div>
-                      <div>  <span>run:</span></div>
+                      <div>  <span>train-and-report:</span></div>
                       <Tooltip type="reports">
-                        <div>    <span>needs: deploy-runner</span></div>
+                        <div>    <span>needs: launch-runner</span></div>
                         <div>    <span>runs-on: [self-hosted,cml-runner]</span></div>
                         <div>    <span>container: </span></div>
                         <div>      <span>image: docker://iterativeai/cml:0-dvc2-base1-gpu</span></div>

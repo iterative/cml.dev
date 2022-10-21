@@ -27,7 +27,7 @@ $ cd example_cml
    name: CML
    on: [push]
    jobs:
-     run:
+     train-and-report:
        runs-on: ubuntu-latest
        container: docker://ghcr.io/iterative/cml:0-dvc2-base1
        steps:
@@ -41,6 +41,7 @@ $ cd example_cml
              pip install -r requirements.txt
              python train.py
 
+             # Create CML report
              cat metrics.txt >> report.md
              echo '![](./plot.png)' >> report.md
              cml comment create --publish report.md
