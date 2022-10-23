@@ -117,13 +117,13 @@ pipelines:
         name: Train model
         script:
           - pip install -r requirements.txt
-          - python train.py
+          - python train.py # generate plot.png
     - step:
         name: Create CML report
         script:
-          - cat metrics.txt > report.md
-          - echo >> report.md
-          - echo '![](./plot.png)' >> report.md
+          # Post reports as comments in Bitbucket
+          - cat metrics.txt >> report.md
+          - echo '![](./plot.png "Confusion Matrix")' >> report.md
           - cml comment create report.md
 ```
 
