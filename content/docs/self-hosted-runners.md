@@ -80,7 +80,7 @@ jobs:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           pip install -r requirements.txt
-          python train.py
+          python train.py  # generate plot.png
 
           # Create CML report
           cat metrics.txt >> report.md
@@ -108,7 +108,7 @@ train-and-report:
   image: iterativeai/cml:0-dvc2-base1-gpu
   script:
     - pip install -r requirements.txt
-    - python train.py
+    - python train.py # generate plot.png
     # Create CML report
     - cat metrics.txt >> report.md
     - echo '![](./plot.png "Confusion Matrix")' >> report.md
@@ -137,7 +137,7 @@ pipelines:
         # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
         script:
           - pip install -r requirements.txt
-          - python train.py
+          - python train.py # generate plot.png
           # Create CML report
           - cat metrics.txt >> report.md
           - echo '![](./plot.png "Confusion Matrix")' >> report.md

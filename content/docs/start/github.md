@@ -39,11 +39,11 @@ $ cd example_cml
              REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            run: |
              pip install -r requirements.txt
-             python train.py
+             python train.py  # generate plot.png
 
              # Create CML report
              cat metrics.txt >> report.md
-             echo '![](./plot.png)' >> report.md
+             echo '![](./plot.png "Confusion Matrix")' >> report.md
              cml comment create report.md
    ```
 
@@ -147,18 +147,24 @@ Assume that we have a machine learning script, `train.py`, that outputs an image
 `plot.png`. A potential workflow will look like this:
 
 ```yaml
-steps:
-  - uses: iterative/setup-cml@v1
-  - uses: actions/checkout@v3
-    with:
-      ref: ${{ github.event.pull_request.head.sha }}
-  - env:
-      REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    run: |
-      # train will generate plot.png
-      python train.py
+name: CML
+on: [push]
+jobs:
+  train-and-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: iterative/setup-cml@v1
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pip install -r requirements.txt
+          python train.py  # generate plot.png
 
-      echo "# My first CML report" >> report.md
-      echo '![](./plot.png "Confusion Matrix")' >> report.md
-      cml comment create report.md
+          echo "# CML report" >> report.md
+          echo '![](./plot.png "Confusion Matrix")' >> report.md
+          cml comment create report.md
 ```

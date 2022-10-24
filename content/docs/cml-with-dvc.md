@@ -46,8 +46,8 @@ jobs:
             -x actual \
             -y predicted \
             --show-vega master > vega.json
-          vl2png vega.json -s 1.5 > plot-confusion.png
-          echo '![](./plot-confusion.png)' >> report.md
+          vl2png vega.json -s 1.5 > plot.png
+          echo '![](./plot.png "Confusion Matrix")' >> report.md
 
           # Publish regularization function diff
           echo "### Effects of regularization" >> report.md
@@ -179,7 +179,7 @@ steps:
   - uses: actions/checkout@v3
     with:
       ref: ${{ github.event.pull_request.head.sha }}
-  - uses: actions/setup-python@v2
+  - uses: actions/setup-python@v4
     with:
       python-version: '3.x'
   - uses: iterative/setup-dvc@v1
