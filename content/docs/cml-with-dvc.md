@@ -5,7 +5,10 @@ downloaded from external sources. [DVC](https://dvc.org) is a common way to
 bring data to your CML runner. DVC also lets you run pipelines and plot changes
 in metrics for inclusion in CML reports.
 
-![](/img/dvc_cml_long_report.png)
+<toggle>
+<tab title="GitHub">
+
+![](/img/dvc_cml_long_report.png 'GitHub DVC report example')
 
 The `.github/workflows/cml.yaml` file to create this report is:
 
@@ -15,18 +18,21 @@ on: [push]
 jobs:
   train-and-report:
     runs-on: ubuntu-latest
-    container: docker://ghcr.io/iterative/cml:0-dvc2-base1
+    # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - uses: iterative/setup-cml@v1
+      - uses: iterative/setup-dvc@v1
       - name: Train model
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cml ci --unshallow
           pip install -r requirements.txt  # Install dependencies
           dvc pull data --run-cache        # Pull data & run-cache from S3
           dvc repro                        # Reproduce pipeline
@@ -34,10 +40,10 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "## Metrics" >> report.md
-          dvc metrics diff master --show-md >> report.md
+          echo "## Metrics: workflow vs. main" >> report.md
+          git fetch --depth=1 origin main:main
 
-          # Publish confusion matrix diff
+          dvc metrics diff master --show-md >> report.md
           echo "## Plots" >> report.md
           echo "### Class confusions" >> report.md
           dvc plots diff \
@@ -49,7 +55,6 @@ jobs:
           vl2png vega.json -s 1.5 > plot.png
           echo '![](./plot.png "Confusion Matrix")' >> report.md
 
-          # Publish regularization function diff
           echo "### Effects of regularization" >> report.md
           dvc plots diff \
             --target estimators.csv \
@@ -58,12 +63,101 @@ jobs:
           vl2png vega.json -s 1.5 > plot-diff.png
           echo '![](./plot-diff.png)' >> report.md
 
+          echo "### Training loss" >> report.md
+          dvc plots diff \
+            --target loss.csv --show-vega main > vega.json
+          vl2png vega.json > plot-loss.png
+          echo '![](./plot-loss.png "Training Loss")' >> report.md
+
           cml comment create report.md
 ```
 
 See the [example repository](https://github.com/iterative/cml_dvc_case) for
 more, or check out the
 [use cases for machine learning](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning).
+
+## GitHub Actions: `setup-dvc`
+
+The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action
+installs DVC (similar to what [`setup-cml`](/doc/start/github#setup-action) does
+for CML).
+
+This action works on Ubuntu, macOS, and Windows runners. When running on
+Windows, Python 3 should be setup first.
+
+<toggle>
+<tab title="Ubuntu & macOS">
+
+```yaml
+steps:
+  - uses: actions/checkout@v3
+    with:
+      ref: ${{ github.event.pull_request.head.sha }}
+  - uses: iterative/setup-dvc@v1
+```
+
+</tab>
+<tab title="Windows">
+
+```yaml
+runs-on: windows-latest
+steps:
+  - uses: actions/checkout@v3
+    with:
+      ref: ${{ github.event.pull_request.head.sha }}
+  - uses: actions/setup-python@v4
+    with:
+      python-version: '3.x'
+  - uses: iterative/setup-dvc@v1
+```
+
+</tab>
+</toggle>
+
+A specific DVC version can be installed using the `version` argument (defaults
+to the [latest release](https://github.com/iterative/dvc/releases)).
+
+```yaml
+- uses: iterative/setup-dvc@v1
+  with:
+    version: '1.0.1'
+```
+
+</tab>
+<tab title="GitLab">
+
+![](/img/github/dvc-report.png 'GitLab DVC report example')
+
+The `.gitlab-ci.yml` file to create this report is:
+
+```yaml
+train-and-report:
+  image: iterativeai/cml:0-dvc2-base1 # Python, DVC, & CML pre-installed
+  script:
+    - dvc pull data --run-cache # Pull data & run-cache from S3
+    - pip install -r requirements.txt # Install dependencies
+    - dvc repro # Reproduce pipeline
+
+    # Create CML report
+    - echo "## Metrics: workflow vs. main" >> report.md
+    - git fetch --depth=1 origin main:main
+    - dvc metrics diff --show-md main >> report.md
+
+    - echo "## Plots" >> report.md
+    - echo "### Training loss function diff" >> report.md
+    - dvc plots diff --target loss.csv --show-vega main > vega.json
+    - vl2png vega.json > plot.png
+    - echo '![](./plot.png "Training Loss")' >> report.md
+
+    - cml comment create report.md
+```
+
+See the [example repository](https://gitlab.com/iterative.ai/cml-dvc-case) for
+more, or check out the
+[use cases for machine learning](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning).
+
+</tab>
+</toggle>
 
 ## Cloud Storage Provider Credentials
 
@@ -149,50 +243,3 @@ $ cml runner launch \
 
 </tab>
 </toggle>
-
-## GitHub Actions: `setup-dvc`
-
-The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action
-installs DVC (similar to what [`setup-cml`](/doc/start/github#setup-action) does
-for CML).
-
-This action works on Ubuntu, macOS, and Windows runners. When running on
-Windows, Python 3 should be setup first.
-
-<toggle>
-<tab title="Ubuntu & macOS">
-
-```yaml
-steps:
-  - uses: actions/checkout@v3
-    with:
-      ref: ${{ github.event.pull_request.head.sha }}
-  - uses: iterative/setup-dvc@v1
-```
-
-</tab>
-<tab title="Windows">
-
-```yaml
-runs-on: windows-latest
-steps:
-  - uses: actions/checkout@v3
-    with:
-      ref: ${{ github.event.pull_request.head.sha }}
-  - uses: actions/setup-python@v4
-    with:
-      python-version: '3.x'
-  - uses: iterative/setup-dvc@v1
-```
-
-</tab>
-</toggle>
-
-A specific DVC version can be installed using the `version` argument (defaults
-to the [latest release](https://github.com/iterative/dvc/releases)).
-
-```yaml
-- uses: iterative/setup-dvc@v1
-  with:
-    version: '1.0.1'
-```
