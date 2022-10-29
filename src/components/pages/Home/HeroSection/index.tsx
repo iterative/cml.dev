@@ -102,11 +102,12 @@ const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
         </Box>
         <Box sx={{ flex: '1', width: '100%' }}>
           <Switch
-            sx={{ mt: 4, mx: 'auto', maxWidth: ['100%', null, '160px'] }}
+            sx={{ mt: 4, mx: 'auto', maxWidth: ['100%', null, '240px'] }}
           />
           <Switchable
             gitlab={<LandingVideo src={gitlabVideoMp4} mode="gitlab" />}
             github={<LandingVideo src={githubVideoMp4} mode="github" />}
+            bitbucket={<LandingVideo src={githubVideoMp4} mode="bitbucket" />}
           />
         </Box>
       </Collapser>
