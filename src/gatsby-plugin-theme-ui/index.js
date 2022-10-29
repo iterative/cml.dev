@@ -632,7 +632,7 @@ export default {
     RepoButton: {
       variant: 'buttons.base',
       textAlign: 'center',
-      width: '96px',
+      width: '103px',
       display: 'flex',
       flexFlow: 'row nowrap',
       alignItems: 'center',
