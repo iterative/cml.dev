@@ -128,7 +128,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterative-ai/cml_base_case">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml_base_case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
@@ -147,7 +147,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterative-ai/cml_base_case">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml_base_case">
                         <Image src="/img/bitbucket/base-case-report.png" alt="Bitbucket Base report example" />
                       </a>
                     </ExampleBox>
@@ -253,7 +253,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterative-ai/cml_dvc_case">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml_dvc_case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
@@ -283,7 +283,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterative-ai/dvc_case">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/dvc_case">
                         <Image src="/img/bitbucket/dvc-report.png" alt="Bitbucket DVC report example" />
                       </a>
                     </ExampleBox>
@@ -367,7 +367,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterative-ai/cml_tensorboard_case">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml_tensorboard_case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
@@ -390,7 +390,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterative-ai/cml_tensorboard_case">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml_tensorboard_case">
                         <Image src="/img/bitbucket/tensorboard-report.png" alt="Bitbucket Tensorboard report example" />
                       </a>
                     </ExampleBox>
@@ -504,7 +504,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterative-ai/cml_runner_example">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml_runner_example">
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
                       <div><span>  - step:</span></div>
@@ -539,7 +539,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterative-ai/cml_runner_case">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml_runner_case">
                         <Image src="/img/bitbucket/cml-runner-report.png" alt="Bitbucket Cloud report example" />
                       </a>
                     </ExampleBox>
@@ -679,7 +679,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterative-ai/cml_cloud_case">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml_cloud_case">
                       <Tooltip type="dependencies">
                         <div><span># GPU not yet supported, see https://github.com/iterative/cml/issues/1015</span></div>
                       </Tooltip>
@@ -726,7 +726,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterative-ai/cml_cloud_case">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml_cloud_case">
                         <Image src="/img/bitbucket/cloud-report.png" alt="Bitbucket Cloud report example" />
                       </a>
                     </ExampleBox>
