@@ -406,7 +406,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
               <Switchable
                 gitlab={(
                   <Collapser>
-                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-example">
+                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-runner-example">
                       <div><span>launch-runner:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
