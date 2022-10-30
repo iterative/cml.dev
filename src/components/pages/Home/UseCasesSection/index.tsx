@@ -128,7 +128,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterativeai/cml_base_case">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterative-ai/cml_base_case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
@@ -147,7 +147,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterativeai/cml_base_case">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterative-ai/cml_base_case">
                         <Image src="/img/bitbucket/base-case-report.png" alt="Bitbucket Base report example" />
                       </a>
                     </ExampleBox>
@@ -253,7 +253,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterativeai/cml_dvc_case">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterative-ai/cml_dvc_case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
@@ -283,8 +283,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterativeai/cml_base_case">
-                        <Image src="/img/bitbucket/base-case-report.png" alt="Bitbucket DVC report example" />
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterative-ai/dvc_case">
+                        <Image src="/img/bitbucket/dvc-report.png" alt="Bitbucket DVC report example" />
                       </a>
                     </ExampleBox>
         
@@ -367,7 +367,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterativeai/cml_tensorboard_case">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterative-ai/cml_tensorboard_case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
@@ -390,8 +390,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterativeai/cml_tensorboard_case">
-                        <Image src="/img/bitbucket/base-case-report.png" alt="Bitbucket Tensorboard report example" />
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterative-ai/cml_tensorboard_case">
+                        <Image src="/img/bitbucket/tensorboard-report.png" alt="Bitbucket Tensorboard report example" />
                       </a>
                     </ExampleBox>
         
@@ -406,7 +406,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
               <Switchable
                 gitlab={(
                   <Collapser>
-                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-runner-example">
+                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-example">
                       <div><span>launch-runner:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
@@ -417,9 +417,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>      <span>--cloud-region=us-west</span></div>
                         <div>      <span>--cloud-type=m5.2xlarge</span></div>
                         <div>      <span>--cloud-spot</span></div>
-                        <div>      <span>--labels=cml-runner</span></div>
+                        <div>      <span>--labels=cml</span></div>
                         <div><span>train-and-report:</span></div>
-                        <div>  <span>tags: [cml-runner]</span></div>
+                        <div>  <span>tags: [cml]</span></div>
                       </Tooltip>
                       <div>  <span>needs: [launch-runner]</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
@@ -467,9 +467,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>--cloud=aws \</span></div>
                         <div>          <span>--cloud-region=us-west \</span></div>
                         <div>          <span>--cloud-type=m5.2xlarge \</span></div>
-                        <div>          <span>--labels=cml-runner</span></div>
+                        <div>          <span>--labels=cml</span></div>
                         <div>  <span>train-and-report:</span></div>
-                        <div>    <span>runs-on: [self-hosted, cml-runner]</span></div>
+                        <div>    <span>runs-on: [self-hosted, cml]</span></div>
                       </Tooltip>
                       <div>    <span>needs: launch-runner</span></div>
                       <div>    <span>timeout-minutes: 50400 # 35 days</span></div>
@@ -504,7 +504,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterativeai/cml_runner_example">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterative-ai/cml_runner_example">
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
                       <div><span>  - step:</span></div>
@@ -518,36 +518,28 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div><span>              --cloud-region=us-west \</span></div>
                         <div><span>              --cloud-type=m5.2xlarge \</span></div>
                         <div><span>              --cloud-spot \</span></div>
-                        <div><span>              --labels=cml.runner</span></div>
+                        <div><span>              --labels=cml</span></div>
                       </Tooltip>
                       <div><span>  - step:</span></div>
                       <div><span>      name: run</span></div>
-                      <div><span>      runs-on: [self.hosted, cml.runner]</span></div>
+                      <Tooltip type="runner">
+                        <div><span>      runs-on: [self.hosted, cml]</span></div>
+                      </Tooltip>
                       <div><span>      image: iterativeai/cml:0-dvc2-base1</span></div>
-                      <div><span>      # GPU not yet supported, see https://github.com/iterative/cml/issues/1015</span></div>
                       <div><span>      script:</span></div>
                       <Tooltip type="dependencies">
-                        <div><span>      - apt-get update -y</span></div>
-                        <div><span>      - apt install imagemagick -y</span></div>
                         <div><span>      - pip install -r requirements.txt</span></div>
+                        <div><span>      - python train.py  # generate plot.png</span></div>
                       </Tooltip>
-                      <div><span>      - git fetch --prune</span></div>
-                      <div><span>      - dvc repro</span></div>
                       <Tooltip type="reports">
-                        <div><span>      - echo &quot;# Style transfer&quot; &gt;&gt; report.md</span></div>
-                        <div><span>      - git show origin/master:final_owl.png &gt; master_owl.png</span></div>
-                        <div><span>      - convert +append final_owl.png master_owl.png out.png</span></div>
-                        <div><span>      - convert out.png -resize 75%  out_shrink.png</span></div>
-                        <div><span>      - echo &quot;### Workspace vs. Main&quot; &gt;&gt; report.md</span></div>
-                        <div><span>      - cml publish out_shrink.png --md --title &#x27;compare&#x27; &gt;&gt; report.md</span></div>
-                        <div><span>      - echo &quot;## Training metrics&quot; &gt;&gt; report.md</span></div>
-                        <div><span>      - dvc params diff master --show-md &gt;&gt; report.md</span></div>
-                        <div><span>      - echo &gt;&gt; report.md</span></div>
-                        <div><span>      - cml send-comment report.md</span></div>
+                        <div><span>      - echo &quot;## Report from your EC2 instance&quot; &gt;&gt; report.md</span></div>
+                        <div><span>      - cat metrics.txt &gt;&gt; report.md</span></div>
+                        <div><span>      - echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
+                        <div><span>      - cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterativeai/cml_runner_case">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterative-ai/cml_runner_case">
                         <Image src="/img/bitbucket/cml-runner-report.png" alt="Bitbucket Cloud report example" />
                       </a>
                     </ExampleBox>
@@ -687,12 +679,57 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterativeai/cml_base_case">
-                        <div><span>GPU not yet supported, <a style={{ color: "#FFF" }} href="https://github.com/iterative/cml/issues/1015">learn more</a></span></div>
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.com/iterative-ai/cml_cloud_case">
+                      <Tooltip type="dependencies">
+                        <div><span># GPU not yet supported, see https://github.com/iterative/cml/issues/1015</span></div>
+                      </Tooltip>
+                      <div><span>pipelines:</span></div>
+                      <div><span>  default:</span></div>
+                      <div><span>  - step:</span></div>
+                      <div><span>      name: deploy-runner</span></div>
+                      <div><span>      image: iterativeai/cml:0-dvc2-base1</span></div>
+                      <div><span>      script:</span></div>
+                      <div><span>        - |</span></div>
+                      <Tooltip type="runner">
+                        <div><span>          cml runner \</span></div>
+                        <div><span>              --cloud=aws \</span></div>
+                        <div><span>              --cloud-region=us-west \</span></div>
+                        <div><span>              --cloud-type=m5.2xlarge \</span></div>
+                        <div><span>              --cloud-spot \</span></div>
+                        <div><span>              --labels=cml</span></div>
+                      </Tooltip>
+                      <div><span>  - step:</span></div>
+                      <div><span>      name: run</span></div>
+                      <Tooltip type="runner">
+                        <div><span>      runs-on: [self.hosted, cml]</span></div>
+                      </Tooltip>
+                      <div><span>      image: iterativeai/cml:0-dvc2-base1</span></div>
+                      <div><span>      script:</span></div>
+                      <Tooltip type="dependencies">
+                        <div><span>      - apt-get update -y</span></div>
+                        <div><span>      - apt install imagemagick -y</span></div>
+                        <div><span>      - pip install -r requirements.txt</span></div>
+                      </Tooltip>
+                      <div><span>      - git fetch --prune</span></div>
+                      <div><span>      - dvc repro</span></div>
+                      <Tooltip type="reports">
+                        <div><span>      - echo &quot;# Style transfer&quot; &gt;&gt; report.md</span></div>
+                        <div><span>      - git show origin/master:final_owl.png &gt; master_owl.png</span></div>
+                        <div><span>      - convert +append final_owl.png master_owl.png out.png</span></div>
+                        <div><span>      - convert out.png -resize 75%  out_shrink.png</span></div>
+                        <div><span>      - echo &quot;### Workspace vs. Main&quot; &gt;&gt; report.md</span></div>
+                        <div><span>      - cml publish out_shrink.png --md --title &#x27;compare&#x27; &gt;&gt; report.md</span></div>
+                        <div><span>      - echo &quot;## Training metrics&quot; &gt;&gt; report.md</span></div>
+                        <div><span>      - dvc params diff master --show-md &gt;&gt; report.md</span></div>
+                        <div><span>      - echo &gt;&gt; report.md</span></div>
+                        <div><span>      - cml send-comment report.md</span></div>
+                      </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.com/iterative-ai/cml_cloud_case">
+                        <Image src="/img/bitbucket/cloud-report.png" alt="Bitbucket Cloud report example" />
+                      </a>
                     </ExampleBox>
-        
                   </Collapser>
                 )}
               />
