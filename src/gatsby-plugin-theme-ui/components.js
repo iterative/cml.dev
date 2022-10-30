@@ -142,7 +142,7 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
           <span>GitLab</span>
         </Link>
       )
-    case 'bitbucket.com':
+    case 'bitbucket.org':
       return (
         <Link
           href={url}
