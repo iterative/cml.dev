@@ -3,7 +3,7 @@
 Here, we'll walk through a tutorial to start using CML with GitHub Actions.
 
 1. Fork our
-   [example project repository](https://github.com/iterative/example_cml).
+   [example project repository](https://github.com/iterative-test/cml-example-base).
 
    ![](/img/fork_cml_project.png)
 
@@ -85,7 +85,7 @@ of workflow you want to run, and want to put in your CML report, is up to you.
 ## Final Solution
 
 An example of what your repository should look like now can be found at
-[`iterative/cml_base_case`](https://github.com/iterative/cml_base_case).
+[`iterative/cml_base_case`](https://github.com/iterative-test/cml-example-minimal).
 
 ## Setup Action
 

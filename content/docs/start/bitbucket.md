@@ -3,7 +3,7 @@
 Here, we'll walk through a tutorial to start using CML with Bitbucket Pipelines.
 
 1. Fork our
-   [example project repository](https://bitbucket.org/iterative-ai/example-cml).
+   [example project repository](https://bitbucket.org/iterative-test/cml-example-base).
 
    ![](/img/bitbucket_fork_cml_project.png)
 
@@ -83,4 +83,4 @@ you.
 ## Final Solution
 
 An example of what your repository should look like now can be found at
-[`iterative-ai/cml-base-case`](https://bitbucket.org/iterative-ai/cml-base-case).
+[`iterative-ai/cml-base-case`](https://bitbucket.org/iterative-test/cml-example-minimal).
