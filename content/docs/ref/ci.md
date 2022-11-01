@@ -12,8 +12,7 @@ formatting and HTTP remote proxies; and, optionally, unshallowing clone).
 
 Any [generic option](/doc/ref) in addition to:
 
-- `--unshallow`: Fetch as much as possible, converting a shallow repository to a
-  complete one.
+- `--fetch-depth=<number>`: Commits to fetch (use `0` for all branches & tags).
 - `--user-email=<address>`: Git user email for commits [default:
   `olivaw@iterative.ai`].
 - `--user-name=<...>`: Git user name for commits [default: `Olivaw[bot]`].
@@ -26,5 +25,5 @@ Instead of wrangling with
 simply run:
 
 ```cli
-$ cml ci
+$ cml ci --fetch-depth=0
 ```
