@@ -3,7 +3,7 @@
 Here, we'll walk through a tutorial to start using CML with GitLab CI/CD.
 
 1. Fork our
-   [example project repository](https://gitlab.com/iterative.ai/example_cml).
+   [example project repository](https://gitlab.com/iterative-test/cml-example-base).
 
    ![](/img/gitlab_fork_cml_project.png)
 
@@ -85,4 +85,4 @@ workflow you want to run, and want to put in your CML report, is up to you.
 ## Final Solution
 
 An example of what your repository should look like now can be found at
-[iterative.ai/cml-base-case](https://gitlab.com/iterative.ai/cml-base-case).
+[iterative.ai/cml-base-case](https://gitlab.com/iterative-test/cml-example-minimal).

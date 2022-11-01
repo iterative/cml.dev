@@ -61,7 +61,7 @@ jobs:
           cml comment create report.md
 ```
 
-See the [example repository](https://github.com/iterative/cml_dvc_case) for
+See the [example repository](https://github.com/iterative-test/cml-example-dvc) for
 more, or check out the
 [use cases for machine learning](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning).
 
