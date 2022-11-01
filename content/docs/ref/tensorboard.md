@@ -29,6 +29,6 @@ $ cml tensorboard connect --logdir=./logs --title=Training --md >> report.md
 
 ## Credentials
 
-To generate new Tensorboard credentials, run `tensorboard dev upload` and set
+To generate new Tensorboard credentials, run `tensorboard dev upload` locally and set
 the `CML_TENSORBOARD_CREDENTIALS` environment variable to the contents of
 `~/.config/tensorboard/credentials/uploader-creds.json`
