@@ -180,12 +180,12 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span># Compare metrics to main</span></div>
                         <div>    <span>- git fetch --depth=1 origin main:main</span></div>
                         <div>    <span>- dvc metrics diff --show-md main &gt;&gt; report.md</span></div>
-                        <div>    <span># Visualize loss function diff</span></div>
+                        <div>    <span># Plot training loss function diff</span></div>
                         <div>    <span>- dvc plots diff </span></div>
                         <div>      <span>--target loss.csv --show-vega main &gt; vega.json</span></div>
-                        <div>    <span># Create CML report</span></div>
                         <div>    <span>- vl2png vega.json &gt; plot.png</span></div>
                         <div>    <span>- echo &#x27;![](./plot.png &quot;Training Loss&quot;)&#x27; &gt;&gt; report.md</span></div>
+                        <div>    <span># Post CML report as a comment in GitLab</span></div>
                         <div>    <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
@@ -232,7 +232,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span># Compare metrics to main</span></div>
                         <div>          <span>git fetch --depth=1 origin main:main </span></div>
                         <div>          <span>dvc metrics diff --show-md main &gt;&gt; report.md</span></div>
-                        <div>          <span># Visualize loss function diff</span></div>
+                        <div>          <span># Plot training loss function diff</span></div>
                         <div>          <span>dvc plots diff \</span></div>
                         <div>            <span>--target loss.csv --show-vega main &gt; vega.json</span></div>
                         <div>          <span>vl2png vega.json &gt; plot.png</span></div>

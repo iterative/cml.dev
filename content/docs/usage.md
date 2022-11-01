@@ -40,7 +40,7 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Post reports as comments in GitHub
+          # Post CML report as a comment in GitHub
           cat metrics.txt >> report.md
           echo '![](./plot.png "Confusion Matrix")' >> report.md
           cml comment create report.md
@@ -59,7 +59,8 @@ and CML set up on an Ubuntu LTS base for convenience.
 ### Example projects
 
 - [Basic CML project](https://github.com/iterative-test/cml-example-minimal)
-- [CML with DVC to pull data](https://github.com/iterative-test/cml-example-dvc)
+- [CML with DVC to pull data](https://github.com/iterative-test/cml-example-dvc) &
+  [tutorial](/doc/cml-with-dvc?tab=GitHub)
 - [CML with Tensorboard](https://github.com/iterative-test/cml-example-tensorboard)
 - [CML with EC2 GPU](https://github.com/iterative-test/cml-example-cloud)
 
@@ -79,7 +80,7 @@ create-CML-report:
   needs: [train-model]
   image: iterativeai/cml:0-dvc2-base1
   script:
-    # Post reports as comments in GitLab
+    # Post CML report as a comment in GitLab
     - cat metrics.txt >> report.md
     - echo '![](./plot.png "Confusion Matrix")' >> report.md
     - cml comment create report.md
@@ -101,7 +102,8 @@ set up on an Ubuntu LTS base for convenience.
 ### Example projects
 
 - [Basic CML project](https://gitlab.com/iterative-test/cml-example-minimal)
-- [CML with DVC to pull data](https://gitlab.com/iterative-test/cml-example-dvc)
+- [CML with DVC to pull data](https://gitlab.com/iterative-test/cml-example-dvc) &
+  [tutorial](/doc/cml-with-dvc?tab=GitLab)
 - [CML with Tensorboard](https://gitlab.com/iterative-test/cml-example-tensorboard)
 - [CML with EC2 GPU](https://gitlab.com/iterative-test/cml-example-cloud)
 
@@ -122,7 +124,7 @@ pipelines:
     - step:
         name: Create CML report
         script:
-          # Post reports as comments in Bitbucket
+          # Post CML report as a comment in Bitbucket
           - cat metrics.txt >> report.md
           - echo '![](./plot.png "Confusion Matrix")' >> report.md
           - cml comment create report.md
