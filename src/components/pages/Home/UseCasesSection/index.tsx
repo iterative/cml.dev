@@ -283,7 +283,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/dvc_case">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-test/cml-example-dvc">
                         <Image src="/img/bitbucket/dvc-report.png" alt="Bitbucket DVC report example" />
                       </a>
                     </ExampleBox>
@@ -504,7 +504,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-runner-base-case">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-test/cml-example-cloud">
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
                       <div><span>  - step:</span></div>
@@ -539,7 +539,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml-runner-base-case">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-test/cml-example-cloud">
                         <Image src="/img/bitbucket/cml-runner-report.png" alt="Bitbucket Cloud report example" />
                       </a>
                     </ExampleBox>
