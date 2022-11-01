@@ -47,7 +47,7 @@ jobs:
 ```
 
 The example above generates visual reports in pull requests:
-[![](/img/cml_first_report.png)](https://github.com/iterative-test/cml-example-minimal/pull/2)
+[![](/img/cml_first_report.png)](https://github.com/iterative-test/cml-example-minimal/pull/1)
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -90,7 +90,7 @@ create-CML-report:
 via a `REPO_TOKEN` variable.
 
 The example above generates visual reports in merge requests:
-[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative-test/cml-example-minimal/-/merge_requests/3)
+[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative-test/cml-example-minimal/-/merge_requests/1)
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above

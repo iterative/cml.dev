@@ -84,7 +84,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                     </Code>
 
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-minimal/-/merge_requests/3">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-minimal/-/merge_requests/1">
                         <Image src="/img/gitlab/base-case-report.png" alt="GitLab Base report example" />
                       </a>
                     </ExampleBox>
@@ -119,7 +119,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-minimal/pull/2">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-minimal/pull/1">
                         <Image src="/img/github/base-case-report.png" alt="Github Base report example" />
                       </a>
                     </ExampleBox>
@@ -190,7 +190,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-dvc/-/merge_requests/6">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-dvc/-/merge_requests/1">
                         <Image src="/img/gitlab/dvc-report.png" alt="GitLab DVC report example" />
                       </a>
                     </ExampleBox>
@@ -244,7 +244,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                     </Code>
         
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-dvc/pull/4">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-dvc/pull/1">
                         <Image src="/img/github/dvc-report.png" alt="GitHub DVC report example" />
                       </a>
                     </ExampleBox>
@@ -320,7 +320,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                     </Code>
         
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-tensorboard/-/merge_requests/2">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-tensorboard/-/merge_requests/1">
                         <Image src="/img/gitlab/tensorboard-report.png" alt="GitLab Tensorboard report example" />
                       </a>
                     </ExampleBox>
@@ -437,7 +437,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                     </Code>
         
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-cloud-gpu/-/merge_requests/2">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-cloud-gpu/-/merge_requests/1">
                         <Image src="/img/gitlab/cml-runner-report.png" alt="GitLab Cloud report example" />
                       </a>
                     </ExampleBox>
@@ -495,7 +495,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                     </Code>
         
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-cloud-gpu/pull/4">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-cloud-gpu/pull/1">
                         <Image src="/img/github/cml-runner-report.png" alt="GitHub Cloud report example" />
                       </a>
                     </ExampleBox>
@@ -670,7 +670,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-cloud/pull/11">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-cloud/pull/1">
                         <Image src="/img/github/cloud-report.png" alt="GitHub Cloud report example" />
                       </a>
                     </ExampleBox>
