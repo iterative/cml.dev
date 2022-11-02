@@ -59,8 +59,8 @@ and CML set up on an Ubuntu LTS base for convenience.
 ### Example projects
 
 - [Basic CML project](https://github.com/iterative-test/cml-example-minimal)
-- [CML with DVC to pull data](https://github.com/iterative-test/cml-example-dvc) &
-  [tutorial](/doc/cml-with-dvc?tab=GitHub)
+- [CML with DVC to pull data](https://github.com/iterative-test/cml-example-dvc)
+  & [tutorial](/doc/cml-with-dvc?tab=GitHub)
 - [CML with Tensorboard](https://github.com/iterative-test/cml-example-tensorboard)
 - [CML with EC2 GPU](https://github.com/iterative-test/cml-example-cloud)
 
@@ -102,8 +102,8 @@ set up on an Ubuntu LTS base for convenience.
 ### Example projects
 
 - [Basic CML project](https://gitlab.com/iterative-test/cml-example-minimal)
-- [CML with DVC to pull data](https://gitlab.com/iterative-test/cml-example-dvc) &
-  [tutorial](/doc/cml-with-dvc?tab=GitLab)
+- [CML with DVC to pull data](https://gitlab.com/iterative-test/cml-example-dvc)
+  & [tutorial](/doc/cml-with-dvc?tab=GitLab)
 - [CML with Tensorboard](https://gitlab.com/iterative-test/cml-example-tensorboard)
 - [CML with EC2 GPU](https://gitlab.com/iterative-test/cml-example-cloud)
 
