@@ -66,7 +66,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 gitlab={(
                   <Collapser>
 
-                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative-test/cml-example-minimal">
+                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-base-case">
                       <div><span>train-and-report:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
@@ -84,7 +84,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                     </Code>
 
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-minimal/-/merge_requests/1">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3">
                         <Image src="/img/gitlab/base-case-report.png" alt="GitLab Base report example" />
                       </a>
                     </ExampleBox>
@@ -93,7 +93,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 github={(
                   <Collapser>
-                    <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative-test/cml-example-minimal">
+                    <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml_base_case">
                       <div><span>name: CML</span></div>
                       <div><span>on: [push]</span></div>
                       <div><span>jobs:</span></div>
@@ -119,7 +119,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-minimal/pull/1">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml_base_case/pull/2">
                         <Image src="/img/github/base-case-report.png" alt="Github Base report example" />
                       </a>
                     </ExampleBox>
@@ -128,7 +128,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-test/cml-example-minimal">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-base-case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
@@ -147,7 +147,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-test/cml-example-minimal">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/16">
                         <Image src="/img/bitbucket/base-case-report.png" alt="Bitbucket Base report example" />
                       </a>
                     </ExampleBox>
@@ -163,7 +163,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
               <Switchable
                 gitlab={(
                   <Collapser>
-                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative-test/cml-example-dvc">
+                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-dvc-case">
                       <div><span>train-and-report:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
@@ -190,16 +190,15 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-dvc/-/merge_requests/1">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative.ai/cml-dvc-case/-/merge_requests/6">
                         <Image src="/img/gitlab/dvc-report.png" alt="GitLab DVC report example" />
                       </a>
                     </ExampleBox>
-        
                   </Collapser>
                 )}
                 github={(
                   <Collapser>
-                    <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative-test/cml-example-dvc">
+                    <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml_dvc_case">
                       <div><span>name: CML & DVC</span></div>
                       <div><span>on: [push]</span></div>
                       <div><span>jobs:</span></div>
@@ -242,9 +241,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>REPO_TOKEN: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
                       </Tooltip>
                     </Code>
-        
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-dvc/pull/1">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml_dvc_case/pull/4">
                         <Image src="/img/github/dvc-report.png" alt="GitHub DVC report example" />
                       </a>
                     </ExampleBox>
@@ -299,7 +297,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
               <Switchable
                 gitlab={(
                   <Collapser>
-                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative-test/cml-example-tensorboard">
+                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-tensorboard-case">
                       <div><span>train-and-report:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
@@ -318,18 +316,16 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span>- python train.py  # generate ./logs</span></div>
                       </Tooltip>
                     </Code>
-        
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-tensorboard/-/merge_requests/1">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative.ai/cml-tensorboard-case/-/merge_requests/2">
                         <Image src="/img/gitlab/tensorboard-report.png" alt="GitLab Tensorboard report example" />
                       </a>
                     </ExampleBox>
-        
                   </Collapser>
                 )}
                 github={(
                   <Collapser>
-                    <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative-test/cml-example-tensorboard">
+                    <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml_tensorboard_case">
                       <div><span>name: CML & TensorBoard</span></div>
                       <div><span>on: [push]</span></div>
                       <div><span>jobs:</span></div>
@@ -358,7 +354,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-tensorboard/pull/1">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml_tensorboard_case/pull/1">
                         <Image src="/img/github/tensorboard-report.png" alt="GitHub Tensorboard report example" />
                       </a>
                     </ExampleBox>
@@ -406,7 +402,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
               <Switchable
                 gitlab={(
                   <Collapser>
-                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative-test/cml-example-cloud-gpu">
+                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-runner-example">
                       <div><span>launch-runner:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
@@ -417,9 +413,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>      <span>--cloud-region=us-west</span></div>
                         <div>      <span>--cloud-type=m5.2xlarge</span></div>
                         <div>      <span>--cloud-spot</span></div>
-                        <div>      <span>--labels=cml</span></div>
+                        <div>      <span>--labels=cml-runner</span></div>
                         <div><span>train-and-report:</span></div>
-                        <div>  <span>tags: [cml]</span></div>
+                        <div>  <span>tags: [cml-runner]</span></div>
                       </Tooltip>
                       <div>  <span>needs: [launch-runner]</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
@@ -435,18 +431,16 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
-        
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-cloud-gpu/-/merge_requests/1">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative.ai/cml-runner-example/-/merge_requests/2">
                         <Image src="/img/gitlab/cml-runner-report.png" alt="GitLab Cloud report example" />
                       </a>
                     </ExampleBox>
-        
                   </Collapser>
                 )}
                 github={(
                   <Collapser>
-                    <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative-test/cml-example-cloud-gpu">
+                    <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml-runner-base-case">
                       <div><span>name: CML</span></div>
                       <div><span>on: [push]</span></div>
                       <div><span>jobs:</span></div>
@@ -467,9 +461,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>--cloud=aws \</span></div>
                         <div>          <span>--cloud-region=us-west \</span></div>
                         <div>          <span>--cloud-type=m5.2xlarge \</span></div>
-                        <div>          <span>--labels=cml</span></div>
+                        <div>          <span>--labels=cml-runner</span></div>
                         <div>  <span>train-and-report:</span></div>
-                        <div>    <span>runs-on: [self-hosted, cml]</span></div>
+                        <div>    <span>runs-on: [self-hosted, cml-runner]</span></div>
                       </Tooltip>
                       <div>    <span>needs: launch-runner</span></div>
                       <div>    <span>timeout-minutes: 50400 # 35 days</span></div>
@@ -493,9 +487,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>REPO_TOKEN: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
                       </Tooltip>
                     </Code>
-        
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-cloud-gpu/pull/1">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml-runner-base-case/pull/4">
                         <Image src="/img/github/cml-runner-report.png" alt="GitHub Cloud report example" />
                       </a>
                     </ExampleBox>
@@ -504,7 +497,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-test/cml-example-cloud">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-cloud-case">
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
                       <div><span>  - step:</span></div>
@@ -518,12 +511,12 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div><span>              --cloud-region=us-west \</span></div>
                         <div><span>              --cloud-type=m5.2xlarge \</span></div>
                         <div><span>              --cloud-spot \</span></div>
-                        <div><span>              --labels=cml</span></div>
+                        <div><span>              --labels=cml.runner</span></div>
                       </Tooltip>
                       <div><span>  - step:</span></div>
                       <div><span>      name: run</span></div>
                       <Tooltip type="runner">
-                        <div><span>      runs-on: [self.hosted, cml]</span></div>
+                        <div><span>      runs-on: [self.hosted, cml.runner]</span></div>
                       </Tooltip>
                       <div><span>      image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>      script:</span></div>
@@ -555,7 +548,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
               <Switchable
                 gitlab={(
                   <Collapser>
-                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative-test/cml-example-cloud">
+                    <Code filename=".gitlab-ci.yml" repo="https://gitlab.com/iterative.ai/cml-cloud-case">
                       <div><span>launch-runner:</span></div>
                       <div>  <span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div>  <span>script:</span></div>
@@ -596,18 +589,16 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
-        
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative-test/cml-example-cloud/-/merge_requests/1">
+                      <a target="_blank" rel="noreferrer" href="https://gitlab.com/iterative.ai/cml-cloud-case/-/merge_requests/1">
                         <Image src="/img/gitlab/cloud-report.png" alt="GitLab Cloud report example" />
                       </a>
                     </ExampleBox>
-        
                   </Collapser>
                 )}
                 github={(
                   <Collapser>
-                    <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative-test/cml-example-cloud">
+                    <Code filename=".github/workflows/cml.yaml" repo="https://github.com/iterative/cml_cloud_case">
                       <div><span>name: CML</span></div>
                       <div><span>on: [push]</span></div>
                       <div><span>jobs:</span></div>
@@ -670,7 +661,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative-test/cml-example-cloud/pull/1">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml_cloud_case/pull/11">
                         <Image src="/img/github/cloud-report.png" alt="GitHub Cloud report example" />
                       </a>
                     </ExampleBox>

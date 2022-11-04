@@ -47,7 +47,7 @@ jobs:
 ```
 
 The example above generates visual reports in pull requests:
-[![](/img/cml_first_report.png)](https://github.com/iterative-test/cml-example-minimal/pull/1)
+[![](/img/cml_first_report.png)](https://github.com/iterative/cml_base_case/pull/2)
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -58,11 +58,11 @@ and CML set up on an Ubuntu LTS base for convenience.
 
 ### Example projects
 
-- [Basic CML project](https://github.com/iterative-test/cml-example-minimal)
-- [CML with DVC to pull data](https://github.com/iterative-test/cml-example-dvc)
-  & [tutorial](/doc/cml-with-dvc?tab=GitHub)
-- [CML with Tensorboard](https://github.com/iterative-test/cml-example-tensorboard)
-- [CML with EC2 GPU](https://github.com/iterative-test/cml-example-cloud)
+- [Basic CML project](https://github.com/iterative/cml_base_case)
+- [CML with DVC to pull data](https://github.com/iterative/cml_dvc_case) &
+  [tutorial](/doc/cml-with-dvc?tab=GitHub)
+- [CML with Tensorboard](https://github.com/iterative/cml_tensorboard_case)
+- [CML with EC2 GPU](https://github.com/iterative/cml_cloud_case)
 
 </tab>
 <tab title="GitLab">
@@ -91,7 +91,7 @@ create-CML-report:
 via a `REPO_TOKEN` variable.
 
 The example above generates visual reports in merge requests:
-[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative-test/cml-example-minimal/-/merge_requests/1)
+[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -101,11 +101,11 @@ set up on an Ubuntu LTS base for convenience.
 
 ### Example projects
 
-- [Basic CML project](https://gitlab.com/iterative-test/cml-example-minimal)
-- [CML with DVC to pull data](https://gitlab.com/iterative-test/cml-example-dvc)
-  & [tutorial](/doc/cml-with-dvc?tab=GitLab)
-- [CML with Tensorboard](https://gitlab.com/iterative-test/cml-example-tensorboard)
-- [CML with EC2 GPU](https://gitlab.com/iterative-test/cml-example-cloud)
+- [Basic CML project](https://gitlab.com/iterative.ai/cml-base-case)
+- [CML with DVC to pull data](https://gitlab.com/iterative.ai/cml-dvc-case) &
+  [tutorial](/doc/cml-with-dvc?tab=GitLab)
+- [CML with Tensorboard](https://gitlab.com/iterative.ai/cml-tensorboard-case)
+- [CML with EC2 GPU](https://gitlab.com/iterative.ai/cml-cloud-case)
 
 </tab>
 <tab title="Bitbucket">
@@ -135,7 +135,7 @@ pipelines:
 `REPO_TOKEN` variable.
 
 The example above generates visual reports in pull requests:
-[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-test/cml-example-minimal/pull-requests/2)
+[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)
 
 ⚠️ CML works with Bitbucket Cloud, where you can use the
 [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
@@ -144,7 +144,7 @@ not yet supported.
 
 ### Example projects
 
-- [Basic CML project](https://bitbucket.org/iterative-test/cml-example-minimal)
+- [Basic CML project](https://bitbucket.org/iterative-ai/cml-base-case)
 
 </tab>
 </toggle>
