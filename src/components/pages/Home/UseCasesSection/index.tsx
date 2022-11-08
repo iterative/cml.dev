@@ -532,7 +532,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-test/cml-example-cloud">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml-cloud-case/pull-requests/1">
                         <Image src="/img/bitbucket/cml-runner-report.png" alt="Bitbucket Cloud report example" />
                       </a>
                     </ExampleBox>
