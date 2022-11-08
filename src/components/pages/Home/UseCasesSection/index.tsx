@@ -251,7 +251,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-test/cml-example-dvc">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-dvc-case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
@@ -281,7 +281,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-test/cml-example-dvc">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml-dvc-case/pull-requests/1">
                         <Image src="/img/bitbucket/dvc-report.png" alt="Bitbucket DVC report example" />
                       </a>
                     </ExampleBox>
@@ -363,7 +363,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-test/cml-example-tensorboard">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-tensorboard-case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
@@ -386,7 +386,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-test/cml-example-tensorboard">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml-tensorboard-case/pull-requests/1">
                         <Image src="/img/bitbucket/tensorboard-report.png" alt="Bitbucket Tensorboard report example" />
                       </a>
                     </ExampleBox>
