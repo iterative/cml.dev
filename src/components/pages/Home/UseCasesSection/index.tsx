@@ -670,9 +670,9 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-test/cml-example-cloud">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://github.com/iterative/cml/issues/1015">
                       <Tooltip type="dependencies">
-                        <div><span># GPU not yet supported, see https://github.com/iterative/cml/issues/1015</span></div>
+                        <div><span># GPU support coming soon, see https://github.com/iterative/cml/issues/1015</span></div>
                       </Tooltip>
                       <div><span>pipelines:</span></div>
                       <div><span>  default:</span></div>
@@ -717,7 +717,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-test/cml-example-cloud">
+                      <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml/issues/1015">
                         <Image src="/img/bitbucket/cloud-report.png" alt="Bitbucket Cloud report example" />
                       </a>
                     </ExampleBox>
