@@ -632,7 +632,7 @@ export default {
     RepoButton: {
       variant: 'buttons.base',
       textAlign: 'center',
-      width: '96px',
+      width: '103px',
       display: 'flex',
       flexFlow: 'row nowrap',
       alignItems: 'center',
@@ -718,13 +718,19 @@ export default {
       Left: {
         '::before': {
           left: '0',
-          right: '50%'
+          right: '66%'
+        }
+      },
+      Center: {
+        '::before': {
+          left: '33%',
+          right: '33%'
         }
       },
       Right: {
         '::before': {
-          right: '0',
-          left: '50%'
+          left: '66%',
+          right: '0'
         }
       },
       Label: {
@@ -748,7 +754,7 @@ export default {
         py: 1,
         px: 2,
         zIndex: '3',
-        width: '50%',
+        width: '33%',
         textAlign: 'center',
         display: 'inline-block',
         position: 'relative',

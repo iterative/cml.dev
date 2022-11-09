@@ -20,6 +20,7 @@ import { ReactComponent as ReportsIcon } from '@media/icons/reports.svg'
 
 import githubVideoMp4 from '@media/github/landing-video.mp4'
 import gitlabVideoMp4 from '@media/gitlab/landing-video.mp4'
+import bitbucketVideoMp4 from '@media/bitbucket/landing-video.mp4'
 
 import backgroundImage from '@media/landing-background.png'
 
@@ -102,11 +103,14 @@ const HeroSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
         </Box>
         <Box sx={{ flex: '1', width: '100%' }}>
           <Switch
-            sx={{ mt: 4, mx: 'auto', maxWidth: ['100%', null, '160px'] }}
+            sx={{ mt: 4, mx: 'auto', maxWidth: ['100%', null, '240px'] }}
           />
           <Switchable
             gitlab={<LandingVideo src={gitlabVideoMp4} mode="gitlab" />}
             github={<LandingVideo src={githubVideoMp4} mode="github" />}
+            bitbucket={
+              <LandingVideo src={bitbucketVideoMp4} mode="bitbucket" />
+            }
           />
         </Box>
       </Collapser>

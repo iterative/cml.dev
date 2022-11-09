@@ -31,8 +31,10 @@ const ModeSwitch = ({
   variant = 'switches.primary',
   left = 'GitLab',
   leftMode = 'gitlab',
-  right = 'GitHub',
-  rightMode = 'github',
+  center = 'Github',
+  centerMode = 'github',
+  right = 'Bitbucket',
+  rightMode = 'bitbucket',
   className = '',
   sx
 }) => {
@@ -45,11 +47,15 @@ const ModeSwitch = ({
       sx={msx({
         ...sx,
         idPrefix,
+        // TODO: duplicated in cml.dev/src/components/organisms/SwitchableMode/common.js
         modes: {
           gitlab: {
             variant: `switches.Base.Left`
           },
           github: {
+            variant: `switches.Base.Center`
+          },
+          bitbucket: {
             variant: `switches.Base.Right`
           }
         }
@@ -58,6 +64,11 @@ const ModeSwitch = ({
       <ModeSwitchLabel mode={leftMode} variant={variant} idPrefix={idPrefix}>
         {left}
       </ModeSwitchLabel>
+
+      <ModeSwitchLabel mode={centerMode} variant={variant} idPrefix={idPrefix}>
+        {center}
+      </ModeSwitchLabel>
+
       <ModeSwitchLabel mode={rightMode} variant={variant} idPrefix={idPrefix}>
         {right}
       </ModeSwitchLabel>
