@@ -21,7 +21,7 @@ const invisible = {
   '& video': { display: 'none' }
 }
 
-const Switchable = ({ github, gitlab, idPrefix = undefined }) => (
+const Switchable = ({ github, gitlab, bitbucket, idPrefix = undefined }) => (
   <Box>
     <Box
       sx={msx({
@@ -46,6 +46,18 @@ const Switchable = ({ github, gitlab, idPrefix = undefined }) => (
       aria-label="GitHub-specific content"
     >
       {github}
+    </Box>
+    <Box
+      sx={msx({
+        idPrefix,
+        ...invisible,
+        modes: {
+          bitbucket: visible
+        }
+      })}
+      aria-label="Bitbucket-specific content"
+    >
+      {bitbucket}
     </Box>
   </Box>
 )

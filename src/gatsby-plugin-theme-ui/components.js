@@ -22,6 +22,7 @@ import Switchable from '../components/organisms/SwitchableMode/Switchable'
 import Switch from '../components/organisms/SwitchableMode/Switch'
 import { ReactComponent as GitHubIcon } from '../media/icons/github.svg'
 import { ReactComponent as GitLabIcon } from '../media/icons/gitlab.svg'
+import { ReactComponent as BitbucketIcon } from '../media/icons/bitbucket.svg'
 
 const getTextFromPreChildren = preChildren => {
   return Array.from(preChildren).reduce((acc, child, index) => {
@@ -139,6 +140,18 @@ const RepoButton = ({ url, host = new URL(url).host }) => {
         >
           <GitLabIcon width="18" height="18" />
           <span>GitLab</span>
+        </Link>
+      )
+    case 'bitbucket.org':
+      return (
+        <Link
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="RepoButton"
+        >
+          <BitbucketIcon width="14" height="14" />
+          <span>Bitbucket</span>
         </Link>
       )
     default:

@@ -1,3 +1,4 @@
+// TODO: duplicated in cml.dev/src/components/organisms/SwitchableMode/common.js
 const defaultPrefix = `site-mode-`
 
 const makeModeId = (mode, prefix = defaultPrefix) => prefix + mode
