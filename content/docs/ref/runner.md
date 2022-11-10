@@ -316,7 +316,7 @@ user:
 
 ```cli
 $ cml runner launch \
-  --cloud-startup-script=$(echo 'echo "$(curl https://github.com/${{ github.actor }}.keys)" >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0) \
+  --cloud-startup-script=$(echo 'curl https://github.com/${{ github.actor }}.keys >> /home/ubuntu/.ssh/authorized_keys' | base64 -w 0) \
   ...
 ```
 
