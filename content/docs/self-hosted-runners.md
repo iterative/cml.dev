@@ -36,7 +36,7 @@ workflow.
 
 Note that `cml runner` will also automatically restart your jobs (whether from a
 [GitHub Actions 35 day workflow timeout](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
-or a
+or an
 [AWS EC2 spot instance interruption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html)).
 
 <toggle>
