@@ -39,7 +39,7 @@
     "node": "^16 || ^18"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.1.19",
+    "@dvcorg/gatsby-theme-iterative": "^0.1.23",
     "@dvcorg/websites-server": "^0.0.10",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
