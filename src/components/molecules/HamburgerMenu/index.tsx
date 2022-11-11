@@ -4,7 +4,7 @@ import cn from 'classnames'
 import HamburgerIcon from '../HamburgerIcon'
 import Link from '../../atoms/Link'
 import SiteLogo from '../SiteLogo'
-import { logEvent } from '../../../utils/front/plausible'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import { getFirstPage } from '../../../utils/shared/sidebar'
 

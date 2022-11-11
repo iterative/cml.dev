@@ -155,8 +155,8 @@ const SEO: React.FC<ISEOProps> = ({
       <script
         defer
         data-domain="cml.dev"
-        src="https://dvc.org/pl/js/script.js"
-        data-api="https://dvc.org/pl/api/event"
+        src="/pl/js/plausible.outbound-links.js"
+        data-api="/pl/api/event"
       ></script>
     </Helmet>
   )

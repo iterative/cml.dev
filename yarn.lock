@@ -1198,10 +1198,10 @@
     unist-util-remove-position "^4.0.1"
     unist-util-visit "^4.1.0"
 
-"@dvcorg/gatsby-theme-iterative@^0.1.19":
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.1.19.tgz#c21a02ea0045e08b33d0674348d5e9af771acaa4"
-  integrity sha512-86N4k6HNQgOnb4384DC31fW4zmOLliBxKJFfhJcs7+SpvP0PSBhCTkmDw0e2qMmZwABh48LyH25aZM7RiJ26/g==
+"@dvcorg/gatsby-theme-iterative@^0.1.23":
+  version "0.1.23"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.1.23.tgz#8e13533008999fa8398a69525f920557a00bce45"
+  integrity sha512-LrEQvAHL0fPRsHw7Ymi4DNxw7H6CHJnIPQYbGbj1h8PI+IvBoTrnhpLoGtOPJSna/EUILrErWP+i1FSFcP1oAQ==
   dependencies:
     "@reach/portal" "^0.17.0"
     "@reach/router" "^1.3.4"
