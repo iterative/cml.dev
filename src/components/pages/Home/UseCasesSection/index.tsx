@@ -138,7 +138,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <Tooltip type="dependencies">
                         <div><span>          - pip install -r requirements.txt</span></div>
                         <div><span>          - python train.py  # generate plot.png</span></div>
-                      </Tooltip> 
+                      </Tooltip>
                       <Tooltip type="reports">
                         <div><span>          # Create CML report</span></div>
                         <div><span>          - cat metrics.txt &gt;&gt; report.md</span></div>
@@ -246,7 +246,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <Image src="/img/github/dvc-report.png" alt="GitHub DVC report example" />
                       </a>
                     </ExampleBox>
-        
+
                   </Collapser>
                 )}
                 bitbucket={(
@@ -285,7 +285,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <Image src="/img/bitbucket/dvc-report.png" alt="Bitbucket DVC report example" />
                       </a>
                     </ExampleBox>
-        
+
                   </Collapser>
                 )}
               />
@@ -358,7 +358,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <Image src="/img/github/tensorboard-report.png" alt="GitHub Tensorboard report example" />
                       </a>
                     </ExampleBox>
-        
+
                   </Collapser>
                 )}
                 bitbucket={(
@@ -390,7 +390,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <Image src="/img/bitbucket/tensorboard-report.png" alt="Bitbucket Tensorboard report example" />
                       </a>
                     </ExampleBox>
-        
+
                   </Collapser>
                 )}
               />
@@ -492,7 +492,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <Image src="/img/github/cml-runner-report.png" alt="GitHub Cloud report example" />
                       </a>
                     </ExampleBox>
-        
+
                   </Collapser>
                 )}
                 bitbucket={(
@@ -536,7 +536,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <Image src="/img/bitbucket/cml-runner-report.png" alt="Bitbucket Cloud report example" />
                       </a>
                     </ExampleBox>
-        
+
                   </Collapser>
                 )}
               />
@@ -665,7 +665,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <Image src="/img/github/cloud-report.png" alt="GitHub Cloud report example" />
                       </a>
                     </ExampleBox>
-        
+
                   </Collapser>
                 )}
                 bitbucket={(
@@ -687,12 +687,12 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div><span>              --cloud-region=us-west \</span></div>
                         <div><span>              --cloud-type=m5.2xlarge \</span></div>
                         <div><span>              --cloud-spot \</span></div>
-                        <div><span>              --labels=cml</span></div>
+                        <div><span>              --labels=cml.runner</span></div>
                       </Tooltip>
                       <div><span>  - step:</span></div>
                       <div><span>      name: run</span></div>
                       <Tooltip type="runner">
-                        <div><span>      runs-on: [self.hosted, cml]</span></div>
+                        <div><span>      runs-on: [self.hosted, cml.runner]</span></div>
                       </Tooltip>
                       <div><span>      image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>      script:</span></div>
