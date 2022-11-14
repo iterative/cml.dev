@@ -120,7 +120,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                     </Code>
                     <ExampleBox title="CML Report">
                       <a target="_blank" rel="noreferrer" href="https://github.com/iterative/cml_base_case/pull/2">
-                        <Image src="/img/github/base-case-report.png" alt="Github Base report example" />
+                        <Image src="/img/github/base-case-report.png" alt="GitHub Base report example" />
                       </a>
                     </ExampleBox>
 

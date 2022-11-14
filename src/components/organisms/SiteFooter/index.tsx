@@ -41,7 +41,7 @@ const footerLists: Array<IFooterListPopupProps> = [
       },
       { text: 'Use cases', url: '/#use-cases' },
       { text: 'Blog', url: 'https://dvc.org/blog' },
-      { text: 'Github', url: 'https://github.com/iterative/cml' }
+      { text: 'GitHub', url: 'https://github.com/iterative/cml' }
     ]
   },
   {
