@@ -10,7 +10,7 @@ const Alert: React.FC = () => (
       </span>{' '}
       <p>
         New Release!{' '}
-        <SmartLink href="https://dvc.org/blog/iterative-studio-model-registry">
+        <SmartLink href="https://iterative.ai/blog/iterative-studio-model-registry">
           Git-backed Machine Learning Model Registry
         </SmartLink>{' '}
         for all your model management needs.
