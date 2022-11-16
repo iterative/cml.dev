@@ -130,9 +130,9 @@ pipelines:
                 --cloud-region=us-west \
                 --cloud-type=m5.2xlarge \
                 --cloud-spot \
-                --labels=cml
+                --labels=cml.runner
     - step:
-        runs-on: [self.hosted, cml]
+        runs-on: [self.hosted, cml.runner]
         image: iterativeai/cml:0-dvc2-base1
         # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
         script:

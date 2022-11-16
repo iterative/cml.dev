@@ -35,13 +35,10 @@ const footerLists: Array<IFooterListPopupProps> = [
   {
     title: 'About',
     items: [
-      {
-        text: 'Install',
-        url: 'https://github.com/iterative/cml#install-cml-as-a-package'
-      },
       { text: 'Use cases', url: '/#use-cases' },
-      { text: 'Blog', url: 'https://dvc.org/blog' },
-      { text: 'Github', url: 'https://github.com/iterative/cml' }
+      { text: 'Docs', url: '/doc' },
+      { text: 'Blog', url: 'https://iterative.ai/blog' },
+      { text: 'GitHub', url: 'https://github.com/iterative/cml' }
     ]
   },
   {
