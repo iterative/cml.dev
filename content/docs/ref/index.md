@@ -1,4 +1,17 @@
-# Command Reference
+# CML Command Reference
+
+CML provides a number of commands to help package the outputs of ML workflows
+into a CML report. These may include numeric data or model performance
+visualizations. Let's look at the typical sequence (after
+[configuration](/doc/config)):
+
+∞ `cml runner` launches a runner hosted by a cloud compute provider or
+[on-premise](/doc/self-hosted-runners).
+
+∞ `cml pr` commits a set of files to a new branch and create a pull request.
+
+∞ `cml comment` posts a Markdown report as a comment on a commit or pull/merge
+request.
 
 ## Generic Options
 

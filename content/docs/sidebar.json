@@ -24,7 +24,10 @@
       }
     ]
   },
-  "usage",
+  {
+    "label": "Configuration",
+    "slug": "config"
+  },
   {
     "label": "CML with DVC",
     "slug": "cml-with-dvc"
