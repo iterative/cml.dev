@@ -4,72 +4,22 @@
 cml pr create [options] <pathspec>...
 ```
 
-Commit specified files to a new branch and create a pull request. If sending a
-report afterwards, consider using
+Commits a set of files (any [Git pathspec]) to a new branch and creates a pull
+request. If sending a report afterward, consider using
 [`cml comment update --pr`](/doc/ref/comment#update).
 
-<admon type="info">
+[git pathspec]:
+  https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
 
-Pull requests created with `cml pr` **won't** trigger a new CI/CD run, thereby
-preventing an infinite chain of runs. In some cases, the `--skip-ci` flag may be
-required (e.g. to stop GitLab CI running after `--merge`).
+<details>
 
-</admon>
-
-<admon type="tip">
-
-Files to commit can be specified using any syntax supported by
-[Git pathspec](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec).
-
-</admon>
-
-## Options
-
-Any [generic option](/doc/ref) in addition to:
-
-- `--merge`, `--rebase`, or `--squash`: Try to merge, rebase, or squash-merge
-  the created PR after CI tests pass.
-- `--md`: Produce output in Markdown format (`[CML Pull/Merge Request](url)`
-  instead of `url`).
-- `--skip-ci`: Prevent the PR/MR from triggering another CI run post-merge.
-- `--remote=<name or URL>`: Git remote name or URL [default: `origin`].
-- `--user-email=<address>`: Git user email for commits [default:
-  `olivaw@iterative.ai`].
-- `--user-name=<...>`: Git user name for commits [default: `Olivaw[bot]`].
-- `--branch`: Pull request branch name [default: auto-generated].
-- `--title`: Pull request title [default: auto-generated].
-- `--body`: Pull request description [default: auto-generated].
-- `--message`: Commit message [default: auto-generated].
-
-## Examples
-
-### Commit all files in current working directory
-
-```cli
-$ cml pr create .
-```
-
-### Automatically merge pull requests
-
-```cli
-$ date > output.txt
-$ cml pr create --merge output.txt  # or --squash/--rebase
-```
-
-The `--merge`, `--rebase`, and `--squash` options enable
-[auto–merge](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request)
-(GitHub) or
-[merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-(GitLab) to merge the pull request as soon as checks succeed. If waiting for
-checks isn't supported, `cml pr` will try to merge the pull request immediately.
-
-## Command internals
+### Click to see what happens under the hood.
 
 ```cli
 $ cml pr create "**/*.py" "**/*.json"
 ```
 
-is roughly equivalent to:
+is roughly equivalent to
 
 ```bash
 SHA="$(git log -n1 --format=%h)"
@@ -79,13 +29,13 @@ git checkout "${BASE}-cml-pr-${SHA}"
 
 if [[ $(git ls-remote --exit-code origin\
         "${BASE}-cml-pr-${SHA}" &>/dev/null) ]]; then
-  # branch already exists; just print its PR URL
+  # Branch already exists; Just print its PR URL.
   curl \
     -H "Accept: application/vnd.github.v3+json" \
     https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls \
     | jq -r ".[] | select(.head.ref == '${BASE}-cml-pr-${SHA}') | .url"
 else
-  # create branch & PR
+  # Create branch & PR.
   git checkout -b "${BASE}-cml-pr-${SHA}"
   git add "**/*.py" "**/*.json"
   git commit -m "CML PR for ${SHA} [skip ci]"
@@ -104,4 +54,68 @@ else
     }" \
     | jq -r .url
 fi
+```
+
+</details>
+
+<admon type="info">
+
+Pull requests created with `cml pr` **won't** trigger a new CI/CD run, thereby
+preventing an infinite chain of runs. In some cases, the `--skip-ci` flag may be
+required (e.g. to stop GitLab CI running after `--merge`).
+
+</admon>
+
+## Options
+
+Any [generic option](/doc/ref) in addition to:
+
+- `--merge`, `--squash`, or `--rebase`: Try to merge, squash-merge, or rebase
+  the PR (after CI tests pass).
+
+  <admon type="info">
+
+  These options enable [auto–merge] (GitHub) or [merge when pipeline succeeds]
+  (GitLab) to merge the pull request as soon as checks succeed.
+
+  </admon>
+
+- `--md`: Produce output in Markdown format (`[CML Pull/Merge Request](url)`
+  instead of `url`).
+
+- `--skip-ci`: Prevent the PR/MR from triggering another CI run post-merge.
+
+- `--remote=<name or URL>`: Git remote name or URL [default: `origin`]
+
+- `--user-email=<address>`: Git user email for commits [default:
+  `olivaw@iterative.ai`]
+
+- `--user-name=<...>`: Git user name for commits [default: `Olivaw[bot]`]
+
+- `--branch`: Pull request branch name [default: auto-generated]
+
+- `--title`: Pull request title [default: auto-generated]
+
+- `--body`: Pull request description [default: auto-generated]
+
+- `--message`: Commit message [default: auto-generated]
+
+[auto–merge]:
+  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
+[merge when pipeline succeeds]:
+  https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html
+
+## Examples
+
+Commit all files in current working directory:
+
+```cli
+$ cml pr create .
+```
+
+Automatically merge pull requests:
+
+```cli
+$ date > output.txt
+$ cml pr create --merge output.txt  # or --squash/--rebase
 ```

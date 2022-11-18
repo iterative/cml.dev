@@ -4,7 +4,7 @@
 cml workflow rerun [options]
 ```
 
-Rerun a workflow given a Job/Workflow ID.
+Reruns a workflow given a Job/Workflow ID.
 
 ## Options
 

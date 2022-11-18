@@ -4,7 +4,7 @@
 cml tensorboard connect [options]
 ```
 
-Return a link to a <https://tensorboard.dev> page.
+Returns the link to a <https://tensorboard.dev> page.
 
 ## Options
 

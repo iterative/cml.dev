@@ -4,71 +4,104 @@
 cml runner launch [options]
 ```
 
-Starts a [runner](/doc/self-hosted-runners) (either via any supported cloud
-compute provider or locally on-premise).
+Starts a runner (either via any supported cloud compute provider or
+[on-premise](/doc/self-hosted-runners)).
+
+<admon type="tip">
+
+For debugging, see the section [in self-hosted runners].
+
+[in self-hosted runners]: /doc/self-hosted-runners#debugging
+
+</admon>
 
 ## Options
 
 Any [generic option](/doc/ref) in addition to:
 
 - `--labels=<...>`: One or more (comma-delimited) labels for this runner
-  [default: `cml`].
-- `--name=<...>`: Runner name displayed in the CI [default: `cml-{ID}`].
+  [default: `cml`]
+
+- `--name=<...>`: Runner name displayed in the CI [default: `cml-{ID}`]
+
 - `--idle-timeout=<seconds>`: Seconds to wait for jobs before terminating. Set
   to `-1` to disable timeout [default: `300`].
+
 - `--no-retry`: Don't restart the workflow when terminated due to instance
-  disposal or
-  [GitHub Actions timeout](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits).
+  disposal or [GitHub Actions timeout].
+
 - `--single`: Terminate runner after one workflow run.
+
 - `--reuse`: Don't launch a new runner if an existing one has the same name or
   overlapping labels. If an existing matching (same name or overlapping labels)
-  instance is busy, it'll
-  [still be reused](https://github.com/iterative/cml/issues/610).
+  instance is busy, it'll [still be reused].
+
 - `--reuse-idle`: Creates a new runner only if the matching labels don't exist
   or are already busy.
+
 - `--cloud={aws,azure,gcp,kubernetes}`: Cloud compute provider to host the
-  runner.
-- `--cloud-type={m,l,xl,m+k80,m+v100,...}`: Instance
-  [type](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type).
-  Also accepts native types such as `t2.micro`.
-- `--cloud-gpu={nogpu,k80,v100,tesla}`: GPU type.
-- `--cloud-hdd-size=<...>`: Disk storage in GB.
+  runner
+
+- `--cloud-type={m,l,xl,m+k80,m+v100,...}`: Instance [type]. Also accepts native
+  types such as `t2.micro`.
+
+- `--cloud-gpu={nogpu,k80,v100,tesla}`: GPU type
+
+- `--cloud-hdd-size=<...>`: Disk storage in GB
+
 - `--cloud-spot`: Request a preemptible spot instance.
+
 - `--cloud-spot-price=<...>`: Maximum spot instance USD bidding price, [default:
-  *current price*].
-- `--cloud-region={us-west,us-east,eu-west,eu-north,...}`:
-  [Region](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#cloud-regions)
-  where the instance is deployed. Also accepts native AWS/Azure region or GCP
-  zone [default: `us-west`].
-- `--cloud-permission-set=<...>`:
-  [AWS instance profile](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#ec2-instance-profile)
-  or
-  [GCP instance service account](https://cloud.google.com/compute/docs/access/service-accounts).
-  More [details below](#using---cloud-permission-set).
+  *current price*]
+
+- `--cloud-region={us-west,us-east,eu-west,eu-north,...}`: [Region] where the
+  instance is deployed. Also accepts native AWS/Azure region or GCP zone
+  [default: `us-west`].
+
+- `--cloud-permission-set=<...>`: [AWS instance profile] or [GCP instance
+  service account]. More [details below](#example-using---cloud-permission-set)
+
 - `--cloud-metadata=<...>`: `key=value` pair to associate with cloud runner
   instances. May be [specified multiple times](http://yargs.js.org/docs/#array).
-- `--cloud-startup-script=<...>`: Run the provided
-  [Base64](https://linux.die.net/man/1/base64)-encoded Linux shell script during
-  the instance initialization. More
-  [details below](#using---cloud-startup-script).
+
+- `--cloud-startup-script=<...>`: Run the provided [Base64]-encoded Linux shell
+  script during the instance initialization. More
+  [details below](#example-using---cloud-startup-script)
+
 - `--cloud-ssh-private=<key>`: Private SSH RSA key [default: *auto-generate
   throwaway key*]. Only supported on AWS and Azure; intended for debugging
-  purposes. More [details below](#using---cloud-ssh-private).
-- `--cloud-aws-security-group=<...>`:
-  [AWS security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
-  identifier.
-- `--cloud-aws-subnet=<...>`:
-  [AWS subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#subnet-basics)
-  identifier.
+  purposes. More [details below](#example-using---cloud-ssh-private).
+
+- `--cloud-aws-security-group=<...>`: [AWS security group] identifier
+
+- `--cloud-aws-subnet=<...>`: [AWS subnet] identifier
+
 - `--docker-volumes=<...>`: Volume mount to pass to Docker, e.g.
   `/var/run/docker.sock:/var/run/docker.sock` for Docker-in-Docker support. May
   be specified multiple times. Only supported by GitLab.
+
+[github actions timeout]:
+  https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits
+[still be reused]: https://github.com/iterative/cml/issues/610
+[type]:
+  https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type
+[region]:
+  https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#cloud-regions
+[aws instance profile]:
+  https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#ec2-instance-profile
+[gcp instance service account]:
+  https://cloud.google.com/compute/docs/access/service-accounts
+[base64]: https://linux.die.net/man/1/base64
+[aws security group]:
+  https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html
+[aws subnet]:
+  https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#subnet-basics
 
 ## FAQs and Known Issues
 
 ### GitHub
 
-- **GitHub Actions timeout after a few hours**.
+- **GitHub Actions timeout after a few hours.**
 
   You can request up to
   [35 days](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits)
@@ -78,11 +111,9 @@ Any [generic option](/doc/ref) in addition to:
   need to write your code to save intermediate results to take advantage of
   this).
 
-## Examples
+## Example: Using `--cloud-permission-set`
 
-### Using `--cloud-permission-set`
-
-#### Format
+### Format
 
 <admon type="info">
 
@@ -122,7 +153,7 @@ $ cml runner launch \
 </tab>
 </toggle>
 
-#### Common Permissions
+### Common Permissions
 
 <admon type="tip">
 
@@ -201,7 +232,7 @@ You may also require additional permissions specific to your application (for
 example: object storage, private docker registries, and other cloud services).
 These additional permissions should be managed separately, and exposed either as
 independent credentials or via
-[`--cloud-permission-set`](https://cml.dev/doc/ref/runner#--cloud-permission-set)
+[`--cloud-permission-set`](/doc/ref/runner#--cloud-permission-set)
 
 <admon type="info">
 
@@ -226,7 +257,7 @@ Other AWS examples include accessing data in:
 - DynamoDB
 - Redshfit
 
-#### Example "Permission Sets"
+### "Permission Sets"
 
 <toggle>
 <tab title="AWS">
@@ -281,7 +312,7 @@ Using `--cloud-permission-set` will likely require:
 </tab>
 </toggle>
 
-### Using `--cloud-startup-script`
+## Example: Using `--cloud-startup-script`
 
 A [base64-encoded](https://en.wikipedia.org/wiki/Base64) script to execute
 during cloud instance provisioning (after `cml runner` does its initial setup
@@ -322,16 +353,18 @@ $ cml runner launch \
 
 <admon type="info">
 
-GitHub Actions will
-[replace `${{ github.actor }}` with the username of the person who triggered the workflow](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context).
-Conveniently, GitHub (and GitLab) provide a URL to access a user's public SSH
-keys. In effect the above command runs:
+GitHub Actions will replace `${{ github.actor }}` with the username of the
+[person who triggered the workflow]. Conveniently, GitHub (and GitLab) provide a
+URL to access a user's public SSH keys. In effect the above command runs
 
 ```cli
 $ curl https://github.com/YOUR_USERNAME.keys >> ~/.ssh/authorized_keys
 ```
 
 in the cloud instance.
+
+[person who triggered the workflow]:
+  https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
 
 </admon>
 
@@ -340,14 +373,12 @@ experimentation.
 
 <admon type="info">
 
-By comparison,
-[`--cloud-ssh-private`](https://cml.dev/doc/ref/runner#--cloud-ssh-private)
-relies on a local user-generated _private_ key and is only supported on AWS and
-Azure.
+By comparison, [`--cloud-ssh-private`](#--cloud-ssh-private) relies on a local
+user-generated _private_ key and is only supported on AWS and Azure.
 
 </admon>
 
-### Using `--cloud-ssh-private`
+## Example: Using `--cloud-ssh-private`
 
 1. Generate a new RSA PEM private key for debugging purposes:
 
@@ -371,7 +402,3 @@ Azure.
 
    replacing the `IP_ADDRESS` placeholder with the instance address returned by
    `cml runner` (search the output logs for `instanceIp`).
-
-## Debugging
-
-[See the section self-hosted runners](/doc/self-hosted-runners#debugging)
