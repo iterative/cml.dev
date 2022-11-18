@@ -1,7 +1,7 @@
 # CML Documentation
 
-[Continuous Machine Learning (CML)](https://cml.dev) is an open-source library
-for implementing continuous integration & delivery (CI/CD) in machine learning
+[Continuous Machine Learning (CML)](/) is an open-source library for
+implementing continuous integration & delivery (CI/CD) in machine learning
 projects. Use it to automate parts of your development workflow, including model
 training and evaluation, comparing ML experiments across your project history,
 and monitoring changing datasets.
@@ -35,3 +35,21 @@ us a ⭐ if you like the project!
 
 ✅ Contribute to CML [on GitHub](https://github.com/iterative/cml) or help us
 improve this [documentation](https://github.com/iterative/cml.dev) 🙏.
+
+## CML principles
+
+- **[GitFlow] for data science.** Use GitLab or GitHub to manage ML experiments,
+  track who trained ML models, or modified data and when. Codify data and models
+  with [DVC](/doc/cml-with-dvc) instead of pushing to a Git repo.
+
+- **Auto reports for ML experiments.** Auto-generate reports with metrics and
+  plots in each Git Pull Request. Rigorous engineering practices help your team
+  make informed, data-driven decisions.
+
+- **No additional services.** Build your own ML platform using just GitHub or
+  GitLab and your [favorite cloud services]: AWS, Azure, GCP, or Kubernetes. No
+  databases, services or complex setup needed
+
+[gitflow]: https://nvie.com/posts/a-successful-git-branching-model
+[favorite cloud services]:
+  /doc/self-hosted-runners#cloud-compute-resource-credentials

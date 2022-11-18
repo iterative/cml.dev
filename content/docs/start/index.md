@@ -1,36 +1,25 @@
-# CML is Continuous Machine Learning
+# Get Started with CML
 
-[Continuous Machine Learning (CML)](https://cml.dev) is an open-source library
-for implementing continuous integration & delivery (CI/CD) in machine learning
-projects. Use it to automate parts of your development workflow, including model
-training and evaluation, comparing ML experiments across your project history,
-and monitoring changing datasets.
+On every pull request, CML helps you automatically train and evaluate models,
+then generates a visual report with results and metrics.
 
-![](/img/cml_neural_transfer.png) _On every pull request, CML helps you
-automatically train and evaluate models, then generates a visual report with
-results and metrics. Above, an example report for a
-[neural style transfer model](https://rb.gy/ub5idx)._
+![](/img/cml_neural_transfer.png) _Report for a [neural style transfer model]._
 
-We built CML with these principles in mind:
+**Pick one of the supported platforms to continue: [GitHub](/doc/start/github) /
+[GitLab](/doc/start/github) / [Bitbucket](/doc/start/github)**
 
-- **[GitFlow](https://nvie.com/posts/a-successful-git-branching-model) for data
-  science.** Use GitLab or GitHub to manage ML experiments, track who trained ML
-  models or modified data and when. Codify data and models with
-  [DVC](/doc/cml-with-dvc) instead of pushing to a Git repo.
-- **Auto reports for ML experiments.** Auto-generate reports with metrics and
-  plots in each Git Pull Request. Rigorous engineering practices help your team
-  make informed, data-driven decisions.
-- **No additional services.** Build your own ML platform using just GitHub or
-  GitLab and your
-  [favorite cloud services](/doc/self-hosted-runners#cloud-compute-resource-credentials):
-  AWS, Azure, GCP, or Kubernetes. No databases, services or complex setup
-  needed.
+<admon type="tip">
+
+Check out our [YouTube video series] for hands-on MLOps tutorials using CML!
+
+https://www.youtube.com/watch?v=9BgIDqAzfuA&list=PL7WG7YrwYcnDBDuCkFbcyjnZQrdskFsBz&index=1&ab_channel=DVCorg
+
+[youtube video series]:
+  https://www.youtube.com/playlist?list=PL7WG7YrwYcnDBDuCkFbcyjnZQrdskFsBz
+
+</admon>
 
 _Need help? Just want to chat about continuous integration for ML?
-[Visit our Discord channel!](/chat)_
+[Visit our Discord channel!](https://cml.dev/chat)_
 
-🌟 Check out our
-[YouTube video series](https://www.youtube.com/playlist?list=PL7WG7YrwYcnDBDuCkFbcyjnZQrdskFsBz)
-for hands-on MLOps tutorials using CML! 🌟
-
-https://youtu.be/9BgIDqAzfuA
+[neural style transfer model]: https://github.com/iterative/cml_cloud_case
