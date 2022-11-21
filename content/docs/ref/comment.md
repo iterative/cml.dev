@@ -32,31 +32,36 @@ If [`cml pr`](/doc/ref/pr) was used earlier in the workflow, use
 </admon>
 
 ### Updating specific comments
-In some cases it may be necessary to more accurately target which comment is updated when
-`cml comment update` is run, as by default the last cml-created comment will get updated.
-This may be necessary when a workflow maintains two different continuously updated comments
-or when a branch update might trigger multiple workflows.
 
-By specifying the `--watermark-title='specific identifier'` cli flag for both commands, only
-the specific comment with that watermark will be updated. Additionally, if it's necessary
-to make the comment specific to a workflow or a workflow run, `--watermark-title` accepts
-placeholder tags `{workflow}` and `{run}` which will be replaced with the workflow id
-or workflow run id respectively.
+In some cases it may be necessary to more accurately target which comment is
+updated when `cml comment update` is run, as by default the last cml-created
+comment will get updated. This may be necessary when a workflow maintains two
+different continuously updated comments or when a branch update might trigger
+multiple workflows.
+
+By specifying the `--watermark-title='specific identifier'` cli flag for both
+commands, only the specific comment with that watermark will be updated.
+Additionally, if it's necessary to make the comment specific to a workflow or a
+workflow run, `--watermark-title` accepts placeholder tags `{workflow}` and
+`{run}` which will be replaced with the workflow id or workflow run id
+respectively.
 
 Example of the `--watermark-title` flag:
-- `--watermark-title='experiment-results'` - this comment will only be updated when the
-  same watermark title is specified for the `cml comment update` command.
-- `--watermark-title='{workflow}'` - this comment will be specific to the workflow that
-  created it and only updated during other runs of that workflow.
-- `--watermark-title='{run}'` - this comment will be specific to the workflow run that
-  created it. Other executions of the same workflow will not update it.
-- `--watermark-title='{workflow}-experiment-results'` - titles like this make it possible
-  to maintain multiple workflow-specific comments.
+
+- `--watermark-title='experiment-results'` - this comment will only be updated
+  when the same watermark title is specified for the `cml comment update`
+  command.
+- `--watermark-title='{workflow}'` - this comment will be specific to the
+  workflow that created it and only updated during other runs of that workflow.
+- `--watermark-title='{run}'` - this comment will be specific to the workflow
+  run that created it. Other executions of the same workflow will not update it.
+- `--watermark-title='{workflow}-experiment-results'` - titles like this make it
+  possible to maintain multiple workflow-specific comments.
 
 <admon type="tip">
 
-Both `cml comment create` and `cml comment update` need to specify the same value for the
-`--watermark-title` flag to update the same comment.
+Both `cml comment create` and `cml comment update` need to specify the same
+value for the `--watermark-title` flag to update the same comment.
 
 </admon>
 
@@ -78,8 +83,9 @@ Any [generic option](/doc/ref) in addition to:
 - `--publish-url=<url>`: Self-hosted image server URL [default:
   `https://asset.cml.dev`], see
   [minroud-s3](https://github.com/iterative/minroud-s3).
-- `--watermark-title`: Specify a comment watermark title to more accurately target which comment will
-  be updated with subsequent `cml comment update` calls.
+- `--watermark-title`: Specify a comment watermark title to more accurately
+  target which comment will be updated with subsequent `cml comment update`
+  calls.
 
 ## FAQs and Known Issues
 
