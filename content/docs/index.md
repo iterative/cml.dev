@@ -47,9 +47,9 @@ improve this [documentation](https://github.com/iterative/cml.dev) 🙏.
   make informed, data-driven decisions.
 
 - **No additional services.** Build your own ML platform using just GitHub or
-  GitLab and your [favorite cloud services]: AWS, Azure, GCP, or Kubernetes. No
+  GitLab and your [favorite cloud providers]: AWS, Azure, GCP, or Kubernetes. No
   databases, services or complex setup needed
 
 [gitflow]: https://nvie.com/posts/a-successful-git-branching-model
-[favorite cloud services]:
+[favorite cloud providers]:
   /doc/self-hosted-runners#cloud-compute-resource-credentials
