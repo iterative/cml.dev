@@ -19,7 +19,11 @@ https://www.youtube.com/watch?v=9BgIDqAzfuA&list=PL7WG7YrwYcnDBDuCkFbcyjnZQrdskF
 
 </admon>
 
+<ad,on type="info">
+
 _Need help? Just want to chat about continuous integration for ML?
 [Visit our Discord channel!](https://cml.dev/chat)_
+
+</admon>
 
 [neural style transfer model]: https://github.com/iterative/cml_cloud_case
