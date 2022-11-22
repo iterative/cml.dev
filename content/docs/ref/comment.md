@@ -31,6 +31,14 @@ If [`cml pr`](/doc/ref/pr) was used earlier in the workflow, use
 
 </admon>
 
+<admon type="tip">
+
+When using multiple reports, use
+[`--watermark-title=<...>`](#managing-multiple-comments) to specify which
+comment to `update`.
+
+</admon>
+
 ## Options
 
 Any [generic option](/doc/ref) in addition to:
@@ -46,9 +54,37 @@ Any [generic option](/doc/ref) in addition to:
   [default: `true`].
 - `--publish-native`: Use `--driver`'s native capabilities to `--publish` assets
   instead of `--publish-url` (not available on `--driver=github`).
-- `--publish-url=<url>`: Self-hosted image server URL [default:
+- `--publish-url=<...>`: Self-hosted image server URL [default:
   `https://asset.cml.dev`], see
   [minroud-s3](https://github.com/iterative/minroud-s3).
+- `--watermark-title=<...>`: Hidden comment marker (useful to
+  [specify which comment to update](#managing-multiple-comments) in subsequent
+  `cml comment update` calls); `"{workflow}"` and `"{run}"` are auto-replaced.
+
+## Examples
+
+### Managing multiple comments
+
+Repeatedly running `cml comment create` may produce too many comments. Meanwhile
+`cml comment update` will only produce/update one comment. What if you'd like to
+have exactly two comments (corresponding to two different markdown reports,
+possibly from different parallel workflows) visible at a time?
+
+To mark and subsequently update a particular comment, use
+`--watermark-title="some text"`. To mark a comment according to the workflow or
+run ID, include the placeholder text `"{workflow}"` and `"{run}"`. For example:
+
+```cli
+# Create and constantly update 2 separate comments
+$ cml comment update --watch --watermark-title='first {workflow} report' report.md &
+$ cml comment update --watch --watermark-title='second {workflow} report' debug.md &
+$ python train.py --report-file=report.md --debug-file=debug.md
+
+# Same, but create a new pair of comments if rerunning a workflow
+$ cml comment update --watch --watermark-title='first {run} report' report.md &
+$ cml comment update --watch --watermark-title='second {run} report' debug.md &
+$ python train.py --report-file=report.md --debug-file=debug.md
+```
 
 ## FAQs and Known Issues
 
