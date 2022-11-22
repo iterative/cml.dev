@@ -20,7 +20,7 @@ cml comment update [options] <markdown report file>
 <admon type="tip">
 
 If there's an associated pull/merge request, consider using `update` with the
-`--pr` flag.
+[`--pr`](#--pr) flag.
 
 </admon>
 
