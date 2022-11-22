@@ -1,6 +1,6 @@
 # CML Documentation
 
-[Continuous Machine Learning (CML)](/) is an open-source library for
+[Continuous Machine Learning (CML)](/) is an open-source tool for
 implementing continuous integration & delivery (CI/CD) in machine learning
 projects. Use it to automate parts of your development workflow, including model
 training and evaluation, comparing ML experiments across your project history,
