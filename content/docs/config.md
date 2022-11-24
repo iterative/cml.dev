@@ -47,6 +47,7 @@ jobs:
 ```
 
 The example above generates visual reports in pull requests:
+
 ![First CML report in GitHub](/img/cml_first_report.png) _From sample
 [increase forest depth](https://github.com/iterative/cml_base_case/pull/2) PR_
 
@@ -56,14 +57,6 @@ example, uncommenting the
 `container: docker://ghcr.io/iterative/cml:0-dvc2-base1` field will make the
 runner pull the CML Docker image. The image already has Node.js, Python 3, DVC
 and CML set up on an Ubuntu LTS base for convenience.
-
-### Example projects
-
-- [Basic CML project](https://github.com/iterative/cml_base_case)
-- [CML with DVC to pull data](https://github.com/iterative/cml_dvc_case) &
-  [tutorial](/doc/cml-with-dvc?tab=GitHub)
-- [CML with Tensorboard](https://github.com/iterative/cml_tensorboard_case)
-- [CML with EC2 GPU](https://github.com/iterative/cml_cloud_case)
 
 </tab>
 <tab title="GitLab">
@@ -96,21 +89,16 @@ via a `REPO_TOKEN` variable.
 </admon>
 
 The example above generates visual reports in merge requests:
-[![First CML report in GitLab](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/1)
+
+![First CML report in GitLab](/img/GitLab_CML_report.png '=400') _From sample
+[Experiment](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/1)
+MR_
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
 example, the `image: iterativeai/cml:0-dvc2-base1` field will make the runner
 pull the CML Docker image. The image already has Node.js, Python 3, DVC and CML
 set up on an Ubuntu LTS base for convenience.
-
-### Example projects
-
-- [Basic CML project](https://gitlab.com/iterative.ai/cml-base-case)
-- [CML with DVC to pull data](https://gitlab.com/iterative.ai/cml-dvc-case) &
-  [tutorial](/doc/cml-with-dvc?tab=GitLab)
-- [CML with Tensorboard](https://gitlab.com/iterative.ai/cml-tensorboard-case)
-- [CML with EC2 GPU](https://gitlab.com/iterative.ai/cml-cloud-case)
 
 </tab>
 <tab title="Bitbucket">
@@ -144,7 +132,11 @@ You _must_ provide
 </admon>
 
 The example above generates visual reports in pull requests:
-[![First CML report in BitBucket](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/1)
+
+![First CML report in BitBucket](/img/bitbucket_cloud_pr.png '=600') _From
+sample
+[Experiment](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/1)
+PR_
 
 <admon type="warn">
 
@@ -155,14 +147,38 @@ not yet supported.
 
 </admon>
 
-### Example projects
+</tab>
+</toggle>
+
+## Example projects
+
+<toggle>
+<tab title="GitHub">
+
+- [Basic CML project](https://github.com/iterative/cml_base_case)
+- [CML with DVC to pull data](https://github.com/iterative/cml_dvc_case) &
+  [tutorial](/doc/cml-with-dvc?tab=GitHub)
+- [CML with Tensorboard](https://github.com/iterative/cml_tensorboard_case)
+- [CML with EC2 GPU](https://github.com/iterative/cml_cloud_case)
+
+</tab>
+<tab title="GitLab">
+
+- [Basic CML project](https://gitlab.com/iterative.ai/cml-base-case)
+- [CML with DVC to pull data](https://gitlab.com/iterative.ai/cml-dvc-case) &
+  [tutorial](/doc/cml-with-dvc?tab=GitLab)
+- [CML with Tensorboard](https://gitlab.com/iterative.ai/cml-tensorboard-case)
+- [CML with EC2 GPU](https://gitlab.com/iterative.ai/cml-cloud-case)
+
+</tab>
+<tab title="Bitbucket">
 
 - [Basic CML project](https://bitbucket.org/iterative-ai/cml-base-case)
 
 </tab>
 </toggle>
 
-<!-- ## CML Reports
+## CML Reports
 
 The `cml comment create` command can be used to post reports. CML reports are
 written in Markdown ([GitHub](https://github.github.com/gfm),
@@ -188,4 +204,3 @@ by `python train.py`, run:
 $ echo '![](./plot.png)' >> report.md
 $ cml comment create report.md
 ```
--->
