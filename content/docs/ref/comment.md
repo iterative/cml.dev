@@ -2,11 +2,18 @@
 
 ## create
 
-Post a Markdown report as a comment on a commit or pull/merge request.
+Post a report as a comment on a commit or pull/merge request.
 
 ```usage
 cml comment create [options] <markdown report file>
 ```
+
+CML reports are written in Markdown ([GitHub](https://github.github.com/gfm),
+[GitLab](https://docs.gitlab.com/ee/user/markdown.html), or
+[Bitbucket](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
+flavors). That means they can contain images, tables, formatted text, HTML
+blocks, code snippets and more — really, what you put in a CML report is up to
+you. See some [examples](#examples).
 
 ## update
 
@@ -63,11 +70,32 @@ Any [generic option](/doc/ref) in addition to:
 
 ## Examples
 
+### Post a text report
+
+Write to your report using whatever method you prefer. For example, copy the
+contents of a text file containing the results of ML model training:
+
+```cli
+$ cat results.txt >> report.md
+```
+
+### Post a graphic report
+
+Display images using Markdown or HTML. Note that if an image is an output of
+your ML workflow (i.e. it is produced by your workflow), you can use Markdown to
+embed it in a CML report. For example, if `plot.png` is output by
+`python train.py`, run:
+
+```cli
+$ echo '![](./plot.png)' >> report.md
+$ cml comment create report.md
+```
+
 ### Managing multiple comments
 
 Repeatedly running `cml comment create` may produce too many comments. Meanwhile
 `cml comment update` will only produce/update one comment. What if you'd like to
-have exactly two comments (corresponding to two different markdown reports,
+have exactly two comments (corresponding to two different Markdown reports,
 possibly from different parallel workflows) visible at a time?
 
 To mark and subsequently update a particular comment, use
@@ -76,13 +104,21 @@ run ID, include the placeholder text `"{workflow}"` and `"{run}"`. For example:
 
 ```cli
 # Create and constantly update 2 separate comments
-$ cml comment update --watch --watermark-title='first {workflow} report' report.md &
-$ cml comment update --watch --watermark-title='second {workflow} report' debug.md &
+$ cml comment update --watch \
+                     --watermark-title='first {workflow} report' \
+                     report.md &
+$ cml comment update --watch \
+                     --watermark-title='second {workflow} report' \
+                     debug.md &
 $ python train.py --report-file=report.md --debug-file=debug.md
 
 # Same, but create a new pair of comments if rerunning a workflow
-$ cml comment update --watch --watermark-title='first {run} report' report.md &
-$ cml comment update --watch --watermark-title='second {run} report' debug.md &
+$ cml comment update --watch \
+                     --watermark-title='first {run} report' \
+                     report.md &
+$ cml comment update --watch \
+                     --watermark-title='second {run} report' \
+                     debug.md &
 $ python train.py --report-file=report.md --debug-file=debug.md
 ```
 

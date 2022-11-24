@@ -46,7 +46,7 @@ jobs:
           cml comment create report.md
 ```
 
-The example above generates visual reports in pull requests:
+This generates visual reports in pull requests (see `cml comment create`):
 
 ![First CML report in GitHub](/img/cml_first_report.png) _From sample
 [increase forest depth](https://github.com/iterative/cml_base_case/pull/2) PR_
@@ -96,7 +96,7 @@ via a `REPO_TOKEN` variable.
 
 </admon>
 
-The example above generates visual reports in merge requests:
+This generates visual reports in pull requests (see `cml comment create`):
 
 ![First CML report in GitLab](/img/GitLab_CML_report.png '=400') _From sample
 [Experiment](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/1)
@@ -147,7 +147,7 @@ You _must_ provide
 
 </admon>
 
-The example above generates visual reports in pull requests:
+This generates visual reports in pull requests (see `cml comment create`):
 
 ![First CML report in BitBucket](/img/bitbucket_cloud_pr.png '=600') _From
 sample
@@ -169,30 +169,3 @@ not yet supported.
 
 </tab>
 </toggle>
-
-## CML Reports
-
-The `cml comment create` command can be used to post reports. CML reports are
-written in Markdown ([GitHub](https://github.github.com/gfm),
-[GitLab](https://docs.gitlab.com/ee/user/markdown.html), or
-[Bitbucket](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
-flavors). That means they can contain images, tables, formatted text, HTML
-blocks, code snippets and more — really, what you put in a CML report is up to
-you. Some examples:
-
-📝 **Text** Write to your report using whatever method you prefer. For example,
-copy the contents of a text file containing the results of ML model training:
-
-```cli
-$ cat results.txt >> report.md
-```
-
-🖼️ **Images** Display images using the markdown or HTML. Note that if an image
-is an output of your ML workflow (i.e. it is produced by your workflow), you can
-use markdown to embed it in a CML report. For example, if `plot.png` is output
-by `python train.py`, run:
-
-```cli
-$ echo '![](./plot.png)' >> report.md
-$ cml comment create report.md
-```
