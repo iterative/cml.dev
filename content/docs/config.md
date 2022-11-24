@@ -87,12 +87,16 @@ create-CML-report:
     - cml comment create report.md
 ```
 
-⚠️ You _must_ provide a
+<admon type="warn">
+
+You _must_ provide a
 [personal or project access token (PAT)](/doc/self-hosted-runners#personal-access-token)
 via a `REPO_TOKEN` variable.
 
+</admon>
+
 The example above generates visual reports in merge requests:
-![First CML report in GitLab](/img/GitLab_CML_report.png '=400')
+[![First CML report in GitLab](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/1)
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -131,17 +135,25 @@ pipelines:
           - cml comment create report.md
 ```
 
-⚠️ You _must_ provide
+<admon type="warn">
+
+You _must_ provide
 [access credentials](/doc/self-hosted-runners#personal-access-token) via a
 `REPO_TOKEN` variable.
 
-The example above generates visual reports in pull requests:
-![First CML report in BitBucket](/img/bitbucket_cloud_pr.png '=600')
+</admon>
 
-⚠️ CML works with Bitbucket Cloud, where you can use the
+The example above generates visual reports in pull requests:
+[![First CML report in BitBucket](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/1)
+
+<admon type="warn">
+
+CML works with Bitbucket Cloud, where you can use the
 [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
 system to run workflows automatically on triggering events. Bitbucket Server is
 not yet supported.
+
+</admon>
 
 ### Example projects
 
