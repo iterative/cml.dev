@@ -58,6 +58,14 @@ example, uncommenting the
 runner pull the CML Docker image. The image already has Node.js, Python 3, DVC
 and CML set up on an Ubuntu LTS base for convenience.
 
+### Example projects
+
+- [Basic CML project](https://github.com/iterative/cml_base_case)
+- [CML with DVC to pull data](https://github.com/iterative/cml_dvc_case) &
+  [tutorial](/doc/cml-with-dvc?tab=GitHub)
+- [CML with Tensorboard](https://github.com/iterative/cml_tensorboard_case)
+- [CML with EC2 GPU](https://github.com/iterative/cml_cloud_case)
+
 </tab>
 <tab title="GitLab">
 
@@ -99,6 +107,14 @@ We helpfully provide CML and other useful libraries pre-installed on our
 example, the `image: iterativeai/cml:0-dvc2-base1` field will make the runner
 pull the CML Docker image. The image already has Node.js, Python 3, DVC and CML
 set up on an Ubuntu LTS base for convenience.
+
+### Example projects
+
+- [Basic CML project](https://gitlab.com/iterative.ai/cml-base-case)
+- [CML with DVC to pull data](https://gitlab.com/iterative.ai/cml-dvc-case) &
+  [tutorial](/doc/cml-with-dvc?tab=GitLab)
+- [CML with Tensorboard](https://gitlab.com/iterative.ai/cml-tensorboard-case)
+- [CML with EC2 GPU](https://gitlab.com/iterative.ai/cml-cloud-case)
 
 </tab>
 <tab title="Bitbucket">
@@ -147,31 +163,7 @@ not yet supported.
 
 </admon>
 
-</tab>
-</toggle>
-
-## Example projects
-
-<toggle>
-<tab title="GitHub">
-
-- [Basic CML project](https://github.com/iterative/cml_base_case)
-- [CML with DVC to pull data](https://github.com/iterative/cml_dvc_case) &
-  [tutorial](/doc/cml-with-dvc?tab=GitHub)
-- [CML with Tensorboard](https://github.com/iterative/cml_tensorboard_case)
-- [CML with EC2 GPU](https://github.com/iterative/cml_cloud_case)
-
-</tab>
-<tab title="GitLab">
-
-- [Basic CML project](https://gitlab.com/iterative.ai/cml-base-case)
-- [CML with DVC to pull data](https://gitlab.com/iterative.ai/cml-dvc-case) &
-  [tutorial](/doc/cml-with-dvc?tab=GitLab)
-- [CML with Tensorboard](https://gitlab.com/iterative.ai/cml-tensorboard-case)
-- [CML with EC2 GPU](https://gitlab.com/iterative.ai/cml-cloud-case)
-
-</tab>
-<tab title="Bitbucket">
+### Example project
 
 - [Basic CML project](https://bitbucket.org/iterative-ai/cml-base-case)
 
