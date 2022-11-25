@@ -1,4 +1,4 @@
-# CML Configuration
+# User Guide: Introduction
 
 A GitLab, GitHub, or Bitbucket account is required. Familiarity with
 [GitHub Actions](https://help.github.com/en/actions),
@@ -9,7 +9,9 @@ also be beneficial.
 <toggle>
 <tab title="GitHub">
 
-The CML config file is `.github/workflows/cml.yaml`:
+Integrate CML to your
+[workflow configuration](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+using a `.github/workflows/cml.yaml` file, for example:
 
 ```yaml
 name: CML
@@ -69,7 +71,9 @@ and CML set up on an Ubuntu LTS base for convenience.
 </tab>
 <tab title="GitLab">
 
-The CML config file is `.gitlab-ci.yml`:
+Integrate CML to your
+[pipeline configuration](https://docs.gitlab.com/ee/ci/pipelines/#configure-a-pipeline)
+using the `.gitlab-ci.yml` file, for example:
 
 ```yaml
 train-model:
@@ -119,7 +123,9 @@ set up on an Ubuntu LTS base for convenience.
 </tab>
 <tab title="Bitbucket">
 
-The CML config file is `bitbucket-pipelines.yml`:
+Integrate CML to your
+[pipeline configuration](https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/)
+using the `bitbucket-pipelines.yml` file, for example:
 
 ```yaml
 image: iterativeai/cml:0-dvc2-base1
