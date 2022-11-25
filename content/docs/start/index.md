@@ -1,7 +1,7 @@
 # Get Started with CML
 
-On every pull request, CML helps you automatically train and evaluate models,
-and make reports from results, plots and metrics.
+On every pull request, CML helps you automatically train and evaluate machine
+learning models, and make reports from results, plots and metrics.
 
 ![](/img/cml_neural_transfer.png) _Report for a [neural style transfer model]._
 
