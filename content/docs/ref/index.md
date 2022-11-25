@@ -1,4 +1,4 @@
-# CML Command Reference
+# Command Reference
 
 CML provides a number of commands to help package the outputs of ML workflows
 into a CML report. These may include numeric data or model performance
