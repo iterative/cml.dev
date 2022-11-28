@@ -1,10 +1,22 @@
+const themeConfig = require('@dvcorg/gatsby-theme-iterative/tailwind.config')
+
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  ...themeConfig,
   corePlugins: {
     preflight: false
   },
   theme: {
-    extend: {}
-  },
-  plugins: []
+    ...themeConfig.theme,
+    fontFamily: {
+      sans: ['DM Sans', 'Tahoma', 'Arial', 'sans-serif'],
+      mono: [
+        'SFMono-Regular',
+        'Consolas',
+        'Liberation Mono',
+        'Menlo',
+        'Courier',
+        'monospace'
+      ]
+    }
+  }
 }

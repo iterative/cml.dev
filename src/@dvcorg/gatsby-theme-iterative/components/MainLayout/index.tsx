@@ -1,15 +1,16 @@
 import React from 'react'
 
-import MainLayout from '../../layouts/MainLayout'
 import DefaultSEO from './DefaultSEO'
-import DocumentationLayout from '../../pages/Documentation/Layout'
-import ModesProvider from '../SwitchableMode/Provider'
 
 import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
 
 import './base.css'
 import './fonts.css'
-import WrappedLayout from '../../layouts/WrappedLayout'
+import WrappedLayout from '../../../../components/layouts/WrappedLayout'
+
+import { LayoutModifiers } from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
+
+export { LayoutModifiers }
 
 export interface IPageProps {
   location: {
@@ -28,25 +29,17 @@ export interface IPageProps {
 }
 
 const Page: React.FC<IPageProps> = props => {
-  let LayoutComponent = MainLayout
+  const LayoutComponent = WrappedLayout
 
   useRedirects()
   useAnchorNavigation()
   useSmoothScroll(props.enableSmoothScroll)
 
-  if (!props.pageContext.is404) {
-    if (props.pageContext.isDocs) {
-      LayoutComponent = DocumentationLayout
-    }
-  } else {
-    LayoutComponent = WrappedLayout
-  }
-
   return (
-    <ModesProvider>
+    <>
       <DefaultSEO />
       <LayoutComponent {...props} />
-    </ModesProvider>
+    </>
   )
 }
 

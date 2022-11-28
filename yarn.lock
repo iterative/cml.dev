@@ -1198,14 +1198,13 @@
     unist-util-remove-position "^4.0.1"
     unist-util-visit "^4.1.0"
 
-"@dvcorg/gatsby-theme-iterative@^0.1.23":
-  version "0.1.23"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.1.23.tgz#8e13533008999fa8398a69525f920557a00bce45"
-  integrity sha512-LrEQvAHL0fPRsHw7Ymi4DNxw7H6CHJnIPQYbGbj1h8PI+IvBoTrnhpLoGtOPJSna/EUILrErWP+i1FSFcP1oAQ==
+"@dvcorg/gatsby-theme-iterative@file:../gatsby-theme-iterative/packages/gatsby-theme-iterative":
+  version "0.2.3"
   dependencies:
     "@reach/portal" "^0.17.0"
     "@reach/router" "^1.3.4"
     "@reach/skip-nav" "^0.17.0"
+    "@sentry/gatsby" "^7.11.1"
     "@svgr/webpack" "^6.2.1"
     "@types/github-slugger" "^1.3.0"
     "@types/isomorphic-fetch" "^0.0.36"
@@ -1229,7 +1228,7 @@
     gatsby-remark-embedder "^6.0.0"
     gatsby-remark-external-links "^0.0.4"
     gatsby-remark-images "^6.14.0"
-    gatsby-remark-prismjs "^6.14.0"
+    gatsby-remark-prismjs "6.24.0"
     gatsby-remark-relative-images "^2.0.2"
     gatsby-remark-responsive-iframe "^5.14.0"
     gatsby-remark-smartypants "^5.14.0"
@@ -1245,16 +1244,13 @@
     nanoid "^4.0.0"
     perfect-scrollbar "^1.5.5"
     postcss "^8.4.14"
-    postcss-color-mod-function "^3.0.3"
-    postcss-custom-media "^8.0.0"
-    postcss-custom-properties "^12.1.6"
-    postcss-mixins "^9.0.2"
     postcss-nested "^5.0.6"
-    prismjs "^1.28.0"
+    prismjs "^1.29.0"
     promise-polyfill "^8.2.3"
     react-collapse "^5.1.1"
     react-collapsible "^2.8.4"
     react-helmet "^6.1.0"
+    react-intersection-observer "^9.3.5"
     react-use "^17.3.2"
     rehype-parse "^8.0.4"
     rehype-react "^7.0.4"
@@ -2570,6 +2566,16 @@
     "@sentry/utils" "7.15.0"
     tslib "^1.9.3"
 
+"@sentry/browser@7.21.1":
+  version "7.21.1"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-7.21.1.tgz#bffa3ea19050c06400107d2297b9802f9719f98b"
+  integrity sha512-cS2Jz2+fs9+4pJqLJPtYqGyY97ywJDWAWIR1Yla3hs1QQuH6m0Nz3ojZD1gE2eKH9mHwkGbnNAh+hHcrYrfGzw==
+  dependencies:
+    "@sentry/core" "7.21.1"
+    "@sentry/types" "7.21.1"
+    "@sentry/utils" "7.21.1"
+    tslib "^1.9.3"
+
 "@sentry/cli@^1.74.4":
   version "1.74.5"
   resolved "https://registry.yarnpkg.com/@sentry/cli/-/cli-1.74.5.tgz#4a5c622913087c9ab6f82994da9a7526423779b8"
@@ -2591,6 +2597,26 @@
     "@sentry/types" "7.15.0"
     "@sentry/utils" "7.15.0"
     tslib "^1.9.3"
+
+"@sentry/core@7.21.1":
+  version "7.21.1"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-7.21.1.tgz#d0423282d90875625802dfe380f9657e9242b72b"
+  integrity sha512-Og5wEEsy24fNvT/T7IKjcV4EvVK5ryY2kxbJzKY6GU2eX+i+aBl+n/vp7U0Es351C/AlTkS+0NOUsp2TQQFxZA==
+  dependencies:
+    "@sentry/types" "7.21.1"
+    "@sentry/utils" "7.21.1"
+    tslib "^1.9.3"
+
+"@sentry/gatsby@^7.11.1":
+  version "7.21.1"
+  resolved "https://registry.yarnpkg.com/@sentry/gatsby/-/gatsby-7.21.1.tgz#c190d5016da1e2a1fb0f814ea89f01e607b70dd3"
+  integrity sha512-PVJ9sYe6gCUlOoiOEp7t1us9/RnLi3FDkQDWHePmyE+rMKKPVU+t1aIFbWey6y9lNADbvnOTEFjKQLd0C9p1zA==
+  dependencies:
+    "@sentry/react" "7.21.1"
+    "@sentry/tracing" "7.21.1"
+    "@sentry/types" "7.21.1"
+    "@sentry/utils" "7.21.1"
+    "@sentry/webpack-plugin" "1.19.0"
 
 "@sentry/gatsby@^7.13.0":
   version "7.15.0"
@@ -2627,6 +2653,17 @@
     hoist-non-react-statics "^3.3.2"
     tslib "^1.9.3"
 
+"@sentry/react@7.21.1":
+  version "7.21.1"
+  resolved "https://registry.yarnpkg.com/@sentry/react/-/react-7.21.1.tgz#275e6fd46212f608f382c7dde46d21e748f93491"
+  integrity sha512-w91PIUyX07mErKgrBQA+7ID8zFKrYDUYSOrFSHufg5DdPq4EpHiNDe/Yngg3e9ELhtr1AbCnEvx9wlvqLi3nZQ==
+  dependencies:
+    "@sentry/browser" "7.21.1"
+    "@sentry/types" "7.21.1"
+    "@sentry/utils" "7.21.1"
+    hoist-non-react-statics "^3.3.2"
+    tslib "^1.9.3"
+
 "@sentry/tracing@7.15.0":
   version "7.15.0"
   resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.15.0.tgz#ea516957b2ed39f389c21132f433b6470d54b465"
@@ -2637,10 +2674,25 @@
     "@sentry/utils" "7.15.0"
     tslib "^1.9.3"
 
+"@sentry/tracing@7.21.1":
+  version "7.21.1"
+  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.21.1.tgz#db02643e84960f1ea14b35fe75a93fc0bbca1fcb"
+  integrity sha512-b1BTPsRaNQpohzegoz59KGuBl+To651vEq0vMS4tCzSyIdxkYso3JCrjDdEqW/2MliQYANNVrUai2bmwmU9h1g==
+  dependencies:
+    "@sentry/core" "7.21.1"
+    "@sentry/types" "7.21.1"
+    "@sentry/utils" "7.21.1"
+    tslib "^1.9.3"
+
 "@sentry/types@7.15.0":
   version "7.15.0"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.15.0.tgz#50c57c924993d4dd16b43172d310c66384d17463"
   integrity sha512-MN9haDRh9ZOsTotoDTHu2BT3sT8Vs1F0alhizUpDyjN2YgBCqR6JV+AbAE1XNHwS2+5zbppch1PwJUVeE58URQ==
+
+"@sentry/types@7.21.1":
+  version "7.21.1"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.21.1.tgz#408a7b95a66ddc30c4359979594e03bee8f9fbdc"
+  integrity sha512-3/IKnd52Ol21amQvI+kz+WB76s8/LR5YvFJzMgIoI2S8d82smIr253zGijRXxHPEif8kMLX4Yt+36VzrLxg6+A==
 
 "@sentry/utils@7.15.0":
   version "7.15.0"
@@ -2648,6 +2700,14 @@
   integrity sha512-akic22/6xa/RG5Mj7UN6pLc23VnX9zQlKM53L/q3yIr0juckSVthJiiFNdgdqrX03S1tHYlBgPeShKFFTHpkjA==
   dependencies:
     "@sentry/types" "7.15.0"
+    tslib "^1.9.3"
+
+"@sentry/utils@7.21.1":
+  version "7.21.1"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-7.21.1.tgz#96582345178015fd32fe9159c25c44ccf2f99d2a"
+  integrity sha512-F0W0AAi8tgtTx6ApZRI2S9HbXEA9ENX1phTZgdNNWcMFm1BNbc21XEwLqwXBNjub5nlA6CE8xnjXRgdZKx4kzQ==
+  dependencies:
+    "@sentry/types" "7.21.1"
     tslib "^1.9.3"
 
 "@sentry/webpack-plugin@1.19.0":
@@ -8084,7 +8144,7 @@ gatsby-remark-prismjs@6.22.0:
     parse-numeric-range "^1.2.0"
     unist-util-visit "^2.0.3"
 
-gatsby-remark-prismjs@^6.14.0:
+gatsby-remark-prismjs@6.24.0, gatsby-remark-prismjs@^6.14.0:
   version "6.24.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-6.24.0.tgz#728455be1986ae55f52563ad034bf9971bbcd976"
   integrity sha512-xI8BrjbKHJHftfVVyIxmPMuyHX1kU+dHZrpOYjdTfOw8fv3jvR3cKUqZDCBy0pIRMYdPJUPMwUcggAhbtBiaEw==
@@ -13104,7 +13164,7 @@ pretty-quick@^3.1.3:
     mri "^1.1.5"
     multimatch "^4.0.0"
 
-prismjs@^1.28.0:
+prismjs@^1.28.0, prismjs@^1.29.0:
   version "1.29.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.29.0.tgz#f113555a8fa9b57c35e637bba27509dcf802dd12"
   integrity sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==
@@ -13410,6 +13470,11 @@ react-helmet@^6.1.0:
     prop-types "^15.7.2"
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
+
+react-intersection-observer@^9.3.5:
+  version "9.4.1"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-9.4.1.tgz#4ccb21e16acd0b9cf5b28d275af7055bef878f6b"
+  integrity sha512-IXpIsPe6BleFOEHKzKh5UjwRUaz/JYS0lT/HPsupWEQou2hDqjhLMStc5zyE3eQVT4Fk3FufM8Fw33qW1uyeiw==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"

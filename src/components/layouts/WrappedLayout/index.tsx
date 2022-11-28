@@ -3,7 +3,7 @@ import React from 'react'
 import MainLayout from '../MainLayout'
 import SiteHeader from '../../organisms/SiteHeader'
 import SiteFooter from '../../organisms/SiteFooter'
-import { IPageProps } from '../../organisms/Page'
+import { IPageProps } from '../../../@dvcorg/gatsby-theme-iterative/components/MainLayout'
 
 const WrappedLayout: React.FC<IPageProps> = ({ children, ...restProps }) => {
   return (
