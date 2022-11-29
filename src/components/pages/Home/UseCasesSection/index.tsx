@@ -673,6 +673,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 bitbucket={(
                   <Collapser>
                     <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-cloud-case">
+                      <div><span># Use LEO instead of CML to force GPU support on Bitbucket</span></div>
+                      <div><span># (<a href="/doc/ref/runner#bitbucket">https://cml.dev/doc/ref/runner#bitbucket</a>)</span></div>
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
                       <div>  <span>default:</span></div>
@@ -705,7 +707,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>              <span>--script=&quot;$(cat ./leo-script.sh)&quot;</span></div>
                       <div>            <span>)</span></div>
                       <div>            <span>leo read $LEO_OPTIONS --follow &quot;$leo_id&quot;</span></div>
-                      <div>            <span>sleep 45 # TODO: replace this hack with a proper wait loop</span></div>
+                      <div>            <span>sleep 45 # TODO: explain</span></div>
                       <div>            <span>leo delete $LEO_OPTIONS --workdir=&quot;.&quot; --output=&quot;.&quot; \</span></div>
                       <div>              <span>&quot;$leo_id&quot;</span></div>
                       </Tooltip>
