@@ -116,7 +116,9 @@ train-and-report:
 ```
 
 </tab>
-<tab title="Bitbucket (no GPU)">
+<tab title="Bitbucket">
+<toggle>
+<tab title="No GPU">
 
 ```yaml
 pipelines:
@@ -144,7 +146,7 @@ pipelines:
 ```
 
 </tab>
-<tab title="Bitbucket">
+<tab title="GPU">
 
 Bitbucket does not support GPUs natively
 ([cml#1015](https://github.com/iterative/cml/issues/1015),
@@ -193,6 +195,8 @@ pipelines:
           - cml comment create report.md
 ```
 
+</tab>
+</toggle>
 </tab>
 </toggle>
 

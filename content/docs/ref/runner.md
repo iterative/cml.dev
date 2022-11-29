@@ -83,7 +83,7 @@ Any [generic option](/doc/ref) in addition to:
 - **GPU support**.
 
   See
-  [the guide on self-hosted Bitbucket runners](/doc/self-hosted-runners?tab=Bitbucket)
+  [the guide on self-hosted Bitbucket runners](/doc/self-hosted-runners?tab=Bitbucket-GPU)
   to work around
   [Bitbucket's lack of native GPU support](https://jira.atlassian.com/browse/BCLOUD-21459).
 
