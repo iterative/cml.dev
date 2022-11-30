@@ -155,7 +155,9 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
         variant="layout.Header"
         className={isMain ? '' : styles.headerForDoc}
         sx={
-          isMain ? { backgroundColor: 'transparent' } : { position: 'sticky' }
+          isMain
+            ? { backgroundColor: 'transparent' }
+            : { position: 'fixed', width: '100%' }
         }
       >
         {isMain && <Alert />}
@@ -265,22 +267,22 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
             </Flex>
           </Box>
         </Container>
+        {!isMain && (
+          <>
+            <HamburgerButton
+              opened={opened}
+              collapsed={collapsed}
+              handleClick={handleToggle}
+            />
+            <HamburgerMenu
+              opened={opened}
+              collapsed={collapsed}
+              handleToggle={handleToggle}
+              handleItemClick={handleItemClick}
+            />
+          </>
+        )}
       </Box>
-      {!isMain && (
-        <>
-          <HamburgerButton
-            opened={opened}
-            collapsed={collapsed}
-            handleClick={handleToggle}
-          />
-          <HamburgerMenu
-            opened={opened}
-            collapsed={collapsed}
-            handleToggle={handleToggle}
-            handleItemClick={handleItemClick}
-          />
-        </>
-      )}
     </>
   )
 }

@@ -3,20 +3,21 @@
   z-index: 7;
 
   & > div {
-    height: var(--layout-header-height);
     padding-top: 10px;
     padding-bottom: 10px;
 
-    @media (--sm-scr) {
-      height: var(--layout-header-height-mobile);
+    @media screen(sm) {
+      @apply h-14;
     }
 
     & > nav {
       width: 100%;
 
       & > div {
-        @media (--sm-scr) {
-          display: none;
+        display: none;
+
+        @media screen(sm) {
+          display: flex;
         }
       }
     }

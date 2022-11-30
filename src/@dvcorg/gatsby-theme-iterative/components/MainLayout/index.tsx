@@ -29,8 +29,6 @@ export interface IPageProps {
 }
 
 const Page: React.FC<IPageProps> = props => {
-  const LayoutComponent = WrappedLayout
-
   useRedirects()
   useAnchorNavigation()
   useSmoothScroll(props.enableSmoothScroll)
@@ -38,7 +36,7 @@ const Page: React.FC<IPageProps> = props => {
   return (
     <>
       <DefaultSEO />
-      <LayoutComponent {...props} />
+      <WrappedLayout {...props} />
     </>
   )
 }
