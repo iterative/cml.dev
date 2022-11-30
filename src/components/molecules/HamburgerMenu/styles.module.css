@@ -129,9 +129,10 @@
 }
 
 .sectionHeading {
+  @apply font-brandon;
+
   display: block;
   padding: 15px 0;
-  font-family: var(--font-brandon);
   font-weight: 400;
   font-size: 13px;
   line-height: 20px;
@@ -214,13 +215,13 @@ a.sectionHeading {
 
 .linkButton {
   @apply active;
+  @apply font-brandon;
 
   display: block;
   margin-top: 15px;
   height: 38px;
   border-radius: 4px;
   background-color: #fff;
-  font-family: var(--font-brandon);
   font-size: 16px;
   line-height: 38px;
   text-align: center;

@@ -16,7 +16,8 @@ module.exports = {
         'Menlo',
         'Courier',
         'monospace'
-      ]
+      ],
+      brandon: ['BrandonGrotesque', 'Tahoma', 'Arial', 'sans-serif']
     }
   }
 }
