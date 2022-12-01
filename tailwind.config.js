@@ -2,9 +2,6 @@ const themeConfig = require('@dvcorg/gatsby-theme-iterative/tailwind.config')
 
 module.exports = {
   ...themeConfig,
-  corePlugins: {
-    preflight: false
-  },
   theme: {
     ...themeConfig.theme,
     fontFamily: {
