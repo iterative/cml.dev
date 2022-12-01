@@ -126,7 +126,7 @@ to the [latest release](https://github.com/iterative/dvc/releases)).
 </tab>
 <tab title="GitLab">
 
-![](/img/github/dvc-report.png 'GitLab DVC report example')
+![](/img/gitlab/dvc-report.png 'GitLab DVC report example')
 
 The `.gitlab-ci.yml` file to create this report is:
 
@@ -134,8 +134,8 @@ The `.gitlab-ci.yml` file to create this report is:
 train-and-report:
   image: iterativeai/cml:0-dvc2-base1 # Python, DVC, & CML pre-installed
   script:
-    - dvc pull data --run-cache # Pull data & run-cache from S3
     - pip install -r requirements.txt # Install dependencies
+    - dvc pull data --run-cache # Pull data & run-cache from S3
     - dvc repro # Reproduce pipeline
 
     # Create CML report
