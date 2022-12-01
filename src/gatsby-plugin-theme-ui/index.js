@@ -423,6 +423,8 @@ export default {
     Footer: {
       variant: 'styles.invert',
       py: 1,
+      width: '100%',
+      zIndex: 5,
       Inner: {
         flexDirection: ['column', null, null, 'row'],
         flexWrap: ['nowrap', null, null, 'wrap'],

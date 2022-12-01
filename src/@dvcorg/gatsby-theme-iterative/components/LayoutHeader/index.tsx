@@ -1,8 +1,8 @@
 import React from 'react'
 import { Flex, Box, Container, Button } from '@theme-ui/components'
-import InstallPopup from '../../molecules/InstallPopup'
-import SmartLink from '../../atoms/SmartLink'
-import SiteLogo from '../../molecules/SiteLogo'
+import InstallPopup from '../../../../components/molecules/InstallPopup'
+import SmartLink from '../../../../components/atoms/SmartLink'
+import SiteLogo from '../../../../components/molecules/SiteLogo'
 import Alert from './Alert'
 
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
@@ -20,11 +20,11 @@ import {
   HamburgerMenu,
   HamburgerButton,
   useHamburgerMenu
-} from '../../molecules/HamburgerMenu'
+} from '../../../../components/molecules/HamburgerMenu'
 
 import * as styles from './styles.module.css'
-import usePopup from '../../../utils/hooks/usePopup'
-import onSelectKey from '../../../utils/onSelectKey'
+import usePopup from '../../../../utils/hooks/usePopup'
+import onSelectKey from '../../../../utils/onSelectKey'
 
 interface IHeaderProps {
   isMain?: boolean

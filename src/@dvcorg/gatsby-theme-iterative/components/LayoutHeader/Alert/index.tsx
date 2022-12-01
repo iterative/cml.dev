@@ -1,5 +1,5 @@
 import React from 'react'
-import SmartLink from '../../../atoms/SmartLink'
+import SmartLink from '../../../../../components/atoms/SmartLink'
 import * as styles from './styles.module.css'
 
 const Alert: React.FC = () => (
