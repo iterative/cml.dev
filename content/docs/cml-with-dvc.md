@@ -157,6 +157,39 @@ more, or check out the
 [use cases for machine learning](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning).
 
 </tab>
+<tab title="Bitbucket">
+
+![](/img/bitbucket/dvc-report.png 'Bitbucket DVC report example')
+
+The `bitbucket-pipelines.yml` file to create this report is:
+
+```yaml
+image: iterativeai/cml:0-dvc2-base1 # Python, DVC, & CML pre-installed
+pipelines:
+  default:
+    - step:
+        name: Train model
+        script:
+          - pip install -r requirements.txt # Install dependencies
+          - dvc pull data --run-cache # Pull data & run-cache from S3
+          - dvc repro # Reproduce pipeline
+    - step:
+        name: Create CML report
+        script:
+          - echo "## Metrics: workflow vs. main" >> report.md
+          - git fetch --depth=1 origin main:main
+          - dvc metrics diff --show-md main >> report.md
+
+          - echo "## Plots" >> report.md
+          - echo "### Training loss function diff" >> report.md
+          - dvc plots diff --target loss.csv --show-vega main > vega.json
+          - vl2png vega.json > plot.png
+          - echo '![](./plot.png "Training Loss")' >> report.md
+
+          - cml comment create report.md
+```
+
+</tab>
 </toggle>
 
 ## Cloud Storage Provider Credentials
