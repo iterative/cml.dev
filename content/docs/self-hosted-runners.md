@@ -436,7 +436,7 @@ provisioned through environment variables instead of files.
 ## GitLab CI/CD and container images from private registries
 
 _See also the
-[official documentation](https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#use-credential-helpers)
+[GitLab documentation](https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#use-credential-helpers)
 for more information._
 
 ### Amazon Web Services
