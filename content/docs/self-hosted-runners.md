@@ -439,9 +439,10 @@ _See also the
 [official documentation](https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#use-credential-helpers)
 for more information._
 
-### Amazon Web Services
+<toggle>
+<tab title="AWS">
 
-#### GitLab CI/CD Environment Variables
+### GitLab CI/CD Environment Variables
 
 | Name                    | Value                                                                                                       |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -451,7 +452,7 @@ for more information._
 | `AWS_SESSION_TOKEN`     | [AWS session token **_(optional)_**](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html) |
 | `REPO_TOKEN`            | [GitLab Personal Access Token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)         |
 
-#### `.gitlab-ci.yml`
+### `.gitlab-ci.yml`
 
 ```yaml
 runner:
@@ -475,9 +476,11 @@ appropriate values.
 
 </admon>
 
-### Google Cloud Platform
+</tab>
 
-#### GitLab CI/CD Environment Variables
+<tab title="GCP">
+
+### GitLab CI/CD Environment Variables
 
 | Name                                  | Value                                                                                                                                         |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -485,7 +488,7 @@ appropriate values.
 | `GOOGLE_APPLICATION_CREDENTIALS_DATA` | [Contents of a Google Cloud service account JSON key file](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) |
 | `REPO_TOKEN`                          | [GitLab Personal Access Token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)                                           |
 
-#### `.gitlab-ci.yml`\*\*
+### `.gitlab-ci.yml`
 
 ```yaml
 runner:
@@ -520,6 +523,9 @@ This example uses the new
 the `gcr.io` domain) but instructions are similar for both.
 
 </admon>
+
+</tab>
+</toggle>
 
 ## On-premise (Local) Runners
 
