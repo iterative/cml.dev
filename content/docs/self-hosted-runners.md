@@ -436,7 +436,7 @@ provisioned through environment variables instead of files.
 ## GitLab CI/CD and container images from private registries
 
 _See also the
-[official documentation](https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#use-credential-helpers)
+[GitLab documentation](https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#use-credential-helpers)
 for more information._
 
 <toggle>
@@ -452,7 +452,7 @@ for more information._
 | `AWS_SESSION_TOKEN`     | [AWS session token **_(optional)_**](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html) |
 | `REPO_TOKEN`            | [GitLab Personal Access Token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)         |
 
-### `.gitlab-ci.yml`
+### `.gitlab-ci.yml`
 
 ```yaml
 runner:
