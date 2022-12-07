@@ -1,4 +1,4 @@
-# CML Configuration
+# User Guide: Introduction
 
 A GitLab, GitHub, or Bitbucket account is required. Familiarity with
 [GitHub Actions](https://help.github.com/en/actions),
@@ -9,7 +9,9 @@ also be beneficial.
 <toggle>
 <tab title="GitHub">
 
-The CML config file is `.github/workflows/cml.yaml`:
+Integrate CML to your
+[workflow configuration](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+using a `.github/workflows/cml.yaml` file, for example:
 
 ```yaml
 name: CML
@@ -46,7 +48,8 @@ jobs:
           cml comment create report.md
 ```
 
-The example above generates visual reports in pull requests:
+This generates visual reports in pull requests (see `cml comment create`):
+
 ![First CML report in GitHub](/img/cml_first_report.png) _From sample
 [increase forest depth](https://github.com/iterative/cml_base_case/pull/2) PR_
 
@@ -68,7 +71,9 @@ and CML set up on an Ubuntu LTS base for convenience.
 </tab>
 <tab title="GitLab">
 
-The CML config file is `.gitlab-ci.yml`:
+Integrate CML to your
+[pipeline configuration](https://docs.gitlab.com/ee/ci/pipelines/#configure-a-pipeline)
+using the `.gitlab-ci.yml` file, for example:
 
 ```yaml
 train-model:
@@ -87,12 +92,19 @@ create-CML-report:
     - cml comment create report.md
 ```
 
-⚠️ You _must_ provide a
+<admon type="warn">
+
+You _must_ provide a
 [personal or project access token (PAT)](/doc/self-hosted-runners#personal-access-token)
 via a `REPO_TOKEN` variable.
 
-The example above generates visual reports in merge requests:
-![First CML report in GitLab](/img/GitLab_CML_report.png '=400')
+</admon>
+
+This generates visual reports in pull requests (see `cml comment create`):
+
+![First CML report in GitLab](/img/GitLab_CML_report.png '=400') _From sample
+[Experiment](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/1)
+MR_
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -111,7 +123,9 @@ set up on an Ubuntu LTS base for convenience.
 </tab>
 <tab title="Bitbucket">
 
-The CML config file is `bitbucket-pipelines.yml`:
+Integrate CML to your
+[pipeline configuration](https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/)
+using the `bitbucket-pipelines.yml` file, for example:
 
 ```yaml
 image: iterativeai/cml:0-dvc2-base1
@@ -131,49 +145,36 @@ pipelines:
           - cml comment create report.md
 ```
 
-⚠️ You _must_ provide
+<admon type="warn">
+
+You _must_ provide
 [access credentials](/doc/self-hosted-runners#personal-access-token) via a
 `REPO_TOKEN` variable.
 
-The example above generates visual reports in pull requests:
-![First CML report in BitBucket](/img/bitbucket_cloud_pr.png '=600')
+</admon>
 
-⚠️ CML works with Bitbucket Cloud, where you can use the
+This generates visual reports in pull requests (see `cml comment create`):
+
+![First CML report in BitBucket](/img/bitbucket_cloud_pr.png '=600') _From
+sample
+[Experiment](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/1)
+PR_
+
+<admon type="warn">
+
+CML works with Bitbucket Cloud, where you can use the
 [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
 system to run workflows automatically on triggering events. Bitbucket Server is
 not yet supported.
 
-### Example projects
+</admon>
+
+### Example project
 
 - [Basic CML project](https://bitbucket.org/iterative-ai/cml-base-case)
+- [CML with DVC to pull data](https://bitbucket.org/iterative-ai/cml-dvc-case)
+- [CML with Tensorboard](https://bitbucket.org/iterative-ai/cml-tensorboard-case)
+- [CML with EC2 instance](https://bitbucket.org/iterative-ai/cml-cloud-case)
 
 </tab>
 </toggle>
-
-<!-- ## CML Reports
-
-The `cml comment create` command can be used to post reports. CML reports are
-written in Markdown ([GitHub](https://github.github.com/gfm),
-[GitLab](https://docs.gitlab.com/ee/user/markdown.html), or
-[Bitbucket](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
-flavors). That means they can contain images, tables, formatted text, HTML
-blocks, code snippets and more — really, what you put in a CML report is up to
-you. Some examples:
-
-📝 **Text** Write to your report using whatever method you prefer. For example,
-copy the contents of a text file containing the results of ML model training:
-
-```cli
-$ cat results.txt >> report.md
-```
-
-🖼️ **Images** Display images using the markdown or HTML. Note that if an image
-is an output of your ML workflow (i.e. it is produced by your workflow), you can
-use markdown to embed it in a CML report. For example, if `plot.png` is output
-by `python train.py`, run:
-
-```cli
-$ echo '![](./plot.png)' >> report.md
-$ cml comment create report.md
-```
--->
