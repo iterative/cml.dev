@@ -172,6 +172,9 @@ not yet supported.
 ### Example project
 
 - [Basic CML project](https://bitbucket.org/iterative-ai/cml-base-case)
+- [CML with DVC to pull data](https://bitbucket.org/iterative-ai/cml-dvc-case)
+- [CML with Tensorboard](https://bitbucket.org/iterative-ai/cml-tensorboard-case)
+- [CML with EC2 instance](https://bitbucket.org/iterative-ai/cml-cloud-case)
 
 </tab>
 </toggle>
