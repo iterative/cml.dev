@@ -19,7 +19,6 @@ comment is found, create a new one.
 cml comment update [options] <markdown report file>
 ```
 
-
 <admon type="tip">
 
 When using multiple reports, use
@@ -59,17 +58,17 @@ comment to the `HEAD` commit.
 
 The `--target` flag allows more fine-grained control of this feature.
 
-``` cli
+```cli
 # Create an issue comment
 $ cml comment create --target=issue#12 report.md
 ```
 
-``` cli
+```cli
 # Create a pull/merge request comment for a specific PR
 $ cml comment create --target=pr#12 report.md
 ```
 
-``` cli
+```cli
 # Create a commit comment attached to a specific commit
 $ cml comment create --target=commit#abcdef report.md
 ```
