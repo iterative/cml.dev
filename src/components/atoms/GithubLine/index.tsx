@@ -1,15 +1,11 @@
 import React from 'react'
 
-import { Box, Flex } from '@theme-ui/components'
+import { Flex } from '@theme-ui/components'
 
 import SmartLink from '../SmartLink'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
-import { ReactComponent as StarIcon } from '@media/icons/star.svg'
-import useStars from '../../../gatsby/hooks/stars'
 
 const GithubLine: React.FC = () => {
-  const stars = useStars()
-
   return (
     <Flex
       sx={{
@@ -36,16 +32,6 @@ const GithubLine: React.FC = () => {
       >
         GitHub
       </SmartLink>
-      {stars && (
-        <Flex as="span">
-          <Box as="span" sx={{ ml: '7px' }}>
-            <StarIcon width="11" height="11" />
-          </Box>
-          <Box as="span" sx={{ ml: '7px', fontWeight: 500, display: 'block' }}>
-            {stars}
-          </Box>
-        </Flex>
-      )}
     </Flex>
   )
 }
