@@ -97,3 +97,8 @@ body.user-is-tabbing .link-with-focus {
 * {
   text-size-adjust: none;
 }
+
+/* svg {
+  display: inline;
+  vertical-align: unset;
+} */

@@ -933,7 +933,10 @@ export default {
           color: 'text',
           flex: 1,
           ':first-of-type': { textAlign: 'left' },
-          ':last-of-type': { textAlign: 'right' }
+          ':last-of-type': { textAlign: 'right' },
+          marginBlock: '1em',
+          fontWeight: 'bold',
+          fontSize: '1.17em'
         },
         '&>svg': {
           minWidth: '60px',
