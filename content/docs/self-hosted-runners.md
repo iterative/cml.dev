@@ -6,13 +6,13 @@ However, there are many great reasons to use your own runners: to take advantage
 of GPUs, orchestrate your team's shared computing resources, or train in the
 cloud.
 
-<admon type="tip">
+<admon type="info">
 
-Check out the official documentation from
+For background information on self-hosted runners, see the official
+documentation from
 [GitHub](https://help.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners),
 [GitLab](https://docs.gitlab.com/runner) and
-[Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/runners) for more
-information on self-hosted runners.
+[Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/runners).
 
 </admon>
 
@@ -147,14 +147,10 @@ pipelines:
 </tab>
 </toggle>
 
-In the workflow above, the `launch-runner` step launches an EC2 `p2.xlarge`
+In the workflow above, the `launch-runner` job launches an EC2 `p2.xlarge`
 instance in the `us-west` region. The `train-and-report` job then runs on the
 newly-launched instance. See [Environment Variables](#environment-variables)
 below for details on the `secrets` required.
-
-🎉 **Note that jobs can use any Docker container!** To use commands such as
-`cml comment create` from a job, the only requirement is to
-[have CML installed](/doc/install).
 
 ## Docker Images
 
@@ -171,6 +167,14 @@ convention is `{CML_VER}-dvc{DVC_VER}-base{BASE_VER}{-gpu}`:
 
 For example, `docker://iterativeai/cml:0-dvc2-base1-gpu`, or
 `docker://ghcr.io/iterative/cml:0-dvc2-base1`.
+
+<admon type="tip">
+
+**Using your own custom Docker images**: To use commands such as
+`cml comment create`, make sure to
+[install CML in your Docker image](/doc/install#docker).
+
+</admon>
 
 ## Options
 
@@ -200,8 +204,11 @@ The `cml runner` command supports many options (see the
   or
   [GCP instance service account](https://cloud.google.com/compute/docs/access/service-accounts).
 
-☝️ **Tip!** Check out the full
-[`cml runner` command reference](/doc/ref/runner).
+<admon type="tip">
+
+Check out the full [`cml runner` command reference](/doc/ref/runner).
+
+</admon>
 
 ## Environment Variables
 
@@ -222,10 +229,14 @@ workflow above, this token is stored as `PERSONAL_ACCESS_TOKEN`.
 
 </admon>
 
-🛈 If using the `--cloud` option, you will also need to provide access
-credentials for your cloud compute resources as secrets. In the above example,
-`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` (with privileges to create &
-destroy EC2 instances) are required.
+<admon type="info">
+
+If using the `--cloud` option, you will also need to provide
+[access credentials for your cloud compute resources](#cloud-compute-resource-credentials)
+as secrets (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in the above
+example).
+
+</admon>
 
 ### Personal Access Token
 
@@ -400,9 +411,6 @@ See the
 [AWS credentials docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-creds)
 for obtaining these keys.
 
-☝️ **Note** The same credentials can also be used for
-[configuring cloud storage](/doc/cml-with-dvc#cloud-storage-provider-credentials).
-
 </tab>
 <tab title="Azure">
 
@@ -433,6 +441,13 @@ provisioned through environment variables instead of files.
 </tab>
 </toggle>
 
+<admon type="tip">
+
+The same credentials can also be used for
+[configuring cloud storage](/doc/cml-with-dvc#cloud-storage-provider-credentials).
+
+</admon>
+
 ### On-premise (Local) Runners
 
 The `cml runner` command can also be used to manually set up a local machine,
@@ -449,12 +464,16 @@ $ cml runner launch \
 
 The machine will listen for jobs from your repository and execute them locally.
 
-⚠️ **Warning:** anyone with access to your repository (everybody for public
-ones) may be able to execute arbitrary code on your machine. Refer to the
-corresponding
+<admon type="warn">
+
+Anyone with push/PR access to your repository (potentially everybody for public
+repositories) may be able to execute arbitrary code on your machine. Refer to
+the corresponding
 [GitHub](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#hardening-for-self-hosted-runners)
 and [GitLab](https://docs.gitlab.com/runner/security) documentation for
 additional guidance.
+
+</admon>
 
 ## Debugging
 
@@ -491,8 +510,12 @@ $ sudo journalctl -n all -u cml.service --no-pager > cml.log
 $ sudo dmesg --ctime > system.log
 ```
 
-☝️ **Note** Please give your `cml.log` a visual scan, entries like IP addresses
-and Git repository names may be present and considered sensitive in some cases.
+<admon type="warn">
+
+Please check your `cml.log` and censor potentially sensitive entries (e.g. IP
+addresses and Git repository names).
+
+</admon>
 
 You can then copy those logs to your local machine with:
 
