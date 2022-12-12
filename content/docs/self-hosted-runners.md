@@ -437,8 +437,10 @@ provisioned through environment variables instead of files.
 
 The `cml runner` command can also be used to manually set up a local machine,
 on-premise GPU cluster, or any other cloud compute resource as a self-hosted
-runner. Instead of having a `launch-runner` job (as in the YAML above), simply
-[install CML](/doc/install) on the local machine and then run:
+runner. To do this:
+- remove the `cml runner launch --cloud=aws --labels=cml-gpu` command from
+  [your CI workflow](#allocating-cloud-compute-resources-with-cml)
+- [install CML](/doc/install) on your local machine, and run:
 
 ```cli
 $ cml runner launch \
@@ -448,12 +450,16 @@ $ cml runner launch \
   --idle-timeout=180
 ```
 
-The machine will listen for jobs from your repository and execute them locally.
-The label(s) may be anything, but at least one of them must match the one
-configured in the `runs_on` of the YAML.
+Your machine will wait for and run CI jobs from your repository
+(note that the `--cloud` option is removed)
 
-☝️ **Note** The runner will automatically pull the Docker image in the local
-machine and execute the recipe in a newly created container.
+<admon type="info">
+
+If your CI workflow uses a Docker `image`, you will need to have Docker installed on
+your local machine. The CML runner will automatically pull images onto your local
+machine and run workflow in temporary containers.
+
+</admon>
 
 ⚠️ **Warning:** anyone with access to your repository (everybody for public
 ones) may be able to execute arbitrary code on your machine. Refer to the
