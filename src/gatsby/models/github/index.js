@@ -1,3 +1,4 @@
+const { request } = require('@octokit/request')
 /*
    GitHub Static Data
 
@@ -6,6 +7,22 @@
    filled with default dummy data instead of throwing like using the plugin
    alone does.
  */
+
+async function getStars({ owner, repo }) {
+  const response = await request({
+    method: 'GET',
+    url: '/repos/{owner}/{repo}',
+    owner,
+    repo,
+    headers: {
+      authorization: `token ${process.env.GITHUB_TOKEN}`
+    }
+  })
+
+  const stars = response.data.stargazers_count
+
+  return stars
+}
 
 module.exports = {
   async createSchemaCustomization({ actions: { createTypes }, schema }) {
@@ -23,18 +40,13 @@ module.exports = {
       Query: {
         staticGithubData: {
           type: 'StaticGithubData',
-          async resolve(source, args, context) {
-            const nodes = await context.nodeModel.getAllNodes({
-              type: 'GithubData'
-            })
-            const node = nodes[0]
-            return node
-              ? {
-                  stars: node.rawResult.data.repository.stargazers.totalCount
-                }
-              : {
-                  stars: 8888
-                }
+          async resolve() {
+            const { GITHUB_TOKEN } = process.env
+            if (GITHUB_TOKEN) {
+              const stars = await getStars({ owner: 'iterative', repo: 'cml' })
+              return { stars }
+            }
+            return { stars: 8888 }
           }
         }
       }
