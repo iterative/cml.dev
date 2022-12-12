@@ -31,8 +31,8 @@ comment to `update`.
 
 Any [generic option](/doc/ref) in addition to:
 
-- `--target`: Specify comment type and target (`pr`, `commit`, `issue#12`,
-  `pr#17` or `commit#abcdef`).
+- `--target`: Specify comment type and target (`pr`, `commit`, `issue/12`,
+  `pr/17` or `commit/abcdef`).
 - `--watch`: Watch for changes and automatically update the comment (doesn't
   exit, consider
   [appending `&` to run in the background](<https://en.wikipedia.org/wiki/Job_control_(Unix)#Implementation>)).
@@ -60,17 +60,17 @@ The `--target` flag allows more fine-grained control of this feature.
 
 ```cli
 # Create an issue comment
-$ cml comment create --target=issue#12 report.md
+$ cml comment create --target=issue/12 report.md
 ```
 
 ```cli
 # Create a pull/merge request comment for a specific PR
-$ cml comment create --target=pr#12 report.md
+$ cml comment create --target=pr/12 report.md
 ```
 
 ```cli
 # Create a commit comment attached to a specific commit
-$ cml comment create --target=commit#abcdef report.md
+$ cml comment create --target=commit/abcdef report.md
 ```
 
 ### Managing multiple comments
