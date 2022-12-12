@@ -473,7 +473,7 @@ Your machine will wait for and run CI jobs from your repository (note that the
 
 If your CI workflow uses a Docker `image`, you will need to have Docker
 installed on your local machine. The CML runner will automatically pull images
-onto your local machine and run workflow in temporary containers.
+onto your local machine and run workflows in temporary containers.
 
 </admon>
 
