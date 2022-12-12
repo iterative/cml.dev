@@ -447,7 +447,7 @@ $ cml runner launch \
   --repo="$REPOSITORY_URL" \
   --token="$PERSONAL_ACCESS_TOKEN" \
   --labels="cml-gpu" \
-  --idle-timeout=180
+  --idle-timeout="never"  # or "3min", "1h", etc..
 ```
 
 Your machine will wait for and run CI jobs from your repository
