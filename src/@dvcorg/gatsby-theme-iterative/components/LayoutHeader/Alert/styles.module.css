@@ -1,0 +1,18 @@
+.alert {
+  height: 1.75rem;
+  background-color: #fff;
+  color: rgb(58 45 76 / 70%);
+  font-size: 16px;
+  padding: 0 16px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  transition: 0.5s all;
+  overflow: hidden;
+
+  &.collapsed {
+    height: 0;
+    transform: translateY(-100%);
+  }
+}
