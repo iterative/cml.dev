@@ -3,7 +3,7 @@ import { Flex, Box, Container, Button } from '@theme-ui/components'
 import InstallPopup from '../../../../components/molecules/InstallPopup'
 import SmartLink from '../../../../components/atoms/SmartLink'
 import SiteLogo from '../../../../components/molecules/SiteLogo'
-import Alert from '@dvcorg/gatsby-theme-iterative/src/components/LayoutHeader/Alert'
+import Alert from './Alert'
 
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
