@@ -1125,6 +1125,79 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.0.2.tgz#1bfafe4b7ed0f3e4105837e056e0a89b108ebe36"
   integrity sha512-IkpVW/ehM1hWKln4fCA3NzJU8KwD+kIOvPZA4cqxoJHtE21CCzjyp+Kxbu0i5I4tBNOlXPL9mjwnWlL0VEG4Fg==
 
+"@dvcorg/gatsby-theme-iterative@^0.1.23":
+  version "0.1.24"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.1.24.tgz#156264e5cb72e21c5dff1926306ff0121683c79e"
+  integrity sha512-NFmiq+tJ7UkrkGY+36KC9XkIqtaJFxiz19RN9Zq14pHA8ZKjSxBG+qqFyR+kxo7KcF9CIJivoSHNQ10YZzhiOg==
+  dependencies:
+    "@reach/portal" "^0.17.0"
+    "@reach/router" "^1.3.4"
+    "@reach/skip-nav" "^0.17.0"
+    "@svgr/webpack" "^6.2.1"
+    "@types/github-slugger" "^1.3.0"
+    "@types/isomorphic-fetch" "^0.0.36"
+    "@types/promise-polyfill" "^6.0.4"
+    "@types/react-collapse" "^5.0.1"
+    "@types/react-helmet" "^6.1.5"
+    "@types/unist" "^2.0.6"
+    autoprefixer "^10.4.4"
+    classnames "^2.3.1"
+    ease-component "^1.0.0"
+    gatsby-plugin-image "^2.14.1"
+    gatsby-plugin-manifest "^4.14.0"
+    gatsby-plugin-postcss "^5.14.0"
+    gatsby-plugin-react-helmet "^5.14.0"
+    gatsby-plugin-sharp "^4.14.1"
+    gatsby-plugin-sitemap "^5.14.0"
+    gatsby-plugin-svgr "^3.0.0-beta.0"
+    gatsby-remark-autolink-headers "^5.14.0"
+    gatsby-remark-copy-linked-files "^5.14.0"
+    gatsby-remark-embed-gist "^1.2.1"
+    gatsby-remark-embedder "^6.0.0"
+    gatsby-remark-external-links "^0.0.4"
+    gatsby-remark-images "^6.14.0"
+    gatsby-remark-prismjs "^6.14.0"
+    gatsby-remark-relative-images "^2.0.2"
+    gatsby-remark-responsive-iframe "^5.14.0"
+    gatsby-remark-smartypants "^5.14.0"
+    gatsby-source-filesystem "^4.14.0"
+    gatsby-transformer-remark "^5.14.0"
+    gatsby-transformer-sharp "^4.14.0"
+    github-markdown-css "^5.1.0"
+    github-slugger "^1.4.0"
+    hast-util-select "^5.0.1"
+    iso-url "^1.2.1"
+    isomorphic-fetch "^3.0.0"
+    lodash "^4.17.21"
+    nanoid "^4.0.0"
+    perfect-scrollbar "^1.5.5"
+    postcss "^8.4.14"
+    postcss-color-mod-function "^3.0.3"
+    postcss-custom-media "^8.0.0"
+    postcss-custom-properties "^12.1.6"
+    postcss-mixins "^9.0.2"
+    postcss-nested "^5.0.6"
+    prismjs "^1.28.0"
+    promise-polyfill "^8.2.3"
+    react-collapse "^5.1.1"
+    react-collapsible "^2.8.4"
+    react-helmet "^6.1.0"
+    react-use "^17.3.2"
+    rehype-parse "^8.0.4"
+    rehype-react "^7.0.4"
+    rehype-stringify "^9.0.3"
+    remark "^14.0.2"
+    remark-html "^15.0.1"
+    remark-parse "^10.0.1"
+    remark-preset-lint-recommended "^6.1.2"
+    reset-css "^5.0.1"
+    scroll "^3.0.1"
+    tailwindcss "^3.1.3"
+    title-case "^3.0.3"
+    unified "^10.1.2"
+    unist-util-remove-position "^4.0.1"
+    unist-util-visit "^4.1.0"
+
 "@dvcorg/gatsby-theme-iterative@^0.2.0":
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.2.7.tgz#a6e71e099e1c4ab24b3627ff5b7ff7a122e48850"
@@ -8094,6 +8167,15 @@ gatsby-remark-prismjs@6.24.0:
     parse-numeric-range "^1.2.0"
     unist-util-visit "^2.0.3"
 
+gatsby-remark-prismjs@^6.14.0:
+  version "6.25.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-6.25.0.tgz#62ac49623be52e6d67e8b95bb2de81b953af357c"
+  integrity sha512-O33q0aQjl3X8nVEFboQ0RKtnHLhhb0BU+ErK0D9MA6w4qSDRmDjFIWDY7nrsBP5QR80V1sjbjr4zBAAdOre/dA==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    parse-numeric-range "^1.2.0"
+    unist-util-visit "^2.0.3"
+
 gatsby-remark-relative-images@2.0.2, gatsby-remark-relative-images@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/gatsby-remark-relative-images/-/gatsby-remark-relative-images-2.0.2.tgz#17a26ba15762670c8125a33ecd8316a0124cb06f"
@@ -12669,7 +12751,7 @@ postcss-calc@^8.2.3:
     postcss-selector-parser "^6.0.9"
     postcss-value-parser "^4.2.0"
 
-postcss-color-mod-function@3.0.3:
+postcss-color-mod-function@3.0.3, postcss-color-mod-function@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/postcss-color-mod-function/-/postcss-color-mod-function-3.0.3.tgz#816ba145ac11cc3cb6baa905a75a49f903e4d31d"
   integrity sha512-YP4VG+xufxaVtzV6ZmhEtc+/aTXH3d0JLpnYfxqTvwZPbJhWqp8bSY3nfNzNRFLgB4XSaBA82OE4VjOOKpCdVQ==
@@ -12696,7 +12778,7 @@ postcss-convert-values@^5.1.2:
     browserslist "^4.20.3"
     postcss-value-parser "^4.2.0"
 
-postcss-custom-media@8.0.2:
+postcss-custom-media@8.0.2, postcss-custom-media@^8.0.0:
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/postcss-custom-media/-/postcss-custom-media-8.0.2.tgz#c8f9637edf45fef761b014c024cee013f80529ea"
   integrity sha512-7yi25vDAoHAkbhAzX9dHx2yc6ntS4jQvejrNcC+csQJAXjj15e7VcWfMgLqBNAbOvqi5uIa9huOVwdHbf+sKqg==
@@ -12707,6 +12789,13 @@ postcss-custom-properties@12.1.8:
   version "12.1.8"
   resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-12.1.8.tgz#aa003e1885c5bd28e2e32496cd597e389ca889e4"
   integrity sha512-8rbj8kVu00RQh2fQF81oBqtduiANu4MIxhyf0HbbStgPtnFlWn0yiaYTpLHrPnJbffVY1s9apWsIoVZcc68FxA==
+  dependencies:
+    postcss-value-parser "^4.2.0"
+
+postcss-custom-properties@^12.1.6:
+  version "12.1.11"
+  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-12.1.11.tgz#d14bb9b3989ac4d40aaa0e110b43be67ac7845cf"
+  integrity sha512-0IDJYhgU8xDv1KY6+VgUwuQkVtmYzRwu+dMjnmdMafXYv86SWqfxkc7qdDvWS38vsjaEtv8e0vGOUQrAiMBLpQ==
   dependencies:
     postcss-value-parser "^4.2.0"
 
@@ -12834,7 +12923,7 @@ postcss-minify-selectors@^5.2.1:
   dependencies:
     postcss-selector-parser "^6.0.5"
 
-postcss-mixins@9.0.4:
+postcss-mixins@9.0.4, postcss-mixins@^9.0.2:
   version "9.0.4"
   resolved "https://registry.yarnpkg.com/postcss-mixins/-/postcss-mixins-9.0.4.tgz#75cd3cdb619a7e08c4c51ebb094db5f6d65b3831"
   integrity sha512-XVq5jwQJDRu5M1XGkdpgASqLk37OqkH4JCFDXl/Dn7janOJjCTEKL+36cnRVy7bMtoBzALfO7bV7nTIsFnUWLA==
@@ -13108,7 +13197,7 @@ pretty-quick@^3.1.3:
     mri "^1.1.5"
     multimatch "^4.0.0"
 
-prismjs@^1.29.0:
+prismjs@^1.28.0, prismjs@^1.29.0:
   version "1.29.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.29.0.tgz#f113555a8fa9b57c35e637bba27509dcf802dd12"
   integrity sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==
