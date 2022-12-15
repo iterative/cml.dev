@@ -15,7 +15,7 @@ import {
 } from "../../../../gatsby-plugin-theme-ui/components"
 
 const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
-  <section id="use-cases">
+  <section id="use-cases" style={{scrollMarginTop:"-3.5rem"}} >
     <FullWidthBox
       sx={{
         textAlign: "center",
