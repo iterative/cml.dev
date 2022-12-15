@@ -1,3 +1,7 @@
+html {
+  @apply scroll-pt-14;
+}
+
 .headerForDoc {
   top: 0;
   z-index: 7;
