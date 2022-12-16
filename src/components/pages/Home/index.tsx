@@ -3,7 +3,7 @@ import HeroSection from './HeroSection'
 import UseCasesSection from './UseCasesSection'
 import MLOpsSection from './MLOpsSection'
 import SubscribeSection from '../../molecules/SubscribeSection'
-import SiteFooter from '../../organisms/SiteFooter'
+import LayoutFooter from '@dvcorg/gatsby-theme-iterative/src/components/LayoutFooter'
 
 const Home: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       <UseCasesSection />
       <MLOpsSection />
       <SubscribeSection />
-      <SiteFooter />
+      <LayoutFooter />
     </>
   )
 }

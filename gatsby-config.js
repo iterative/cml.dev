@@ -26,8 +26,7 @@ const plugins = [
   {
     resolve: '@dvcorg/gatsby-theme-iterative',
     options: {
-      remark: true,
-      cssBase: path.join('src', 'components', 'organisms', 'Page', 'base.css')
+      glossaryInstanceName: false
     }
   },
   {

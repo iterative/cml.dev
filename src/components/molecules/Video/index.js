@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import useRehydrated from '../../../utils/use-rehydrated'
-import { ModeContext } from '../../organisms/SwitchableMode/Provider'
+import { useMode } from '../../organisms/SwitchableMode/Provider'
 import { Box } from '@theme-ui/components'
 
 const Video = ({
@@ -16,7 +16,7 @@ const Video = ({
   loading = 'lazy',
   ...rest
 }) => {
-  const { currentMode: contextMode } = useContext(ModeContext)
+  const { currentMode: contextMode } = useMode()
   const videoRef = useRef()
   const videoElement = videoRef.current
 

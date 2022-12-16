@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 
 import { Box, Link, Heading } from '@theme-ui/components'
 
-import Header from '../../../organisms/SiteHeader'
+import Header from '../../../../@dvcorg/gatsby-theme-iterative/components/LayoutHeader'
 import GithubLine from '../../../atoms/GithubLine'
 import LandingVideo from '../../../molecules/Video/LandingVideo'
 import Collapser from '../../../atoms/Collapser'

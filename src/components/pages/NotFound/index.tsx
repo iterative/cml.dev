@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as styles from './styles.module.css'
 
-const NotFound: React.FC = () => (
+const NotFound = () => (
   <div className={styles.wrapper}>
     <h1 className={styles.title}>Not Found</h1>
     <div className={styles.content}>
