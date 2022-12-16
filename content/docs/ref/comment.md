@@ -2,18 +2,11 @@
 
 ## create
 
-Post a report as a comment on a commit or pull/merge request.
+Post a Markdown report as a comment on a commit or pull/merge request.
 
 ```usage
 cml comment create [options] <markdown report file>
 ```
-
-CML reports are written in Markdown ([GitHub](https://github.github.com/gfm),
-[GitLab](https://docs.gitlab.com/ee/user/markdown.html), or
-[Bitbucket](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
-flavors). That means they can contain images, tables, formatted text, HTML
-blocks, code snippets and more — really, what you put in a CML report is up to
-you. See some [examples](#examples).
 
 ## update
 
@@ -95,7 +88,7 @@ $ cml comment create report.md
 
 Repeatedly running `cml comment create` may produce too many comments. Meanwhile
 `cml comment update` will only produce/update one comment. What if you'd like to
-have exactly two comments (corresponding to two different Markdown reports,
+have exactly two comments (corresponding to two different markdown reports,
 possibly from different parallel workflows) visible at a time?
 
 To mark and subsequently update a particular comment, use
@@ -104,21 +97,13 @@ run ID, include the placeholder text `"{workflow}"` and `"{run}"`. For example:
 
 ```cli
 # Create and constantly update 2 separate comments
-$ cml comment update --watch \
-                     --watermark-title='first {workflow} report' \
-                     report.md &
-$ cml comment update --watch \
-                     --watermark-title='second {workflow} report' \
-                     debug.md &
+$ cml comment update --watch --watermark-title='first {workflow} report' report.md &
+$ cml comment update --watch --watermark-title='second {workflow} report' debug.md &
 $ python train.py --report-file=report.md --debug-file=debug.md
 
 # Same, but create a new pair of comments if rerunning a workflow
-$ cml comment update --watch \
-                     --watermark-title='first {run} report' \
-                     report.md &
-$ cml comment update --watch \
-                     --watermark-title='second {run} report' \
-                     debug.md &
+$ cml comment update --watch --watermark-title='first {run} report' report.md &
+$ cml comment update --watch --watermark-title='second {run} report' debug.md &
 $ python train.py --report-file=report.md --debug-file=debug.md
 ```
 
