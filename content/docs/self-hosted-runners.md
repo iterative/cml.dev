@@ -454,8 +454,8 @@ The `cml runner` command can also be used to manually set up a local machine,
 on-premise GPU cluster, or any other cloud compute resource as a self-hosted
 runner. To do this:
 
-- remove the [`cml runner launch ... --cloud=aws --labels=cml-gpu`]() command from
-  [your CI workflow](#allocating-cloud-compute-resources-with-cml)
+- remove the [`cml runner launch ... --cloud=aws --labels=cml-gpu`]() command
+  from [your CI workflow](#allocating-cloud-compute-resources-with-cml)
 - [install CML](/doc/install) on your local machine, and run:
 
 ```cli
