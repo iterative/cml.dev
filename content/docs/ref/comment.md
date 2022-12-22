@@ -2,11 +2,13 @@
 
 ## create
 
-Post a Markdown report as a comment on a commit or pull/merge request.
+Post a Markdown report as a comment on a commit, pull/merge or issue request.
 
 ```usage
 cml comment create [options] <markdown report file>
 ```
+
+By default PR comments are created, with a fallback to creating commit comments.
 
 ## update
 
@@ -16,20 +18,6 @@ comment is found, create a new one.
 ```usage
 cml comment update [options] <markdown report file>
 ```
-
-<admon type="tip">
-
-If there's an associated pull/merge request, consider using `update` with the
-[`--pr`](#--pr) flag.
-
-</admon>
-
-<admon type="tip">
-
-If [`cml pr`](/doc/ref/pr) was used earlier in the workflow, use
-`--commit-sha=HEAD` to post comments to the new PR if desired.
-
-</admon>
 
 <admon type="tip">
 
@@ -43,10 +31,8 @@ comment to `update`.
 
 Any [generic option](/doc/ref) in addition to:
 
-- `--commit-sha=<rev>`, `--head-sha=<rev>`:
-  [Git revision](https://git-scm.com/docs/gitrevisions) linked to this comment
-  [default: `HEAD`].
-- `--pr`: Post to an existing PR/MR associated with the specified commit.
+- `--target`: Specify comment type and target (`pr`, `commit`, `issue/12`,
+  `pr/17` or `commit/abcdef`).
 - `--watch`: Watch for changes and automatically update the comment (doesn't
   exit, consider
   [appending `&` to run in the background](<https://en.wikipedia.org/wiki/Job_control_(Unix)#Implementation>)).
@@ -62,6 +48,30 @@ Any [generic option](/doc/ref) in addition to:
   `cml comment update` calls); `"{workflow}"` and `"{run}"` are auto-replaced.
 
 ## Examples
+
+### Creating commit or issue comments
+
+`cml comment create` and `cml comment update` will create/update PR comments by
+default, determining the PR from the workflow context or searching for PRs
+containing the `HEAD` commit. If that fails, the fallback is to attach the
+comment to the `HEAD` commit.
+
+The `--target` flag allows more fine-grained control of this feature.
+
+```cli
+# Create an issue comment
+$ cml comment create --target=issue/12 report.md
+```
+
+```cli
+# Create a pull/merge request comment for a specific PR
+$ cml comment create --target=pr/12 report.md
+```
+
+```cli
+# Create a commit comment attached to a specific commit
+$ cml comment create --target=commit/abcdef report.md
+```
 
 ### Managing multiple comments
 
