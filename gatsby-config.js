@@ -104,8 +104,7 @@ const plugins = [
         }
       ]
     }
-  },
-  '@sentry/gatsby'
+  }
 ]
 
 if (process.env.GITHUB_TOKEN) {
