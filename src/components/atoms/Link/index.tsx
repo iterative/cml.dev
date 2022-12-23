@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { URL } from 'iso-url'
-import { useLocation } from '@reach/router'
+import { useLocation } from '@gatsbyjs/reach-router'
 import { getRedirect } from '../../../utils/shared/redirects'
 import { scrollIntoLayout, getScrollNode } from '../../../utils/front/scroll'
 import safeQuerySelector from '../../../utils/front/safeQuerySelector'
@@ -92,7 +92,7 @@ const Link: React.FC<ILinkProps> = ({ href, scrollOptions, ...restProps }) => {
       } else if (href.startsWith('#')) {
         e.preventDefault()
 
-        // We can't navigate by direct usage of @reach/router#navigate because
+        // We can't navigate by direct usage of @gatsbyjs/reach-router#navigate because
         // gatsby-react-router-scroll will package intercept scroll in this
         // case and we will see undesired jump
         window.history.pushState(null, '', href)
