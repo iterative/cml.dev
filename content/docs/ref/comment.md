@@ -114,13 +114,12 @@ $ python train.py --report-file=report.md --debug-file=debug.md
 
 - **`commit_id` has been locked**.
 
-  This [error] is caused by using the default GitHub token with
-  [`cml comment update`](#update). Use a [personal access token (PAT)] instead.
-
-[error]:
-  https://github.community/t/comment-api-does-not-describe-commit-id-has-been-locked/159853/2
-[personal access token (pat)]:
-  /doc/self-hosted-runners?tab=GitHub#personal-access-token
+  This
+  [error](https://github.community/t/comment-api-does-not-describe-commit-id-has-been-locked/159853/2)
+  is caused by using the default GitHub token with
+  [`cml comment update`](#update). Use a
+  [personal access token (PAT)](/doc/self-hosted-runners?tab=GitHub#personal-access-token)
+  instead.
 
 ### Bitbucket
 
@@ -129,13 +128,11 @@ $ python train.py --report-file=report.md --debug-file=debug.md
 
   This happens because the Pull Request Commit Links application has not been
   installed into your BitBucket workspace. You can install it by following these
-  instructions from the [Bitbucket docs]:
+  instructions from the
+  [Bitbucket docs](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pullrequests#api-repositories-workspace-repo-slug-commit-commit-pullrequests-get):
 
   > Pull Request Commit Links app must be installed first before using this API;
   > installation automatically occurs when 'Go to pull request' is clicked from
   > the web interface for a commit's details.
 
   We don't like ClickOps either, but it's the way it is.
-
-[bitbucket docs]:
-  https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pullrequests#api-repositories-workspace-repo-slug-commit-commit-pullrequests-get
