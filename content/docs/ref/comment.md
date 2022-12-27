@@ -2,11 +2,13 @@
 
 ## create
 
-Post a Markdown report as a comment on a commit or pull/merge request.
+Post a Markdown report as a comment on a commit, pull/merge or issue request.
 
 ```usage
 cml comment create [options] <markdown report file>
 ```
+
+By default, PR comments are created (see `--target` for more details).
 
 ## update
 
@@ -16,20 +18,6 @@ comment is found, create a new one.
 ```usage
 cml comment update [options] <markdown report file>
 ```
-
-<admon type="tip">
-
-If there's an associated pull/merge request, consider using `update` with the
-[`--pr`](#--pr) flag.
-
-</admon>
-
-<admon type="tip">
-
-If [`cml pr`](/doc/ref/pr) was used earlier in the workflow, use
-`--commit-sha=HEAD` to post comments to the new PR if desired.
-
-</admon>
 
 <admon type="tip">
 
@@ -43,20 +31,25 @@ comment to `update`.
 
 Any [generic option](/doc/ref) in addition to:
 
-- `--commit-sha=<rev>`, `--head-sha=<rev>`:
-  [Git revision](https://git-scm.com/docs/gitrevisions) linked to this comment
-  [default: `HEAD`].
-- `--pr`: Post to an existing PR/MR associated with the specified commit.
+- `--target`: Specify comment type and target (`pr`, `commit`, `issue/12`,
+  `pr/17` or `commit/abcdef`). Defaults to 1) using the PR associated with the
+  workflow context, 2) finding a PR containing the `HEAD` commit, or 3)
+  attaching the comment to the `HEAD` commit itself.
+
 - `--watch`: Watch for changes and automatically update the comment (doesn't
   exit, consider
   [appending `&` to run in the background](<https://en.wikipedia.org/wiki/Job_control_(Unix)#Implementation>)).
+
 - `--publish=<true|false>`: Upload any local images found in the Markdown report
   [default: `true`].
+
 - `--publish-native`: Use `--driver`'s native capabilities to `--publish` assets
   instead of `--publish-url` (not available on `--driver=github`).
+
 - `--publish-url=<...>`: Self-hosted image server URL [default:
   `https://asset.cml.dev`], see
   [minroud-s3](https://github.com/iterative/minroud-s3).
+
 - `--watermark-title=<...>`: Hidden comment marker (useful to
   [specify which comment to update](#managing-multiple-comments) in subsequent
   `cml comment update` calls); `"{workflow}"` and `"{run}"` are auto-replaced.
@@ -70,6 +63,7 @@ contents of a text file containing the results of ML model training:
 
 ```cli
 $ cat results.txt >> report.md
+$ cml comment create report.md
 ```
 
 ### Post a graphic report
@@ -82,6 +76,21 @@ embed it in a CML report. For example, if `plot.png` is output by
 ```cli
 $ echo '![](./plot.png)' >> report.md
 $ cml comment create report.md
+```
+
+### Commenting on commits or issues
+
+Use the `--target` option for fine-grained control on where to post the comment.
+
+```cli
+# Create an issue comment
+$ cml comment create --target=issue/12 report.md
+
+# Create a pull/merge request comment for a specific PR
+$ cml comment create --target=pr/12 report.md
+
+# Create a commit comment attached to a specific commit
+$ cml comment create --target=commit/abcdef report.md
 ```
 
 ### Managing multiple comments

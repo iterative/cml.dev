@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { Box, Container, Flex, Heading } from '@theme-ui/components'
-import SiteLogo from '../../molecules/SiteLogo'
-import SmartLink from '../../atoms/SmartLink'
+import SiteLogo from '../../../../components/molecules/SiteLogo'
+import SmartLink from '../../../../components/atoms/SmartLink'
 
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as TwitterIcon } from '@media/icons/twitter.svg'

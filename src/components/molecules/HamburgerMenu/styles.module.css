@@ -3,8 +3,7 @@
 }
 
 .wrapper {
-  display: none;
-  visibility: hidden;
+  display: block;
   padding: 12px 16px;
   position: fixed;
   z-index: 11;
@@ -19,8 +18,9 @@
   color: #fff;
   overflow-y: auto;
 
-  @media (--sm-scr) {
-    display: block;
+  @media screen(sm) {
+    display: none;
+    visibility: hidden;
   }
 
   &.opened {
@@ -34,14 +34,14 @@
 }
 
 .toggleButton {
-  @mixin hover;
+  @apply hover;
 
   position: fixed;
-  display: none;
-  visibility: hidden;
+  display: flex;
+  visibility: visible;
   z-index: 999;
   right: 16px;
-  top: 12px;
+  top: 5px;
   padding: 0;
   border: none;
   width: 40px;
@@ -65,9 +65,9 @@
     background-color: #fff;
   }
 
-  @media (--sm-scr) {
-    display: flex;
-    visibility: visible;
+  @media screen(sm) {
+    display: none;
+    visibility: hidden;
   }
 }
 
@@ -76,8 +76,8 @@
 }
 
 .logo {
-  @mixin hover;
-  @mixin active;
+  @apply hover;
+  @apply active;
 
   width: 75px;
   height: 40px;
@@ -87,8 +87,8 @@
 }
 
 .company {
-  @mixin active;
-  @mixin hover;
+  @apply active;
+  @apply hover;
 
   font-size: 12px;
   line-height: 20px;
@@ -129,9 +129,10 @@
 }
 
 .sectionHeading {
+  @apply font-brandon;
+
   display: block;
   padding: 15px 0;
-  font-family: var(--font-brandon);
   font-weight: 400;
   font-size: 13px;
   line-height: 20px;
@@ -141,9 +142,9 @@
 }
 
 a.sectionHeading {
-  @mixin hover;
-  @mixin active;
-  @mixin focus;
+  @apply hover;
+  @apply active;
+  @apply focus;
 }
 
 .subSections {
@@ -160,8 +161,8 @@ a.sectionHeading {
 }
 
 .subSectionLink {
-  @mixin hover;
-  @mixin active;
+  @apply hover;
+  @apply active;
 
   display: flex;
   flex-direction: column;
@@ -213,14 +214,14 @@ a.sectionHeading {
 }
 
 .linkButton {
-  @mixin active;
+  @apply active;
+  @apply font-brandon;
 
   display: block;
   margin-top: 15px;
   height: 38px;
   border-radius: 4px;
   background-color: #fff;
-  font-family: var(--font-brandon);
   font-size: 16px;
   line-height: 38px;
   text-align: center;

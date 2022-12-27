@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Box } from '@theme-ui/components'
 import msx from '../styleHelpers.js'
 import { defaultIdPrefix } from '../common.js'
 import { clickOnKeyPress } from '../../../../utils/handlers'
-import { ModeContext } from '../Provider/index.js'
+import { useMode } from '../Provider/index.js'
 
 const ModeSwitchLabel = ({ idPrefix, mode, variant, className, children }) => {
-  const { updateMode } = useContext(ModeContext)
+  const { updateMode } = useMode()
   return (
     <Box
       as="label"

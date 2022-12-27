@@ -32,8 +32,6 @@ $ cd example_cml
        container: docker://ghcr.io/iterative/cml:0-dvc2-base1
        steps:
          - uses: actions/checkout@v3
-           with:
-             ref: ${{ github.event.pull_request.head.sha }}
          - name: Train model
            env:
              REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
