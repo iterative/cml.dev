@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --color-black: #24292e;
   --color-gray-light: #b0b8c5;
@@ -34,7 +38,8 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  @apply font-sans;
+
   font-weight: 400;
   line-height: 1.5;
 }
@@ -92,3 +97,8 @@ body.user-is-tabbing .link-with-focus {
 * {
   text-size-adjust: none;
 }
+
+/* svg {
+  display: inline;
+  vertical-align: unset;
+} */

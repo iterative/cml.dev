@@ -7,24 +7,20 @@
 }
 
 .title {
-  @media (--md-scr) {
-    @mixin h1-mobile;
-  }
+  @apply font-medium text-3xl;
 
-  @media (--lg-scr) {
-    @mixin h1-desktop;
+  @media screen(lg) {
+    @apply text-4xl;
   }
 }
 
 .content {
-  @media (--md-scr) {
-    @mixin text-mobile;
+  @apply text-lg;
 
-    padding: 0 15px;
-    text-align: center;
-  }
+  padding: 0 15px;
+  text-align: center;
 
-  @media (--lg-scr) {
-    @mixin text-desktop;
+  @media screen(lg) {
+    @apply text-xl;
   }
 }

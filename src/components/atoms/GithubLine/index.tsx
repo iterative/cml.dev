@@ -27,6 +27,7 @@ const GithubLine: React.FC = () => {
       </Flex>
       We’re on{' '}
       <SmartLink
+        className="underline"
         sx={{
           ml: '5px',
           color: 'background',
@@ -37,7 +38,7 @@ const GithubLine: React.FC = () => {
         GitHub
       </SmartLink>
       {stars && (
-        <Flex as="span">
+        <Flex className="items-center" as="span">
           <Box as="span" sx={{ ml: '7px' }}>
             <StarIcon width="11" height="11" />
           </Box>

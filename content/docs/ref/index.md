@@ -3,7 +3,7 @@
 CML provides a number of commands to help package the outputs of ML workflows
 into a CML report, which may include numeric data or model performance
 visualizations. Let's look at the typical sequence (after
-[configuration](/doc/config)):
+[configuration](/doc/user-guide)):
 
 ∞ `cml runner` launches a runner hosted by a cloud compute provider or
 [on-premise](/doc/self-hosted-runners).

@@ -4,12 +4,10 @@
 cml pr create [options] <pathspec>...
 ```
 
-Commits a set of files (any [Git pathspec]) to a new branch and creates a pull
-request. If sending a report afterward, consider using
-[`cml comment update --pr`](/doc/ref/comment#update).
-
-[git pathspec]:
-  https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
+Commits a set of files (any
+[Git pathspec](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec))
+to a new branch and creates a pull request. If sending a report afterward,
+consider using [`cml comment update --target=pr`](/doc/ref/comment#update).
 
 <details>
 
