@@ -24,19 +24,14 @@
       }
     ]
   },
+  "usage",
   {
-    "slug": "user-guide",
-    "source": "user-guide/index.md",
-    "children": [
-      {
-        "label": "CML with DVC",
-        "slug": "cml-with-dvc"
-      },
-      {
-        "label": "Self-hosted Runners",
-        "slug": "self-hosted-runners"
-      }
-    ]
+    "label": "CML with DVC",
+    "slug": "cml-with-dvc"
+  },
+  {
+    "label": "Self-hosted Runners",
+    "slug": "self-hosted-runners"
   },
   {
     "label": "Command Reference",

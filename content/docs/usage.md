@@ -1,4 +1,4 @@
-# User Guide: Introduction
+# Using CML
 
 A GitLab, GitHub, or Bitbucket account is required. Familiarity with
 [GitHub Actions](https://help.github.com/en/actions),
@@ -9,9 +9,7 @@ also be beneficial.
 <toggle>
 <tab title="GitHub">
 
-Integrate CML to your
-[workflow configuration](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
-using a `.github/workflows/cml.yaml` file, for example:
+The key file in any CML project is `.github/workflows/cml.yaml`:
 
 ```yaml
 name: CML
@@ -48,10 +46,8 @@ jobs:
           cml comment create report.md
 ```
 
-This generates visual reports in pull requests (see `cml comment create`):
-
-![First CML report in GitHub](/img/cml_first_report.png) _From sample
-[increase forest depth](https://github.com/iterative/cml_base_case/pull/2) PR_
+The example above generates visual reports in pull requests:
+[![](/img/cml_first_report.png)](https://github.com/iterative/cml_base_case/pull/2)
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -71,9 +67,7 @@ and CML set up on an Ubuntu LTS base for convenience.
 </tab>
 <tab title="GitLab">
 
-Integrate CML to your
-[pipeline configuration](https://docs.gitlab.com/ee/ci/pipelines/#configure-a-pipeline)
-using the `.gitlab-ci.yml` file, for example:
+The key file in any CML project is `.gitlab-ci.yml`:
 
 ```yaml
 train-model:
@@ -92,19 +86,12 @@ create-CML-report:
     - cml comment create report.md
 ```
 
-<admon type="warn">
-
-You _must_ provide a
+⚠️ You _must_ provide a
 [personal or project access token (PAT)](/doc/self-hosted-runners#personal-access-token)
 via a `REPO_TOKEN` variable.
 
-</admon>
-
-This generates visual reports in pull requests (see `cml comment create`):
-
-![First CML report in GitLab](/img/GitLab_CML_report.png '=400') _From sample
-[Experiment](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/1)
-MR_
+The example above generates visual reports in merge requests:
+[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/1)
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -123,9 +110,7 @@ set up on an Ubuntu LTS base for convenience.
 </tab>
 <tab title="Bitbucket">
 
-Integrate CML to your
-[pipeline configuration](https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/)
-using the `bitbucket-pipelines.yml` file, for example:
+The key file in any CML project is `bitbucket-pipelines.yml`:
 
 ```yaml
 image: iterativeai/cml:0-dvc2-base1
@@ -145,31 +130,19 @@ pipelines:
           - cml comment create report.md
 ```
 
-<admon type="warn">
-
-You _must_ provide
+⚠️ You _must_ provide
 [access credentials](/doc/self-hosted-runners#personal-access-token) via a
 `REPO_TOKEN` variable.
 
-</admon>
+The example above generates visual reports in pull requests:
+[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/1)
 
-This generates visual reports in pull requests (see `cml comment create`):
-
-![First CML report in BitBucket](/img/bitbucket_cloud_pr.png '=600') _From
-sample
-[Experiment](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/1)
-PR_
-
-<admon type="warn">
-
-CML works with Bitbucket Cloud, where you can use the
+⚠️ CML works with Bitbucket Cloud, where you can use the
 [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
 system to run workflows automatically on triggering events. Bitbucket Server is
 not yet supported.
 
-</admon>
-
-### Example project
+### Example projects
 
 - [Basic CML project](https://bitbucket.org/iterative-ai/cml-base-case)
 - [CML with DVC to pull data](https://bitbucket.org/iterative-ai/cml-dvc-case)
@@ -178,3 +151,59 @@ not yet supported.
 
 </tab>
 </toggle>
+
+## CML Commands
+
+CML provides a number of commands to help package the outputs of ML workflows
+(including numeric data and visualizations about model performance) into a CML
+report.
+
+Below is a list of CML commands for starting cloud compute runners, writing and
+publishing Markdown reports to your CI/CD system.
+
+∞ **[`runner`](/doc/ref/runner)**\
+Launch a runner hosted by a cloud compute provider or locally on-premise (see [self-hosted runners](/doc/self-hosted-runners))\
+e.g. `cml runner launch --cloud={aws,azure,gcp,kubernetes} ...`
+
+∞ **[`pr`](/doc/ref/pr)**\
+Commit specified files to a new branch and create a pull request\
+e.g. `cml pr create "**/*.json" "**/*.py" --md >> report.md`
+
+∞ **[`comment`](/doc/ref/comment)**\
+Post a Markdown report as a commit comment\
+e.g. `cml comment create report.md`
+
+∞ **[`check`](/doc/ref/check)**\
+Post a Markdown report as a GitHub check\
+e.g. `cml check create report.md`
+
+∞ **[`tensorboard`](/doc/ref/tensorboard)**\
+Return a link to a <https://tensorboard.dev> page\
+e.g. `cml tensorboard connect --logdir=./logs --md >> report.md`
+
+### CML Reports
+
+The `cml comment create` command can be used to post reports. CML reports are
+written in Markdown ([GitHub](https://github.github.com/gfm),
+[GitLab](https://docs.gitlab.com/ee/user/markdown.html), or
+[Bitbucket](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html)
+flavors). That means they can contain images, tables, formatted text, HTML
+blocks, code snippets and more — really, what you put in a CML report is up to
+you. Some examples:
+
+📝 **Text** Write to your report using whatever method you prefer. For example,
+copy the contents of a text file containing the results of ML model training:
+
+```cli
+$ cat results.txt >> report.md
+```
+
+🖼️ **Images** Display images using the markdown or HTML. Note that if an image
+is an output of your ML workflow (i.e. it is produced by your workflow), you can
+use markdown to embed it in a CML report. For example, if `plot.png` is output
+by `python train.py`, run:
+
+```cli
+$ echo '![](./plot.png)' >> report.md
+$ cml comment create report.md
+```

@@ -242,7 +242,7 @@ When using object storage remotes (like AWS `s3` or GCP `gs`) with
 [`cml runner`](/doc/self-hosted-runners), DVC can be granted fine-grained
 access. Instead of resorting to dedicated credentials & managing additional
 keys,
-[the `--cloud-permission-set` option](/doc/ref/runner#example-using---cloud-permission-set)
+[the `--cloud-permission-set` option](/doc/ref/runner#using---cloud-permission-set)
 provides granular control.
 
 Networking cost and transfer time can also be reduced using an appropriate

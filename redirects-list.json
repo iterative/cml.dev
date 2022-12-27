@@ -6,10 +6,6 @@
   "^/doc/start/start-github(/.*)?$                                         /doc/start/github",
   "^/doc/start/start-gitlab(/.*)?$                                         /doc/start/gitlab",
 
-  "^/doc/usage$                                                            /doc/user-guide",
-  "^/doc/cml-with-dvc$                                                     /doc/user-guide/cml-with-dvc 302",
-  "^/doc/self-hosted-runners$                                              /doc/user-guide/self-hosted-runners 302",
-
   "^/doc/ref/send-github-check(/.*)?$                                      /doc/ref/check$1",
   "^/doc/ref/send-comment(/.*)?$                                           /doc/ref/comment$1",
   "^/doc/ref/tensorboard-dev(/.*)?$                                        /doc/ref/tensorboard$1",

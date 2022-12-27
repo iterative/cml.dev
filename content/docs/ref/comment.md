@@ -62,28 +62,6 @@ Any [generic option](/doc/ref) in addition to:
 
 ## Examples
 
-### Post a text report
-
-Write to your report using whatever method you prefer. For example, copy the
-contents of a text file containing the results of ML model training:
-
-```cli
-$ cat results.txt >> report.md
-$ cml comment create report.md
-```
-
-### Post a graphic report
-
-Display images using Markdown or HTML. Note that if an image is an output of
-your ML workflow (i.e. it is produced by your workflow), you can use Markdown to
-embed it in a CML report. For example, if `plot.png` is output by
-`python train.py`, run:
-
-```cli
-$ echo '![](./plot.png)' >> report.md
-$ cml comment create report.md
-```
-
 ### Commenting on commits or issues
 
 Use the `--target` option for fine-grained control on where to post the comment.
