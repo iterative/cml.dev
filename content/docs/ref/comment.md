@@ -29,7 +29,7 @@ comment to `update`.
 
 Any [generic option](/doc/ref) in addition to:
 
-- `--target=<pr|commit|issue</ref>>`: Where to post/associate with the comment
+- `--target=<pr|commit|issue>[/ref]`: Where to post/associate with the comment
   (`pr`, `commit`, `issue`), optionally with a reference (`issue/12`, `pr/17`,
   `commit/`[rev](https://git-scm.com/docs/gitrevisions) [default: `pr` falling
   back to `commit/HEAD`].
