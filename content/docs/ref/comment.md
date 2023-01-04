@@ -2,7 +2,7 @@
 
 ## create
 
-Post a Markdown report as a comment on a commit, pull/merge or issue request.
+Post a markdown report as a comment on a commit, pull/merge request, or issue.
 
 ```usage
 cml comment create [options] <markdown report file>
@@ -31,8 +31,10 @@ comment to `update`.
 
 Any [generic option](/doc/ref) in addition to:
 
-- `--target`: Specify comment type and target (`pr`, `commit`, `issue/12`,
-  `pr/17` or `commit/abcdef`).
+- `--target=<pr|commit|issue</ref>>`: Where to post/associate with the comment
+  (`pr`, `commit`, `issue`), optionally with a reference (`issue/12`, `pr/17`,
+  `commit/`[rev](https://git-scm.com/docs/gitrevisions) [default: `pr` falling
+  back to `commit/HEAD`].
 - `--watch`: Watch for changes and automatically update the comment (doesn't
   exit, consider
   [appending `&` to run in the background](<https://en.wikipedia.org/wiki/Job_control_(Unix)#Implementation>)).
