@@ -8,8 +8,6 @@ Post a markdown report as a comment on a commit, pull/merge request, or issue.
 cml comment create [options] <markdown report file>
 ```
 
-By default PR comments are created, with a fallback to creating commit comments.
-
 ## update
 
 Update the last CML comment instead of creating a new one. If no previous
@@ -50,30 +48,6 @@ Any [generic option](/doc/ref) in addition to:
   `cml comment update` calls); `"{workflow}"` and `"{run}"` are auto-replaced.
 
 ## Examples
-
-### Creating commit or issue comments
-
-`cml comment create` and `cml comment update` will create/update PR comments by
-default, determining the PR from the workflow context or searching for PRs
-containing the `HEAD` commit. If that fails, the fallback is to attach the
-comment to the `HEAD` commit.
-
-The `--target` flag allows more fine-grained control of this feature.
-
-```cli
-# Create an issue comment
-$ cml comment create --target=issue/12 report.md
-```
-
-```cli
-# Create a pull/merge request comment for a specific PR
-$ cml comment create --target=pr/12 report.md
-```
-
-```cli
-# Create a commit comment attached to a specific commit
-$ cml comment create --target=commit/abcdef report.md
-```
 
 ### Managing multiple comments
 
