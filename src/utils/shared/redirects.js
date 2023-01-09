@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-const { navigate } = require('@reach/router')
+const { navigate } = require('gatsby')
 const { structure, findChildWithSource } = require('./sidebar')
 
 const buildSidebarRedirects = (list, redirects = []) => {
