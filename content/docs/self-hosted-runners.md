@@ -51,8 +51,6 @@ jobs:
     steps:
       - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - name: Deploy runner on EC2
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -73,8 +71,6 @@ jobs:
       options: --gpus all
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -295,8 +291,6 @@ steps:
       private-key: ${{ secrets.CML_GITHUB_APP_PEM }}
       app-id: ${{ secrets.CML_GITHUB_APP_ID }}
   - uses: actions/checkout@v3
-    with:
-      ref: ${{ github.event.pull_request.head.sha }}
       token: ${{ steps.get-token.outputs.token }}
   - name: Train model
     env:
