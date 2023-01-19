@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "^0.3.0",
-    "@dvcorg/websites-server": "^0.0.17",
+    "@dvcorg/websites-server": "^0.0.19",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@hapi/wreck": "^18.0.0",
