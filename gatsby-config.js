@@ -140,6 +140,7 @@ if (process.env.ANALYZE) {
 }
 
 module.exports = {
+  trailingSlash: 'never',
   flags: {
     DEV_SSR: ['false', 'False', false, 'FALSE'].includes(process.env.DEV_SSR)
       ? false
@@ -155,7 +156,8 @@ module.exports = {
       ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
       : 'https://cml.dev',
     twitterUsername: '@DVCorg',
-    titleTemplate: '%s | CML'
+    titleTemplate: '%s | CML',
+    imageAlt: 'CML'
   },
   developMiddleware: app => {
     app.use(redirectsMiddleware)
