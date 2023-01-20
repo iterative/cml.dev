@@ -156,8 +156,7 @@ module.exports = {
       ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
       : 'https://cml.dev',
     twitterUsername: '@DVCorg',
-    titleTemplate: '%s | CML',
-    imageAlt: 'CML'
+    titleTemplate: '%s | CML'
   },
   developMiddleware: app => {
     app.use(redirectsMiddleware)
