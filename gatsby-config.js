@@ -108,6 +108,7 @@ const plugins = [
 ]
 
 module.exports = {
+  trailingSlash: 'never',
   flags: {
     DEV_SSR: ['false', 'False', false, 'FALSE'].includes(process.env.DEV_SSR)
       ? false
