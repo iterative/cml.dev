@@ -1,5 +1,5 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
   "rules": {
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,
@@ -24,6 +24,12 @@
       }
     ],
     "selector-class-pattern": null,
-    "keyframes-name-pattern": null
+    "keyframes-name-pattern": null,
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": ["a", "color-mod"]
+      }
+    ]
   }
 }
