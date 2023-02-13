@@ -1,15 +1,14 @@
 restylers:
   - name: prettier
-    arguments:
-      [
-        '--write',
-        '--trailing-comma=none',
-        '--no-semi',
-        '--arrow-parens=avoid',
-        '--single-quote=true',
-        '--print-width=80',
-        '--tab-width=2',
-        '--use-tabs=false',
-        '--prose-wrap=always'
-      ]
-    include: ['**/*.{js,json,md,yaml,yml}']
+    arguments: ['--write']
+    include:
+      - '**/*.css'
+      - '**/*.js'
+      - '**/*.json'
+      - '**/*.jsx'
+      - '**/*.md'
+      - '**/*.mdx'
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.yaml'
+      - '**/*.yml'
