@@ -21,8 +21,6 @@ jobs:
     # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -91,8 +89,6 @@ Windows, Python 3 should be setup first.
 ```yaml
 steps:
   - uses: actions/checkout@v3
-    with:
-      ref: ${{ github.event.pull_request.head.sha }}
   - uses: iterative/setup-dvc@v1
 ```
 
@@ -103,8 +99,6 @@ steps:
 runs-on: windows-latest
 steps:
   - uses: actions/checkout@v3
-    with:
-      ref: ${{ github.event.pull_request.head.sha }}
   - uses: actions/setup-python@v4
     with:
       python-version: '3.x'

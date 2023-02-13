@@ -2,7 +2,7 @@
 
 ## create
 
-Post a Markdown report as a comment on a commit or pull/merge request.
+Post a markdown report as a comment on a commit, pull/merge request, or issue.
 
 ```usage
 cml comment create [options] <markdown report file>
@@ -19,20 +19,6 @@ cml comment update [options] <markdown report file>
 
 <admon type="tip">
 
-If there's an associated pull/merge request, consider using `update` with the
-[`--pr`](#--pr) flag.
-
-</admon>
-
-<admon type="tip">
-
-If [`cml pr`](/doc/ref/pr) was used earlier in the workflow, use
-`--commit-sha=HEAD` to post comments to the new PR if desired.
-
-</admon>
-
-<admon type="tip">
-
 When using multiple reports, use
 [`--watermark-title=<...>`](#managing-multiple-comments) to specify which
 comment to `update`.
@@ -43,10 +29,10 @@ comment to `update`.
 
 Any [generic option](/doc/ref) in addition to:
 
-- `--commit-sha=<rev>`, `--head-sha=<rev>`:
-  [Git revision](https://git-scm.com/docs/gitrevisions) linked to this comment
-  [default: `HEAD`].
-- `--pr`: Post to an existing PR/MR associated with the specified commit.
+- `--target=<pr|commit|issue>[/ref]`: Where to post/associate with the comment
+  (`pr`, `commit`, `issue`), optionally with a reference (`issue/12`, `pr/17`,
+  `commit/`[rev](https://git-scm.com/docs/gitrevisions) [default: `pr` falling
+  back to `commit/HEAD`].
 - `--watch`: Watch for changes and automatically update the comment (doesn't
   exit, consider
   [appending `&` to run in the background](<https://en.wikipedia.org/wiki/Job_control_(Unix)#Implementation>)).

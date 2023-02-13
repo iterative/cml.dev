@@ -26,8 +26,7 @@ const plugins = [
   {
     resolve: '@dvcorg/gatsby-theme-iterative',
     options: {
-      remark: true,
-      cssBase: path.join('src', 'components', 'organisms', 'Page', 'base.css')
+      glossaryInstanceName: false
     }
   },
   {
@@ -105,43 +104,11 @@ const plugins = [
         }
       ]
     }
-  },
-  '@sentry/gatsby'
+  }
 ]
 
-if (process.env.GITHUB_TOKEN) {
-  plugins.push({
-    resolve: `gatsby-source-github-api`,
-    options: {
-      // token: required by the GitHub API
-      token: process.env.GITHUB_TOKEN,
-
-      // GraphQLquery: defaults to a search query
-      graphQLQuery: `
-          {
-            repository(owner: "iterative", name: "cml") {
-              stargazers {
-                totalCount
-              }
-            }
-          }
-        `,
-      variables: {}
-    }
-  })
-}
-
-if (process.env.ANALYZE) {
-  plugins.push({
-    resolve: 'gatsby-plugin-webpack-bundle-analyzer',
-    options: {
-      analyzerPort: 4000,
-      production: process.env.NODE_ENV === 'production'
-    }
-  })
-}
-
 module.exports = {
+  trailingSlash: 'never',
   flags: {
     DEV_SSR: ['false', 'False', false, 'FALSE'].includes(process.env.DEV_SSR)
       ? false
