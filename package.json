@@ -151,7 +151,7 @@
     "postcss-custom-properties": "^12.1.11",
     "postcss-mixins": "^9.0.4",
     "postcss-nested": "^6.0.0",
-    "prettier": "^2.8.3",
+    "prettier": "^2.8.4",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "remark-parse": "^10.0.1",
