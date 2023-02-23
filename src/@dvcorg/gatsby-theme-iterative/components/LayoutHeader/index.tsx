@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Box, Container, Button } from '@theme-ui/components'
-import SmartLink from '../../atoms/SmartLink'
-import SiteLogo from '../../molecules/SiteLogo'
+import SmartLink from '../../../../components/atoms/SmartLink'
+import SiteLogo from '../../../../components/molecules/SiteLogo'
 import Alert from './Alert'
 
 import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
@@ -19,11 +19,11 @@ import {
   HamburgerMenu,
   HamburgerButton,
   useHamburgerMenu
-} from '../../molecules/HamburgerMenu'
+} from '../../../../components/molecules/HamburgerMenu'
 
 import * as styles from './styles.module.css'
-import usePopup from '../../../utils/hooks/usePopup'
-import onSelectKey from '../../../utils/onSelectKey'
+import usePopup from '../../../../utils/hooks/usePopup'
+import onSelectKey from '../../../../utils/onSelectKey'
 
 interface IHeaderProps {
   isMain?: boolean
@@ -153,7 +153,9 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
         variant="layout.Header"
         className={isMain ? '' : styles.headerForDoc}
         sx={
-          isMain ? { backgroundColor: 'transparent' } : { position: 'sticky' }
+          isMain
+            ? { backgroundColor: 'transparent' }
+            : { position: 'fixed', width: '100%' }
         }
       >
         {isMain && <Alert />}
@@ -240,22 +242,22 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
             </Flex>
           </Box>
         </Container>
+        {!isMain && (
+          <>
+            <HamburgerButton
+              opened={opened}
+              collapsed={collapsed}
+              handleClick={handleToggle}
+            />
+            <HamburgerMenu
+              opened={opened}
+              collapsed={collapsed}
+              handleToggle={handleToggle}
+              handleItemClick={handleItemClick}
+            />
+          </>
+        )}
       </Box>
-      {!isMain && (
-        <>
-          <HamburgerButton
-            opened={opened}
-            collapsed={collapsed}
-            handleClick={handleToggle}
-          />
-          <HamburgerMenu
-            opened={opened}
-            collapsed={collapsed}
-            handleToggle={handleToggle}
-            handleItemClick={handleItemClick}
-          />
-        </>
-      )}
     </>
   )
 }

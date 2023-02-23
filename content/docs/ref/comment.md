@@ -2,7 +2,7 @@
 
 ## create
 
-Post a Markdown report as a comment on a commit or pull/merge request.
+Post a markdown report as a comment on a commit, pull/merge request, or issue.
 
 ```usage
 cml comment create [options] <markdown report file>
@@ -19,15 +19,9 @@ cml comment update [options] <markdown report file>
 
 <admon type="tip">
 
-If there's an associated pull/merge request, consider using `update` with the
-`--pr` flag.
-
-</admon>
-
-<admon type="tip">
-
-If [`cml pr`](/doc/ref/pr) was used earlier in the workflow, use
-`--commit-sha=HEAD` to post comments to the new PR if desired.
+When using multiple reports, use
+[`--watermark-title=<...>`](#managing-multiple-comments) to specify which
+comment to `update`.
 
 </admon>
 
@@ -35,10 +29,10 @@ If [`cml pr`](/doc/ref/pr) was used earlier in the workflow, use
 
 Any [generic option](/doc/ref) in addition to:
 
-- `--commit-sha=<rev>`, `--head-sha=<rev>`:
-  [Git revision](https://git-scm.com/docs/gitrevisions) linked to this comment
-  [default: `HEAD`].
-- `--pr`: Post to an existing PR/MR associated with the specified commit.
+- `--target=<pr|commit|issue>[/ref]`: Where to post/associate with the comment
+  (`pr`, `commit`, `issue`), optionally with a reference (`issue/12`, `pr/17`,
+  `commit/`[rev](https://git-scm.com/docs/gitrevisions) [default: `pr` falling
+  back to `commit/HEAD`].
 - `--watch`: Watch for changes and automatically update the comment (doesn't
   exit, consider
   [appending `&` to run in the background](<https://en.wikipedia.org/wiki/Job_control_(Unix)#Implementation>)).
@@ -46,9 +40,37 @@ Any [generic option](/doc/ref) in addition to:
   [default: `true`].
 - `--publish-native`: Use `--driver`'s native capabilities to `--publish` assets
   instead of `--publish-url` (not available on `--driver=github`).
-- `--publish-url=<url>`: Self-hosted image server URL [default:
+- `--publish-url=<...>`: Self-hosted image server URL [default:
   `https://asset.cml.dev`], see
   [minroud-s3](https://github.com/iterative/minroud-s3).
+- `--watermark-title=<...>`: Hidden comment marker (useful to
+  [specify which comment to update](#managing-multiple-comments) in subsequent
+  `cml comment update` calls); `"{workflow}"` and `"{run}"` are auto-replaced.
+
+## Examples
+
+### Managing multiple comments
+
+Repeatedly running `cml comment create` may produce too many comments. Meanwhile
+`cml comment update` will only produce/update one comment. What if you'd like to
+have exactly two comments (corresponding to two different markdown reports,
+possibly from different parallel workflows) visible at a time?
+
+To mark and subsequently update a particular comment, use
+`--watermark-title="some text"`. To mark a comment according to the workflow or
+run ID, include the placeholder text `"{workflow}"` and `"{run}"`. For example:
+
+```cli
+# Create and constantly update 2 separate comments
+$ cml comment update --watch --watermark-title='first {workflow} report' report.md &
+$ cml comment update --watch --watermark-title='second {workflow} report' debug.md &
+$ python train.py --report-file=report.md --debug-file=debug.md
+
+# Same, but create a new pair of comments if rerunning a workflow
+$ cml comment update --watch --watermark-title='first {run} report' report.md &
+$ cml comment update --watch --watermark-title='second {run} report' debug.md &
+$ python train.py --report-file=report.md --debug-file=debug.md
+```
 
 ## FAQs and Known Issues
 

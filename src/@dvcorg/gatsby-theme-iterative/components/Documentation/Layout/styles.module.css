@@ -1,11 +1,13 @@
 .container {
   display: flex;
   flex-direction: row;
+  flex: 1;
   z-index: 2;
+  height: 100%;
   font-family: var(--font-brandon);
   -webkit-font-smoothing: antialiased;
 
-  @media (--sm-scr) {
+  @media screen(xsMax) {
     padding: 0 15px;
   }
 
@@ -21,24 +23,16 @@
     pointer-events: none;
     background-color: var(--color-light-blue);
 
-    @media (--sm-scr) {
+    @media screen(xsMax) {
       display: none;
     }
-  }
-
-  h5 {
-    font: inherit;
-    vertical-align: baseline;
-    margin: 0;
-    border: 0;
-    font-size: 14px;
   }
 }
 
 .backdrop {
   display: none;
 
-  @media (--sm-scr) {
+  @media screen(xsMax) {
     display: block;
     opacity: 0;
     pointer-events: none;
@@ -60,30 +54,33 @@
 }
 
 .side {
-  flex-shrink: 0;
-  width: 280px;
+  @apply flex flex-col w-72
+    sm:py-0;
+
   background-color: var(--color-light-blue);
+  flex-shrink: 0;
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  box-shadow: rgb(0 0 0 / 14%) 0 0 4px, rgb(0 0 0 / 28%) 0 4px 8px;
+  transform: translateX(-110%);
+  transition: transform 0.35s ease;
 
-  @media (--sm-scr) {
-    position: fixed;
-    display: block;
-    z-index: 2;
-    top: var(--layout-header-height);
-    bottom: 0;
-    left: 0;
-    right: 60px;
-    box-shadow: rgb(0 0 0 / 14%) 0 0 4px, rgb(0 0 0 / 28%) 0 4px 8px;
-    transform: translateX(-110%);
-    transition: transform 0.35s ease;
-
-    &.opened {
-      transform: translateX(0);
-    }
-
-    @media (--sm-scr) {
-      top: var(--layout-header-height-mobile);
-    }
+  &.opened {
+    transform: translateX(0);
   }
+
+  @media screen(xs) {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    width: 280px;
+  }
+}
+
+.innerSidebar {
+  @apply flex flex-col h-screen pt-14 xs:sticky xs:h-auto xs:max-h-screen xs:top-0 z-20;
 }
 
 .sideToggle {
@@ -91,7 +88,7 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   left: 8px;
   bottom: 20px;
   width: 45px;
@@ -106,7 +103,7 @@
     transform: translateX(calc(100vw - 60px));
   }
 
-  @media (--sm-scr) {
+  @media screen(xsMax) {
     display: flex;
 
     > * {
@@ -120,8 +117,9 @@
   flex-direction: row;
   max-width: calc(100% - 280px);
   background-color: #fff;
+  flex: 1;
 
-  @media (--sm-scr) {
+  @media screen(xsMax) {
     max-width: 100%;
   }
 }

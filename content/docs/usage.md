@@ -29,8 +29,6 @@ jobs:
       #     python-version: '3.x'
       - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - name: Train model
         run: |
           # Your ML workflow goes here
@@ -91,7 +89,7 @@ create-CML-report:
 via a `REPO_TOKEN` variable.
 
 The example above generates visual reports in merge requests:
-[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/3)
+[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/1)
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -135,7 +133,7 @@ pipelines:
 `REPO_TOKEN` variable.
 
 The example above generates visual reports in pull requests:
-[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/2)
+[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/1)
 
 ⚠️ CML works with Bitbucket Cloud, where you can use the
 [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
@@ -145,6 +143,9 @@ not yet supported.
 ### Example projects
 
 - [Basic CML project](https://bitbucket.org/iterative-ai/cml-base-case)
+- [CML with DVC to pull data](https://bitbucket.org/iterative-ai/cml-dvc-case)
+- [CML with Tensorboard](https://bitbucket.org/iterative-ai/cml-tensorboard-case)
+- [CML with EC2 instance](https://bitbucket.org/iterative-ai/cml-cloud-case)
 
 </tab>
 </toggle>

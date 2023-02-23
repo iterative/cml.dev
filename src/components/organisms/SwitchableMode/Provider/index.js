@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { defaultModes } from '../common'
 
-export const ModeContext = React.createContext(undefined)
+export const ModeContext = React.createContext({
+  currentMode: 'gitlab',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  updateMode: () => {}
+})
 
 const isRuntime = typeof window !== 'undefined'
 
@@ -65,7 +69,7 @@ const ModeSwitchRadios = ({ name, idPrefix, modes, currentMode }) => {
   )
 }
 
-const ModeProvider = ({
+const ModesProvider = ({
   name = 'site-mode-switcher-mode',
   idPrefix = 'site-mode-',
   modes = defaultModes,
@@ -87,5 +91,13 @@ const ModeProvider = ({
   )
 }
 
+export const useMode = () => {
+  const { currentMode, updateMode } = useContext(ModeContext)
+  return {
+    currentMode,
+    updateMode
+  }
+}
+
 export const modes = defaultModes
-export default ModeProvider
+export default ModesProvider
