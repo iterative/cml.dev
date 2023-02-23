@@ -442,7 +442,7 @@ The same credentials can also be used for
 
 </admon>
 
-### On-premise (Local) Runners
+## On-premise (Local) Runners
 
 The `cml runner` command can also be used to manually set up a local machine,
 on-premise GPU cluster, or any other cloud compute resource as a self-hosted
