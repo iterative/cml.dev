@@ -15,7 +15,7 @@ import {
 } from "../../../../gatsby-plugin-theme-ui/components"
 
 const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
-  <section id="use-cases">
+  <section id="use-cases" style={{scrollMarginTop:"-3.5rem"}} >
     <FullWidthBox
       sx={{
         textAlign: "center",
@@ -102,13 +102,12 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>container: docker://ghcr.io/iterative/cml:0-dvc2-base1</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- run: |</span></div>
                       <Tooltip type="dependencies">
                         <div>          <span>pip install -r requirements.txt</span></div>
                         <div>          <span>python train.py  # generate plot.png</span></div>
                       </Tooltip>
+                      <div><span> </span></div>
                       <Tooltip type="reports">
                         <div>          <span># Create CML report</span></div>
                         <div>          <span>cat metrics.txt &gt;&gt; report.md</span></div>
@@ -131,19 +130,20 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                     <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-base-case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
-                      <div><span>  default:</span></div>
-                      <div><span>    - step:</span></div>
-                      <div><span>        name: Train model</span></div>
-                      <div><span>        script: </span></div>
+                      <div>  <span>default:</span></div>
+                      <div>    <span>- step:</span></div>
+                      <div>        <span>name: Train and Report</span></div>
+                      <div>        <span>script: </span></div>
                       <Tooltip type="dependencies">
-                        <div><span>          - pip install -r requirements.txt</span></div>
-                        <div><span>          - python train.py  # generate plot.png</span></div>
+                        <div>          <span>- pip install -r requirements.txt</span></div>
+                        <div>          <span>- python train.py  # generate plot.png</span></div>
                       </Tooltip>
+                      <div><span> </span></div>
                       <Tooltip type="reports">
-                        <div><span>          # Create CML report</span></div>
-                        <div><span>          - cat metrics.txt &gt;&gt; report.md</span></div>
-                        <div><span>          - echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
-                        <div><span>          - cml comment create report.md</span></div>
+                        <div>          <span># Create CML report</span></div>
+                        <div>          <span>- cat metrics.txt &gt;&gt; report.md</span></div>
+                        <div>          <span>- echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
+                        <div>          <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -206,8 +206,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>runs-on: ubuntu-latest</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- uses: actions/setup-python@v4</span></div>
                       <div>        <span>with:</span></div>
                       <div>          <span>python-version: &apos;3.x&apos;</span></div>
@@ -254,30 +252,32 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                     <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-dvc-case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
-                      <div><span>  default:</span></div>
-                      <div><span>    - step:</span></div>
-                      <div><span>        name: Train model</span></div>
-                      <div><span>        script: </span></div>
+                      <div>  <span>default:</span></div>
+                      <div>    <span>- step:</span></div>
+                      <div>        <span>name: Train model</span></div>
+                      <div>        <span>script: </span></div>
                       <Tooltip type="dvc">
-                        <div><span>          - dvc pull data</span></div>
+                        <div>          <span>- dvc pull data</span></div>
                       </Tooltip>
                       <div><span>      </span></div>
                       <Tooltip type="dependencies">
-                        <div><span>          - pip install -r requirements.txt</span></div>
-                        <div><span>          - dvc repro</span></div>
+                        <div>          <span>- pip install -r requirements.txt</span></div>
+                        <div>          <span>- dvc repro</span></div>
                       </Tooltip>
-                      <div><span>      </span></div>
+                      <div>    <span>- step:</span></div>
+                      <div>        <span>name: Create CML report</span></div>
+                      <div>        <span>script: </span></div>
                       <Tooltip type="reports">
-                        <div><span>          # Compare metrics to main</span></div>
-                        <div><span>          - git fetch --depth=1 origin main:main</span></div>
-                        <div><span>          - dvc metrics diff --show-md main &gt;&gt; report.md</span></div>
-                        <div><span>          # Plot training loss function diff</span></div>
-                        <div><span>          - dvc plots diff </span></div>
-                        <div><span>            --target loss.csv --show-vega main &gt; vega.json</span></div>
-                        <div><span>          - vl2png vega.json &gt; plot.png</span></div>
-                        <div><span>          - echo &#x27;![](./plot.png &quot;Training Loss&quot;)&#x27; &gt;&gt; report.md</span></div>
-                        <div><span>          # Post CML report as a comment in GitLab</span></div>
-                        <div><span>          - cml comment create report.md</span></div>
+                        <div>          <span># Compare metrics to main</span></div>
+                        <div>          <span>- git fetch --depth=1 origin main:main</span></div>
+                        <div>          <span>- dvc metrics diff --show-md main &gt;&gt; report.md</span></div>
+                        <div>          <span># Plot training loss function diff</span></div>
+                        <div>          <span>- dvc plots diff </span></div>
+                        <div>            <span>--target loss.csv --show-vega main &gt; vega.json</span></div>
+                        <div>          <span>- vl2png vega.json &gt; plot.png</span></div>
+                        <div>          <span>- echo &#x27;![](./plot.png &quot;Training Loss&quot;)&#x27; &gt;&gt; report.md</span></div>
+                        <div>          <span># Post CML report as a comment in Bitbucket</span></div>
+                        <div>          <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -334,7 +334,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>container: docker://ghcr.io/iterative/cml:0-dvc2-base1</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>      <span>- name: Train model</span></div>
+                      <div>      <span>- name: Train and Report</span></div>
                       <div>        <span>env:</span></div>
                       <div>          <span>REPO_TOKEN: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
                       <Tooltip type="tensorboard">
@@ -366,23 +366,23 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                     <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-tensorboard-case">
                       <div><span>image: iterativeai/cml:0-dvc2-base1</span></div>
                       <div><span>pipelines:</span></div>
-                      <div><span>  default:</span></div>
-                      <div><span>    - step:</span></div>
-                      <div><span>        name: Train model</span></div>
-                      <div><span>        script: </span></div>
+                      <div>  <span>default:</span></div>
+                      <div>    <span>- step:</span></div>
+                      <div>        <span>name: Train and Report</span></div>
+                      <div>        <span>script: </span></div>
+                      <div>          <span>- pip install -r requirements.txt</span></div>
                       <Tooltip type="tensorboard">
-                        <div><span>          - pip install -r requirements.txt</span></div>
-                        <div><span>          - cml tensorboard connect</span></div>
-                        <div><span>            --logdir=./logs</span></div>
-                        <div><span>            --name=&quot;Go to tensorboard&quot;</span></div>
-                        <div><span>            --md &gt;&gt; report.md</span></div>
+                        <div>          <span>- cml tensorboard connect</span></div>
+                        <div>            <span>--logdir=./logs</span></div>
+                        <div>            <span>--name=&quot;Go to tensorboard&quot;</span></div>
+                        <div>            <span>--md &gt;&gt; report.md</span></div>
                       </Tooltip>
                       <Tooltip type="reports">
-                        <div><span>          - cml comment create report.md</span></div>
+                        <div>          <span>- cml comment create report.md</span></div>
                       </Tooltip>
                       <div><span>      </span></div>
                       <Tooltip type="dependencies">
-                        <div><span>          - python train.py  # generate ./logs</span></div>
+                        <div>          <span>- python train.py  # generate ./logs</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -470,9 +470,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>container: docker://iterativeai/cml:0-dvc2-base1</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
-                      <div>      <span>- name: Train model</span></div>
+                      <div>      <span>- name: Train and Report</span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="dependencies">
                         <div>          <span>pip install -r requirements.txt</span></div>
@@ -497,42 +495,40 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                 )}
                 bitbucket={(
                   <Collapser>
-                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-cloud-case">
+                    <Code filename="bitbucket-pipelines.yml" repo="https://bitbucket.org/iterative-ai/cml-runner-example">
                       <div><span>pipelines:</span></div>
-                      <div><span>  default:</span></div>
-                      <div><span>  - step:</span></div>
-                      <div><span>      name: deploy-runner</span></div>
-                      <div><span>      image: iterativeai/cml:0-dvc2-base1</span></div>
-                      <div><span>      script:</span></div>
-                      <div><span>        - |</span></div>
+                      <div>  <span>default:</span></div>
+                      <div>    <span>- step:</span></div>
+                      <div>        <span>name: Launch Runner</span></div>
+                      <div>        <span>image: iterativeai/cml:0-dvc2-base1</span></div>
+                      <div>        <span>script:</span></div>
+                      <div>          <span># Supports AWS, Azure, GCP, K8s</span></div>
                       <Tooltip type="runner">
-                        <div><span>          cml runner \</span></div>
-                        <div><span>              --cloud=aws \</span></div>
-                        <div><span>              --cloud-region=us-west \</span></div>
-                        <div><span>              --cloud-type=m5.2xlarge \</span></div>
-                        <div><span>              --cloud-spot \</span></div>
-                        <div><span>              --labels=cml.runner</span></div>
+                        <div>          <span>- cml runner launch</span></div>
+                        <div>                <span>--cloud=aws</span></div>
+                        <div>                <span>--cloud-region=us-west</span></div>
+                        <div>                <span>--cloud-type=m5.2xlarge</span></div>
+                        <div>                <span>--cloud-spot</span></div>
+                        <div>                <span>--labels=cml.runner</span></div>
+                        <div>    <span>- step:</span></div>
+                        <div>        <span>runs-on: [self.hosted, cml.runner]</span></div>
                       </Tooltip>
-                      <div><span>  - step:</span></div>
-                      <div><span>      name: run</span></div>
-                      <Tooltip type="runner">
-                        <div><span>      runs-on: [self.hosted, cml.runner]</span></div>
-                      </Tooltip>
-                      <div><span>      image: iterativeai/cml:0-dvc2-base1</span></div>
-                      <div><span>      script:</span></div>
+                      <div>        <span>name: Train and Report</span></div>
+                      <div>        <span>image: iterativeai/cml:0-dvc2-base1</span></div>
+                      <div>        <span>script:</span></div>
                       <Tooltip type="dependencies">
-                        <div><span>      - pip install -r requirements.txt</span></div>
-                        <div><span>      - python train.py  # generate plot.png</span></div>
+                        <div>          <span>- pip install -r requirements.txt</span></div>
+                        <div>          <span>- python train.py  # generate plot.png</span></div>
                       </Tooltip>
                       <Tooltip type="reports">
-                        <div><span>      - echo &quot;## Report from your EC2 instance&quot; &gt;&gt; report.md</span></div>
-                        <div><span>      - cat metrics.txt &gt;&gt; report.md</span></div>
-                        <div><span>      - echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
-                        <div><span>      - cml comment create report.md</span></div>
+                        <div>          <span>- echo &quot;## Report from your EC2 instance&quot; &gt;&gt; report.md</span></div>
+                        <div>          <span>- cat metrics.txt &gt;&gt; report.md</span></div>
+                        <div>          <span>- echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
+                        <div>          <span>- cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
-                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml-cloud-case/pull-requests/1">
+                      <a target="_blank" rel="noreferrer" href="https://bitbucket.org/iterative-ai/cml-runner-example/pull-requests/1">
                         <Image src="/img/bitbucket/cml-runner-report.png" alt="Bitbucket Cloud report example" />
                       </a>
                     </ExampleBox>
@@ -631,8 +627,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>      <span>options: --gpus all</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- name: Train model</span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="dvc">

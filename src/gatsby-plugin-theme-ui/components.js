@@ -105,7 +105,10 @@ export const FullWidthBox = ({
 export const HomeFeature = ({ children, heading, icon: Icon }) => {
   return (
     <Box variant="styles.HomeFeature.Wrapper">
-      <Box variant="styles.HomeFeature.Box">
+      <Box
+        className="flex flex-col items-center"
+        variant="styles.HomeFeature.Box"
+      >
         <Icon />
         <Heading as="h3" variant="styles.HomeFeature.Heading">
           {heading}

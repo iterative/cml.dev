@@ -29,8 +29,6 @@ jobs:
       #     python-version: '3.x'
       - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - name: Train model
         run: |
           # Your ML workflow goes here
@@ -145,6 +143,9 @@ not yet supported.
 ### Example projects
 
 - [Basic CML project](https://bitbucket.org/iterative-ai/cml-base-case)
+- [CML with DVC to pull data](https://bitbucket.org/iterative-ai/cml-dvc-case)
+- [CML with Tensorboard](https://bitbucket.org/iterative-ai/cml-tensorboard-case)
+- [CML with EC2 instance](https://bitbucket.org/iterative-ai/cml-cloud-case)
 
 </tab>
 </toggle>

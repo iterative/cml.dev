@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { IPageProps } from '../../organisms/Page'
+import { ILayoutComponentProps } from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
 import { handleFirstTab } from '../../../utils/front/accessibility'
 
 import * as styles from './styles.module.css'
@@ -20,7 +20,7 @@ interface IMainLayoutProps {
 }
 
 export type LayoutComponent = React.FC<
-  IMainLayoutProps & IPageProps & ILayoutModifiable
+  IMainLayoutProps & ILayoutComponentProps & ILayoutModifiable
 >
 
 const MainLayout: LayoutComponent = ({ className, children }) => {

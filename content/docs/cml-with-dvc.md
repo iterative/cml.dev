@@ -21,8 +21,6 @@ jobs:
     # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -91,8 +89,6 @@ Windows, Python 3 should be setup first.
 ```yaml
 steps:
   - uses: actions/checkout@v3
-    with:
-      ref: ${{ github.event.pull_request.head.sha }}
   - uses: iterative/setup-dvc@v1
 ```
 
@@ -103,8 +99,6 @@ steps:
 runs-on: windows-latest
 steps:
   - uses: actions/checkout@v3
-    with:
-      ref: ${{ github.event.pull_request.head.sha }}
   - uses: actions/setup-python@v4
     with:
       python-version: '3.x'
@@ -126,7 +120,7 @@ to the [latest release](https://github.com/iterative/dvc/releases)).
 </tab>
 <tab title="GitLab">
 
-![](/img/github/dvc-report.png 'GitLab DVC report example')
+![](/img/gitlab/dvc-report.png 'GitLab DVC report example')
 
 The `.gitlab-ci.yml` file to create this report is:
 
@@ -134,8 +128,8 @@ The `.gitlab-ci.yml` file to create this report is:
 train-and-report:
   image: iterativeai/cml:0-dvc2-base1 # Python, DVC, & CML pre-installed
   script:
-    - dvc pull data --run-cache # Pull data & run-cache from S3
     - pip install -r requirements.txt # Install dependencies
+    - dvc pull data --run-cache # Pull data & run-cache from S3
     - dvc repro # Reproduce pipeline
 
     # Create CML report
@@ -155,6 +149,39 @@ train-and-report:
 See the [example repository](https://gitlab.com/iterative.ai/cml-dvc-case) for
 more, or check out the
 [use cases for machine learning](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning).
+
+</tab>
+<tab title="Bitbucket">
+
+![](/img/bitbucket/dvc-report.png 'Bitbucket DVC report example')
+
+The `bitbucket-pipelines.yml` file to create this report is:
+
+```yaml
+image: iterativeai/cml:0-dvc2-base1 # Python, DVC, & CML pre-installed
+pipelines:
+  default:
+    - step:
+        name: Train model
+        script:
+          - pip install -r requirements.txt # Install dependencies
+          - dvc pull data --run-cache # Pull data & run-cache from S3
+          - dvc repro # Reproduce pipeline
+    - step:
+        name: Create CML report
+        script:
+          - echo "## Metrics: workflow vs. main" >> report.md
+          - git fetch --depth=1 origin main:main
+          - dvc metrics diff --show-md main >> report.md
+
+          - echo "## Plots" >> report.md
+          - echo "### Training loss function diff" >> report.md
+          - dvc plots diff --target loss.csv --show-vega main > vega.json
+          - vl2png vega.json > plot.png
+          - echo '![](./plot.png "Training Loss")' >> report.md
+
+          - cml comment create report.md
+```
 
 </tab>
 </toggle>
