@@ -31,8 +31,6 @@ jobs:
       #     python-version: '3.x'
       - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - name: Train model
         run: |
           # Your ML workflow goes here

@@ -102,8 +102,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>container: docker://ghcr.io/iterative/cml:0-dvc2-base1</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- run: |</span></div>
                       <Tooltip type="dependencies">
                         <div>          <span>pip install -r requirements.txt</span></div>
@@ -208,8 +206,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>runs-on: ubuntu-latest</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- uses: actions/setup-python@v4</span></div>
                       <div>        <span>with:</span></div>
                       <div>          <span>python-version: &apos;3.x&apos;</span></div>
@@ -474,8 +470,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>container: docker://iterativeai/cml:0-dvc2-base1</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- name: Train and Report</span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="dependencies">
@@ -633,8 +627,6 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>      <span>options: --gpus all</span></div>
                       <div>    <span>steps:</span></div>
                       <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>        <span>with:</span></div>
-                      <div>          <span>ref: {"${{ github.event.pull_request.head.sha }}"}</span></div>
                       <div>      <span>- name: Train model</span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="dvc">

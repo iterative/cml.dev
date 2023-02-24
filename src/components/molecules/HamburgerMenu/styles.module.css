@@ -50,7 +50,11 @@
   justify-content: center;
   background: transparent;
   outline: none;
-  transition: 0.5s all, opacity 0.2s, outline-offset 0s, outline-width 0s,
+  transition:
+    0.5s all,
+    opacity 0.2s,
+    outline-offset 0s,
+    outline-width 0s,
     outline-color 0s;
 
   &:hover {
@@ -95,11 +99,12 @@
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
-  background: linear-gradient(
-    270deg,
-    var(--color-purple) 0%,
-    var(--color-orange-bright) 100%
-  );
+  background:
+    linear-gradient(
+      270deg,
+      var(--color-purple) 0%,
+      var(--color-orange-bright) 100%
+    );
   background-size: 100%;
   background-clip: text;
   -webkit-text-fill-color: transparent;

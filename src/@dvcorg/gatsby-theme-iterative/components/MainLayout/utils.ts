@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useLocation } from '@reach/router'
+import { useLocation } from '@gatsbyjs/reach-router'
 
 import { handleFrontRedirect } from '../../../../utils/shared/redirects'
 import { scrollIntoLayout, getScrollNode } from '../../../../utils/front/scroll'

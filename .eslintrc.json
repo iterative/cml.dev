@@ -2,11 +2,12 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
     "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:json/recommended"
+    "plugin:json/recommended",
+    "prettier"
   ],
+  "plugins": ["@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -28,18 +29,20 @@
       {
         "selector": "interface",
         "format": ["PascalCase"],
-        "custom": {
-          "regex": "^I[A-Z]",
-          "match": true
-        }
+        "prefix": ["I"]
       },
       {
-        "selector": ["variable", "function"],
-        "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+        "selector": "variableLike",
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"],
         "leadingUnderscore": "allow"
       }
     ],
-    "no-tabs": "error",
+    "no-tabs": [
+      "error",
+      {
+        "allowIndentationTabs": true
+      }
+    ],
     "react/prop-types": "off",
     "@typescript-eslint/no-unused-vars": "error"
   },
