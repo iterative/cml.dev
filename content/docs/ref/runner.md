@@ -165,7 +165,7 @@ ec2:CancelSpotInstanceRequests
 [GCP Managed Roles](https://cloud.google.com/iam/docs/understanding-roles#compute-engine-roles):
 
 - `roles/compute.admin`
-- `roles/iam.serviceAccountUse`
+- `roles/iam.serviceAccountUser`
 
 **For example** this could potentially be further limited to:
 
