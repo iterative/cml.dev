@@ -188,19 +188,19 @@ a.sectionHeading {
 
 .bgImg {
   &Cml {
-    background-image: url("../../../media/icons/cml.svg");
+    background-image: url('../../../media/icons/cml.svg');
   }
 
   &Dvc {
-    background-image: url("../../../media/icons/dvc.svg");
+    background-image: url('../../../media/icons/dvc.svg');
   }
 
   &Studio {
-    background-image: url("../../../media/icons/studio.svg");
+    background-image: url('../../../media/icons/studio.svg');
   }
 
   &Mlem {
-    background-image: url("../../../media/icons/mlem.svg");
+    background-image: url('../../../media/icons/mlem.svg');
   }
 }
 
