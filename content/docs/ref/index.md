@@ -1,5 +1,9 @@
 # Command Reference
 
+CML provides a number of commands to help package the outputs of ML workflows
+(including numeric data and visualizations about model performance) into a CML
+report.
+
 ## Generic Options
 
 All CML commands support the following options:
