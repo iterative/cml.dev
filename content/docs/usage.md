@@ -1,4 +1,4 @@
-# Using CML
+# Usage
 
 A GitLab, GitHub, or Bitbucket account is required. Familiarity with
 [GitHub Actions](https://help.github.com/en/actions),
@@ -44,8 +44,10 @@ jobs:
           cml comment create report.md
 ```
 
-The example above generates visual reports in pull requests:
-[![](/img/cml_first_report.png)](https://github.com/iterative/cml_base_case/pull/2)
+This generates visual reports in pull requests (see `cml comment create`):
+
+![First CML report in GitHub](/img/cml_first_report.png) _From sample
+[increase forest depth](https://github.com/iterative/cml_base_case/pull/2) PR_
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -65,7 +67,9 @@ and CML set up on an Ubuntu LTS base for convenience.
 </tab>
 <tab title="GitLab">
 
-The key file in any CML project is `.gitlab-ci.yml`:
+Integrate CML to your
+[pipeline configuration](https://docs.gitlab.com/ee/ci/pipelines/#configure-a-pipeline)
+using the `.gitlab-ci.yml` file, for example:
 
 ```yaml
 train-model:
@@ -84,12 +88,19 @@ create-CML-report:
     - cml comment create report.md
 ```
 
-⚠️ You _must_ provide a
+<admon type="warn">
+
+You _must_ provide a
 [personal or project access token (PAT)](/doc/self-hosted-runners#personal-access-token)
 via a `REPO_TOKEN` variable.
 
-The example above generates visual reports in merge requests:
-[![](/img/GitLab_CML_report.png '=400')](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/1)
+</admon>
+
+This generates visual reports in pull requests (see `cml comment create`):
+
+![First CML report in GitLab](/img/GitLab_CML_report.png '=400') _From sample
+[Experiment](https://gitlab.com/iterative.ai/cml-base-case/-/merge_requests/1)
+MR_
 
 We helpfully provide CML and other useful libraries pre-installed on our
 [custom Docker images](/doc/self-hosted-runners#docker-images). In the above
@@ -108,7 +119,9 @@ set up on an Ubuntu LTS base for convenience.
 </tab>
 <tab title="Bitbucket">
 
-The key file in any CML project is `bitbucket-pipelines.yml`:
+Integrate CML to your
+[pipeline configuration](https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/)
+using the `bitbucket-pipelines.yml` file, for example:
 
 ```yaml
 image: iterativeai/cml:0-dvc2-base1
@@ -128,17 +141,29 @@ pipelines:
           - cml comment create report.md
 ```
 
-⚠️ You _must_ provide
+<admon type="warn">
+
+You _must_ provide
 [access credentials](/doc/self-hosted-runners#personal-access-token) via a
 `REPO_TOKEN` variable.
 
-The example above generates visual reports in pull requests:
-[![](/img/bitbucket_cloud_pr.png '=600')](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/1)
+</admon>
 
-⚠️ CML works with Bitbucket Cloud, where you can use the
+This generates visual reports in pull requests (see `cml comment create`):
+
+![First CML report in BitBucket](/img/bitbucket_cloud_pr.png '=600') _From
+sample
+[Experiment](https://bitbucket.org/iterative-ai/cml-base-case/pull-requests/1)
+PR_
+
+<admon type="warn">
+
+CML works with Bitbucket Cloud, where you can use the
 [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) CI/CD
 system to run workflows automatically on triggering events. Bitbucket Server is
 not yet supported.
+
+</admon>
 
 ### Example projects
 
@@ -152,12 +177,8 @@ not yet supported.
 
 ## CML Commands
 
-CML provides a number of commands to help package the outputs of ML workflows
-(including numeric data and visualizations about model performance) into a CML
-report.
-
-Below is a list of CML commands for starting cloud compute runners, writing and
-publishing Markdown reports to your CI/CD system.
+Below is a list of [CML commands](/doc/ref) for starting cloud compute runners,
+writing and publishing Markdown reports to your CI/CD system.
 
 ∞ **[`runner`](/doc/ref/runner)**\
 Launch a runner hosted by a cloud compute provider or locally on-premise (see [self-hosted runners](/doc/self-hosted-runners))\
