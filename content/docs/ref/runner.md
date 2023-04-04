@@ -60,6 +60,10 @@ Any [generic option](/doc/ref) in addition to:
 - `--cloud-aws-subnet=<...>`:
   [AWS subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#subnet-basics)
   identifier.
+- `--cloud-kubernetes-node-selector=<...>`: `key=value` pair to specify the
+  [Kubernetes node selector](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/).
+  By default, the node selector is inferred from the GPU configuration.
+  [default: `accelerator=inferred`].
 - `--docker-volumes=<...>`: Volume mount to pass to Docker, e.g.
   `/var/run/docker.sock:/var/run/docker.sock` for Docker-in-Docker support. May
   be specified multiple times. Only supported by GitLab.
