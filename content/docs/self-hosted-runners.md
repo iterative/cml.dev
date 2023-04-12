@@ -324,7 +324,7 @@ Use either:
   ([specific](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#specific-runners)),
   but not for instance-level
   ([shared](https://docs.gitlab.com/ee/ci/runners/runners_scope.html#shared-runners))
-  runners.
+  runners. Ensure that the token is assigned at least the "Developer" role.
 
 For instance, to use a personal access token:
 
