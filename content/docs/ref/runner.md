@@ -392,6 +392,8 @@ $ cml runner launch \
 
 will select the node labeled with `disktype=ssd`.
 
+If not provided, a default `accelerator=infer` key pair will be used.
+
 #### Node selector on multiple labels
 
 You can set multiple labels for a node selector.
@@ -418,14 +420,12 @@ For example:
 
 ```cli
 $ cml runner launch \
-  --cloud-kubernetes-node-selector="accelerator=infer" \
+  --cloud-kubernetes-node-selector="gpu=infer" \
   ...
 ```
 
-will select the node labeled `accelerator` with the value inferred from the GPU
+will select the node labeled `gpu` with the value inferred from the GPU
 configuration if available, e.g. `k80`.
-
-By default, the key to infer on is `accelerator`.
 
 ## Debugging
 
