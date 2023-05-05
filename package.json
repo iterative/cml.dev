@@ -42,8 +42,8 @@
     "node": "^18"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.3.2",
-    "@dvcorg/websites-server": "^0.0.19",
+    "@dvcorg/gatsby-theme-iterative": "0.3.3",
+    "@dvcorg/websites-server": "0.0.19",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@hapi/wreck": "^18.0.0",
