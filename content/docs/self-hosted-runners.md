@@ -442,6 +442,103 @@ The same credentials can also be used for
 
 </admon>
 
+
+## GitLab CI/CD and container images from private registries
+
+_See also the
+[GitLab documentation](https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#use-credential-helpers)
+for more information._
+
+<toggle>
+<tab title="AWS">
+
+### GitLab CI/CD Environment Variables
+
+| Name                    | Value                                                                                                       |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `DOCKER_AUTH_CONFIG`    | `{"credHelpers": {"ACCOUNT.dkr.ecr.REGION.amazonaws.com": "ecr-login"}}`                                    |
+| `AWS_ACCESS_KEY_ID`     | [AWS access key identifier](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)          |
+| `AWS_SECRET_ACCESS_KEY` | [AWS secret access key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)              |
+| `AWS_SESSION_TOKEN`     | [AWS session token **_(optional)_**](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html) |
+| `REPO_TOKEN`            | [GitLab Personal Access Token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)         |
+
+### `.gitlab-ci.yml`
+
+```yaml
+runner:
+  when: always
+  image: iterativeai/cml
+  script:
+    - cml runner --labels=cml --cloud=aws
+
+job:
+  tags: [cml]
+  needs: [runner]
+  image: ACCOUNT.dkr.ecr.REGION.amazonaws.com/REPOSITORY:TAG
+  script:
+    - echo succeeded
+```
+
+<admon type="tip">
+
+Replace the `ACCOUNT`, `REGION`, `REPOSITORY` and `TAG` placeholders with
+appropriate values.
+
+</admon>
+
+</tab>
+
+<tab title="GCP">
+
+### GitLab CI/CD Environment Variables
+
+| Name                                  | Value                                                                                                                                         |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DOCKER_AUTH_CONFIG`                  | `{"credHelpers": {"LOCATION-docker.pkg.dev": "gcr"}}`                                                                                         |
+| `GOOGLE_APPLICATION_CREDENTIALS_DATA` | [Contents of a Google Cloud service account JSON key file](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) |
+| `REPO_TOKEN`                          | [GitLab Personal Access Token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)                                           |
+
+### `.gitlab-ci.yml`
+
+```yaml
+runner:
+  when: always
+  image: iterativeai/cml
+  script:
+    - cml runner --labels=cml --cloud=gcp --cloud-permission-set="$(printenv
+      GOOGLE_APPLICATION_CREDENTIALS_DATA | jq
+      .client_email),scopes=storage-ro,datastore"
+
+job:
+  tags: [cml]
+  needs: [runner]
+  image: LOCATION-docker.pkg.dev/PROJECT/REPOSITORY/IMAGE:TAG
+  script:
+    - echo succeeded
+```
+
+<admon type="tip">
+
+Replace the
+[`LOCATION`](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+`PROJECT`, `REPOSITORY`, `IMAGE` and `TAG` placeholders with appropriate values.
+
+</admon>
+
+<admon type="warn">
+
+This example uses the new
+[Artifact Registry](https://cloud.google.com/artifact-registry) (i.e. any of the
+`LOCATION-docker.pkg.dev` domains) instead of the old Container Registry (i.e.
+the `gcr.io` domain) but instructions are similar for both.
+
+</admon>
+
+</tab>
+</toggle>
+
+
+
 ## On-premise (Local) Runners
 
 The `cml runner` command can also be used to manually set up a local machine,
