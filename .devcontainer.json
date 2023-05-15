@@ -1,0 +1,15 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  "postCreateCommand": "yarn",
+  "customizations": {
+    "vscode": {
+      "extensions": [,
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "redhat.vscode-yaml",
+        "stkb.rewrap",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  }
+}
