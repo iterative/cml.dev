@@ -4,6 +4,8 @@
   "description": "cml.dev – website source code",
   "main": "index.js",
   "scripts": {
+    "codespaces": "yarn dev -H 0.0.0.0",
+    "csps": "yarn dev -H 0.0.0.0",
     "develop": "gatsby develop",
     "dev": "gatsby develop",
     "doc": "LIMIT_BLOG_PAGES=1 gatsby develop",
@@ -39,7 +41,7 @@
   },
   "homepage": "https://github.com/iterative/cml.dev#readme",
   "engines": {
-    "node": "^18"
+    "node": "^20"
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "^0.3.2",
