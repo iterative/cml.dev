@@ -442,7 +442,6 @@ The same credentials can also be used for
 
 </admon>
 
-
 ## GitLab CI/CD and container images from private registries
 
 _See also the
@@ -536,8 +535,6 @@ the `gcr.io` domain) but instructions are similar for both.
 
 </tab>
 </toggle>
-
-
 
 ## On-premise (Local) Runners
 
