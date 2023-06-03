@@ -60,6 +60,11 @@ Any [generic option](/doc/ref) in addition to:
 - `--cloud-aws-subnet=<...>`:
   [AWS subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#subnet-basics)
   identifier.
+- `--cloud-kubernetes-node-selector=<...>`: `key=value` pair to specify the
+  Kubernetes node selector. May be
+  [specified multiple times](http://yargs.js.org/docs/#array). More
+  [details below](#using---cloud-kubernetes-node-selector). [default:
+  `accelerator=infer`]
 - `--docker-volumes=<...>`: Volume mount to pass to Docker, e.g.
   `/var/run/docker.sock:/var/run/docker.sock` for Docker-in-Docker support. May
   be specified multiple times. Only supported by GitLab.
@@ -371,6 +376,56 @@ Azure.
 
    replacing the `IP_ADDRESS` placeholder with the instance address returned by
    `cml runner` (search the output logs for `instanceIp`).
+
+### Using `--cloud-kubernetes-node-selector`
+
+Set the
+[Kubernetes node selector](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/).
+
+For example:
+
+```cli
+$ cml runner launch \
+  --cloud-kubernetes-node-selector="disktype=ssd" \
+  ...
+```
+
+will select the node labeled with `disktype=ssd`.
+
+If not provided, a default `accelerator=infer` key pair will be used.
+
+#### Node selector on multiple labels
+
+You can set multiple labels for a node selector.
+
+For example:
+
+```cli
+$ cml runner launch \
+  --cloud-kubernetes-node-selector="disktype=ssd" \
+  --cloud-kubernetes-node-selector="ram=huge" \
+  ...
+```
+
+will select the node labeled with `disktype=ssd` and `ram=huge`.
+
+If you specify the same key multiple times, the last one will be used.
+
+#### Infer the value from the GPU configuration
+
+If you set the key value to `infer`, it will infer the GPU type from the GPU
+configuration on the key you have set.
+
+For example:
+
+```cli
+$ cml runner launch \
+  --cloud-kubernetes-node-selector="gpu=infer" \
+  ...
+```
+
+will select the node labeled `gpu` with the value inferred from the GPU
+configuration if available, e.g. `k80`.
 
 ## Debugging
 
