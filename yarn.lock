@@ -1405,15 +1405,15 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.1.1.tgz#c9c61d9fe5ca5ac664e1153bb0aa0eba1c6d6308"
   integrity sha512-jwx+WCqszn53YHOfvFMJJRd/B2GqkCBt+1MJSG6o5/s8+ytHMvDZXsJgUEWLk12UnLd7HYKac4BYU5i/Ron1Cw==
 
-"@dvcorg/gatsby-theme-iterative@^0.3.2":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.3.tgz#92c4e5cd615d01812cbf641d336f2fd2eea14b1b"
-  integrity sha512-tf8U0OrCGQdypJ9j3AnYvjuIqViFSTei0PkodyHxpt+g6plTE7rJ9knHpQeVsJyDP8JXt9v0e2oETr/1dLuRMw==
+"@dvcorg/gatsby-theme-iterative@0.3.7":
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.7.tgz#e8a9144e141e2022bc80c747b59fb0a1858ceb80"
+  integrity sha512-T4v9XcBfbm4KNPqy5rmk6mSG1SvPHYlnb6am4n3UNc4P7gpasRrstAv7jokfGExJlReHs00X2TuCXdux7A4NcA==
   dependencies:
     "@reach/portal" "^0.18.0"
     "@reach/skip-nav" "^0.18.0"
-    "@sentry/gatsby" "^7.31.1"
-    "@svgr/webpack" "^6.2.1"
+    "@sentry/gatsby" "^7.51.2"
+    "@svgr/webpack" "^7.0.0"
     "@types/gatsbyjs__reach-router" "^2.0.0"
     "@types/isomorphic-fetch" "^0.0.36"
     "@types/promise-polyfill" "^6.0.4"
@@ -1427,7 +1427,7 @@
     gatsby-plugin-manifest "^5.4.0"
     gatsby-plugin-postcss "^6.4.0"
     gatsby-plugin-react-helmet "^6.4.0"
-    gatsby-plugin-sharp "^5.4.0"
+    gatsby-plugin-sharp "^5.8.1"
     gatsby-plugin-sitemap "^6.4.0"
     gatsby-plugin-svgr "^3.0.0-beta.0"
     gatsby-remark-autolink-headers "^6.4.0"
@@ -1474,15 +1474,15 @@
     unist-util-remove-position "^4.0.1"
     unist-util-visit "^4.1.0"
 
-"@dvcorg/gatsby-theme-iterative@^0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.5.tgz#e29fdcfb37c9c41f481f1847349f10217a1cbdd6"
-  integrity sha512-/HMKW+rVtsilqR26FrtOkcrOittkYwA1ATh6JjgjcFFcxuZ6Uc10li6fzs3XGpDdi5oss3lnnNHupncHQv8tpQ==
+"@dvcorg/gatsby-theme-iterative@^0.3.2":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.3.tgz#92c4e5cd615d01812cbf641d336f2fd2eea14b1b"
+  integrity sha512-tf8U0OrCGQdypJ9j3AnYvjuIqViFSTei0PkodyHxpt+g6plTE7rJ9knHpQeVsJyDP8JXt9v0e2oETr/1dLuRMw==
   dependencies:
     "@reach/portal" "^0.18.0"
     "@reach/skip-nav" "^0.18.0"
-    "@sentry/gatsby" "^7.51.2"
-    "@svgr/webpack" "^7.0.0"
+    "@sentry/gatsby" "^7.31.1"
+    "@svgr/webpack" "^6.2.1"
     "@types/gatsbyjs__reach-router" "^2.0.0"
     "@types/isomorphic-fetch" "^0.0.36"
     "@types/promise-polyfill" "^6.0.4"
@@ -1496,7 +1496,7 @@
     gatsby-plugin-manifest "^5.4.0"
     gatsby-plugin-postcss "^6.4.0"
     gatsby-plugin-react-helmet "^6.4.0"
-    gatsby-plugin-sharp "^5.8.1"
+    gatsby-plugin-sharp "^5.4.0"
     gatsby-plugin-sitemap "^6.4.0"
     gatsby-plugin-svgr "^3.0.0-beta.0"
     gatsby-remark-autolink-headers "^6.4.0"

@@ -44,7 +44,7 @@
     "node": ">=18.x <=20.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.3.5",
+    "@dvcorg/gatsby-theme-iterative": "0.3.7",
     "@dvcorg/websites-server": "^0.1.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
