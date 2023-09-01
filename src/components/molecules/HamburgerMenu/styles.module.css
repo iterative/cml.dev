@@ -8,7 +8,9 @@
   position: fixed;
   z-index: 11;
   transform: translateX(100%);
-  transition: transform 0.4s ease, visibility 0.4s;
+  transition:
+    transform 0.4s ease,
+    visibility 0.4s;
   will-change: transform;
   left: 0;
   right: 0;
@@ -50,7 +52,11 @@
   justify-content: center;
   background: transparent;
   outline: none;
-  transition: 0.5s all, opacity 0.2s, outline-offset 0s, outline-width 0s,
+  transition:
+    0.5s all,
+    opacity 0.2s,
+    outline-offset 0s,
+    outline-width 0s,
     outline-color 0s;
 
   &:hover {
@@ -223,7 +229,9 @@ a.sectionHeading {
   text-align: center;
   text-decoration: none;
   color: #24292e;
-  transition: background-color 0.2s ease-in, opacity 0.2s ease-in;
+  transition:
+    background-color 0.2s ease-in,
+    opacity 0.2s ease-in;
 
   &:hover {
     cursor: pointer;
