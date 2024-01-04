@@ -198,10 +198,6 @@ a.sectionHeading {
   &Studio {
     background-image: url('../../../media/icons/studio.svg');
   }
-
-  &Mlem {
-    background-image: url('../../../media/icons/mlem.svg');
-  }
 }
 
 .subSectionLinkTitle {

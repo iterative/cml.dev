@@ -184,14 +184,6 @@ export const HamburgerMenu: React.FC<
               </Link>
             </li>
             <li className={styles.subSection}>
-              <Link href="https://mlem.ai/" className={styles.subSectionLink}>
-                <div
-                  className={cn(styles.subSectionLinkImage, styles.bgImgMlem)}
-                />
-                <span className={styles.subSectionLinkTitle}>MLEM</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
               <Link
                 href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc"
                 className={styles.subSectionLink}

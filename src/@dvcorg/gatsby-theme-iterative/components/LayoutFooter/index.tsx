@@ -13,7 +13,6 @@ import { ReactComponent as IterativeIcon } from '@media/icons/iterative.svg'
 import dvcIcon from '@media/icons/dvc.svg'
 import cmlIcon from '@media/icons/cml.svg'
 import studioIcon from '@media/icons/studio.svg'
-import mlemIcon from '@media/icons/mlem.svg'
 
 interface ISocialLinkPopupProps {
   url: string
@@ -98,18 +97,6 @@ const footerLists: Array<IFooterListPopupProps> = [
           />
         ),
         url: 'https://studio.iterative.ai/'
-      },
-      {
-        text: 'MLEM',
-        icon: (
-          <Box
-            as="span"
-            sx={{
-              backgroundImage: `url("${mlemIcon}")`
-            }}
-          />
-        ),
-        url: 'https://mlem.ai/'
       },
       {
         text: 'VS Code Extension',
