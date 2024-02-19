@@ -229,7 +229,7 @@ Other AWS examples include accessing data in:
 
 - Secrets Manager
 - DynamoDB
-- Redshfit
+- Redshift
 
 #### Example "Permission Sets"
 
