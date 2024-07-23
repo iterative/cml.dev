@@ -1,4 +1,3 @@
-import React from 'react'
 import MainLayout from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
 import { PageProps } from 'gatsby'
 

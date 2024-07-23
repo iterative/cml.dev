@@ -4,13 +4,6 @@ import { loadResource } from '@dvcorg/gatsby-theme-iterative/src/utils/front/res
 
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Layout/SearchForm/styles.module.css'
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  interface Window {
-    docsearch?: (opts: object) => void
-  }
-}
-
 const apiKey = '3e17d424c7a90fede27b848fb01c0dc2'
 const appId = '1O03WAGL0D'
 const indexName = 'cml'

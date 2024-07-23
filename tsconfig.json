@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "module": "commonjs",
     "resolveJsonModule": true,
-    "lib": ["dom", "es2015", "es2017"],
-    "jsx": "react",
+    "lib": ["dom", "ESNext"],
+    "jsx": "react-jsx",
     "sourceMap": true,
     "strict": true,
     "noImplicitAny": true,
@@ -18,7 +18,12 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    "noEmit": true
   },
-  "include": ["./src/**/*", "./*.js"]
+  "include": [
+    "node_modules/@dvcorg/gatsby-theme-iterative",
+    "./src/**/*",
+    "./*.js"
+  ]
 }
