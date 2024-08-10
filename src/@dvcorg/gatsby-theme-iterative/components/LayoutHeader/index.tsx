@@ -9,10 +9,8 @@ import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
 import { ReactComponent as UpIcon } from '@media/icons/up.svg'
 import { ReactComponent as DownIcon } from '@media/icons/down.svg'
-import { ReactComponent as CmlIcon } from '@media/icons/cml.svg'
 import { ReactComponent as DvcIcon } from '@media/icons/dvc.svg'
 import { ReactComponent as StudioIcon } from '@media/icons/studio.svg'
-import { ReactComponent as MlemIcon } from '@media/icons/mlem.svg'
 import { ReactComponent as ExternalLinkIcon } from '@media/icons/external-link.svg'
 import { ReactComponent as VsCodeIcon } from '@media/icons/vscode.svg'
 
@@ -71,10 +69,11 @@ const primaryNavItems = [
 
 const otherToolsItems: Array<IOtherToolsItem> = [
   {
-    title: 'Studio',
-    icon: <StudioIcon width="24" height="24" />,
-    description: 'Track experiments and share insights from ML projects',
-    href: 'https://studio.iterative.ai/'
+    title: 'DataChain',
+    icon: <span>🔗</span>,
+    description:
+      'Wrangle unstructured data in Python using AI helpers at scale',
+    href: 'https://github.com/iterative/datachain'
   },
   {
     title: 'DVC',
@@ -83,24 +82,17 @@ const otherToolsItems: Array<IOtherToolsItem> = [
     href: 'https://dvc.org/'
   },
   {
+    title: 'DVC Studio',
+    icon: <StudioIcon width="24" height="24" />,
+    description: 'Track experiments and share insights from ML projects',
+    href: 'https://studio.iterative.ai/'
+  },
+  {
     title: 'VS Code Extension',
     titleIcon: <VsCodeIcon className="title-icon" width="14" height="14" />,
-    icon: <div></div>,
+    icon: <DvcIcon width="24" height="24" />,
     description: 'Local ML model development and experiment tracking',
     href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc'
-  },
-  {
-    title: 'CML',
-    icon: <CmlIcon width="24" height="24" />,
-    description: 'Open-source CI/CD for ML projects',
-    href: '/'
-  },
-  {
-    title: 'MLEM',
-    icon: <MlemIcon width="24" height="24" />,
-    description:
-      'Open-source model registry and deployment tool for ML projects',
-    href: 'https://mlem.ai'
   }
 ]
 
@@ -235,7 +227,7 @@ const Header: React.FC<IHeaderProps> = ({ isMain }) => {
                       : {}
                   }
                 >
-                  Other Tools
+                  More Tools
                   <Box
                     variant="layout.Header.Nav.NavButton.Icon"
                     sx={

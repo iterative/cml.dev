@@ -252,6 +252,7 @@ export default {
             gridTemplateColumns: 'auto auto',
             gridTemplateRows: 'auto auto',
             textDecoration: 'none',
+            fontSize: '24px',
             textAlign: 'left',
             transition: 'background-color 0.25s',
             '&:first-of-type': {
@@ -274,6 +275,8 @@ export default {
               width: ['24px', null, '32px', '36px'],
               height: ['24px', null, '32px', '36px'],
               gridRow: 'span 2',
+              display: 'flex',
+              justifyContent: 'end',
               svg: {
                 width: ['24px', null, '32px', '36px'],
                 height: ['24px', null, '32px', '36px']

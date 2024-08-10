@@ -11,9 +11,7 @@ import { ReactComponent as YoutubeIcon } from '@media/icons/youtube.svg'
 import { ReactComponent as LinkedInIcon } from '@media/icons/linkedin.svg'
 import { ReactComponent as IterativeIcon } from '@media/icons/iterative.svg'
 import dvcIcon from '@media/icons/dvc.svg'
-import cmlIcon from '@media/icons/cml.svg'
 import studioIcon from '@media/icons/studio.svg'
-import mlemIcon from '@media/icons/mlem.svg'
 
 interface ISocialLinkPopupProps {
   url: string
@@ -75,17 +73,17 @@ const footerLists: Array<IFooterListPopupProps> = [
     ]
   },
   {
-    title: 'Other Tools',
+    title: 'More Tools',
     items: [
+      {
+        text: 'DataChain',
+        icon: <span className="icon-block">🔗</span>,
+        url: 'https://github.com/iterative/datachain'
+      },
       {
         text: 'DVC',
         icon: <Box as="span" sx={{ backgroundImage: `url("${dvcIcon}")` }} />,
         url: 'https://dvc.org/'
-      },
-      {
-        text: 'CML',
-        icon: <Box as="span" sx={{ backgroundImage: `url("${cmlIcon}")` }} />,
-        url: '/'
       },
       {
         text: 'Studio',
@@ -98,18 +96,6 @@ const footerLists: Array<IFooterListPopupProps> = [
           />
         ),
         url: 'https://studio.iterative.ai/'
-      },
-      {
-        text: 'MLEM',
-        icon: (
-          <Box
-            as="span"
-            sx={{
-              backgroundImage: `url("${mlemIcon}")`
-            }}
-          />
-        ),
-        url: 'https://mlem.ai/'
       },
       {
         text: 'VS Code Extension',
