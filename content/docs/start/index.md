@@ -7,7 +7,7 @@ plots and metrics.
 ![](/img/cml_neural_transfer.png) _Report for a [neural style transfer model]._
 
 **Pick one of the supported platforms to continue: [GitHub](/doc/start/github) /
-[GitLab](/doc/start/github) / [Bitbucket](/doc/start/github)**
+[GitLab](/doc/start/gitlab) / [Bitbucket](/doc/start/github)**
 
 ---
 
