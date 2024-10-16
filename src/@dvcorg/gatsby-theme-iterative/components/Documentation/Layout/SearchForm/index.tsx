@@ -4,7 +4,7 @@ import { loadResource } from '@dvcorg/gatsby-theme-iterative/src/utils/front/res
 
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Layout/SearchForm/styles.module.css'
 
-const apiKey = '3e17d424c7a90fede27b848fb01c0dc2'
+const apiKey = 'f2d5e173aac8398863b419f48f8d7e12'
 const appId = '1O03WAGL0D'
 const indexName = 'cml'
 
