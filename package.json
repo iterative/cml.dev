@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "start": "node ./src/server.js",
-    "heroku-postbuild": "heroku-deploy",
+    "heroku-postbuild": "bash node_modules/.bin/heroku-deploy",
     "test": "jest",
     "format": "prettier --write",
     "format-check-all": "prettier --check \"**/*.{js,jsx,md,tsx,ts,json,css,yml,yaml}\"",
@@ -41,7 +41,8 @@
   },
   "homepage": "https://github.com/iterative/cml.dev#readme",
   "engines": {
-    "node": ">=18.x <=20.x"
+    "node": "22.x",
+    "yarn": "4.x"
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "0.3.25",
