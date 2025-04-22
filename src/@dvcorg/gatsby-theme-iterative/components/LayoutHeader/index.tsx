@@ -9,10 +9,8 @@ import { ReactComponent as DiscordIcon } from '@media/icons/discord.svg'
 import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
 import { ReactComponent as UpIcon } from '@media/icons/up.svg'
 import { ReactComponent as DownIcon } from '@media/icons/down.svg'
-import { ReactComponent as DvcIcon } from '@media/icons/dvc.svg'
 import { ReactComponent as StudioIcon } from '@media/icons/studio.svg'
 import { ReactComponent as ExternalLinkIcon } from '@media/icons/external-link.svg'
-import { ReactComponent as VsCodeIcon } from '@media/icons/vscode.svg'
 
 import {
   HamburgerMenu,
@@ -76,23 +74,10 @@ const otherToolsItems: Array<IOtherToolsItem> = [
     href: 'https://github.com/iterative/datachain'
   },
   {
-    title: 'DVC',
-    icon: <DvcIcon width="24" height="24" />,
-    description: 'Open-source version control system for ML projects',
-    href: 'https://dvc.org/'
-  },
-  {
-    title: 'DVC Studio',
+    title: 'DataChain Studio',
     icon: <StudioIcon width="24" height="24" />,
     description: 'Track experiments and share insights from ML projects',
     href: 'https://studio.iterative.ai/'
-  },
-  {
-    title: 'VS Code Extension',
-    titleIcon: <VsCodeIcon className="title-icon" width="14" height="14" />,
-    icon: <DvcIcon width="24" height="24" />,
-    description: 'Local ML model development and experiment tracking',
-    href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc'
   }
 ]
 
