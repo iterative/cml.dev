@@ -1,4 +1,8 @@
-const { request } = require('@octokit/request')
+let request
+;(async () => {
+  const mod = await import('@octokit/request')
+  request = mod.request
+})()
 /*
    GitHub Static Data
 
