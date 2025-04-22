@@ -10,7 +10,6 @@ import { ReactComponent as GithubIcon } from '@media/icons/github.svg'
 import { ReactComponent as YoutubeIcon } from '@media/icons/youtube.svg'
 import { ReactComponent as LinkedInIcon } from '@media/icons/linkedin.svg'
 import { ReactComponent as IterativeIcon } from '@media/icons/iterative.svg'
-import dvcIcon from '@media/icons/dvc.svg'
 import studioIcon from '@media/icons/studio.svg'
 
 interface ISocialLinkPopupProps {
@@ -81,12 +80,7 @@ const footerLists: Array<IFooterListPopupProps> = [
         url: 'https://github.com/iterative/datachain'
       },
       {
-        text: 'DVC',
-        icon: <Box as="span" sx={{ backgroundImage: `url("${dvcIcon}")` }} />,
-        url: 'https://dvc.org/'
-      },
-      {
-        text: 'Studio',
+        text: 'DataChain Studio',
         icon: (
           <Box
             as="span"
@@ -96,11 +90,6 @@ const footerLists: Array<IFooterListPopupProps> = [
           />
         ),
         url: 'https://studio.iterative.ai/'
-      },
-      {
-        text: 'VS Code Extension',
-        icon: <Box as="span" sx={{ backgroundImage: `url("${dvcIcon}")` }} />,
-        url: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc'
       }
     ]
   }

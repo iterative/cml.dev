@@ -169,5 +169,6 @@
   },
   "cacheDirectories": [
     "node_modules"
-  ]
+  ],
+  "packageManager": "yarn@4.9.1"
 }
