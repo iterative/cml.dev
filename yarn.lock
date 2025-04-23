@@ -3016,7 +3016,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dvcorg/websites-server@npm:^0.3.0":
+"@dvcorg/websites-server@npm:0.3.0":
   version: 0.3.0
   resolution: "@dvcorg/websites-server@npm:0.3.0"
   dependencies:
@@ -10346,7 +10346,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.20.12"
     "@dvcorg/gatsby-theme-iterative": "npm:0.3.25"
-    "@dvcorg/websites-server": "npm:^0.3.0"
+    "@dvcorg/websites-server": "npm:0.3.0"
     "@emotion/react": "npm:11.10.5"
     "@emotion/styled": "npm:11.10.5"
     "@hapi/wreck": "npm:18.0.0"
