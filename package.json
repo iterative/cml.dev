@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "start": "node ./src/server.js",
-    "heroku-postbuild": "heroku-deploy",
+    "heroku-postbuild": "bash node_modules/.bin/heroku-deploy",
     "test": "jest",
     "format": "prettier --write",
     "format-check-all": "prettier --check \"**/*.{js,jsx,md,tsx,ts,json,css,yml,yaml}\"",
@@ -41,16 +41,16 @@
   },
   "homepage": "https://github.com/iterative/cml.dev#readme",
   "engines": {
-    "node": ">=18.x <=20.x"
+    "node": "22.x",
+    "yarn": "4.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "0.3.21",
-    "@dvcorg/websites-server": "^0.1.1",
+    "@dvcorg/gatsby-theme-iterative": "0.3.25",
+    "@dvcorg/websites-server": "^0.3.0",
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
     "@hapi/wreck": "18.0.0",
     "@mdx-js/react": "2.2.1",
-    "@octokit/graphql": "5.0.4",
     "@reach/portal": "0.18.0",
     "@reach/tooltip": "0.18.0",
     "@theme-ui/color": "0.15.4",
