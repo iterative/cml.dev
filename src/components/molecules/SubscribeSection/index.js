@@ -52,7 +52,7 @@ function SubscribeSection() {
         >
           <input
             type="text"
-            name="b_a08bf93caae4063c4e6a351f6_24c0ecc49a"
+            name="b_7de8abe60497e4555ae20d817_b6c4b60e83"
             tabIndex={-1}
           />
         </div>
