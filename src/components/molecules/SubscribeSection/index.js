@@ -28,7 +28,7 @@ function SubscribeSection() {
         variant="forms.ButtonInput"
         as="form"
         sx={{ maxWidth: '460px', mx: 'auto' }}
-        action="https://dvc.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&amp;id=24c0ecc49a"
+        action="https://datachain.us7.list-manage.com/subscribe/post?u=7de8abe60497e4555ae20d817&amp;id=b6c4b60e83&amp;f_id=00f09de0f0"
         method="post"
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
@@ -43,7 +43,7 @@ function SubscribeSection() {
           name="EMAIL"
         />
         <div hidden>
-          <input type="hidden" name="tags" value="13467553" />
+          <input type="hidden" name="tags" value="3538617" />
         </div>
         <Button variant="forms.ButtonInput.Button">Subscribe</Button>
         <div
