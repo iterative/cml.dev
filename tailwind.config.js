@@ -14,7 +14,7 @@ module.exports = {
         'Courier',
         'monospace'
       ],
-      brandon: ['BrandonGrotesque', 'Tahoma', 'Arial', 'sans-serif']
+      outfit: ['Outfit', 'Tahoma', 'Arial', 'sans-serif']
     }
   }
 }
