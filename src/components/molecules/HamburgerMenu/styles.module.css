@@ -126,7 +126,7 @@
 }
 
 .sectionHeading {
-  @apply font-brandon;
+  @apply font-outfit;
 
   display: block;
   padding: 15px 0;
@@ -212,7 +212,7 @@ a.sectionHeading {
 
 .linkButton {
   @apply active;
-  @apply font-brandon;
+  @apply font-outfit;
 
   display: block;
   margin-top: 15px;
