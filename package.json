@@ -49,7 +49,7 @@
     "@dvcorg/websites-server": "0.3.0",
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
-    "@hapi/wreck": "18.0.0",
+    "@hapi/wreck": "18.1.2",
     "@mdx-js/react": "2.2.1",
     "@reach/portal": "0.18.0",
     "@reach/tooltip": "0.18.0",

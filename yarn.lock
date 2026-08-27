@@ -3598,15 +3598,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hapi/boom@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "@hapi/boom@npm:10.0.0"
-  dependencies:
-    "@hapi/hoek": "npm:10.x.x"
-  checksum: 10c0/0d7890b6c7772fad86c67f370660ee56c7079c8c07180a4cab1a2f74f2358c5f423f74e58b2348a7d81b632937f8ea75121ac0b634498774b341f11c7acfa44f
-  languageName: node
-  linkType: hard
-
 "@hapi/boom@npm:^10.0.1":
   version: 10.0.1
   resolution: "@hapi/boom@npm:10.0.1"
@@ -3620,13 +3611,6 @@ __metadata:
   version: 3.0.0
   resolution: "@hapi/bourne@npm:3.0.0"
   checksum: 10c0/2e2df62f6bc6f32b980ba5bbdc09200c93c55c8306399ec0f2781da088a82aab699498c89fe94fec4acf770210f9aee28c75bfc2f04044849ac01b034134e717
-  languageName: node
-  linkType: hard
-
-"@hapi/hoek@npm:10.x.x, @hapi/hoek@npm:^10.0.0":
-  version: 10.0.1
-  resolution: "@hapi/hoek@npm:10.0.1"
-  checksum: 10c0/320d5dc7a4070fa29e6344a3af9e44854980c6606848f7b7f59715174880cc09a1fe1e8adf44cf887100bd8d6a8664e9dc415986b30dc91df13455f7114de549
   languageName: node
   linkType: hard
 
@@ -3653,14 +3637,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hapi/wreck@npm:18.0.0":
-  version: 18.0.0
-  resolution: "@hapi/wreck@npm:18.0.0"
+"@hapi/wreck@npm:18.1.2":
+  version: 18.1.2
+  resolution: "@hapi/wreck@npm:18.1.2"
   dependencies:
-    "@hapi/boom": "npm:^10.0.0"
+    "@hapi/boom": "npm:^10.0.1"
     "@hapi/bourne": "npm:^3.0.0"
-    "@hapi/hoek": "npm:^10.0.0"
-  checksum: 10c0/45a25a73324067726dcf1ac544ea28c1e93491f1390058911d63a09ac19e03f1db68f5c39478f7a81c1e6a78bfbc6f94a4d4e6a71066ef295fa692058758268e
+    "@hapi/hoek": "npm:^11.0.2"
+  checksum: 10c0/6e2bbfb7f424f16c1182a29ac771d4428409c6e6370deb0a6505ba7897b3ba104c9772a1cde669894c3c4508ede9d7cbb2be4cd66e955440ba102109d89a5ea5
   languageName: node
   linkType: hard
 
@@ -10349,7 +10333,7 @@ __metadata:
     "@dvcorg/websites-server": "npm:0.3.0"
     "@emotion/react": "npm:11.10.5"
     "@emotion/styled": "npm:11.10.5"
-    "@hapi/wreck": "npm:18.0.0"
+    "@hapi/wreck": "npm:18.1.2"
     "@mdx-js/react": "npm:2.2.1"
     "@reach/portal": "npm:0.18.0"
     "@reach/tooltip": "npm:0.18.0"
