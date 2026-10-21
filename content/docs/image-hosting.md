@@ -58,162 +58,25 @@ headers, so any secret the server checks has to be part of the URL.
 
 ### Example: AWS Lambda and S3
 
-This [CloudFormation] template creates a private S3 bucket and a Lambda function
-with a public [function URL]. The function stores uploads in the bucket, names
-each file after the SHA-256 hash of its contents, and serves the files back.
-Only requests that include the upload token can add files.
+The CML repository includes a server you can deploy to your AWS account:
+[`image-server`](https://github.com/iterative/cml/tree/main/image-server). Its
+[CloudFormation] template creates a private S3 bucket and a Lambda function with
+a public [function URL]. The function stores uploads in the bucket, names each
+file after the SHA-256 hash of its contents, and serves the files back. Only
+requests that include the upload token can add files.
 
 [cloudformation]: https://docs.aws.amazon.com/cloudformation/
 [function url]:
   https://docs.aws.amazon.com/lambda/latest/dg/urls-configuration.html
 
-```yaml
-# cml-image-server.yml
-AWSTemplateFormatVersion: '2010-09-09'
-Description: Image hosting for CML reports (cml comment create --publish-url)
-
-Parameters:
-  UploadToken:
-    Type: String
-    NoEcho: true
-    MinLength: 32
-    AllowedPattern: '[A-Za-z0-9]+'
-    Description: Secret that CI jobs must include in the publish URL to upload
-
-Resources:
-  # Private bucket: images are served through the function URL below
-  Bucket:
-    Type: AWS::S3::Bucket
-    Properties:
-      PublicAccessBlockConfiguration:
-        BlockPublicAcls: true
-        BlockPublicPolicy: true
-        IgnorePublicAcls: true
-        RestrictPublicBuckets: true
-
-  Role:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Principal: { Service: lambda.amazonaws.com }
-            Action: sts:AssumeRole
-      ManagedPolicyArns:
-        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-      Policies:
-        - PolicyName: images
-          PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-              - Effect: Allow
-                Action: [s3:GetObject, s3:PutObject]
-                Resource: !Sub '${Bucket.Arn}/*'
-
-  Function:
-    Type: AWS::Lambda::Function
-    Properties:
-      Runtime: python3.13
-      Handler: index.handler
-      Role: !GetAtt Role.Arn
-      MemorySize: 256
-      Timeout: 30
-      Environment:
-        Variables:
-          BUCKET: !Ref Bucket
-          UPLOAD_TOKEN: !Ref UploadToken
-      Code:
-        ZipFile: |
-          import base64, hashlib, hmac, os, re
-          import boto3
-
-          s3 = boto3.client("s3")
-          BUCKET = os.environ["BUCKET"]
-          TOKEN = os.environ["UPLOAD_TOKEN"].encode()
-
-
-          def handler(event, context):
-              method = event["requestContext"]["http"]["method"]
-              if method == "POST":
-                  return upload(event)
-              if method == "GET":
-                  return download(event)
-              return {"statusCode": 405}
-
-
-          def upload(event):
-              # CML can't send custom headers, so the token is part of the URL
-              token = (event.get("queryStringParameters") or {}).get("token", "")
-              if not hmac.compare_digest(token.encode(), TOKEN):
-                  return {"statusCode": 403}  # CML prints the status code
-              body = event.get("body") or ""
-              data = base64.b64decode(body) if event["isBase64Encoded"] else body.encode()
-              if not data:
-                  return {"statusCode": 400}
-              key = hashlib.sha256(data).hexdigest()
-              s3.put_object(
-                  Bucket=BUCKET,
-                  Key=key,
-                  Body=data,
-                  ContentType=event["headers"].get("content-type", "application/octet-stream"),
-              )
-              return {"statusCode": 200, "body": f"https://{event['requestContext']['domainName']}/{key}"}
-
-
-          def download(event):
-              key = event["rawPath"].lstrip("/")
-              if not re.fullmatch(r"[0-9a-f]{64}", key):
-                  return {"statusCode": 404}
-              try:
-                  obj = s3.get_object(Bucket=BUCKET, Key=key)
-              except s3.exceptions.NoSuchKey:
-                  return {"statusCode": 404}
-              return {
-                  "statusCode": 200,
-                  "headers": {
-                      "Content-Type": obj["ContentType"],
-                      "Cache-Control": "public, max-age=31536000, immutable",
-                  },
-                  "body": base64.b64encode(obj["Body"].read()).decode(),
-                  "isBase64Encoded": True,
-              }
-
-  FunctionUrl:
-    Type: AWS::Lambda::Url
-    Properties:
-      TargetFunctionArn: !GetAtt Function.Arn
-      AuthType: NONE
-
-  # Public function URLs need both of these permissions
-  InvokeUrlPermission:
-    Type: AWS::Lambda::Permission
-    Properties:
-      FunctionName: !Ref Function
-      Action: lambda:InvokeFunctionUrl
-      Principal: '*'
-      FunctionUrlAuthType: NONE
-
-  InvokePermission:
-    Type: AWS::Lambda::Permission
-    Properties:
-      FunctionName: !Ref Function
-      Action: lambda:InvokeFunction
-      Principal: '*'
-      InvokedViaFunctionUrl: true
-
-Outputs:
-  FunctionUrl:
-    Value: !GetAtt FunctionUrl.FunctionUrl
-```
-
 Deploy it with the [AWS CLI](https://aws.amazon.com/cli/), using credentials
 that can create IAM roles, and print the publish URL:
 
 ```cli
+$ curl -O https://raw.githubusercontent.com/iterative/cml/main/image-server/template.yml
 $ TOKEN=$(openssl rand -hex 32)
 $ aws cloudformation deploy \
-    --template-file cml-image-server.yml \
+    --template-file template.yml \
     --stack-name cml-image-server \
     --capabilities CAPABILITY_IAM \
     --parameter-overrides UploadToken=$TOKEN
@@ -234,9 +97,9 @@ https://abcdefghijklmnopqrstuvwxyz012345.lambda-url.us-east-1.on.aws/9b1c...
 ```
 
 Treat the full publish URL as a secret, since the token in it allows uploads.
-Image URLs don't contain the token and are safe to share. Lambda function URLs
-limit requests and responses to 6 MB, so this server handles files up to about 4
-MB.
+Image URLs don't contain the token and are safe to share. The
+[README](https://github.com/iterative/cml/tree/main/image-server#operate) covers
+token rotation, size limits, costs, and removing the server.
 
 ### Use it in your workflow
 
