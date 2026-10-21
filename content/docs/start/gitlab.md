@@ -38,8 +38,16 @@ $ cd example_cml
        # Create CML report
        - cat metrics.txt >> report.md
        - echo '![](./plot.png "Confusion Matrix")' >> report.md
-       - cml comment create report.md
+       - cml comment create --publish-native report.md
    ```
+
+   <admon type="info">
+
+   `--publish-native` uploads `plot.png` to your GitLab project, since CML's
+   default image server no longer accepts uploads. See
+   [Image Hosting](/doc/image-hosting).
+
+   </admon>
 
 4. In your text editor, open `train.py` and modify line 15 to `depth = 5`.
 

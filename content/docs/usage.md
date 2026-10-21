@@ -21,14 +21,14 @@ jobs:
     # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       # may need to setup Node.js & Python3 on e.g. self-hosted
-      # - uses: actions/setup-node@v2
+      # - uses: actions/setup-node@v7
       #   with:
-      #     node-version: '16'
-      # - uses: actions/setup-python@v4
+      #     node-version: '24'
+      # - uses: actions/setup-python@v7
       #   with:
       #     python-version: '3.x'
-      - uses: iterative/setup-cml@v1
-      - uses: actions/checkout@v3
+      - uses: iterative/setup-cml@v2
+      - uses: actions/checkout@v7
       - name: Train model
         run: |
           # Your ML workflow goes here
@@ -37,6 +37,8 @@ jobs:
       - name: Create CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # where plot.png is uploaded, see https://cml.dev/doc/image-hosting
+          CML_COMMENT_PUBLISH_URL: ${{ secrets.CML_COMMENT_PUBLISH_URL }}
         run: |
           # Post CML report as a comment in GitHub
           cat metrics.txt >> report.md
@@ -85,7 +87,7 @@ create-CML-report:
     # Post CML report as a comment in GitLab
     - cat metrics.txt >> report.md
     - echo '![](./plot.png "Confusion Matrix")' >> report.md
-    - cml comment create report.md
+    - cml comment create --publish-native report.md
 ```
 
 <admon type="warn">
@@ -138,7 +140,7 @@ pipelines:
           # Post CML report as a comment in Bitbucket
           - cat metrics.txt >> report.md
           - echo '![](./plot.png "Confusion Matrix")' >> report.md
-          - cml comment create report.md
+          - cml comment create --publish-native report.md
 ```
 
 <admon type="warn">
@@ -197,7 +199,7 @@ Post a Markdown report as a GitHub check\
 e.g. `cml check create report.md`
 
 ∞ **[`tensorboard`](/doc/ref/tensorboard)**\
-Return a link to a <https://tensorboard.dev> page\
+Return a link to a <https://tensorboard.dev> page (no longer available)\
 e.g. `cml tensorboard connect --logdir=./logs --md >> report.md`
 
 ### CML Reports
@@ -226,3 +228,8 @@ by `python train.py`, run:
 $ echo '![](./plot.png)' >> report.md
 $ cml comment create report.md
 ```
+
+CML uploads local images like `plot.png` so they can be displayed in the
+comment. The default server, `asset.cml.dev`, no longer accepts uploads: use
+`--publish-native` on GitLab and Bitbucket, or your own image server on any
+provider. See [Image Hosting](/doc/image-hosting).

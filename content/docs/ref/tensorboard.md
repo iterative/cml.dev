@@ -6,6 +6,14 @@ cml tensorboard connect [options]
 
 Return a link to a <https://tensorboard.dev> page.
 
+<admon type="warn">
+
+TensorBoard.dev was shut down on January 1, 2024, so this command no longer
+works. [TensorBoard](https://www.tensorflow.org/tensorboard) itself can still be
+run locally.
+
+</admon>
+
 ## Options
 
 Any [generic option](/doc/ref) in addition to:

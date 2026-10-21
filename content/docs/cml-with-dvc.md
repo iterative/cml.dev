@@ -20,12 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.x'
-      - uses: iterative/setup-cml@v1
-      - uses: iterative/setup-dvc@v1
+      - uses: iterative/setup-cml@v2
+      - uses: treeverse/setup-dvc@v3
       - name: Train model
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -37,6 +37,8 @@ jobs:
       - name: Create CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # where the plots are uploaded, see https://cml.dev/doc/image-hosting
+          CML_COMMENT_PUBLISH_URL: ${{ secrets.CML_COMMENT_PUBLISH_URL }}
         run: |
           echo "## Metrics: workflow vs. main" >> report.md
           git fetch --depth=1 origin main:main
@@ -76,7 +78,7 @@ more, or check out the
 
 ## GitHub Actions: `setup-dvc`
 
-The [iterative/setup-dvc](https://github.com/iterative/setup-dvc) action
+The [iterative/setup-dvc](https://github.com/treeverse/setup-dvc) action
 installs DVC (similar to what [`setup-cml`](/doc/start/github#setup-action) does
 for CML).
 
@@ -88,8 +90,8 @@ Windows, Python 3 should be setup first.
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: iterative/setup-dvc@v1
+  - uses: actions/checkout@v7
+  - uses: treeverse/setup-dvc@v3
 ```
 
 </tab>
@@ -98,11 +100,11 @@ steps:
 ```yaml
 runs-on: windows-latest
 steps:
-  - uses: actions/checkout@v3
-  - uses: actions/setup-python@v4
+  - uses: actions/checkout@v7
+  - uses: actions/setup-python@v7
     with:
       python-version: '3.x'
-  - uses: iterative/setup-dvc@v1
+  - uses: treeverse/setup-dvc@v3
 ```
 
 </tab>
@@ -112,7 +114,7 @@ A specific DVC version can be installed using the `version` argument (defaults
 to the [latest release](https://github.com/iterative/dvc/releases)).
 
 ```yaml
-- uses: iterative/setup-dvc@v1
+- uses: treeverse/setup-dvc@v3
   with:
     version: '1.0.1'
 ```
@@ -143,7 +145,7 @@ train-and-report:
     - vl2png vega.json > plot.png
     - echo '![](./plot.png "Training Loss")' >> report.md
 
-    - cml comment create report.md
+    - cml comment create --publish-native report.md
 ```
 
 See the [example repository](https://gitlab.com/iterative.ai/cml-dvc-case) for
@@ -180,7 +182,7 @@ pipelines:
           - vl2png vega.json > plot.png
           - echo '![](./plot.png "Training Loss")' >> report.md
 
-          - cml comment create report.md
+          - cml comment create --publish-native report.md
 ```
 
 </tab>
