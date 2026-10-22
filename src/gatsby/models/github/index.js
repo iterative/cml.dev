@@ -12,15 +12,13 @@ let request
    alone does.
  */
 
-async function getStars({ owner, repo }) {
+async function getStars({ owner, repo, token }) {
   const response = await request({
     method: 'GET',
     url: '/repos/{owner}/{repo}',
     owner,
     repo,
-    headers: {
-      authorization: `token ${process.env.GITHUB_TOKEN}`
-    }
+    headers: token ? { authorization: `token ${token}` } : {}
   })
 
   const stars = response.data.stargazers_count
@@ -47,8 +45,24 @@ module.exports = {
           async resolve() {
             const { GITHUB_TOKEN } = process.env
             if (GITHUB_TOKEN) {
-              const stars = await getStars({ owner: 'iterative', repo: 'cml' })
-              return { stars }
+              // An expired token shouldn't fail the build: the repo is public,
+              // so retry without it before falling back to dummy data
+              for (const token of [GITHUB_TOKEN, undefined]) {
+                try {
+                  const stars = await getStars({
+                    owner: 'iterative',
+                    repo: 'cml',
+                    token
+                  })
+                  return { stars }
+                } catch (error) {
+                  console.warn(
+                    `Failed to fetch GitHub stars ${
+                      token ? 'with' : 'without'
+                    } GITHUB_TOKEN: ${error.message}`
+                  )
+                }
+              }
             }
             return { stars: 8888 }
           }
