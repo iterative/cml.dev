@@ -32,7 +32,7 @@ manager `npm` can be found below.
 Install Node.js from source:
 
 ```cli
-$ curl -sL https://deb.nodesource.com/setup_16.x | bash
+$ curl -sL https://deb.nodesource.com/setup_24.x | bash
 $ apt-get update
 $ apt-get install -y nodejs
 ```
@@ -44,9 +44,9 @@ Node.js is likely already available in most GitHub Actions runners. However, to
 install a particular version, add the following step to your workflow:
 
 ```yaml
-- uses: actions/setup-node@v1
+- uses: actions/setup-node@v7
   with:
-    node-version: '16'
+    node-version: '24'
 ```
 
 </tab>

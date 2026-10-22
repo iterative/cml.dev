@@ -39,14 +39,16 @@ Any [generic option](/doc/ref) in addition to:
   [appending `&` to run in the background](<https://en.wikipedia.org/wiki/Job_control_(Unix)#Implementation>)).
 
 - `--publish=<true|false>`: Upload any local images found in the Markdown report
-  [default: `true`].
+  [default: `true`]. See [Image Hosting](/doc/image-hosting) for where they can
+  be uploaded.
 
 - `--publish-native`: Use `--driver`'s native capabilities to `--publish` assets
   instead of `--publish-url` (not available on `--driver=github`).
 
-- `--publish-url=<...>`: Self-hosted image server URL [default:
-  `https://asset.cml.dev`], see
-  [minroud-s3](https://github.com/iterative/minroud-s3).
+- `--publish-url=<...>`:
+  [Self-hosted image server](/doc/image-hosting#your-own-image-server) URL, also
+  read from the `CML_COMMENT_PUBLISH_URL` environment variable [default:
+  `https://asset.cml.dev`, which no longer accepts uploads].
 
 - `--watermark-title=<...>`: Hidden comment marker (useful to
   [specify which comment to update](#managing-multiple-comments) in subsequent

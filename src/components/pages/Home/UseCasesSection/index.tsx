@@ -79,7 +79,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span># Create CML report</span></div>
                         <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
                         <div>    <span>- echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
-                        <div>    <span>- cml comment create report.md</span></div>
+                        <div>    <span>- cml comment create --publish-native report.md</span></div>
                       </Tooltip>
                     </Code>
 
@@ -101,7 +101,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>runs-on: ubuntu-latest</span></div>
                       <div>    <span>container: docker://ghcr.io/iterative/cml:0-dvc2-base1</span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v3</span></div>
+                      <div>      <span>- uses: actions/checkout@v7</span></div>
                       <div>      <span>- run: |</span></div>
                       <Tooltip type="dependencies">
                         <div>          <span>pip install -r requirements.txt</span></div>
@@ -115,6 +115,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>cml comment create report.md</span></div>
                         <div>        <span>env:</span></div>
                         <div>          <span>REPO_TOKEN: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
+                        <div>          <span>CML_COMMENT_PUBLISH_URL: {"${{ secrets.CML_COMMENT_PUBLISH_URL }}"}</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -143,7 +144,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span># Create CML report</span></div>
                         <div>          <span>- cat metrics.txt &gt;&gt; report.md</span></div>
                         <div>          <span>- echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
-                        <div>          <span>- cml comment create report.md</span></div>
+                        <div>          <span>- cml comment create --publish-native report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -186,7 +187,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span>- vl2png vega.json &gt; plot.png</span></div>
                         <div>    <span>- echo &#x27;![](./plot.png &quot;Training Loss&quot;)&#x27; &gt;&gt; report.md</span></div>
                         <div>    <span># Post CML report as a comment in GitLab</span></div>
-                        <div>    <span>- cml comment create report.md</span></div>
+                        <div>    <span>- cml comment create --publish-native report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -205,13 +206,13 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>train-and-report:</span></div>
                       <div>    <span>runs-on: ubuntu-latest</span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>      <span>- uses: actions/setup-python@v4</span></div>
+                      <div>      <span>- uses: actions/checkout@v7</span></div>
+                      <div>      <span>- uses: actions/setup-python@v7</span></div>
                       <div>        <span>with:</span></div>
                       <div>          <span>python-version: &apos;3.x&apos;</span></div>
-                      <div>      <span>- uses: iterative/setup-cml@v1</span></div>
+                      <div>      <span>- uses: iterative/setup-cml@v2</span></div>
                       <Tooltip type="dvc">
-                        <div>      <span>- uses: iterative/setup-dvc@v1</span></div>
+                        <div>      <span>- uses: treeverse/setup-dvc@v3</span></div>
                         <div>      <span>- name: Train model</span></div>
                         <div>        <span>env:</span></div>
                         <div>          <span>AWS_ACCESS_KEY_ID: {"${{ secrets.AWS_ACCESS_KEY_ID }}"}</span></div>
@@ -237,6 +238,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>cml comment create report.md</span></div>
                         <div>        <span>env:</span></div>
                         <div>          <span>REPO_TOKEN: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
+                        <div>          <span>CML_COMMENT_PUBLISH_URL: {"${{ secrets.CML_COMMENT_PUBLISH_URL }}"}</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -277,7 +279,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>- vl2png vega.json &gt; plot.png</span></div>
                         <div>          <span>- echo &#x27;![](./plot.png &quot;Training Loss&quot;)&#x27; &gt;&gt; report.md</span></div>
                         <div>          <span># Post CML report as a comment in Bitbucket</span></div>
-                        <div>          <span>- cml comment create report.md</span></div>
+                        <div>          <span>- cml comment create --publish-native report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -309,7 +311,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>      <span>--md &gt;&gt; report.md</span></div>
                       </Tooltip>
                       <Tooltip type="reports">
-                        <div>    <span>- cml comment create report.md</span></div>
+                        <div>    <span>- cml comment create --publish-native report.md</span></div>
                       </Tooltip>
                       <div><span> </span></div>
                       <Tooltip type="dependencies">
@@ -333,7 +335,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>runs-on: ubuntu-latest</span></div>
                       <div>    <span>container: docker://ghcr.io/iterative/cml:0-dvc2-base1</span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v3</span></div>
+                      <div>      <span>- uses: actions/checkout@v7</span></div>
                       <div>      <span>- name: Train and Report</span></div>
                       <div>        <span>env:</span></div>
                       <div>          <span>REPO_TOKEN: {"${{ secrets.GITHUB_TOKEN }}"}</span></div>
@@ -378,7 +380,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>            <span>--md &gt;&gt; report.md</span></div>
                       </Tooltip>
                       <Tooltip type="reports">
-                        <div>          <span>- cml comment create report.md</span></div>
+                        <div>          <span>- cml comment create --publish-native report.md</span></div>
                       </Tooltip>
                       <div><span>      </span></div>
                       <Tooltip type="dependencies">
@@ -428,7 +430,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span>- echo &quot;## Report from your EC2 instance&quot; &gt;&gt; report.md</span></div>
                         <div>    <span>- cat metrics.txt &gt;&gt; report.md</span></div>
                         <div>    <span>- echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
-                        <div>    <span>- cml comment create report.md</span></div>
+                        <div>    <span>- cml comment create --publish-native report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -447,8 +449,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>launch-runner:</span></div>
                       <div>    <span>runs-on: ubuntu-latest</span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>      <span>- uses: iterative/setup-cml@v1</span></div>
+                      <div>      <span>- uses: actions/checkout@v7</span></div>
+                      <div>      <span>- uses: iterative/setup-cml@v2</span></div>
                       <div>      <span>- name: Deploy runner on AWS EC2</span></div>
                       <div>        <span># Supports AWS, Azure, GCP, K8s</span></div>
                       <div>        <span>env:</span></div>
@@ -469,7 +471,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>    <span>timeout-minutes: 50400 # 35 days</span></div>
                       <div>    <span>container: docker://iterativeai/cml:0-dvc2-base1</span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v3</span></div>
+                      <div>      <span>- uses: actions/checkout@v7</span></div>
                       <div>      <span>- name: Train and Report</span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="dependencies">
@@ -483,6 +485,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>cml comment create report.md</span></div>
                         <div>        <span>env:</span></div>
                         <div>          <span>REPO_TOKEN: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
+                        <div>          <span>CML_COMMENT_PUBLISH_URL: {"${{ secrets.CML_COMMENT_PUBLISH_URL }}"}</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -524,7 +527,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>- echo &quot;## Report from your EC2 instance&quot; &gt;&gt; report.md</span></div>
                         <div>          <span>- cat metrics.txt &gt;&gt; report.md</span></div>
                         <div>          <span>- echo &#x27;![](./plot.png &quot;Confusion Matrix&quot;)&#x27; &gt;&gt; report.md</span></div>
-                        <div>          <span>- cml comment create report.md</span></div>
+                        <div>          <span>- cml comment create --publish-native report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -582,7 +585,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>    <span>  ## GPU info</span></div>
                         <div>    <span>  $(cat gpu_info.txt)</span></div>
                         <div>    <span>  EOF</span></div>
-                        <div>    <span>- cml comment create report.md</span></div>
+                        <div>    <span>- cml comment create --publish-native report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -601,8 +604,8 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>  <span>launch-runner:</span></div>
                       <div>    <span>runs-on: ubuntu-latest</span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v3</span></div>
-                      <div>      <span>- uses: iterative/setup-cml@v1</span></div>
+                      <div>      <span>- uses: actions/checkout@v7</span></div>
+                      <div>      <span>- uses: iterative/setup-cml@v2</span></div>
                       <div>      <span>- name: Deploy runner on AWS EC2</span></div>
                       <div>        <span># Supports AWS, Azure, GCP, K8s</span></div>
                       <div>        <span>env:</span></div>
@@ -626,7 +629,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                       <div>      <span>image: docker://iterativeai/cml:0-dvc2-base1-gpu</span></div>
                       <div>      <span>options: --gpus all</span></div>
                       <div>    <span>steps:</span></div>
-                      <div>      <span>- uses: actions/checkout@v3</span></div>
+                      <div>      <span>- uses: actions/checkout@v7</span></div>
                       <div>      <span>- name: Train model</span></div>
                       <div>        <span>run: |</span></div>
                       <Tooltip type="dvc">
@@ -652,6 +655,7 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div>          <span>cml comment create report.md</span></div>
                         <div>        <span>env:</span></div>
                         <div>          <span>REPO_TOKEN: {"${{ secrets.PERSONAL_ACCESS_TOKEN }}"}</span></div>
+                        <div>          <span>CML_COMMENT_PUBLISH_URL: {"${{ secrets.CML_COMMENT_PUBLISH_URL }}"}</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">
@@ -703,11 +707,11 @@ const UseCasesSection: React.ForwardRefRenderFunction<HTMLElement> = () => (
                         <div><span>      - convert +append final_owl.png master_owl.png out.png</span></div>
                         <div><span>      - convert out.png -resize 75%  out_shrink.png</span></div>
                         <div><span>      - echo &quot;### Workspace vs. Main&quot; &gt;&gt; report.md</span></div>
-                        <div><span>      - cml publish out_shrink.png --md --title &#x27;compare&#x27; &gt;&gt; report.md</span></div>
+                        <div><span>      - cml asset publish --native out_shrink.png --md --title &#x27;compare&#x27; &gt;&gt; report.md</span></div>
                         <div><span>      - echo &quot;## Training metrics&quot; &gt;&gt; report.md</span></div>
                         <div><span>      - dvc params diff master --show-md &gt;&gt; report.md</span></div>
                         <div><span>      - echo &gt;&gt; report.md</span></div>
-                        <div><span>      - cml send-comment report.md</span></div>
+                        <div><span>      - cml comment create report.md</span></div>
                       </Tooltip>
                     </Code>
                     <ExampleBox title="CML Report">

@@ -49,8 +49,8 @@ jobs:
   launch-runner:
     runs-on: ubuntu-latest
     steps:
-      - uses: iterative/setup-cml@v1
-      - uses: actions/checkout@v3
+      - uses: iterative/setup-cml@v2
+      - uses: actions/checkout@v7
       - name: Deploy runner on EC2
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -70,10 +70,12 @@ jobs:
       image: docker://iterativeai/cml:0-dvc2-base1-gpu
       options: --gpus all
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          # where plot.png is uploaded, see https://cml.dev/doc/image-hosting
+          CML_COMMENT_PUBLISH_URL: ${{ secrets.CML_COMMENT_PUBLISH_URL }}
         run: |
           pip install -r requirements.txt
           python train.py  # generate plot.png
@@ -108,7 +110,7 @@ train-and-report:
     # Create CML report
     - cat metrics.txt >> report.md
     - echo '![](./plot.png "Confusion Matrix")' >> report.md
-    - cml comment create report.md
+    - cml comment create --publish-native report.md
 ```
 
 </tab>
@@ -137,7 +139,7 @@ pipelines:
           # Create CML report
           - cat metrics.txt >> report.md
           - echo '![](./plot.png "Confusion Matrix")' >> report.md
-          - cml comment create report.md
+          - cml comment create --publish-native report.md
 ```
 
 </tab>
@@ -290,7 +292,8 @@ steps:
     with:
       private-key: ${{ secrets.CML_GITHUB_APP_PEM }}
       app-id: ${{ secrets.CML_GITHUB_APP_ID }}
-  - uses: actions/checkout@v3
+  - uses: actions/checkout@v7
+    with:
       token: ${{ steps.get-token.outputs.token }}
   - name: Train model
     env:

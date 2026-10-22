@@ -31,10 +31,11 @@ $ cd example_cml
        runs-on: ubuntu-latest
        container: docker://ghcr.io/iterative/cml:0-dvc2-base1
        steps:
-         - uses: actions/checkout@v3
+         - uses: actions/checkout@v7
          - name: Train model
            env:
              REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+             CML_COMMENT_PUBLISH_URL: ${{ secrets.CML_COMMENT_PUBLISH_URL }}
            run: |
              pip install -r requirements.txt
              python train.py  # generate plot.png
@@ -44,6 +45,15 @@ $ cd example_cml
              echo '![](./plot.png "Confusion Matrix")' >> report.md
              cml comment create report.md
    ```
+
+   <admon type="info">
+
+   The report embeds `plot.png`, so CML needs a server to upload it to. Set up
+   [image hosting](/doc/image-hosting#your-own-image-server) and save its URL as
+   the `CML_COMMENT_PUBLISH_URL` repository secret. To try CML without images
+   first, delete the `echo '![](./plot.png ...` line.
+
+   </admon>
 
 3. In your text editor, open `train.py` and modify line 15 to `depth = 5`.
 
@@ -106,7 +116,7 @@ This action gives you:
   environments
 
 Note that CML does not include DVC and its dependencies -- for that, you want
-the [Setup DVC Action](https://github.com/iterative/setup-dvc).
+the [Setup DVC Action](https://github.com/treeverse/setup-dvc).
 
 ### Usage
 
@@ -116,16 +126,16 @@ Basic usage:
 
 ```yaml
 steps:
-  - uses: iterative/setup-cml@v1
+  - uses: iterative/setup-cml@v2
 ```
 
 A specific version can be pinned to your workflow.
 
 ```yaml
 steps:
-  - uses: iterative/setup-cml@v1
+  - uses: iterative/setup-cml@v2
     with:
-      version: '1.0.1'
+      version: '0.20.6'
 ```
 
 ### Inputs
@@ -134,6 +144,10 @@ The following inputs are supported.
 
 - `version` - (optional) The version of CML to install. The default value of
   `latest` will install the latest version of CML.
+- `vega` - (optional) Whether to install Vega tools such as `vl2png` [default:
+  `true`].
+- `token` - (optional) GitHub token used to look up CML releases, which avoids
+  API rate limits [default: `${{ github.token }}`].
 
 ## Outputs
 
@@ -151,11 +165,13 @@ jobs:
   train-and-report:
     runs-on: ubuntu-latest
     steps:
-      - uses: iterative/setup-cml@v1
-      - uses: actions/checkout@v3
+      - uses: iterative/setup-cml@v2
+      - uses: actions/checkout@v7
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # where plot.png is uploaded, see https://cml.dev/doc/image-hosting
+          CML_COMMENT_PUBLISH_URL: ${{ secrets.CML_COMMENT_PUBLISH_URL }}
         run: |
           pip install -r requirements.txt
           python train.py  # generate plot.png

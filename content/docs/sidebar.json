@@ -26,6 +26,10 @@
   },
   "usage",
   {
+    "label": "Image Hosting",
+    "slug": "image-hosting"
+  },
+  {
     "label": "CML with DVC",
     "slug": "cml-with-dvc"
   },
@@ -53,6 +57,10 @@
       {
         "label": "comment",
         "slug": "comment"
+      },
+      {
+        "label": "asset publish",
+        "slug": "publish"
       },
       {
         "label": "check",
