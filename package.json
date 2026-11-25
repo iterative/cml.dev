@@ -45,8 +45,8 @@
     "yarn": "4.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "0.3.25",
-    "@dvcorg/websites-server": "0.3.0",
+    "@dvcorg/gatsby-theme-iterative": "0.3.27",
+    "@dvcorg/websites-server": "0.3.2",
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
     "@hapi/wreck": "18.1.2",
